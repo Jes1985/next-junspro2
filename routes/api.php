@@ -17,3 +17,27 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
   return $request->user();
 });
+
+// Route pour vérifier l'abonnement de l'utilisateur
+Route::middleware('auth:web')->get('/me/subscription', function (Request $request) {
+    $user = $request->user();
+    
+    // Vérifier si l'utilisateur a un abonnement actif
+    $hasActiveSubscription = false;
+    
+    if ($user && $user->clientProfile) {
+        $hasActiveSubscription = \App\Models\Subscription::where('client_id', $user->clientProfile->id)
+            ->where('status', 'active')
+            ->exists();
+    }
+    
+    if (!$hasActiveSubscription && $user && $user->freelancerProfile) {
+        $hasActiveSubscription = \App\Models\Subscription::where('freelancer_id', $user->freelancerProfile->id)
+            ->where('status', 'active')
+            ->exists();
+    }
+    
+    return response()->json([
+        'isPremium' => $hasActiveSubscription
+    ]);
+});

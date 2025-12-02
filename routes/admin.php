@@ -39,7 +39,7 @@ Route::prefix('/admin')->middleware('auth:admin', 'Demo')->group(function () {
   Route::prefix('package')->group(function () {
     // Package Settings routes
     Route::get('/settings', 'BackEnd\PackageController@settings')->name('admin.package.settings');
-    Route::post('/settings', 'BackEnd\PackageController@updateSettings')->name('admin.package.settings');
+    Route::post('/settings', 'BackEnd\PackageController@updateSettings')->name('admin.package.settings.update');
     // Package routes
     Route::get('packages', 'BackEnd\PackageController@index')->name('admin.package.index');
     Route::post('package/upload', 'BackEnd\PackageController@upload')->name('admin.package.upload');

@@ -28,10 +28,18 @@ class StripeController extends Controller
     {
         //Set Spripe Keys
         $stripe = OnlineGateway::where('keyword', 'stripe')->first();
-        $stripeConf = json_decode($stripe->information, true);
-        Config::set('services.stripe.key', $stripeConf["key"]);
-        Config::set('services.stripe.secret', $stripeConf["secret"]);
-        $this->stripeClient = new StripeClient($stripeConf["secret"]);
+        if ($stripe) {
+            // Vérifier si information est déjà un array ou une string JSON
+            $stripeConf = is_array($stripe->information) 
+                ? $stripe->information 
+                : json_decode($stripe->information, true);
+            
+            if ($stripeConf && isset($stripeConf["key"]) && isset($stripeConf["secret"])) {
+                Config::set('services.stripe.key', $stripeConf["key"]);
+                Config::set('services.stripe.secret', $stripeConf["secret"]);
+                $this->stripeClient = new StripeClient($stripeConf["secret"]);
+            }
+        }
     }
 
     public function paymentProcess(Request $request, $_amount, $_title, $_success_url, $_cancel_url)
