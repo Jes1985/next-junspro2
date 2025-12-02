@@ -16,7 +16,7 @@ use App\Models\Package;
 use App\Models\SellerInfo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Config\Iyzipay;
+use App\Helpers\IyzicoHelper;
 
 class IyzicoController extends Controller
 {
@@ -44,7 +44,7 @@ class IyzicoController extends Controller
         $conversion_id = uniqid(9999, 999999);
         Session::put('conversation_id', $conversion_id);
 
-        $options = Iyzipay::options();
+        $options = IyzicoHelper::options();
         # create request class
         $request = new \Iyzipay\Request\CreatePayWithIyzicoInitializeRequest();
         $request->setLocale(\Iyzipay\Model\Locale::EN);

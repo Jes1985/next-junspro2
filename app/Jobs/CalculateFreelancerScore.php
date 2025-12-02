@@ -110,3 +110,4 @@ class CalculateFreelancerScore implements ShouldQueue
 }
 
 
+

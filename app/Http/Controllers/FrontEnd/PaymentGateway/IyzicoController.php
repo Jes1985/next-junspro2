@@ -7,7 +7,7 @@ use App\Http\Controllers\FrontEnd\ClientService\OrderProcessController;
 use App\Models\ClientService\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Config\Iyzipay;
+use App\Helpers\IyzicoHelper;
 
 class IyzicoController extends Controller
 {
@@ -47,7 +47,7 @@ class IyzicoController extends Controller
 
         Session::put('arrData', $data);
 
-        $options = Iyzipay::options();
+        $options = IyzicoHelper::options();
         # create request class
         $request = new \Iyzipay\Request\CreatePayWithIyzicoInitializeRequest();
         $request->setLocale(\Iyzipay\Model\Locale::EN);
