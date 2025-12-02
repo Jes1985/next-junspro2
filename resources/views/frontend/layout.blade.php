@@ -22,6 +22,9 @@
     @includeIf('frontend.partials.styles.style-v2')
   @elseif ($basicInfo->theme_version == 3)
     @includeIf('frontend.partials.styles.style-v3')
+  @else
+    {{-- Par défaut, utiliser la version 3 (la plus récente) --}}
+    @includeIf('frontend.partials.styles.style-v3')
   @endif
   @php
     $primaryColor = $basicInfo->primary_color;
@@ -67,6 +70,9 @@
       @includeIf('frontend.partials.header.header-nav-v2')
     @elseif ($basicInfo->theme_version == 3)
       @includeIf('frontend.partials.header.header-nav-v3')
+    @else
+      {{-- Par défaut, utiliser la version 3 --}}
+      @includeIf('frontend.partials.header.header-nav-v3')
     @endif
     <!-- Header-area end -->
     @yield('content')
@@ -91,6 +97,9 @@
     @includeIf('frontend.partials.footer.footer-v2')
   @elseif ($basicInfo->theme_version == 3)
     @includeIf('frontend.partials.footer.footer-v3')
+  @else
+    {{-- Par défaut, utiliser la version 3 --}}
+    @includeIf('frontend.partials.footer.footer-v3')
   @endif
   <!-- Footer-area end-->
 
@@ -100,6 +109,9 @@
   @elseif ($basicInfo->theme_version == 2)
     @includeIf('frontend.partials.scripts.script-v2')
   @elseif ($basicInfo->theme_version == 3)
+    @includeIf('frontend.partials.scripts.script-v3')
+  @else
+    {{-- Par défaut, utiliser la version 3 --}}
     @includeIf('frontend.partials.scripts.script-v3')
   @endif
   {{-- additional script --}}
