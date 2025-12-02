@@ -115,6 +115,9 @@ class HomeController extends Controller
     } else if ($themeVersion == 3) {
       return view('frontend.home.index-v3', $queryResult);
     }
+    
+    // Par défaut, utiliser la version 3 (la plus récente)
+    return view('frontend.home.index-v3', $queryResult);
   }
 
   public function pricing()
