@@ -19,19 +19,26 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Route pour vérifier l'abonnement de l'utilisateur
-Route::middleware('auth:web')->get('/me/subscription', function (Request $request) {
-    $user = $request->user();
+Route::get('/me/subscription', function (Request $request) {
+    $user = $request->user('web');
+    
+    // Si l'utilisateur n'est pas authentifié, retourner false
+    if (!$user) {
+        return response()->json([
+            'isPremium' => false
+        ]);
+    }
     
     // Vérifier si l'utilisateur a un abonnement actif
     $hasActiveSubscription = false;
     
-    if ($user && $user->clientProfile) {
+    if ($user->clientProfile) {
         $hasActiveSubscription = \App\Models\Subscription::where('client_id', $user->clientProfile->id)
             ->where('status', 'active')
             ->exists();
     }
     
-    if (!$hasActiveSubscription && $user && $user->freelancerProfile) {
+    if (!$hasActiveSubscription && $user->freelancerProfile) {
         $hasActiveSubscription = \App\Models\Subscription::where('freelancer_id', $user->freelancerProfile->id)
             ->where('status', 'active')
             ->exists();
