@@ -7,7 +7,7 @@ use App\Http\Controllers\FrontEnd\ClientService\OrderProcessController;
 use App\Models\ClientService\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Helpers\IyzicoHelper;
+use App\Http\Helpers\IyzicoHelper;
 
 class IyzicoController extends Controller
 {

@@ -16,7 +16,7 @@ use App\Models\Package;
 use App\Models\SellerInfo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use App\Helpers\IyzicoHelper;
+use App\Http\Helpers\IyzicoHelper;
 
 class IyzicoController extends Controller
 {
