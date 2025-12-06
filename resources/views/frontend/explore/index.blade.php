@@ -79,6 +79,9 @@
                 <option value="highest_price" @selected(($filters['sort'] ?? '') === 'highest_price')>
                   {{ __('Prix le plus élevé') }}
                 </option>
+                <option value="best_rating" @selected(($filters['sort'] ?? '') === 'best_rating')>
+                  {{ __('Meilleure note') }}
+                </option>
               </select>
             </div>
 

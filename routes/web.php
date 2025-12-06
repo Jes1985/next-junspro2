@@ -56,10 +56,10 @@ Route::post('/mission/calendly/callback', 'FrontEnd\ClientMissionController@cale
 
 Route::middleware('change.lang')->group(function () {
   Route::get('/', 'FrontEnd\HomeController@index')->name('index');
-  Route::get('/pricing', 'FrontEnd\HomeController@pricing')->name('pricing');
   Route::get('/explore', [\App\Http\Controllers\FrontEnd\ExploreController::class, 'index'])->name('explore');
   Route::get('/freelance/{id}', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'show'])->name('freelance.show');
   Route::post('/freelance/{id}/trial', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'startTrial'])->name('freelance.trial')->middleware('auth:web');
+  Route::post('/freelance/{id}/subscribe', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'subscribe'])->name('freelance.subscribe')->middleware('auth:web');
   Route::get('/services', 'FrontEnd\ClientService\ServiceController@index')->name('services')->middleware('isServices');
 
   Route::get('/search-service', 'FrontEnd\ClientService\ServiceController@search_service')->name('search-service')->middleware('isServices');

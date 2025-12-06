@@ -150,7 +150,8 @@ if (!function_exists('get_href')) {
     } else if ($data->type == 'about') {
       $link_href = route('aboutus');
     } else if ($data->type == 'pricing') {
-      $link_href = route('pricing');
+      // Ancienne page pricing supprimée - rediriger vers explore
+      $link_href = route('explore');
     } else if ($data->type == 'custom') {
       /**
        * this menu has created using menu-builder from the admin panel.

@@ -11,7 +11,6 @@ use App\Models\ClientService\ServiceContent;
 use App\Models\HomePage\CtaSectionInfo;
 use App\Models\HomePage\Partner;
 use App\Models\HomePage\Section;
-use App\Models\Package;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -41,7 +40,12 @@ class HomeController extends Controller
       $queryResult['heroInfo'] = $language->heroStatic()->first();
     }
 
-    $queryResult['categories'] = $language->serviceCategory()->where('status', 1)->orderBy('serial_number', 'asc')->limit(8)->get();
+    // Catégories avec mise en avant de "Luxe & Premium" (is_premium = true)
+    $queryResult['categories'] = $language->serviceCategory()
+      ->where('status', 1)
+      ->orderByRaw('is_premium DESC, serial_number ASC')
+      ->limit(8)
+      ->get();
 
     if ($secInfo->about_section_status == 1) {
       $queryResult['aboutInfo'] = DB::table('basic_settings')->select('about_section_image', 'about_section_video_link')->first();
@@ -83,6 +87,19 @@ class HomeController extends Controller
 
     $queryResult['currencyInfo'] = $this->getCurrencyInfo();
 
+    // Section Freelancers highlight (Junspro V2)
+    $queryResult['highlightedFreelancers'] = \App\Models\FreelancerProfile::query()
+      ->with(['user'])
+      ->whereHas('user', function ($q) {
+        $q->where('is_super_freelancer', true)
+          ->orWhere('is_verified_freelancer', true);
+      })
+      ->whereNotNull('hourly_rate')
+      ->whereBetween('hourly_rate', [10, 299])
+      ->orderByDesc('reliability_score')
+      ->limit(6)
+      ->get();
+
     if ($secInfo->testimonials_section_status == 1) {
       $queryResult['testimonialBgImg'] = Basic::query()->pluck('testimonial_bg_img')->first();
     }
@@ -120,24 +137,4 @@ class HomeController extends Controller
     return view('frontend.home.index-v3', $queryResult);
   }
 
-  public function pricing()
-  {
-    $misc = new MiscellaneousController();
-
-    $language = $misc->getLanguage();
-
-    $queryResult['seoInfo'] = $language->seoInfo()->select('pricing_page_meta_keywords', 'pricing_page_meta_description')->first();
-
-    $queryResult['pageHeading'] = $misc->getPageHeading($language);
-
-    $queryResult['breadcrumb'] = $misc->getBreadcrumb();
- 
-    $queryResult['weekly_packages'] = Package::where([['status', '1'], ['term', 'weekly']])->get();
-    $queryResult['monthly_packages'] = Package::where([['status', '1'], ['term', 'monthly']])->get();
-    $queryResult['yearly_packages'] = Package::where([['status', '1'], ['term', 'yearly']])->get();
-    $queryResult['linking_packages'] = Package::where([['status', '1'], ['term', 'linking']])->get();
-    $queryResult['project_packages'] = Package::where([['status', '1'], ['term', 'project']])->get();
-    // $queryResult['lifetime_packages'] = Package::where([['status', '1'], ['term', 'lifetime']])->where('id', '<>', 999999)->get();
-    return view('frontend.pricing', $queryResult);
-  }
 }

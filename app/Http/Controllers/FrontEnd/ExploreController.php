@@ -14,12 +14,24 @@ class ExploreController extends Controller
     {
         $query = FreelancerProfile::query()
             ->with('user')
-            ->whereNotNull('hourly_rate');
+            ->whereNotNull('hourly_rate')
+            ->whereBetween('hourly_rate', [10, 299]); // Validation stricte 10-299 €/h
+
+        // Recherche textuelle (nom, bio, skills)
+        if ($request->filled('search')) {
+            $search = $request->get('search');
+            $query->where(function ($q) use ($search) {
+                $q->whereHas('user', function ($userQuery) use ($search) {
+                    $userQuery->where('name', 'like', "%{$search}%");
+                })
+                ->orWhere('bio', 'like', "%{$search}%")
+                ->orWhereJsonContains('skills', $search);
+            });
+        }
 
         // Filtres prix (10–299 €/h)
         $min = max((int) $request->get('price_min', 10), 10);
         $max = min((int) $request->get('price_max', 299), 299);
-
         $query->whereBetween('hourly_rate', [$min, $max]);
 
         // Langues (JSON sur FreelancerProfile)
@@ -39,22 +51,43 @@ class ExploreController extends Controller
             });
         }
 
-        // Premium / Super Freelance
+        // Premium / Super Freelance (amélioré)
         if ($request->boolean('is_premium')) {
-            $query->where('is_verified', true);
+            $query->whereHas('user', function ($q) {
+                $q->where('is_super_freelancer', true)
+                  ->orWhere('is_verified_freelancer', true);
+            });
         }
 
-        // Tri
+        // Filtre par catégorie (via skills ou recherche)
+        if ($request->filled('category')) {
+            $category = $request->get('category');
+            $query->where(function ($q) use ($category) {
+                $q->whereJsonContains('skills', $category)
+                  ->orWhere('bio', 'like', "%{$category}%");
+            });
+        }
+
+        // Tri amélioré
         $sort = $request->get('sort', 'best_match');
         switch ($sort) {
             case 'lowest_price':
-                $query->orderBy('hourly_rate', 'asc');
+                $query->orderBy('hourly_rate', 'asc')
+                      ->orderByDesc('reliability_score');
                 break;
             case 'highest_price':
-                $query->orderBy('hourly_rate', 'desc');
+                $query->orderBy('hourly_rate', 'desc')
+                      ->orderByDesc('reliability_score');
                 break;
-            default:
-                $query->orderByDesc('reliability_score');
+            case 'best_rating':
+                // TODO: Ajouter calcul de rating moyen depuis reviews
+                $query->orderByDesc('reliability_score')
+                      ->orderBy('hourly_rate', 'asc');
+                break;
+            default: // best_match
+                $query->orderByDesc('reliability_score')
+                      ->orderByRaw('CASE WHEN EXISTS (SELECT 1 FROM users WHERE users.id = freelancer_profiles.user_id AND users.is_super_freelancer = 1) THEN 0 ELSE 1 END')
+                      ->orderBy('hourly_rate', 'asc');
                 break;
         }
 
@@ -70,8 +103,10 @@ class ExploreController extends Controller
                 'price_max' => $max,
                 'languages' => (array) $request->get('languages', []),
                 'country' => $request->get('country'),
+                'category' => $request->get('category'),
                 'sort' => $sort,
                 'search' => $request->get('search'),
+                'is_premium' => $request->boolean('is_premium'),
             ],
             'allLanguages' => $allLanguages,
             'timezones' => $timezones,

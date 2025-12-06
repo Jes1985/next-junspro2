@@ -183,22 +183,29 @@
             <div class="row" data-aos="fade-up">
               @foreach ($categories as $category)
                 <div class="col-xxl-3 col-lg-4 col-sm-6">
-                  <div class="card border radius-xl mb-25">
+                  <div class="card border radius-xl mb-25 {{ ($category->is_premium ?? false) ? 'border-warning shadow-sm' : '' }}">
+                    @if ($category->is_premium ?? false)
+                      <div class="position-absolute top-0 end-0 m-2">
+                        <span class="badge bg-warning text-dark">
+                          <i class="fas fa-crown"></i> {{ __('Luxe & Premium') }}
+                        </span>
+                      </div>
+                    @endif
                     <div class="card_icon">
                       <!-- If use image as icon uncomment below line -->
                       <img class="lazyload" data-src="{{ asset('assets/img/service-categories/' . $category->image) }}"
-                        alt="image name here">
+                        alt="{{ $category->name }}">
                     </div>
                     <div class="card_details p-25">
                       <h4 class="card_title lc-2 mb-15">
-                        <a href="{{ route('services', ['category' => $category->slug]) }}" target="_self">
+                        <a href="{{ route('explore', ['category' => $category->slug]) }}" target="_self">
                           {{ $category->name }}
                         </a>
                       </h4>
                       <div class="card_action">
-                        <a href="{{ route('services', ['category' => $category->slug]) }}" class="btn-text icon-end"
-                          title="{{ __('Show Service Gigs') }}" target="_self">
-                          {{ __('Show Service Gigs') }}
+                        <a href="{{ route('explore', ['category' => $category->slug]) }}" class="btn-text icon-end"
+                          title="{{ __('Explorer les freelances') }}" target="_self">
+                          {{ __('Explorer les freelances') }}
                           @if ($currentLanguageInfo->direction == 1)
                             <i class="far fa-long-arrow-alt-left"></i>
                           @else
@@ -220,6 +227,84 @@
     </section>
   @endif
   <!-- Category-area end -->
+
+  <!-- Freelancers Highlight Section (Junspro V2) -->
+  @if (isset($highlightedFreelancers) && $highlightedFreelancers->count() > 0)
+    <section class="freelancers-highlight-area pt-100 pb-75">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title title-center mb-50" data-aos="fade-up">
+              <h2 class="title">{{ __('Freelances recommandés') }}</h2>
+              <p class="text-muted">{{ __('Découvrez nos meilleurs freelances experts') }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row g-3">
+          @foreach ($highlightedFreelancers as $freelancer)
+            @php
+              $user = $freelancer->user;
+              $avgRating = 0; // TODO: Calculer depuis les reviews
+            @endphp
+            <div class="col-md-6 col-lg-4" data-aos="fade-up">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-25">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="me-3">
+                      <div class="rounded-circle bg-primary-soft d-flex align-items-center justify-content-center"
+                        style="width: 50px; height: 50px;">
+                        <span class="fw-bold text-primary">
+                          {{ strtoupper(substr($user->name ?? 'F', 0, 1)) }}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h6 class="mb-0">{{ $user->name }}</h6>
+                      <small class="text-muted d-block">
+                        <i class="fas fa-map-marker-alt"></i> {{ $user->country_code ?? '—' }}
+                      </small>
+                    </div>
+                    @if ($user->is_super_freelancer ?? false)
+                      <span class="badge bg-warning text-dark ms-2">
+                        <i class="fas fa-star"></i> {{ __('Super Freelance') }}
+                      </span>
+                    @endif
+                  </div>
+                  <div class="mb-3">
+                    <strong class="text-primary">{{ number_format($freelancer->hourly_rate, 2, ',', ' ') }} € / h</strong>
+                  </div>
+                  @if ($freelancer->reliability_score)
+                    <div class="mb-3">
+                      <small class="text-muted">{{ __('Score fiabilité') }} :</small>
+                      <div class="progress" style="height: 6px;">
+                        <div class="progress-bar bg-success" role="progressbar"
+                          style="width: {{ $freelancer->reliability_score }}%"
+                          aria-valuenow="{{ $freelancer->reliability_score }}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                      </div>
+                      <small class="text-muted">{{ $freelancer->reliability_score }}/100</small>
+                    </div>
+                  @endif
+                  <a href="{{ route('freelance.show', ['id' => $freelancer->id]) }}"
+                    class="btn btn-sm btn-primary w-100">
+                    {{ __('Voir le profil') }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          @endforeach
+        </div>
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <a href="{{ route('explore') }}" class="btn btn-lg btn-primary rounded-pill">
+              {{ __('Voir tous les freelances') }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  @endif
+  <!-- Freelancers Highlight Section end -->
 
   <!-- Service-area start -->
   @if ($secInfo->featured_services_section_status == 1 && $service_setings->is_service == 1)
