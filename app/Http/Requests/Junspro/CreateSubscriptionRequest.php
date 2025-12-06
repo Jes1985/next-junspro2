@@ -15,7 +15,7 @@ class CreateSubscriptionRequest extends FormRequest
     {
         return [
             'freelancer_id' => 'required|exists:freelancer_profiles,id',
-            'hours_per_week' => 'required|integer|in:1,2,3,4,5,8',
+            'hours_per_week' => 'required|integer|in:1,2,4,8,12,16,20,24',
             'delivery_mode' => 'required|string|in:standard,express_24h,express_48h,express_72h',
         ];
     }
@@ -26,7 +26,7 @@ class CreateSubscriptionRequest extends FormRequest
             'freelancer_id.required' => 'Le freelance est requis',
             'freelancer_id.exists' => 'Le freelance sélectionné n\'existe pas',
             'hours_per_week.required' => 'Le nombre d\'heures par semaine est requis',
-            'hours_per_week.in' => 'Le nombre d\'heures doit être 1, 2, 3, 4, 5 ou 8',
+            'hours_per_week.in' => 'Le nombre d\'heures doit être 1, 2, 4, 8, 12, 16, 20 ou 24',
             'delivery_mode.required' => 'Le mode de livraison est requis',
             'delivery_mode.in' => 'Le mode de livraison doit être standard, express_24h, express_48h ou express_72h',
         ];

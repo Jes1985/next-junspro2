@@ -25,7 +25,7 @@ class SubscriptionService
      *
      * @param ClientProfile $client
      * @param FreelancerProfile $freelancer
-     * @param int $hoursPerWeek Valeurs autorisées: 1, 2, 3, 4, 5, 8
+     * @param int $hoursPerWeek Valeurs autorisées: 1, 2, 4, 8, 12, 16, 20, 24
      * @param string $deliveryMode 'standard', 'express_24h', 'express_48h', 'express_72h'
      * @param string|null $stripeSubscriptionId
      * @return Subscription
@@ -39,7 +39,7 @@ class SubscriptionService
         ?string $stripeSubscriptionId = null
     ): Subscription {
         // Validation des heures/semaine
-        $allowedHours = [1, 2, 3, 4, 5, 8];
+        $allowedHours = [1, 2, 4, 8, 12, 16, 20, 24];
         if (!in_array($hoursPerWeek, $allowedHours)) {
             throw new \InvalidArgumentException("hours_per_week doit être l'une des valeurs: " . implode(', ', $allowedHours));
         }

@@ -98,7 +98,7 @@
               <div>
                 <h6 class="mb-3">{{ __('Passer à l'abonnement') }}</h6>
                 <p class="small text-muted mb-3">
-                  {{ __('Choisissez votre formule hebdomadaire (1 à 16h/semaine)') }}
+                  {{ __('Choisissez votre formule hebdomadaire (1 à 24h/semaine)') }}
                 </p>
 
                 <form method="POST" action="{{ route('freelance.subscribe', $freelancer->id) }}" id="subscriptionForm">
@@ -108,7 +108,7 @@
                   <div class="mb-3">
                     <label class="form-label small">{{ __('Heures par semaine') }}</label>
                     <div class="btn-group w-100" role="group">
-                      @foreach([1, 2, 4, 8, 12, 16] as $hours)
+                      @foreach([1, 2, 4, 8, 12, 16, 20, 24] as $hours)
                         <input type="radio" class="btn-check" name="weekly_hours" id="hours_{{ $hours }}" 
                           value="{{ $hours }}" {{ $loop->first ? 'checked' : '' }} required>
                         <label class="btn btn-outline-primary" for="hours_{{ $hours }}">{{ $hours }}h</label>

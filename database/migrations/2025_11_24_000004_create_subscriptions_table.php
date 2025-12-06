@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_id')->constrained('client_profiles')->onDelete('cascade');
             $table->foreignId('freelancer_id')->constrained('freelancer_profiles')->onDelete('cascade');
-            $table->integer('hours_per_week')->comment('Valeurs: 1, 2, 3, 4, 5, 8');
+            $table->integer('hours_per_week')->comment('Valeurs: 1, 2, 4, 8, 12, 16, 20, 24');
             $table->float('hours_total_month')->comment('hours_per_week * 4');
             $table->float('hours_remaining')->default(0)->comment('Heures restantes sur le cycle en cours');
             $table->decimal('price_base', 10, 2)->comment('Prix mensuel hors Express');

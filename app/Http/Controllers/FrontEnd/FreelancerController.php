@@ -46,7 +46,7 @@ class FreelancerController extends Controller
     public function subscribe(Request $request, SubscriptionService $subscriptionService, $id)
     {
         $request->validate([
-            'weekly_hours' => 'required|in:1,2,4,8,12,16',
+            'weekly_hours' => 'required|in:1,2,4,8,12,16,20,24',
             'express_24h' => 'nullable|boolean',
             'express_48h' => 'nullable|boolean',
             'express_72h' => 'nullable|boolean',

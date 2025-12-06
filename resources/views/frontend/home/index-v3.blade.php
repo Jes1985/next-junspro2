@@ -97,7 +97,7 @@
                 style="width: 44px; height: 44px;">
                 <i class="fas fa-clock text-primary"></i>
               </span>
-              <h6 class="mb-1">{{ __('Abonnements flexibles (1 à 16h/semaine)') }}</h6>
+              <h6 class="mb-1">{{ __('Abonnements flexibles (1 à 24h/semaine)') }}</h6>
               <p class="mb-0 small text-muted">{{ __('Adaptez le volume d’heures selon le rythme de votre projet.') }}
               </p>
             </div>

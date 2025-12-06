@@ -45,7 +45,7 @@ domains/
 - Relations: subscriptions, transferRequests, rewards
 
 ### 4. Subscription
-- `hours_per_week` (1, 2, 3, 4, 5, 8)
+- `hours_per_week` (1, 2, 4, 8, 12, 16, 20, 24)
 - `hours_total_month` (calculé: hours_per_week * 4)
 - `hours_remaining`
 - `delivery_mode` (standard, express_24h, express_48h, express_72h)
@@ -163,7 +163,7 @@ Routes disponibles sous `/api/junspro/v2/`:
 ## Règles métier principales
 
 ### Abonnements
-- Heures/semaine: 1, 2, 3, 4, 5, 8
+- Heures/semaine: 1, 2, 4, 8, 12, 16, 20, 24
 - Prix base = hourly_rate * hours_per_week * 4
 - Express: +30% (24h), +20% (48h), +10% (72h)
 
