@@ -88,17 +88,22 @@ class HomeController extends Controller
     $queryResult['currencyInfo'] = $this->getCurrencyInfo();
 
     // Section Freelancers highlight (Junspro V2)
-    $queryResult['highlightedFreelancers'] = \App\Models\FreelancerProfile::query()
-      ->with(['user'])
-      ->whereHas('user', function ($q) {
-        $q->where('is_super_freelancer', true)
-          ->orWhere('is_verified_freelancer', true);
-      })
-      ->whereNotNull('hourly_rate')
-      ->whereBetween('hourly_rate', [10, 299])
-      ->orderByDesc('reliability_score')
-      ->limit(6)
-      ->get();
+    try {
+      $queryResult['highlightedFreelancers'] = \App\Models\FreelancerProfile::query()
+        ->with(['user'])
+        ->whereHas('user', function ($q) {
+          $q->where('is_super_freelancer', true)
+            ->orWhere('is_verified_freelancer', true);
+        })
+        ->whereNotNull('hourly_rate')
+        ->whereBetween('hourly_rate', [10, 299])
+        ->orderByDesc('reliability_score')
+        ->limit(6)
+        ->get();
+    } catch (\Exception $e) {
+      // Si aucune donnée ou erreur, retourner une collection vide
+      $queryResult['highlightedFreelancers'] = collect([]);
+    }
 
     if ($secInfo->testimonials_section_status == 1) {
       $queryResult['testimonialBgImg'] = Basic::query()->pluck('testimonial_bg_img')->first();

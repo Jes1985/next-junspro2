@@ -1,0 +1,19 @@
+# Commandes pour créer la base de données Junspro
+
+## Option 1 : Via phpMyAdmin (Laragon)
+1. Ouvrez Laragon
+2. Menu → Database → phpMyAdmin
+3. Onglet SQL
+4. Collez : CREATE DATABASE junspro CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+5. Cliquez Exécuter
+
+## Option 2 : Via MySQL en ligne de commande
+mysql -u root -e "CREATE DATABASE junspro CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+## Option 3 : Via Laragon Terminal MySQL
+1. Laragon → Menu → Database → MySQL
+2. Exécutez : CREATE DATABASE junspro CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+3. EXIT;
+
+## Après création, rechargez http://localhost:8000
+

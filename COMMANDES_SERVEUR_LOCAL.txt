@@ -1,0 +1,19 @@
+# Commandes pour lancer le serveur local Junspro
+
+## Étape 1 : Aller dans le dossier du projet
+cd "C:\Users\younes\Downloads\junspro-main (1)\junspro-main3"
+
+## Étape 2 : Créer le fichier .env (si pas déjà créé)
+# Ouvrez le fichier .env dans un éditeur et copiez le contenu depuis SETUP_LOCAL_RAPIDE.md
+
+## Étape 3 : Générer la clé d'application
+php artisan key:generate
+
+## Étape 4 : Lancer le serveur
+php artisan serve
+
+## Une fois le serveur lancé, ouvrez votre navigateur sur :
+http://localhost:8000
+
+## Pour arrêter le serveur, appuyez sur Ctrl+C dans le terminal
+

@@ -25,7 +25,15 @@ class ServiceCategory extends Model
     'status',
     'serial_number',
     'is_featured',
+    'is_premium',
     'add_to_menu'
+  ];
+
+  protected $casts = [
+    'is_premium' => 'boolean',
+    'status' => 'integer',
+    'serial_number' => 'integer',
+    'add_to_menu' => 'integer',
   ];
 
   public function language()
