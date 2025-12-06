@@ -37,7 +37,7 @@ class Subscription extends Resource
             Number::make('Heures/semaine', 'hours_per_week')
                 ->required()
                 ->min(1)
-                ->max(8)
+                ->max(24)
                 ->help('Valeurs: 1, 2, 4, 8, 12, 16, 20, 24'),
 
             Number::make('Heures totales/mois', 'hours_total_month')
