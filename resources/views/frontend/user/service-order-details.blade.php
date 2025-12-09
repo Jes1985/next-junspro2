@@ -212,7 +212,7 @@
                             <li>
                               <p><span>{{ __('Payment Status') . ':' }}</span>
                                 @if ($orderInfo->payment_status == 'completed')
-                                  <span class="badge bg-success px-2 py-1">{{ __('Completed') }}</span>
+                                  <span class="badge px-2 py-1" style="background: rgba(79, 70, 229, 0.12); color: #4F46E5;">{{ __('Completed') }}</span>
                                 @elseif ($orderInfo->payment_status == 'pending')
                                   <span class="badge bg-warning px-2 py-1">{{ __('Pending') }}</span>
                                 @else
@@ -226,7 +226,7 @@
                                 @if ($orderInfo->order_status == 'pending')
                                   <span class="badge bg-warning px-2 py-1">{{ __('Pending') }}</span>
                                 @elseif ($orderInfo->order_status == 'completed')
-                                  <span class="badge bg-success px-2 py-1">{{ __('Completed') }}</span>
+                                  <span class="badge px-2 py-1" style="background: rgba(79, 70, 229, 0.12); color: #4F46E5;">{{ __('Completed') }}</span>
                                 @else
                                   <span class="badge bg-danger px-2 py-1">{{ __('Rejected') }}</span>
                                 @endif

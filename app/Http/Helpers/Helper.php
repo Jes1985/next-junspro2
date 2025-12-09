@@ -150,8 +150,7 @@ if (!function_exists('get_href')) {
     } else if ($data->type == 'about') {
       $link_href = route('aboutus');
     } else if ($data->type == 'pricing') {
-      // Ancienne page pricing supprimée - rediriger vers explore
-      $link_href = route('explore');
+      $link_href = route('pricing');
     } else if ($data->type == 'custom') {
       /**
        * this menu has created using menu-builder from the admin panel.
@@ -351,6 +350,31 @@ if (!function_exists('followingCheck')) {
         return false;
       }
     }
+  }
+}
+
+if (!function_exists('replaceSellerWithFreelance')) {
+  /**
+   * Remplace "Vendeur"/"Seller" par "Freelance" dans un texte
+   */
+  function replaceSellerWithFreelance($text)
+  {
+    if (empty($text)) {
+      return $text;
+    }
+    
+    $replacements = [
+      'Vendeurs' => 'Freelances',
+      'Vendeur' => 'Freelance',
+      'vendeurs' => 'freelances',
+      'vendeur' => 'freelance',
+      'Sellers' => 'Freelances',
+      'Seller' => 'Freelance',
+      'sellers' => 'freelances',
+      'seller' => 'freelance',
+    ];
+    
+    return str_replace(array_keys($replacements), array_values($replacements), $text);
   }
 }
 

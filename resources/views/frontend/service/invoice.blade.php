@@ -69,7 +69,7 @@
                             href="{{ route('frontend.seller.details', @$orderInfo->seller->username) }}">{{ @$orderInfo->seller->username }}</a>
                         @endif
                       @else
-                        <span class="badge badge-success">{{ __('Admin') }}</span>
+                        <span class="badge badge-junspro">{{ __('Admin') }}</span>
                       @endif
                     </td>
                   </tr>

@@ -81,7 +81,7 @@
                                     @else
                                       @if ($order->order_status == 'completed')
                                         <span
-                                          class="completed text-success {{ $currentLanguageInfo->direction == 1 ? 'me-2' : 'ms-2' }}"><b>{{ __('Completed') }}</b></span>
+                                          class="completed {{ $currentLanguageInfo->direction == 1 ? 'me-2' : 'ms-2' }}" style="color: #4F46E5;"><b>{{ __('Completed') }}</b></span>
                                       @elseif ($order->order_status == 'pending')
                                         <span
                                           class="rejected {{ $currentLanguageInfo->direction == 1 ? 'me-2' : 'ms-2' }}"><b>{{ __('Pending') }}</b></span>

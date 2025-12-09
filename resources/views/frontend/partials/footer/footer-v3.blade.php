@@ -1,78 +1,85 @@
-<!-- Footer-area start -->
-<footer class="footer-area bg-primary-light">
-  <div class="footer-top pt-100 pb-70">
+<!-- Footer Junspro Moderne -->
+<footer class="junspro-footer">
+  <!-- Bloc A : Contenu principal -->
+  <div class="footer-main">
     <div class="container">
-      <div class="row gx-xl-5 justify-content-between">
-        <div class="col-xl-4 col-lg-5 col-md-6">
-          <div class="footer-widget" data-aos-delay="100">
-            <!-- Logo -->
-            <div class="logo mb-20">
-              <a class="navbar-brand" href="{{ route('index') }}" target="_self" title="Link">
-                @if (!empty($basicInfo->footer_logo))
-                  <img class="lazyload" data-src="{{ asset('assets/img/' . $basicInfo->footer_logo) }}" alt="">
-                @endif
-              </a>
-            </div>
-            <p>
-              {{ !empty($footerInfo) ? $footerInfo->about_company : '' }}
+      <div class="row g-4">
+        <!-- Colonne 1 : À propos -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="footer-column">
+            <h5 class="footer-title">JUNSPRO</h5>
+            <p class="footer-about">
+              Plateforme de mise en relation avec des freelances experts, disponibles à la semaine.
+              Liberté, confiance, connaissance, sagesse, joie.
             </p>
-
           </div>
         </div>
-        <div class="col-xl-2 col-lg-3 col-sm-6">
-          <div class="footer-widget">
-            <h5>{{ __('Useful Links') }}</h5>
-            @if (count($quickLinkInfos) == 0)
-              <h6 class="text-light">{{ __('No Link Found') . '!' }}</h6>
-            @else
-              <ul class="footer-links">
+
+        <!-- Colonne 2 : Liens utiles -->
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="footer-column">
+            <h5 class="footer-title">{{ __('Liens utiles') }}</h5>
+            <ul class="footer-links-list">
+              @if (count($quickLinkInfos) > 0)
                 @foreach ($quickLinkInfos as $quickLinkInfo)
                   <li>
                     <a href="{{ $quickLinkInfo->url }}" target="_blank">{{ $quickLinkInfo->title }}</a>
                   </li>
                 @endforeach
-              </ul>
-            @endif
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-sm-6">
-          <div class="footer-widget">
-            <h5>{{ __('Contact Us') }}</h5>
-            <ul class="footer-links">
-              @if (!empty($basicInfo->email_address))
-                <li>
-                  <a href="mailTo:{{ $basicInfo->email_address }}" target="_self"
-                    title="link">{{ $basicInfo->email_address }}</a>
-                </li>
-              @endif
-              @if (!empty($basicInfo->contact_number))
-                <li>
-                  <a href="tel:{{ $basicInfo->contact_number }}" target="_self"
-                    title="link">{{ $basicInfo->contact_number }}</a>
-                </li>
-              @endif
-              @if (!empty($basicInfo->address))
-                <li>
-                  {{ $basicInfo->address }}
-                </li>
+              @else
+                <li><a href="#">{{ __('CGU') }}</a></li>
+                <li><a href="#">{{ __('Mentions légales') }}</a></li>
+                <li><a href="#">{{ __('Termes et conditions') }}</a></li>
+                <li><a href="#">{{ __('Politique de confidentialité') }}</a></li>
+                <li><a href="#">{{ __('Conditions générales de vente') }}</a></li>
               @endif
             </ul>
           </div>
         </div>
-        <div class="col-xl-4 col-md-6">
-          <div class="footer-widget">
-            <h5>{{ __('Subscribe Us') }}</h5>
-            <p>
-              {{ @$basicExtend->news_letter_section_text }}
+
+        <!-- Colonne 3 : Contact -->
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="footer-column">
+            <h5 class="footer-title">{{ __('Contact') }}</h5>
+            <div class="footer-contact">
+              @if (!empty($basicInfo->email_address))
+                <p class="footer-contact-item">
+                  <span class="footer-contact-label">{{ __('Email') }} :</span>
+                  <a href="mailto:{{ $basicInfo->email_address }}">{{ $basicInfo->email_address }}</a>
+                </p>
+              @else
+                <p class="footer-contact-item">
+                  <span class="footer-contact-label">{{ __('Email') }} :</span>
+                  <a href="mailto:support@junspro.com">support@junspro.com</a>
+                </p>
+              @endif
+              <p class="footer-contact-item">
+                <a href="{{ route('contact') ?? '#' }}" class="footer-link">{{ __('Centre d\'aide') }}</a>
+              </p>
+              <p class="footer-contact-note">{{ __('Nous répondons sous 24 à 48h.') }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne 4 : Newsletter -->
+        <div class="col-lg-5 col-md-6 col-sm-6">
+          <div class="footer-column">
+            <h5 class="footer-title">{{ __('Restez informé') }}</h5>
+            <p class="footer-newsletter-text">
+              {{ __('Recevez les nouveautés Junspro, les offres et des conseils pour mieux collaborer avec vos freelances.') }}
             </p>
-            <form id="newsletterForm" action="{{ route('store_subscriber') }}" class="subscription-form"
-              method="POST">
+            <form id="newsletterForm" action="{{ route('store_subscriber') }}" class="footer-newsletter-form" method="POST">
               @csrf
-              <div class="input-inline p-1 bg-white rounded-pill">
-                <input class="form-control border-0 size-md" placeholder="{{ __('Enter Your Email Address') }}"
-                  type="text" name="email_id">
-                <button class="btn-icon rounded-pill" type="submit" aria-label="button">
-                  <i class="fas fa-paper-plane"></i>
+              <div class="footer-newsletter-input-group">
+                <input 
+                  type="email" 
+                  name="email_id" 
+                  class="footer-newsletter-input" 
+                  placeholder="{{ __('Votre adresse e-mail') }}"
+                  required
+                >
+                <button type="submit" class="footer-newsletter-btn">
+                  {{ __('S\'abonner') }}
                 </button>
               </div>
             </form>
@@ -81,29 +88,335 @@
       </div>
     </div>
   </div>
-  <div class="copy-right-area">
-    <div class="go-top">
-      <div class="go-top-btn rounded-pill">
-        <i class="far fa-angle-double-up"></i>
-      </div>
-    </div>
+
+  <!-- Bloc B : Copyright et réseaux sociaux -->
+  <div class="footer-bottom">
     <div class="container">
-      <div class="copy-right-content ptb-30">
-        @if (count($socialMediaInfos) > 0)
-          <div class="social-link rounded style-2 justify-content-center mb-10">
+      <div class="footer-bottom-content">
+        <div class="footer-copyright">
+          <p>&copy; {{ date('Y') }} Junspro. {{ __('Tous droits réservés.') }}</p>
+        </div>
+        <div class="footer-social">
+          @if (count($socialMediaInfos) > 0)
             @foreach ($socialMediaInfos as $socialMediaInfo)
-              <a href="{{ $socialMediaInfo->url }}" target="_blank" title="Link"><i
-                  class="{{ $socialMediaInfo->icon }}"></i></a>
+              <a href="{{ $socialMediaInfo->url }}" target="_blank" class="footer-social-icon" aria-label="{{ $socialMediaInfo->icon }}">
+                <i class="{{ $socialMediaInfo->icon }}"></i>
+              </a>
             @endforeach
-          </div>
-        @endif
-        @if (!empty($footerInfo))
-          <span>
-            {{ $footerInfo->copyright_text }}
-          </span>
-        @endif
+          @else
+            <!-- Icônes sociales par défaut -->
+            <a href="#" target="_blank" class="footer-social-icon" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" target="_blank" class="footer-social-icon" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" target="_blank" class="footer-social-icon" aria-label="Twitter">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="#" target="_blank" class="footer-social-icon" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" target="_blank" class="footer-social-icon" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          @endif
+        </div>
       </div>
     </div>
   </div>
 </footer>
-<!-- Footer-area end-->
+
+<style>
+  /* Footer Junspro Moderne - Style épuré bleu/violet */
+  .junspro-footer {
+    background: #050816;
+    color: #E5E7EB;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* Bloc A : Contenu principal */
+  .footer-main {
+    padding: 60px 0 50px;
+    background: #050816;
+  }
+
+  .footer-column {
+    height: 100%;
+  }
+
+  .footer-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-about {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #9CA3AF;
+    margin: 0;
+    max-width: 280px;
+  }
+
+  /* Liens utiles */
+  .footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links-list li {
+    margin-bottom: 12px;
+  }
+
+  .footer-links-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .footer-links-list a {
+    color: #9CA3AF;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+
+  .footer-links-list a:hover {
+    color: #7B3FF2;
+  }
+
+  /* Contact */
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-contact-item {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .footer-contact-label {
+    color: #9CA3AF;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .footer-contact-item a {
+    color: #E5E7EB;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-contact-item a:hover {
+    color: #7B3FF2;
+  }
+
+  .footer-link {
+    color: #9CA3AF;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+
+  .footer-link:hover {
+    color: #7B3FF2;
+  }
+
+  .footer-contact-note {
+    font-size: 13px;
+    color: #6B7280;
+    margin: 8px 0 0 0;
+    font-style: italic;
+  }
+
+  /* Newsletter */
+  .footer-newsletter-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #9CA3AF;
+    margin-bottom: 20px;
+  }
+
+  .footer-newsletter-form {
+    width: 100%;
+  }
+
+  .footer-newsletter-input-group {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .footer-newsletter-input {
+    flex: 1;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #E5E7EB;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+
+  .footer-newsletter-input::placeholder {
+    color: #6B7280;
+  }
+
+  .footer-newsletter-input:focus {
+    outline: none;
+    border-color: #7B3FF2;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-newsletter-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #1F3BFF 0%, #7B3FF2 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .footer-newsletter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(123, 63, 242, 0.4);
+  }
+
+  .footer-newsletter-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Bloc B : Copyright et réseaux sociaux */
+  .footer-bottom {
+    padding: 30px 0;
+    background: #030510;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-copyright {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .footer-copyright p {
+    margin: 0;
+    font-size: 14px;
+    color: #9CA3AF;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .footer-social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(127, 90, 240, 0.15);
+    border-radius: 50%;
+    color: #E5E7EB;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 16px;
+  }
+
+  .footer-social-icon:hover {
+    background: linear-gradient(135deg, #1F3BFF 0%, #7B3FF2 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(123, 63, 242, 0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 991px) {
+    .footer-main {
+      padding: 50px 0 40px;
+    }
+
+    .footer-column {
+      margin-bottom: 32px;
+    }
+
+    .footer-column:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer-about {
+      max-width: 100%;
+    }
+
+    .footer-newsletter-input-group {
+      flex-direction: column;
+    }
+
+    .footer-newsletter-btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-main {
+      padding: 40px 0 30px;
+    }
+
+    .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 24px;
+    }
+
+    .footer-copyright {
+      min-width: 100%;
+    }
+
+    .footer-social {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-main {
+      padding: 32px 0 24px;
+    }
+
+    .footer-title {
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .footer-about,
+    .footer-newsletter-text,
+    .footer-links-list a,
+    .footer-contact-item {
+      font-size: 13px;
+    }
+
+    .footer-social-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+  }
+</style>

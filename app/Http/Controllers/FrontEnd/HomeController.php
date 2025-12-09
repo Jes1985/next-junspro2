@@ -87,21 +87,47 @@ class HomeController extends Controller
 
     $queryResult['currencyInfo'] = $this->getCurrencyInfo();
 
-    // Section Freelancers highlight (Junspro V2)
+    // Section Freelancers highlight (Junspro V2) - Pour le slider hero
     try {
-      $queryResult['highlightedFreelancers'] = \App\Models\FreelancerProfile::query()
+      // Récupérer tous les freelances valides (sans dépendre des colonnes qui n'existent peut-être pas)
+      $queryResult['heroFreelancers'] = \App\Models\FreelancerProfile::query()
         ->with(['user'])
-        ->whereHas('user', function ($q) {
-          $q->where('is_super_freelancer', true)
-            ->orWhere('is_verified_freelancer', true);
-        })
         ->whereNotNull('hourly_rate')
         ->whereBetween('hourly_rate', [10, 299])
         ->orderByDesc('reliability_score')
-        ->limit(6)
+        ->limit(12)
         ->get();
+      
+      // Essayer d'ajouter les super/verified freelances en premier si les colonnes existent
+      try {
+        $superFreelances = \App\Models\FreelancerProfile::query()
+          ->with(['user'])
+          ->whereHas('user', function ($q) {
+            $q->where(function($subQ) {
+              $subQ->where('is_super_freelancer', true)
+                   ->orWhere('is_verified_freelancer', true);
+            });
+          })
+          ->whereNotNull('hourly_rate')
+          ->whereBetween('hourly_rate', [10, 299])
+          ->orderByDesc('reliability_score')
+          ->limit(12)
+          ->get();
+        
+        if ($superFreelances->count() > 0) {
+          // Fusionner en mettant les super freelances en premier
+          $otherFreelances = $queryResult['heroFreelancers']->whereNotIn('id', $superFreelances->pluck('id'));
+          $queryResult['heroFreelancers'] = $superFreelances->merge($otherFreelances)->take(12);
+        }
+      } catch (\Exception $e) {
+        // Les colonnes n'existent pas encore, on continue avec la requête de base
+      }
+      
+      // Freelancers pour la section highlight (plus bas) - 8 freelances pour le slider
+      $queryResult['highlightedFreelancers'] = $queryResult['heroFreelancers']->take(8);
     } catch (\Exception $e) {
       // Si aucune donnée ou erreur, retourner une collection vide
+      $queryResult['heroFreelancers'] = collect([]);
       $queryResult['highlightedFreelancers'] = collect([]);
     }
 

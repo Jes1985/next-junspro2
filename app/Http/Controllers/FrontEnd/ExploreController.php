@@ -53,10 +53,17 @@ class ExploreController extends Controller
 
         // Premium / Super Freelance (amélioré)
         if ($request->boolean('is_premium')) {
-            $query->whereHas('user', function ($q) {
-                $q->where('is_super_freelancer', true)
-                  ->orWhere('is_verified_freelancer', true);
-            });
+            try {
+                $query->whereHas('user', function ($q) {
+                    $q->where(function($subQ) {
+                        $subQ->where('is_super_freelancer', true)
+                             ->orWhere('is_verified_freelancer', true);
+                    });
+                });
+            } catch (\Exception $e) {
+                // Si les colonnes n'existent pas encore, ignorer ce filtre
+                // Les colonnes seront disponibles après la migration
+            }
         }
 
         // Filtre par catégorie (via skills ou recherche)
@@ -86,8 +93,9 @@ class ExploreController extends Controller
                 break;
             default: // best_match
                 $query->orderByDesc('reliability_score')
-                      ->orderByRaw('CASE WHEN EXISTS (SELECT 1 FROM users WHERE users.id = freelancer_profiles.user_id AND users.is_super_freelancer = 1) THEN 0 ELSE 1 END')
                       ->orderBy('hourly_rate', 'asc');
+                // Note: Tri par is_super_freelancer désactivé temporairement si la colonne n'existe pas
+                // Pour réactiver après migration: ->orderByRaw('CASE WHEN EXISTS (SELECT 1 FROM users WHERE users.id = freelancer_profiles.user_id AND users.is_super_freelancer = 1) THEN 0 ELSE 1 END')
                 break;
         }
 

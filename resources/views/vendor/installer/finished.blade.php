@@ -21,8 +21,8 @@
     <blockquote>
         <p><strong>Admin Panel Information</strong></p>
         <strong>URL: </strong>{your_website_url}/admin <br>
-        <strong>Username: </strong>admin <br>
-        <strong>Password: </strong>admin
+        <strong>Email: </strong>admin@junspro.com <br>
+        <strong>Password: </strong>admin123
     </blockquote>
 
 	<p><strong><small>{{ trans('installer_messages.final.env') }}</small></strong></p>

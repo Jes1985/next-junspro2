@@ -20,14 +20,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Route pour vérifier l'abonnement de l'utilisateur
 Route::get('/me/subscription', function (Request $request) {
-    $user = $request->user('web');
-    
-    // Si l'utilisateur n'est pas authentifié, retourner false
-    if (!$user) {
+    // Retourner immédiatement false si pas d'authentification
+    // pour éviter les erreurs 429
+    if (!auth()->check()) {
         return response()->json([
             'isPremium' => false
         ]);
     }
+    
+    $user = auth()->user();
     
     // Vérifier si l'utilisateur a un abonnement actif
     $hasActiveSubscription = false;
@@ -47,4 +48,4 @@ Route::get('/me/subscription', function (Request $request) {
     return response()->json([
         'isPremium' => $hasActiveSubscription
     ]);
-});
+})->middleware('throttle:60,1'); // Limiter à 60 requêtes par minute

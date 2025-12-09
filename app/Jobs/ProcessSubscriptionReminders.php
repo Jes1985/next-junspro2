@@ -11,6 +11,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class ProcessSubscriptionReminders implements ShouldQueue
 {
@@ -34,27 +35,28 @@ class ProcessSubscriptionReminders implements ShouldQueue
     protected function remindFreelancersAboutDeliveries(): void
     {
         $activeSubscriptions = Subscription::where('status', 'active')
-            ->with(['freelancer.user'])
+            ->with(['freelancer.user', 'workSessions'])
             ->get();
 
         foreach ($activeSubscriptions as $subscription) {
             // Vérifier si aucune WorkSession depuis 7 jours
             $lastSession = WorkSession::where('subscription_id', $subscription->id)
-                ->orderByDesc('work_date')
+                ->where('status', 'delivered')
+                ->orderBy('start_at', 'desc')
                 ->first();
 
-            if (!$lastSession || $lastSession->work_date < now()->subDays(7)) {
+            if (!$lastSession || $lastSession->start_at->lt(Carbon::now()->subDays(7))) {
                 // Notifier le freelance
                 $freelancerUser = $subscription->freelancer->user ?? null;
                 if ($freelancerUser) {
                     NotificationLog::create([
                         'user_id' => $freelancerUser->id,
                         'channel' => 'email',
-                        'type' => 'reminder_weekly_delivery',
+                        'type' => 'delivery_reminder',
                         'content' => json_encode([
                             'subscription_id' => $subscription->id,
-                            'client_name' => $subscription->client->user->name ?? 'N/A',
-                            'hours_per_week' => $subscription->hours_per_week,
+                            'client_name' => $subscription->client->user->name ?? 'Client',
+                            'message' => 'Vous n\'avez pas enregistré de session depuis 7 jours.',
                         ]),
                         'sent_at' => now(),
                     ]);
@@ -73,33 +75,34 @@ class ProcessSubscriptionReminders implements ShouldQueue
      */
     protected function remindClientsAboutValidation(): void
     {
-        $pendingSessions = WorkSession::where('status', 'delivered')
-            ->where('created_at', '<', now()->subDays(7))
+        $deliveredSessions = WorkSession::where('status', 'delivered')
+            ->where('start_at', '>=', Carbon::now()->subWeeks(2))
             ->with(['subscription.client.user'])
             ->get();
 
-        foreach ($pendingSessions as $session) {
-            // Notifier le client
-            $clientUser = $session->subscription->client->user ?? null;
-            if ($clientUser) {
-                NotificationLog::create([
-                    'user_id' => $clientUser->id,
-                    'channel' => 'email',
-                    'type' => 'reminder_validate_delivery',
-                    'content' => json_encode([
-                        'work_session_id' => $session->id,
-                        'subscription_id' => $session->subscription_id,
-                        'freelancer_name' => $session->subscription->freelancer->user->name ?? 'N/A',
-                    ]),
-                    'sent_at' => now(),
+        foreach ($deliveredSessions as $session) {
+            // Si livré depuis > 7 jours sans validation
+            if ($session->start_at->lt(Carbon::now()->subDays(7))) {
+                $clientUser = $session->subscription->client->user ?? null;
+                if ($clientUser) {
+                    NotificationLog::create([
+                        'user_id' => $clientUser->id,
+                        'channel' => 'email',
+                        'type' => 'validation_reminder',
+                        'content' => json_encode([
+                            'work_session_id' => $session->id,
+                            'subscription_id' => $session->subscription_id,
+                            'message' => 'Une livraison attend votre validation depuis plus de 7 jours.',
+                        ]),
+                        'sent_at' => now(),
+                    ]);
+                }
+
+                Log::info('Reminder sent to client to validate delivery', [
+                    'client_id' => $session->subscription->client_id,
+                    'work_session_id' => $session->id,
                 ]);
             }
-
-            Log::info('Reminder sent to client to validate delivery', [
-                'client_id' => $session->subscription->client_id,
-                'work_session_id' => $session->id,
-            ]);
         }
     }
 }
-

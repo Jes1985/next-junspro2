@@ -3512,7 +3512,7 @@ input[type="email"]:focus,
 }
 
 .valid {
-  color: green;
+  color: #4F46E5; /* Remplacé par bleu Junspro */
 }
 
 @media (max-width: 575.98px) {

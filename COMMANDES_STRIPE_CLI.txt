@@ -1,0 +1,50 @@
+===========================================
+COMMANDES STRIPE CLI - JUNSPRO V2
+===========================================
+
+1. INSTALLATION
+---------------
+Télécharger depuis : https://github.com/stripe/stripe-cli/releases/latest
+Extraire stripe.exe dans C:\stripe-cli\
+Ajouter C:\stripe-cli\ au PATH Windows
+
+2. CONNEXION
+------------
+stripe login
+
+3. REDIRIGER WEBHOOKS VERS LOCALHOST
+-------------------------------------
+stripe listen --forward-to http://localhost:8000/junspro/stripe/webhook
+
+⚠️ IMPORTANT : Gardez cette commande active dans un terminal séparé !
+
+4. TESTER LES ÉVÉNEMENTS
+-------------------------
+# Paiement réussi
+stripe trigger invoice.payment_succeeded
+
+# Paiement échoué
+stripe trigger invoice.payment_failed
+
+# Annulation abonnement
+stripe trigger customer.subscription.deleted
+
+5. SECRET WEBHOOK
+-----------------
+Quand vous lancez "stripe listen", un secret s'affiche :
+> Ready! Your webhook signing secret is whsec_xxxxxxxxxxxxx
+
+Copiez ce secret et mettez-le dans :
+- Interface Admin → Passerelles de paiement → Stripe → webhook_secret
+OU
+- Fichier .env → STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx
+
+6. PRODUCTION
+-------------
+En production, configurez le webhook dans Stripe Dashboard :
+- URL : https://junspro.com/junspro/stripe/webhook
+- Événements : invoice.payment_succeeded, invoice.payment_failed, customer.subscription.deleted
+- Récupérez le secret depuis Stripe Dashboard (section "Signing secret")
+
+===========================================
+

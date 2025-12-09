@@ -71,7 +71,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `role_id`, `first_name`, `last_name`, `image`, `username`, `email`, `password`, `status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Fahad', 'Shemul', '622845a1841fb.png', 'admin', 'fahadahmadshemul@gmail.com', '$2y$10$W/ymK1oV1m7R7KTdZb/D/.BWGuxn5yN/brblegtXFylo3XQn8oI8.', 1, NULL, '2023-11-30 08:36:17');
+(1, NULL, 'Administrateur', 'Junspro', '622845a1841fb.png', 'admin', 'admin@junspro.com', '$2y$12$HuTavb5xur8Hxlod7wzkP.MiabdpfnL0JjOJ7QdEHFhqm2r48Ci6m', 1, NULL, '2023-11-30 08:36:17');
 
 -- --------------------------------------------------------
 
@@ -240,7 +240,7 @@ CREATE TABLE `basic_settings` (
 --
 
 INSERT INTO `basic_settings` (`id`, `uniqid`, `favicon`, `logo`, `website_title`, `email_address`, `contact_number`, `address`, `latitude`, `longitude`, `theme_version`, `base_currency_symbol`, `base_currency_symbol_position`, `base_currency_text`, `base_currency_text_position`, `base_currency_rate`, `primary_color`, `secondary_color`, `breadcrumb_overlay_color`, `breadcrumb_overlay_opacity`, `smtp_status`, `smtp_host`, `smtp_port`, `encryption`, `smtp_username`, `smtp_password`, `from_mail`, `from_name`, `to_mail`, `breadcrumb`, `disqus_status`, `disqus_short_name`, `google_recaptcha_status`, `google_recaptcha_site_key`, `google_recaptcha_secret_key`, `whatsapp_status`, `whatsapp_number`, `whatsapp_header_title`, `whatsapp_popup_status`, `whatsapp_popup_message`, `maintenance_img`, `maintenance_status`, `maintenance_msg`, `bypass_token`, `footer_logo`, `admin_theme_version`, `notification_image`, `google_adsense_publisher_id`, `hero_bg_img`, `about_section_image`, `about_section_video_link`, `feature_bg_img`, `testimonial_bg_img`, `qr_url`, `qr_image`, `qr_color`, `qr_size`, `qr_style`, `qr_eye_style`, `qr_margin`, `qr_type`, `qr_inserted_image`, `qr_inserted_image_size`, `qr_inserted_image_x`, `qr_inserted_image_y`, `qr_text`, `qr_text_color`, `qr_text_size`, `qr_text_x`, `qr_text_y`, `facebook_login_status`, `facebook_app_id`, `facebook_app_secret`, `google_login_status`, `google_client_id`, `google_client_secret`, `pusher_app_id`, `pusher_key`, `pusher_secret`, `pusher_cluster`, `support_ticket_status`, `hero_static_img`, `hero_video_url`, `newsletter_bg_img`, `cta_bg_img`, `is_service`, `is_language`, `seller_email_verification`, `seller_admin_approval`, `admin_approval_notice`, `expiration_reminder`, `tax`, `chat_max_file`, `life_time_earning`, `total_profit`, `created_at`, `updated_at`) VALUES
-(2, 12345, '659cd13da6f1a.png', '659cd12acfe34.png', 'Multigig', 'demo@example.com', '+1-202-555-0109', '450 Young Road, New York, USA', '34.05224', '-118.24368', 1, '$', 'left', 'USD', 'right', '1.00', 'F4813C', '160828', '000000', '0.60', 1, 'smtp.gmail.com', 587, 'TLS', 'geniustest11@gmail.com', 'jvpdiafcjhrznkbm', 'geniustest11@gmail.com', 'MultiGig', 'fahadahmadshemul@gmail.com', '65a78bd4efcc4.jpg', 1, 'Multigig', 1, '6LdvRBUpAAAAAOC2bYiBjclS5bv3Ia98tg38euo5', '6LdvRBUpAAAAALOcTjULHON-V6dSkvo4GG5n2era', 1, '01931341253', 'Hi, there!', 1, 'If you have any issues, let us know.', '1632725312.png', 0, 'We are upgrading our site. We will come back soon. \r\nPlease stay with us.\r\nThank you.', 'fahad', '659cd1605e079.png', 'dark', '619b7d5e5e9df.png', NULL, '659934a208c01.jpg', '6598e6d2e8a19.png', 'https://www.youtube.com/watch?v=ufda7QD-EcM', '625bae6fd72f0.jpg', '658d222b348ff.jpg', 'https://codecanyon8.kreativdev.com/multi-gig/demo', '659a60e3d3193.png', '000000', 250, 'square', 'square', 0, 'default', NULL, 20, 50, 50, NULL, '000000', 15, 50, 50, 1, '415655527803766', 'a0c446544eaaf35713de739be5dc22e8', 1, '1028456015138-2ig40jpn9gaj7bq6kefbmsjt149me75v.apps.googleusercontent.com', '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', '1632491', '76e6df7413baa2e10f9f', '929a8970e66fb26255b1', 'ap2', 1, '659934a20932a.png', 'https://www.youtube.com/watch?v=ufda7QD-EcM', '62f09aacaaa98.png', '659934867b5bd.jpg', 1, 1, 1, 1, 'Unfortunately, your account is deactive now. please get in touch with admin.', 3, 7.00, '2000', 0.00, 0.00, '2023-12-03 06:27:43', '2023-12-03 06:27:43');
+(2, 12345, '659cd13da6f1a.png', '659cd12acfe34.png', 'Multigig', 'demo@example.com', '+1-202-555-0109', '450 Young Road, New York, USA', '34.05224', '-118.24368', 1, '$', 'left', 'USD', 'right', '1.00', 'F4813C', '160828', '000000', '0.60', 1, 'smtp.gmail.com', 587, 'TLS', 'geniustest11@gmail.com', 'jvpdiafcjhrznkbm', 'geniustest11@gmail.com', 'MultiGig', 'admin@junspro.com', '65a78bd4efcc4.jpg', 1, 'Multigig', 1, '6LdvRBUpAAAAAOC2bYiBjclS5bv3Ia98tg38euo5', '6LdvRBUpAAAAALOcTjULHON-V6dSkvo4GG5n2era', 1, '01931341253', 'Hi, there!', 1, 'If you have any issues, let us know.', '1632725312.png', 0, 'We are upgrading our site. We will come back soon. \r\nPlease stay with us.\r\nThank you.', 'fahad', '659cd1605e079.png', 'dark', '619b7d5e5e9df.png', NULL, '659934a208c01.jpg', '6598e6d2e8a19.png', 'https://www.youtube.com/watch?v=ufda7QD-EcM', '625bae6fd72f0.jpg', '658d222b348ff.jpg', 'https://codecanyon8.kreativdev.com/multi-gig/demo', '659a60e3d3193.png', '000000', 250, 'square', 'square', 0, 'default', NULL, 20, 50, 50, NULL, '000000', 15, 50, 50, 1, '415655527803766', 'a0c446544eaaf35713de739be5dc22e8', 1, '1028456015138-2ig40jpn9gaj7bq6kefbmsjt149me75v.apps.googleusercontent.com', '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', '1632491', '76e6df7413baa2e10f9f', '929a8970e66fb26255b1', 'ap2', 1, '659934a20932a.png', 'https://www.youtube.com/watch?v=ufda7QD-EcM', '62f09aacaaa98.png', '659934867b5bd.jpg', 1, 1, 1, 1, 'Unfortunately, your account is deactive now. please get in touch with admin.', 3, 7.00, '2000', 0.00, 0.00, '2023-12-03 06:27:43', '2023-12-03 06:27:43');
 
 -- --------------------------------------------------------
 
@@ -1032,7 +1032,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`id`, `email`, `token`, `created_at`) VALUES
-(1, 'fahadahmadshemul@gmail.com', '653e3d22a6dd3', NULL),
+(1, 'admin@junspro.com', '653e3d22a6dd3', NULL),
 (6, 'lujisejudy@mailinator.com', '65598b48c1a56', NULL);
 
 -- --------------------------------------------------------
@@ -1348,7 +1348,7 @@ CREATE TABLE `sellers` (
 --
 
 INSERT INTO `sellers` (`id`, `photo`, `email`, `recipient_mail`, `phone`, `username`, `password`, `status`, `amount`, `email_verified_at`, `avg_rating`, `show_email_addresss`, `show_phone_number`, `show_contact_form`, `created_at`, `updated_at`) VALUES
-(0, NULL, 'admin@gmail.com', 'admin@gmail.com', NULL, 'admin', NULL, 1, 0.00, NULL, NULL, 1, 1, 1, NULL, NULL);
+(0, NULL, 'admin@junspro.com', 'admin@junspro.com', NULL, 'admin', NULL, 1, 0.00, NULL, NULL, 1, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 

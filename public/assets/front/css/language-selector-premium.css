@@ -1,0 +1,226 @@
+/* ============================================
+   JUNSPRO - LANGUAGE SELECTOR PREMIUM
+   ============================================ */
+
+/* Container du sélecteur de langue */
+.header-area .more-option .item .language {
+  position: relative;
+}
+
+/* Bouton du sélecteur de langue (Nice Select) */
+.header-area .more-option .item .language .nice-select {
+  min-width: 140px;
+  height: 40px;
+  padding: 0 16px 0 40px;
+  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 20px !important;
+  color: #FFFFFF !important;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  line-height: 40px;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+}
+
+.header-area .more-option .item .language .nice-select:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #5b21b6 50%, #8b5cf6 100%) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
+}
+
+.header-area .more-option .item .language .nice-select:focus,
+.header-area .more-option .item .language .nice-select.open {
+  background: linear-gradient(135deg, #2563eb 0%, #5b21b6 50%, #8b5cf6 100%) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.45);
+  outline: none;
+}
+
+/* Icône globe avant le texte */
+.header-area .more-option .item .language .nice-select::before {
+  content: '🌐';
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  z-index: 1;
+}
+
+/* Flèche du dropdown (remplace celle de Nice Select) */
+.header-area .more-option .item .language .nice-select::after {
+  content: '' !important;
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid rgba(255, 255, 255, 0.9);
+  border-bottom: none !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 !important;
+}
+
+.header-area .more-option .item .language .nice-select.open::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Liste déroulante premium */
+.header-area .more-option .item .language .nice-select .list {
+  min-width: 180px;
+  max-width: 220px;
+  margin-top: 8px;
+  padding: 6px;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  position: absolute !important;
+  z-index: 99999 !important;
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+  left: auto !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.header-area .more-option .item .language .nice-select.open .list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Flèche vers le haut */
+.header-area .more-option .item .language .nice-select .list::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #FFFFFF;
+  filter: drop-shadow(0 -2px 4px rgba(15, 23, 42, 0.1));
+  z-index: 1;
+}
+
+/* Scrollbar personnalisée */
+.header-area .more-option .item .language .nice-select .list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.header-area .more-option .item .language .nice-select .list::-webkit-scrollbar-track {
+  background: #F5F5F5;
+  border-radius: 3px;
+}
+
+.header-area .more-option .item .language .nice-select .list::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+.header-area .more-option .item .language .nice-select .list::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Items de la liste */
+.header-area .more-option .item .language .nice-select .list .option {
+  padding: 12px 16px !important;
+  margin: 2px 4px;
+  color: #111827 !important;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  min-height: 44px;
+  line-height: 1.4;
+}
+
+.header-area .more-option .item .language .nice-select .list .option:hover {
+  background: #F5F3FF !important;
+  color: #4F46E5 !important;
+  transform: translateX(4px);
+}
+
+.header-area .more-option .item .language .nice-select .list .option.selected,
+.header-area .more-option .item .language .nice-select .list .option.focus {
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%) !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+.header-area .more-option .item .language .nice-select .list .option.selected::before {
+  content: '✓';
+  position: absolute;
+  left: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.header-area .more-option .item .language .nice-select .list .option.selected {
+  padding-left: 36px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-area .more-option .item .language .nice-select {
+    min-width: 120px;
+    height: 36px;
+    padding: 0 12px 0 36px;
+    font-size: 13px;
+    line-height: 36px;
+  }
+
+  .header-area .more-option .item .language .nice-select::before {
+    left: 12px;
+    font-size: 14px;
+  }
+
+  .header-area .more-option .item .language .nice-select .list {
+    min-width: 160px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-area .more-option .item .language .nice-select {
+    min-width: 100px;
+    height: 32px;
+    padding: 0 10px 0 32px;
+    font-size: 12px;
+    line-height: 32px;
+  }
+
+  .header-area .more-option .item .language .nice-select::before {
+    left: 10px;
+    font-size: 13px;
+  }
+
+  .header-area .more-option .item .language .nice-select .list {
+    min-width: 140px;
+    max-width: 160px;
+  }
+}
+

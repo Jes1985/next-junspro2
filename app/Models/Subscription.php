@@ -30,6 +30,7 @@ class Subscription extends Model
         'has_express_72h',
         'max_rectifications_per_delivery',
         'kickoff_done',
+        'can_transfer',
     ];
 
     protected $casts = [
@@ -44,6 +45,7 @@ class Subscription extends Model
         'has_express_48h' => 'boolean',
         'has_express_72h' => 'boolean',
         'kickoff_done' => 'boolean',
+        'can_transfer' => 'boolean',
     ];
 
     /**

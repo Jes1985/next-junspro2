@@ -112,6 +112,8 @@ class AppServiceProvider extends ServiceProvider
           $menus = json_encode([]);
         } else {
           $menus = $siteMenuInfo->menus;
+          // Remplacement de "Vendeur"/"Seller" par "Freelance" dans le menu JSON
+          $menus = str_replace(['"Vendeurs"', '"Vendeur"', '"vendeurs"', '"vendeur"', '"Sellers"', '"Seller"', '"sellers"', '"seller"'], ['"Freelances"', '"Freelance"', '"freelances"', '"freelance"', '"Freelances"', '"Freelance"', '"freelances"', '"freelance"'], $menus);
         }
 
         // get the announcement popups

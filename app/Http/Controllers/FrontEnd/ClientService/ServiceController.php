@@ -147,6 +147,34 @@ class ServiceController extends Controller
         $service['reviewCount'] = $service->review()->count();
       });
 
+      // Récupérer les services populaires pour l'empty state (top 4 par note moyenne)
+      $popularServices = Service::join('service_contents', 'services.id', '=', 'service_contents.service_id')
+        ->join('memberships', 'services.seller_id', '=', 'memberships.seller_id')
+        ->join('sellers', 'services.seller_id', '=', 'sellers.id')
+        ->where([
+          ['memberships.status', '=', 1],
+          ['memberships.start_date', '<=', Carbon::now()->format('Y-m-d')],
+          ['memberships.expire_date', '>=', Carbon::now()->format('Y-m-d')]
+        ])
+        ->where([['services.service_status', '=', 1], ['sellers.status', '=', 1]])
+        ->when($categorySlug, function (Builder $query) use ($categorySlug) {
+          $category = ServiceCategory::query()->where('slug', '=', $categorySlug)->first();
+          if ($category) {
+            return $query->where('service_contents.service_category_id', '=', $category->id);
+          }
+          return $query;
+        })
+        ->where('service_contents.language_id', '=', $language->id)
+        ->select('services.id', 'services.seller_id', 'services.thumbnail_image', 'service_contents.title', 'service_contents.slug', 'services.average_rating', 'services.package_lowest_price', 'services.quote_btn_status')
+        ->orderByDesc('services.average_rating')
+        ->orderByDesc('services.id')
+        ->limit(4)
+        ->get();
+      
+      $popularServices->map(function ($service) {
+        $service['reviewCount'] = $service->review()->count();
+      });
+
       // wishlist
       if (Auth::guard('web')->check() == true) {
         $services->map(function ($service) {
@@ -162,6 +190,14 @@ class ServiceController extends Controller
       }
 
       $queryResult['services'] = $services;
+      $queryResult['popularServices'] = $popularServices;
+      
+      // Récupérer la catégorie actuelle pour la barre de contexte
+      $currentCategory = null;
+      if ($categorySlug) {
+        $currentCategory = ServiceCategory::where('slug', $categorySlug)->where('language_id', $language->id)->first();
+      }
+      $queryResult['currentCategory'] = $currentCategory;
 
       $queryResult['minPrice'] = Service::query()->where('service_status', '=', 1)->min('package_lowest_price');
       $queryResult['maxPrice'] = Service::query()->where('service_status', '=', 1)->max('package_lowest_price');

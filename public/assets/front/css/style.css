@@ -43,7 +43,7 @@
   --color-secondary: #F4813C;
   --color-red: #EB4C4C;
   --color-yellow: #e59819;
-  --color-green: #00B67A;
+  --color-green: #4F46E5; /* Remplacé par bleu Junspro */
   --color-blue: #0d6efd;
   --color-white: #ffffff;
   --color-black: #000000;
@@ -53,7 +53,7 @@
   --color-primary-rgb: 244, 129, 60;
   --color-secondary-rgb: 244, 129, 60;
   --color-red-rgb: 235, 76, 76;
-  --color-green-rgb: 0, 182, 122;
+  --color-green-rgb: 79, 70, 229; /* Remplacé par bleu Junspro */
   --color-blue-rgb: 13, 110, 253;
   --color-white-rgb: 255, 255, 255;
   --color-black-rgb: 0, 0, 0;
@@ -699,7 +699,8 @@ b {
   padding: 8px 12px;
 }
 
-.badge.bg-success {
+.badge.bg-success,
+.badge.badge-junspro {
   color: var(--color-green);
   background: rgba(var(--color-green-rgb), 0.12) !important;
 }
@@ -6381,5 +6382,6 @@ Other CSS
   display: none;
 }
 button.swal-button.swal-button--confirm.btn.btn-success {
-  background: #079507;
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%) !important;
+  border: none !important;
 }

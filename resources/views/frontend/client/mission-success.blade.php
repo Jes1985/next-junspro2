@@ -6,8 +6,8 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="card shadow-sm border-success">
-                <div class="card-header bg-success text-white text-center">
+            <div class="card shadow-sm" style="border-top: 4px solid #4F46E5;">
+                <div class="card-header text-white text-center" style="background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);">
                     <i class="fas fa-check-circle fa-3x mb-3"></i>
                     <h3 class="mb-0">Mission Soumise avec Succès !</h3>
                 </div>

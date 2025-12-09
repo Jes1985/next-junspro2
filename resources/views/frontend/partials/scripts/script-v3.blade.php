@@ -23,6 +23,8 @@
 <script type="text/javascript" src="{{ asset('assets/front/js/vendors/jquery.min.js') }}"></script>
 <!-- Bootstrap JS -->
 <script type="text/javascript" src="{{ asset('assets/front/js/vendors/bootstrap.min.js') }}"></script>
+<!-- User Menu Dropdown JS -->
+<script type="text/javascript" src="{{ asset('assets/front/js/user-menu-dropdown.js') }}"></script>
 <!-- Nice Select JS -->
 <script type="text/javascript" src="{{ asset('assets/front/js/vendors/jquery.nice-select.min.js') }}"></script>
 <!-- Magnific Popup JS -->
@@ -76,6 +78,9 @@
     }
   });
 </script>
+
+{{-- Le blocage est maintenant dans layout.blade.php (head) --}}
+
 @yield('script')
 <script type="text/javascript" src="{{ asset('assets/js/push-notification.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/floating-whatsapp.js') }}"></script>

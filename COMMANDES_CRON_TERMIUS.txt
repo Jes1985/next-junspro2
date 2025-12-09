@@ -1,0 +1,41 @@
+# ============================================
+# COMMANDES À COPIER-COLLER DANS TERMIUS
+# ============================================
+
+# ÉTAPE 1 : Aller dans votre projet
+cd /var/www/junspro
+
+# ÉTAPE 2 : Vérifier que vous êtes au bon endroit
+pwd
+ls artisan
+
+# ÉTAPE 3 : Trouver le chemin de PHP
+which php
+
+# ÉTAPE 4 : Éditer le crontab
+crontab -e
+
+# (Si demandé, choisissez nano en tapant 1)
+
+# ÉTAPE 5 : Dans l'éditeur nano, ajoutez cette ligne à la fin :
+# (Copiez-collez cette ligne complète)
+* * * * * cd /var/www/junspro && /usr/bin/php artisan schedule:run >> /dev/null 2>&1
+
+# ÉTAPE 6 : Sauvegarder dans nano
+# Appuyez sur : Ctrl + X
+# Puis : Y
+# Puis : Enter
+
+# ÉTAPE 7 : Vérifier que c'est bien configuré
+crontab -l
+
+# ÉTAPE 8 : Tester manuellement
+cd /var/www/junspro
+php artisan schedule:run
+
+# ============================================
+# Si vous voyez des messages comme :
+# "Running scheduled command: App\Jobs\..."
+# C'est que ça fonctionne ! ✅
+# ============================================
+

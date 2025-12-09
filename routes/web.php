@@ -56,7 +56,12 @@ Route::post('/mission/calendly/callback', 'FrontEnd\ClientMissionController@cale
 
 Route::middleware('change.lang')->group(function () {
   Route::get('/', 'FrontEnd\HomeController@index')->name('index');
+  Route::get('/pricing', [\App\Http\Controllers\FrontEnd\PricingController::class, 'index'])->name('pricing');
+Route::post('/pricing/subscribe', [\App\Http\Controllers\FrontEnd\PricingController::class, 'subscribe'])->name('pricing.subscribe')->middleware('auth:web');
   Route::get('/explore', [\App\Http\Controllers\FrontEnd\ExploreController::class, 'index'])->name('explore');
+  Route::get('/freelances', function() {
+    return redirect()->route('explore');
+  })->name('freelances');
   Route::get('/freelance/{id}', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'show'])->name('freelance.show');
   Route::post('/freelance/{id}/trial', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'startTrial'])->name('freelance.trial')->middleware('auth:web');
   Route::post('/freelance/{id}/subscribe', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'subscribe'])->name('freelance.subscribe')->middleware('auth:web');
@@ -191,6 +196,9 @@ Route::prefix('/user')->middleware(['guest:web', 'change.lang'])->group(function
   // user login submit route
   Route::post('/login-submit', 'FrontEnd\UserController@loginSubmit')->name('user.login_submit')->withoutMiddleware('change.lang');
 
+  // resend verification email route
+  Route::post('/resend-verification', 'FrontEnd\UserController@resendVerificationEmail')->name('user.resend_verification')->withoutMiddleware('change.lang');
+
   // user forget password route
   Route::get('/forget-password', 'FrontEnd\UserController@forgetPassword')->name('user.forget_password');
 
@@ -275,11 +283,21 @@ Route::prefix('/user')->middleware(['auth:web', 'account.status', 'change.lang']
   Route::prefix('/account/subscriptions')->group(function () {
     Route::get('/', 'FrontEnd\ClientSubscriptionController@index')->name('client.subscriptions.index');
     Route::get('/{id}', 'FrontEnd\ClientSubscriptionController@show')->name('client.subscriptions.show');
+    Route::get('/{id}/sessions', 'FrontEnd\ClientSubscriptionController@show')->name('client.subscriptions.sessions');
     Route::post('/{id}/pause', 'FrontEnd\ClientSubscriptionController@pause')->name('client.subscriptions.pause');
     Route::post('/{id}/resume', 'FrontEnd\ClientSubscriptionController@resume')->name('client.subscriptions.resume');
     Route::get('/{id}/cancel', 'FrontEnd\ClientSubscriptionController@showCancelForm')->name('client.subscriptions.cancel');
     Route::post('/{id}/cancel', 'FrontEnd\ClientSubscriptionController@cancel')->name('client.subscriptions.cancel.submit');
   });
+
+  // Routes Stripe pour abonnements
+  Route::get('/subscription/stripe/success', 'FrontEnd\FreelancerController@stripeSuccess')->name('subscription.stripe.success');
+  Route::get('/subscription/stripe/cancel', 'FrontEnd\FreelancerController@stripeCancel')->name('subscription.stripe.cancel');
+
+  // Rectifications de sessions de travail
+  Route::post('/work-session/{id}/rectify', 'FrontEnd\WorkSessionController@requestRectification')
+    ->name('client.work-session.rectify')
+    ->middleware('auth:web');
 
   Route::prefix('/freelancer/subscriptions')->group(function () {
     Route::get('/', 'FrontEnd\FreelancerSubscriptionController@index')->name('freelancer.subscriptions.index');

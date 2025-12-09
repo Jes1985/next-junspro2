@@ -41,23 +41,39 @@ class UserController extends Controller
 {
   public function login()
   {
-    $misc = new MiscellaneousController();
-
-    $language = $misc->getLanguage();
-
-    $queryResult['seoInfo'] = $language->seoInfo()->select('meta_keyword_customer_login', 'meta_description_customer_login')->first();
-
-    $queryResult['pageHeading'] = $misc->getPageHeading($language);
-
-    $queryResult['breadcrumb'] = $misc->getBreadcrumb();
-
-    $queryResult['bs'] = Basic::query()->select('google_recaptcha_status', 'facebook_login_status', 'google_login_status')->first();
-
-    return view('frontend.login', $queryResult);
+    // Nouvelle vue moderne d'authentification
+    // websiteInfo et currentLanguageInfo sont partagés globalement via AppServiceProvider
+    $basic = Basic::query()->select('google_login_status', 'facebook_login_status', 'google_client_id', 'google_client_secret', 'facebook_app_id', 'facebook_app_secret')->first();
+    
+    return view('frontend.auth.login', [
+      'googleEnabled' => $basic && $basic->google_login_status == 1 && !empty($basic->google_client_id) && !empty($basic->google_client_secret),
+      'facebookEnabled' => $basic && $basic->facebook_login_status == 1 && !empty($basic->facebook_app_id) && !empty($basic->facebook_app_secret),
+    ]);
   }
 
   public function redirectToFacebook()
   {
+    // Charger les clés depuis la base de données
+    $basic = Basic::query()->first();
+    
+    if (!$basic || !$basic->facebook_login_status || !$basic->facebook_app_id || !$basic->facebook_app_secret) {
+      Session::flash('error', 'La connexion Facebook n\'est pas configurée. Veuillez utiliser l\'inscription par email.');
+      return redirect()->route('user.signup', ['role' => request()->get('role', 'client')]);
+    }
+    
+    // Configurer Socialite avec les clés de la base de données
+    // Utiliser l'URL complète pour éviter les erreurs redirect_uri_mismatch
+    $redirectUrl = url('/login/facebook/callback');
+    config([
+      'services.facebook.client_id' => $basic->facebook_app_id,
+      'services.facebook.client_secret' => $basic->facebook_app_secret,
+      'services.facebook.redirect' => $redirectUrl,
+    ]);
+    
+    // Sauvegarder le rôle dans la session
+    $role = request()->get('role', 'client');
+    Session::put('auth_role', $role);
+    
     return Socialite::driver('facebook')->redirect();
   }
 
@@ -68,6 +84,27 @@ class UserController extends Controller
 
   public function redirectToGoogle()
   {
+    // Charger les clés depuis la base de données
+    $basic = Basic::query()->first();
+    
+    if (!$basic || !$basic->google_login_status || !$basic->google_client_id || !$basic->google_client_secret) {
+      Session::flash('error', 'La connexion Google n\'est pas configurée. Veuillez utiliser l\'inscription par email.');
+      return redirect()->route('user.signup', ['role' => request()->get('role', 'client')]);
+    }
+    
+    // Configurer Socialite avec les clés de la base de données
+    // Utiliser l'URL complète pour éviter les erreurs redirect_uri_mismatch
+    $redirectUrl = url('/login/google/callback');
+    config([
+      'services.google.client_id' => $basic->google_client_id,
+      'services.google.client_secret' => $basic->google_client_secret,
+      'services.google.redirect' => $redirectUrl,
+    ]);
+    
+    // Sauvegarder le rôle dans la session
+    $role = request()->get('role', 'client');
+    Session::put('auth_role', $role);
+    
     return Socialite::driver('google')->redirect();
   }
 
@@ -78,12 +115,43 @@ class UserController extends Controller
 
   public function authenticationViaProvider($driver)
   {
+    // Charger les clés depuis la base de données
+    $basic = Basic::query()->first();
+    
+    if ($driver === 'facebook') {
+      if (!$basic || !$basic->facebook_login_status || !$basic->facebook_app_id || !$basic->facebook_app_secret) {
+        Session::flash('error', 'La connexion Facebook n\'est pas configurée.');
+        return redirect()->route('user.login');
+      }
+      $redirectUrl = url('/login/facebook/callback');
+      config([
+        'services.facebook.client_id' => $basic->facebook_app_id,
+        'services.facebook.client_secret' => $basic->facebook_app_secret,
+        'services.facebook.redirect' => $redirectUrl,
+      ]);
+    } elseif ($driver === 'google') {
+      if (!$basic || !$basic->google_login_status || !$basic->google_client_id || !$basic->google_client_secret) {
+        Session::flash('error', 'La connexion Google n\'est pas configurée.');
+        return redirect()->route('user.login');
+      }
+      $redirectUrl = url('/login/google/callback');
+      config([
+        'services.google.client_id' => $basic->google_client_id,
+        'services.google.client_secret' => $basic->google_client_secret,
+        'services.google.redirect' => $redirectUrl,
+      ]);
+    }
+    
     // get the url from session which will be redirect after login
     if (Session::has('redirectTo')) {
       $redirectURL = Session::get('redirectTo');
     } else {
       $redirectURL = route('user.dashboard');
     }
+
+    // Récupérer le rôle depuis la session
+    $role = Session::get('auth_role', 'client');
+    Session::forget('auth_role');
 
     $responseData = Socialite::driver($driver)->user();
     $userInfo = $responseData->user;
@@ -97,37 +165,68 @@ class UserController extends Controller
 
         return redirect($redirectURL);
       } else {
-        Session::flash('error', 'Sorry, your account has been deactivated.');
+        Session::flash('error', 'Désolé, votre compte a été désactivé.');
 
-        return redirect()->route('user.login');
+        return redirect()->route('user.login', ['role' => $role]);
       }
     } else {
       // get user avatar and save it
-      $avatar = $responseData->getAvatar();
-      $fileContents = file_get_contents($avatar);
+      try {
+        $avatar = $responseData->getAvatar();
+        $fileContents = file_get_contents($avatar);
 
-      $avatarName = $responseData->getId() . '.jpg';
-      $path = public_path('assets/img/users/');
+        $avatarName = $responseData->getId() . '.jpg';
+        $path = public_path('assets/img/users/');
 
-      file_put_contents($path . $avatarName, $fileContents);
+        if (!file_exists($path)) {
+          mkdir($path, 0755, true);
+        }
+
+        file_put_contents($path . $avatarName, $fileContents);
+      } catch (\Exception $e) {
+        $avatarName = null;
+      }
 
       // sign up
       $user = new User();
 
       if ($driver == 'facebook') {
-        $user->first_name = $userInfo['name'];
+        $user->first_name = $userInfo['name'] ?? 'Utilisateur';
       } else {
-        $user->first_name = $userInfo['given_name'];
-        $user->last_name = $userInfo['family_name'];
+        $user->first_name = $userInfo['given_name'] ?? 'Utilisateur';
+        $user->last_name = $userInfo['family_name'] ?? '';
       }
 
-      $user->image = $avatarName;
+      if ($avatarName) {
+        $user->image = $avatarName;
+      }
+      
+      $user->username = Str::slug($userInfo['email'] ?? 'user' . time());
       $user->email_address = $userInfo['email'];
       $user->email_verified_at = date('Y-m-d H:i:s');
       $user->status = 1;
       $user->provider = ($driver == 'facebook') ? 'facebook' : 'google';
       $user->provider_id = $userInfo['id'];
       $user->save();
+
+      // Créer le profil selon le rôle
+      if ($role === 'freelance') {
+        // Créer un profil freelance si le modèle existe
+        if (class_exists(\App\Models\FreelancerProfile::class)) {
+          \App\Models\FreelancerProfile::create([
+            'user_id' => $user->id,
+            'hourly_rate' => 0,
+            'availability' => 'available',
+          ]);
+        }
+      } else {
+        // Créer un profil client si le modèle existe
+        if (class_exists(\App\Models\ClientProfile::class)) {
+          \App\Models\ClientProfile::create([
+            'user_id' => $user->id,
+          ]);
+        }
+      }
 
       Auth::login($user);
 
@@ -145,7 +244,10 @@ class UserController extends Controller
     }
 
     // get the email-address and password which has provided by the user
-    $credentials = $request->only('username', 'password');
+    $credentials = [
+      'email_address' => $request->email_address,
+      'password' => $request->password
+    ];
 
     // login attempt
     if (Auth::guard('web')->attempt($credentials)) {
@@ -153,7 +255,11 @@ class UserController extends Controller
 
       // first, check whether the user's email address verified or not
       if (is_null($authUser->email_verified_at)) {
-        $request->session()->flash('error', 'Please, verify your email address.');
+        // Sauvegarder l'email dans la session pour permettre le renvoi
+        $request->session()->put('unverified_email', $authUser->email_address);
+        $request->session()->put('unverified_user_id', $authUser->id);
+        
+        $request->session()->flash('error', 'Veuillez vérifier votre adresse e-mail. Si vous n\'avez pas reçu l\'email de vérification, vous pouvez le renvoyer depuis la page de connexion.');
 
         // logout auth user as condition not satisfied
         Auth::guard('web')->logout();
@@ -163,7 +269,7 @@ class UserController extends Controller
 
       // second, check whether the user's account is active or not
       if ($authUser->status == 0) {
-        $request->session()->flash('error', 'Sorry, your account has been deactivated.');
+        $request->session()->flash('error', 'Désolé, votre compte a été désactivé.');
 
         // logout auth user as condition not satisfied
         Auth::guard('web')->logout();
@@ -180,7 +286,7 @@ class UserController extends Controller
       // otherwise, redirect auth user to next url
       return redirect($redirectURL);
     } else {
-      $request->session()->flash('error', 'Incorrect username or password!');
+      $request->session()->flash('error', 'Adresse e-mail ou mot de passe incorrect.');
 
       return redirect()->back();
     }
@@ -266,24 +372,22 @@ class UserController extends Controller
 
   public function signup()
   {
-    $misc = new MiscellaneousController();
-
-    $language = $misc->getLanguage();
-
-    $queryResult['seoInfo'] = $language->seoInfo()->select('meta_keyword_customer_signup', 'meta_description_customer_signup')->first();
-
-    $queryResult['pageHeading'] = $misc->getPageHeading($language);
-
-    $queryResult['breadcrumb'] = $misc->getBreadcrumb();
-
-    $queryResult['recaptchaStatus'] = Basic::query()->pluck('google_recaptcha_status')->first();
-
-    return view('frontend.signup', $queryResult);
+    // Nouvelle vue moderne d'authentification
+    // websiteInfo et currentLanguageInfo sont partagés globalement via AppServiceProvider
+    $basic = Basic::query()->select('google_login_status', 'facebook_login_status', 'google_client_id', 'google_client_secret', 'facebook_app_id', 'facebook_app_secret')->first();
+    
+    return view('frontend.auth.register', [
+      'googleEnabled' => $basic && $basic->google_login_status == 1 && !empty($basic->google_client_id) && !empty($basic->google_client_secret),
+      'facebookEnabled' => $basic && $basic->facebook_login_status == 1 && !empty($basic->facebook_app_id) && !empty($basic->facebook_app_secret),
+    ]);
   }
 
   public function signupSubmit(SignupRequest $request)
   {
     $websiteTitle = Basic::query()->pluck('website_title')->first();
+    
+    // Récupérer le rôle (client par défaut)
+    $role = $request->input('role', 'client');
 
     $user = new User();
     $user->username = $request->username;
@@ -294,10 +398,14 @@ class UserController extends Controller
     $randStr = Str::random(20);
 
     // second, generate a token
-    $token = md5($randStr . $request->username . $request->email);
+    $token = md5($randStr . $request->username . $request->email_address);
 
     $user->verification_token = $token;
     $user->save();
+    
+    // Créer le profil selon le rôle après vérification email
+    // (sera fait dans signupVerify)
+    Session::put('pending_role_' . $user->id, $role);
 
     /**
      * prepare a verification mail and, send it to user to verify his/her email address,
@@ -324,10 +432,74 @@ class UserController extends Controller
     return redirect()->back();
   }
 
+  public function resendVerificationEmail(Request $request)
+  {
+    $email = $request->input('email') ?? $request->session()->get('unverified_email');
+    
+    if (!$email) {
+      $request->session()->flash('error', 'Adresse e-mail non fournie.');
+      return redirect()->back();
+    }
+
+    $user = User::query()->where('email_address', '=', $email)->first();
+
+    if (!$user) {
+      $request->session()->flash('error', 'Aucun compte trouvé avec cette adresse e-mail.');
+      return redirect()->back();
+    }
+
+    if ($user->email_verified_at) {
+      $request->session()->flash('success', 'Votre adresse e-mail est déjà vérifiée. Vous pouvez vous connecter.');
+      return redirect()->route('user.login');
+    }
+
+    // Générer un nouveau token si nécessaire
+    if (empty($user->verification_token)) {
+      $randStr = Str::random(20);
+      $token = md5($randStr . $user->username . $user->email_address);
+      $user->verification_token = $token;
+      $user->save();
+    }
+
+    // Envoyer l'email de vérification
+    $websiteTitle = Basic::query()->pluck('website_title')->first();
+    $mailTemplate = MailTemplate::query()->where('mail_type', '=', 'verify_email')->first();
+    
+    if ($mailTemplate) {
+      $mailData['subject'] = $mailTemplate->mail_subject;
+      $mailBody = $mailTemplate->mail_body;
+
+      $link = '<a href=' . url("user/signup-verify/" . $user->verification_token) . '>Click Here</a>';
+
+      $mailBody = str_replace('{username}', $user->username, $mailBody);
+      $mailBody = str_replace('{verification_link}', $link, $mailBody);
+      $mailBody = str_replace('{website_title}', $websiteTitle, $mailBody);
+
+      $mailData['body'] = $mailBody;
+      $mailData['recipient'] = $user->email_address;
+      $mailData['sessionMessage'] = 'Un email de vérification a été renvoyé à votre adresse.';
+
+      BasicMailer::sendMail($mailData);
+      
+      $request->session()->flash('success', 'Un email de vérification a été renvoyé à votre adresse e-mail.');
+    } else {
+      $request->session()->flash('error', 'Erreur lors de l\'envoi de l\'email de vérification.');
+    }
+
+    $request->session()->forget('unverified_email');
+    $request->session()->forget('unverified_user_id');
+
+    return redirect()->back();
+  }
+
   public function signupVerify(Request $request, $token)
   {
     try {
       $user = User::query()->where('verification_token', '=', $token)->firstOrFail();
+
+      // Récupérer le rôle depuis la session
+      $role = Session::get('pending_role_' . $user->id, 'client');
+      Session::forget('pending_role_' . $user->id);
 
       // after verify user email, put "null" in the "verification token"
       $user->update([
@@ -336,7 +508,26 @@ class UserController extends Controller
         'verification_token' => null
       ]);
 
-      $request->session()->flash('success', 'Your email address has been verified.');
+      // Créer le profil selon le rôle
+      if ($role === 'freelance') {
+        if (class_exists(\App\Models\FreelancerProfile::class)) {
+          \App\Models\FreelancerProfile::firstOrCreate(
+            ['user_id' => $user->id],
+            [
+              'hourly_rate' => 0,
+              'availability' => 'available',
+            ]
+          );
+        }
+      } else {
+        if (class_exists(\App\Models\ClientProfile::class)) {
+          \App\Models\ClientProfile::firstOrCreate(
+            ['user_id' => $user->id]
+          );
+        }
+      }
+
+      $request->session()->flash('success', 'Votre adresse e-mail a été vérifiée.');
 
       // after email verification, authenticate this user
       Auth::guard('web')->login($user);

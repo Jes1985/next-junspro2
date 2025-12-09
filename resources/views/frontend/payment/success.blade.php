@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="purchase-success">
-            <div class="icon text-success"><i class="far fa-check-circle"></i></div>
+            <div class="icon" style="color: #4F46E5;"><i class="far fa-check-circle"></i></div>
             <h2>{{ __('Success') . '!' }}</h2>
             @if ($payVia == 'online')
               <p>{{ __('Your order has been placed successfully') . '.' }}</p>

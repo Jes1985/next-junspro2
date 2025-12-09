@@ -27,7 +27,7 @@ class LoginRequest extends FormRequest
     $recaptchaStatus = Basic::query()->pluck('google_recaptcha_status')->first();
 
     return [
-      'username' => 'required',
+      'email_address' => 'required',
       'password' => 'required',
       'g-recaptcha-response' => ($recaptchaStatus == 1) ? 'required|captcha' : ''
     ];
@@ -42,13 +42,16 @@ class LoginRequest extends FormRequest
   {
     $recaptchaStatus = Basic::query()->pluck('google_recaptcha_status')->first();
 
+    $messages = [
+      'email_address.required' => 'L\'adresse e-mail est requise.',
+      'password.required' => 'Le mot de passe est requis.',
+    ];
+
     if ($recaptchaStatus == 1) {
-      return [
-        'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
-        'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.'
-      ];
-    } else {
-      return [];
+      $messages['g-recaptcha-response.required'] = 'Veuillez vérifier que vous n\'êtes pas un robot.';
+      $messages['g-recaptcha-response.captcha'] = 'Erreur de captcha ! Réessayez plus tard ou contactez l\'administrateur.';
     }
+
+    return $messages;
   }
 }

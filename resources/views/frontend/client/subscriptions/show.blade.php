@@ -26,7 +26,7 @@
                   <li><strong>{{ __('Prix de base (4 semaines') }}:</strong> {{ number_format($subscription->price_base, 2, ',', ' ') }} €</li>
                   <li><strong>{{ __('Heures restantes') }}:</strong> {{ $subscription->hours_remaining }}h</li>
                   <li><strong>{{ __('Statut') }}:</strong> 
-                    <span class="badge badge-{{ $subscription->status === 'active' ? 'success' : ($subscription->status === 'paused' ? 'warning' : 'secondary') }}">
+                    <span class="badge {{ $subscription->status === 'active' ? 'badge-junspro' : ($subscription->status === 'paused' ? 'badge-warning' : 'badge-secondary') }}">
                       {{ ucfirst($subscription->status) }}
                     </span>
                   </li>
@@ -53,16 +53,54 @@
                   <tbody>
                     @foreach($workSessions as $session)
                       <tr>
-                        <td>{{ $session->work_date ? \Carbon\Carbon::parse($session->work_date)->format('d/m/Y') : 'N/A' }}</td>
-                        <td>{{ $session->hours_spent ?? $session->duration_minutes / 60 }}h</td>
-                        <td>{{ Str::limit($session->work_summary ?? $session->report_text ?? 'N/A', 50) }}</td>
+                        <td>{{ $session->start_at ? $session->start_at->format('d/m/Y') : 'N/A' }}</td>
+                        <td>{{ $session->duration_minutes ? number_format($session->duration_minutes / 60, 1) : 'N/A' }}h</td>
+                        <td>{{ Str::limit($session->report_text ?? 'N/A', 50) }}</td>
                         <td>
-                          <span class="badge badge-{{ $session->status === 'validated' ? 'success' : ($session->status === 'delivered' ? 'info' : 'warning') }}">
+                          <span class="badge {{ $session->status === 'validated' ? 'badge-junspro' : ($session->status === 'delivered' ? 'badge-info' : ($session->status === 'rectification_requested' ? 'badge-warning' : 'badge-secondary')) }}">
                             {{ ucfirst($session->status) }}
                           </span>
                         </td>
-                        <td>{{ $session->rectification_count ?? 0 }}/{{ $subscription->max_rectifications_per_delivery ?? 2 }}</td>
+                        <td>
+                          {{ $session->rectification_count ?? 0 }}/{{ $subscription->max_rectifications_per_delivery ?? 2 }}
+                          @if($session->status === 'delivered' && ($session->rectification_count ?? 0) < ($subscription->max_rectifications_per_delivery ?? 2))
+                            <br>
+                            <button type="button" class="btn btn-sm btn-warning mt-1" data-bs-toggle="modal" data-bs-target="#rectificationModal{{ $session->id }}">
+                              <i class="fas fa-edit me-1"></i>{{ __('Demander rectification') }}
+                            </button>
+                          @endif
+                        </td>
                       </tr>
+                      
+                      <!-- Modal rectification -->
+                      <div class="modal fade" id="rectificationModal{{ $session->id }}" tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">{{ __('Demander une rectification') }}</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <form action="{{ route('client.work-session.rectify', $session->id) }}" method="POST">
+                              @csrf
+                              <div class="modal-body">
+                                <div class="mb-3">
+                                  <label class="form-label">{{ __('Raison de la rectification') }} *</label>
+                                  <textarea name="reason" class="form-control" rows="4" required placeholder="{{ __('Expliquez ce qui doit être modifié...') }}"></textarea>
+                                </div>
+                                <div class="alert alert-info">
+                                  <small>
+                                    {{ __('Rectifications restantes') }} : {{ ($subscription->max_rectifications_per_delivery ?? 2) - ($session->rectification_count ?? 0) }}
+                                  </small>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Annuler') }}</button>
+                                <button type="submit" class="btn btn-warning">{{ __('Demander la rectification') }}</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
                     @endforeach
                   </tbody>
                 </table>

@@ -79,29 +79,80 @@ class FreelancerSubscriptionController extends Controller
             'end_time' => 'nullable|date_format:H:i|after:start_time',
             'hours_spent' => 'required|numeric|min:0.5|max:8',
             'work_summary' => 'required|string|min:20',
+            'attachments.*' => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:10240',
         ]);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
+        // Gérer les pièces jointes
+        $reportFiles = [];
+        if ($request->hasFile('attachments')) {
+            $uploadPath = public_path('assets/uploads/work-sessions');
+            if (!file_exists($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
+            foreach ($request->file('attachments') as $file) {
+                $filename = time() . '_' . uniqid() . '_' . $file->getClientOriginalName();
+                $file->move($uploadPath, $filename);
+                $reportFiles[] = $filename;
+            }
+        }
+
+        // Calculer la durée en minutes (1h = 60 min)
+        $hoursSpent = (float)$request->input('hours_spent');
+        $durationMinutes = (int)($hoursSpent * 60);
+
+        // Construire les dates start_at et end_at
+        $workDate = $request->input('work_date');
+        $startTime = $request->input('start_time') ?: '00:00';
+        $endTime = $request->input('end_time') ?: date('H:i', strtotime("+{$hoursSpent} hours", strtotime($startTime)));
+
         // Créer la session de travail
         $workSession = WorkSession::create([
             'subscription_id' => $subscription->id,
-            'freelancer_id' => $freelancerProfile->id,
-            'client_id' => $subscription->client_id,
-            'work_date' => $request->input('work_date'),
-            'start_time' => $request->input('start_time'),
-            'end_time' => $request->input('end_time'),
-            'hours_spent' => $request->input('hours_spent'),
-            'work_summary' => $request->input('work_summary'),
+            'start_at' => $workDate . ' ' . $startTime . ':00',
+            'end_at' => $workDate . ' ' . $endTime . ':00',
+            'duration_minutes' => $durationMinutes,
+            'report_text' => $request->input('work_summary'),
+            'report_files' => $reportFiles,
             'status' => 'delivered',
             'rectification_count' => 0,
         ]);
 
-        // TODO: Consommer les heures de l'abonnement
-        // TODO: Notifier le client
-        // TODO: Log dans audit_logs
+        // Consommer les heures de l'abonnement
+        $subscriptionService = app(\App\Services\Junspro\SubscriptionService::class);
+        $subscriptionService->consumeHours($subscription, $request->input('hours_spent'));
+
+        // Notifier le client
+        $clientUser = $subscription->client->user ?? null;
+        if ($clientUser) {
+            \App\Models\NotificationLog::create([
+                'user_id' => $clientUser->id,
+                'channel' => 'email',
+                'type' => 'work_session_delivered',
+                'content' => json_encode([
+                    'work_session_id' => $workSession->id,
+                    'subscription_id' => $subscription->id,
+                    'freelancer_name' => $freelancerProfile->user->name ?? 'N/A',
+                    'hours_spent' => $request->input('hours_spent'),
+                ]),
+                'sent_at' => now(),
+            ]);
+        }
+
+        // Log dans audit_logs
+        \App\Models\AuditLog::create([
+            'user_id' => $user->id,
+            'action_type' => 'work_session_created',
+            'entity_type' => 'work_session',
+            'entity_id' => $workSession->id,
+            'metadata' => [
+                'subscription_id' => $subscription->id,
+                'hours_spent' => $request->input('hours_spent'),
+            ],
+        ]);
 
         return back()->with('success', 'Session de travail enregistrée avec succès. Le client sera notifié.');
     }

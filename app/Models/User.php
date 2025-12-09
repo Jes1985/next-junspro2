@@ -19,10 +19,41 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Schema;
 
 class User extends Authenticatable
 {
   use HasFactory, Notifiable;
+
+  /**
+   * Boot du modèle - intercepter les requêtes where('email', ...)
+   */
+  protected static function boot()
+  {
+    parent::boot();
+
+    // Intercepter les requêtes where('email', ...) et les transformer
+    static::addGlobalScope('email_address', function ($builder) {
+      // Ne rien faire ici, on intercepte dans les méthodes where
+    });
+  }
+
+  /**
+   * Override de la méthode where pour intercepter where('email', ...)
+   */
+  public function newEloquentBuilder($query)
+  {
+    return new class($query) extends \Illuminate\Database\Eloquent\Builder {
+      public function where($column, $operator = null, $value = null, $boolean = 'and')
+      {
+        // Si la colonne est 'email' et que la table n'a pas de colonne 'email'
+        if ($column === 'email' && !Schema::hasColumn('users', 'email')) {
+          $column = 'email_address';
+        }
+        return parent::where($column, $operator, $value, $boolean);
+      }
+    };
+  }
 
   /**
    * The attributes that aren't mass assignable.
@@ -187,5 +218,45 @@ class User extends Authenticatable
           'id',             // Clé locale sur users
           'id'              // Clé locale sur freelancer_profiles
       );
+  }
+
+  /**
+   * Accessor pour l'email (compatibilité avec Nova et autres systèmes qui utilisent 'email')
+   */
+  public function getEmailAttribute()
+  {
+      // Si la colonne 'email' existe, l'utiliser
+      if (isset($this->attributes['email'])) {
+          return $this->attributes['email'];
+      }
+      // Sinon, utiliser 'email_address'
+      return $this->attributes['email_address'] ?? null;
+  }
+
+  /**
+   * Mutator pour l'email (compatibilité avec Nova)
+   */
+  public function setEmailAttribute($value)
+  {
+      // Si la colonne 'email' existe, l'utiliser
+      if (array_key_exists('email', $this->attributes) || \Schema::hasColumn('users', 'email')) {
+          $this->attributes['email'] = $value;
+      } else {
+          // Sinon, utiliser 'email_address'
+          $this->attributes['email_address'] = $value;
+      }
+  }
+
+  /**
+   * Méthode utilisée par Fortify/Nova pour trouver un utilisateur par email
+   */
+  public function findForPassport($identifier)
+  {
+      // Essayer d'abord avec 'email' si la colonne existe
+      if (\Schema::hasColumn('users', 'email')) {
+          return $this->where('email', $identifier)->first();
+      }
+      // Sinon, utiliser 'email_address'
+      return $this->where('email_address', $identifier)->first();
   }
 }

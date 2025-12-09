@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 
 @section('pageHeading')
-  {{ $pageHeading->seller_page_title ?? __('Sellers') }}
+  {{ replaceSellerWithFreelance($pageHeading->seller_page_title ?? __('Sellers')) }}
 @endsection
 
 @section('metaKeywords')
@@ -19,7 +19,7 @@
 @section('content')
   @includeIf('frontend.partials.breadcrumb', [
       'breadcrumb' => $breadcrumb ?? '',
-      'title' => $pageHeading->seller_page_title ?? __('Sellers'),
+      'title' => replaceSellerWithFreelance($pageHeading->seller_page_title ?? __('Sellers')),
   ])
 
   <!--====== Start Seller Section ======-->

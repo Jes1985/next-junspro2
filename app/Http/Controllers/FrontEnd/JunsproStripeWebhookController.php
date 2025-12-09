@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
 use App\Models\NotificationLog;
 use App\Models\Subscription;
+use App\Models\PaymentGateway\OnlineGateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Stripe\Stripe;
@@ -20,7 +21,24 @@ class JunsproStripeWebhookController extends Controller
     {
         $payload = $request->getContent();
         $sigHeader = $request->header('Stripe-Signature');
-        $endpointSecret = config('services.stripe.webhook_secret');
+        
+        // Récupérer le webhook secret depuis la base de données
+        $stripe = OnlineGateway::where('keyword', 'stripe')->first();
+        if (!$stripe) {
+            Log::error('Stripe gateway not found in database');
+            return response()->json(['error' => 'Stripe gateway not configured'], 500);
+        }
+        
+        $stripeConf = is_array($stripe->information) 
+            ? $stripe->information 
+            : json_decode($stripe->information, true);
+        
+        if (!isset($stripeConf['webhook_secret'])) {
+            Log::error('Stripe webhook_secret not found in gateway configuration');
+            return response()->json(['error' => 'Webhook secret not configured'], 500);
+        }
+        
+        $endpointSecret = $stripeConf['webhook_secret'];
 
         try {
             $event = Webhook::constructEvent($payload, $sigHeader, $endpointSecret);
@@ -32,10 +50,13 @@ class JunsproStripeWebhookController extends Controller
         // Traiter les événements
         switch ($event->type) {
             case 'invoice.payment_succeeded':
+            case 'invoice.paid':
+            case 'invoice_payment.paid':
                 $this->handlePaymentSucceeded($event->data->object);
                 break;
 
             case 'invoice.payment_failed':
+            case 'invoice.payment_action_required':
                 $this->handlePaymentFailed($event->data->object);
                 break;
 

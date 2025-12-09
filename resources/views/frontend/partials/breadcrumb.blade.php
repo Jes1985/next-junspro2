@@ -6,15 +6,15 @@
         <div class="breadcrumbs-title text-center">
           <h3>
             @isset($serviceTitle)
-              {{ @$serviceTitle }}
+              {{ replaceSellerWithFreelance(@$serviceTitle) }}
             @endisset
             @empty($serviceTitle)
-              {{ !empty($title) ? $title : '' }}
+              {{ !empty($title) ? replaceSellerWithFreelance($title) : '' }}
             @endempty
           </h3>
           <ul class="breadcumb-link justify-content-center">
             <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
-            <li class="active">{{ !empty($title) ? $title : '' }}</li>
+            <li class="active">{{ !empty($title) ? replaceSellerWithFreelance($title) : '' }}</li>
           </ul>
         </div>
       </div>

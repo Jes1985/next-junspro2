@@ -40,7 +40,7 @@
                   </div>
 
                   <div class="mb-20">
-                    <a href="{{ route('client.subscriptions.index') }}" class="btn btn-lg btn-success w-100 mb-10">
+                    <a href="{{ route('client.subscriptions.index') }}" class="btn btn-lg w-100 mb-10" style="background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); border: none; color: #ffffff;">
                       {{ __('Garder mon abonnement') }}
                     </a>
                   </div>

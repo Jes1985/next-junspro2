@@ -1,0 +1,200 @@
+/* ============================================
+   JUNSPRO - LOGO PREMIUM TYPOGRAPHIQUE
+   ============================================ */
+
+/* Logo JUNSPRO typographique premium */
+.junspro-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.junspro-logo:hover {
+  opacity: 0.95;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+/* Texte JUNSPRO - Typographie premium */
+.junspro-logo-text {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 900; /* Plus épais (900 au lieu de 800) */
+  font-size: 28px;
+  letter-spacing: -0.03em; /* Espacement serré pour un mot-bloc compact */
+  line-height: 1;
+  font-stretch: 95%; /* Légèrement condensé */
+  text-transform: uppercase;
+  /* Dégradé bleu royal → violet */
+  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #1e40af; /* Fallback pour navigateurs non supportés */
+}
+
+/* Stylisation du 'J' - Crochet/parenthèse douce */
+.junspro-logo-text .junspro-j {
+  display: inline-block;
+  position: relative;
+  font-weight: 900; /* Plus épais */
+  transform: scale(1.08) translateY(1px);
+  margin-right: -3px;
+  /* Créer un effet de crochet doux avec un pseudo-élément */
+}
+
+.junspro-logo-text .junspro-j::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(124, 58, 237, 0.4) 50%, transparent 100%);
+  border-radius: 1px;
+}
+
+/* Stylisation du 'O' - Cercle avec éclat/check */
+.junspro-logo-text .junspro-o {
+  display: inline-block;
+  position: relative;
+  font-weight: 900; /* Plus épais */
+  margin-left: -1px;
+}
+
+.junspro-logo-text .junspro-o::before {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.35);
+  color: #7C3AED; /* Violet Junspro pour cohérence */
+  font-weight: 900;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Ligne horizontale dégradée sous le logo */
+.junspro-logo-line {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #4c1d95 0%, #7C3AED 50%, #2563eb 100%);
+  margin-top: 8px;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.junspro-logo-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.junspro-logo:hover .junspro-logo-line {
+  box-shadow: 0 3px 12px rgba(124, 58, 237, 0.45);
+  transform: scaleY(1.1);
+}
+
+/* Variante pour header sombre (par défaut) */
+.header-area .junspro-logo {
+  color: #1e40af; /* Fallback */
+}
+
+.header-area .junspro-logo-text {
+  /* Dégradé bleu royal → violet */
+  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #1e40af; /* Fallback */
+}
+
+.header-area .junspro-logo-line {
+  background: linear-gradient(90deg, #4c1d95 0%, #7C3AED 50%, #2563eb 100%);
+}
+
+/* Variante pour header clair (version inversée) */
+.header-area.header-light .junspro-logo {
+  color: #1e40af; /* Fallback */
+}
+
+.header-area.header-light .junspro-logo-text {
+  /* Dégradé bleu royal → violet (même sur fond clair) */
+  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #1e40af; /* Fallback */
+}
+
+.header-area.header-light .junspro-logo-line {
+  background: linear-gradient(90deg, #4c1d95 0%, #7C3AED 50%, #2563eb 100%);
+  /* La barre garde son dégradé même sur fond clair */
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .junspro-logo-text {
+    font-size: 24px;
+  }
+
+  .junspro-logo-line {
+    height: 2.5px;
+    margin-top: 6px;
+  }
+
+  .junspro-logo-text .junspro-o::before {
+    transform: translate(-50%, -50%) scale(0.32);
+  }
+}
+
+@media (max-width: 768px) {
+  .junspro-logo-text {
+    font-size: 22px;
+    letter-spacing: -0.025em;
+  }
+
+  .junspro-logo-line {
+    height: 2.5px;
+    margin-top: 5px;
+  }
+
+  .junspro-logo-text .junspro-j {
+    transform: scale(1.06) translateY(0.5px);
+  }
+
+  .junspro-logo-text .junspro-o::before {
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+}
+
+@media (max-width: 480px) {
+  .junspro-logo-text {
+    font-size: 20px;
+  }
+
+  .junspro-logo-line {
+    height: 2px;
+    margin-top: 4px;
+  }
+}
+

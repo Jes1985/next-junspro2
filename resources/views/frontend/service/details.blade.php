@@ -1,6 +1,558 @@
 @extends('frontend.layout')
 @section('style')
   <link rel="stylesheet" href="{{ asset('assets/css/summernote-content.css') }}">
+  <style>
+    /* Service Details Hero Premium */
+    .service-details-hero-premium {
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-details-hero-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(167, 139, 250, 0.12) 0%, transparent 50%);
+      opacity: 0.6;
+      z-index: 1;
+    }
+    
+    .service-details-hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .service-details-hero-content {
+      text-align: center;
+      color: white;
+    }
+    
+    .service-details-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+    
+    .service-details-breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .service-details-breadcrumb a:hover {
+      color: white;
+    }
+    
+    .service-details-breadcrumb .separator {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .service-details-breadcrumb .current {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .service-details-hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    
+    /* Service Details Section Premium */
+    .gig-details-section {
+      padding: 80px 0;
+      background: #F9FAFB;
+    }
+    
+    .gig-details-wrapper {
+      background: white;
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      border: 1.5px solid #F3F4F6;
+      margin-bottom: 2rem;
+    }
+    
+    /* Slider Premium */
+    .gig-slider-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    
+    .gigs-big-slider .single-item img {
+      border-radius: 20px;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+    
+    /* Buttons Premium */
+    .group-btn {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .wishlist-link,
+    .video-popup,
+    .btn-outline {
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border: 1.5px solid #E5E7EB;
+      background: white;
+      color: #6B7280;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .wishlist-link:hover,
+    .video-popup:hover,
+    .btn-outline:hover {
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+    }
+    
+    .wishlist-link i {
+      color: #ef4444;
+    }
+    
+    .wishlist-link:hover i {
+      color: white;
+    }
+    
+    /* Service Title Premium */
+    .service-title-wrap {
+      padding: 2rem 0;
+      border-bottom: 1px solid #E5E7EB;
+      margin-bottom: 2rem;
+    }
+    
+    .service-title h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+    
+    .service-category {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .category-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+      color: #1e40af;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .category-tag:hover {
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .ratings {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    /* Tabs Premium */
+    .description-tabs {
+      margin-bottom: 2rem;
+    }
+    
+    .description-tabs .nav-tabs {
+      border-bottom: 2px solid #E5E7EB;
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .description-tabs .nav-link {
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px 12px 0 0;
+      background: transparent;
+      color: #6B7280;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+      margin-bottom: -2px;
+    }
+    
+    .description-tabs .nav-link:hover {
+      color: #1e40af;
+      background: rgba(30, 64, 175, 0.05);
+    }
+    
+    .description-tabs .nav-link.active {
+      color: #1e40af;
+      background: white;
+      border-bottom: 3px solid;
+      border-image: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%) 1;
+    }
+    
+    .tab-content {
+      padding: 2rem 0;
+    }
+    
+    .summernote-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #374151;
+    }
+    
+    .summernote-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Reviews Premium */
+    .gigs-review-area {
+      padding: 1.5rem 0;
+    }
+    
+    .review_user {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: #F9FAFB;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #E5E7EB;
+    }
+    
+    .review_user .image {
+      flex-shrink: 0;
+    }
+    
+    .review_user .image img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .review_user .content {
+      flex: 1;
+    }
+    
+    .review_user .rating {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0.5rem 0;
+      display: flex;
+      gap: 0.25rem;
+    }
+    
+    .review_user .rating i {
+      color: #FBBF24;
+      font-size: 0.9rem;
+    }
+    
+    .review_user .content span {
+      color: #6B7280;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    
+    .review_user .content p {
+      color: #374151;
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    /* FAQ Premium */
+    .faq-wrapper .accordion-item {
+      border: 1.5px solid #E5E7EB;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    .faq-wrapper .accordion-button {
+      background: white;
+      color: #111827;
+      font-weight: 600;
+      padding: 1.25rem;
+      border: none;
+      box-shadow: none;
+    }
+    
+    .faq-wrapper .accordion-button:not(.collapsed) {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+      color: #1e40af;
+    }
+    
+    .faq-wrapper .accordion-button::after {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%231e40af' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+    
+    .faq-wrapper .accordion-body {
+      padding: 1.25rem;
+      color: #374151;
+      line-height: 1.7;
+    }
+    
+    /* Sidebar Premium */
+    .gigs-sidebar {
+      position: sticky;
+      top: 120px;
+    }
+    
+    .packages-widgets,
+    .seller-widgets {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      border: 1.5px solid #F3F4F6;
+      margin-bottom: 2rem;
+    }
+    
+    .packages-tabs .nav-tabs {
+      border-bottom: 2px solid #E5E7EB;
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .packages-tabs .nav-link {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px 10px 0 0;
+      background: transparent;
+      color: #6B7280;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      margin-bottom: -2px;
+    }
+    
+    .packages-tabs .nav-link:hover {
+      color: #1e40af;
+      background: rgba(30, 64, 175, 0.05);
+    }
+    
+    .packages-tabs .nav-link.active {
+      color: #1e40af;
+      background: white;
+      border-bottom: 3px solid;
+      border-image: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%) 1;
+    }
+    
+    .packages-content h3 {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .packages-content .title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #6B7280;
+    }
+    
+    .packages-content .price {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .packages-content .pre-price {
+      font-size: 1.25rem;
+      color: #9CA3AF;
+      text-decoration: line-through;
+      margin-left: 0.5rem;
+    }
+    
+    .packages-footer .btn-primary {
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+    }
+    
+    .packages-footer .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+    }
+    
+    .seller-widgets .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid;
+      border-image: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%) 1;
+    }
+    
+    .seller {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .seller-img img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #E5E7EB;
+      transition: all 0.3s ease;
+    }
+    
+    .seller-img:hover img {
+      border-color: #1e40af;
+      transform: scale(1.05);
+    }
+    
+    .seller-info h6 a {
+      color: #111827;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    
+    .seller-info h6 a:hover {
+      color: #1e40af;
+    }
+    
+    .toggle-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+    }
+    
+    .toggle-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #F3F4F6;
+    }
+    
+    .toggle-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .toggle-list .first {
+      color: #6B7280;
+      font-size: 0.95rem;
+    }
+    
+    .toggle-list .last {
+      color: #111827;
+      font-weight: 600;
+    }
+    
+    .seller-widgets .btn-primary {
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+    }
+    
+    .seller-widgets .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+    }
+    
+    .skills .skill a {
+      display: inline-block;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+      color: #1e40af;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin: 0.25rem;
+      transition: all 0.3s ease;
+    }
+    
+    .skills .skill a:hover {
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 991px) {
+      .gigs-sidebar {
+        position: static;
+        margin-top: 2rem;
+      }
+      
+      .service-details-hero-title {
+        font-size: 2.25rem;
+      }
+      
+      .gig-details-wrapper {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 @endsection
 
 @php
@@ -22,29 +574,22 @@
 
 @section('content')
 
-  {{-- breadcrumb --}}
-  <section class="breadcrumbs-area bg_cover lazyload bg-img header-next"
-    data-bg-img="{{ asset('assets/img/' . $breadcrumb) }}">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="breadcrumbs-title text-center">
-            <h3>
-              {{ $details->title }}
-            </h3>
-            <ul class="breadcumb-link justify-content-center">
-              <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
-              <li class="active">{{ @$title }}</li>
-            </ul>
-          </div>
-        </div>
+  <!-- Service Details Hero Premium -->
+  <section class="service-details-hero-premium">
+    <div class="service-details-hero-container">
+      <div class="service-details-hero-content">
+        <nav class="service-details-breadcrumb">
+          <a href="{{ route('index') }}">{{ __('Accueil') }}</a>
+          <span class="separator">|</span>
+          <span class="current">{{ __('Détails du Service') }}</span>
+        </nav>
+        <h1 class="service-details-hero-title">{{ $details->title }}</h1>
       </div>
     </div>
   </section>
-  {{-- breadcrumb end --}}
 
-  <!--====== Start Service Details Section ======-->
-  <section class="gig-details-section pt-120 pb-70">
+  <!-- Service Details Section Premium -->
+  <section class="gig-details-section">
     <div class="container">
       <div class="row gx-xl-5">
         <div class="col-lg-8">
@@ -72,39 +617,38 @@
               </div>
             </div>
 
-            <!---===== Button========= -------->
+            <!-- Action Buttons Premium -->
             <div class="group-btn mb-40 justify-content-center">
               <a href="{{ route('service.update_wishlist', ['slug' => $details->slug]) }}"
-                class="btn btn-md btn-outline radius-sm wishlist-link text-center" data-element_type="button">
+                class="wishlist-link" data-element_type="button">
                 <i class="fas fa-heart"></i>
                 <span>
                   @auth('web')
                     @if ($wishlisted == true)
-                      {{ __('Remove From Wishlist') }}
+                      {{ __('Retirer de la liste') }}
                     @else
-                      {{ __('Add To Wishlist') }}
+                      {{ __('Ajouter à la liste de souhaits') }}
                     @endif
                   @endauth
-
                   @guest('web')
-                    {{ __('Add To Wishlist') }}
+                    {{ __('Ajouter à la liste de souhaits') }}
                   @endguest
                 </span>
               </a>
               @if (!is_null($details->video_preview_link))
                 <a href="{{ $details->video_preview_link }}"
-                  class="btn btn-md btn-outline radius-sm video-popup text-center">
-                  <i class="fas fa-video-plus"></i> {{ __('Video Preview') }}
+                  class="video-popup">
+                  <i class="fas fa-video"></i> 
+                  <span>{{ __('Aperçu vidéo') }}</span>
                 </a>
               @endif
               @if (!is_null($details->live_demo_link))
-                <a href="{{ $details->live_demo_link }}" class="btn btn-md btn-outline radius-sm text-center "
-                  target="_blank">
-                  <i class="fas fa-eye"></i> {{ __('Live Demo') }}
+                <a href="{{ $details->live_demo_link }}" class="btn-outline" target="_blank">
+                  <i class="fas fa-external-link-alt"></i> 
+                  <span>{{ __('Démo en direct') }}</span>
                 </a>
               @endif
             </div>
-            <!---===== Button========= -------->
 
             <div class="service-title-wrap mb-40">
               <div class="service-title">
@@ -114,17 +658,13 @@
               <div class="service-category pt-15 border-top justify-content-lg-between">
                 @if ($details->category_name)
                   <div>
-                    <span>{{ __('Category') }} {{ __(':') }}</span>
-                    <div class="categories">
+                    <span class="text-muted" style="font-size: 0.9rem; margin-right: 0.5rem;">{{ __('Catégorie') }} :</span>
+                    <div class="categories" style="display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                       <a class="category-tag" href="{{ route('services', ['category' => $details->category_name]) }}">
                         {{ $details->category_name }}
                       </a>
                       @if ($details->category_name && $details->sub_category_name)
-                        @if ($currentLanguageInfo->direction == 1)
-                          <span><i class="far fa-long-arrow-alt-left"></i></span>
-                        @else
-                          <span><i class="far fa-long-arrow-alt-right"></i></span>
-                        @endif
+                        <i class="fas fa-chevron-right" style="color: #9CA3AF; font-size: 0.75rem;"></i>
                         <a class="category-tag"
                           href="{{ route('services', ['category' => $details->category_name, 'subcategory' => $details->sub_category_name]) }}">
                           {{ $details->sub_category_name }}
@@ -134,16 +674,16 @@
                   </div>
                 @endif
 
-                <div class="ratings size-md">
-                  <span>{{ __('Rating') . ':' }}</span>
-                  <div class="rate bg-img" data-bg-img="{{ asset('assets/front/images/rate-star-md.png') }}">
-                    <div class="rating-icon bg-img" style="width: {{ $details->average_rating * 20 }}%;"
+                <div class="ratings size-md" style="display: flex; align-items: center; gap: 0.75rem;">
+                  <span class="text-muted" style="font-size: 0.9rem;">{{ __('Évaluation') }} :</span>
+                  <div class="rate bg-img" data-bg-img="{{ asset('assets/front/images/rate-star-md.png') }}" style="width: 100px; height: 18px; position: relative;">
+                    <div class="rating-icon bg-img" style="width: {{ $details->average_rating * 20 }}%; height: 100%; position: absolute; top: 0; left: 0;"
                       data-bg-img="{{ asset('assets/front/images/rate-star-md.png') }}"></div>
                   </div>
                   @php
                     $reviewCount = $details->review()->count();
                   @endphp
-                  <span class="ratings-total">({{ $reviewCount }})</span>
+                  <span class="ratings-total" style="color: #6B7280; font-size: 0.9rem;">({{ $reviewCount }})</span>
                 </div>
               </div>
             </div>
@@ -259,8 +799,8 @@
                           </div>
 
                           <div class="form_button">
-                            <button type="submit" class="btn btn-lg btn-primary radius-sm">
-                              {{ __('Submit') }}
+                            <button type="submit" class="btn btn-lg btn-primary radius-sm" style="background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); border: none; padding: 12px 24px; border-radius: 12px; color: white; font-weight: 600; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3); transition: all 0.3s ease;">
+                              {{ __('Soumettre') }}
                             </button>
                           </div>
                         </form>
@@ -312,8 +852,8 @@
               method="GET">
               <input type="hidden" name="form_id" value="{{ $details->form_id }}">
               <input type="hidden" name="quote_btn_status" value="{{ $details->quote_btn_status }}">
-              <button type="submit" class="btn btn-lg btn-primary radius-sm mb-4 w-100">
-                <i class="fas fa-calendar-plus"></i> {{ __('Request A Quote') }}
+              <button type="submit" class="btn btn-lg btn-primary radius-sm mb-4 w-100" style="background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); border: none; padding: 14px 24px; border-radius: 12px; color: white; font-weight: 600; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3); transition: all 0.3s ease;">
+                <i class="fas fa-calendar-plus"></i> {{ __('Demander un devis') }}
               </button>
             </form>
           @else
@@ -491,7 +1031,7 @@
                   </li>
                 </ul>
                 <a href="javaScript:void(0)" class="btn btn-lg btn-primary radius-sm w-100" data-bs-toggle="modal"
-                  data-bs-target="#contactModal" type="button" aria-label="button">{{ __('Contact Now') }}</a>
+                  data-bs-target="#contactModal" type="button" aria-label="button" style="background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); border: none; padding: 14px 24px; border-radius: 12px; color: white; font-weight: 600; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3); transition: all 0.3s ease; text-decoration: none; display: block; text-align: center;">{{ __('Contactez maintenant') }}</a>
 
 
               </div>
@@ -539,7 +1079,7 @@
                   </li>
                 </ul>
                 <a href="javaScript:void(0)" class="btn btn-lg btn-primary radius-sm w-100" data-bs-toggle="modal"
-                  data-bs-target="#contactModal" type="button" aria-label="button">{{ __('Contact Now') }}</a>
+                  data-bs-target="#contactModal" type="button" aria-label="button" style="background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); border: none; padding: 14px 24px; border-radius: 12px; color: white; font-weight: 600; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3); transition: all 0.3s ease; text-decoration: none; display: block; text-align: center;">{{ __('Contactez maintenant') }}</a>
               </div>
             @endif
             @if (!is_null($details->skills))

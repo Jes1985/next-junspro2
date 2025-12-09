@@ -37,7 +37,7 @@
                         </td>
                         <td>{{ $subscription->hours_per_week }}h</td>
                         <td>
-                          <span class="badge badge-{{ $subscription->status === 'active' ? 'success' : ($subscription->status === 'paused' ? 'warning' : 'secondary') }}">
+                          <span class="badge {{ $subscription->status === 'active' ? 'badge-junspro' : ($subscription->status === 'paused' ? 'badge-warning' : 'badge-secondary') }}">
                             {{ ucfirst($subscription->status) }}
                           </span>
                         </td>

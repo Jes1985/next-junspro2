@@ -43,13 +43,20 @@
                     </div>
 
                     <div class="mb-15">
-                      <label>{{ __('Heures passées') }} * (ex: 1.0 pour 1h)</label>
+                      <label>{{ __('Heures passées') }} * (ex: 1.0 pour 1h = 50 min travail + 10 min rapport)</label>
                       <input type="number" name="hours_spent" class="form-control" step="0.5" min="0.5" max="8" value="1.0" required>
+                      <small class="text-muted">{{ __('1h = 50 min de travail + 10 min de rapport détaillé') }}</small>
                     </div>
 
                     <div class="mb-15">
                       <label>{{ __('Résumé du travail effectué (rapport)') }} * (min 20 caractères)</label>
-                      <textarea name="work_summary" class="form-control" rows="5" minlength="20" required placeholder="Décrivez le travail effectué pendant cette session (50 min) et le rapport (10 min)..."></textarea>
+                      <textarea name="work_summary" class="form-control" rows="5" minlength="20" required placeholder="{{ __('Décrivez le travail effectué pendant cette session (50 min) et le rapport (10 min)...') }}"></textarea>
+                    </div>
+
+                    <div class="mb-15">
+                      <label>{{ __('Pièces jointes (optionnel)') }}</label>
+                      <input type="file" name="attachments[]" class="form-control" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                      <small class="text-muted">{{ __('Formats acceptés : PDF, DOC, DOCX, JPG, PNG') }}</small>
                     </div>
 
                     <button type="submit" class="btn btn-primary">{{ __('Enregistrer la session') }}</button>
@@ -81,7 +88,7 @@
                         <td>{{ $session->hours_spent ?? $session->duration_minutes / 60 }}h</td>
                         <td>{{ Str::limit($session->work_summary ?? $session->report_text ?? 'N/A', 50) }}</td>
                         <td>
-                          <span class="badge badge-{{ $session->status === 'validated' ? 'success' : ($session->status === 'delivered' ? 'info' : 'warning') }}">
+                          <span class="badge {{ $session->status === 'validated' ? 'badge-junspro' : ($session->status === 'delivered' ? 'badge-info' : 'badge-warning') }}">
                             {{ ucfirst($session->status) }}
                           </span>
                         </td>

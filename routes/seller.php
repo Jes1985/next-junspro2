@@ -9,17 +9,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('seller')->middleware('change.lang', 'guest:seller')->group(function () {
-  Route::get('/signup', 'Seller\SellerController@signup')->name('seller.signup');
-  Route::post('/signup/submit', 'Seller\SellerController@create')->name('seller.signup_submit')->middleware('Demo');
-  Route::get('/login', 'Seller\SellerController@login')->name('seller.login');
-  Route::post('/login/submit', 'Seller\SellerController@authentication')->name('seller.login_submit');
+  // Routes désactivées - Bouton Freelance supprimé
+  // Route::get('/signup', 'Seller\SellerController@signup')->name('seller.signup');
+  // Route::post('/signup/submit', 'Seller\SellerController@create')->name('seller.signup_submit')->middleware('Demo');
+  // Route::get('/login', 'Seller\SellerController@login')->name('seller.login');
+  // Route::post('/login/submit', 'Seller\SellerController@authentication')->name('seller.login_submit');
+  
+  // Redirection vers la page d'accueil si tentative d'accès
+  Route::get('/signup', function() { return redirect()->route('index'); })->name('seller.signup');
+  Route::post('/signup/submit', function() { return redirect()->route('index'); })->name('seller.signup_submit');
+  Route::get('/login', function() { return redirect()->route('index'); })->name('seller.login');
+  Route::post('/login/submit', function() { return redirect()->route('index'); })->name('seller.login_submit');
 
-  Route::get('/email/verify', 'Seller\SellerController@confirm_email');
+  // Routes désactivées - redirection vers l'accueil
+  Route::get('/email/verify', function() { return redirect()->route('index'); });
 
-  Route::get('/forget-password', 'Seller\SellerController@forget_passord')->name('seller.forget.password');
-  Route::post('/send-forget-mail', 'Seller\SellerController@forget_mail')->name('seller.forget.mail')->middleware('Demo');
-  Route::get('/reset-password', 'Seller\SellerController@reset_password')->name('seller.reset.password');
-  Route::post('/update-forget-password', 'Seller\SellerController@update_password')->name('seller.update-forget-password');
+  Route::get('/forget-password', function() { return redirect()->route('index'); })->name('seller.forget.password');
+  Route::post('/send-forget-mail', function() { return redirect()->route('index'); })->name('seller.forget.mail');
+  Route::get('/reset-password', function() { return redirect()->route('index'); })->name('seller.reset.password');
+  Route::post('/update-forget-password', function() { return redirect()->route('index'); })->name('seller.update-forget-password');
 });
 
 

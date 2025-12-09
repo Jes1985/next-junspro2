@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Providers\CustomUserProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -23,6 +25,9 @@ class AuthServiceProvider extends ServiceProvider
   {
     $this->registerPolicies();
 
-    //
+    // Enregistrer le provider personnalisé pour gérer email_address
+    Auth::provider('custom', function ($app, array $config) {
+      return new CustomUserProvider($app->make($config['model']));
+    });
   }
 }

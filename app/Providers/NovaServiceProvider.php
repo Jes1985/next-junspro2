@@ -55,41 +55,48 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate(): void
     {
         Gate::define('viewNova', function (User $user) {
-            // En environnement local, autoriser tous les utilisateurs
-            if (app()->environment('local')) {
-                return true;
-            }
-            
-            // En production, autoriser selon le rôle ou l'email
-            // Option 1 : Par email (ajoutez vos emails admin ici)
-            $authorizedEmails = [
-                'admin@junspro.com',
-                // Ajoutez d'autres emails admin ici
-            ];
-            
-            // Autoriser aussi les utilisateurs avec le rôle admin si la colonne existe
-            if (Schema::hasColumn('users', 'role') && isset($user->role)) {
-                if (in_array($user->role, ['admin', 'super_admin'])) {
+            try {
+                // En environnement local, autoriser tous les utilisateurs
+                if (app()->environment('local')) {
                     return true;
                 }
+                
+                // Récupérer l'email (gérer les deux cas : email ou email_address)
+                $userEmail = null;
+                if (isset($user->email)) {
+                    $userEmail = $user->email;
+                } elseif (isset($user->email_address)) {
+                    $userEmail = $user->email_address;
+                } elseif (Schema::hasColumn('users', 'email')) {
+                    $userEmail = $user->email;
+                } elseif (Schema::hasColumn('users', 'email_address')) {
+                    $userEmail = $user->email_address;
+                }
+                
+                // En production, autoriser selon le rôle ou l'email
+                $authorizedEmails = [
+                    'admin@junspro.com',
+                    // Ajoutez d'autres emails admin ici
+                ];
+                
+                // Vérifier par email
+                if ($userEmail && in_array($userEmail, $authorizedEmails)) {
+                    return true;
+                }
+                
+                // Autoriser aussi les utilisateurs avec le rôle admin si la colonne existe
+                if (Schema::hasColumn('users', 'role') && isset($user->role)) {
+                    if (in_array($user->role, ['admin', 'super_admin'])) {
+                        return true;
+                    }
+                }
+                
+                return false;
+            } catch (\Exception $e) {
+                // En cas d'erreur, autoriser en local pour le debug
+                \Log::error('Nova gate error: ' . $e->getMessage());
+                return app()->environment('local');
             }
-            
-            if (in_array($user->email, $authorizedEmails)) {
-                return true;
-            }
-            
-            // Option 2 : Par rôle (si vous avez un champ 'role' dans users)
-            // Décommentez et adaptez selon votre structure :
-            // if (isset($user->role) && in_array($user->role, ['admin', 'super_admin'])) {
-            //     return true;
-            // }
-            
-            // Option 3 : Par relation avec une table roles (si vous avez une relation)
-            // if ($user->hasRole('admin')) {
-            //     return true;
-            // }
-            
-            return false;
         });
     }
 

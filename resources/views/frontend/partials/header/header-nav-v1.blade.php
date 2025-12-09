@@ -10,13 +10,14 @@
   <div class="main-responsive-nav">
     <div class="container">
       <!-- Mobile Logo -->
-      @if (!empty($websiteInfo->logo))
         <div class="logo">
-          <a href="{{ route('index') }}" target="_self" title="{{ __('Logo') }}">
-            <img class="lazyload" data-src="{{ asset('assets/img/' . $websiteInfo->logo) }}" alt="{{ __('Logo') }}">
+        <a href="{{ route('index') }}" class="junspro-logo" target="_self" title="Junspro">
+          <span class="junspro-logo-text">
+            <span class="junspro-j">J</span>UNSPR<span class="junspro-o">O</span>
+          </span>
+          <span class="junspro-logo-line"></span>
           </a>
         </div>
-      @endif
       <!-- Menu toggle button -->
       <button class="menu-toggler" type="button">
         <span></span>
@@ -31,12 +32,14 @@
       <div class="container-fluid px-xl-5">
         <nav class="navbar navbar-expand-lg">
           <!-- Logo -->
-          @if (!empty($websiteInfo->logo))
-            <a class="navbar-brand" href="{{ route('index') }}" target="_self" title="{{ __('Logo') }}">
-              <img class="lazyload" data-src="{{ asset('assets/img/' . $websiteInfo->logo) }}"
-                alt="{{ __('Logo') }}">
-            </a>
-          @endif
+          <a class="navbar-brand junspro-logo-brand" href="{{ route('index') }}" target="_self" title="Junspro">
+            <span class="junspro-logo">
+              <span class="junspro-logo-text">
+                <span class="junspro-j">J</span>UNSPR<span class="junspro-o">O</span>
+              </span>
+              <span class="junspro-logo-line"></span>
+            </span>
+          </a>
           <!-- Navigation items -->
           <div class="collapse navbar-collapse">
             <ul id="mainMenu" class="navbar-nav mobile-item mx-auto">
@@ -102,38 +105,117 @@
                 </form>
               </div>
             </div>
+            {{-- Menu Freelance (affiché uniquement si connecté en tant que seller) --}}
+            @auth('seller')
             <div class="item">
               <div class="dropdown">
-                <button class="btn btn-sm btn-outline rounded-1 dropdown-toggle" type="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  <span>{{ __('Seller') }}</span>
+                  <button class="user-menu-btn dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" style="background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);">
+                    @if(Auth::guard('seller')->user()->photo)
+                      <img src="{{ asset('assets/admin/img/seller-photo/' . Auth::guard('seller')->user()->photo) }}" 
+                           alt="Freelance">
+                    @else
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    @endif
                 </button>
-                <ul class="dropdown-menu">
-                  @guest('seller')
-                    <li><a class="dropdown-item" href="{{ route('seller.login') }}">{{ __('Login') }}</a></li>
-                    <li><a class="dropdown-item" href="{{ route('seller.signup') }}">{{ __('Signup') }}</a></li>
-                  @endguest
-                  @auth('seller')
-                    <li><a class="dropdown-item" href="{{ route('seller.dashboard') }}">{{ __('Dashboard') }}</a></li>
-                    <li><a class="dropdown-item" href="{{ route('seller.logout') }}">{{ __('Logout') }}</a></li>
-                  @endauth
+                  <ul class="dropdown-menu dropdown-menu-end user-menu-premium">
+                    <li>
+                      <a class="dropdown-item" href="{{ route('seller.dashboard') }}">
+                        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="3" width="7" height="7"></rect>
+                          <rect x="14" y="3" width="7" height="7"></rect>
+                          <rect x="14" y="14" width="7" height="7"></rect>
+                          <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span>{{ __('Dashboard') }}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{ route('seller.logout') }}">
+                        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                          <polyline points="16 17 21 12 16 7"></polyline>
+                          <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>{{ __('Logout') }}</span>
+                      </a>
+                    </li>
                 </ul>
               </div>
             </div>
+            @endauth
+
+            {{-- Menu Client --}}
             <div class="item">
               <div class="dropdown">
-                <button class="btn btn-sm btn-primary rounded-1 dropdown-toggle" type="button"
+                <button class="user-menu-btn dropdown-toggle" type="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
-                  <span>{{ __('Customer') }}</span>
+                  @auth('web')
+                    @if(Auth::guard('web')->user()->image)
+                      <img src="{{ asset('assets/img/users/' . Auth::guard('web')->user()->image) }}" 
+                           alt="User">
+                    @else
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    @endif
+                  @else
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  @endauth
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu dropdown-menu-end user-menu-premium">
                   @guest('web')
-                    <li><a class="dropdown-item" href="{{ route('user.login') }}">{{ __('Login') }}</a></li>
-                    <li><a class="dropdown-item" href="{{ route('user.signup') }}">{{ __('Signup') }}</a></li>
+                    <li>
+                      <a class="dropdown-item" href="{{ route('user.login') }}">
+                        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                          <polyline points="10 17 15 12 10 7"></polyline>
+                          <line x1="15" y1="12" x2="3" y2="12"></line>
+                        </svg>
+                        <span>{{ __('Connexion') }}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{ route('user.signup') }}">
+                        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="9" cy="7" r="4"></circle>
+                          <line x1="19" y1="8" x2="19" y2="14"></line>
+                          <line x1="22" y1="11" x2="16" y2="11"></line>
+                        </svg>
+                        <span>{{ __('Inscription') }}</span>
+                      </a>
+                    </li>
                   @endguest
                   @auth('web')
-                    <li><a class="dropdown-item" href="{{ route('user.dashboard') }}">{{ __('Dashboard') }}</a></li>
-                    <li><a class="dropdown-item" href="{{ route('user.logout') }}">{{ __('Logout') }}</a></li>
+                    <li>
+                      <a class="dropdown-item" href="{{ route('user.dashboard') }}">
+                        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="3" width="7" height="7"></rect>
+                          <rect x="14" y="3" width="7" height="7"></rect>
+                          <rect x="14" y="14" width="7" height="7"></rect>
+                          <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span>{{ __('Dashboard') }}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{ route('user.logout') }}">
+                        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                          <polyline points="16 17 21 12 16 7"></polyline>
+                          <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>{{ __('Logout') }}</span>
+                      </a>
+                    </li>
                   @endauth
                 </ul>
               </div>
@@ -144,45 +226,4 @@
     </div>
   </div>
 
-  <!-- Category menu -->
-  @if (count($menu_categories) > 0)
-    <div class="categories-menu" dir="ltr">
-      <div class="container-fluid px-xl-5">
-        <nav class="categories-menu-nav">
-          <div class="arrows left-arrow">
-            <i class="fal fa-chevron-left"></i>
-          </div>
-          <ul class="categories list-unstyled">
-            @foreach ($menu_categories as $category)
-              @php
-                $subcategories = $category->subcategory()->get();
-              @endphp
-              @if (count($subcategories) > 0)
-                <li class="sub-menu-item">
-                  <a href="{{ route('services', ['category' => $category->slug]) }}">{{ $category->name }}</a>
-                  <div class="sub-menu menu-panel">
-                    <ul class="menu-list list-unstyled">
-                      <li class="menu-item">
-                        @foreach ($subcategories as $subcategory)
-                          <a
-                            href="{{ route('services', ['subcategory' => $subcategory->slug]) }}">{{ $subcategory->name }}</a>
-                        @endforeach
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              @else
-                <li class="sub-menu-item">
-                  <a href="{{ route('services', ['category' => $category->slug]) }}">{{ $category->name }}</a>
-                </li>
-              @endif
-            @endforeach
-          </ul>
-          <div class="arrows right-arrow active">
-            <i class="fal fa-chevron-right"></i>
-          </div>
-        </nav>
-      </div>
-    </div>
-  @endif
 </header>

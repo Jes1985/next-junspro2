@@ -42,7 +42,7 @@
                         @if ($ticket->status == 'pending')
                           <span class="badge badge-warning">{{ __('Pending') }}</span>
                         @elseif ($ticket->status == 'open')
-                          <span class="badge badge-success">{{ __('Open') }}</span>
+                          <span class="badge badge-junspro">{{ __('Open') }}</span>
                         @else
                           <span class="badge badge-danger">{{ __('Closed') }}</span>
                         @endif

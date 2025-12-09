@@ -71,7 +71,7 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                                 <small class="form-text text-muted">
-                                    <span id="bonus-indicator" class="text-success d-none"></span>
+                                    <span id="bonus-indicator" class="d-none" style="color: #4F46E5;"></span>
                                 </small>
                             </div>
 
