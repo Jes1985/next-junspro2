@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
@@ -40,6 +41,18 @@ class Handler extends ExceptionHandler
   {
     $this->reportable(function (Throwable $e) {
       //
+    });
+
+    // 419 PAGE EXPIRED (token CSRF expiré) : redirection avec message au lieu d'afficher la page 419
+    $this->renderable(function (TokenMismatchException $e, Request $request) {
+      if ($request->expectsJson()) {
+        return response()->json(['message' => __('Votre session a expiré. Veuillez rafraîchir la page et réessayer.')], 419);
+      }
+      $message = __('Votre session a expiré. Veuillez réessayer.');
+      if (str_contains($request->path(), 'login-submit')) {
+        return redirect()->route('user.login')->with('error', $message);
+      }
+      return redirect()->back()->withInput($request->except('password', '_token'))->with('error', $message);
     });
   }
 

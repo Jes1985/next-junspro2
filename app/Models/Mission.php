@@ -16,6 +16,12 @@ class Mission extends Model
         'client_nom',
         'client_email',
         'client_telephone',
+        'univers_slug',
+        'about_you',
+        'details',
+        'preferred_contact',
+        'language',
+        'location_mode',
         'description_mission',
         'offre',
         'budget',
@@ -34,6 +40,7 @@ class Mission extends Model
     protected $casts = [
         'budget' => 'decimal:2',
         'freelance_propose' => 'array',
+        'details' => 'array',
         'date_soumission' => 'datetime',
         'date_rdv' => 'datetime',
     ];

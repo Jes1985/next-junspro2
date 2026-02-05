@@ -23,43 +23,37 @@
               @if (count($quickLinkInfos) > 0)
                 @foreach ($quickLinkInfos as $quickLinkInfo)
                   <li>
-                    <a href="{{ $quickLinkInfo->url }}" target="_blank">{{ $quickLinkInfo->title }}</a>
+                    @php
+                      // Vérifier si l'URL est interne (commence par /) ou externe
+                      $url = $quickLinkInfo->url;
+                      $isInternal = strpos($url, '/') === 0 || strpos($url, url('/')) === 0;
+                      // Si c'est une URL interne, retirer target="_blank"
+                      $target = $isInternal ? '' : 'target="_blank"';
+                    @endphp
+                    <a href="{{ $url }}" {{ $target }}>{{ $quickLinkInfo->title }}</a>
                   </li>
                 @endforeach
               @else
-                <li><a href="#">{{ __('CGU') }}</a></li>
-                <li><a href="#">{{ __('Mentions légales') }}</a></li>
-                <li><a href="#">{{ __('Termes et conditions') }}</a></li>
-                <li><a href="#">{{ __('Politique de confidentialité') }}</a></li>
-                <li><a href="#">{{ __('Conditions générales de vente') }}</a></li>
+                {{-- Liens par défaut vers les pages légales --}}
+                <li><a href="{{ route('dynamic_page', ['slug' => 'cgu']) }}">{{ __('CGU') }}</a></li>
+                <li><a href="{{ route('dynamic_page', ['slug' => 'mentions-legales']) }}">{{ __('Mentions légales') }}</a></li>
+                <li><a href="{{ route('dynamic_page', ['slug' => 'termes-et-conditions']) }}">{{ __('Termes et conditions') }}</a></li>
+                <li><a href="{{ route('dynamic_page', ['slug' => 'politique-de-confidentialite']) }}">{{ __('Politique de confidentialité') }}</a></li>
+                <li><a href="{{ route('dynamic_page', ['slug' => 'conditions-generales-de-vente']) }}">{{ __('Conditions générales de vente') }}</a></li>
               @endif
+              @auth('web')
+                <li><a href="{{ route('referral.index') }}">{{ __('Parrainage') }}</a></li>
+              @endauth
+              <li><a href="{{ route('referral.conditions') }}">{{ __('Conditions du parrainage') }}</a></li>
             </ul>
           </div>
         </div>
 
-        <!-- Colonne 3 : Contact -->
+        <!-- Colonne 3 : Démarrer (avec Pause Souffle) -->
         <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="footer-column">
-            <h5 class="footer-title">{{ __('Contact') }}</h5>
-            <div class="footer-contact">
-              @if (!empty($basicInfo->email_address))
-                <p class="footer-contact-item">
-                  <span class="footer-contact-label">{{ __('Email') }} :</span>
-                  <a href="mailto:{{ $basicInfo->email_address }}">{{ $basicInfo->email_address }}</a>
-                </p>
-              @else
-                <p class="footer-contact-item">
-                  <span class="footer-contact-label">{{ __('Email') }} :</span>
-                  <a href="mailto:support@junspro.com">support@junspro.com</a>
-                </p>
-              @endif
-              <p class="footer-contact-item">
-                <a href="{{ route('contact') ?? '#' }}" class="footer-link">{{ __('Centre d\'aide') }}</a>
-              </p>
-              <p class="footer-contact-note">{{ __('Nous répondons sous 24 à 48h.') }}</p>
-            </div>
-          </div>
+          @include('frontend.components.pause-souffle.footer-section-premium')
         </div>
+
 
         <!-- Colonne 4 : Newsletter -->
         <div class="col-lg-5 col-md-6 col-sm-6">
@@ -133,6 +127,47 @@
     background: #050816;
     color: #E5E7EB;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Supprimer tout espace sous le footer */
+  body:has(.junspro-footer),
+  html:has(.junspro-footer),
+  .main-wrapper:has(.junspro-footer) {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .junspro-footer * {
+    margin-bottom: 0 !important;
+  }
+
+  .junspro-footer .footer-bottom,
+  .junspro-footer .footer-bottom-content,
+  .junspro-footer .footer-copyright,
+  .junspro-footer .footer-social {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Supprimer tout espace après le footer */
+  body:has(.junspro-footer),
+  html:has(.junspro-footer),
+  .main-wrapper:has(.junspro-footer) {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* S'assurer qu'il n'y a pas d'espace après le footer-bottom */
+  .junspro-footer .footer-bottom:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .junspro-footer .footer-bottom-content:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   /* Bloc A : Contenu principal */
@@ -298,9 +333,12 @@
 
   /* Bloc B : Copyright et réseaux sociaux */
   .footer-bottom {
-    padding: 30px 0;
+    padding: 30px 0 0 0 !important;
     background: #030510;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: none !important;
   }
 
   .footer-bottom-content {
@@ -309,6 +347,30 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Supprimer tout espace sous le footer */
+  .junspro-footer {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .junspro-footer .footer-bottom {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .junspro-footer .footer-bottom-content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .junspro-footer .footer-copyright,
+  .junspro-footer .footer-social {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   .footer-copyright {
@@ -317,7 +379,8 @@
   }
 
   .footer-copyright p {
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     font-size: 14px;
     color: #9CA3AF;
   }
@@ -381,10 +444,17 @@
       padding: 40px 0 30px;
     }
 
+    .footer-bottom {
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
     .footer-bottom-content {
       flex-direction: column;
       text-align: center;
       gap: 24px;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
     }
 
     .footer-copyright {
@@ -399,6 +469,16 @@
   @media (max-width: 480px) {
     .footer-main {
       padding: 32px 0 24px;
+    }
+
+    .footer-bottom {
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .footer-bottom-content {
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
     }
 
     .footer-title {
@@ -418,5 +498,35 @@
       height: 36px;
       font-size: 14px;
     }
+  }
+
+  /* Suppression de tout espace après le footer */
+  .junspro-footer::after {
+    display: none;
+    content: none;
+  }
+
+  body:has(.junspro-footer) {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Supprimer tout padding/margin après footer-bottom */
+  .footer-bottom::after,
+  .footer-bottom-content::after {
+    display: none;
+    content: none;
+  }
+
+  html:has(.junspro-footer),
+  .main-wrapper:has(.junspro-footer) {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* S'assurer que le footer est le dernier élément sans espace */
+  .junspro-footer:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 </style>

@@ -1,15 +1,28 @@
 /* ============================================
-   JUNSPRO - LOGO PREMIUM TYPOGRAPHIQUE
+   LOGO JUNSPRO - Style Comeup Amélioré
+   ============================================
+   
+   Améliorations professionnelles apportées :
+   1. POLICE ULTRA-ÉPAISSE : font-weight 900 (ultra-bold) pour impact maximal
+   2. TRAIT SOULIGNÉ AMÉLIORÉ : 5px d'épaisseur (vs 3px Comeup) avec ombre subtile
+   3. ESPACEMENT OPTIMISÉ : letter-spacing serré style Comeup pour cohérence
+   4. TAILLE OPTIMISÉE : 32px pour plus de présence (ajustable responsive)
+   5. COULEUR BLANC PURE : Style Comeup pour contraste maximal sur fond sombre
+   6. TRAIT RECTANGULAIRE : Ligne droite nette sans arrondi (style Comeup)
+   
+   Argumentation professionnelle :
+   - Le trait plus épais (5px) renforce l'ancrage visuel et la mémorisation
+   - La police ultra-bold améliore la lisibilité et l'impact de la marque
+   - Le blanc pur garantit le meilleur contraste sur les fonds sombres Junspro
    ============================================ */
 
-/* Logo JUNSPRO typographique premium */
 .junspro-logo {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   text-decoration: none;
   color: #FFFFFF;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1;
   transition: opacity 0.2s ease;
 }
@@ -20,125 +33,61 @@
   color: #FFFFFF;
 }
 
-/* Texte JUNSPRO - Typographie premium */
+/* Texte JUNSPRO - Typographie ultra-bold style Comeup amélioré */
 .junspro-logo-text {
   position: relative;
-  display: inline-flex;
-  align-items: baseline;
-  font-weight: 900; /* Plus épais (900 au lieu de 800) */
-  font-size: 28px;
-  letter-spacing: -0.03em; /* Espacement serré pour un mot-bloc compact */
+  display: inline-block;
+  font-weight: 900; /* Ultra-bold pour impact maximal (vs 700-800 Comeup) */
+  font-size: 32px; /* Plus grand que Comeup pour plus de présence */
+  letter-spacing: -0.02em; /* Espacement serré style Comeup pour mot-bloc compact */
   line-height: 1;
-  font-stretch: 95%; /* Légèrement condensé */
   text-transform: uppercase;
-  /* Dégradé bleu royal → violet */
-  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #1e40af; /* Fallback pour navigateurs non supportés */
+  /* Blanc pur comme Comeup pour contraste maximal sur fond sombre */
+  color: #FFFFFF;
+  text-shadow: none; /* Rendu net sans ombre */
+  font-stretch: normal;
 }
 
-/* Stylisation du 'J' - Crochet/parenthèse douce */
-.junspro-logo-text .junspro-j {
-  display: inline-block;
-  position: relative;
-  font-weight: 900; /* Plus épais */
-  transform: scale(1.08) translateY(1px);
-  margin-right: -3px;
-  /* Créer un effet de crochet doux avec un pseudo-élément */
-}
-
-.junspro-logo-text .junspro-j::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(124, 58, 237, 0.4) 50%, transparent 100%);
-  border-radius: 1px;
-}
-
-/* Stylisation du 'O' - Cercle avec éclat/check */
-.junspro-logo-text .junspro-o {
-  display: inline-block;
-  position: relative;
-  font-weight: 900; /* Plus épais */
-  margin-left: -1px;
-}
-
-.junspro-logo-text .junspro-o::before {
-  content: '✓';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.35);
-  color: #7C3AED; /* Violet Junspro pour cohérence */
-  font-weight: 900;
-  opacity: 0.85;
-  pointer-events: none;
-}
-
-/* Ligne horizontale dégradée sous le logo */
+/* Ligne horizontale soulignée - Style Comeup amélioré */
 .junspro-logo-line {
   width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #4c1d95 0%, #7C3AED 50%, #2563eb 100%);
-  margin-top: 8px;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+  height: 5px; /* PLUS ÉPAIS que Comeup (3px → 5px) pour impact visuel renforcé */
+  background: #FFFFFF; /* Blanc pur comme Comeup */
+  margin-top: 10px; /* Espacement optimisé avec le texte */
+  border-radius: 0; /* Ligne droite rectangulaire comme Comeup */
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.15); /* Ombre subtile pour profondeur (amélioration) */
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  display: block;
 }
 
-.junspro-logo-line::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
+/* Animation subtile au survol (amélioration interactive) */
 .junspro-logo:hover .junspro-logo-line {
-  box-shadow: 0 3px 12px rgba(124, 58, 237, 0.45);
-  transform: scaleY(1.1);
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.25);
+  transform: scaleY(1.05);
 }
 
-/* Variante pour header sombre (par défaut) */
+/* Variante pour header sombre (fond dégradé violet) */
 .header-area .junspro-logo {
-  color: #1e40af; /* Fallback */
+  color: #FFFFFF; /* Blanc pur comme Comeup */
 }
 
 .header-area .junspro-logo-text {
-  /* Dégradé bleu royal → violet */
-  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #1e40af; /* Fallback */
+  color: #FFFFFF; /* Blanc pur pour contraste maximal */
 }
 
 .header-area .junspro-logo-line {
-  background: linear-gradient(90deg, #4c1d95 0%, #7C3AED 50%, #2563eb 100%);
+  background: #FFFFFF; /* Blanc pur */
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.15);
 }
 
-/* Variante pour header clair (version inversée) */
+/* Variante pour header clair (version inversée avec couleurs Junspro) */
 .header-area.header-light .junspro-logo {
   color: #1e40af; /* Fallback */
 }
 
 .header-area.header-light .junspro-logo-text {
-  /* Dégradé bleu royal → violet (même sur fond clair) */
+  /* Dégradé violet/bleu Junspro sur fond clair (garder l'identité de marque) */
   background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -147,54 +96,32 @@
 }
 
 .header-area.header-light .junspro-logo-line {
-  background: linear-gradient(90deg, #4c1d95 0%, #7C3AED 50%, #2563eb 100%);
-  /* La barre garde son dégradé même sur fond clair */
+  /* Dégradé violet pour cohérence avec l'identité Junspro sur fond clair */
+  background: linear-gradient(90deg, #4c1d95 0%, #7C3AED 50%, #1e40af 100%);
+  box-shadow: 0 1px 3px rgba(124, 58, 237, 0.3);
+  height: 5px; /* Garder l'épaisseur améliorée même sur fond clair */
 }
 
-/* Responsive */
+/* Responsive - Ajustements pour mobile */
 @media (max-width: 991px) {
   .junspro-logo-text {
-    font-size: 24px;
+    font-size: 28px; /* Légèrement réduit sur tablette */
   }
 
   .junspro-logo-line {
-    height: 2.5px;
+    height: 4px; /* Proportionnellement réduit */
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 575px) {
+  .junspro-logo-text {
+    font-size: 24px; /* Ajusté pour mobile */
+    letter-spacing: -0.015em;
+  }
+
+  .junspro-logo-line {
+    height: 3.5px; /* Proportionnellement réduit */
     margin-top: 6px;
   }
-
-  .junspro-logo-text .junspro-o::before {
-    transform: translate(-50%, -50%) scale(0.32);
-  }
 }
-
-@media (max-width: 768px) {
-  .junspro-logo-text {
-    font-size: 22px;
-    letter-spacing: -0.025em;
-  }
-
-  .junspro-logo-line {
-    height: 2.5px;
-    margin-top: 5px;
-  }
-
-  .junspro-logo-text .junspro-j {
-    transform: scale(1.06) translateY(0.5px);
-  }
-
-  .junspro-logo-text .junspro-o::before {
-    transform: translate(-50%, -50%) scale(0.3);
-  }
-}
-
-@media (max-width: 480px) {
-  .junspro-logo-text {
-    font-size: 20px;
-  }
-
-  .junspro-logo-line {
-    height: 2px;
-    margin-top: 4px;
-  }
-}
-

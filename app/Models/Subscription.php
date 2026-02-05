@@ -12,14 +12,34 @@ class Subscription extends Model
 {
     use HasFactory;
 
+    /** Valeurs autorisées en DB (strictes) */
+    public const FORMAT_VISIO = 'visio';
+    public const FORMAT_PRESENTIEL = 'presentiel';
+    public const FORMAT_MIXTE = 'mixte';
+
+    /** Libellés UI — DB "presentiel" -> affichage "En presentile" (orthographe produit) */
+    public const FORMAT_LABELS = [
+        'visio' => 'En visio',
+        'presentiel' => 'En presentile',
+        'mixte' => 'En mixte (visio + présentiel)',
+    ];
+
     protected $fillable = [
         'client_id',
         'freelancer_id',
+        'universe',
         'hours_per_week',
         'hours_total_month',
         'hours_remaining',
         'price_base',
+        'base_hourly_rate_snapshot',
+        'client_hourly_rate_snapshot',
+        'commission_rate_snapshot',
         'delivery_mode',
+        'format',
+        'deposit_amount',
+        'deposit_paid_at',
+        'deposit_payment_intent_id',
         'status',
         'stripe_subscription_id',
         'next_billing_at',
@@ -38,7 +58,11 @@ class Subscription extends Model
         'hours_total_month' => 'float',
         'hours_remaining' => 'float',
         'price_base' => 'decimal:2',
+        'base_hourly_rate_snapshot' => 'decimal:2',
+        'client_hourly_rate_snapshot' => 'decimal:2',
+        'commission_rate_snapshot' => 'decimal:4',
         'next_billing_at' => 'datetime',
+        'deposit_paid_at' => 'datetime',
         'starts_at' => 'datetime',
         'ends_at' => 'datetime',
         'has_express_24h' => 'boolean',
@@ -109,6 +133,22 @@ class Subscription extends Model
     public function isActive(): bool
     {
         return $this->status === 'active';
+    }
+
+    /**
+     * Libellé UI du format (orthographe produit : "En presentile")
+     */
+    public function getFormatLabelAttribute(): string
+    {
+        return self::FORMAT_LABELS[$this->format] ?? $this->format;
+    }
+
+    /**
+     * Vérifie si le format implique du présentiel (acompte obligatoire V2)
+     */
+    public function requiresDeposit(): bool
+    {
+        return in_array($this->format ?? 'visio', [self::FORMAT_PRESENTIEL, self::FORMAT_MIXTE], true);
     }
 }
 

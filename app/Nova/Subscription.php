@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource;
+use App\Services\PricingService;
 
 class Subscription extends Resource
 {
@@ -50,6 +51,18 @@ class Subscription extends Resource
                 ->readonly()
                 ->step(0.01),
 
+            Number::make('Base €/h snapshot', 'base_hourly_rate_snapshot')
+                ->step(0.01)
+                ->hideFromIndex(),
+
+            Number::make('Client €/h snapshot', 'client_hourly_rate_snapshot')
+                ->step(0.01)
+                ->hideFromIndex(),
+
+            Number::make('Taux commission snapshot', 'commission_rate_snapshot')
+                ->displayUsing(fn ($v) => $v ? ($v * 100) . ' %' : null)
+                ->hideFromIndex(),
+
             Select::make('Mode de livraison', 'delivery_mode')
                 ->options([
                     'standard' => 'Standard',
@@ -73,6 +86,20 @@ class Subscription extends Resource
 
             DateTime::make('Prochaine facturation', 'next_billing_at')
                 ->nullable(),
+
+            Text::make('Estimation client (€/h)', function () {
+                $pricing = app(PricingService::class);
+                $base = $this->base_hourly_rate_snapshot ?? $this->price_base / max(1, $this->hours_total_month);
+                return number_format($pricing->getClientHourlyRate((float)$base), 2, ',', ' ');
+            })->onlyOnDetail(),
+
+            Text::make('Estimation net freelance (€/h)', function () {
+                $pricing = app(PricingService::class);
+                $base = $this->base_hourly_rate_snapshot ?? $this->price_base / max(1, $this->hours_total_month);
+                $rate = $this->commission_rate_snapshot ?? 0.20;
+                $dist = $pricing->computeDistribution((float)$base, (float)$rate);
+                return number_format($dist['freelancer_net'], 2, ',', ' ') . ' (taux ' . ($rate * 100) . '%)';
+            })->onlyOnDetail(),
         ];
     }
 

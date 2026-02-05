@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $currentLanguageInfo->code }}" @if ($currentLanguageInfo->direction == 1) dir="rtl" @endif>
+<html lang="{{ $currentLanguageInfo->code ?? 'fr' }}" @if (($currentLanguageInfo->direction ?? 0) == 1) dir="rtl" @endif>
 
 <head>
   {{-- csrf-token for ajax request --}}
@@ -15,41 +15,7 @@
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{ asset('assets/img/' . $websiteInfo->favicon) }}" type="image/x-icon">
 
-  {{-- Blocage IMMÉDIAT des appels à /api/me/subscription pour éviter la boucle infinie --}}
-  <script>
-    (function() {
-      // Sauvegarder fetch original si il existe
-      if (window.fetch) {
-        window._originalFetch = window.fetch;
-      }
-      
-      // Remplacer fetch par une version qui bloque /api/me/subscription
-      window.fetch = function(...args) {
-        const url = args[0];
-        
-        // Bloquer complètement les appels à /api/me/subscription
-        if (typeof url === 'string' && url.includes('/api/me/subscription')) {
-          // Retourner immédiatement une réponse avec isPremium: false
-          return Promise.resolve({
-            ok: true,
-            status: 200,
-            statusText: 'OK',
-            json: function() { return Promise.resolve({ isPremium: false }); },
-            text: function() { return Promise.resolve('{"isPremium":false}'); },
-            clone: function() { return this; }
-          });
-        }
-        
-        // Pour les autres URLs, utiliser fetch original
-        if (window._originalFetch) {
-          return window._originalFetch.apply(this, args);
-        }
-        
-        // Fallback si fetch n'existe pas
-        return Promise.reject(new Error('Fetch not available'));
-      };
-    })();
-  </script>
+  {{-- Intercepteur fetch pour /api/me/subscription - désactivé car route API créée --}}
 
   {{-- include styles --}}
   @if ($basicInfo->theme_version == 1)
@@ -68,7 +34,7 @@
   {{-- CSS Sélecteur de Langue Premium --}}
   <link rel="stylesheet" href="{{ asset('assets/front/css/language-selector-premium.css') }}">
   {{-- CSS Chatbot Junspro Premium --}}
-  <link rel="stylesheet" href="{{ asset('assets/front/css/junspro-chatbot-premium.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/front/css/junspro-chatbot-premium.css') }}?v=6.3">
   @php
     $primaryColor = $basicInfo->primary_color;
   @endphp
@@ -83,9 +49,47 @@
 
     /* Les styles du menu utilisateur premium sont maintenant dans user-menu-premium.css */
 
-    /* Suppression définitive de la barre de catégories horizontale */
-    .header-area .categories-menu {
+    /* ============================================
+       SUPPRESSION DÉFINITIVE DE LA BARRE DE CATÉGORIES
+       ============================================ */
+    /* Suppression complète de la barre de catégories horizontale - TOUTES VARIANTES */
+    .header-area .categories-menu,
+    .categories-menu,
+    .header-area .categories-menu-nav,
+    .categories-menu-nav,
+    .header-area .categories,
+    ul.categories,
+    .category-menu,
+    .category-nav,
+    .categories-menu-wrapper,
+    .header-area .categories-menu-wrapper,
+    nav.categories-menu-nav,
+    .header-area nav.categories-menu-nav,
+    .categories-menu-nav ul,
+    .categories-menu ul,
+    .header-area .categories-menu-nav ul,
+    .header-area .categories-menu ul,
+    .categories-menu-nav .categories,
+    .categories-menu .categories,
+    .header-area .categories-menu-nav .categories,
+    .header-area .categories-menu .categories,
+    .categories-menu-nav .sub-menu-item,
+    .categories-menu .sub-menu-item,
+    .header-area .categories-menu-nav .sub-menu-item,
+    .header-area .categories-menu .sub-menu-item {
       display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      max-height: 0 !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      left: -9999px !important;
+      width: 0 !important;
+      max-width: 0 !important;
     }
 
     .breadcrumbs-area::after {
@@ -110,15 +114,59 @@
       color: #4F46E5 !important;
     }
 
-    /* Liens de navigation - Couleur blanche pour visibilité */
+    /* En-tête fond blanc, textes noirs */
+    body .header-area,
+    html body .header-area,
+    body .header-area.header_v1,
+    html body .header-area.header_v1,
+    body .header-area.header_v1:not(.is-sticky),
+    html body .header-area.header_v1:not(.is-sticky) {
+      background: #FFFFFF !important;
+      background-color: #FFFFFF !important;
+      background-image: none !important;
+      position: relative;
+      z-index: 1000 !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* Main navbar fond blanc */
+    body .header-area .main-navbar,
+    html body .header-area .main-navbar,
+    body .header-area .main-responsive-nav,
+    html body .header-area .main-responsive-nav,
+    body .header-area .main-navbar .navbar,
+    html body .header-area .main-navbar .navbar,
+    body .header-area .main-navbar .container-fluid,
+    html body .header-area .main-navbar .container-fluid {
+      background: #FFFFFF !important;
+      background-color: #FFFFFF !important;
+      background-image: none !important;
+    }
+
+    /* Assurer que le header reste au-dessus de tout */
+    .header-area {
+      z-index: 1000 !important;
+    }
+
+    .header-area.is-sticky {
+      z-index: 1000 !important;
+      background: #FFFFFF !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .main-navbar {
+      z-index: 1000 !important;
+    }
+
+    /* Liens de navigation - texte noir */
     .header-area .nav-link {
-      color: rgba(255, 255, 255, 0.9) !important;
+      color: #111827 !important;
       transition: color 0.3s ease !important;
     }
 
     /* Override pour les liens de navigation actifs */
     .header-area .nav-link.active {
-      color: #FFFFFF !important;
+      color: #111827 !important;
       font-weight: 600 !important;
       position: relative !important;
     }
@@ -135,7 +183,19 @@
     }
 
     .header-area .nav-link:hover {
-      color: rgba(255, 255, 255, 1) !important;
+      color: #4F46E5 !important;
+    }
+
+    /* Style des liens Freelance dans la navbar */
+    .nav-link-freelance {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease, text-decoration 0.2s ease;
+    }
+    
+    .nav-link-freelance:hover {
+      color: var(--color-primary-junspro, #4F46E5) !important;
+      text-decoration: underline;
     }
 
     /* Override pour les catégories actives dans la sidebar */
@@ -162,27 +222,40 @@
       color: #4F46E5 !important;
     }
 
-    /* Bouton de recherche - Dégradé bleu royal → violet */
+    /* Bouton de recherche - Dégradé violet (visible sur fond blanc) */
+    /* Style pour la capsule Pause Souffle dans le header */
+    .pause-souffle-header-capsule-item {
+      display: flex;
+      align-items: center;
+    }
+    
+    @media (max-width: 991px) {
+      .pause-souffle-header-capsule-item {
+        order: -1; /* Afficher en premier sur mobile */
+        margin-bottom: 0.5rem;
+      }
+    }
+
     .header-area .more-option .item .btn-search,
     .header-area .more-option .item .btn-search.btn-icon {
-      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%) !important;
-      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%) !important;
+      border: 1px solid rgba(79, 70, 229, 0.3) !important;
       color: #FFFFFF !important;
-      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3) !important;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3) !important;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
     .header-area .more-option .item .btn-search:hover,
     .header-area .more-option .item .btn-search.btn-icon:hover {
-      background: linear-gradient(135deg, #2563eb 0%, #5b21b6 50%, #8b5cf6 100%) !important;
+      background: linear-gradient(135deg, #4338CA 0%, #6D28D9 100%) !important;
       transform: translateY(-1px) !important;
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4) !important;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4) !important;
     }
 
     .header-area .more-option .item .btn-search:focus,
     .header-area .more-option .item .btn-search.btn-icon:focus {
-      background: linear-gradient(135deg, #2563eb 0%, #5b21b6 50%, #8b5cf6 100%) !important;
-      box-shadow: 0 4px 16px rgba(30, 64, 175, 0.45) !important;
+      background: linear-gradient(135deg, #4338CA 0%, #6D28D9 100%) !important;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.45) !important;
       outline: none !important;
     }
 
@@ -317,7 +390,7 @@
       font-weight: 600 !important;
     }
 
-    /* Override ULTRA-SPECIFIQUE pour le bouton "Freelance" - Force les couleurs Junspro */
+    /* Bouton "Freelance" / langue - texte noir sur fond blanc */
     html body .header-area .more-option .item .dropdown .btn-outline,
     html body .header-area .more-option .item .dropdown .btn-outline.show,
     html body .header-area .more-option .item .dropdown .btn-outline:hover,
@@ -329,8 +402,8 @@
     html body .header-area .more-option .btn-outline:hover,
     html body .header-area .more-option .btn-outline:focus,
     html body .header-area .more-option .btn-outline.active {
-      border-color: #E5E7EB !important;
-      color: #6B7280 !important;
+      border-color: #D1D5DB !important;
+      color: #111827 !important;
       background-color: transparent !important;
       background: transparent !important;
       background-image: none !important;
@@ -353,14 +426,22 @@
       box-shadow: none !important;
     }
 
-    /* Override pour le hover du bouton Freelance - utiliser les couleurs Junspro */
+    /* Hover du bouton Freelance / langue */
     html body .header-area .more-option .btn-outline:hover {
       background: transparent !important;
       background-color: transparent !important;
       background-image: none !important;
       border-color: #4F46E5 !important;
       color: #4F46E5 !important;
-      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.1) !important;
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.15) !important;
+    }
+
+    /* Menu hamburger mobile - traits noirs sur fond blanc */
+    .header-area .menu-toggler {
+      background: transparent !important;
+    }
+    .header-area .menu-toggler span {
+      background: #111827 !important;
     }
 
     /* Override pour le bouton "Client" (btn-primary) - remplacer le vert par Junspro */
@@ -412,6 +493,174 @@
       background-color: #4F46E5 !important;
     }
 
+    /* ============================================
+       LOGO JUNSPRO - Style Luxe Doux (PNG optimisé)
+       ============================================ */
+    /* Conteneur logo - flex row pour aligner texte + icône */
+    .junspro-logo,
+    .junspro-logo-brand .junspro-logo {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+    /* Ligne texte + logo image (alignement horizontal premium avec espacement luxe) */
+    .junspro-logo-top {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 14px !important;
+    }
+    /* Wrapper texte (simplifié, plus de colonne nécessaire) */
+    .junspro-logo-text-wrapper {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+    /* Wrapper pour l'icône infini avec overlay "+" premium */
+    /* IMPORTANT : L'ombre est UNIQUEMENT sur le "+" (pseudo-éléments), JAMAIS sur le PNG */
+    .brand-icon-wrapper {
+      position: relative !important;
+      display: inline-block !important;
+      line-height: 0 !important;
+    }
+    /* S'assurer qu'aucune ombre n'est appliquée sur l'image PNG elle-même */
+    .brand-icon-wrapper .junspro-logo-icon {
+      filter: none !important;
+      box-shadow: none !important;
+    }
+    /* Icône / logo PNG - rendu luxe doux (hauteur augmentée +15%, netteté optimale) */
+    .junspro-logo-icon {
+      height: 62px !important;
+      width: auto !important;
+      max-height: 62px !important;
+      object-fit: contain !important;
+      display: block !important;
+      image-rendering: -webkit-optimize-contrast !important;
+      image-rendering: auto !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+      transform: translateY(-1px) !important;
+      transition: opacity 0.2s ease !important;
+      backface-visibility: hidden !important;
+      -webkit-backface-visibility: hidden !important;
+    }
+    /* Overlay "+" premium - noir doux avec micro-ombre UNIQUEMENT sur le "+" (luxe doux) */
+    /* Barre verticale du "+" */
+    .brand-icon-wrapper::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) translateY(-1px) !important;
+      width: 1.8px !important;
+      height: 20px !important;
+      background: #1A1A1A !important;
+      filter: drop-shadow(0 0.5px 1.5px rgba(0, 0, 0, 0.10)) !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      will-change: transform !important;
+    }
+    /* Barre horizontale du "+" */
+    .brand-icon-wrapper::after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) translateY(-1px) !important;
+      width: 20px !important;
+      height: 1.8px !important;
+      background: #1A1A1A !important;
+      filter: drop-shadow(0 0.5px 1.5px rgba(0, 0, 0, 0.10)) !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      will-change: transform !important;
+    }
+    /* Conteneur navbar-brand pour alignement vertical parfait */
+    .navbar-brand.junspro-logo-brand {
+      display: flex !important;
+      align-items: center !important;
+      padding-right: 0 !important;
+      margin-right: 20px !important;
+    }
+    /* Logo JUNSPRO - typographie premium ultra */
+    .junspro-logo-text,
+    .junspro-logo .junspro-logo-text,
+    .navbar-brand .junspro-logo-text,
+    .junspro-logo-brand .junspro-logo-text {
+      color: #0B0F1A !important;
+      font-weight: 600 !important;
+      font-size: 25px !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+      line-height: 1 !important;
+      position: relative !important;
+      display: inline-block !important;
+      text-shadow: none !important;
+    }
+
+    /* Ligne sous le texte JUNSPRO - MASQUÉE (premium sans barre) */
+    .junspro-logo-line,
+    .junspro-logo-text-wrapper .junspro-logo-line,
+    .junspro-logo .junspro-logo-text-wrapper .junspro-logo-line,
+    .navbar-brand .junspro-logo-text-wrapper .junspro-logo-line,
+    .junspro-logo-brand .junspro-logo-text-wrapper .junspro-logo-line {
+      display: none !important;
+    }
+
+    /* Responsive - ajustement de la taille sur mobile (luxe doux préservé) */
+    @media (max-width: 768px) {
+      .junspro-logo-text,
+      .junspro-logo .junspro-logo-text,
+      .navbar-brand .junspro-logo-text,
+      .junspro-logo-brand .junspro-logo-text {
+        font-size: 20px !important;
+        letter-spacing: 0.06em !important;
+      }
+      /* Logo PNG mobile - taille réduite mais nette (éviter upscale) */
+      .junspro-logo-icon {
+        height: 28px !important;
+        max-height: 28px !important;
+        transform: translateY(0) !important;
+      }
+      /* Overlay "+" mobile - taille proportionnelle réduite (luxe doux préservé) */
+      .brand-icon-wrapper::before {
+        width: 1.5px !important;
+        height: 10px !important;
+        background: #1A1A1A !important;
+        filter: drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.10)) !important;
+        transform: translate(-50%, -50%) translateY(0) !important;
+      }
+      .brand-icon-wrapper::after {
+        width: 10px !important;
+        height: 1.5px !important;
+        background: #1A1A1A !important;
+        filter: drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.10)) !important;
+        transform: translate(-50%, -50%) translateY(0) !important;
+      }
+      .junspro-logo-top { gap: 10px !important; }
+      .navbar-brand.junspro-logo-brand {
+        margin-right: 12px !important;
+      }
+      
+      /* Barre toujours masquée sur mobile */
+      .junspro-logo-line,
+      .junspro-logo-text-wrapper .junspro-logo-line,
+      .junspro-logo .junspro-logo-text-wrapper .junspro-logo-line,
+      .navbar-brand .junspro-logo-text-wrapper .junspro-logo-line,
+      .junspro-logo-brand .junspro-logo-text-wrapper .junspro-logo-line {
+        display: none !important;
+      }
+    }
+
+    /* Hover logo - transition premium douce */
+    .junspro-logo:hover .junspro-logo-text,
+    .junspro-logo-brand:hover .junspro-logo-text,
+    .navbar-brand:hover .junspro-logo-text {
+      color: #4F46E5 !important;
+      transition: color 0.3s ease !important;
+    }
+
     /* Remplacement JavaScript pour "Vendeurs" → "Freelances" dans tout le DOM */
     @if (request()->is('*seller*') || request()->is('*sellers*'))
     <script>
@@ -457,6 +706,32 @@
     </script>
     @endif
   </style>
+  {{-- Fix transparence globale - Force background opaque sur html/body et masque preloader --}}
+  <style>
+    html {
+      background: #ffffff !important;
+      min-height: 100% !important;
+      background-color: #ffffff !important;
+    }
+    body {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      opacity: 1 !important;
+      min-height: 100vh !important;
+      position: relative !important;
+    }
+    .main-wrapper {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      opacity: 1 !important;
+      position: relative !important;
+      min-height: 100vh !important;
+    }
+    /* S'assurer que request-loader est masqué par défaut */
+    .request-loader:not(.show) {
+      display: none !important;
+    }
+  </style>
   {{-- Additional styles from pages --}}
   @yield('style')
 </head>
@@ -500,16 +775,8 @@
   {{-- WhatsApp widget supprimé - remplacé par chatbot Junspro --}}
 
   <!-- Footer-area start -->
-  @if ($basicInfo->theme_version == 1)
-    @includeIf('frontend.partials.footer.footer-v1')
-  @elseif ($basicInfo->theme_version == 2)
-    @includeIf('frontend.partials.footer.footer-v2')
-  @elseif ($basicInfo->theme_version == 3)
-    @includeIf('frontend.partials.footer.footer-v3')
-  @else
-    {{-- Par défaut, utiliser la version 3 --}}
-    @includeIf('frontend.partials.footer.footer-v3')
-  @endif
+  {{-- TOUJOURS utiliser footer-v3 pour cohérence du design premium --}}
+  @includeIf('frontend.partials.footer.footer-v3')
   <!-- Footer-area end-->
 
   <!-- Jquery JS -->
@@ -525,9 +792,201 @@
   @endif
   {{-- additional script --}}
   @yield('script')
+  @stack('scripts')
+  
+  {{-- Suppression complète de la barre de catégories - VERSION RENFORCÉE --}}
+  <script>
+    (function() {
+      // Fonction pour supprimer la barre de catégories
+      function removeCategoriesMenu() {
+        // Sélecteurs multiples pour trouver toutes les variantes
+        const selectors = [
+          '.categories-menu',
+          '.categories-menu-nav',
+          '.header-area .categories-menu',
+          '.header-area .categories-menu-nav',
+          'nav.categories-menu-nav',
+          '.category-menu',
+          '.category-nav',
+          '.categories-menu-wrapper',
+          '.header-area .categories-menu-wrapper',
+          '[class*="categories-menu"]',
+          '[class*="category-menu"]'
+        ];
+        
+        selectors.forEach(selector => {
+          try {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => {
+              if (el && el.parentNode) {
+                // Forcer le masquage avant suppression
+                el.style.display = 'none';
+                el.style.visibility = 'hidden';
+                el.style.height = '0';
+                el.style.opacity = '0';
+                el.style.pointerEvents = 'none';
+                // Supprimer du DOM
+                el.parentNode.removeChild(el);
+              }
+            });
+          } catch(e) {
+            console.warn('Erreur lors de la suppression:', e);
+          }
+        });
+      }
+      
+      // Supprimer immédiatement
+      removeCategoriesMenu();
+      
+      // Supprimer au chargement du DOM
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          removeCategoriesMenu();
+          // Forcer aussi via CSS
+          const style = document.createElement('style');
+          style.textContent = `
+            .categories-menu,
+            .categories-menu-nav,
+            .header-area .categories-menu,
+            .header-area .categories-menu-nav,
+            nav.categories-menu-nav,
+            .category-menu,
+            .category-nav { 
+              display: none !important; 
+              visibility: hidden !important; 
+              height: 0 !important; 
+              opacity: 0 !important; 
+            }
+          `;
+          document.head.appendChild(style);
+        });
+      } else {
+        removeCategoriesMenu();
+        // Forcer aussi via CSS
+        const style = document.createElement('style');
+        style.textContent = `
+          .categories-menu,
+          .categories-menu-nav,
+          .header-area .categories-menu,
+          .header-area .categories-menu-nav,
+          nav.categories-menu-nav,
+          .category-menu,
+          .category-nav { 
+            display: none !important; 
+            visibility: hidden !important; 
+            height: 0 !important; 
+            opacity: 0 !important; 
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      
+      // Supprimer aussi après des délais pour les éléments chargés dynamiquement
+      setTimeout(removeCategoriesMenu, 50);
+      setTimeout(removeCategoriesMenu, 200);
+      setTimeout(removeCategoriesMenu, 500);
+      setTimeout(removeCategoriesMenu, 1000);
+      setTimeout(removeCategoriesMenu, 2000);
+      
+      // Observer pour supprimer les éléments ajoutés dynamiquement
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          mutation.addedNodes.forEach(function(node) {
+            if (node.nodeType === 1) { // Element node
+              const classes = node.className || '';
+              if (typeof classes === 'string' && (
+                classes.includes('categories-menu') ||
+                classes.includes('category-menu') ||
+                classes.includes('categories-menu-nav')
+              )) {
+                // Masquer immédiatement
+                node.style.display = 'none';
+                node.style.visibility = 'hidden';
+                node.style.height = '0';
+                node.style.opacity = '0';
+                // Supprimer du DOM
+                if (node.parentNode) {
+                  node.parentNode.removeChild(node);
+                }
+              }
+              // Vérifier aussi les enfants
+              if (node.querySelectorAll) {
+                const children = node.querySelectorAll('.categories-menu, .categories-menu-nav, .category-menu');
+                children.forEach(child => {
+                  child.style.display = 'none';
+                  if (child.parentNode) {
+                    child.parentNode.removeChild(child);
+                  }
+                });
+              }
+            }
+          });
+        });
+      });
+      
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    })();
+  </script>
+  
+  {{-- Fix transparence globale - Script pour forcer background opaque et masquer preloader --}}
+  <script>
+    (function() {
+      // Forcer background opaque sur html et body immédiatement
+      document.documentElement.style.setProperty('background', '#ffffff', 'important');
+      document.documentElement.style.setProperty('background-color', '#ffffff', 'important');
+      document.body.style.setProperty('background', '#ffffff', 'important');
+      document.body.style.setProperty('background-color', '#ffffff', 'important');
+      document.body.style.setProperty('opacity', '1', 'important');
+      
+      // Fonction pour forcer le masquage du preloader après chargement
+      function forceHidePreloader() {
+        const preloader = document.getElementById('preLoader');
+        if (preloader) {
+          preloader.style.display = 'none';
+          preloader.style.visibility = 'hidden';
+          preloader.style.opacity = '0';
+        }
+        
+        // Masquer request-loader si visible
+        const requestLoader = document.querySelector('.request-loader');
+        if (requestLoader && !requestLoader.classList.contains('show')) {
+          requestLoader.style.display = 'none';
+        }
+      }
+      
+      // Masquer le preloader immédiatement après DOM chargé
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', forceHidePreloader);
+      } else {
+        forceHidePreloader();
+      }
+      
+      // Masquer aussi après chargement complet de la page
+      window.addEventListener('load', function() {
+        setTimeout(forceHidePreloader, 100);
+      });
+      
+      // Masquer aussi après un délai de sécurité
+      setTimeout(forceHidePreloader, 2000);
+    })();
+  </script>
   
   {{-- Chatbot Junspro Premium --}}
-  <script type="text/javascript" src="{{ asset('assets/front/js/junspro-chatbot-premium.js') }}"></script>
+  <script>
+    // Passer l'email de l'utilisateur connecté au chatbot
+    window.junsproUserEmail = @json(Auth::guard('web')->check() ? Auth::guard('web')->user()->email : '');
+  </script>
+  <script type="text/javascript" src="{{ asset('assets/front/js/junspro-chatbot-premium.js') }}?v=6.3"></script>
+</body>
+
+</html>
+
+
 </body>
 
 </html>

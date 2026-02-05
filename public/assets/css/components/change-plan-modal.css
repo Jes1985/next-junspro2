@@ -1,0 +1,742 @@
+/* Change Plan Modal Styles */
+.change-plan-flow-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.change-plan-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.change-plan-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.change-plan-modal-container {
+  position: relative;
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 10001;
+}
+
+/* Header */
+.change-plan-modal-header {
+  position: relative;
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.change-plan-modal-close,
+.change-plan-modal-back {
+  position: absolute;
+  top: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.change-plan-modal-close {
+  right: 1rem;
+}
+
+.change-plan-modal-back {
+  left: 1rem;
+}
+
+.change-plan-modal-close:hover,
+.change-plan-modal-back:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.change-plan-modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.change-plan-review-avatar-wrapper {
+  margin: 0 auto 1rem;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.change-plan-review-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e5e7eb;
+}
+
+.change-plan-review-avatar-initials {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 2rem;
+  border: 3px solid #e5e7eb;
+}
+
+/* Body */
+.change-plan-modal-body {
+  padding: 2rem;
+}
+
+/* Entry Options */
+.change-plan-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.change-plan-option-btn:hover {
+  border-color: #7c3aed;
+  background: #faf5ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+}
+
+.change-plan-option-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.change-plan-option-icon.upgrade {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.change-plan-option-icon.downgrade {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.change-plan-option-content {
+  flex: 1;
+}
+
+.change-plan-option-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.change-plan-option-arrow {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+/* Current Info */
+.change-plan-current-info {
+  text-align: center;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.change-plan-current-info strong {
+  color: #1a202c;
+  font-weight: 600;
+  margin: 0 0.25rem;
+}
+
+/* Stepper */
+.change-plan-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #f9fafb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.change-plan-stepper-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.75rem;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.change-plan-stepper-btn:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  transform: scale(1.05);
+}
+
+.change-plan-stepper-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.change-plan-stepper-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.change-plan-stepper-value span:first-child {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.change-plan-stepper-label {
+  font-size: 1rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* New Price */
+.change-plan-new-price {
+  text-align: center;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.change-plan-new-price-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.change-plan-new-price-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.25rem;
+}
+
+.change-plan-new-price-period {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Disclaimer */
+.change-plan-disclaimer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-top: 1rem;
+}
+
+/* Comparison */
+.change-plan-comparison {
+  margin-bottom: 2rem;
+}
+
+.change-plan-comparison-item {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.change-plan-comparison-item.new {
+  background: #faf5ff;
+  border: 2px solid #7c3aed;
+}
+
+.change-plan-comparison-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.change-plan-comparison-price {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.change-plan-comparison-period {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.change-plan-comparison-arrow {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+/* Timing Options */
+.change-plan-timing-section {
+  margin-top: 2rem;
+}
+
+.change-plan-timing-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.change-plan-timing-option {
+  display: block;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.change-plan-timing-option:hover {
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+.change-plan-timing-option.selected {
+  border-color: #7c3aed;
+  background: #faf5ff;
+}
+
+.change-plan-timing-radio {
+  display: none;
+}
+
+.change-plan-timing-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.change-plan-timing-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.change-plan-timing-option.selected .change-plan-timing-icon {
+  background: #7c3aed;
+  color: white;
+}
+
+.change-plan-timing-text {
+  flex: 1;
+}
+
+.change-plan-timing-title-option {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.change-plan-timing-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Option Cards */
+.change-plan-option-card {
+  display: block;
+  width: 100%;
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.change-plan-option-card:hover {
+  border-color: #7c3aed;
+  background: #faf5ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+}
+
+.change-plan-option-card.current {
+  border-color: #7c3aed;
+  background: #faf5ff;
+}
+
+.change-plan-option-card.selected {
+  border-color: #7c3aed;
+  background: #faf5ff;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.change-plan-option-card-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: #7c3aed;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.change-plan-option-card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.change-plan-option-card-price {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.change-plan-option-card-period {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Downgrade Note */
+.change-plan-downgrade-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  background: #eff6ff;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #1e40af;
+}
+
+.change-plan-downgrade-note i {
+  flex-shrink: 0;
+}
+
+/* Hours Info */
+.change-plan-hours-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: #fef3c7;
+  border-radius: 0.75rem;
+  border-left: 4px solid #f59e0b;
+  margin-top: 1.5rem;
+}
+
+.change-plan-hours-info i {
+  font-size: 1.25rem;
+  color: #f59e0b;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.change-plan-hours-info strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.change-plan-hours-info span {
+  color: #92400e;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Success Block */
+.change-plan-success-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  border-radius: 1rem;
+  border: 2px solid #7c3aed;
+  margin-bottom: 1.5rem;
+}
+
+.change-plan-success-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.change-plan-success-content {
+  flex: 1;
+}
+
+.change-plan-success-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.change-plan-success-message {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.change-plan-success-message strong {
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+/* Error Message */
+.change-plan-error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: #fee2e2;
+  border-radius: 0.75rem;
+  border-left: 4px solid #ef4444;
+  margin-top: 1rem;
+  color: #991b1b;
+  font-size: 0.9rem;
+}
+
+.change-plan-error-message i {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  color: #ef4444;
+}
+
+/* Payment */
+.change-plan-payment-recap {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.change-plan-payment-recap-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.change-plan-payment-recap-item strong {
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.change-plan-payment-method {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.change-plan-payment-method-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #374151;
+}
+
+.change-plan-payment-change-btn {
+  background: none;
+  border: none;
+  color: #7c3aed;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+}
+
+.change-plan-payment-change-btn:hover {
+  background: #f3f4f6;
+}
+
+.change-plan-payment-form {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.change-plan-payment-form-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.change-plan-payment-form-placeholder {
+  padding: 2rem;
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Footer */
+.change-plan-modal-footer {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #e5e7eb;
+  justify-content: flex-end;
+}
+
+.change-plan-btn-primary {
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.change-plan-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+}
+
+.change-plan-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.change-plan-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Body lock when modal open */
+body.change-plan-modal-open {
+  overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .change-plan-modal-container {
+    max-width: 100%;
+    border-radius: 1rem;
+  }
+
+  .change-plan-modal-header {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .change-plan-modal-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .change-plan-modal-footer {
+    padding: 1rem;
+    flex-direction: column-reverse;
+  }
+
+  .change-plan-btn-primary {
+    width: 100%;
+  }
+}
+

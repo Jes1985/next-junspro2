@@ -1,0 +1,46 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-lessons" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow-lessons">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <g filter="url(#glow-lessons)">
+    <!-- Silhouette bienveillante -->
+    <circle cx="100" cy="70" r="26" fill="url(#grad-lessons)" opacity="0.95"/>
+    
+    <!-- Corps doux -->
+    <ellipse cx="100" cy="125" rx="30" ry="42" fill="url(#grad-lessons)" opacity="0.9"/>
+    
+    <!-- Livre ouvert élégant -->
+    <path d="M80 110 L80 135 L100 140 L120 135 L120 110 L100 105 Z" fill="white" opacity="0.95"/>
+    <line x1="100" y1="105" x2="100" y2="140" stroke="url(#grad-lessons)" stroke-width="2" opacity="0.4"/>
+    <line x1="88" y1="118" x2="112" y2="118" stroke="url(#grad-lessons)" stroke-width="1.5" opacity="0.5"/>
+    <line x1="88" y1="128" x2="112" y2="128" stroke="url(#grad-lessons)" stroke-width="1.5" opacity="0.5"/>
+    
+    <!-- Bras gauche tenant le livre -->
+    <circle cx="72" cy="115" r="6" fill="url(#grad-lessons)"/>
+    <line x1="72" y1="115" x2="80" y2="120" stroke="url(#grad-lessons)" stroke-width="5" stroke-linecap="round"/>
+    
+    <!-- Bras droit avec geste d'enseignement -->
+    <circle cx="128" cy="115" r="6" fill="url(#grad-lessons)"/>
+    <line x1="128" y1="115" x2="145" y2="108" stroke="url(#grad-lessons)" stroke-width="5" stroke-linecap="round"/>
+    
+    <!-- Étoile de progression -->
+    <path d="M145 90 L146.5 94 L151 94.5 L147.5 97.5 L148.5 102 L145 99.5 L141.5 102 L142.5 97.5 L139 94.5 L143.5 94 Z" 
+          fill="white" opacity="0.8"/>
+    
+    <!-- Visage bienveillant -->
+    <circle cx="92" cy="70" r="3.5" fill="white"/>
+    <circle cx="108" cy="70" r="3.5" fill="white"/>
+    <path d="M88 82 Q100 88 112 82" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+  </g>
+</svg>

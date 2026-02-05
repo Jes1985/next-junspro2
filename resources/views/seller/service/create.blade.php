@@ -24,7 +24,9 @@
     </ul>
   </div>
   @php
-    $data = sellerPermission(Auth::guard('seller')->user()->id, 'service');
+    // Utiliser le seller_id passé depuis le contrôleur ou depuis l'authentification seller
+    $sellerId = $seller_id ?? (Auth::guard('seller')->check() ? Auth::guard('seller')->user()->id : null);
+    $data = $sellerId ? sellerPermission($sellerId, 'service') : ['status' => 'true'];
   @endphp
   @if ($data['status'] == 'false')
     <div class="alert alert-warning alert-block">
@@ -59,7 +61,7 @@
                 <p class="em text-danger mt-3 mb-0" id="err_slider_image"></p>
               </div>
 
-              <form id="serviceForm" action="{{ route('seller.service_management.store_service') }}"
+              <form id="serviceForm" action="{{ isset($seller_id) ? route('freelance.services.store') : route('seller.service_management.store_service') }}"
                 enctype="multipart/form-data" method="POST">
                 @csrf
                 <div id="slider-image-id"></div>
@@ -310,8 +312,13 @@
 
 @section('script')
   <script>
-    const imgUpUrl = "{{ route('seller.service_management.upload_slider_image') }}";
-    const imgRmvUrl = "{{ route('seller.service_management.remove_slider_image') }}";
+    const imgUpUrl = "{{ isset($seller_id) ? route('freelance.services.upload_image') : route('seller.service_management.upload_slider_image') }}";
+    const imgRmvUrl = "{{ isset($seller_id) ? route('freelance.services.remove_image') : route('seller.service_management.remove_slider_image') }}";
+    @if(isset($seller_id))
+    // Override the baseUrl for freelance routes
+    window.freelanceMode = true;
+    window.freelanceBaseUrl = "{{ url('/freelance/services') }}";
+    @endif
   </script>
 
   <script type="text/javascript" src="{{ asset('assets/js/slider-image.js') }}"></script>

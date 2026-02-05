@@ -2,13 +2,8 @@
 
 @php
   $misc = new App\Http\Controllers\FrontEnd\MiscellaneousController();
-
   $language = $misc->getLanguage();
-  $pageHeading = $language
-      ->pageName()
-      ->select('error_page_title')
-      ->first();
-  $breadcrumb = $misc->getBreadcrumb();
+  $pageHeading = $language->pageName()->select('error_page_title')->first();
 @endphp
 
 @section('pageHeading')
@@ -17,30 +12,242 @@
   @endif
 @endsection
 
+@section('style')
+<style>
+  /* ============================================
+     PAGE 404 - DESIGN PREMIUM HAUT DE GAMME
+     ============================================ */
+  
+  .error-page-wrapper {
+    background: linear-gradient(
+      180deg,
+      #D8DBFF 0%,
+      #D5D8FF 15%,
+      #D2D5FF 30%,
+      #CFD2FF 45%,
+      #CCCEFF 60%,
+      #C9CBFF 75%,
+      #C6C8FF 90%,
+      #C3C5FF 100%
+    );
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Halo lumineux subtil */
+  .error-page-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1400px;
+    height: 500px;
+    background: radial-gradient(
+      ellipse 100% 60% at 50% 0%,
+      rgba(124, 58, 237, 0.15) 0%,
+      rgba(124, 58, 237, 0.08) 30%,
+      rgba(79, 70, 229, 0.04) 60%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(50px);
+    -webkit-filter: blur(50px);
+  }
+
+  .error-page-wrapper > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Container principal */
+  .error-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  /* Illustration 404 premium */
+  .error-illustration {
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .error-number {
+    font-size: 180px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366F1 0%, #7C3AED 50%, #8B5CF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.05em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    display: inline-block;
+  }
+
+  .error-number::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(
+      circle at center,
+      rgba(124, 58, 237, 0.1) 0%,
+      transparent 70%
+    );
+    z-index: -1;
+    filter: blur(40px);
+  }
+
+  /* Texte d'erreur */
+  .error-text-content {
+    margin-bottom: 48px;
+  }
+
+  .error-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .error-description {
+    font-size: 18px;
+    color: #4B5563;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+
+  /* Bouton retour premium */
+  .error-action {
+    margin-top: 48px;
+  }
+
+  .error-btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #6366F1 0%, #7C3AED 100%);
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 8px 24px rgba(99, 102, 241, 0.3),
+      0 4px 8px rgba(99, 102, 241, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .error-btn-home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .error-btn-home:hover::before {
+    left: 100%;
+  }
+
+  .error-btn-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 32px rgba(99, 102, 241, 0.4),
+      0 6px 12px rgba(99, 102, 241, 0.3);
+  }
+
+  .error-btn-home:active {
+    transform: translateY(0);
+  }
+
+  .error-btn-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .error-page-wrapper {
+      padding-top: 100px;
+      padding-bottom: 60px;
+    }
+
+    .error-number {
+      font-size: 120px;
+    }
+
+    .error-title {
+      font-size: 28px;
+    }
+
+    .error-description {
+      font-size: 16px;
+    }
+
+    .error-btn-home {
+      padding: 14px 28px;
+      font-size: 15px;
+    }
+  }
+</style>
+@endsection
+
 @section('content')
-  @php $pageTitle = !empty($pageHeading) ? $pageHeading->error_page_title : ''; @endphp
+  <div class="error-page-wrapper">
+    <div class="error-page-container">
+      <!-- Illustration 404 -->
+      <div class="error-illustration">
+        <div class="error-number">404</div>
+      </div>
 
-  @includeIf('frontend.partials.breadcrumb', ['breadcrumb' => $breadcrumb, 'title' => $pageTitle])
+      <!-- Texte d'erreur -->
+      <div class="error-text-content">
+        <h1 class="error-title">{{ __('Vous êtes perdu') }}</h1>
+        <p class="error-description">
+          {{ __('La page que vous recherchez') }}, {{ __('a peut-être été déplacée') }},<br>
+          {{ __('renommée') }} {{ __('ou n\'a peut-être jamais existé') }}.
+        </p>
+      </div>
 
-  <!--====== 404 PART START ======-->
-  <section class="error-area ptb-100">
-    <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-6">
-          <div class="image mb-30">
-            <svg class="mw-100" data-src="{{ asset('assets/img/404.svg') }}" data-unique-ids="disabled" data-cache="disabled"></svg>
-          </div>
-          <div class="error-text">
-            <h2>{{ __('You are lost') . '.' }}</h2>
-            <p>
-              {{ __('The page you are looking for') . ', ' . __('might have been moved') . ',' }}<br>
-              {{ __('renamed') . ', ' . __('or might never existed') . '.' }}
-            </p>
-            <a href="{{ route('index') }}" class="btn btn-lg btn-primary radius-sm">{{ __('Go Back Home') }}</a>
-          </div>
-        </div>
+      <!-- Action -->
+      <div class="error-action">
+        <a href="{{ route('index') }}" class="error-btn-home">
+          <svg class="error-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          {{ __('Retour à l\'accueil') }}
+        </a>
       </div>
     </div>
-  </section>
-  <!--====== 404 PART END ======-->
+  </div>
 @endsection

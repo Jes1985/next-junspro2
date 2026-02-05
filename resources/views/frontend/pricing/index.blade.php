@@ -1,11 +1,11 @@
 @extends('frontend.layout')
 
 @section('pageHeading')
-  {{ __('Tarification') }}
+  {{ __('Pricing') }}
 @endsection
 
 @section('metaKeywords')
-  {{ __('tarification, prix, abonnement, freelance, junspro') }}
+  {{ __('abonnements, prix, abonnement, freelance, junspro') }}
 @endsection
 
 @section('metaDescription')
@@ -19,7 +19,7 @@
     <div class="pricing-hero-container">
       <div class="pricing-hero-content">
         <h1 class="pricing-hero-title">
-          <span class="hero-title-line-1">{{ __('Tarification') }} <span class="highlight">{{ __('transparente') }}</span></span>
+          <span class="hero-title-line-1">{{ __('Pricing') }} <span class="highlight">{{ __('transparente') }}</span></span>
           <span class="hero-title-line-2">{{ __('et flexible') }}</span>
         </h1>
         @if(isset($selectedFreelancer) && $selectedFreelancer)
@@ -168,8 +168,8 @@
         <div class="col-md-4" data-aos="fade-up">
           <div class="text-center">
             <div class="mb-3">
-              <span class="d-inline-flex justify-content-center align-items-center rounded-circle bg-primary text-white"
-                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold;">1</span>
+              <span class="d-inline-flex justify-content-center align-items-center rounded-circle text-white"
+                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%);">1</span>
             </div>
             <h5 class="mb-2">{{ __('1. Trouvez votre freelance') }}</h5>
             <p class="text-muted small">
@@ -180,8 +180,8 @@
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
           <div class="text-center">
             <div class="mb-3">
-              <span class="d-inline-flex justify-content-center align-items-center rounded-circle bg-primary text-white"
-                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold;">2</span>
+              <span class="d-inline-flex justify-content-center align-items-center rounded-circle text-white"
+                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%);">2</span>
             </div>
             <h5 class="mb-2">{{ __('2. Séance d\'essai (1h)') }}</h5>
             <p class="text-muted small">
@@ -192,8 +192,8 @@
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
           <div class="text-center">
             <div class="mb-3">
-              <span class="d-inline-flex justify-content-center align-items-center rounded-circle bg-primary text-white"
-                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold;">3</span>
+              <span class="d-inline-flex justify-content-center align-items-center rounded-circle text-white"
+                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%);">3</span>
             </div>
             <h5 class="mb-2">{{ __('3. Choisissez votre abonnement') }}</h5>
             <p class="text-muted small">

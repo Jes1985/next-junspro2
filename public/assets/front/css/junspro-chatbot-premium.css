@@ -1,8 +1,9 @@
 /* ============================================
-   JUNSPRO - CHATBOT PREMIUM (Style ComeUp)
+   JUNSPRO - CHATBOT PREMIUM (Refonte Complète)
+   Version 3.0 - Design Premium
    ============================================ */
 
-/* Bulle flottante (état fermé) */
+/* Bulle flottante */
 .junspro-chat-bubble {
   position: fixed;
   bottom: 24px;
@@ -10,8 +11,8 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #4c1d95 0%, #2563eb 100%);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4), 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,12 +20,28 @@
   z-index: 9998;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   animation: chatBubbleAppear 0.5s ease-out;
+  border: none;
+  outline: none;
 }
 
-/* S'assurer que le chatbot ne chevauche pas le hero */
-.hero-modern {
-  position: relative;
-  z-index: 1;
+.junspro-chat-bubble:hover,
+.junspro-chat-bubble:focus {
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.5), 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.junspro-chat-bubble:active {
+  transform: scale(1.05);
+}
+
+.junspro-chat-bubble svg {
+  width: 24px !important;
+  height: 24px !important;
+  fill: #111827 !important; /* Noir pour l'icône */
+}
+
+.junspro-chat-bubble.hidden {
+  display: none;
 }
 
 @keyframes chatBubbleAppear {
@@ -38,53 +55,37 @@
   }
 }
 
-.junspro-chat-bubble:hover {
-  transform: scale(1.03);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.5);
-}
-
-.junspro-chat-bubble svg {
-  width: 24px;
-  height: 24px;
-  fill: #FFFFFF;
-}
-
-.junspro-chat-bubble.hidden {
-  display: none;
-}
-
-/* Panneau de chat (état ouvert) */
+/* Panneau de chat */
 .junspro-chat {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 380px;
+  width: 400px;
   max-width: calc(100vw - 48px);
-  height: 75vh;
+  height: 70vh;
   max-height: 680px;
   min-height: 500px;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.3), 0 0 0 1px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(15, 23, 42, 0.05);
   display: flex;
   flex-direction: column;
   z-index: 9999;
   overflow: hidden;
-  animation: chatPanelOpen 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: chatPanelOpen 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: bottom right;
-}
-
-/* S'assurer que le panneau ne chevauche pas le hero sur desktop */
-@media (min-width: 992px) {
-  .junspro-chat {
-    max-height: calc(100vh - 200px);
-  }
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 @keyframes chatPanelOpen {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.95);
+    transform: translateY(20px) scale(0.95);
   }
   to {
     opacity: 1;
@@ -96,17 +97,29 @@
   display: none;
 }
 
+.junspro-chat.closing {
+  animation: chatPanelClose 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes chatPanelClose {
+  to {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+}
+
 /* Header */
-    .junspro-chat-header {
-      height: 72px;
-      background: linear-gradient(to bottom, rgba(147, 51, 234, 0.08), #ffffff);
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-      flex-shrink: 0;
-    }
+.junspro-chat-header {
+  height: auto;
+  min-height: 80px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  flex-shrink: 0;
+}
 
 .junspro-chat-header-left {
   display: flex;
@@ -115,44 +128,50 @@
   flex: 1;
 }
 
-    .junspro-chat-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #f472b6 0%, #a78bfa 50%, #60a5fa 100%);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(147, 51, 234, 0.2);
-    }
+.junspro-chat-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
 
-    .junspro-chat-logo svg {
-      width: 22px;
-      height: 22px;
-      fill: #FFFFFF;
-    }
+.junspro-chat-logo svg {
+  width: 24px !important;
+  height: 24px !important;
+  fill: #FFFFFF !important;
+}
 
-    .junspro-chat-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: #111827;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+.junspro-chat-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 
-    .junspro-chat-title-separator {
-      color: #D1D5DB;
-      font-weight: 400;
-    }
+.junspro-chat-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.junspro-chat-subtitle {
+  font-size: 12px;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.3;
+}
 
 .junspro-chat-close {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   background: transparent;
   border: none;
   display: flex;
@@ -164,26 +183,29 @@
   flex-shrink: 0;
 }
 
-.junspro-chat-close:hover {
-  background: rgba(15, 23, 42, 0.05);
+.junspro-chat-close:hover,
+.junspro-chat-close:focus {
+  background: rgba(15, 23, 42, 0.08);
   color: #111827;
+  transform: scale(1.05);
 }
 
 .junspro-chat-close svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
 /* Zone de messages */
-    .junspro-chat-main {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px 16px 16px;
-      background: #FFFFFF;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+.junspro-chat-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 20px 120px; /* padding bas pour ne pas masquer le dernier contenu par la bulle */
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #111827;
+}
 
 /* Scrollbar discrète */
 .junspro-chat-main::-webkit-scrollbar {
@@ -203,168 +225,297 @@
   background: rgba(15, 23, 42, 0.3);
 }
 
-    /* Message de l'IA */
-    .junspro-chat-message-ai {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      max-width: 85%;
-      margin-bottom: 4px;
-    }
+/* Message de bienvenue */
+.junspro-chat-welcome {
+  margin-bottom: 8px;
+}
 
-    .junspro-chat-message-ai-label {
-      font-size: 11px;
-      font-weight: 500;
-      color: #6B7280;
-      margin-bottom: 6px;
-      padding-left: 4px;
-    }
+.junspro-chat-welcome-message {
+  background: #F9FAFB;
+  border-radius: 16px;
+  padding: 20px;
+  color: #111827;
+  font-size: 14px;
+}
 
-    .junspro-chat-message-ai-content {
-      background: #f3f4f6;
-      border-radius: 16px;
-      padding: 14px 18px;
-      color: #111827;
-      font-size: 14px;
-      line-height: 1.6;
-      word-wrap: break-word;
-    }
+.junspro-chat-welcome-line {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #111827;
+}
 
-    .junspro-chat-message-ai-content a {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 500;
-    }
+.junspro-chat-welcome-line:not(:last-child) {
+  margin-bottom: 8px;
+}
 
-    .junspro-chat-message-ai-content a:hover {
-      text-decoration: underline;
-    }
-
-    /* Boutons d'actions suggérées */
-    .junspro-chat-suggestions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 12px;
-      max-width: 85%;
-    }
-
-    .junspro-chat-suggestion-btn {
-      background: #FFFFFF;
-      border: 1px solid #E5E7EB;
-      border-radius: 12px;
-      padding: 12px 16px;
-      color: #111827;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
-
-    .junspro-chat-suggestion-btn:hover {
-      background: #F9FAFB;
-      border-color: #4c1d95;
-      box-shadow: 0 2px 4px rgba(76, 29, 149, 0.1);
-      transform: translateY(-1px);
-    }
-
-    .junspro-chat-suggestion-btn:active {
-      transform: translateY(0);
-    }
-
-/* Message de l'utilisateur */
-.junspro-chat-message-user {
+/* Boutons d'action */
+.junspro-chat-actions {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  max-width: 85%;
-  margin-left: auto;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
-.junspro-chat-message-user-content {
-  background: linear-gradient(135deg, #4c1d95 0%, #2563eb 100%);
-  border-radius: 16px;
-  padding: 12px 16px;
-  color: #FFFFFF;
-  font-size: 14px;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
-/* Footer - Zone de saisie */
-.junspro-chat-footer {
-  padding: 16px;
+.junspro-chat-action-btn {
+  width: 100%;
   background: #FFFFFF;
-  border-top: 1px solid rgba(15, 23, 42, 0.08);
-  flex-shrink: 0;
-}
-
-.junspro-chat-input-wrapper {
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  background: #f9fafb;
-  border-radius: 999px;
-  padding: 8px 10px 8px 16px;
-  border: 1px solid #e5e7eb;
-  transition: all 0.2s ease;
-}
-
-.junspro-chat-input-wrapper:focus-within {
-  border-color: #4c1d95;
-  box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.1);
-}
-
-.junspro-chat-input {
-  flex: 1;
-  border: none;
-  background: transparent;
+  gap: 12px;
   outline: none;
-  font-size: 14px;
-  color: #111827;
-  padding: 0;
-  margin: 0;
+  line-height: 1.5;
 }
 
-.junspro-chat-input::placeholder {
+.junspro-chat-action-btn:hover,
+.junspro-chat-action-btn:focus {
+  background: #F3F4F6;
+  border-color: #2563EB;
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.15);
+  transform: translateY(-1px);
+}
+
+.junspro-chat-action-btn:active {
+  transform: translateY(0);
+}
+
+.junspro-chat-action-icon {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+  color: #2563EB;
+  display: inline-block;
+  object-fit: contain;
+}
+
+.junspro-chat-action-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.junspro-chat-action-btn-primary {
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  color: #FFFFFF;
+  border-color: transparent;
+  justify-content: center;
+}
+
+.junspro-chat-action-btn-primary:hover,
+.junspro-chat-action-btn-primary:focus {
+  background: linear-gradient(135deg, #1D4ED8 0%, #6D28D9 100%);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+  color: #FFFFFF;
+}
+
+.junspro-chat-action-btn-primary .junspro-chat-action-icon {
+  color: #FFFFFF;
+}
+
+.junspro-chat-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #9CA3AF;
+  margin: 0;
+  padding-top: 8px;
+  line-height: 1.4;
+}
+
+/* Formulaire de contact */
+.junspro-chat-contact-form {
+  width: 100%;
+}
+
+.junspro-form-group {
+  margin-bottom: 20px;
+}
+
+.junspro-form-group:last-of-type {
+  margin-bottom: 0;
+}
+
+.junspro-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.junspro-form-input,
+.junspro-form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #FFFFFF;
+  color: #111827;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.junspro-form-input::placeholder,
+.junspro-form-textarea::placeholder {
   color: #9CA3AF;
 }
 
-.junspro-chat-send {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #4c1d95 0%, #2563eb 100%);
+.junspro-form-input:focus,
+.junspro-form-textarea:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.junspro-form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+/* Style pour le select */
+select.junspro-form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.junspro-form-error {
+  display: none;
+  color: #DC2626;
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.junspro-form-error[style*="display: block"] {
+  display: block !important;
+}
+
+.junspro-form-submit {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  color: #FFFFFF;
   border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  margin-left: 8px;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 12px;
 }
 
-.junspro-chat-send:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(76, 29, 149, 0.3);
+.junspro-form-submit:hover:not(:disabled),
+.junspro-form-submit:focus:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.4);
 }
 
-.junspro-chat-send:active {
-  transform: scale(0.95);
+.junspro-form-submit:active:not(:disabled) {
+  transform: translateY(0);
 }
 
-.junspro-chat-send svg {
-  width: 18px;
-  height: 18px;
-  fill: #FFFFFF;
-}
-
-.junspro-chat-send:disabled {
-  opacity: 0.5;
+.junspro-form-submit:disabled {
+  opacity: 0.6;
   cursor: not-allowed;
   transform: none;
+}
+
+.submit-loader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.junspro-form-back {
+  display: block;
+  text-align: center;
+  color: #2563EB;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.junspro-form-back:hover,
+.junspro-form-back:focus {
+  color: #1D4ED8;
+  text-decoration: underline;
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* Message de succès */
+.junspro-chat-success {
+  text-align: center;
+  padding: 32px 20px;
+}
+
+.junspro-chat-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+}
+
+.junspro-chat-success-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.junspro-chat-success-message {
+  font-size: 14px;
+  color: #6B7280;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+/* Message d'erreur */
+.junspro-chat-error {
+  background: #FEE2E2;
+  border: 1px solid #FCA5A5;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  color: #991B1B;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 /* Responsive Mobile */
@@ -386,29 +537,202 @@
     height: 52px;
   }
 
-  .junspro-chat-header-left {
-    gap: 10px;
+  .junspro-chat-bubble svg {
+    width: 22px;
+    height: 22px;
+    fill: #111827 !important; /* Noir pour l'icône sur mobile */
+  }
+
+  .junspro-chat-header {
+    padding: 14px 16px;
   }
 
   .junspro-chat-logo {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .junspro-chat-logo svg {
+    width: 20px;
+    height: 20px;
   }
 
   .junspro-chat-title {
     font-size: 15px;
   }
-}
 
-/* Animation de fermeture */
-.junspro-chat.closing {
-  animation: chatPanelClose 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
+  .junspro-chat-subtitle {
+    font-size: 11px;
+  }
 
-@keyframes chatPanelClose {
-  to {
-    opacity: 0;
-    transform: translateY(10px) scale(0.95);
+  .junspro-chat-main {
+    padding: 20px 16px;
   }
 }
 
+/* Footer - Masqué par défaut */
+.junspro-chat-footer {
+  display: none !important;
+}
+
+
+  .junspro-chat-subtitle {
+    font-size: 11px;
+  }
+
+  .junspro-chat-main {
+    padding: 20px 16px;
+  }
+}
+
+/* Footer - Masqué par défaut */
+.junspro-chat-footer {
+  display: none !important;
+}
+
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.4);
+}
+
+.junspro-form-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.junspro-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-loader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.junspro-form-back {
+  display: block;
+  text-align: center;
+  color: #2563EB;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.junspro-form-back:hover,
+.junspro-form-back:focus {
+  color: #1D4ED8;
+  text-decoration: underline;
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* Message de succès */
+.junspro-chat-success {
+  text-align: center;
+  padding: 32px 20px;
+}
+
+.junspro-chat-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+}
+
+.junspro-chat-success-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.junspro-chat-success-message {
+  font-size: 14px;
+  color: #6B7280;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+/* Message d'erreur */
+.junspro-chat-error {
+  background: #FEE2E2;
+  border: 1px solid #FCA5A5;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  color: #991B1B;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .junspro-chat {
+    width: 100vw;
+    max-width: 100vw;
+    height: 90vh;
+    max-height: 90vh;
+    bottom: 0;
+    right: 0;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .junspro-chat-bubble {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .junspro-chat-bubble svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .junspro-chat-header {
+    padding: 14px 16px;
+  }
+
+  .junspro-chat-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .junspro-chat-logo svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .junspro-chat-title {
+    font-size: 15px;
+  }
+
+  .junspro-chat-subtitle {
+    font-size: 11px;
+  }
+
+  .junspro-chat-main {
+    padding: 20px 16px;
+  }
+}
+
+/* Footer - Masqué par défaut */
+.junspro-chat-footer {
+  display: none !important;
+}

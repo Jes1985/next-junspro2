@@ -20,17 +20,31 @@ class Deactive
     {
         if (Session::get('secret_login') != 1) {
             if ($type == 'seller') {
-                if (Auth::guard('seller')->user()->status == 0) {
-                    if ($request->isMethod('POST') || $request->isMethod('PUT')) {
-                        session()->flash('warning', 'Your account is deactive or pending now. Please Contact with admin!');
-                        return redirect()->back();
+                try {
+                    if (Auth::guard('seller')->check() && Auth::guard('seller')->user()) {
+                        if (Auth::guard('seller')->user()->status == 0) {
+                            if ($request->isMethod('POST') || $request->isMethod('PUT')) {
+                                session()->flash('warning', 'Your account is deactive or pending now. Please Contact with admin!');
+                                return redirect()->back();
+                            }
+                        }
                     }
+                } catch (\Exception $e) {
+                    // Si erreur, continuer sans bloquer pour éviter les boucles
+                    \Log::warning('Deactive middleware: Error - ' . $e->getMessage());
                 }
             } elseif ($type == 'user') {
-                if (Auth::guard('web')->user()->status == 0) {
-                    Auth::guard('web')->logout();
-                    Session::flash('error', 'Your account has been banned!');
-                    return redirect()->route('user.login');
+                try {
+                    if (Auth::guard('web')->check() && Auth::guard('web')->user()) {
+                        if (Auth::guard('web')->user()->status == 0) {
+                            Auth::guard('web')->logout();
+                            Session::flash('error', 'Your account has been banned!');
+                            return redirect()->route('user.login');
+                        }
+                    }
+                } catch (\Exception $e) {
+                    // Si erreur, continuer sans bloquer pour éviter les boucles
+                    \Log::warning('Deactive middleware: Error - ' . $e->getMessage());
                 }
             }
         }

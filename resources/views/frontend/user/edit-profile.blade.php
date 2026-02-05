@@ -111,6 +111,140 @@
                           @enderror
                         </div>
 
+                        @php
+                          $freelancerProfile = $authUser->freelancerProfile ?? null;
+                        @endphp
+
+                        @if($freelancerProfile)
+                          <!-- Section Freelance Profile -->
+                          <div class="col-lg-12 mb-4">
+                            <hr style="margin: 30px 0; border-color: #E5E7EB;">
+                            <h5 style="font-weight: 600; margin-bottom: 20px; color: #111827;">
+                              <i class="fas fa-user-tie me-2" style="color: #4F46E5;"></i>
+                              {{ __('Profil Freelance') }}
+                            </h5>
+                          </div>
+
+                          <div class="col-lg-12 mb-4">
+                            <label class="form-label">{{ __('Bio') }}</label>
+                            <textarea class="form-control" placeholder="{{ __('Décrivez votre expertise et votre expérience...') }}" rows="4" name="freelancer_bio">{{ $freelancerProfile->bio }}</textarea>
+                            @error('freelancer_bio')
+                              <p class="text-danger mt-1">{{ $message }}</p>
+                            @enderror
+                          </div>
+
+                          <div class="col-lg-6 mb-4">
+                            <label class="form-label">{{ __('Tarif horaire (€)') }}</label>
+                            <input type="number" class="form-control" placeholder="50" name="freelancer_hourly_rate" 
+                                   value="{{ $freelancerProfile->hourly_rate }}" 
+                                   min="3" max="200" step="0.01">
+                            @error('freelancer_hourly_rate')
+                              <p class="text-danger mt-1">{{ $message }}</p>
+                            @enderror
+                            <small class="text-muted">{{ __('Entre 3€ et 200€') }}</small>
+                          </div>
+
+                          <!-- Section Vidéo de présentation -->
+                          <div class="col-lg-12 mb-4">
+                            <hr style="margin: 20px 0; border-color: #E5E7EB;">
+                            <h6 style="font-weight: 600; margin-bottom: 16px; color: #111827;">
+                              <i class="fas fa-video me-2" style="color: #4F46E5;"></i>
+                              {{ __('Vidéo de présentation') }}
+                            </h6>
+                            
+                            @php
+                              $hasVideo = !empty($freelancerProfile->video_thumbnail_url);
+                            @endphp
+
+                            @if($hasVideo)
+                              <div class="mb-3">
+                                <label class="form-label">{{ __('Miniature actuelle') }}</label>
+                                <div class="thumb-preview" style="max-width: 400px;">
+                                  <img src="{{ $freelancerProfile->video_thumbnail_url }}" 
+                                       alt="Miniature vidéo" 
+                                       class="uploaded-img" 
+                                       id="video-thumbnail-preview"
+                                       style="max-width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;">
+                                </div>
+                              </div>
+                            @endif
+
+                            <!-- Upload d'image -->
+                            <div class="mb-3">
+                              <label class="form-label">{{ __('Uploader une miniature vidéo') }}</label>
+                              <div class="file-upload-area">
+                                <div class="upload-file">
+                                  <input type="file" name="video_thumbnail_image" id="video_thumbnail_image" 
+                                         class="upload" accept="image/jpeg,image/png,image/webp"
+                                         onchange="previewVideoThumbnail(this)">
+                                  <span>{{ __('Choisir une image') }}</span>
+                                </div>
+                              </div>
+                              @error('video_thumbnail_image')
+                                <p class="text-danger mt-1">{{ $message }}</p>
+                              @enderror
+                              <small class="text-muted d-block mt-1">
+                                {{ __('Format 16:9 recommandé (ex: 1280×720px). Formats acceptés: JPG, PNG, WEBP.') }}
+                              </small>
+                            </div>
+
+                            <!-- OU URL -->
+                            <div class="mb-3">
+                              <label class="form-label">{{ __('OU URL de la miniature vidéo') }}</label>
+                              <input type="url" class="form-control" 
+                                     placeholder="https://example.com/video-thumbnail.jpg" 
+                                     name="video_thumbnail_url" 
+                                     id="video_thumbnail_url"
+                                     value="{{ $freelancerProfile->video_thumbnail_url }}">
+                              @error('video_thumbnail_url')
+                                <p class="text-danger mt-1">{{ $message }}</p>
+                              @enderror
+                              <small class="text-muted d-block mt-1">
+                                {{ __('Si vous avez déjà hébergé votre image ailleurs, entrez son URL ici.') }}
+                              </small>
+                            </div>
+
+                            @if(!$hasVideo && !empty($freelancerProfile->bio))
+                              <div class="alert alert-warning" style="background: #FEF3C7; border-color: #FCD34D; color: #92400E; padding: 12px; border-radius: 8px; font-size: 13px;">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                {{ __('Pour un rendu plus professionnel, ajoutez une miniature à votre vidéo (format 16:9).') }}
+                              </div>
+                            @endif
+                          </div>
+
+                          <script>
+                            function previewVideoThumbnail(input) {
+                              if (input.files && input.files[0]) {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                  let preview = document.getElementById('video-thumbnail-preview');
+                                  if (!preview) {
+                                    // Créer le preview si il n'existe pas
+                                    const previewContainer = document.createElement('div');
+                                    previewContainer.className = 'mb-3';
+                                    previewContainer.innerHTML = `
+                                      <label class="form-label">{{ __('Aperçu') }}</label>
+                                      <div class="thumb-preview" style="max-width: 400px;">
+                                        <img src="${e.target.result}" 
+                                             alt="Aperçu miniature" 
+                                             class="uploaded-img" 
+                                             id="video-thumbnail-preview"
+                                             style="max-width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;">
+                                      </div>
+                                    `;
+                                    input.closest('.mb-3').after(previewContainer);
+                                  } else {
+                                    preview.src = e.target.result;
+                                  }
+                                  // Vider le champ URL si on upload une image
+                                  document.getElementById('video_thumbnail_url').value = '';
+                                };
+                                reader.readAsDataURL(input.files[0]);
+                              }
+                            }
+                          </script>
+                        @endif
+
                         <div class="col-lg-12">
                           <div class="form-button">
                             <button class="btn btn-md btn-primary radius-sm form-btn">{{ __('Submit') }}</button>

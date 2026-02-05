@@ -28,6 +28,14 @@ class Seller extends Authenticatable
         'show_contact_form',
     ];
 
+    /**
+     * Désactiver le remember token car la table sellers n'a pas de colonne remember_token
+     */
+    public function getRememberTokenName()
+    {
+        return null;
+    }
+
     public function seller_info()
     {
         return $this->hasOne(SellerInfo::class, 'seller_id', 'id');

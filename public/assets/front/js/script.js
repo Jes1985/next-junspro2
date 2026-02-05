@@ -119,7 +119,9 @@
         getHeaderHeight();
     });
 
-    // Category Megamenu
+    // Category Megamenu - DÉSACTIVÉ : Barre de catégories supprimée pour design premium
+    // Le code ci-dessous est désactivé car la barre de catégories a été supprimée
+    /*
     $(document).ready(function () {
         // Function to handle submenu behavior
         function handleSubMenu() {
@@ -186,8 +188,11 @@
         });
 
     });
+    */
 
-    // Category scroller
+    // Category scroller - DÉSACTIVÉ : Barre de catégories supprimée pour design premium
+    // Le code ci-dessous est désactivé car la barre de catégories a été supprimée
+    /*
     $(document).ready(function () {
         var menus = $(".categories-menu-nav .sub-menu-item a");
         var scrollRightArrow = $(".categories-menu-nav .right-arrow");
@@ -249,6 +254,7 @@
             menuList.removeClass("dragging");
         });
     });
+    */
 
     /*============================================
         Navlink active class

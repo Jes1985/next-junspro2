@@ -137,6 +137,11 @@ return [
   'providers' => [
 
     /*
+    * Fix pour Laravel 12 - Doit être en premier
+    */
+    App\Providers\FixRequestServiceProvider::class,
+
+    /*
     * Laravel Framework Service Providers...
     */
     Illuminate\Auth\AuthServiceProvider::class,

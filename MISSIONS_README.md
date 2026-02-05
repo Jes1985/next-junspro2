@@ -43,6 +43,11 @@ ZOOM_ACCOUNT_ID=your_zoom_account_id
 ZOOM_CLIENT_ID=your_zoom_client_id
 ZOOM_CLIENT_SECRET=your_zoom_client_secret
 ZOOM_USER_ID=your_zoom_user_id
+
+# Daily.co - Vidéoconférence
+DAILY_API_KEY="115fe4a7c37c9a8fe6a0c38374ab24c110af3be4510633387a32660643bfdcae"
+DAILY_DOMAIN=junspro.daily.co
+DAILY_ENABLE_PRECALL=true
 ```
 
 ### 3. Configuration du Webhook Stripe

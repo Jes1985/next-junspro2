@@ -51,6 +51,12 @@ return [
         'user_id' => env('ZOOM_USER_ID'),
     ],
 
+    'daily' => [
+        'api_key' => env('DAILY_API_KEY'),
+        'domain' => env('DAILY_DOMAIN', 'junspro.daily.co'),
+        'enable_precall' => env('DAILY_ENABLE_PRECALL', true),
+    ],
+
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),

@@ -38,6 +38,14 @@ class ClientProfile extends Model
     }
 
     /**
+     * Conversations lead (pré-booking) du client.
+     */
+    public function leadConversations(): HasMany
+    {
+        return $this->hasMany(LeadConversation::class, 'client_id');
+    }
+
+    /**
      * Demandes de transfert
      */
     public function transferRequests(): HasMany
@@ -60,6 +68,14 @@ class ClientProfile extends Model
     {
         return $this->hasMany(PremiumService::class, 'owner_id')
             ->where('owner_type', 'client');
+    }
+
+    /**
+     * Parrainage où ce profil client est le filleul
+     */
+    public function referral(): HasMany
+    {
+        return $this->hasMany(Referral::class, 'client_profile_id');
     }
 }
 

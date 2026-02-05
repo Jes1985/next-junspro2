@@ -12,10 +12,13 @@
       <!-- Mobile Logo -->
       <div class="logo">
         <a href="{{ route('index') }}" class="junspro-logo" target="_self" title="Junspro">
-          <span class="junspro-logo-text">
-            <span class="junspro-j">J</span>UNSPR<span class="junspro-o">O</span>
+          <span class="junspro-logo-top">
+            <span class="junspro-logo-text-wrapper">
+              <span class="junspro-logo-text">JUNSPRO</span>
+              <span class="junspro-logo-line"></span>
+            </span>
+            <img src="{{ asset('assets/img/logo.png') }}?v={{ time() }}" class="junspro-logo-icon" alt="Junspro">
           </span>
-          <span class="junspro-logo-line"></span>
         </a>
       </div>
       <!-- Menu toggle button -->
@@ -33,20 +36,29 @@
         <!-- Logo -->
         <a class="navbar-brand junspro-logo-brand" href="{{ route('index') }}" target="_self" title="Junspro">
           <span class="junspro-logo">
-            <span class="junspro-logo-text">
-              <span class="junspro-j">J</span>UNSPR<span class="junspro-o">O</span>
+            <span class="junspro-logo-top">
+              <span class="junspro-logo-text-wrapper">
+                <span class="junspro-logo-text">JUNSPRO</span>
+                <span class="junspro-logo-line"></span>
+              </span>
+              <span class="brand-icon-wrapper">
+                <img src="{{ asset('assets/img/logo.png') }}?v={{ time() }}" class="junspro-logo-icon" alt="Junspro">
+              </span>
             </span>
-            <span class="junspro-logo-line"></span>
           </span>
         </a>
-
         <!-- Navigation items -->
         <div class="collapse navbar-collapse">
-          <ul id="mainMenu" class="navbar-nav mobile-item mx-auto">
-
+          <ul id="mainMenu" class="navbar-nav mobile-item ms-auto">
             @php $menuDatas = json_decode($menuInfos); @endphp
             @foreach ($menuDatas as $menuData)
-              @php $href = get_href($menuData); @endphp
+              @php 
+                // Filtrer les éléments redondants
+                if (isset($menuData->type) && ($menuData->type == 'home' || $menuData->type == 'contact')) {
+                  continue;
+                }
+                $href = get_href($menuData); 
+              @endphp
               @if (!property_exists($menuData, 'children'))
                 <li class="nav-item">
                   <a class="nav-link" href="{{ $href }}">{{ $menuData->text }}</a>
@@ -59,7 +71,13 @@
                     @php $childMenuDatas = $menuData->children; @endphp
 
                     @foreach ($childMenuDatas as $childMenuData)
-                      @php $child_href = get_href($childMenuData); @endphp
+                      @php 
+                        // Filtrer les éléments redondants dans les sous-menus
+                        if (isset($childMenuData->type) && ($childMenuData->type == 'home' || $childMenuData->type == 'contact')) {
+                          continue;
+                        }
+                        $child_href = get_href($childMenuData); 
+                      @endphp
                       <li class="nav-item">
                         <a class="nav-link" href="{{ $child_href }}">{{ $childMenuData->text }}</a>
                       </li>
@@ -71,6 +89,10 @@
           </ul>
         </div>
         <div class="more-option mobile-item">
+          {{-- Capsule Pause Souffle (discret) --}}
+          <div class="item pause-souffle-header-capsule-item">
+            @include('frontend.components.pause-souffle.header-capsule-premium')
+          </div>
           @if ($basicInfo->is_language == 1)
             <div class="item">
               <div class="language">
@@ -202,6 +224,17 @@
                         <rect x="3" y="14" width="7" height="7"></rect>
                       </svg>
                       <span>{{ __('Dashboard') }}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ route('referral.index') }}">
+                      <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                      </svg>
+                      <span>{{ __('Parrainage') }}</span>
                     </a>
                   </li>
                   <li>

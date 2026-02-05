@@ -1,0 +1,51 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-homeswap" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow-homeswap">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <g filter="url(#glow-homeswap)">
+    <!-- Silhouette voyageuse -->
+    <circle cx="100" cy="68" r="24" fill="url(#grad-homeswap)" opacity="0.95"/>
+    
+    <!-- Corps décontracté -->
+    <ellipse cx="100" cy="120" rx="26" ry="38" fill="url(#grad-homeswap)" opacity="0.9"/>
+    
+    <!-- Maison stylisée à gauche -->
+    <path d="M52 110 L52 95 L65 85 L78 95 L78 110 L65 120 Z" fill="white" opacity="0.65"/>
+    <rect x="60" y="100" width="8" height="8" fill="url(#grad-homeswap)" opacity="0.4"/>
+    <circle cx="64" cy="104" r="1" fill="white" opacity="0.9"/>
+    
+    <!-- Valise élégante à droite -->
+    <rect x="130" y="110" width="22" height="16" rx="2.5" fill="white" opacity="0.85"/>
+    <rect x="134" y="115" width="14" height="6" rx="1" fill="url(#grad-homeswap)" opacity="0.5"/>
+    <line x1="141" y1="110" x2="141" y2="126" stroke="url(#grad-homeswap)" stroke-width="2" opacity="0.6"/>
+    <circle cx="144" cy="120" r="1.5" fill="white" opacity="0.9"/>
+    
+    <!-- Bras gauche pointant -->
+    <circle cx="70" cy="110" r="6" fill="url(#grad-homeswap)"/>
+    <line x1="70" y1="110" x2="60" y2="105" stroke="url(#grad-homeswap)" stroke-width="5" stroke-linecap="round"/>
+    
+    <!-- Bras droit tenant la valise -->
+    <circle cx="130" cy="110" r="6" fill="url(#grad-homeswap)"/>
+    <line x1="130" y1="110" x2="137" y2="115" stroke="url(#grad-homeswap)" stroke-width="5" stroke-linecap="round"/>
+    
+    <!-- Flèches d'échange élégantes -->
+    <path d="M82 90 L92 90 M87 85 L92 90 L87 95" stroke="url(#grad-homeswap)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+    <path d="M108 90 L118 90 M113 85 L118 90 L113 95" stroke="url(#grad-homeswap)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+    
+    <!-- Visage aventureux -->
+    <circle cx="92" cy="68" r="3" fill="white"/>
+    <circle cx="108" cy="68" r="3" fill="white"/>
+    <path d="M90 76 Q100 82 110 76" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9"/>
+  </g>
+</svg>

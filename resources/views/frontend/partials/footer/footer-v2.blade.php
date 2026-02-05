@@ -24,12 +24,23 @@
           <div class="footer-widget">
             <h5>{{ __('Useful Links') }}</h5>
             @if (count($quickLinkInfos) == 0)
-              <h6 class="text-light">{{ __('No Link Found') . '!' }}</h6>
+              <ul class="footer-links">
+                <li><a href="{{ route('dynamic_page', ['slug' => 'cgu']) }}">{{ __('CGU') }}</a></li>
+                <li><a href="{{ route('dynamic_page', ['slug' => 'mentions-legales']) }}">{{ __('Mentions légales') }}</a></li>
+                <li><a href="{{ route('dynamic_page', ['slug' => 'termes-et-conditions']) }}">{{ __('Termes et conditions') }}</a></li>
+                <li><a href="{{ route('dynamic_page', ['slug' => 'politique-de-confidentialite']) }}">{{ __('Politique de confidentialité') }}</a></li>
+                <li><a href="{{ route('dynamic_page', ['slug' => 'conditions-generales-de-vente']) }}">{{ __('Conditions générales de vente') }}</a></li>
+              </ul>
             @else
               <ul class="footer-links">
                 @foreach ($quickLinkInfos as $quickLinkInfo)
                   <li>
-                    <a href="{{ $quickLinkInfo->url }}" target="_blank">{{ $quickLinkInfo->title }}</a>
+                    @php
+                      $url = $quickLinkInfo->url;
+                      $isInternal = strpos($url, '/') === 0 || strpos($url, url('/')) === 0;
+                      $target = $isInternal ? '' : 'target="_blank"';
+                    @endphp
+                    <a href="{{ $url }}" {{ $target }}>{{ $quickLinkInfo->title }}</a>
                   </li>
                 @endforeach
               </ul>

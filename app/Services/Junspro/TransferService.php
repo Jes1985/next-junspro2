@@ -80,6 +80,7 @@ class TransferService
                 'hours_remaining' => $transferRequest->hours_transferred,
                 'price_base' => $newFreelancer->hourly_rate * $oldSubscription->hours_per_week * 4,
                 'delivery_mode' => $oldSubscription->delivery_mode,
+                'format' => $oldSubscription->format ?? 'visio', // V2 Étape 1.1
                 'status' => 'active',
                 'stripe_subscription_id' => null, // À mettre à jour avec Stripe
                 'next_billing_at' => $oldSubscription->next_billing_at,

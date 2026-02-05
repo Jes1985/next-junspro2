@@ -11,7 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('service_categories')) {
+            return;
+        }
         Schema::table('service_categories', function (Blueprint $table) {
+            if (Schema::hasColumn('service_categories', 'is_premium')) {
+                return;
+            }
             $table->boolean('is_premium')->default(false)->after('is_featured');
         });
     }
@@ -21,8 +27,13 @@ return new class extends Migration
      */
     public function down(): void
     {
+        if (!Schema::hasTable('service_categories')) {
+            return;
+        }
         Schema::table('service_categories', function (Blueprint $table) {
-            $table->dropColumn('is_premium');
+            if (Schema::hasColumn('service_categories', 'is_premium')) {
+                $table->dropColumn('is_premium');
+            }
         });
     }
 };

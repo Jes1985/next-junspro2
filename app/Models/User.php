@@ -13,6 +13,7 @@ use App\Models\ChatMessage;
 use App\Models\AuditLog;
 use App\Models\NotificationLog;
 use App\Models\TicketConversation;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
@@ -86,6 +87,12 @@ class User extends Authenticatable
     'is_responsive' => 'boolean',
     'languages' => 'array',
     'availability' => 'array',
+    'auto_confirm_enabled' => 'boolean',
+    'email_sessions' => 'boolean',
+    'email_reports' => 'boolean',
+    'email_messages' => 'boolean',
+    'email_billing' => 'boolean',
+    'email_news' => 'boolean',
   ];
 
   public function productReview(): HasMany
@@ -218,6 +225,38 @@ class User extends Authenticatable
           'id',             // Clé locale sur users
           'id'              // Clé locale sur freelancer_profiles
       );
+  }
+
+  /**
+   * Parrainages où cet utilisateur est le parrain
+   */
+  public function referralsAsReferrer(): HasMany
+  {
+      return $this->hasMany(Referral::class, 'referrer_id');
+  }
+
+  /**
+   * Parrainage où cet utilisateur est le filleul
+   */
+  public function referralAsReferred(): HasMany
+  {
+      return $this->hasMany(Referral::class, 'referred_id');
+  }
+
+  /**
+   * Utilisateur qui a parrainé cet utilisateur
+   */
+  public function referrer(): BelongsTo
+  {
+      return $this->belongsTo(User::class, 'referred_by_user_id');
+  }
+
+  /**
+   * Utilisateurs parrainés par cet utilisateur
+   */
+  public function referredUsers(): HasMany
+  {
+      return $this->hasMany(User::class, 'referred_by_user_id');
   }
 
   /**

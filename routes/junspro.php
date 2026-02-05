@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Junspro\SubscriptionController;
 use App\Http\Controllers\Junspro\WorkSessionController;
 use App\Http\Controllers\Junspro\MatchDirectController;
+use App\Http\Controllers\Junspro\PaymentIntentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,12 @@ Route::prefix('junspro/v2')->middleware(['auth:sanctum'])->group(function () {
     // MatchDirect™
     Route::prefix('matchdirect')->group(function () {
         Route::post('/find', [MatchDirectController::class, 'find']);
+    });
+
+    // PaymentIntents Stripe Connect
+    Route::prefix('payment-intents')->group(function () {
+        Route::post('/', [PaymentIntentController::class, 'store']);
+        Route::get('/{payment_intent_id}', [PaymentIntentController::class, 'show']);
     });
 });
 

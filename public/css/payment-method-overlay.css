@@ -1,0 +1,209 @@
+/* Styles pour l'overlay Mode de paiement */
+
+/* Trigger */
+.jsp-payment-overlay-trigger-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.jsp-payment-overlay-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.jsp-payment-overlay-trigger:hover {
+  border-color: #d1d5db;
+}
+
+.jsp-payment-overlay-trigger[aria-expanded="true"] {
+  border-color: var(--junspro-purple, #7C3AED);
+}
+
+.jsp-payment-overlay-trigger-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  color: #1a202c;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.jsp-payment-overlay-trigger-content i {
+  font-size: 1.5rem;
+  color: #6b7280;
+}
+
+.jsp-payment-overlay-trigger-content .fa-cc-visa {
+  color: #1434CB;
+}
+
+.jsp-payment-overlay-trigger-content .fa-cc-mastercard {
+  color: #EB001B;
+}
+
+.jsp-payment-overlay-trigger-content .fa-cc-amex {
+  color: #006FCF;
+}
+
+.jsp-payment-overlay-trigger-content .fa-cc-discover {
+  color: #FF6000;
+}
+
+.jsp-payment-overlay-chevron {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  transition: transform 0.2s ease;
+}
+
+.jsp-payment-overlay-trigger[aria-expanded="true"] .jsp-payment-overlay-chevron {
+  transform: rotate(180deg);
+}
+
+/* Overlay menu (rendu dans body) */
+.jsp-payment-overlay-menu {
+  position: fixed;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999999;
+  overflow: hidden;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.jsp-payment-overlay-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: white;
+  border: none;
+  color: #374151;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.jsp-payment-overlay-item:last-child {
+  border-bottom: none;
+}
+
+.jsp-payment-overlay-item:hover {
+  background: #f9fafb;
+}
+
+.jsp-payment-overlay-item-active {
+  background: #f3f4f6;
+  color: var(--junspro-purple, #7C3AED);
+  font-weight: 500;
+}
+
+.jsp-payment-overlay-item-active i {
+  color: var(--junspro-purple, #7C3AED);
+}
+
+.jsp-payment-overlay-item i {
+  font-size: 1.25rem;
+  color: #6b7280;
+  width: 24px;
+  text-align: center;
+}
+
+.jsp-payment-overlay-item .fa-cc-visa {
+  color: #1434CB;
+}
+
+.jsp-payment-overlay-item .fa-cc-mastercard {
+  color: #EB001B;
+}
+
+.jsp-payment-overlay-item .fa-cc-amex {
+  color: #006FCF;
+}
+
+.jsp-payment-overlay-item .fa-cc-discover {
+  color: #FF6000;
+}
+
+.jsp-payment-overlay-item .fab.fa-paypal {
+  color: #003087;
+}
+
+.jsp-payment-overlay-item .fab.fa-cc-apple-pay {
+  color: #000;
+}
+
+.jsp-payment-overlay-item .fab.fa-google-pay {
+  color: #4285F4;
+}
+
+/* Fix scroll modale sur desktop */
+.jsp-renew-modal-container {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+@media (min-width: 768px) {
+  .jsp-renew-modal-container {
+    overflow-y: hidden;
+  }
+  
+  .jsp-renew-modal-content {
+    max-height: calc(90vh - 2rem);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+}
+
+/* Scrollbar personnalisée pour l'overlay si nécessaire */
+.jsp-payment-overlay-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.jsp-payment-overlay-menu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.jsp-payment-overlay-menu::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 8px;
+}
+
+.jsp-payment-overlay-menu::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

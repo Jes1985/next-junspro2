@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource;
+use App\Services\PricingService;
 
 class FreelancerProfile extends Resource
 {
@@ -38,6 +39,17 @@ class FreelancerProfile extends Resource
                 ->step(0.01)
                 ->help('Entre 3€ et 200€'),
 
+            Text::make('Prix client estimé (/h)', function () {
+                $pricing = app(PricingService::class);
+                return number_format($pricing->getClientHourlyRate((float)$this->hourly_rate), 2, ',', ' ') . ' €';
+            })->onlyOnDetail(),
+
+            Text::make('Net freelance estimé (/h)', function () {
+                $pricing = app(PricingService::class);
+                $dist = $pricing->computeDistribution((float)$this->hourly_rate, 0.20);
+                return number_format($dist['freelancer_net'], 2, ',', ' ') . ' € (palier 20%)';
+            })->onlyOnDetail(),
+
             Number::make('Score de fiabilité', 'reliability_score')
                 ->required()
                 ->min(0)
@@ -54,6 +66,11 @@ class FreelancerProfile extends Resource
 
             Textarea::make('Bio', 'bio')
                 ->nullable(),
+
+            Text::make('URL Miniature Vidéo', 'video_thumbnail_url')
+                ->nullable()
+                ->help('URL de la miniature vidéo de présentation (format 16:9 recommandé, ex: 1280×720px). Formats acceptés: JPG, PNG, WEBP.')
+                ->placeholder('https://example.com/video-thumbnail.jpg'),
 
             Text::make('Compétences', 'skills')
                 ->nullable()

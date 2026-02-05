@@ -24,6 +24,11 @@ class Authenticate extends Middleware
         return route('user.login');
       }
       if (Route::is('seller.*')) {
+        // Si secret_login est défini, rediriger vers le dashboard freelance au lieu de seller.login
+        // pour éviter les boucles de redirection
+        if (\Illuminate\Support\Facades\Session::get('secret_login') == 1) {
+          return route('freelance.dashboard', ['tab' => 'services']);
+        }
         return route('seller.login');
       }
     }

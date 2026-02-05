@@ -1,0 +1,63 @@
+/* ============================================
+   SUPPRESSION DÉFINITIVE DE LA BARRE DE CATÉGORIES
+   Fichier CSS chargé en dernier pour forcer la suppression
+   ============================================ */
+
+/* Suppression complète de la barre de catégories - TOUTES VARIANTES */
+.header-area .categories-menu,
+.categories-menu,
+.header-area .categories-menu-nav,
+.categories-menu-nav,
+.header-area .categories,
+ul.categories,
+.category-menu,
+.category-nav,
+.categories-menu-wrapper,
+.header-area .categories-menu-wrapper,
+nav.categories-menu-nav,
+.header-area nav.categories-menu-nav,
+.categories-menu-nav ul,
+.categories-menu ul,
+.header-area .categories-menu-nav ul,
+.header-area .categories-menu ul,
+.categories-menu-nav .categories,
+.categories-menu .categories,
+.header-area .categories-menu-nav .categories,
+.header-area .categories-menu .categories,
+.categories-menu-nav .sub-menu-item,
+.categories-menu .sub-menu-item,
+.header-area .categories-menu-nav .sub-menu-item,
+.header-area .categories-menu .sub-menu-item,
+.categories-menu-nav .sub-menu,
+.categories-menu .sub-menu,
+.header-area .categories-menu-nav .sub-menu,
+.header-area .categories-menu .sub-menu {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  max-width: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Suppression sur toutes les pages */
+body .header-area .categories-menu,
+body .categories-menu,
+body .header-area .categories-menu-nav,
+body .categories-menu-nav {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+

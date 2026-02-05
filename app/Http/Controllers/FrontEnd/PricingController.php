@@ -113,18 +113,18 @@ class PricingController extends Controller
             ],
             [
                 'icon' => 'fas fa-clock',
-                'title' => 'Abonnements flexibles',
-                'description' => 'De 1 à 24h par semaine, adaptez selon vos besoins',
+                'title' => 'Séance d\'essai de 1h',
+                'description' => 'Testez un freelance sur 1 heure avant de vous engager davantage. Vous voyez sa façon de travailler, sa pédagogie et la qualité du rapport final.',
             ],
             [
                 'icon' => 'fas fa-file-alt',
                 'title' => 'Rapport après chaque heure',
-                'description' => '50 min de travail + 10 min de rapport détaillé',
+                'description' => '50 minutes de travail concentré + 10 minutes de rapport pédagogique : ce qui a été fait, pourquoi, et les prochaines étapes pour votre projet.',
             ],
             [
                 'icon' => 'fas fa-sync-alt',
-                'title' => 'Changement de freelance',
-                'description' => 'Possibilité de changer si besoin',
+                'title' => 'Abonnement flexible',
+                'description' => 'Transférez vos heures ou votre abonnement à un autre freelance, mettez-le en pause jusqu\'à 20 jours, ou résiliez quand vous le souhaitez. Vous gardez le contrôle sur votre budget et votre organisation.',
             ],
             [
                 'icon' => 'fas fa-pause',

@@ -47,19 +47,26 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $languages = Language::all();
+        try {
+            $languages = Language::all();
 
-        $languages->map(function ($language) {
-            $language['forms'] = $language->form()->where('seller_id', Auth::guard('seller')->user()->id)->orderByDesc('id')->get();
+            $languages->map(function ($language) {
+                $language['forms'] = $language->form()->where('seller_id', Auth::guard('seller')->user()->id)->orderByDesc('id')->get();
 
-            $language['categories'] = $language->serviceCategory()->where('status', 1)->orderByDesc('id')->get();
-        });
+                $language['categories'] = $language->serviceCategory()->where('status', 1)->orderByDesc('id')->get();
+            });
 
-        $information['languages'] = $languages;
+            $information['languages'] = $languages;
 
-        $information['currencyInfo'] = $this->getCurrencyInfo();
+            $information['currencyInfo'] = $this->getCurrencyInfo();
 
-        return view('seller.service.create', $information);
+            return view('seller.service.create', $information);
+        } catch (\Exception $e) {
+            // Si erreur de base de données, rediriger vers le dashboard avec un message d'erreur
+            \Log::error('ServiceController@create: Database error - ' . $e->getMessage());
+            return redirect()->route('seller.dashboard')
+                ->with('error', __('Erreur de connexion à la base de données. Veuillez démarrer MySQL et réessayer.'));
+        }
     }
 
     /**

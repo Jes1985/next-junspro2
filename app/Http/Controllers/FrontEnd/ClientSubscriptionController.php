@@ -21,11 +21,10 @@ class ClientSubscriptionController extends Controller
     }
 
     /**
-     * Dashboard client : liste des abonnements
+     * Dashboard client : Page "Projets & heures"
      */
     public function index()
     {
-        $misc = new MiscellaneousController();
         $user = Auth::guard('web')->user();
         
         $clientProfile = $user->clientProfile;
@@ -34,14 +33,133 @@ class ClientSubscriptionController extends Controller
                 ->with('error', 'Vous devez avoir un profil client pour accéder à cette page.');
         }
 
-        $subscriptions = Subscription::where('client_id', $clientProfile->id)
-            ->with(['freelancer.user', 'workSessions'])
+        // Projets actifs (abonnements active ou paused)
+        $activeSubscriptions = Subscription::where('client_id', $clientProfile->id)
+            ->whereIn('status', ['active', 'paused'])
+            ->with(['freelancer.user'])
             ->orderByDesc('created_at')
-            ->paginate(10);
+            ->get();
+
+        // Calculer les statistiques pour chaque abonnement actif
+        $activeSubscriptions->each(function($subscription) {
+            $completedSessions = $subscription->workSessions->where('status', 'completed');
+            
+            // Heures consommées
+            $usedHours = $completedSessions->sum(function($session) {
+                return ($session->duration_minutes ?? 60) / 60;
+            });
+            
+            // Total heures (incluant les heures de base du mois)
+            $totalHours = $subscription->hours_total_month ?? 0;
+            
+            // Heures restantes
+            if ($subscription->hours_remaining !== null) {
+                $calculatedRemaining = max(0, $subscription->hours_remaining);
+            } else {
+                $calculatedRemaining = max(0, $totalHours - $usedHours);
+            }
+            
+            $subscription->calculated_used_hours = $usedHours;
+            $subscription->calculated_total_hours = $totalHours;
+            $subscription->calculated_hours_remaining = $calculatedRemaining;
+            
+            // Pourcentage de progression
+            $subscription->calculated_progress_percent = $totalHours > 0 
+                ? min(100, ($usedHours / $totalHours) * 100)
+                : 0;
+            
+            // Prochaine session (à venir, non annulée)
+            $subscription->next_session = WorkSession::where('subscription_id', $subscription->id)
+                ->where('start_at', '>', now())
+                ->where('status', '!=', 'cancelled')
+                ->orderBy('start_at', 'asc')
+                ->first();
+            
+            // Dernier rapport (dernière session complétée avec rapport)
+            $subscription->last_report = WorkSession::where('subscription_id', $subscription->id)
+                ->where('status', 'completed')
+                ->whereNotNull('report_text')
+                ->orderBy('end_at', 'desc')
+                ->first();
+        });
+
+        // Projets terminés (abonnements cancelled ou ended)
+        $archivedSubscriptions = Subscription::where('client_id', $clientProfile->id)
+            ->whereIn('status', ['cancelled', 'completed', 'ended'])
+            ->with(['freelancer.user', 'workSessions' => function($query) {
+                $query->where('status', 'completed');
+            }])
+            ->orderByDesc('updated_at')
+            ->limit(20)
+            ->get();
+
+        // Calculer les heures totales pour les projets terminés
+        $archivedSubscriptions->each(function($subscription) {
+            $totalHours = $subscription->workSessions->sum(function($session) {
+                return ($session->duration_minutes ?? 60) / 60;
+            });
+            $subscription->total_hours_worked = $totalHours;
+        });
+
+        // Statistiques globales (bandeau synthèse)
+        // Calculer la prochaine session globale (la plus proche)
+        $allNextSessions = [];
+        foreach ($activeSubscriptions as $sub) {
+            $nextSession = WorkSession::where('subscription_id', $sub->id)
+                ->where('start_at', '>', now())
+                ->where('status', '!=', 'cancelled')
+                ->orderBy('start_at', 'asc')
+                ->first();
+            
+            if ($nextSession) {
+                $allNextSessions[] = [
+                    'session' => $nextSession,
+                    'subscription' => $sub,
+                    'freelancer' => $sub->freelancer->user ?? null,
+                ];
+            }
+        }
+        
+        // Trier par date et prendre la plus proche
+        usort($allNextSessions, function($a, $b) {
+            return $a['session']->start_at <=> $b['session']->start_at;
+        });
+        
+        $stats = [
+            'active_projects_count' => $activeSubscriptions->count(),
+            'total_hours_remaining_this_week' => $activeSubscriptions->sum('calculated_hours_remaining'),
+            'next_session' => !empty($allNextSessions) ? $allNextSessions[0] : null,
+        ];
+
+        // Heures consommées ce mois-ci (toutes subscriptions confondues)
+        $currentMonthStart = now()->startOfMonth();
+        $currentMonthSessions = WorkSession::whereHas('subscription', function($query) use ($clientProfile) {
+                $query->where('client_id', $clientProfile->id);
+            })
+            ->where('status', 'completed')
+            ->where('end_at', '>=', $currentMonthStart)
+            ->get();
+        
+        $stats['hours_consumed_this_month'] = $currentMonthSessions->sum(function($session) {
+            return ($session->duration_minutes ?? 60) / 60;
+        });
+
+        // Heures prévues sur les 7 prochains jours
+        $nextWeekEnd = now()->addDays(7);
+        $nextWeekSessions = WorkSession::whereHas('subscription', function($query) use ($clientProfile) {
+                $query->where('client_id', $clientProfile->id);
+            })
+            ->where('start_at', '>', now())
+            ->where('start_at', '<=', $nextWeekEnd)
+            ->where('status', '!=', 'cancelled')
+            ->get();
+        
+        $stats['hours_planned_next_7_days'] = $nextWeekSessions->count(); // Nombre de sessions prévues
 
         return view('frontend.client.subscriptions.index', [
-            'breadcrumb' => $misc->getBreadcrumb(),
-            'subscriptions' => $subscriptions,
+            'activeSubscriptions' => $activeSubscriptions,
+            'archivedSubscriptions' => $archivedSubscriptions,
+            'stats' => $stats,
         ]);
     }
 

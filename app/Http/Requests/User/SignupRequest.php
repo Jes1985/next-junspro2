@@ -25,14 +25,20 @@ class SignupRequest extends FormRequest
   public function rules()
   {
     $recaptchaStatus = Basic::query()->pluck('google_recaptcha_status')->first();
+    $role = $this->input('role', 'client');
 
-    return [
+    $rules = [
       'username' => 'required|unique:users|max:255',
       'email_address' => 'required|email:rfc,dns|unique:users|max:255',
       'password' => 'required|confirmed',
       'password_confirmation' => 'required',
       'g-recaptcha-response' => ($recaptchaStatus == 1) ? 'required|captcha' : ''
     ];
+
+    // Pas de règles supplémentaires pour les freelances lors de l'inscription
+    // Les champs supplémentaires seront collectés dans l'onboarding étape 1
+
+    return $rules;
   }
 
   /**
@@ -43,11 +49,16 @@ class SignupRequest extends FormRequest
   public function messages()
   {
     $recaptchaStatus = Basic::query()->pluck('google_recaptcha_status')->first();
+    $role = $this->input('role', 'client');
 
-    return [
+    $messages = [
       'password_confirmation.required' => 'The confirm password field is required.',
       'g-recaptcha-response.required' => ($recaptchaStatus == 1) ? 'Please verify that you are not a robot.' : '',
       'g-recaptcha-response.captcha' => ($recaptchaStatus == 1) ? 'Captcha error! try again later or contact site admin.' : ''
     ];
+
+    // Pas de messages supplémentaires pour les freelances lors de l'inscription
+
+    return $messages;
   }
 }

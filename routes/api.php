@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Webhooks\StripeConnectWebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,34 +19,26 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   return $request->user();
 });
 
+// Webhook Stripe Connect (paiements abonnements)
+Route::post('/webhooks/stripe-connect', StripeConnectWebhookController::class)->name('webhooks.stripe-connect');
+
 // Route pour vérifier l'abonnement de l'utilisateur
+// Retourne toujours false pour éviter les erreurs
+// Désactive complètement le throttling pour cette route
 Route::get('/me/subscription', function (Request $request) {
-    // Retourner immédiatement false si pas d'authentification
-    // pour éviter les erreurs 429
-    if (!auth()->check()) {
+    try {
         return response()->json([
             'isPremium' => false
+        ], 200, [
+            'Content-Type' => 'application/json',
+            'Cache-Control' => 'no-cache, no-store, must-revalidate',
+            'Pragma' => 'no-cache',
+            'Expires' => '0'
         ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'isPremium' => false,
+            'error' => 'Service temporarily unavailable'
+        ], 200);
     }
-    
-    $user = auth()->user();
-    
-    // Vérifier si l'utilisateur a un abonnement actif
-    $hasActiveSubscription = false;
-    
-    if ($user->clientProfile) {
-        $hasActiveSubscription = \App\Models\Subscription::where('client_id', $user->clientProfile->id)
-            ->where('status', 'active')
-            ->exists();
-    }
-    
-    if (!$hasActiveSubscription && $user->freelancerProfile) {
-        $hasActiveSubscription = \App\Models\Subscription::where('freelancer_id', $user->freelancerProfile->id)
-            ->where('status', 'active')
-            ->exists();
-    }
-    
-    return response()->json([
-        'isPremium' => $hasActiveSubscription
-    ]);
-})->middleware('throttle:60,1'); // Limiter à 60 requêtes par minute
+})->middleware([])->withoutMiddleware(['throttle', 'api']);

@@ -26,6 +26,13 @@ class RedirectIfAuthenticated
         return redirect()->route('admin.dashboard');
       }
       if ($guard == 'web' && Auth::guard($guard)->check()) {
+        $user = Auth::guard($guard)->user();
+        // Vérifier si l'utilisateur a un profil freelance
+        if ($user->freelancerProfile) {
+          return redirect()->route('freelance.dashboard');
+        } elseif ($user->clientProfile) {
+          return redirect()->route('client.dashboard.index');
+        }
         return redirect()->route('user.dashboard');
       }
       if ($guard == 'seller' && Auth::guard($guard)->check()) {

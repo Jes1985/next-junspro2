@@ -14,6 +14,7 @@ class ChatMessage extends Model
         'sender_id',
         'receiver_id',
         'subscription_id',
+        'lead_conversation_id',
         'message',
         'is_read',
     ];
@@ -35,6 +36,14 @@ class ChatMessage extends Model
     public function subscription(): BelongsTo
     {
         return $this->belongsTo(Subscription::class);
+    }
+
+    /**
+     * Conversation lead (pré-booking), si le message appartient à une lead et non à une subscription.
+     */
+    public function leadConversation(): BelongsTo
+    {
+        return $this->belongsTo(LeadConversation::class, 'lead_conversation_id');
     }
 }
 

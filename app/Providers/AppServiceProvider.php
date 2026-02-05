@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,7 +24,12 @@ class AppServiceProvider extends ServiceProvider
    */
   public function register()
   {
-    //
+    // Fix pour Laravel 12 : créer une requête HTTP simulée pour les commandes artisan
+    if (app()->runningInConsole() && !app()->bound('request')) {
+      $url = config('app.url', 'http://localhost:8000');
+      $request = Request::create($url, 'GET');
+      app()->instance('request', $request);
+    }
   }
 
   /**
@@ -37,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
 
     if (!app()->runningInConsole()) {
       try {
-        $data = DB::table('basic_settings')->select('favicon', 'website_title', 'logo', 'base_currency_text', 'base_currency_text_position')->first();
+        $data = DB::table('basic_settings')->select('favicon', 'website_title', 'logo', 'updated_at', 'base_currency_text', 'base_currency_text_position')->first();
       } catch (\Exception $e) {
         $data = null;
       }

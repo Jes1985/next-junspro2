@@ -88,3 +88,65 @@
   </div>
   <!--====== End Signup Area Section ======-->
 @endsection
+
+@section('script')
+<script>
+  (function() {
+    'use strict';
+    
+    const storageKey = 'signup_form_data';
+    const form = document.querySelector('form[action="{{ route('user.signup_submit') }}"]');
+    
+    if (!form) return;
+    
+    // Restaurer les valeurs sauvegardées
+    const savedData = localStorage.getItem(storageKey);
+    if (savedData) {
+      try {
+        const data = JSON.parse(savedData);
+        const usernameInput = form.querySelector('[name="username"]');
+        const emailInput = form.querySelector('[name="email_address"]');
+        
+        if (usernameInput && data.username && !usernameInput.value) {
+          usernameInput.value = data.username;
+        }
+        if (emailInput && data.email_address && !emailInput.value) {
+          emailInput.value = data.email_address;
+        }
+      } catch (e) {
+        console.error('Erreur lors de la restauration des données:', e);
+      }
+    }
+    
+    // Sauvegarder les valeurs lors de la saisie
+    const inputsToSave = ['username', 'email_address'];
+    inputsToSave.forEach(fieldName => {
+      const input = form.querySelector(`[name="${fieldName}"]`);
+      if (input) {
+        input.addEventListener('input', function() {
+          const currentData = JSON.parse(localStorage.getItem(storageKey) || '{}');
+          currentData[fieldName] = this.value;
+          localStorage.setItem(storageKey, JSON.stringify(currentData));
+        });
+        
+        input.addEventListener('blur', function() {
+          const currentData = JSON.parse(localStorage.getItem(storageKey) || '{}');
+          currentData[fieldName] = this.value;
+          localStorage.setItem(storageKey, JSON.stringify(currentData));
+        });
+      }
+    });
+    
+    // Nettoyer localStorage après soumission réussie
+    form.addEventListener('submit', function() {
+      // Le localStorage sera nettoyé côté serveur si succès
+      // Sinon les valeurs restent pour restauration en cas d'erreur
+    });
+    
+    // Nettoyer localStorage si on arrive sur une page de succès (onboarding step1)
+    if (window.location.pathname.includes('/freelance/onboarding/step-1')) {
+      localStorage.removeItem(storageKey);
+    }
+  })();
+</script>
+@endsection

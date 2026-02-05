@@ -1,0 +1,38 @@
+/* Fix global transparence - Force background opaque sur html/body */
+/* Ce fichier est chargé en dernier pour avoir priorité sur tous les autres styles */
+
+html {
+  background: #ffffff !important;
+  min-height: 100% !important;
+}
+
+body {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  min-height: 100% !important;
+}
+
+.main-wrapper {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* S'assurer que #preLoader n'est pas visible par défaut */
+#preLoader {
+  display: none !important;
+}
+
+#preLoader:not(.active) {
+  display: none !important;
+}
+
+/* S'assurer que .request-loader n'est pas visible par défaut */
+.request-loader {
+  display: none !important;
+}
+
+.request-loader:not(.show) {
+  display: none !important;
+}

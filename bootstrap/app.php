@@ -17,6 +17,22 @@ $app = new Illuminate\Foundation\Application(
 
 /*
 |--------------------------------------------------------------------------
+| Fix pour Laravel 12 : Créer une requête HTTP simulée pour les commandes artisan
+|--------------------------------------------------------------------------
+|
+| Ce fix résout le problème où RoutingServiceProvider essaie de créer
+| UrlGenerator avec un Request null lors de l'exécution de commandes artisan.
+|
+*/
+
+if (php_sapi_name() === 'cli' && !$app->bound('request')) {
+  $url = $_ENV['APP_URL'] ?? 'http://localhost:8000';
+  $request = Illuminate\Http\Request::create($url, 'GET');
+  $app->instance('request', $request);
+}
+
+/*
+|--------------------------------------------------------------------------
 | Bind Important Interfaces
 |--------------------------------------------------------------------------
 |

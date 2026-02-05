@@ -24,21 +24,23 @@
       @endif
     </div>
 
-    {{-- Sélecteur de rôle --}}
+    {{-- Sélecteur de rôle (Style Preply) --}}
     <div class="auth-role-selector">
       <button 
         class="auth-role-btn {{ $role === 'client' ? 'active' : '' }}" 
         onclick="switchRole('client')"
         data-role="client"
+        type="button"
       >
-        Client
+        Je suis un client
       </button>
       <button 
         class="auth-role-btn {{ $role === 'freelance' ? 'active' : '' }}" 
         onclick="switchRole('freelance')"
         data-role="freelance"
+        type="button"
       >
-        Freelance
+        Je suis un freelance
       </button>
     </div>
 
@@ -48,7 +50,11 @@
         @if($mode === 'login')
           Connexion
         @else
-          Créer un compte
+          @if($role === 'freelance')
+            Commencez votre parcours freelance
+          @else
+            Créer un compte
+          @endif
         @endif
       </h1>
       <p class="auth-subtitle">
@@ -62,7 +68,7 @@
           @if($mode === 'login')
             Gérez vos missions et vos revenus en toute simplicité.
           @else
-            Rejoignez notre communauté de freelances et développez votre activité.
+            Créez votre compte et suivez les étapes pour devenir freelance sur Junspro.
           @endif
         @endif
       </p>
@@ -268,7 +274,13 @@
         </div>
 
         <button type="submit" class="auth-submit-btn" id="authSubmitBtn">
-          <span class="auth-submit-text">Créer mon compte</span>
+          <span class="auth-submit-text">
+            @if($role === 'freelance')
+              Continuer
+            @else
+              Créer mon compte
+            @endif
+          </span>
           <span class="auth-submit-loader" style="display: none;">
             <svg class="auth-spinner" width="20" height="20" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"/>
@@ -305,8 +317,19 @@
 
 <script>
   function switchRole(newRole) {
+    // Mettre à jour l'URL avec le nouveau rôle
     const currentUrl = new URL(window.location.href);
     currentUrl.searchParams.set('role', newRole);
+    
+    // Mettre à jour le champ caché role dans le formulaire avant de recharger
+    const registerForm = document.getElementById('authRegisterForm');
+    if (registerForm) {
+      const roleInput = registerForm.querySelector('input[name="role"]');
+      if (roleInput) {
+        roleInput.value = newRole;
+      }
+    }
+    
     window.location.href = currentUrl.toString();
   }
 
@@ -326,8 +349,81 @@
         if (text) text.style.display = 'none';
         if (loader) loader.style.display = 'inline-block';
         btn.disabled = true;
+        
+        // Nettoyer localStorage après soumission réussie
+        // (sera nettoyé côté serveur si succès, sinon les valeurs restent pour restauration)
+        
+        // Nettoyer localStorage après un délai (si succès, la page sera rechargée)
+        setTimeout(function() {
+          // Si on est toujours sur la même page après 2 secondes, c'est qu'il y a eu une erreur
+          // Sinon, la redirection aura eu lieu et localStorage sera nettoyé au prochain chargement
+        }, 2000);
       });
+      
+      // Nettoyer localStorage si on arrive sur une page de succès (onboarding step1)
+      if (window.location.pathname.includes('/freelance/onboarding/step-1')) {
+        // Nettoyer toutes les clés de localStorage liées à l'inscription
+        Object.keys(localStorage).forEach(key => {
+          if (key.startsWith('signup_form_data')) {
+            localStorage.removeItem(key);
+          }
+        });
+      }
     });
+
+    // Mettre à jour le champ caché role si le formulaire existe
+    const registerForm = document.getElementById('authRegisterForm');
+    if (registerForm) {
+      const roleInput = registerForm.querySelector('input[name="role"]');
+      const urlParams = new URLSearchParams(window.location.search);
+      const roleFromUrl = urlParams.get('role') || 'client';
+      
+      if (roleInput) {
+        roleInput.value = roleFromUrl;
+      }
+      
+      // Sauvegarder les champs dans localStorage
+      const storageKey = 'signup_form_data_' + roleFromUrl;
+      
+      // Restaurer les valeurs sauvegardées
+      const savedData = localStorage.getItem(storageKey);
+      if (savedData) {
+        try {
+          const data = JSON.parse(savedData);
+          const usernameInput = registerForm.querySelector('#username');
+          const emailInput = registerForm.querySelector('#email_register');
+          
+          if (usernameInput && data.username && !usernameInput.value) {
+            usernameInput.value = data.username;
+          }
+          if (emailInput && data.email_address && !emailInput.value) {
+            emailInput.value = data.email_address;
+          }
+        } catch (e) {
+          console.error('Erreur lors de la restauration des données:', e);
+        }
+      }
+      
+      // Sauvegarder les valeurs lors de la saisie
+      const inputsToSave = ['username', 'email_address'];
+      inputsToSave.forEach(fieldName => {
+        const input = registerForm.querySelector(`[name="${fieldName}"]`);
+        if (input) {
+          input.addEventListener('input', function() {
+            const currentData = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            currentData[fieldName] = this.value;
+            localStorage.setItem(storageKey, JSON.stringify(currentData));
+          });
+          
+          input.addEventListener('blur', function() {
+            const currentData = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            currentData[fieldName] = this.value;
+            localStorage.setItem(storageKey, JSON.stringify(currentData));
+          });
+        }
+      });
+    }
   });
+
 </script>
 

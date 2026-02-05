@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="{{ asset('assets/img/' . ($websiteInfo->favicon ?? 'favicon.png')) }}" type="image/x-icon">
   
   {{-- CSS Auth Moderne --}}
-  <link rel="stylesheet" href="{{ asset('assets/front/css/auth-modern.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/front/css/auth-modern.css') }}?v={{ time() }}">
   <style>
     html, body {
       margin: 0;
@@ -17,11 +17,55 @@
       height: 100%;
       overflow-x: hidden;
     }
+    /* Force l'affichage du sélecteur de rôle */
+    .auth-role-selector {
+      display: flex !important;
+      gap: 0 !important;
+      margin-bottom: 32px !important;
+      background: #FFFFFF !important;
+      padding: 0 !important;
+      border-radius: 12px !important;
+      border: 2px solid #E5E7EB !important;
+      overflow: hidden !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    }
+    .auth-role-btn {
+      flex: 1 !important;
+      padding: 14px 20px !important;
+      border: none !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      color: #4B5563 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      position: relative !important;
+      border-right: 1px solid #E5E7EB !important;
+    }
+    .auth-role-btn:last-child {
+      border-right: none !important;
+    }
+    .auth-role-btn:hover {
+      color: #111827 !important;
+      background: #F9FAFB !important;
+    }
+    .auth-role-btn.active {
+      background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%) !important;
+      color: #FFFFFF !important;
+      box-shadow: none !important;
+    }
+    .auth-role-btn.active:hover {
+      background: linear-gradient(135deg, #4338CA 0%, #6D28D9 100%) !important;
+      color: #FFFFFF !important;
+    }
   </style>
 </head>
 <body style="margin: 0; padding: 0;">
   @php
     $role = request()->get('role', 'client'); // 'client' ou 'freelance'
+    // Debug: vérifier que le rôle est bien récupéré
+    // dd($role); // Décommenter pour debug si nécessaire
   @endphp
 
   @include('frontend.auth.auth-modal', [

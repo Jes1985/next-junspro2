@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
+// IMPORTANT: Route freelance/services/create DOIT être en PREMIER pour éviter tout conflit
+// Services Freelance - Création de service
+Route::get('/freelance/services/create', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceServiceController::class, 'create'])
+    ->middleware(['web', 'auth:web', 'change.lang'])
+    ->name('freelance.services.create');
+
+Route::post('/freelance/services/store', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceServiceController::class, 'store'])
+    ->middleware(['web', 'auth:web', 'change.lang'])
+    ->name('freelance.services.store');
+
 Route::get('invoice', function () {
   return view('frontend.service.invoice');
 });
@@ -37,6 +47,7 @@ Route::prefix('/mission')->middleware('change.lang')->group(function () {
   Route::get('/succes/{id}', 'FrontEnd\ClientMissionController@success')->name('mission.success');
   Route::get('/stripe/success', 'FrontEnd\ClientMissionController@stripeSuccess')->name('mission.stripe.success');
   Route::get('/stripe/cancel', 'FrontEnd\ClientMissionController@stripeCancel')->name('mission.stripe.cancel');
+  Route::post('/homeswap/checkout', 'FrontEnd\ClientMissionController@homeSwapCheckout')->name('mission.homeswap.checkout')->middleware('auth:web');
 });
 
 // Webhook Stripe (sans middleware CSRF et change.lang pour éviter les problèmes)
@@ -49,23 +60,127 @@ Route::post('/junspro/stripe/webhook', 'FrontEnd\JunsproStripeWebhookController@
     ->name('junspro.stripe.webhook')
     ->withoutMiddleware(['web']);
 
+// Route pour le formulaire de contact de l'assistant IA
+Route::post('/assistant/contact', 'FrontEnd\AssistantContactController@store')
+    ->name('assistant.contact');
+
 // Callback Calendly (sans middleware CSRF)
 Route::post('/mission/calendly/callback', 'FrontEnd\ClientMissionController@calendlyCallback')
     ->name('mission.calendly.callback')
     ->withoutMiddleware(['web']);
 
+// Route de test
+Route::get('/__ping', fn() => 'ok');
+
+// Route de test pour vérifier que le contrôleur fonctionne
+Route::get('/freelance/services/test', function() {
+    return response()->json([
+        'status' => 'ok',
+        'message' => 'Route de test fonctionne',
+        'controller_exists' => class_exists(\App\Http\Controllers\FrontEnd\Freelance\FreelanceServiceController::class),
+        'method_exists' => method_exists(\App\Http\Controllers\FrontEnd\Freelance\FreelanceServiceController::class, 'create')
+    ]);
+})->name('freelance.services.test');
+
+// Route de test pour appeler réellement la méthode create() et voir l'erreur
+Route::get('/freelance/services/test-create', function() {
+    try {
+        $controller = new \App\Http\Controllers\FrontEnd\Freelance\FreelanceServiceController();
+        return $controller->create(request());
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => true,
+            'message' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => explode("\n", substr($e->getTraceAsString(), 0, 2000))
+        ], 500);
+    }
+})->middleware(['web', 'auth:web', 'change.lang'])->name('freelance.services.test-create');
+
 Route::middleware('change.lang')->group(function () {
-  Route::get('/', 'FrontEnd\HomeController@index')->name('index');
+  Route::get('/', 'FrontEnd\HomeController@cover')->name('index');
+  Route::get('/home', 'FrontEnd\HomeController@index')->name('home');
   Route::get('/pricing', [\App\Http\Controllers\FrontEnd\PricingController::class, 'index'])->name('pricing');
 Route::post('/pricing/subscribe', [\App\Http\Controllers\FrontEnd\PricingController::class, 'subscribe'])->name('pricing.subscribe')->middleware('auth:web');
-  Route::get('/explore', [\App\Http\Controllers\FrontEnd\ExploreController::class, 'index'])->name('explore');
+  Route::get('/explore', function() {
+    return redirect()->route('services');
+  })->name('explore');
   Route::get('/freelances', function() {
-    return redirect()->route('explore');
+    return redirect()->route('services');
   })->name('freelances');
-  Route::get('/freelance/{id}', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'show'])->name('freelance.show');
+  
+  // Route pour déposer un projet (alias vers mission.form pour cohérence)
+  Route::get('/deposer-projet', function() {
+    return redirect()->route('mission.form');
+  })->name('deposer-projet');
+  
+  // Dashboard Freelance One-Page Premium (DOIT être AVANT /freelance/{id} pour éviter le conflit)
+  Route::get('/freelance/dashboard', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceDashboardController::class, 'index'])->name('freelance.dashboard')->middleware('auth:web');
+  
+  // Settings Freelance (séparé des settings client)
+  Route::middleware(['auth:web'])->prefix('/freelance/settings')->name('freelance.settings.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'index'])->name('index');
+    Route::get('/identity', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'identity'])->name('identity');
+    Route::get('/security', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'security'])->name('security');
+    Route::get('/email', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'email'])->name('email');
+    Route::get('/payouts', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'payouts'])->name('payouts');
+    Route::get('/notifications', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'notifications'])->name('notifications');
+    Route::get('/video', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'video'])->name('video');
+    Route::post('/video', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'updateVideo'])->name('video.update');
+    Route::get('/integrations', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'integrations'])->name('integrations');
+    Route::get('/close', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'close'])->name('close');
+  });
+  
+  Route::get('/freelance/{id}', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'show'])->where('id', '[0-9]+')->name('freelance.show');
+  Route::get('/devenir-freelance', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'start'])->name('freelance.onboarding.start');
+  
+  // Routes onboarding freelance (protégées par auth)
+  Route::middleware(['auth:web'])->prefix('/freelance/onboarding')->name('freelance.onboarding.')->group(function () {
+    Route::get('/step-1', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step1'])->name('step1');
+    Route::post('/step-1', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step1Store'])->name('step1.store')->withoutMiddleware('change.lang');
+    Route::get('/step-2', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step2'])->name('step2');
+    Route::post('/step-2', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step2Store'])->name('step2.store')->withoutMiddleware('change.lang');
+    Route::get('/step-3', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step3'])->name('step3');
+    Route::post('/step-3', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step3Store'])->name('step3.store')->withoutMiddleware('change.lang');
+    Route::get('/step-4', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step4'])->name('step4');
+    Route::post('/step-4', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step4Store'])->name('step4.store')->withoutMiddleware('change.lang');
+    Route::get('/step-5', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step5'])->name('step5');
+    Route::post('/step-5', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step5Store'])->name('step5.store')->withoutMiddleware('change.lang');
+    Route::get('/step-6', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step6'])->name('step6');
+    Route::post('/step-6', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step6Store'])->name('step6.store')->withoutMiddleware('change.lang');
+    Route::get('/step-7', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step7'])->name('step7');
+    Route::post('/step-7', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step7Store'])->name('step7.store')->withoutMiddleware('change.lang');
+    Route::get('/step-8', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step8'])->name('step8');
+    Route::post('/step-8', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'step8Store'])->name('step8.store')->withoutMiddleware('change.lang');
+    Route::get('/complete', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'complete'])->name('complete');
+    Route::post('/update-email', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'updateEmail'])->name('update_email');
+  });
+  Route::get('/freelance/{id}/booking', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'booking'])->name('freelance.booking')->middleware('auth:web');
+  Route::post('/freelance/{id}/book-slots', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'bookSlots'])->name('freelance.book-slots')->middleware('auth:web');
   Route::post('/freelance/{id}/trial', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'startTrial'])->name('freelance.trial')->middleware('auth:web');
   Route::post('/freelance/{id}/subscribe', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'subscribe'])->name('freelance.subscribe')->middleware('auth:web');
-  Route::get('/services', 'FrontEnd\ClientService\ServiceController@index')->name('services')->middleware('isServices');
+  
+  // Routes Services Hub (DOIT être AVANT la route /services existante pour éviter les conflits)
+  Route::prefix('/services')->middleware('change.lang')->group(function () {
+    Route::get('/', [\App\Http\Controllers\FrontEnd\ServicesController::class, 'index'])->name('services');
+    
+    // Routes spécifiques (DOIVENT être AVANT la route générique {universe}/{category})
+    Route::get('/projects', [\App\Http\Controllers\FrontEnd\ServicesController::class, 'projects'])->name('services.projects');
+    Route::get('/lessons', [\App\Http\Controllers\FrontEnd\ServicesController::class, 'lessons'])->name('services.lessons');
+    Route::get('/at-home', [\App\Http\Controllers\FrontEnd\ServicesController::class, 'atHome'])->name('services.at-home');
+    Route::get('/wellnesslive', [\App\Http\Controllers\FrontEnd\ServicesController::class, 'wellnesslive'])->name('services.wellnesslive');
+    Route::get('/corporate', [\App\Http\Controllers\FrontEnd\ServicesController::class, 'corporate'])->name('services.corporate');
+    Route::get('/homeswap', [\App\Http\Controllers\FrontEnd\ServicesController::class, 'homeswap'])->name('services.homeswap');
+    
+    // Routes pour les pages de catégories (DOIT être EN DERNIER pour éviter les conflits)
+    Route::get('/{universe}/{category}', [\App\Http\Controllers\FrontEnd\ServicesController::class, 'category'])
+      ->where(['universe' => 'projects|lessons|at-home|wellnesslive|corporate|homeswap', 'category' => '[a-z0-9-]+'])
+      ->name('services.category');
+  });
+  
+  // Route services legacy (ancienne route, conservée pour compatibilité)
+  Route::get('/services-legacy', 'FrontEnd\ClientService\ServiceController@index')->name('services.legacy')->middleware('isServices');
 
   Route::get('/search-service', 'FrontEnd\ClientService\ServiceController@search_service')->name('search-service')->middleware('isServices');
 
@@ -195,6 +310,11 @@ Route::prefix('/user')->middleware(['guest:web', 'change.lang'])->group(function
 
   // user login submit route
   Route::post('/login-submit', 'FrontEnd\UserController@loginSubmit')->name('user.login_submit')->withoutMiddleware('change.lang');
+  
+  // Redirect GET requests to login-submit to login page (pour éviter l'erreur MethodNotAllowed)
+  Route::get('/login-submit', function() {
+    return redirect()->route('user.login');
+  })->name('user.login_submit.get');
 
   // resend verification email route
   Route::post('/resend-verification', 'FrontEnd\UserController@resendVerificationEmail')->name('user.resend_verification')->withoutMiddleware('change.lang');
@@ -210,7 +330,10 @@ Route::prefix('/user')->middleware(['guest:web', 'change.lang'])->group(function
 
   // user reset password submit route
   Route::post('/reset-password-submit', 'FrontEnd\UserController@resetPasswordSubmit')->name('user.reset_password_submit')->withoutMiddleware('change.lang')->middleware('Demo');
+});
 
+// Route signup accessible même si connecté (pour permettre création profil freelance)
+Route::prefix('/user')->middleware(['change.lang'])->group(function () {
   // user redirect to signup page route
   Route::get('/signup', 'FrontEnd\UserController@signup')->name('user.signup');
 
@@ -221,9 +344,118 @@ Route::prefix('/user')->middleware(['guest:web', 'change.lang'])->group(function
   Route::get('/signup-verify/{token}', 'FrontEnd\UserController@signupVerify')->withoutMiddleware('change.lang');
 });
 
+// Routes de parrainage
+Route::prefix('/parrainage')->middleware(['change.lang'])->group(function () {
+  Route::get('/', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'index'])->name('referral.index')->middleware('auth:web');
+  Route::get('/conditions', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'conditions'])->name('referral.conditions');
+});
+
+// Routes Présence - Pause Souffle
+Route::prefix('/presence')->middleware(['change.lang'])->group(function () {
+  Route::get('/pause-souffle', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'index'])->name('presence.pause-souffle');
+  Route::post('/pause-souffle/submit', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'submit'])->name('presence.pause-souffle.submit');
+  Route::get('/pause-souffle/stripe/success', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'stripeSuccess'])->name('pause-souffle.stripe.success');
+  Route::get('/pause-souffle/stripe/cancel', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'stripeCancel'])->name('pause-souffle.stripe.cancel');
+  Route::get('/pause-souffle/choose-cycle', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'chooseCycle'])->name('pause-souffle.choose-cycle')->middleware('auth:web');
+  Route::post('/pause-souffle/activate-cycle', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'activateCycle'])->name('pause-souffle.activate-cycle')->middleware('auth:web');
+  Route::get('/pause-souffle/cycle-confirmation', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'cycleConfirmation'])->name('pause-souffle.cycle-confirmation')->middleware('auth:web');
+});
+
+// Route de tracking /r/{code} (publique, sans auth)
+Route::get('/r/{code}', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'track'])->name('referral.track')->middleware('change.lang');
+
+// API routes pour parrainage (auth required)
+Route::prefix('/api/referral')->middleware(['auth:web', 'change.lang'])->group(function () {
+  Route::post('/copy-link', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'copyLink'])->name('referral.api.copy-link');
+  Route::post('/send-invitations', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'sendInvitations'])->name('referral.api.send-invitations');
+  Route::post('/recommend-company', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'recommendCompany'])->name('referral.api.recommend-company');
+});
+
+// API routes pour schedulers (Projects et HomeSwap)
+Route::prefix('/api/scheduler')->middleware(['auth:web'])->group(function () {
+  Route::get('/projects/context', [\App\Http\Controllers\FrontEnd\SchedulerController::class, 'projectsContext'])->name('scheduler.api.projects.context');
+  Route::post('/projects/confirm', [\App\Http\Controllers\FrontEnd\SchedulerController::class, 'projectsConfirm'])->name('scheduler.api.projects.confirm');
+  Route::get('/homeswap/context', [\App\Http\Controllers\FrontEnd\SchedulerController::class, 'homeswapContext'])->name('scheduler.api.homeswap.context');
+  Route::post('/homeswap/request', [\App\Http\Controllers\FrontEnd\SchedulerController::class, 'homeswapRequest'])->name('scheduler.api.homeswap.request');
+});
+
 Route::prefix('/user')->middleware(['auth:web', 'account.status', 'change.lang'])->group(function () {
   // user redirect to dashboard route
   Route::get('/dashboard', 'FrontEnd\UserController@redirectToDashboard')->name('user.dashboard');
+  
+  // Routes simplifiées pour le tableau de bord client (alias des routes /account/*)
+  Route::get('/messages', [\App\Http\Controllers\FrontEnd\ClientMessagesController::class, 'index'])->name('user.messages.index');
+  Route::post('/messages/send', [\App\Http\Controllers\FrontEnd\ClientMessagesController::class, 'sendMessage'])->name('user.messages.send');
+  Route::get('/messages/start/{freelancerId}', [\App\Http\Controllers\FrontEnd\ClientMessagesController::class, 'startLeadConversation'])->name('user.messages.start_lead');
+  Route::get('/projects-sessions', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'index'])->name('user.projects_sessions.index');
+  Route::get('/subscriptions', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'index'])->name('user.subscriptions.index');
+  Route::get('/settings', 'FrontEnd\UserController@editProfile')->name('user.settings.index');
+  
+  // Settings - Mot de passe (nouvelle page)
+  Route::get('/settings/password', 'FrontEnd\UserController@editPassword')->name('user.settings.password');
+  Route::post('/settings/password', 'FrontEnd\UserController@updatePasswordSettings')->name('user.settings.password.update')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Settings - Adresse e-mail (nouvelle page)
+  Route::get('/settings/email', 'FrontEnd\UserController@editEmail')->name('user.settings.email.edit');
+  Route::post('/settings/email', 'FrontEnd\UserController@updateEmail')->name('user.settings.email.update')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Settings - Modes de paiement (nouvelle page)
+  Route::get('/settings/payment-methods', 'FrontEnd\UserController@paymentMethods')->name('user.settings.payment_methods.index');
+  Route::post('/settings/payment-methods', 'FrontEnd\UserController@storePaymentMethod')->name('user.settings.payment_methods.store')->withoutMiddleware('change.lang')->middleware('Demo');
+  Route::delete('/settings/payment-methods/{paymentMethod}', 'FrontEnd\UserController@destroyPaymentMethod')->name('user.settings.payment_methods.destroy')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Settings - Abonnement Junspro (nouvelle page)
+  Route::get('/settings/subscription', 'FrontEnd\UserController@subscription')->name('user.settings.subscription');
+  Route::post('/settings/subscription/{subscription}/pause', 'FrontEnd\UserController@pauseSubscription')->name('user.settings.subscription.pause')->withoutMiddleware('change.lang')->middleware('Demo');
+  Route::post('/settings/subscription/{subscription}/resume', 'FrontEnd\UserController@resumeSubscription')->name('user.settings.subscription.resume')->withoutMiddleware('change.lang')->middleware('Demo');
+  Route::post('/settings/subscription/{subscription}/cancel', 'FrontEnd\UserController@cancelSubscription')->name('user.settings.subscription.cancel')->withoutMiddleware('change.lang')->middleware('Demo');
+  Route::get('/account/subscriptions/{subscription}/topup-quota', 'FrontEnd\UserController@getTopupQuota')->name('user.account.subscriptions.topup-quota');
+  Route::post('/account/subscriptions/{subscription}/topup', 'FrontEnd\UserController@topupSubscription')->name('user.account.subscriptions.topup')->withoutMiddleware('change.lang')->middleware('Demo');
+  Route::get('/account/subscriptions/{subscription}/change-plan-context', 'FrontEnd\UserController@getChangePlanContext')->name('user.account.subscriptions.change-plan-context');
+  Route::post('/account/subscriptions/{subscription}/change-plan', 'FrontEnd\UserController@changePlan')->name('user.account.subscriptions.change-plan')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Transfer Replace flow (Remplacer le freelance)
+  Route::get('/account/subscriptions/{subscription}/transfer/replace/candidates', 'FrontEnd\UserController@getReplaceCandidates')->name('user.account.subscriptions.transfer.replace.candidates');
+  Route::post('/account/subscriptions/{subscription}/transfer/replace/thanks', 'FrontEnd\UserController@sendReplaceThanks')->name('user.account.subscriptions.transfer.replace.thanks')->withoutMiddleware('change.lang')->middleware('Demo');
+  Route::post('/account/subscriptions/{subscription}/transfer/replace/confirm', 'FrontEnd\UserController@confirmReplace')->name('user.account.subscriptions.transfer.replace.confirm')->withoutMiddleware('change.lang')->middleware('Demo');
+
+  // Transfer Add flow (Ajouter un autre freelance)
+  Route::get('/account/subscriptions/{subscription}/transfer/add/candidates', 'FrontEnd\UserController@getAddCandidates')->name('user.account.subscriptions.transfer.add.candidates');
+  Route::post('/account/subscriptions/{subscription}/transfer/add/confirm', 'FrontEnd\UserController@confirmAdd')->name('user.account.subscriptions.transfer.add.confirm')->withoutMiddleware('change.lang')->middleware('Demo');
+  Route::post('/account/subscriptions/{subscription}/transfer/add/payment', 'FrontEnd\UserController@processAddPayment')->name('user.account.subscriptions.transfer.add.payment')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Transfer Active flow (Transférer des rituels à un autre freelance actif)
+  Route::get('/account/subscriptions/{subscription}/transfer/active/candidates', 'FrontEnd\UserController@getActiveTransferCandidates')->name('user.account.subscriptions.transfer.active.candidates');
+  Route::post('/account/subscriptions/{subscription}/transfer/active/confirm', 'FrontEnd\UserController@confirmActiveTransfer')->name('user.account.subscriptions.transfer.active.confirm')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Settings - Renouvellement d'abonnement (modal)
+  Route::get('/subscriptions/{id}/renew-quote', [\App\Http\Controllers\FrontEnd\SubscriptionRenewController::class, 'quote'])->name('user.subscriptions.renew-quote');
+  Route::post('/subscriptions/{id}/renew', [\App\Http\Controllers\FrontEnd\SubscriptionRenewController::class, 'renew'])->name('user.subscriptions.renew');
+  
+  // Settings - Historique de paiement (nouvelle page)
+  Route::get('/settings/billing-history', 'FrontEnd\UserController@billingHistory')->name('user.settings.billing_history');
+  Route::get('/settings/billing-history/{invoice}/invoice', 'FrontEnd\UserController@downloadInvoice')->name('user.settings.billing_history.invoice');
+  
+  // Settings - Confirmation automatique (nouvelle page)
+  Route::get('/settings/auto-confirmation', 'FrontEnd\UserController@editAutoConfirmation')->name('user.settings.auto_confirmation');
+  Route::post('/settings/auto-confirmation', 'FrontEnd\UserController@updateAutoConfirmation')->name('user.settings.auto_confirmation.update')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Settings - Agenda & fuseau horaire (nouvelle page)
+  Route::get('/settings/agenda', 'FrontEnd\UserController@editAgenda')->name('user.settings.agenda');
+  Route::post('/settings/agenda', 'FrontEnd\UserController@updateAgenda')->name('user.settings.agenda.update')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Settings - Notifications (nouvelle page)
+  Route::get('/settings/notifications', 'FrontEnd\UserController@editNotifications')->name('user.settings.notifications');
+  Route::post('/settings/notifications', 'FrontEnd\UserController@updateNotifications')->name('user.settings.notifications.update')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Settings - Connexions & autorisations (nouvelle page)
+  Route::get('/settings/connections', 'FrontEnd\UserController@editConnections')->name('user.settings.connections');
+  Route::post('/settings/connections/disconnect', 'FrontEnd\UserController@disconnectProvider')->name('user.settings.connections.disconnect')->withoutMiddleware('change.lang')->middleware('Demo');
+  
+  // Settings - Supprimer le compte
+  Route::get('/settings/delete-account', 'FrontEnd\UserController@confirmDeleteAccount')->name('user.settings.delete_account');
+  Route::post('/settings/delete-account', 'FrontEnd\UserController@deleteAccount')->name('user.settings.delete_account.destroy')->withoutMiddleware('change.lang')->middleware('Demo');
+  
   Route::get('/followings', 'FrontEnd\UserController@followings')->name('user.followings');
 
   // edit profile route
@@ -233,10 +465,10 @@ Route::prefix('/user')->middleware(['auth:web', 'account.status', 'change.lang']
   Route::post('/update-profile', 'FrontEnd\UserController@updateProfile')->name('user.update_profile')->withoutMiddleware('change.lang')->middleware('Demo');
 
   Route::middleware('exists.password')->group(function () {
-    // change password route
+    // Ancienne route change-password : redirection vers la nouvelle page pour les clients
     Route::get('/change-password', 'FrontEnd\UserController@changePassword')->name('user.change_password');
 
-    // update password route
+    // update password route (ancienne méthode, conservée pour compatibilité)
     Route::post('/update-password', 'FrontEnd\UserController@updatePassword')->name('user.update_password')->withoutMiddleware('change.lang')->middleware('Demo');
   });
 
@@ -279,15 +511,29 @@ Route::prefix('/user')->middleware(['auth:web', 'account.status', 'change.lang']
 
   Route::post('/support-ticket/{id}/reply', 'FrontEnd\UserController@ticketReply')->name('user.support_ticket.reply')->middleware('isSupportTicket')->middleware('Demo');
 
+  // Junspro V2 - Dashboard client
+  Route::get('/account/dashboard', [\App\Http\Controllers\FrontEnd\ClientDashboardController::class, 'index'])->name('client.dashboard.index');
+  
   // Junspro V2 - Dashboards abonnements
   Route::prefix('/account/subscriptions')->group(function () {
-    Route::get('/', 'FrontEnd\ClientSubscriptionController@index')->name('client.subscriptions.index');
-    Route::get('/{id}', 'FrontEnd\ClientSubscriptionController@show')->name('client.subscriptions.show');
-    Route::get('/{id}/sessions', 'FrontEnd\ClientSubscriptionController@show')->name('client.subscriptions.sessions');
-    Route::post('/{id}/pause', 'FrontEnd\ClientSubscriptionController@pause')->name('client.subscriptions.pause');
-    Route::post('/{id}/resume', 'FrontEnd\ClientSubscriptionController@resume')->name('client.subscriptions.resume');
-    Route::get('/{id}/cancel', 'FrontEnd\ClientSubscriptionController@showCancelForm')->name('client.subscriptions.cancel');
-    Route::post('/{id}/cancel', 'FrontEnd\ClientSubscriptionController@cancel')->name('client.subscriptions.cancel.submit');
+    Route::get('/', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'index'])->name('client.subscriptions.index');
+    Route::get('/{id}', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'show'])->name('client.subscriptions.show');
+    Route::get('/{id}/sessions', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'show'])->name('client.subscriptions.sessions');
+    Route::post('/{id}/pause', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'pause'])->name('client.subscriptions.pause');
+    Route::post('/{id}/resume', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'resume'])->name('client.subscriptions.resume');
+    Route::get('/{id}/cancel', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'showCancelForm'])->name('client.subscriptions.cancel');
+    Route::post('/{id}/cancel', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'cancel'])->name('client.subscriptions.cancel.submit');
+  });
+
+  // Junspro V2 - Messages client - TEST
+  Route::get('/account/messages/test', function() {
+    return 'Test route Messages fonctionne';
+  })->name('client.messages.test');
+  
+  // Junspro V2 - Messages client
+  Route::prefix('/account/messages')->group(function () {
+    Route::get('/', [\App\Http\Controllers\FrontEnd\ClientMessagesController::class, 'index'])->name('client.messages.index');
+    Route::post('/send', [\App\Http\Controllers\FrontEnd\ClientMessagesController::class, 'sendMessage'])->name('client.messages.send');
   });
 
   // Routes Stripe pour abonnements

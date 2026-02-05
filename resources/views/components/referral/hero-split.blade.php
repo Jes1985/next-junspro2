@@ -1,10 +1,54 @@
 @php
   $referralLink = route('referral.track', ['code' => $referralCode]);
-  // Chemin de l'image hero
-  $heroImagePath = '/images/parrainage-hero.png';
+  // Chemins possibles pour l'image hero (vérifier plusieurs emplacements et noms)
+  $possiblePaths = [
+    // Emplacements standards dans public/images/
+    public_path('images/parrainage-hero.png'),
+    public_path('images/parrainage-hero.jpg'),
+    public_path('images/parrainage-hero.jpeg'),
+    // Cas avec double point dans public/images/ (erreur de nommage courante)
+    public_path('images/parrainage-hero..png'),
+    public_path('images/parrainage-hero..jpg'),
+    // Emplacements alternatifs dans public/assets/img/
+    public_path('assets/img/parrainage-hero.png'),
+    public_path('assets/img/parrainage-hero.jpg'),
+    public_path('assets/img/parrainage-hero.jpeg'),
+    // Emplacement direct dans public/ (cas où l'image est à la racine)
+    public_path('parrainage-hero.png'),
+    public_path('parrainage-hero.jpg'),
+    public_path('parrainage-hero.jpeg'),
+    // Cas avec double point directement dans public/
+    public_path('parrainage-hero..png'),
+    public_path('parrainage-hero..jpg'),
+  ];
+  
+  $heroImagePath = null;
+  $heroImageExists = false;
+  
+  foreach ($possiblePaths as $path) {
+    if (file_exists($path)) {
+      $heroImageExists = true;
+      // Convertir le chemin absolu en chemin relatif pour le navigateur
+      $relativePath = str_replace(public_path(), '', $path);
+      $heroImagePath = str_replace('\\', '/', $relativePath); // Normaliser les slashes
+      // S'assurer que le chemin commence par /
+      if (!str_starts_with($heroImagePath, '/')) {
+        $heroImagePath = '/' . $heroImagePath;
+      }
+      break;
+    }
+  }
+  
+  // Si aucune image trouvée, utiliser le placeholder
+  if (!$heroImageExists) {
+    $heroImagePath = asset('assets/img/parrainage-hero-placeholder.svg');
+  }
+  
   $heroImagePlaceholder = asset('assets/img/parrainage-hero-placeholder.svg');
-  // Vérifier si l'image existe
-  $heroImageExists = file_exists(public_path('images/parrainage-hero.png'));
+  
+  // Debug : pour vérifier quel chemin est utilisé (à retirer en production)
+  // Log::info('Hero image path: ' . $heroImagePath);
+  // Log::info('Hero image exists: ' . ($heroImageExists ? 'yes' : 'no'));
 @endphp
 
 <section class="ref-hero">
@@ -44,13 +88,23 @@
     
     {{-- Bloc droit : Photo premium --}}
     <div class="ref-hero__right">
-      <img 
-        src="{{ $heroImageExists ? $heroImagePath : $heroImagePlaceholder }}" 
-        alt="{{ __('Deux personnes en séance de coaching / collaboration, ambiance chaleureuse.') }}"
-        class="ref-hero__image"
-        loading="lazy"
-        decoding="async"
-      />
+      @if($heroImageExists)
+        <img 
+          src="{{ $heroImagePath }}" 
+          alt="{{ __('Deux personnes en séance de coaching / collaboration, ambiance chaleureuse.') }}"
+          class="ref-hero__image"
+          loading="lazy"
+          decoding="async"
+          onerror="console.error('Image failed to load: {{ $heroImagePath }}'); this.src='{{ $heroImagePlaceholder }}'; this.onerror=null;"
+        />
+      @else
+        <img 
+          src="{{ $heroImagePlaceholder }}" 
+          alt="{{ __('Parrainage Junspro') }}"
+          class="ref-hero__image"
+          loading="lazy"
+        />
+      @endif
       <div class="ref-hero__overlay"></div>
     </div>
   </div>

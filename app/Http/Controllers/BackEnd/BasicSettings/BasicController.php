@@ -91,10 +91,10 @@ class BasicController extends Controller
       $oldImg = $data->logo;
       $logoName = UploadFile::update('./assets/img/', $newImg, $oldImg);
 
-      // finally, store the logo into db
+      // finally, store the logo into db (updated_at force le rechargement du cache navigateur)
       DB::table('basic_settings')->updateOrInsert(
         ['uniqid' => 12345],
-        ['logo' => $logoName]
+        ['logo' => $logoName, 'updated_at' => now()]
       );
 
       $request->session()->flash('success', 'Logo updated successfully!');

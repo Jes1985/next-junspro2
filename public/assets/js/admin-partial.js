@@ -244,7 +244,10 @@ $(document).ready(function () {
     let categoryId = $(this).val();
     let langCode = $(this).data('lang_code');
 
-    let url = `${baseUrl}/seller/service-management/category/${categoryId}/get-subcategory`;
+    // Use freelance route if in freelance mode, otherwise use seller route
+    let url = (window.freelanceMode && window.freelanceBaseUrl) 
+      ? `${window.freelanceBaseUrl}/category/${categoryId}/get-subcategory`
+      : `${baseUrl}/seller/service-management/category/${categoryId}/get-subcategory`;
 
     $.get(url, function (response) {
       $('.request-loader').removeClass('show');

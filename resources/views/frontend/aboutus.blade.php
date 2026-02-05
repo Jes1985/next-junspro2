@@ -27,10 +27,119 @@
   $title = $pageHeading->about_us_page_title ?? __('About');
 @endphp
 
-@section('content')
-  @includeIf('frontend.partials.breadcrumb', ['breadcrumb' => $breadcrumb ?? '', 'title' => $title ?? ''])
+@section('style')
+  <link rel="stylesheet" href="{{ asset('assets/css/summernote-content.css') }}">
+  <style>
+    /* Suppression définitive de la barre de catégories sur la page À propos */
+    .about-page-wrapper .categories-menu,
+    .about-page-wrapper .categories-menu-nav,
+    .about-page-wrapper .categories,
+    .about-page-wrapper ul.categories,
+    .about-page-wrapper .category-menu,
+    .about-page-wrapper .category-nav {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    /* ============================================
+       PAGE À PROPOS - DESIGN PREMIUM HAUT DE GAMME
+       ============================================ */
+    .about-page-wrapper {
+      background: linear-gradient(
+        180deg,
+        #D8DBFF 0%,
+        #D5D8FF 15%,
+        #D2D5FF 30%,
+        #CFD2FF 45%,
+        #CCCEFF 60%,
+        #C9CBFF 75%,
+        #C6C8FF 90%,
+        #C3C5FF 100%
+      ) !important;
+      min-height: 100vh !important;
+      padding-top: 120px !important;
+      padding-bottom: 80px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+      text-rendering: optimizeLegibility !important;
+    }
+    .about-page-wrapper::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(180deg, rgba(124, 58, 237, 0.3) 0%, rgba(124, 58, 237, 0) 100%);
+      pointer-events: none;
+      z-index: 10;
+    }
+    .about-page-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .about-page-wrapper > * {
+      position: relative;
+      z-index: 2;
+    }
+    .about-page-header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 40px 0;
+    }
+    .about-page-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #1E1B4B;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(124, 58, 237, 0.1);
+    }
+    .about-page-subtitle {
+      font-size: 18px;
+      color: #6366F1;
+      font-weight: 500;
+    }
+    .about-content-wrapper {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 60px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+  </style>
+@endsection
 
-  <!-- About-area start -->
+@section('content')
+  {{-- Suppression du breadcrumb pour design premium --}}
+  {{-- @includeIf('frontend.partials.breadcrumb', ['breadcrumb' => $breadcrumb ?? '', 'title' => $title ?? '']) --}}
+  
+  <div class="about-page-wrapper">
+    <div class="container">
+      <!-- En-tête premium -->
+      <div class="about-page-header">
+        <h1 class="about-page-title">{{ $title }}</h1>
+        <p class="about-page-subtitle">{{ __('Découvrez Junspro') }}</p>
+      </div>
+
+      <!-- Contenu premium -->
+      <div class="about-content-wrapper">
+        <!-- About-area start -->
   @if ($secInfo->about_section_status == 1)
     <section class="about-area-v1 pt-100 pb-60">
       <div class="container">
@@ -219,4 +328,7 @@
     {!! showAd(3) !!}
   </div> --}}
   <!-- Newsletter-area end -->
+      </div> <!-- Fin .about-content-wrapper -->
+    </div> <!-- Fin .container -->
+  </div> <!-- Fin .about-page-wrapper -->
 @endsection

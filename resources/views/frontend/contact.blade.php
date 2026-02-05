@@ -20,6 +20,12 @@
 
 @section('style')
   <style>
+    :root {
+      --junspro-blue: #1e40af;
+      --junspro-purple: #7C3AED;
+      --junspro-gradient: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+    }
+
     /* En-tête avec dégradé - Même style que la page d'accueil - Spécificité maximale */
     body .header-area,
     html body .header-area,
@@ -84,16 +90,8 @@
     }
 
     /* Logo blanc sur fond sombre - Spécificité maximale */
-    body .header-area .junspro-logo,
-    html body .header-area .junspro-logo,
-    body .header-area .junspro-logo-text,
-    html body .header-area .junspro-logo-text {
-      background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      background-clip: text !important;
-      color: #ffffff !important; /* Fallback */
-    }
+    /* Logo JUNSPRO - Le style global du layout s'applique déjà */
+    /* Pas besoin de surcharger ici, le style avec aberration chromatique est dans layout.blade.php */
 
     /* Icônes et boutons blancs sur fond sombre */
     body .header-area .more-option .item button,
@@ -129,17 +127,57 @@
       }
     }
 
-    /* Hero Contact Premium - Même style que les autres pages */
+    /* Hero Contact Premium - Transparent pour laisser le wrapper gérer le fond */
     .contact-hero-premium {
-      background: linear-gradient(135deg, #020617 0%, #111827 30%, #1d2a6d 70%, #5b21b6 100%);
+      background: transparent;
       position: relative;
-      overflow: hidden;
-      padding: 120px 0 90px;
+      overflow: visible;
+      padding: 120px 0 0;
       margin-top: 0;
-      min-height: 60vh;
+      margin-bottom: 0;
+      min-height: 75vh;
       display: flex;
       align-items: center;
       z-index: 1;
+    }
+
+    /* Fond unifié pour toute la page */
+    .contact-page-wrapper {
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      min-height: 100vh;
+      position: relative;
+      width: 100%;
+      padding-bottom: 0;
+    }
+
+    /* S'assurer que le body et les sections n'ont pas de fond différent */
+    body {
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%) !important;
+    }
+
+    /* Supprimer tout fond blanc ou gris qui pourrait créer une séparation */
+    .contact-form-premium-section {
+      background: transparent !important;
+    }
+
+    /* Textures abstraites légères sur le wrapper */
+    .contact-page-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .contact-hero-premium::before,
+    .contact-form-premium-section::before {
+      display: none;
     }
 
     body .contact-hero-premium {
@@ -147,7 +185,7 @@
       padding-top: 120px !important;
     }
 
-    /* Textures abstraites */
+    /* Textures abstraites légères */
     .contact-hero-premium::before {
       content: '';
       position: absolute;
@@ -156,120 +194,334 @@
       right: 0;
       bottom: 0;
       background: 
-        radial-gradient(circle at 20% 50%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(65, 105, 225, 0.08) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
       z-index: 1;
       pointer-events: none;
     }
 
-    /* Gradient transparent pour lisibilité du texte */
-    .contact-hero-premium::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 55%;
-      height: 100%;
-      background: linear-gradient(to right, rgba(2, 6, 23, 0.4) 0%, transparent 100%);
-      z-index: 1;
-    }
-
     .contact-hero-container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 2rem;
       position: relative;
       z-index: 2;
     }
 
     .contact-hero-content {
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-hero-text {
       color: white;
+      opacity: 0;
+      animation: fadeInLeft 0.8s ease-out 0.2s forwards;
     }
 
     .contact-hero-title {
-      font-size: 3.8rem;
-      font-weight: 400;
+      font-size: 3.5rem;
+      font-weight: 700;
       color: #FFFFFF;
-      line-height: 1.2;
-      margin-bottom: 2rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      display: block;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
       letter-spacing: -0.02em;
-      max-width: 100%;
-      width: 100%;
     }
 
-    .contact-hero-title .hero-title-line-1 {
-      display: block !important;
-      line-height: 1.2;
-      font-weight: 400;
-      color: #FFFFFF;
-      margin-bottom: 0.75rem;
-      white-space: nowrap;
-    }
-
-    .contact-hero-title .hero-title-line-1 .highlight {
-      font-weight: 600;
-      background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #C084FC 100%);
+    .contact-hero-title .highlight {
+      font-weight: 700;
+      background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 50%, #ddd6fe 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      color: #60A5FA;
       display: inline-block;
     }
 
-    .contact-hero-title .hero-title-line-2 {
-      display: block !important;
-      line-height: 1.2;
-      font-weight: 400;
-      color: #FFFFFF;
-      white-space: nowrap;
-    }
-
     .contact-hero-subtitle {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 2.5rem;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 0;
       font-weight: 400;
-      line-height: 1.6;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
+      line-height: 1.7;
     }
 
-    /* Ajustement de l'espacement de la section contact */
-    .contact-informatoin {
-      padding-top: 60px !important;
+    .contact-hero-image {
+      opacity: 0;
+      animation: fadeInRight 0.8s ease-out 0.4s forwards;
+      position: relative;
+    }
+
+    .contact-hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-hero-image img {
+      width: 100%;
+      height: auto;
+      min-height: 500px;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      image-rendering: high-quality;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    @media (max-width: 968px) {
+      .contact-hero-image img {
+        min-height: 400px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .contact-hero-image img {
+        min-height: 300px;
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Section Formulaire Contact Premium - Continuation du dégradé */
+    .contact-form-premium-section {
+      background: transparent;
+      padding: 0;
+      margin-top: -6rem;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-form-premium-section .container {
+      padding-top: 6rem !important;
+      padding-bottom: 6rem !important;
+    }
+
+    .contact-form-premium-wrapper {
+      background: white;
+      border-radius: 24px 24px 0 0;
+      padding: 4rem;
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+      border: none;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .contact-form-header {
+      margin-bottom: 3rem;
+    }
+
+    .contact-form-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-form-subtitle {
+      font-size: 1.125rem;
+      color: #6b7280;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Alerts */
+    .alert-success-premium {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      color: #166534;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+    }
+
+    .alert-error-premium {
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #dc2626;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+    }
+
+    /* Form Premium */
+    .form-group-premium {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label-premium {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control-premium {
+      width: 100%;
+      padding: 0.875rem 1.25rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #1a202c;
+      background-color: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .form-control-premium:focus {
+      outline: none;
+      border-color: var(--junspro-purple);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    }
+
+    .form-control-premium::placeholder {
+      color: #9ca3af;
+    }
+
+    .form-control-premium.is-invalid {
+      border-color: #dc2626;
+    }
+
+    .form-control-premium.is-invalid:focus {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+
+    .form-textarea-premium {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .form-error-premium {
+      font-size: 0.875rem;
+      color: #dc2626;
+      margin-top: 0.5rem;
+    }
+
+    /* Bouton Submit Premium */
+    .btn-premium-submit {
+      background: var(--junspro-gradient);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .btn-premium-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
+    }
+
+    .btn-premium-submit:active {
+      transform: translateY(0);
     }
 
     /* Responsive */
-    @media (max-width: 1199px) {
-      .contact-hero-premium {
-        padding: 130px 0 90px !important;
-      }
-
-      .contact-hero-title {
-        font-size: 2.8rem;
-      }
-    }
-
     @media (max-width: 991px) {
-      .contact-hero-premium {
-        padding: 80px 0 60px !important;
+      .contact-form-premium-section {
+        margin-top: -4rem;
       }
 
-      .contact-hero-title {
-        font-size: 2.25rem;
+      .contact-form-premium-wrapper {
+        padding: 3rem 2rem;
+        margin-top: 4rem;
+      }
+
+      .contact-form-title {
+        font-size: 2rem;
       }
     }
 
     @media (max-width: 768px) {
+      .contact-form-premium-section {
+        margin-top: -3rem;
+      }
+
+      .contact-form-premium-wrapper {
+        padding: 2.5rem 1.5rem;
+        border-radius: 24px 24px 0 0;
+        margin-top: 3rem;
+      }
+
+      .contact-form-title {
+        font-size: 1.75rem;
+      }
+
+      .contact-form-subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .contact-hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .contact-hero-image {
+        order: -1;
+      }
+
+      .contact-hero-title {
+        font-size: 2.5rem;
+      }
+
+      .contact-hero-subtitle {
+        font-size: 1.125rem;
+      }
+
+      .contact-form-premium-section {
+        margin-top: -2rem;
+      }
+
+      .contact-form-premium-wrapper {
+        margin-top: 2rem;
+        border-radius: 24px 24px 0 0;
+      }
+    }
+
+    @media (max-width: 640px) {
       .contact-hero-premium {
-        padding: 100px 0 70px !important;
+        padding: 100px 0 0 !important;
         min-height: auto;
       }
 
@@ -280,20 +532,15 @@
       .contact-hero-subtitle {
         font-size: 1rem;
       }
-    }
 
-    @media (max-width: 575px) {
-      .contact-hero-premium {
-        padding: 80px 0 60px !important;
+      .contact-form-premium-section {
+        margin-top: -1rem;
+        padding-bottom: 4rem;
       }
 
-      .contact-hero-title {
-        font-size: 2rem;
-        line-height: 1.2;
-      }
-
-      .contact-hero-subtitle {
-        font-size: 1rem;
+      .contact-form-premium-wrapper {
+        margin-top: 1rem;
+        padding: 2.5rem 1.5rem;
       }
     }
   </style>
@@ -303,140 +550,154 @@
     $title = $pageHeading->contact_page_title ?? __('No Page Title Found');
 @endphp
 @section('content')
+  <div class="contact-page-wrapper">
   <!-- Hero Contact Premium -->
   <section class="contact-hero-premium">
     <div class="contact-hero-container">
       <div class="contact-hero-content">
-        <h1 class="contact-hero-title">
-          <span class="hero-title-line-1">{{ __('Restons en') }} <span class="highlight">{{ __('contact') }}</span></span>
-          <span class="hero-title-line-2">{{ __('pour vos projets') }}</span>
-        </h1>
-        <p class="contact-hero-subtitle">
-          {{ __('Une question ? Un projet ? Notre équipe est là pour vous accompagner.') }}
-        </p>
+        <div class="contact-hero-text">
+          <h1 class="contact-hero-title">
+            {{ __('Restons en') }} <span class="highlight">{{ __('contact') }}</span>
+          </h1>
+          <p class="contact-hero-subtitle">
+            {{ __('Que vous cherchiez un freelance pour votre projet ou que vous souhaitiez proposer vos services, notre équipe est là pour vous accompagner et répondre à toutes vos questions.') }}
+          </p>
+        </div>
+        <div class="contact-hero-image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop&q=90" 
+               alt="{{ __('Contactez notre équipe Junspro') }}"
+               loading="lazy"
+               style="min-height: 500px; object-fit: cover;">
+        </div>
       </div>
     </div>
   </section>
 
-    <!--====== Start Contact Information Section ======-->
-    <div class="contact-informatoin pt-100 pb-60">
+    <!--====== Start Contact Form Section Premium ======-->
+    <div class="contact-form-premium-section">
         <div class="container">
-          <div class="row gx-xl-5 justify-content-between">
-            <div class="col-lg-7">
-              <div class="contact-wrapper mb-40">
-                  <div class="section-title mb-30">
-                      <h2 class="title">{{ __('Get In Touch') }}</h2>
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+              <div class="contact-form-premium-wrapper">
+                  <div class="contact-form-header text-center mb-50">
+                      <h2 class="contact-form-title">{{ __('Entrer en contact') }}</h2>
+                      <p class="contact-form-subtitle">
+                        {{ __('Remplissez le formulaire ci-dessous et notre équipe vous répondra dans les plus brefs délais.') }}
+                      </p>
                   </div>
 
-                  <div class="contact-form">
-                    <form action="{{ route('contact.send_mail') }}" method="post">
+                  <div class="contact-form-premium">
+                    @if (session('success'))
+                      <div class="alert alert-success-premium mb-30">
+                        <i class="fas fa-check-circle me-2"></i>
+                        {{ session('success') }}
+                      </div>
+                    @endif
+
+                    @if (session('error'))
+                      <div class="alert alert-error-premium mb-30">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        {{ session('error') }}
+                      </div>
+                    @endif
+
+                    <form action="{{ route('contact.send_mail') }}" method="post" class="premium-contact-form">
                         @csrf
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group mb-20">
-                                    <input name="name" type="text" class="form-control"
-                                        placeholder="{{ __('Enter Your Full Name') }}">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-group-premium">
+                                    <label for="name" class="form-label-premium">{{ __('Nom complet') }}</label>
+                                    <input 
+                                        id="name"
+                                        name="name" 
+                                        type="text" 
+                                        class="form-control-premium @error('name') is-invalid @enderror"
+                                        placeholder="{{ __('Entrez votre nom complet') }}"
+                                        value="{{ old('name') }}"
+                                        required>
+                                    @error('name')
+                                        <div class="form-error-premium">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('name')
-                                    <p class="mt-2 mb-0 text-danger">{{ $message }}</p>
-                                @enderror
                             </div>
 
-                            <div class="col-lg-6">
-                                <div class="form-group mb-20">
-                                    <input name="email" type="email" class="form-control"
-                                        placeholder="{{ __('Enter Your Email Address') }}">
+                            <div class="col-md-6">
+                                <div class="form-group-premium">
+                                    <label for="email" class="form-label-premium">{{ __('Adresse e-mail') }}</label>
+                                    <input 
+                                        id="email"
+                                        name="email" 
+                                        type="email" 
+                                        class="form-control-premium @error('email') is-invalid @enderror"
+                                        placeholder="{{ __('Entrez votre adresse e-mail') }}"
+                                        value="{{ old('email') }}"
+                                        required>
+                                    @error('email')
+                                        <div class="form-error-premium">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('email')
-                                    <p class="mt-2 mb-0 text-danger">{{ $message }}</p>
-                                @enderror
                             </div>
 
-                            <div class="col-lg-12">
-                                <div class="form-group mb-20">
-                                    <input name="subject" type="text" class="form-control"
-                                        placeholder="{{ __('Enter Email Subject') }}">
+                            <div class="col-12">
+                                <div class="form-group-premium">
+                                    <label for="subject" class="form-label-premium">{{ __('Objet de l\'e-mail') }}</label>
+                                    <input 
+                                        id="subject"
+                                        name="subject" 
+                                        type="text" 
+                                        class="form-control-premium @error('subject') is-invalid @enderror"
+                                        placeholder="{{ __('Entrez l\'objet de l\'e-mail') }}"
+                                        value="{{ old('subject') }}"
+                                        required>
+                                    @error('subject')
+                                        <div class="form-error-premium">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('subject')
-                                    <p class="mt-2 mb-0 text-danger">{{ $message }}</p>
-                                @enderror
                             </div>
 
-                            <div class="col-lg-12">
-                                <div class="form-group mb-20">
-                                    <textarea name="message" class="form-control" placeholder="{{ __('Write Your Message') }}"></textarea>
+                            <div class="col-12">
+                                <div class="form-group-premium">
+                                    <label for="message" class="form-label-premium">{{ __('Message') }}</label>
+                                    <textarea 
+                                        id="message"
+                                        name="message" 
+                                        class="form-control-premium form-textarea-premium @error('message') is-invalid @enderror" 
+                                        rows="6"
+                                        placeholder="{{ __('Écrivez votre message') }}"
+                                        required>{{ old('message') }}</textarea>
+                                    @error('message')
+                                        <div class="form-error-premium">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('message')
-                                    <p class="mt-2 mb-0 text-danger">{{ $message }}</p>
-                                @enderror
                             </div>
 
                             @if ($info->google_recaptcha_status == 1)
-                                <div class="col-lg-12">
-                                    <div class="form-group mb-20 mb-20">
+                                <div class="col-12">
+                                    <div class="form-group-premium">
                                         {!! NoCaptcha::renderJs() !!}
                                         {!! NoCaptcha::display() !!}
+                                        @error('g-recaptcha-response')
+                                            <div class="form-error-premium">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    @error('g-recaptcha-response')
-                                        <p class="mt-2 mb-0 text-danger">{{ $message }}</p>
-                                    @enderror
                                 </div>
                             @endif
 
-                            <div class="col">
-                                <button class="btn btn-lg btn-primary radius-sm">{{ __('Send Message') }}</button>
+                            <div class="col-12">
+                                <button type="submit" class="btn-premium-submit">
+                                    <span>{{ __('Envoyer le message') }}</span>
+                                    <i class="fas fa-paper-plane ms-2"></i>
+                                </button>
                             </div>
                         </div>
                     </form>
                   </div>
               </div>
             </div>
-            <div class="col-lg-5">
-              <div class="information-wrapper pb-10">
-                <div class="section-title mb-20">
-                  <h3 class="title">{{ __('Contact Info') }}</h3>
-                </div>
-                @if (!empty($info->address))
-                <div class="information-item mb-30">
-                    <div class="icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-
-                    <div class="info">
-                        <p>{{ $info->address }}</p>
-                    </div>
-                </div>
-                @endif
-
-                @if (!empty($info->contact_number))
-                <div class="information-item mb-30">
-                    <div class="icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-
-                    <div class="info">
-                        <p><a href="tel:+{{ $info->contact_number }}">{{ $info->contact_number }}</a></p>
-                    </div>
-                </div>
-                @endif
-
-                @if (!empty($info->email_address))
-                <div class="information-item mb-30">
-                    <div class="icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-
-                    <div class="info">
-                        <p><a href="mailto:{{ $info->email_address }}">{{ $info->email_address }}</a></p>
-                    </div>
-                </div>
-                @endif
-              </div>
-            </div>
           </div>
         </div>
     </div>
-    <!--====== End Contact Information Section ======-->
+    <!--====== End Contact Form Section Premium ======-->
 
     <!--====== Start Contact Section ======-->
     {{-- <div class="contact-area pb-100">

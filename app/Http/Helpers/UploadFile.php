@@ -19,7 +19,10 @@ class UploadFile
   public static function update($directory, $newFile, $oldFile)
   {
     $directory = public_path($directory);
-    @unlink($directory . $oldFile);
+    if (!empty($oldFile)) {
+      $path = rtrim(str_replace('\\', '/', $directory), '/') . '/' . $oldFile;
+      @unlink($path);
+    }
 
     $extension = $newFile->getClientOriginalExtension();
     $fileName = uniqid() . '.' . $extension;

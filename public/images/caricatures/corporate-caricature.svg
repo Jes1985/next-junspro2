@@ -1,0 +1,50 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-corporate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow-corporate">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <g filter="url(#glow-corporate)">
+    <!-- Silhouette professionnelle -->
+    <circle cx="100" cy="68" r="24" fill="url(#grad-corporate)" opacity="0.95"/>
+    
+    <!-- Corps avec veste professionnelle -->
+    <path d="M80 95 Q80 100 85 105 Q95 112 100 112 Q105 112 115 105 Q120 100 120 95 L120 135 Q120 145 110 150 Q100 155 90 150 Q80 145 80 135 Z" 
+          fill="url(#grad-corporate)" opacity="0.9"/>
+    
+    <!-- Cravate élégante -->
+    <path d="M100 95 L100 135 L97 130 L100 125 L103 130 Z" fill="white" opacity="0.95"/>
+    
+    <!-- Bras gauche avec dossier -->
+    <circle cx="72" cy="108" r="6" fill="url(#grad-corporate)"/>
+    <line x1="72" y1="108" x2="60" y2="113" stroke="url(#grad-corporate)" stroke-width="5" stroke-linecap="round"/>
+    <rect x="48" y="110" width="14" height="18" rx="1.5" fill="white" opacity="0.9"/>
+    <line x1="51" y1="115" x2="59" y2="115" stroke="url(#grad-corporate)" stroke-width="1" opacity="0.6"/>
+    <line x1="51" y1="122" x2="59" y2="122" stroke="url(#grad-corporate)" stroke-width="1" opacity="0.6"/>
+    
+    <!-- Bras droit avec geste professionnel -->
+    <circle cx="128" cy="108" r="6" fill="url(#grad-corporate)"/>
+    <line x1="128" y1="108" x2="145" y2="103" stroke="url(#grad-corporate)" stroke-width="5" stroke-linecap="round"/>
+    
+    <!-- Bâtiment d'entreprise stylisé -->
+    <path d="M148 88 L148 118 L160 123 L172 118 L172 88 L160 83 Z" fill="white" opacity="0.6"/>
+    <rect x="152" y="93" width="6" height="6" fill="url(#grad-corporate)" opacity="0.5"/>
+    <rect x="162" y="93" width="6" height="6" fill="url(#grad-corporate)" opacity="0.5"/>
+    <rect x="152" y="103" width="6" height="6" fill="url(#grad-corporate)" opacity="0.5"/>
+    <rect x="162" y="103" width="6" height="6" fill="url(#grad-corporate)" opacity="0.5"/>
+    
+    <!-- Visage professionnel -->
+    <circle cx="92" cy="68" r="3" fill="white"/>
+    <circle cx="108" cy="68" r="3" fill="white"/>
+    <path d="M90 76 Q100 81 110 76" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9"/>
+  </g>
+</svg>
