@@ -3199,6 +3199,61 @@
   .corporate-city-popover-content p + p { margin-top: 0.5rem; }
   .corporate-city-popover-text { font-size: 0.75rem; color: #64748b; line-height: 1.5; margin: 0; }
   .corporate-city-popover-badge { color: #6b7280; font-weight: 500; }
+
+  /* Hero Domaine + Spécialisation (dropdown premium) — z-index pour que le menu s'affiche au-dessus du hero - DUPLIQUÉ DE PROJECTS */
+  .page-corporate .home-search-filter-section { overflow: visible; }
+  [data-hero-filter="corporate"] { position: relative; z-index: 50; overflow: visible; }
+  .page-corporate .filter-hero-domain-select-wrapper { position: relative; width: 100%; }
+  .page-corporate .filter-hero-domain-select-wrapper .filter-select-domain-hero,
+  .page-corporate .filter-select-domain-hero {
+    display: block; width: 100%; padding: 1rem 1rem 1rem 3.5rem; border: 2px solid rgba(251, 191, 36, 0.3); border-radius: 16px;
+    font-size: 1rem; background: #fff; color: #1a202c; cursor: pointer; transition: all 0.3s ease;
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%2384CC16' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M3 4.5 L6 7.5 L9 4.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center; background-size: 12px;
+    outline: none;
+  }
+  .page-corporate .filter-hero-domain-select-wrapper .filter-select-domain-hero:hover,
+  .page-corporate .filter-select-domain-hero:hover { border-color: rgba(251, 191, 36, 0.5); }
+  .page-corporate .filter-hero-domain-select-wrapper .filter-select-domain-hero:focus,
+  .page-corporate .filter-select-domain-hero:focus { border-color: #84CC16; box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.1); }
+  .page-corporate .filter-hero-domain-spec .filter-select { padding-left: 3.5rem; }
+  .page-corporate #corporateHeroSpecializationWrapper .filter-select:disabled { opacity: 0.85; cursor: not-allowed; }
+  
+  /* Layout grille identique à Projects pour éviter les chevauchements */
+  .page-corporate .filter-row-main--projects-hero {
+    grid-template-columns: minmax(180px, 1.5fr) minmax(180px, 1.5fr) minmax(160px, 1fr) minmax(160px, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  /* Mode d'intervention - couleurs Corporate */
+  .page-corporate .mode-intervention-pill.is-active {
+    background: linear-gradient(135deg, #FBBF24 0%, #84CC16 50%, #2563EB 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.25);
+  }
+  
+  .page-corporate .mode-intervention-segmented {
+    background: #f3f4f6;
+    border-color: rgba(251, 191, 36, 0.2);
+  }
+  
+  /* Dropdowns Pays/Ville - couleurs Corporate */
+  .page-corporate .filter-input-group.filter-location-hero .filter-input.filter-select,
+  .page-corporate .filter-input-group.filter-location-hero .filter-select {
+    padding-left: 3.5rem;
+    border: 2px solid rgba(251, 191, 36, 0.3);
+    min-width: 0;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .page-corporate .filter-input-group.filter-location-hero .filter-select:focus {
+    outline: none;
+    border-color: #84CC16;
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.1);
+  }
 </style>
 @endsection
 

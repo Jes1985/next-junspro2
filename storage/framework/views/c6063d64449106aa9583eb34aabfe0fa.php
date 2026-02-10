@@ -873,7 +873,7 @@ unset($__defined_vars, $__key, $__value); ?>
 <?php endif; ?>
 <?php endif; ?>
 
-<?php if (! $__env->hasRenderedOnce('f72b0775-a1b8-4347-b6d1-28faf8a2c6b6')): $__env->markAsRenderedOnce('f72b0775-a1b8-4347-b6d1-28faf8a2c6b6'); ?>
+<?php if (! $__env->hasRenderedOnce('ce07efda-c191-4ea5-ae5f-8f5181fae125')): $__env->markAsRenderedOnce('ce07efda-c191-4ea5-ae5f-8f5181fae125'); ?>
 <?php $__env->startPush('styles'); ?>
 <style>
   /* Accent couleur dynamique selon l'univers */

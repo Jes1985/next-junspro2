@@ -18,35 +18,6 @@
   $locationPlaceholder = $locationPlaceholder ?? __('Lieu de la mission (ex: Paris, Lyon...)');
 @endphp
 
-<style>
-  /* Force inline styles pour les modifications de la page d'accueil */
-  .home-search-filter-section {
-    max-width: 95% !important;
-  }
-  .home-search-filter-section .search-filter-form .filter-row-main--projects-hero {
-    grid-template-columns: minmax(220px, 1.35fr) minmax(220px, 1.35fr) auto !important;
-    grid-auto-rows: auto;
-    align-items: start;
-  }
-  .home-search-filter-section .hero-location-wrapper-home {
-    grid-column: 1 / 3 !important;
-    grid-row: 2 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-    width: 100% !important;
-  }
-  .home-search-filter-section .hero-location-wrapper-home .filter-input-group {
-    width: 100% !important;
-    display: block !important;
-  }
-  .home-search-filter-section .filter-mode-intervention-hero {
-    grid-column: 3 / 4 !important;
-    grid-row: 1 / span 2 !important;
-    align-self: stretch !important;
-  }
-</style>
-
 <div class="home-search-filter-section" id="homeSearchFilter" style="scroll-margin-top: 100px;">
   <!-- Onglets -->
   <div class="filter-tabs-container">
@@ -97,12 +68,12 @@
   $isHub = ($universe === 'hub');
   $isProjects = ($universe === 'projects');
   $isLessons = ($universe === 'lessons');
+  $isCorporate = ($universe === 'corporate');
   $isAtHome = ($universe === 'at-home');
   $isWellnesslive = ($universe === 'wellnesslive');
   // Déterminer le scope selon le formId pour distinguer /home de /services
-  $heroFilterScope = ($formId === 'homeHubSearchFilter') ? 'home' : ($universe === 'projects' ? 'projects' : ($universe === 'lessons' ? 'lessons' : ($universe === 'at-home' ? 'at-home' : ($universe === 'wellnesslive' ? 'wellnesslive' : 'hub'))));
-  $isHomePage = in_array($formId, ['homeSearchFilterForm', 'homeHubSearchFilter']);
-  $isProjectsServicePage = $isProjects && !$isHomePage;
+  $heroFilterScope = ($formId === 'homeHubSearchFilter') ? 'home' : ($universe === 'projects' ? 'projects' : ($universe === 'lessons' ? 'lessons' : ($universe === 'corporate' ? 'corporate' : ($universe === 'at-home' ? 'at-home' : ($universe === 'wellnesslive' ? 'wellnesslive' : 'hub')))));
+  $isHomePage = ($formId === 'homeHubSearchFilter');
   $heroCategories = [];
   $heroDomainSpecs = [];
   $heroDomainSelectId = 'projectsHeroDomainSelect';
@@ -211,10 +182,10 @@
           </select>
           @endif
         </div>
-        <div class="filter-input-group filter-hero-domain-spec" id="{{ $heroSpecWrapperId }}" data-initial-specialization="{{ request('specialization') ?? '' }}" data-spec-disabled-text="{{ $isHub ? __('Choisissez un univers d\'abord') : 'Spécialisation' }}" @if($isHub) style="overflow:visible;position:relative;z-index:50;" @endif>
-          <i class="fas fa-graduation-cap filter-input-icon" aria-hidden="true"></i>
-          <select name="specialization" id="{{ $heroSpecSelectId }}" class="filter-input filter-select" disabled aria-label="{{ $isHub ? __('Choisissez un univers d\'abord') : 'Spécialisation' }}">
-            <option value="">{{ $isHub ? __('Choisissez un univers d\'abord') : 'Spécialisation' }}</option>
+        <div class="filter-input-group filter-hero-domain-spec" id="{{ $heroSpecWrapperId }}" data-initial-specialization="{{ request('specialization') ?? '' }}" data-spec-disabled-text="{{ $isHub ? __('Tous les domaines') : 'Spécialisation' }}" @if($isHub) style="overflow:visible;position:relative;z-index:50;" @endif>
+          <i class="fas fa-folder-open filter-input-icon" style="left: 1rem;" aria-hidden="true"></i>
+          <select name="specialization" id="{{ $heroSpecSelectId }}" class="filter-input filter-select" disabled aria-label="{{ $isHub ? __('Tous les domaines') : 'Spécialisation' }}">
+            <option value="">{{ $isHub ? __('Tous les domaines') : 'Spécialisation' }}</option>
           </select>
         </div>
         </div>
@@ -227,7 +198,7 @@
           var HUB_UNIVERS_ID = 'hubHeroUniversSelect';
           var HUB_SPEC_ID = 'hubHeroSpecializationSelect';
           var HUB_SPEC_WRAPPER_ID = 'hubHeroSpecializationWrapper';
-          var DISABLED_TEXT = 'Choisissez un univers d\'abord';
+          var DISABLED_TEXT = 'Tous les domaines';
           function runHubDomainSpec() {
             var mapEl = document.getElementById(HUB_MAP_ID);
             var universSelect = document.getElementById(HUB_UNIVERS_ID);
@@ -239,7 +210,7 @@
             var specDisabledText = (specWrapper && specWrapper.getAttribute('data-spec-disabled-text')) || DISABLED_TEXT;
             function updateSpec() {
               var chosen = universSelect.value || '';
-              specSelect.innerHTML = '<option value="">' + specDisabledText + '</option>';
+              specSelect.innerHTML = '<option value="">' + (specDisabledText || 'Tous les domaines') + '</option>';
               if (chosen) {
                 specSelect.removeAttribute('disabled');
                 specSelect.style.pointerEvents = 'auto';
@@ -419,95 +390,99 @@
         </div>
         @endif
         @if($hasLocationDuo)
-        {{-- Mode d'intervention (pour hub/home, hub/services, projects, lessons, at-home et wellnesslive) : segmented control premium avant Pays/Ville --}}
-        @if($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive)
+        {{-- Mode d'intervention (pour hub/home, hub/services, projects, lessons, corporate, at-home et wellnesslive) : segmented control premium avant Pays/Ville --}}
+        @if($isHub || $isProjects || $isLessons || $isCorporate || $isAtHome || $isWellnesslive)
         <div class="filter-input-group filter-mode-intervention-hero" data-hero-filter="{{ $heroFilterScope }}">
           <label class="filter-label-visually-hidden">{{ __('Mode d\'intervention') }}</label>
           <div class="mode-intervention-segmented" role="group" aria-label="{{ __('Mode d\'intervention') }}">
             @php
-              $currentMode = request('mode', 'onsite');
-              $isOnline = $currentMode === 'online';
-              $isOnsite = $currentMode === 'onsite' || empty($currentMode);
+              $currentMode = request('mode', []);
+              $isOnline = is_array($currentMode) && in_array('online', $currentMode);
+              $isOnsite = (is_array($currentMode) && in_array('onsite', $currentMode)) || empty($currentMode);
+              // Par défaut, si aucun mode n'est sélectionné, on considère "En présentiel"
+              $hasNoMode = !$isOnline && !$isOnsite;
             @endphp
             <label class="mode-intervention-pill {{ $isOnline ? 'is-active' : '' }}" data-mode="online">
-              <input type="radio" name="mode" value="online" {{ $isOnline ? 'checked' : '' }} class="sr-only mode-intervention-radio">
+              <input type="radio" name="mode[]" value="online" {{ $isOnline ? 'checked' : '' }} class="sr-only mode-intervention-radio">
               <span class="mode-intervention-pill-text">{{ __('En ligne') }}</span>
             </label>
-            <label class="mode-intervention-pill {{ $isOnsite ? 'is-active' : '' }}" data-mode="onsite">
-              <input type="radio" name="mode" value="onsite" {{ $isOnsite ? 'checked' : '' }} class="sr-only mode-intervention-radio">
+            <label class="mode-intervention-pill {{ ($isOnsite || $hasNoMode) ? 'is-active' : '' }}" data-mode="onsite">
+              <input type="radio" name="mode[]" value="onsite" {{ ($isOnsite || $hasNoMode) ? 'checked' : '' }} class="sr-only mode-intervention-radio">
               <span class="mode-intervention-pill-text">{{ __('En présentiel') }}</span>
             </label>
           </div>
         </div>
         @endif
-        {{-- Wrapper Pays+Ville : en colonne sur home, duo ailleurs --}}
-        <div class="hero-location-wrapper {{ ($isHomePage || $isProjectsServicePage) ? 'hero-location-wrapper-home' : '' }}" @if($isHomePage || $isProjectsServicePage) style="display:flex;flex-direction:column;gap:0.75rem;width:100%;" @endif>
-          <div class="filter-input-group filter-location-hero" id="homeLocationCountryGroup" data-hero-filter="{{ $isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub')))) }}">
-            <i class="fas fa-map-marker-alt filter-input-icon"></i>
-            <select name="country" id="{{ $locationCountryId }}" class="filter-input filter-select home-location-country" @if($isHomePage || $isProjectsServicePage) style="width:100%;" @endif>
-              <option value="">{{ $isProjectsServicePage ? __('pays') : __('Sélectionner un pays') }}</option>
-              <option value="FR" {{ request('country') == 'FR' ? 'selected' : '' }}>{{ __('France') }}</option>
-              <option value="GP" {{ request('country') == 'GP' ? 'selected' : '' }}>{{ __('Guadeloupe') }}</option>
-              <option value="MQ" {{ request('country') == 'MQ' ? 'selected' : '' }}>{{ __('Martinique') }}</option>
-              <option value="GF" {{ request('country') == 'GF' ? 'selected' : '' }}>{{ __('Guyane') }}</option>
-              <option value="RE" {{ request('country') == 'RE' ? 'selected' : '' }}>{{ __('La Réunion') }}</option>
-              <option value="NC" {{ request('country') == 'NC' ? 'selected' : '' }}>{{ __('Nouvelle-Calédonie') }}</option>
-              <option value="PF" {{ request('country') == 'PF' ? 'selected' : '' }}>{{ __('Polynésie française') }}</option>
-              <option value="BE" {{ request('country') == 'BE' ? 'selected' : '' }}>{{ __('Belgique') }}</option>
-              <option value="CH" {{ request('country') == 'CH' ? 'selected' : '' }}>{{ __('Suisse') }}</option>
-              <option value="ES" {{ request('country') == 'ES' ? 'selected' : '' }}>{{ __('Espagne') }}</option>
-              <option value="DE" {{ request('country') == 'DE' ? 'selected' : '' }}>{{ __('Allemagne') }}</option>
-              <option value="IT" {{ request('country') == 'IT' ? 'selected' : '' }}>{{ __('Italie') }}</option>
-              <option value="PT" {{ request('country') == 'PT' ? 'selected' : '' }}>{{ __('Portugal') }}</option>
-              <option value="NL" {{ request('country') == 'NL' ? 'selected' : '' }}>{{ __('Pays-Bas') }}</option>
-              <option value="GB" {{ request('country') == 'GB' ? 'selected' : '' }}>{{ __('Royaume-Uni') }}</option>
-              <option value="CA" {{ request('country') == 'CA' ? 'selected' : '' }}>{{ __('Canada') }}</option>
-              <option value="US" {{ request('country') == 'US' ? 'selected' : '' }}>{{ __('États-Unis') }}</option>
-              <option value="MT" {{ request('country') == 'MT' ? 'selected' : '' }}>{{ __('Malte') }}</option>
-              <option value="MC" {{ request('country') == 'MC' ? 'selected' : '' }}>{{ __('Monaco') }}</option>
-              <option value="LU" {{ request('country') == 'LU' ? 'selected' : '' }}>{{ __('Luxembourg') }}</option>
-              <option value="MA" {{ request('country') == 'MA' ? 'selected' : '' }}>{{ __('Maroc') }}</option>
-              <option value="TN" {{ request('country') == 'TN' ? 'selected' : '' }}>{{ __('Tunisie') }}</option>
-              <option value="SN" {{ request('country') == 'SN' ? 'selected' : '' }}>{{ __('Sénégal') }}</option>
-              <option value="CI" {{ request('country') == 'CI' ? 'selected' : '' }}>{{ __('Côte d'\'Ivoire') }}</option>
-              <option value="IE" {{ request('country') == 'IE' ? 'selected' : '' }}>{{ __('Irlande') }}</option>
-              <option value="HR" {{ request('country') == 'HR' ? 'selected' : '' }}>{{ __('Croatie') }}</option>
-            </select>
-          </div>
-          <div class="filter-input-group filter-location-hero" id="{{ $locationCityWrapperId }}" data-filter="city-wrapper" data-filter-label="Filtre Ville (Pays → Ville)" data-hero-filter="{{ $isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub')))) }}">
-            <i class="fas fa-map-marker-alt filter-input-icon"></i>
-            <select name="city" id="{{ $locationCityId }}" class="filter-input filter-select home-location-city" disabled data-filter="city-select" aria-label="{{ __('Sélectionner une ville') }}" @if($isHomePage || $isProjectsServicePage) style="width:100%;" @endif>
-              <option value="">{{ $isProjectsServicePage ? __('ville') : __('Sélectionner une ville') }}</option>
-            </select>
-          </div>
+        {{-- Lessons / Projects / Corporate : duo Pays + Ville (identique HomeSwap), pas de champ Lieu — Hub : Ville sous Pays, colonne unique élargie --}}
+        @if($isHub)<div class="hub-location-stack">@endif
+        <div class="filter-input-group filter-location-hero" id="homeLocationCountryGroup" data-hero-filter="{{ $isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isCorporate ? 'corporate' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub'))))) }}">
+          <i class="fas fa-map-marker-alt filter-input-icon"></i>
+          <select name="country" id="{{ $locationCountryId }}" class="filter-input filter-select home-location-country" data-location-country="true">
+            <option value="">{{ $isHub ? __('Pays') : __('Sélectionner un pays') }}</option>
+            <option value="FR" {{ request('country') == 'FR' ? 'selected' : '' }}>{{ __('France') }}</option>
+            <option value="GP" {{ request('country') == 'GP' ? 'selected' : '' }}>{{ __('Guadeloupe') }}</option>
+            <option value="MQ" {{ request('country') == 'MQ' ? 'selected' : '' }}>{{ __('Martinique') }}</option>
+            <option value="GF" {{ request('country') == 'GF' ? 'selected' : '' }}>{{ __('Guyane') }}</option>
+            <option value="RE" {{ request('country') == 'RE' ? 'selected' : '' }}>{{ __('La Réunion') }}</option>
+            <option value="NC" {{ request('country') == 'NC' ? 'selected' : '' }}>{{ __('Nouvelle-Calédonie') }}</option>
+            <option value="PF" {{ request('country') == 'PF' ? 'selected' : '' }}>{{ __('Polynésie française') }}</option>
+            <option value="BE" {{ request('country') == 'BE' ? 'selected' : '' }}>{{ __('Belgique') }}</option>
+            <option value="CH" {{ request('country') == 'CH' ? 'selected' : '' }}>{{ __('Suisse') }}</option>
+            <option value="ES" {{ request('country') == 'ES' ? 'selected' : '' }}>{{ __('Espagne') }}</option>
+            <option value="DE" {{ request('country') == 'DE' ? 'selected' : '' }}>{{ __('Allemagne') }}</option>
+            <option value="IT" {{ request('country') == 'IT' ? 'selected' : '' }}>{{ __('Italie') }}</option>
+            <option value="PT" {{ request('country') == 'PT' ? 'selected' : '' }}>{{ __('Portugal') }}</option>
+            <option value="NL" {{ request('country') == 'NL' ? 'selected' : '' }}>{{ __('Pays-Bas') }}</option>
+            <option value="GB" {{ request('country') == 'GB' ? 'selected' : '' }}>{{ __('Royaume-Uni') }}</option>
+            <option value="CA" {{ request('country') == 'CA' ? 'selected' : '' }}>{{ __('Canada') }}</option>
+            <option value="US" {{ request('country') == 'US' ? 'selected' : '' }}>{{ __('États-Unis') }}</option>
+            <option value="MT" {{ request('country') == 'MT' ? 'selected' : '' }}>{{ __('Malte') }}</option>
+            <option value="MC" {{ request('country') == 'MC' ? 'selected' : '' }}>{{ __('Monaco') }}</option>
+            <option value="LU" {{ request('country') == 'LU' ? 'selected' : '' }}>{{ __('Luxembourg') }}</option>
+            <option value="MA" {{ request('country') == 'MA' ? 'selected' : '' }}>{{ __('Maroc') }}</option>
+            <option value="TN" {{ request('country') == 'TN' ? 'selected' : '' }}>{{ __('Tunisie') }}</option>
+            <option value="SN" {{ request('country') == 'SN' ? 'selected' : '' }}>{{ __('Sénégal') }}</option>
+            <option value="CI" {{ request('country') == 'CI' ? 'selected' : '' }}>{{ __('Côte d\'Ivoire') }}</option>
+            <option value="IE" {{ request('country') == 'IE' ? 'selected' : '' }}>{{ __('Irlande') }}</option>
+            <option value="HR" {{ request('country') == 'HR' ? 'selected' : '' }}>{{ __('Croatie') }}</option>
+          </select>
         </div>
+        <div class="filter-input-group filter-location-hero" id="{{ $locationCityWrapperId }}" data-filter="city-wrapper" data-filter-label="Filtre Ville (Pays → Ville)" data-hero-filter="{{ $isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isCorporate ? 'corporate' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub'))))) }}">
+          <i class="fas fa-map-marker-alt filter-input-icon"></i>
+          <select name="city" id="{{ $locationCityId }}" class="filter-input filter-select home-location-city" disabled data-filter="city-select" data-location-city="true" aria-label="{{ $isHub ? __('Ville') : __('Sélectionner une ville') }}">
+            <option value="">{{ $isHub ? __('Ville') : __('Sélectionner une ville') }}</option>
+          </select>
+        </div>
+        @if($isHub)</div>@endif
         @if($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive)
         {{-- Helper text pour mode "En ligne" (affiché sous Pays/Ville) --}}
         <div class="location-helper-text-wrapper" style="width: 100%; grid-column: 1 / -1;">
-          <div class="location-helper-text" id="{{ $isProjects ? 'projectsLocationHelper' : ($isLessons ? 'lessonsLocationHelper' : ($isAtHome ? 'atHomeLocationHelper' : ($isWellnesslive ? 'wellnessliveLocationHelper' : 'hubLocationHelper'))) }}" style="display: none; margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;">
+          <div class="location-helper-text" id="{{ $isProjects ? 'projectsLocationHelper' : ($isLessons ? 'lessonsLocationHelper' : ($isCorporate ? 'corporateLocationHelper' : ($isAtHome ? 'atHomeLocationHelper' : ($isWellnesslive ? 'wellnessliveLocationHelper' : 'hubLocationHelper')))) }}" style="display: none; margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;">
             <i class="fas fa-info-circle me-1" style="font-size: 0.75rem;"></i>
             {{ $isHomePage ? __('Le lieu n\'est pas requis') : __('En ligne : le lieu n\'est pas requis.') }}
           </div>
         </div>
         @endif
-        @if($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive)
-        {{-- Script Mode d'intervention → Pays/Ville (pour hub/home, hub/services, projects, lessons, at-home et wellnesslive) --}}
+        @if($isHub || $isProjects || $isLessons || $isCorporate || $isAtHome || $isWellnesslive)
+        {{-- Script Mode d'intervention → Pays/Ville (pour hub/home, hub/services, projects, lessons, corporate, at-home et wellnesslive) --}}
         <script>
         (function() {
-          // Scoper au module Hero de /home, /services, /projects, /lessons, /at-home ou /wellnesslive (wrapper Mode d'intervention)
+          // Scoper au module Hero selon l'univers (wrapper Mode d'intervention)
           var heroFilterScope = '{{ $heroFilterScope }}';
-          var heroModule = document.querySelector('.filter-mode-intervention-hero[data-hero-filter="' + heroFilterScope + '"]');
-          if (!heroModule) return;
-          
-          var form = heroModule.closest('form') || document.getElementById('{{ $formId }}');
+          var form = document.getElementById('{{ $formId }}');
           if (!form) return;
           
+          // Chercher le module mode-intervention dans le form (plus robuste)
+          var heroModule = form.querySelector('.filter-mode-intervention-hero[data-hero-filter="' + heroFilterScope + '"]') || form.querySelector('.filter-mode-intervention-hero');
+          if (!heroModule) return;
+          
           var modeRadios = heroModule.querySelectorAll('.mode-intervention-radio');
-          var countrySelect = form.querySelector('.home-location-country');
-          var citySelect = form.querySelector('.home-location-city');
+          // Sélecteurs pour Pays/Ville selon l'univers (utiliser les IDs spécifiques)
+          var countrySelect = document.getElementById('{{ $locationCountryId }}') || form.querySelector('[data-location-country="true"]');
+          var citySelect = document.getElementById('{{ $locationCityId }}') || form.querySelector('[data-location-city="true"]');
           var cityWrapper = citySelect ? citySelect.closest('.filter-input-group') : null;
           var countryWrapper = countrySelect ? countrySelect.closest('.filter-input-group') : null;
-          var helperTextId = '{{ $isProjects ? 'projectsLocationHelper' : ($isLessons ? 'lessonsLocationHelper' : ($isAtHome ? 'atHomeLocationHelper' : ($isWellnesslive ? 'wellnessliveLocationHelper' : 'hubLocationHelper'))) }}';
+          var helperTextId = '{{ $isProjects ? 'projectsLocationHelper' : ($isLessons ? 'lessonsLocationHelper' : ($isCorporate ? 'corporateLocationHelper' : ($isAtHome ? 'atHomeLocationHelper' : ($isWellnesslive ? 'wellnessliveLocationHelper' : 'hubLocationHelper')))) }}';
           var helperText = document.querySelector('#' + helperTextId) || form.querySelector('#' + helperTextId);
           
           function updateLocationFields() {
@@ -670,6 +645,7 @@
           var countryId = '{{ $locationCountryId }}';
           var cityId = '{{ $locationCityId }}';
           var cityWrapperId = '{{ $locationCityWrapperId }}';
+          var isHub = {{ $isHub ? 'true' : 'false' }};
           var citiesByCountry = {
             'FR': ['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Nantes', 'Lille', 'Strasbourg', 'Rennes', 'Montpellier', 'Toulouse', 'Nice'],
             'GP': ['Pointe-à-Pitre', 'Les Abymes', 'Baie-Mahault', 'Le Gosier', 'Sainte-Anne'],
@@ -735,7 +711,7 @@
             'Repos': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 7C3.5 5.067 5.067 3.5 7 3.5C8.933 3.5 10.5 5.067 10.5 7C10.5 8.933 8.933 10.5 7 10.5C5.067 10.5 3.5 8.933 3.5 7Z" stroke="currentColor" stroke-width="1.25"/><path d="M5 7L6.5 8.5L9 6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>',
             'Culture': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2V12M2 7H12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/><circle cx="7" cy="7" r="4" stroke="currentColor" stroke-width="1.25"/></svg>'
           };
-          var placeholderCity = 'Sélectionner une ville';
+          var placeholderCity = isHub ? 'Ville' : 'Sélectionner une ville';
           function init() {
             var countrySelect = document.getElementById(countryId);
             var citySelect = document.getElementById(cityId);
@@ -754,7 +730,6 @@
               try { if (opt.getAttribute('data-badges')) badges = JSON.parse(opt.getAttribute('data-badges')); } catch (e) {}
               var isVeryPopular = opt.getAttribute('data-very-popular') === 'true';
               var displayBadges = getDisplayBadges(badges);
-              if (displayBadges.length === 0 && !isVeryPopular) return;
               var assistant = document.createElement('div');
               assistant.className = 'location-city-assistant';
               assistant.setAttribute('aria-label', 'Informations sur ' + cityName);
@@ -789,7 +764,7 @@
               });
               assistant.appendChild(infoBtn);
               cityWrapper.appendChild(assistant);
-              citySelect.style.paddingRight = '4.5rem';
+              citySelect.style.paddingRight = '8rem';
             }
             function togglePopover(cityName, badges, isVeryPopular, triggerBtn) {
               var existing = document.querySelector('.location-city-popover');
@@ -864,8 +839,35 @@
                 setTimeout(updateCityAssistant, 50);
               }
             }
+            function onCitySelectionChange() {
+              setTimeout(updateCityAssistant, 0);
+              setTimeout(updateCityAssistant, 50);
+              setTimeout(updateCityAssistant, 150);
+            }
+            function startCityValueWatch() {
+              var lastVal = citySelect.value;
+              var n = 0;
+              var tick = function() {
+                if (citySelect.value !== lastVal) {
+                  lastVal = citySelect.value;
+                  updateCityAssistant();
+                }
+                n++;
+                if (n < 20) setTimeout(tick, 50);
+              };
+              setTimeout(tick, 50);
+            }
             countrySelect.addEventListener('change', updateCities);
-            citySelect.addEventListener('change', updateCityAssistant);
+            citySelect.addEventListener('change', onCitySelectionChange);
+            citySelect.addEventListener('input', onCitySelectionChange);
+            citySelect.addEventListener('blur', function() {
+              if (citySelect.value) setTimeout(updateCityAssistant, 10);
+              startCityValueWatch();
+            });
+            citySelect.addEventListener('focus', startCityValueWatch);
+            cityWrapper.addEventListener('change', function(e) {
+              if (e.target && e.target.id === cityId) onCitySelectionChange();
+            });
             updateCities();
             setTimeout(function() { if (citySelect.value) updateCityAssistant(); }, 100);
             setTimeout(updateCities, 150);
@@ -1472,7 +1474,7 @@
                 <span class="filter-checkbox-custom"></span>
                 <span class="filter-checkbox-text">{{ __('En ligne') }}</span>
               </label>
-              @if(!$isHub && !$isProjects && !$isLessons && !$isAtHome && !$isWellnesslive)
+              @if(!$isHub && !$isProjects && !$isLessons && !$isCorporate && !$isAtHome && !$isWellnesslive)
               <label class="filter-checkbox-label">
                 <input type="checkbox" name="mode[]" value="offline" {{ in_array('offline', (array) request('mode', [])) ? 'checked' : '' }}>
                 <span class="filter-checkbox-custom"></span>
@@ -1528,7 +1530,7 @@
                 <span class="filter-checkbox-custom"></span>
                 <span class="filter-checkbox-text">{{ __('En ligne') }}</span>
               </label>
-              @if(!$isHub && !$isProjects && !$isLessons && !$isAtHome && !$isWellnesslive)
+              @if(!$isHub && !$isProjects && !$isLessons && !$isCorporate && !$isAtHome && !$isWellnesslive)
               <label class="filter-checkbox-label">
                 <input type="checkbox" name="mode[]" value="offline" {{ in_array('offline', (array) request('mode', [])) ? 'checked' : '' }}>
                 <span class="filter-checkbox-custom"></span>
@@ -1653,7 +1655,7 @@
     border-radius: 32px;
     padding: 2.5rem;
     margin: -60px auto 4rem;
-    max-width: 95%;
+    max-width: 1200px;
     box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15), 0 8px 24px rgba(124, 58, 237, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
     border: 1.5px solid rgba(196, 181, 253, 0.2);
     backdrop-filter: blur(30px);
@@ -1734,40 +1736,16 @@
   .filter-row-main--projects-hero {
     grid-template-columns: minmax(180px, 1.5fr) minmax(180px, 1.5fr) minmax(160px, 1fr) minmax(160px, 1fr) auto;
   }
-  /* Sur la page d'accueil : Domaine + Spécialisation (colonne 1), Pays+Ville empilés (colonne 1-2, rangée 2) et Mode d'intervention (colonne 3) */
-  .home-search-filter-section .search-filter-form .filter-row-main--projects-hero {
-    grid-template-columns: minmax(220px, 1.35fr) minmax(220px, 1.35fr) auto;
-    grid-auto-rows: auto;
-    align-items: start;
-  }
-  .home-search-filter-section .hero-filter-module {
-    grid-column: 1 / 2;
-  }
-  .home-search-filter-section .hero-location-wrapper-home {
-    grid-column: 1 / 3;
-    grid-row: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-  }
-  .home-search-filter-section .hero-location-wrapper-home .filter-input-group {
-    width: 100%;
-    display: block;
-  }
-  .home-search-filter-section .filter-mode-intervention-hero {
-    grid-column: 3 / 4;
-    grid-row: 1 / span 2;
-    align-self: stretch;
-  }
-  /* WellnessLive / At-home / Hub : aligner filtre Pays et filtre Ville sur la même ligne (même hauteur) */
+  /* WellnessLive / At-home / Hub / Corporate : aligner filtre Pays et filtre Ville sur la même ligne (même hauteur) */
   .search-filter-form[data-universe="wellnesslive"] .filter-row-main--projects-hero,
   .search-filter-form[data-universe="at-home"] .filter-row-main--projects-hero,
-  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero {
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero,
+  .search-filter-form[data-universe="corporate"] .filter-row-main--projects-hero {
     align-items: center;
   }
-  /* Hub /services : Spécialisation doit s'ouvrir — pas de clip, z-index au-dessus */
-  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero {
+  /* Hub / Corporate /services : Spécialisation doit s'ouvrir — pas de clip, z-index au-dessus */
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero,
+  .search-filter-form[data-universe="corporate"] .filter-row-main--projects-hero {
     overflow: visible;
   }
   .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper,
@@ -1789,11 +1767,59 @@
   .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
     grid-template-columns: 2fr minmax(200px, 1fr) minmax(180px, 1fr) minmax(180px, 1fr) auto;
   }
+  /* Hub uniquement : largeurs ajustées — univers/domaines +1cm, Pays/Ville -2cm */
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero:has(.hub-location-stack) {
+    grid-template-columns: minmax(140px, 1fr) minmax(260px, 1fr) minmax(180px, 1fr) auto;
+    column-gap: 0.75rem;
+  }
+  .search-filter-form[data-universe="hub"] .hero-filter-module {
+    max-width: calc(100% - 1cm);
+    min-width: 0;
+  }
+  .search-filter-form[data-universe="hub"] .hub-location-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 180px;
+    max-width: calc(100% - 2cm);
+  }
+  .search-filter-form[data-universe="hub"] .hub-location-stack .filter-input-group.filter-location-hero {
+    min-width: 100%;
+  }
+  .search-filter-form[data-universe="hub"] .hub-location-stack .filter-input,
+  .search-filter-form[data-universe="hub"] .hub-location-stack .filter-select {
+    min-width: 0;
+    width: 100%;
+  }
+  .search-filter-form[data-universe="hub"] .filter-mode-intervention-hero {
+    position: relative;
+    z-index: 2;
+    min-width: 260px;
+    max-width: 100%;
+  }
+  .search-filter-form[data-universe="hub"] .mode-intervention-pill-text {
+    white-space: nowrap;
+  }
+  .search-filter-form[data-universe="hub"] .mode-intervention-pill {
+    padding-top: calc(0.625rem + 0.1cm);
+    padding-bottom: calc(0.625rem + 0.1cm);
+  }
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero:has(.hub-location-stack) .filter-submit-btn {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    max-width: calc(100% - 1cm);
+    padding: 1rem 1.5rem;
+    height: auto;
+    min-height: 3.25rem;
+    box-sizing: border-box;
+  }
   
   /* Correctifs superposition/coupé pour hub/services, projects, lessons, at-home et wellnesslive */
   .search-filter-form[data-universe="hub"] .filter-row-main--has-location-duo,
   .search-filter-form[data-universe="projects"] .filter-row-main--has-location-duo,
   .search-filter-form[data-universe="lessons"] .filter-row-main--has-location-duo,
+  .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo,
   .search-filter-form[data-universe="at-home"] .filter-row-main--has-location-duo,
   .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo {
     overflow: visible;
@@ -1806,45 +1832,13 @@
   .search-filter-form[data-universe="projects"] .filter-input-group.filter-location-hero,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-mode-intervention-hero,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-location-hero,
+  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-mode-intervention-hero,
+  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-mode-intervention-hero,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-location-hero,
   .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-mode-intervention-hero,
   .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero {
     min-width: 160px;
-  }
-
-  /* Eviter la troncature des labels de trigger (amélioration rendu haut de gamme) */
-  .search-filter-form .hero-domain-trigger {
-    min-width: 220px;
-  }
-  .search-filter-form .hero-domain-trigger-text {
-    white-space: normal;
-    overflow: visible;
-    max-width: none;
-  }
-
-  /* Sur la page d'accueil : empiler Pays puis Ville pour gagner de la place */
-  .hero-location-wrapper-home {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: stretch;
-    width: 100%;
-  }
-  .hero-location-wrapper-home .filter-input-group {
-    width: 100%;
-    min-width: 0; /* éviter overflow sur petits écrans */
-    display: block;
-  }
-
-  /* Corriger superposition icône / label dans "Tous les univers" */
-  .filter-hero-domain-select .filter-input-icon {
-    left: 0.9rem;
-    z-index: 12;
-  }
-  .filter-hero-domain-select .filter-select-domain-hero,
-  .hero-domain-trigger {
-    padding-left: 3.2rem !important;
   }
   
   /* Dropdown z-index + overflow uniquement sur le menu ouvert */
@@ -1854,6 +1848,8 @@
   .search-filter-form[data-universe="projects"] .filter-input-group.filter-location-hero select:active,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-location-hero select:focus,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-location-hero select:active,
+  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero select:focus,
+  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero select:active,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-location-hero select:focus,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-location-hero select:active,
   .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero select:focus,
@@ -1867,6 +1863,7 @@
     .search-filter-form[data-universe="hub"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="projects"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="lessons"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
+    .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="at-home"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
       grid-template-columns: 1fr 1fr;
@@ -1875,6 +1872,7 @@
     .search-filter-form[data-universe="hub"] .filter-input-group.filter-mode-intervention-hero,
     .search-filter-form[data-universe="projects"] .filter-input-group.filter-mode-intervention-hero,
     .search-filter-form[data-universe="lessons"] .filter-input-group.filter-mode-intervention-hero,
+    .search-filter-form[data-universe="corporate"] .filter-input-group.filter-mode-intervention-hero,
     .search-filter-form[data-universe="at-home"] .filter-input-group.filter-mode-intervention-hero,
     .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-mode-intervention-hero {
       grid-column: 1 / -1;
@@ -1885,6 +1883,7 @@
     .search-filter-form[data-universe="hub"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="projects"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="lessons"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
+    .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="at-home"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
       grid-template-columns: 1fr;
@@ -1895,6 +1894,9 @@
   .location-helper-text-wrapper {
     grid-column: 1 / -1;
     width: 100%;
+  }
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero:has(.hub-location-stack) .location-helper-text-wrapper {
+    grid-row: 3;
   }
   .filter-input-group.filter-location-hero .filter-input.filter-select,
   .filter-input-group.filter-location-hero .filter-select {
@@ -1919,24 +1921,32 @@
   .home-search-filter-section .filter-input-group.filter-location-hero {
     position: relative;
   }
+  /* Zone droite : [ icônes ] [ chevron natif ]. right = marge pour laisser le chevron toujours visible et cliquable */
   .location-city-assistant {
     position: absolute;
-    right: 0.75rem;
+    right: 2rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
     gap: 0.5rem;
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  /* Réserver l’espace : texte | icônes | zone chevron (aucune icône ne recouvre la flèche) */
+  .filter-input-group.filter-location-hero:has(.location-city-assistant) .home-location-city {
+    padding-right: 8rem !important;
   }
   .location-city-assistant > * {
     pointer-events: auto;
+    flex-shrink: 0;
   }
   .location-city-icons {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
   }
   .location-city-icon {
     display: inline-flex;
@@ -1944,8 +1954,11 @@
     justify-content: center;
     width: 18px;
     height: 18px;
+    min-width: 18px;
+    min-height: 18px;
     color: #94a3b8;
     opacity: 0.85;
+    flex-shrink: 0;
   }
   .location-city-icon svg {
     width: 100%;
@@ -2025,8 +2038,43 @@
     left: 1.25rem;
     color: #7c3aed;
     font-size: 1.1rem;
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
+  }
+  /* Tous les univers : éviter que l’icône chevauche le texte */
+  .filter-hero-domain-select-wrapper .filter-input-icon {
+    left: 1rem;
+  }
+  .filter-hero-domain-select-wrapper .filter-input {
+    padding-left: 4rem;
+  }
+  /* Tous les domaines (hub) : icône au-dessus du select pour rester visible */
+  .filter-input-group.filter-hero-domain-spec .filter-input-icon {
+    z-index: 3;
+  }
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .filter-input-icon {
+    z-index: 61;
+  }
+  /* Tous les domaines (hub) : éviter que l’icône chevauche le texte */
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .filter-input {
+    padding-left: 4rem;
+  }
+  /* Tous les domaines (hub) : aligner le texte sur Tous les univers (alignement à gauche) */
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationSelect {
+    text-align: left;
+  }
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .nice-select,
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .nice-select .current {
+    text-align: left;
+  }
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .nice-select .list {
+    background: #fff;
+    border: 1px solid var(--preply-border, #e5e7eb);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  }
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .nice-select .list .option {
+    text-align: left;
   }
 
   .filter-input {
@@ -2255,145 +2303,6 @@
       width: 100%;
     }
   }
-  /* ------------------------------------------------------------------
-     Premium /home overrides — uniquement visuel, scoped au Hero /home
-     Objectif : rendre le segmented control plus compact et plus premium
-     Ne change pas la logique ni l'ordre des éléments.
-  ------------------------------------------------------------------ */
-  .search-filter-form[data-universe="hub"] .filter-input-group.filter-mode-intervention-hero .mode-intervention-segmented {
-    padding: 2px; /* réduire le padding vertical du container */
-    gap: 0.5rem;
-    background: rgba(15, 23, 42, 0.03); /* fond plus discret */
-    border-radius: 10px; /* légèrement moins arrondi */
-    border: 1px solid rgba(15, 23, 42, 0.06); /* bord plus léger */
-  }
-
-  .search-filter-form[data-universe="hub"] .filter-input-group.filter-mode-intervention-hero .mode-intervention-pill {
-    padding: 0.45rem 1rem; /* pill plus compacte (moins haut)
-                            garde l'espace horizontal pour le texte */
-    border-radius: 10px; /* rapprocher du rayon des selects */
-    font-size: 0.92rem;
-  }
-
-  .search-filter-form[data-universe="hub"] .filter-input-group.filter-mode-intervention-hero .mode-intervention-pill:hover {
-    background: rgba(255, 255, 255, 0.5);
-  }
-
-  .search-filter-form[data-universe="hub"] .filter-input-group.filter-mode-intervention-hero .mode-intervention-pill.is-active {
-    /* conserver contraste et état actif clair mais moins massif */
-    background: linear-gradient(135deg, #6b21a8 0%, #2563eb 100%);
-    color: #ffffff;
-    box-shadow: 0 1px 4px rgba(124, 58, 237, 0.18);
-  }
-
-  .search-filter-form[data-universe="hub"] .filter-input-group.filter-mode-intervention-hero .mode-intervention-pill:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12); /* focus visible accessible */
-  }
-
-  .search-filter-form[data-universe="hub"] .filter-input-group.filter-mode-intervention-hero .mode-intervention-pill-text {
-    font-weight: 600; /* léger upgrade visuel */
-    transition: color 0.18s ease;
-  }
-
-  /* ------------------------------------------------------------------
-     A) Corriger la superposition icône + texte "Tous les univers" /home
-     B) Corriger troncature Pays/Ville : déplacer Ville SOUS Pays
-     Scope strict : uniquement sur /home via [data-universe="hub"]
-  ------------------------------------------------------------------ */
-
-  /* WRAPPER Pays+Ville : layout VERTICAL (colonne) uniquement sur /home */
-  .hero-location-wrapper-home {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-    width: 100% !important;
-    grid-column: 1 / 3 !important; /* occuper les deux premières colonnes */
-    grid-row: 2 !important;
-  }
-
-  /* Champs Pays et Ville à l'intérieur du wrapper : occuper toute la largeur */
-  .hero-location-wrapper-home .filter-input-group.filter-location-hero {
-    width: 100% !important;
-    display: block !important;
-    flex: 1 1 auto !important;
-  }
-
-  .hero-location-wrapper-home .home-location-country,
-  .hero-location-wrapper-home .home-location-city {
-    width: 100% !important;
-    display: block !important;
-  }
-
-  /* A) Hero Univers trigger — fix align icône/texte sans chevauchement */
-  .search-filter-form[data-universe="hub"] .hero-domain-trigger {
-    padding-left: 1rem !important; /* réduire padding-left pour laisser place au texte */
-    padding-right: 2.5rem !important; /* plus d'espace pour la flèche à droite */
-    gap: 0.75rem !important; /* espace entre le texte et la flèche */
-    justify-content: space-between !important;
-  }
-
-  .search-filter-form[data-universe="hub"] .hero-domain-trigger-text {
-    flex: 1 1 auto;
-    min-width: 0; /* permettre le wrap si nécessaire */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .search-filter-form[data-universe="hub"] .hero-domain-arrow {
-    flex-shrink: 0; /* empêcher la flèche de réduire */
-    margin-left: auto;
-  }
-
-  /* B) Pays + Ville : layout VERTICAL (Pays → Ville) pour gagner de la place */
-  /* Forcer les 2 champs location (Pays, Ville) en colonne sur /home */
-  .search-filter-form[data-universe="hub"] #homeLocationCountryGroup,
-  .search-filter-form[data-universe="hub"] #hubCityWrapper {
-    width: 100%; /* chaque champ occupe toute la largeur disponible */
-    display: block;
-    margin-bottom: 0.75rem; /* espace vertical entre Pays et Ville */
-  }
-
-  /* Assurer que les labels/champs sont bien visibles */
-  .search-filter-form[data-universe="hub"] .home-location-country,
-  .search-filter-form[data-universe="hub"] .home-location-city {
-    width: 100%;
-    display: block;
-    padding: 0.875rem 1.25rem;
-    border: 2px solid rgba(196, 181, 253, 0.3);
-    border-radius: 12px;
-    font-size: 0.95rem;
-  }
-
-  /* Sur desktop large (≥1280px) : permettre aux champs une largeur raisonnable si la grille le permet */
-  @media (min-width: 1280px) {
-    /* Wrapper parent pour contrôler l'espace total réservé à Pays+Ville */
-    .search-filter-form[data-universe="hub"] .home-search-filter-section {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1rem;
-      align-items: start;
-    }
-
-    /* Créer une sous-colonne pour Pays+Ville empilés */
-    .search-filter-form[data-universe="hub"] #homeLocationCountryGroup,
-    .search-filter-form[data-universe="hub"] #hubCityWrapper {
-      grid-column: auto;
-      min-width: 240px;
-      max-width: 280px;
-    }
-  }
-
-  /* Sur mobile/tablet : layout par défaut (flexbox, vertical si nécessaire) */
-  @media (max-width: 1279px) {
-    .search-filter-form[data-universe="hub"] #homeLocationCountryGroup,
-    .search-filter-form[data-universe="hub"] #hubCityWrapper {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-
   .besoin-mission-card {
     display: flex; align-items: center; justify-content: center;
     padding: 0.625rem 1.25rem; border-radius: 12px;

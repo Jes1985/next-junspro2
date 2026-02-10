@@ -110,11 +110,11 @@ unset($__defined_vars, $__key, $__value); ?>
   $isHub = ($universe === 'hub');
   $isProjects = ($universe === 'projects');
   $isLessons = ($universe === 'lessons');
+  $isCorporate = ($universe === 'corporate');
   $isAtHome = ($universe === 'at-home');
   $isWellnesslive = ($universe === 'wellnesslive');
-  $isCorporate = ($universe === 'corporate');
   // Déterminer le scope selon le formId pour distinguer /home de /services
-  $heroFilterScope = ($formId === 'homeHubSearchFilter') ? 'home' : ($universe === 'projects' ? 'projects' : ($universe === 'lessons' ? 'lessons' : ($universe === 'at-home' ? 'at-home' : ($universe === 'wellnesslive' ? 'wellnesslive' : ($universe === 'corporate' ? 'corporate' : 'hub')))));
+  $heroFilterScope = ($formId === 'homeHubSearchFilter') ? 'home' : ($universe === 'projects' ? 'projects' : ($universe === 'lessons' ? 'lessons' : ($universe === 'corporate' ? 'corporate' : ($universe === 'at-home' ? 'at-home' : ($universe === 'wellnesslive' ? 'wellnesslive' : 'hub')))));
   $isHomePage = ($formId === 'homeHubSearchFilter');
   $heroCategories = [];
   $heroDomainSpecs = [];
@@ -224,10 +224,10 @@ unset($__defined_vars, $__key, $__value); ?>
           </select>
           <?php endif; ?>
         </div>
-        <div class="filter-input-group filter-hero-domain-spec" id="<?php echo e($heroSpecWrapperId); ?>" data-initial-specialization="<?php echo e(request('specialization') ?? ''); ?>" data-spec-disabled-text="<?php echo e($isHub ? __('Choisissez un univers d\'abord') : 'Spécialisation'); ?>" <?php if($isHub): ?> style="overflow:visible;position:relative;z-index:50;" <?php endif; ?>>
-          <i class="fas fa-graduation-cap filter-input-icon" aria-hidden="true"></i>
-          <select name="specialization" id="<?php echo e($heroSpecSelectId); ?>" class="filter-input filter-select" disabled aria-label="<?php echo e($isHub ? __('Choisissez un univers d\'abord') : 'Spécialisation'); ?>">
-            <option value=""><?php echo e($isHub ? __('Choisissez un univers d\'abord') : 'Spécialisation'); ?></option>
+        <div class="filter-input-group filter-hero-domain-spec" id="<?php echo e($heroSpecWrapperId); ?>" data-initial-specialization="<?php echo e(request('specialization') ?? ''); ?>" data-spec-disabled-text="<?php echo e($isHub ? __('Tous les domaines') : 'Spécialisation'); ?>" <?php if($isHub): ?> style="overflow:visible;position:relative;z-index:50;" <?php endif; ?>>
+          <i class="fas fa-folder-open filter-input-icon" style="left: 1rem;" aria-hidden="true"></i>
+          <select name="specialization" id="<?php echo e($heroSpecSelectId); ?>" class="filter-input filter-select" disabled aria-label="<?php echo e($isHub ? __('Tous les domaines') : 'Spécialisation'); ?>">
+            <option value=""><?php echo e($isHub ? __('Tous les domaines') : 'Spécialisation'); ?></option>
           </select>
         </div>
         </div>
@@ -240,7 +240,7 @@ unset($__defined_vars, $__key, $__value); ?>
           var HUB_UNIVERS_ID = 'hubHeroUniversSelect';
           var HUB_SPEC_ID = 'hubHeroSpecializationSelect';
           var HUB_SPEC_WRAPPER_ID = 'hubHeroSpecializationWrapper';
-          var DISABLED_TEXT = 'Choisissez un univers d\'abord';
+          var DISABLED_TEXT = 'Tous les domaines';
           function runHubDomainSpec() {
             var mapEl = document.getElementById(HUB_MAP_ID);
             var universSelect = document.getElementById(HUB_UNIVERS_ID);
@@ -252,7 +252,7 @@ unset($__defined_vars, $__key, $__value); ?>
             var specDisabledText = (specWrapper && specWrapper.getAttribute('data-spec-disabled-text')) || DISABLED_TEXT;
             function updateSpec() {
               var chosen = universSelect.value || '';
-              specSelect.innerHTML = '<option value="">' + specDisabledText + '</option>';
+              specSelect.innerHTML = '<option value="">' + (specDisabledText || 'Tous les domaines') + '</option>';
               if (chosen) {
                 specSelect.removeAttribute('disabled');
                 specSelect.style.pointerEvents = 'auto';
@@ -433,31 +433,34 @@ unset($__defined_vars, $__key, $__value); ?>
         <?php endif; ?>
         <?php if($hasLocationDuo): ?>
         
-        <?php if($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive || $isCorporate): ?>
+        <?php if($isHub || $isProjects || $isLessons || $isCorporate || $isAtHome || $isWellnesslive): ?>
         <div class="filter-input-group filter-mode-intervention-hero" data-hero-filter="<?php echo e($heroFilterScope); ?>">
           <label class="filter-label-visually-hidden"><?php echo e(__('Mode d\'intervention')); ?></label>
           <div class="mode-intervention-segmented" role="group" aria-label="<?php echo e(__('Mode d\'intervention')); ?>">
             <?php
-              $currentMode = request('mode', 'onsite');
-              $isOnline = $currentMode === 'online';
-              $isOnsite = $currentMode === 'onsite' || empty($currentMode);
+              $currentMode = request('mode', []);
+              $isOnline = is_array($currentMode) && in_array('online', $currentMode);
+              $isOnsite = (is_array($currentMode) && in_array('onsite', $currentMode)) || empty($currentMode);
+              // Par défaut, si aucun mode n'est sélectionné, on considère "En présentiel"
+              $hasNoMode = !$isOnline && !$isOnsite;
             ?>
             <label class="mode-intervention-pill <?php echo e($isOnline ? 'is-active' : ''); ?>" data-mode="online">
-              <input type="radio" name="mode" value="online" <?php echo e($isOnline ? 'checked' : ''); ?> class="sr-only mode-intervention-radio">
+              <input type="radio" name="mode[]" value="online" <?php echo e($isOnline ? 'checked' : ''); ?> class="sr-only mode-intervention-radio">
               <span class="mode-intervention-pill-text"><?php echo e(__('En ligne')); ?></span>
             </label>
-            <label class="mode-intervention-pill <?php echo e($isOnsite ? 'is-active' : ''); ?>" data-mode="onsite">
-              <input type="radio" name="mode" value="onsite" <?php echo e($isOnsite ? 'checked' : ''); ?> class="sr-only mode-intervention-radio">
+            <label class="mode-intervention-pill <?php echo e(($isOnsite || $hasNoMode) ? 'is-active' : ''); ?>" data-mode="onsite">
+              <input type="radio" name="mode[]" value="onsite" <?php echo e(($isOnsite || $hasNoMode) ? 'checked' : ''); ?> class="sr-only mode-intervention-radio">
               <span class="mode-intervention-pill-text"><?php echo e(__('En présentiel')); ?></span>
             </label>
           </div>
         </div>
         <?php endif; ?>
         
-        <div class="filter-input-group filter-location-hero" id="homeLocationCountryGroup" data-hero-filter="<?php echo e($isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($isCorporate ? 'corporate' : ($heroFilterScope ?? 'hub')))))); ?>">
+        <?php if($isHub): ?><div class="hub-location-stack"><?php endif; ?>
+        <div class="filter-input-group filter-location-hero" id="homeLocationCountryGroup" data-hero-filter="<?php echo e($isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isCorporate ? 'corporate' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub')))))); ?>">
           <i class="fas fa-map-marker-alt filter-input-icon"></i>
-          <select name="country" id="<?php echo e($locationCountryId); ?>" class="filter-input filter-select home-location-country">
-            <option value=""><?php echo e(__('Sélectionner un pays')); ?></option>
+          <select name="country" id="<?php echo e($locationCountryId); ?>" class="filter-input filter-select home-location-country" data-location-country="true">
+            <option value=""><?php echo e($isHub ? __('Pays') : __('Sélectionner un pays')); ?></option>
             <option value="FR" <?php echo e(request('country') == 'FR' ? 'selected' : ''); ?>><?php echo e(__('France')); ?></option>
             <option value="GP" <?php echo e(request('country') == 'GP' ? 'selected' : ''); ?>><?php echo e(__('Guadeloupe')); ?></option>
             <option value="MQ" <?php echo e(request('country') == 'MQ' ? 'selected' : ''); ?>><?php echo e(__('Martinique')); ?></option>
@@ -486,40 +489,43 @@ unset($__defined_vars, $__key, $__value); ?>
             <option value="HR" <?php echo e(request('country') == 'HR' ? 'selected' : ''); ?>><?php echo e(__('Croatie')); ?></option>
           </select>
         </div>
-        <div class="filter-input-group filter-location-hero" id="<?php echo e($locationCityWrapperId); ?>" data-filter="city-wrapper" data-filter-label="Filtre Ville (Pays → Ville)" data-hero-filter="<?php echo e($isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($isCorporate ? 'corporate' : ($heroFilterScope ?? 'hub')))))); ?>">
+        <div class="filter-input-group filter-location-hero" id="<?php echo e($locationCityWrapperId); ?>" data-filter="city-wrapper" data-filter-label="Filtre Ville (Pays → Ville)" data-hero-filter="<?php echo e($isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isCorporate ? 'corporate' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub')))))); ?>">
           <i class="fas fa-map-marker-alt filter-input-icon"></i>
-          <select name="city" id="<?php echo e($locationCityId); ?>" class="filter-input filter-select home-location-city" disabled data-filter="city-select" aria-label="<?php echo e(__('Sélectionner une ville')); ?>">
-            <option value=""><?php echo e(__('Sélectionner une ville')); ?></option>
+          <select name="city" id="<?php echo e($locationCityId); ?>" class="filter-input filter-select home-location-city" disabled data-filter="city-select" data-location-city="true" aria-label="<?php echo e($isHub ? __('Ville') : __('Sélectionner une ville')); ?>">
+            <option value=""><?php echo e($isHub ? __('Ville') : __('Sélectionner une ville')); ?></option>
           </select>
         </div>
-        <?php if($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive || $isCorporate): ?>
+        <?php if($isHub): ?></div><?php endif; ?>
+        <?php if($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive): ?>
         
         <div class="location-helper-text-wrapper" style="width: 100%; grid-column: 1 / -1;">
-          <div class="location-helper-text" id="<?php echo e($isProjects ? 'projectsLocationHelper' : ($isLessons ? 'lessonsLocationHelper' : ($isAtHome ? 'atHomeLocationHelper' : ($isWellnesslive ? 'wellnessliveLocationHelper' : ($isCorporate ? 'corporateLocationHelper' : 'hubLocationHelper'))))); ?>" style="display: none; margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;">
+          <div class="location-helper-text" id="<?php echo e($isProjects ? 'projectsLocationHelper' : ($isLessons ? 'lessonsLocationHelper' : ($isCorporate ? 'corporateLocationHelper' : ($isAtHome ? 'atHomeLocationHelper' : ($isWellnesslive ? 'wellnessliveLocationHelper' : 'hubLocationHelper'))))); ?>" style="display: none; margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;">
             <i class="fas fa-info-circle me-1" style="font-size: 0.75rem;"></i>
             <?php echo e($isHomePage ? __('Le lieu n\'est pas requis') : __('En ligne : le lieu n\'est pas requis.')); ?>
 
           </div>
         </div>
         <?php endif; ?>
-        <?php if($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive || $isCorporate): ?>
+        <?php if($isHub || $isProjects || $isLessons || $isCorporate || $isAtHome || $isWellnesslive): ?>
         
         <script>
         (function() {
-          // Scoper au module Hero de /home, /services, /projects, /lessons, /at-home, /wellnesslive ou /corporate (wrapper Mode d'intervention)
+          // Scoper au module Hero selon l'univers (wrapper Mode d'intervention)
           var heroFilterScope = '<?php echo e($heroFilterScope); ?>';
-          var heroModule = document.querySelector('.filter-mode-intervention-hero[data-hero-filter="' + heroFilterScope + '"]');
-          if (!heroModule) return;
-          
-          var form = heroModule.closest('form') || document.getElementById('<?php echo e($formId); ?>');
+          var form = document.getElementById('<?php echo e($formId); ?>');
           if (!form) return;
           
+          // Chercher le module mode-intervention dans le form (plus robuste)
+          var heroModule = form.querySelector('.filter-mode-intervention-hero[data-hero-filter="' + heroFilterScope + '"]') || form.querySelector('.filter-mode-intervention-hero');
+          if (!heroModule) return;
+          
           var modeRadios = heroModule.querySelectorAll('.mode-intervention-radio');
-          var countrySelect = form.querySelector('.home-location-country');
-          var citySelect = form.querySelector('.home-location-city');
+          // Sélecteurs pour Pays/Ville selon l'univers (utiliser les IDs spécifiques)
+          var countrySelect = document.getElementById('<?php echo e($locationCountryId); ?>') || form.querySelector('[data-location-country="true"]');
+          var citySelect = document.getElementById('<?php echo e($locationCityId); ?>') || form.querySelector('[data-location-city="true"]');
           var cityWrapper = citySelect ? citySelect.closest('.filter-input-group') : null;
           var countryWrapper = countrySelect ? countrySelect.closest('.filter-input-group') : null;
-          var helperTextId = '<?php echo e($isProjects ? 'projectsLocationHelper' : ($isLessons ? 'lessonsLocationHelper' : ($isAtHome ? 'atHomeLocationHelper' : ($isWellnesslive ? 'wellnessliveLocationHelper' : ($isCorporate ? 'corporateLocationHelper' : 'hubLocationHelper'))))); ?>';
+          var helperTextId = '<?php echo e($isProjects ? 'projectsLocationHelper' : ($isLessons ? 'lessonsLocationHelper' : ($isCorporate ? 'corporateLocationHelper' : ($isAtHome ? 'atHomeLocationHelper' : ($isWellnesslive ? 'wellnessliveLocationHelper' : 'hubLocationHelper'))))); ?>';
           var helperText = document.querySelector('#' + helperTextId) || form.querySelector('#' + helperTextId);
           
           function updateLocationFields() {
@@ -682,6 +688,7 @@ unset($__defined_vars, $__key, $__value); ?>
           var countryId = '<?php echo e($locationCountryId); ?>';
           var cityId = '<?php echo e($locationCityId); ?>';
           var cityWrapperId = '<?php echo e($locationCityWrapperId); ?>';
+          var isHub = <?php echo e($isHub ? 'true' : 'false'); ?>;
           var citiesByCountry = {
             'FR': ['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Nantes', 'Lille', 'Strasbourg', 'Rennes', 'Montpellier', 'Toulouse', 'Nice'],
             'GP': ['Pointe-à-Pitre', 'Les Abymes', 'Baie-Mahault', 'Le Gosier', 'Sainte-Anne'],
@@ -747,7 +754,7 @@ unset($__defined_vars, $__key, $__value); ?>
             'Repos': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 7C3.5 5.067 5.067 3.5 7 3.5C8.933 3.5 10.5 5.067 10.5 7C10.5 8.933 8.933 10.5 7 10.5C5.067 10.5 3.5 8.933 3.5 7Z" stroke="currentColor" stroke-width="1.25"/><path d="M5 7L6.5 8.5L9 6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>',
             'Culture': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2V12M2 7H12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/><circle cx="7" cy="7" r="4" stroke="currentColor" stroke-width="1.25"/></svg>'
           };
-          var placeholderCity = 'Sélectionner une ville';
+          var placeholderCity = isHub ? 'Ville' : 'Sélectionner une ville';
           function init() {
             var countrySelect = document.getElementById(countryId);
             var citySelect = document.getElementById(cityId);
@@ -766,7 +773,6 @@ unset($__defined_vars, $__key, $__value); ?>
               try { if (opt.getAttribute('data-badges')) badges = JSON.parse(opt.getAttribute('data-badges')); } catch (e) {}
               var isVeryPopular = opt.getAttribute('data-very-popular') === 'true';
               var displayBadges = getDisplayBadges(badges);
-              if (displayBadges.length === 0 && !isVeryPopular) return;
               var assistant = document.createElement('div');
               assistant.className = 'location-city-assistant';
               assistant.setAttribute('aria-label', 'Informations sur ' + cityName);
@@ -801,7 +807,7 @@ unset($__defined_vars, $__key, $__value); ?>
               });
               assistant.appendChild(infoBtn);
               cityWrapper.appendChild(assistant);
-              citySelect.style.paddingRight = '4.5rem';
+              citySelect.style.paddingRight = '8rem';
             }
             function togglePopover(cityName, badges, isVeryPopular, triggerBtn) {
               var existing = document.querySelector('.location-city-popover');
@@ -876,8 +882,35 @@ unset($__defined_vars, $__key, $__value); ?>
                 setTimeout(updateCityAssistant, 50);
               }
             }
+            function onCitySelectionChange() {
+              setTimeout(updateCityAssistant, 0);
+              setTimeout(updateCityAssistant, 50);
+              setTimeout(updateCityAssistant, 150);
+            }
+            function startCityValueWatch() {
+              var lastVal = citySelect.value;
+              var n = 0;
+              var tick = function() {
+                if (citySelect.value !== lastVal) {
+                  lastVal = citySelect.value;
+                  updateCityAssistant();
+                }
+                n++;
+                if (n < 20) setTimeout(tick, 50);
+              };
+              setTimeout(tick, 50);
+            }
             countrySelect.addEventListener('change', updateCities);
-            citySelect.addEventListener('change', updateCityAssistant);
+            citySelect.addEventListener('change', onCitySelectionChange);
+            citySelect.addEventListener('input', onCitySelectionChange);
+            citySelect.addEventListener('blur', function() {
+              if (citySelect.value) setTimeout(updateCityAssistant, 10);
+              startCityValueWatch();
+            });
+            citySelect.addEventListener('focus', startCityValueWatch);
+            cityWrapper.addEventListener('change', function(e) {
+              if (e.target && e.target.id === cityId) onCitySelectionChange();
+            });
             updateCities();
             setTimeout(function() { if (citySelect.value) updateCityAssistant(); }, 100);
             setTimeout(updateCities, 150);
@@ -1497,7 +1530,7 @@ unset($__defined_vars, $__key, $__value); ?>
                 <span class="filter-checkbox-custom"></span>
                 <span class="filter-checkbox-text"><?php echo e(__('En ligne')); ?></span>
               </label>
-              <?php if(!$isHub && !$isProjects && !$isLessons && !$isAtHome && !$isWellnesslive && !$isCorporate): ?>
+              <?php if(!$isHub && !$isProjects && !$isLessons && !$isCorporate && !$isAtHome && !$isWellnesslive): ?>
               <label class="filter-checkbox-label">
                 <input type="checkbox" name="mode[]" value="offline" <?php echo e(in_array('offline', (array) request('mode', [])) ? 'checked' : ''); ?>>
                 <span class="filter-checkbox-custom"></span>
@@ -1553,7 +1586,7 @@ unset($__defined_vars, $__key, $__value); ?>
                 <span class="filter-checkbox-custom"></span>
                 <span class="filter-checkbox-text"><?php echo e(__('En ligne')); ?></span>
               </label>
-              <?php if(!$isHub && !$isProjects && !$isLessons && !$isAtHome && !$isWellnesslive && !$isCorporate): ?>
+              <?php if(!$isHub && !$isProjects && !$isLessons && !$isCorporate && !$isAtHome && !$isWellnesslive): ?>
               <label class="filter-checkbox-label">
                 <input type="checkbox" name="mode[]" value="offline" <?php echo e(in_array('offline', (array) request('mode', [])) ? 'checked' : ''); ?>>
                 <span class="filter-checkbox-custom"></span>
@@ -1671,7 +1704,7 @@ unset($__defined_vars, $__key, $__value); ?>
   </div>
 </div>
 
-<?php if (! $__env->hasRenderedOnce('f878572d-84bf-4edf-8916-a9fd72026a57')): $__env->markAsRenderedOnce('f878572d-84bf-4edf-8916-a9fd72026a57'); ?>
+<?php if (! $__env->hasRenderedOnce('89125a40-c5a0-49ef-9b55-3d407450cb00')): $__env->markAsRenderedOnce('89125a40-c5a0-49ef-9b55-3d407450cb00'); ?>
 <style>
   /* Section Filtre Home - Style Premium */
   .home-search-filter-section {
@@ -1760,14 +1793,16 @@ unset($__defined_vars, $__key, $__value); ?>
   .filter-row-main--projects-hero {
     grid-template-columns: minmax(180px, 1.5fr) minmax(180px, 1.5fr) minmax(160px, 1fr) minmax(160px, 1fr) auto;
   }
-  /* WellnessLive / At-home / Hub : aligner filtre Pays et filtre Ville sur la même ligne (même hauteur) */
+  /* WellnessLive / At-home / Hub / Corporate : aligner filtre Pays et filtre Ville sur la même ligne (même hauteur) */
   .search-filter-form[data-universe="wellnesslive"] .filter-row-main--projects-hero,
   .search-filter-form[data-universe="at-home"] .filter-row-main--projects-hero,
-  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero {
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero,
+  .search-filter-form[data-universe="corporate"] .filter-row-main--projects-hero {
     align-items: center;
   }
-  /* Hub /services : Spécialisation doit s'ouvrir — pas de clip, z-index au-dessus */
-  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero {
+  /* Hub / Corporate /services : Spécialisation doit s'ouvrir — pas de clip, z-index au-dessus */
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero,
+  .search-filter-form[data-universe="corporate"] .filter-row-main--projects-hero {
     overflow: visible;
   }
   .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper,
@@ -1785,18 +1820,65 @@ unset($__defined_vars, $__key, $__value); ?>
     grid-template-columns: 2fr minmax(180px, 1fr) minmax(180px, 1fr) auto;
   }
   
-  /* Hub/Home/Projects/Lessons/At-Home/WellnessLive/Corporate : avec Mode d'intervention — ajuster la grille pour inclure le mode */
+  /* Hub/Home/Projects/Lessons/At-Home/WellnessLive : avec Mode d'intervention — ajuster la grille pour inclure le mode */
   .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
     grid-template-columns: 2fr minmax(200px, 1fr) minmax(180px, 1fr) minmax(180px, 1fr) auto;
   }
+  /* Hub uniquement : largeurs ajustées — univers/domaines +1cm, Pays/Ville -2cm */
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero:has(.hub-location-stack) {
+    grid-template-columns: minmax(140px, 1fr) minmax(260px, 1fr) minmax(180px, 1fr) auto;
+    column-gap: 0.75rem;
+  }
+  .search-filter-form[data-universe="hub"] .hero-filter-module {
+    max-width: calc(100% - 1cm);
+    min-width: 0;
+  }
+  .search-filter-form[data-universe="hub"] .hub-location-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 180px;
+    max-width: calc(100% - 2cm);
+  }
+  .search-filter-form[data-universe="hub"] .hub-location-stack .filter-input-group.filter-location-hero {
+    min-width: 100%;
+  }
+  .search-filter-form[data-universe="hub"] .hub-location-stack .filter-input,
+  .search-filter-form[data-universe="hub"] .hub-location-stack .filter-select {
+    min-width: 0;
+    width: 100%;
+  }
+  .search-filter-form[data-universe="hub"] .filter-mode-intervention-hero {
+    position: relative;
+    z-index: 2;
+    min-width: 260px;
+    max-width: 100%;
+  }
+  .search-filter-form[data-universe="hub"] .mode-intervention-pill-text {
+    white-space: nowrap;
+  }
+  .search-filter-form[data-universe="hub"] .mode-intervention-pill {
+    padding-top: calc(0.625rem + 0.1cm);
+    padding-bottom: calc(0.625rem + 0.1cm);
+  }
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero:has(.hub-location-stack) .filter-submit-btn {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    max-width: calc(100% - 1cm);
+    padding: 1rem 1.5rem;
+    height: auto;
+    min-height: 3.25rem;
+    box-sizing: border-box;
+  }
   
-  /* Correctifs superposition/coupé pour hub/services, projects, lessons, at-home, wellnesslive et corporate */
+  /* Correctifs superposition/coupé pour hub/services, projects, lessons, at-home et wellnesslive */
   .search-filter-form[data-universe="hub"] .filter-row-main--has-location-duo,
   .search-filter-form[data-universe="projects"] .filter-row-main--has-location-duo,
   .search-filter-form[data-universe="lessons"] .filter-row-main--has-location-duo,
+  .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo,
   .search-filter-form[data-universe="at-home"] .filter-row-main--has-location-duo,
-  .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo,
-  .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo {
+  .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo {
     overflow: visible;
   }
   
@@ -1807,12 +1889,12 @@ unset($__defined_vars, $__key, $__value); ?>
   .search-filter-form[data-universe="projects"] .filter-input-group.filter-location-hero,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-mode-intervention-hero,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-location-hero,
+  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-mode-intervention-hero,
+  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-mode-intervention-hero,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-location-hero,
   .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-mode-intervention-hero,
-  .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero,
-  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-mode-intervention-hero,
-  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero {
+  .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero {
     min-width: 160px;
   }
   
@@ -1823,12 +1905,12 @@ unset($__defined_vars, $__key, $__value); ?>
   .search-filter-form[data-universe="projects"] .filter-input-group.filter-location-hero select:active,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-location-hero select:focus,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-location-hero select:active,
+  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero select:focus,
+  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero select:active,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-location-hero select:focus,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-location-hero select:active,
   .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero select:focus,
-  .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero select:active,
-  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero select:focus,
-  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero select:active {
+  .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero select:active {
     position: relative;
     z-index: 100;
   }
@@ -1838,18 +1920,18 @@ unset($__defined_vars, $__key, $__value); ?>
     .search-filter-form[data-universe="hub"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="projects"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="lessons"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
+    .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="at-home"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
-    .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
-    .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
+    .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
       grid-template-columns: 1fr 1fr;
       gap: 0.75rem;
     }
     .search-filter-form[data-universe="hub"] .filter-input-group.filter-mode-intervention-hero,
     .search-filter-form[data-universe="projects"] .filter-input-group.filter-mode-intervention-hero,
     .search-filter-form[data-universe="lessons"] .filter-input-group.filter-mode-intervention-hero,
+    .search-filter-form[data-universe="corporate"] .filter-input-group.filter-mode-intervention-hero,
     .search-filter-form[data-universe="at-home"] .filter-input-group.filter-mode-intervention-hero,
-    .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-mode-intervention-hero,
-    .search-filter-form[data-universe="corporate"] .filter-input-group.filter-mode-intervention-hero {
+    .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-mode-intervention-hero {
       grid-column: 1 / -1;
     }
   }
@@ -1858,9 +1940,9 @@ unset($__defined_vars, $__key, $__value); ?>
     .search-filter-form[data-universe="hub"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="projects"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="lessons"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
+    .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
     .search-filter-form[data-universe="at-home"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
-    .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero),
-    .search-filter-form[data-universe="corporate"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
+    .search-filter-form[data-universe="wellnesslive"] .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
       grid-template-columns: 1fr;
     }
   }
@@ -1869,6 +1951,9 @@ unset($__defined_vars, $__key, $__value); ?>
   .location-helper-text-wrapper {
     grid-column: 1 / -1;
     width: 100%;
+  }
+  .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero:has(.hub-location-stack) .location-helper-text-wrapper {
+    grid-row: 3;
   }
   .filter-input-group.filter-location-hero .filter-input.filter-select,
   .filter-input-group.filter-location-hero .filter-select {
@@ -1893,24 +1978,32 @@ unset($__defined_vars, $__key, $__value); ?>
   .home-search-filter-section .filter-input-group.filter-location-hero {
     position: relative;
   }
+  /* Zone droite : [ icônes ] [ chevron natif ]. right = marge pour laisser le chevron toujours visible et cliquable */
   .location-city-assistant {
     position: absolute;
-    right: 0.75rem;
+    right: 2rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
     gap: 0.5rem;
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  /* Réserver l’espace : texte | icônes | zone chevron (aucune icône ne recouvre la flèche) */
+  .filter-input-group.filter-location-hero:has(.location-city-assistant) .home-location-city {
+    padding-right: 8rem !important;
   }
   .location-city-assistant > * {
     pointer-events: auto;
+    flex-shrink: 0;
   }
   .location-city-icons {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
   }
   .location-city-icon {
     display: inline-flex;
@@ -1918,8 +2011,11 @@ unset($__defined_vars, $__key, $__value); ?>
     justify-content: center;
     width: 18px;
     height: 18px;
+    min-width: 18px;
+    min-height: 18px;
     color: #94a3b8;
     opacity: 0.85;
+    flex-shrink: 0;
   }
   .location-city-icon svg {
     width: 100%;
@@ -1999,8 +2095,43 @@ unset($__defined_vars, $__key, $__value); ?>
     left: 1.25rem;
     color: #7c3aed;
     font-size: 1.1rem;
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
+  }
+  /* Tous les univers : éviter que l’icône chevauche le texte */
+  .filter-hero-domain-select-wrapper .filter-input-icon {
+    left: 1rem;
+  }
+  .filter-hero-domain-select-wrapper .filter-input {
+    padding-left: 4rem;
+  }
+  /* Tous les domaines (hub) : icône au-dessus du select pour rester visible */
+  .filter-input-group.filter-hero-domain-spec .filter-input-icon {
+    z-index: 3;
+  }
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .filter-input-icon {
+    z-index: 61;
+  }
+  /* Tous les domaines (hub) : éviter que l’icône chevauche le texte */
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .filter-input {
+    padding-left: 4rem;
+  }
+  /* Tous les domaines (hub) : aligner le texte sur Tous les univers (alignement à gauche) */
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationSelect {
+    text-align: left;
+  }
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .nice-select,
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .nice-select .current {
+    text-align: left;
+  }
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .nice-select .list {
+    background: #fff;
+    border: 1px solid var(--preply-border, #e5e7eb);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  }
+  .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .nice-select .list .option {
+    text-align: left;
   }
 
   .filter-input {
@@ -2190,8 +2321,7 @@ unset($__defined_vars, $__key, $__value); ?>
   .search-filter-form[data-universe="projects"] .filter-input-group.filter-location-hero,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-location-hero,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-location-hero,
-  .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero,
-  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero {
+  .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero {
     position: relative;
   }
   
@@ -2200,8 +2330,7 @@ unset($__defined_vars, $__key, $__value); ?>
   .search-filter-form[data-universe="projects"] .filter-input-group.filter-location-hero select option,
   .search-filter-form[data-universe="lessons"] .filter-input-group.filter-location-hero select option,
   .search-filter-form[data-universe="at-home"] .filter-input-group.filter-location-hero select option,
-  .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero select option,
-  .search-filter-form[data-universe="corporate"] .filter-input-group.filter-location-hero select option {
+  .search-filter-form[data-universe="wellnesslive"] .filter-input-group.filter-location-hero select option {
     position: relative;
     z-index: 101;
   }

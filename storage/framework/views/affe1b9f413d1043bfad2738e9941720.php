@@ -1,15 +1,14 @@
-@extends('frontend.layout')
+<?php $__env->startSection('pageHeading'); ?>
+  Échanges de logement | <?php echo e($websiteInfo->website_title); ?>
 
-@section('pageHeading')
-  Échanges de logement | {{ $websiteInfo->website_title }}
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('metaDescription')
+<?php $__env->startSection('metaDescription'); ?>
   Voyager autrement, en toute confiance. Court, moyen ou long : trouvez le bon échange, dans la bonne ville, au bon moment.
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('style')
-<link rel="stylesheet" href="{{ asset('assets/front/css/services-pages.css') }}">
+<?php $__env->startSection('style'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('assets/front/css/services-pages.css')); ?>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
   /* ============================================
@@ -4723,11 +4722,11 @@
   .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange { background: var(--preply-primary); border-color: var(--preply-primary); }
   .flatpickr-day.inRange { background: rgba(236, 72, 153, 0.15); box-shadow: none; }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="services-page-wrapper page-homeswap">
-  {{-- Hero Premium HomeSwap --}}
+  
   <section class="homeswap-hero-premium">
     <div class="homeswap-hero-container">
       <div class="homeswap-hero-content">
@@ -4767,32 +4766,54 @@
                 </div>
   </section>
 
-  {{-- Bloc filtres HomeSwap : onglets (comme page Projet) + barre principale + Filtres avancés --}}
+  
   <div class="container" style="position:relative;z-index:10;">
     <div class="homeswap-search-filter-section" id="homeswapSearchFilter">
       <div class="filter-tabs-container">
         <div class="filter-tabs">
           <button type="button" class="filter-tab active" data-tab="search" id="homeswapTabSearch">
             <i class="fas fa-search me-2"></i>
-            {{ __('Rechercher un Rituel') }}
+            <?php echo e(__('Rechercher un Rituel')); ?>
+
           </button>
           <button type="button" class="filter-tab" data-tab="submit" id="homeswapTabSubmit">
             <i class="fas fa-paper-plane me-2"></i>
-            {{ __('Déposer un projet') }}
+            <?php echo e(__('Déposer un projet')); ?>
+
           </button>
         </div>
       </div>
       <div class="filter-content active" id="homeswapContentSearch">
-        <x-services.filters.homeswap-filters formId="preplyFiltersForm" :formAction="route('services.homeswap')" />
+        <?php if (isset($component)) { $__componentOriginalca6b3136a228fa756afff7c93391daa3 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalca6b3136a228fa756afff7c93391daa3 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.services.filters.homeswap-filters','data' => ['formId' => 'preplyFiltersForm','formAction' => route('services.homeswap')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('services.filters.homeswap-filters'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['formId' => 'preplyFiltersForm','formAction' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('services.homeswap'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalca6b3136a228fa756afff7c93391daa3)): ?>
+<?php $attributes = $__attributesOriginalca6b3136a228fa756afff7c93391daa3; ?>
+<?php unset($__attributesOriginalca6b3136a228fa756afff7c93391daa3); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalca6b3136a228fa756afff7c93391daa3)): ?>
+<?php $component = $__componentOriginalca6b3136a228fa756afff7c93391daa3; ?>
+<?php unset($__componentOriginalca6b3136a228fa756afff7c93391daa3); ?>
+<?php endif; ?>
       </div>
       <div class="filter-content" id="homeswapContentSubmit" style="display: none;">
         <div class="submit-project-cta">
           <div class="submit-project-content">
-            <h3 class="submit-project-title">{{ __('Déposez votre projet et trouvez le freelance idéal') }}</h3>
-            <p class="submit-project-text">{{ __('Décrivez votre besoin, définissez votre budget et recevez des propositions de freelances qualifiés.') }}</p>
-            <a href="{{ route('deposer-projet') }}" class="submit-project-btn">
+            <h3 class="submit-project-title"><?php echo e(__('Déposez votre projet et trouvez le freelance idéal')); ?></h3>
+            <p class="submit-project-text"><?php echo e(__('Décrivez votre besoin, définissez votre budget et recevez des propositions de freelances qualifiés.')); ?></p>
+            <a href="<?php echo e(route('deposer-projet')); ?>" class="submit-project-btn">
               <i class="fas fa-paper-plane me-2"></i>
-              {{ __('Déposer mon projet') }}
+              <?php echo e(__('Déposer mon projet')); ?>
+
             </a>
           </div>
         </div>
@@ -4800,12 +4821,12 @@
     </div>
                   </div>
 
-  {{-- Module Pause Souffle Inline avec bullets (juste sous filtres, avant résultats) --}}
+  
   <div class="container">
-    @include('frontend.components.pause-souffle.inline-with-bullets-premium')
+    <?php echo $__env->make('frontend.components.pause-souffle.inline-with-bullets-premium', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
   </div>
 
-  {{-- Section "Comment ça marche" --}}
+  
   <section class="homeswap-how-it-works">
     <div class="homeswap-how-container">
       <h2 class="homeswap-how-title">Comment ça marche</h2>
@@ -4829,7 +4850,7 @@
               </div>
   </section>
 
-  {{-- Section "Trois façons d'échanger" Premium --}}
+  
   <section class="homeswap-exchange-types" x-data="{ selected: 'simultane' }">
     <div class="homeswap-exchange-container">
       <header class="homeswap-exchange-header">
@@ -4913,10 +4934,10 @@
                     </button>
                   </div>
 
-      {{-- Panneau de détails séparé (premium) --}}
+      
       <div x-show="selected" x-transition class="homeswap-exchange-details-panel">
         <div class="homeswap-exchange-details-content">
-          {{-- Détails Échange simultané --}}
+          
           <div x-show="selected === 'simultane'" x-transition>
             <div class="homeswap-exchange-details-confirmation">
               <span class="homeswap-exchange-details-confirmation-label">Mode sélectionné :</span>
@@ -4934,14 +4955,14 @@
               </div>
             </div>
             <div class="homeswap-exchange-details-cta-wrapper">
-              <a href="{{ route('mission.form') }}?univers=echange-logement" class="homeswap-exchange-card-cta">
+              <a href="<?php echo e(route('mission.form')); ?>?univers=echange-logement" class="homeswap-exchange-card-cta">
                 Continuer — Échange simultané
               </a>
               <p class="homeswap-exchange-cta-note">Vous pourrez modifier ce choix plus tard.</p>
                 </div>
               </div>
               
-          {{-- Détails Échange non simultané --}}
+          
           <div x-show="selected === 'non_simultane'" x-transition>
             <div class="homeswap-exchange-details-confirmation">
               <span class="homeswap-exchange-details-confirmation-label">Mode sélectionné :</span>
@@ -4959,14 +4980,14 @@
               </div>
             </div>
             <div class="homeswap-exchange-details-cta-wrapper">
-              <a href="{{ route('mission.form') }}?univers=echange-logement" class="homeswap-exchange-card-cta">
+              <a href="<?php echo e(route('mission.form')); ?>?univers=echange-logement" class="homeswap-exchange-card-cta">
                 Continuer — Échange non simultané
               </a>
               <p class="homeswap-exchange-cta-note">Vous pourrez modifier ce choix plus tard.</p>
                 </div>
               </div>
               
-          {{-- Détails Système à points --}}
+          
           <div x-show="selected === 'points'" x-transition>
             <div class="homeswap-exchange-details-confirmation">
               <span class="homeswap-exchange-details-confirmation-label">Mode sélectionné :</span>
@@ -5019,7 +5040,7 @@
               </div>
             </div>
             <div class="homeswap-exchange-details-cta-wrapper">
-              <a href="{{ route('mission.form') }}?univers=echange-logement" class="homeswap-exchange-card-cta">
+              <a href="<?php echo e(route('mission.form')); ?>?univers=echange-logement" class="homeswap-exchange-card-cta">
                 Continuer — Système à points
               </a>
               <p class="homeswap-exchange-cta-note">Vous pourrez modifier ce choix plus tard.</p>
@@ -5030,7 +5051,7 @@
     </div>
   </section>
 
-  {{-- Bloc Premium : Abonnement HomeSwap --}}
+  
   <section class="homeswap-premium-section" id="abonnement">
     <div class="homeswap-premium-container">
       <div class="homeswap-premium-card">
@@ -5065,28 +5086,28 @@
           </div>
         </div>
         <div class="homeswap-premium-cta">
-          @if($isAuthenticated)
-            @if($hasHomeSwapSubscription)
+          <?php if($isAuthenticated): ?>
+            <?php if($hasHomeSwapSubscription): ?>
               <div class="homeswap-premium-status">
                 <span class="homeswap-premium-status-badge">✓ Abonnement actif</span>
-                <a href="{{ route('user.settings.subscription') }}" class="homeswap-premium-link">Gérer mon abonnement</a>
+                <a href="<?php echo e(route('user.settings.subscription')); ?>" class="homeswap-premium-link">Gérer mon abonnement</a>
               </div>
-            @else
-              <a href="{{ route('user.settings.subscription') }}#homeswap" class="homeswap-premium-btn">
+            <?php else: ?>
+              <a href="<?php echo e(route('user.settings.subscription')); ?>#homeswap" class="homeswap-premium-btn">
                 S'abonner
               </a>
-            @endif
-          @else
-            <a href="{{ route('user.login', ['redirect' => route('services.homeswap')]) }}" class="homeswap-premium-btn">
+            <?php endif; ?>
+          <?php else: ?>
+            <a href="<?php echo e(route('user.login', ['redirect' => route('services.homeswap')])); ?>" class="homeswap-premium-btn">
               Se connecter pour s'abonner
             </a>
-          @endif
+          <?php endif; ?>
         </div>
       </div>
     </div>
   </section>
 
-  {{-- Bloc Options d'accompagnement --}}
+  
   <section class="homeswap-options-section" id="homeswapOptions">
     <div class="homeswap-options-container">
       <div class="homeswap-options-header">
@@ -5139,14 +5160,14 @@
         </div>
       </div>
       <div class="homeswap-options-cta">
-        <a href="{{ route('mission.form') }}?univers=echange-logement&offre=Mise_en_relation" class="homeswap-options-btn">
+        <a href="<?php echo e(route('mission.form')); ?>?univers=echange-logement&offre=Mise_en_relation" class="homeswap-options-btn">
           Soumettre ma demande HomeSwap
         </a>
       </div>
     </div>
   </section>
 
-  {{-- Encart Confiance & prudence --}}
+  
   <section class="homeswap-transparency">
     <div class="homeswap-transparency-container">
       <div class="homeswap-transparency-card homeswap-alert-callout">
@@ -5165,11 +5186,11 @@
     </div>
   </section>
 
-  {{-- Résultats --}}
+  
   <section id="results" class="preply-results-section" style="overflow: visible;">
     <div class="preply-results-container" style="overflow: visible;">
       <div class="preply-results-header">
-        <h2 class="preply-results-count">{{ $freelancers->total() ?? 0 }} logements disponibles</h2>
+        <h2 class="preply-results-count"><?php echo e($freelancers->total() ?? 0); ?> logements disponibles</h2>
         <select class="preply-sort-select" id="sortSelect" name="sort">
           <option value="favorites">Trier par : Nos préférés</option>
           <option value="price_asc">Prix croissant</option>
@@ -5180,9 +5201,9 @@
 
       <div class="freelancers-list-wrapper">
         <div class="freelancers-grid-premium" style="display: flex; flex-direction: column; gap: 20px;">
-          @if($freelancers->isEmpty())
-            @if(request('city'))
-              {{-- Bloc opportunité : ville sélectionnée mais aucun contenu — inspirant, jamais frustrant --}}
+          <?php if($freelancers->isEmpty()): ?>
+            <?php if(request('city')): ?>
+              
               <div class="homeswap-opportunity-block">
                 <h3 class="homeswap-opportunity-title">Cette ville est en devenir sur Junspro ✨</h3>
                 <p class="homeswap-opportunity-text">
@@ -5194,18 +5215,18 @@
                   créez un complément de revenus<br>
                   et contribuez à faire une vraie différence localement.
                 </p>
-                <a href="{{ route('referral.index') }}" class="homeswap-opportunity-cta">
+                <a href="<?php echo e(route('referral.index')); ?>" class="homeswap-opportunity-cta">
                   Devenir apporteur d'affaires
                 </a>
               </div>
-            @else
+            <?php else: ?>
             <div style="text-align: center; padding: 60px 20px;">
               <p style="font-size: 1.125rem; color: var(--preply-text-light);">Aucun logement trouvé pour le moment.</p>
             </div>
-            @endif
-          @else
-            @foreach ($freelancers as $freelancer)
-          @php
+            <?php endif; ?>
+          <?php else: ?>
+            <?php $__currentLoopData = $freelancers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $freelancer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php
             $user = $freelancer->user;
                   
                   // Calculer les initiales (première lettre du prénom + première lettre du nom)
@@ -5301,10 +5322,10 @@
                       $lastSeenText = '';
               }
             }
-            @endphp
-                <div class="freelancer-card-wrapper-premium" data-freelancer-id="{{ $freelancer->id }}">
+            ?>
+                <div class="freelancer-card-wrapper-premium" data-freelancer-id="<?php echo e($freelancer->id); ?>">
                   <!-- Carte principale - Style Preply avec wrapper pour réserver l'espace vidéo -->
-                  <div class="freelancer-card-premium-v2 preply-teacher-card" data-freelancer-id="{{ $freelancer->id }}" data-hourly-rate="{{ $freelancer->hourly_rate ?? 0 }}" data-ritual-rate="{{ $freelancer->hourly_rate ?? 0 }}">
+                  <div class="freelancer-card-premium-v2 preply-teacher-card" data-freelancer-id="<?php echo e($freelancer->id); ?>" data-hourly-rate="<?php echo e($freelancer->hourly_rate ?? 0); ?>" data-ritual-rate="<?php echo e($freelancer->hourly_rate ?? 0); ?>">
                     <!-- Wrapper du contenu pour limiter la largeur et réserver l'espace pour la vidéo -->
                     <div class="freelancer-card__content">
                       <!-- Contenu principal de la carte (avatar + infos + prix) -->
@@ -5315,47 +5336,47 @@
                            ============================================ -->
                       <div class="freelancer-photo-section">
                         <div class="freelancer-photo-container">
-                          @if ($user->image)
-                            <img src="{{ asset('assets/img/users/' . $user->image) }}" 
-                                 alt="{{ $user->name }}" 
+                          <?php if($user->image): ?>
+                            <img src="<?php echo e(asset('assets/img/users/' . $user->image)); ?>" 
+                                 alt="<?php echo e($user->name); ?>" 
                                  class="freelancer-photo-img"
                                  onerror="this.style.display='none'; this.parentElement.querySelector('.freelancer-photo-placeholder').style.display='flex';">
-                          @endif
+                          <?php endif; ?>
                           
                           <!-- Fallback avec dégradé violet et initiales si pas de photo -->
-                          <div class="freelancer-photo-placeholder" style="display: {{ $user->image ? 'none' : 'flex' }};">
-                            <span class="photo-initial">{{ $initial }}</span>
+                          <div class="freelancer-photo-placeholder" style="display: <?php echo e($user->image ? 'none' : 'flex'); ?>;">
+                            <span class="photo-initial"><?php echo e($initial); ?></span>
                     </div>
                           
                           <!-- Badge qualité (coin supérieur droit) -->
-                          @if ($badge)
-                            <div class="freelancer-badge-overlay badge-{{ $badge }}">
-                              @if ($badge == 'top')
+                          <?php if($badge): ?>
+                            <div class="freelancer-badge-overlay badge-<?php echo e($badge); ?>">
+                              <?php if($badge == 'top'): ?>
                                 <i class="fas fa-crown"></i>
-                              @elseif ($badge == 'verified')
+                              <?php elseif($badge == 'verified'): ?>
                                 <i class="fas fa-check-circle"></i>
-                  @endif
+                  <?php endif; ?>
                     </div>
-                  @endif
+                  <?php endif; ?>
                   
                           <!-- Statut en ligne/hors ligne (point en bas à droite de la photo) -->
                           <!-- SUPPRESSION du title pour éviter le tooltip encadré du navigateur -->
                           <div class="freelancer-status-dot-wrapper">
-                            <span class="status-dot {{ $isOnline ? 'status-online' : 'status-offline' }}"></span>
+                            <span class="status-dot <?php echo e($isOnline ? 'status-online' : 'status-offline'); ?>"></span>
                           </div>
                           
                           <!-- Texte du statut en ligne/hors ligne (sous la photo) - Visible uniquement au survol -->
                           <div class="freelancer-status-text-wrapper">
-                            <span class="status-dot-inline {{ $isOnline ? 'status-online' : 'status-offline' }}"></span>
+                            <span class="status-dot-inline <?php echo e($isOnline ? 'status-online' : 'status-offline'); ?>"></span>
                             <span class="status-text-inline">
-                              @if ($isOnline)
+                              <?php if($isOnline): ?>
                       En ligne
-                              @else
+                              <?php else: ?>
                                 <span class="status-line-1">Hors ligne</span>
-                                @if ($lastSeenText)
-                                  <span class="status-line-2">{{ $lastSeenText }}</span>
-                  @endif
-                  @endif
+                                <?php if($lastSeenText): ?>
+                                  <span class="status-line-2"><?php echo e($lastSeenText); ?></span>
+                  <?php endif; ?>
+                  <?php endif; ?>
                             </span>
                 </div>
               </div>
@@ -5363,29 +5384,30 @@
                         <!-- Nom + Initiale + Drapeau + Badge vérifié (à droite de la photo) -->
                         <div class="freelancer-identity-block">
                           <h3 class="freelancer-name-v2">
-                            <a href="{{ route('freelance.show', $freelancer->id) }}" target="_self"
-                               @if(!$isAuthenticated || !$hasHomeSwapSubscription)
+                            <a href="<?php echo e(route('freelance.show', $freelancer->id)); ?>" target="_self"
+                               <?php if(!$isAuthenticated || !$hasHomeSwapSubscription): ?>
                                  onclick="event.preventDefault(); showPremiumModal('profil'); return false;"
-                               @endif>
-                              {{ $displayName }}
+                               <?php endif; ?>>
+                              <?php echo e($displayName); ?>
+
                             </a>
-                            @php
+                            <?php
                               // Récupérer le code pays pour l'afficher après le nom
                               $countryCodeForName = strtoupper(trim($user->country_code ?? 'FR'));
                               if (empty($countryCodeForName) || strlen($countryCodeForName) < 2) {
                                 $countryCodeForName = 'FR';
                               }
-                            @endphp
-                            <span style="font-weight: 400; color: #6B7280; margin-left: 4px;">{{ $countryCodeForName }}</span>
-                            @if ($badge == 'verified' || ($user->is_verified_freelancer ?? false))
+                            ?>
+                            <span style="font-weight: 400; color: #6B7280; margin-left: 4px;"><?php echo e($countryCodeForName); ?></span>
+                            <?php if($badge == 'verified' || ($user->is_verified_freelancer ?? false)): ?>
                               <span class="verified-icon-v2">
                       <i class="fas fa-check-circle"></i>
                     </span>
-                  @endif
+                  <?php endif; ?>
                 </h3>
                           
                           <!-- Badges HomeSwap Scoring -->
-                          @php
+                          <?php
                             try {
                               $hs = \App\Services\HomeswapScoring::computeHomeswapScore($freelancer);
                               $hasScore = $hs['score'] > 0 || $hs['points_per_night'] > 0;
@@ -5401,18 +5423,18 @@
                               $hasScore = false;
                               $breakdownText = '';
                             }
-                          @endphp
+                          ?>
                           <div class="homeswap-scoring-badges">
-                            <span class="homeswap-score-badge" title="{{ $breakdownText }}">
-                              Indice {{ $hasScore ? $hs['score'] : '—' }}/100
+                            <span class="homeswap-score-badge" title="<?php echo e($breakdownText); ?>">
+                              Indice <?php echo e($hasScore ? $hs['score'] : '—'); ?>/100
                             </span>
                             <span class="homeswap-points-text">
-                              ≈ {{ $hasScore ? $hs['points_per_night'] : '—' }} pts/nuit
+                              ≈ <?php echo e($hasScore ? $hs['points_per_night'] : '—'); ?> pts/nuit
                             </span>
                           </div>
                           
                           <!-- Langues parlées -->
-                          @php
+                          <?php
                             // Mapping des codes de langues vers leurs noms français
                             $languageNames = [
                               'fr' => 'Français',
@@ -5456,22 +5478,24 @@
                             if (empty($langDisplay)) {
                               $langDisplay = 'Anglais (Natif)';
                             }
-                          @endphp
+                          ?>
                           <div class="freelancer-job-line" style="white-space: nowrap;">
-                            🗣️ Le propriétaire parle {{ $langDisplay }}
+                            🗣️ Le propriétaire parle <?php echo e($langDisplay); ?>
+
                 </div>
                           
                           <!-- Phrase d'accroche (headline) -->
-                          @php
+                          <?php
                             $headline = $freelancer->headline ?? 'Propriétaire expérimenté pour vos échanges.';
-                          @endphp
+                          ?>
                           <p class="freelancer-headline">
-                            {{ $headline }}
+                            <?php echo e($headline); ?>
+
                           </p>
                           
                           <!-- Description courte : on limite l'aperçu sur la carte à quelques lignes.
                                Le texte complet sera lu sur la page profil via « En savoir plus ». -->
-                          @php
+                          <?php
                             // Bio complète (utilisée sur la page profil)
                             $fullBio = $freelancer->bio ?? $freelancer->about ?? 'Propriétaire expérimenté prêt à échanger son logement.';
                             // Si la bio est trop courte, utiliser un texte par défaut réduit
@@ -5482,27 +5506,28 @@
                             // Aperçu pour la carte : on tronque à ~220 caractères max
                             // pour rester visuellement autour de 2–3 lignes.
                             $shortBio = \Illuminate\Support\Str::limit(strip_tags($fullBio), 220, '…');
-                          @endphp
+                          ?>
                           
                           <!-- Sur la carte : on affiche uniquement l'aperçu $shortBio -->
                           <div class="freelancer-bio-wrapper">
                             <p class="freelancer-bio-v2">
-                              {{ $shortBio }}
+                              <?php echo e($shortBio); ?>
+
                             </p>
               </div>
 
                           <!-- Popularité -->
                           <div class="freelancer-popularity-v2">
                             <i class="fas fa-chart-line"></i>
-                            <span style="white-space: nowrap;">Très populaire. {{ rand(10, 50) }} réservations récentes</span>
+                            <span style="white-space: nowrap;">Très populaire. <?php echo e(rand(10, 50)); ?> réservations récentes</span>
                 </div>
                           
                           <!-- Lien "En savoir plus" (aligné à gauche) -->
-                          <a href="{{ route('freelance.show', $freelancer->id) }}" 
+                          <a href="<?php echo e(route('freelance.show', $freelancer->id)); ?>" 
                              class="freelancer-learn-more-v2" target="_self"
-                             @if(!$isAuthenticated || !$hasHomeSwapSubscription)
+                             <?php if(!$isAuthenticated || !$hasHomeSwapSubscription): ?>
                                onclick="event.preventDefault(); showPremiumModal('profil'); return false;"
-                             @endif>
+                             <?php endif; ?>>
                             En savoir plus
                           </a>
                 </div>
@@ -5522,52 +5547,52 @@
                            ============================================ -->
                       <div class="freelancer-pricing-section">
                         <!-- Icône Favoris (en haut à droite) -->
-                        <button class="freelancer-favorite-btn" data-freelancer-id="{{ $freelancer->id }}" aria-label="Ajouter aux favoris">
+                        <button class="freelancer-favorite-btn" data-freelancer-id="<?php echo e($freelancer->id); ?>" aria-label="Ajouter aux favoris">
                           <i class="far fa-heart"></i>
                         </button>
 
                         <!-- Prix mis en avant -->
                         <div class="freelancer-price-v2">
-                          <div class="price-amount">{{ number_format($freelancer->hourly_rate, 0, ',', ' ') }} €</div>
+                          <div class="price-amount"><?php echo e(number_format($freelancer->hourly_rate, 0, ',', ' ')); ?> €</div>
                           <div class="price-label">Échange disponible</div>
                 </div>
 
                         <!-- Note + Avis sur une ligne -->
                         <div class="freelancer-rating-v2">
-                          <div class="rating-number">{{ number_format($freelancer->reliability_score / 20 ?? 4.5, 1) }}</div>
+                          <div class="rating-number"><?php echo e(number_format($freelancer->reliability_score / 20 ?? 4.5, 1)); ?></div>
                           <div class="rating-stars-v2">
                             <i class="fas fa-star"></i>
                 </div>
-                          <div class="rating-count">{{ rand(10, 100) }} avis</div>
+                          <div class="rating-count"><?php echo e(rand(10, 100)); ?> avis</div>
                         </div>
 
                         <!-- Stats échanges : 2 colonnes alignées -->
                         <div class="freelancer-stats-v2">
                           <div class="stat-item-v2">
-                            <span class="stat-number">{{ $freelancer->subscriptions()->count() ?? 0 }}</span>
+                            <span class="stat-number"><?php echo e($freelancer->subscriptions()->count() ?? 0); ?></span>
                             <span class="stat-label-v2">échanges réalisés</span>
                           </div>
                           <div class="stat-item-v2">
-                            <span class="stat-number">{{ $freelancer->subscriptions()->where('status', 'active')->count() ?? 0 }}</span>
+                            <span class="stat-number"><?php echo e($freelancer->subscriptions()->where('status', 'active')->count() ?? 0); ?></span>
                             <span class="stat-label-v2">échanges récurrents</span>
                           </div>
                         </div>
 
                         <!-- CTA Buttons -->
                         <div class="freelancer-cta-v2">
-                          <a href="{{ route('freelance.show', $freelancer->id) }}#agenda" 
+                          <a href="<?php echo e(route('freelance.show', $freelancer->id)); ?>#agenda" 
                              class="cta-primary-v2"
-                             @if(!$isAuthenticated || !$hasHomeSwapSubscription)
+                             <?php if(!$isAuthenticated || !$hasHomeSwapSubscription): ?>
                                onclick="event.preventDefault(); showPremiumModal('logement'); return false;"
-                             @endif>
+                             <?php endif; ?>>
                   Voir le logement
                 </a>
                           <button type="button" class="cta-secondary-v2" 
-                                  @if(!$isAuthenticated || !$hasHomeSwapSubscription)
+                                  <?php if(!$isAuthenticated || !$hasHomeSwapSubscription): ?>
                                     onclick="showPremiumModal('message')"
-                                  @else
-                                    data-bs-toggle="modal" data-bs-target="#contactModal{{ $freelancer->id }}" data-freelancer-id="{{ $freelancer->id }}"
-                                  @endif>
+                                  <?php else: ?>
+                                    data-bs-toggle="modal" data-bs-target="#contactModal<?php echo e($freelancer->id); ?>" data-freelancer-id="<?php echo e($freelancer->id); ?>"
+                                  <?php endif; ?>>
                   Envoyer un message
                           </button>
               </div>
@@ -5578,12 +5603,12 @@
             </div>
 
                     <!-- Quick View - Vidéo de présentation (positionnée à droite, en dehors du wrapper de contenu) -->
-                    <div class="freelancer-quick-view-v2" data-freelancer-id="{{ $freelancer->id }}">
+                    <div class="freelancer-quick-view-v2" data-freelancer-id="<?php echo e($freelancer->id); ?>">
                       <div class="quick-view-content-v2">
                         <!-- Vidéo de présentation avec miniature réelle -->
                         <div class="quick-view-video-section">
                           <div class="video-thumbnail-wrapper">
-                            @php
+                            <?php
                               // Récupérer l'URL de la miniature vidéo (PRIORITÉ : vraie miniature, pas de gradient)
                               $thumbnailUrl = null;
                               $hasThumbnail = false;
@@ -5641,19 +5666,19 @@
                               
                               // Récupérer l'URL de la vidéo
                               $videoUrl = $freelancer->video_url ?? $user->video_url ?? null;
-                            @endphp
+                            ?>
                             
-                            @if($hasThumbnail && !empty($thumbnailUrl))
+                            <?php if($hasThumbnail && !empty($thumbnailUrl)): ?>
                               <!-- VRAIE MINIATURE VIDÉO (pas de gradient) -->
-                              <img src="{{ $thumbnailUrl }}" 
-                                   alt="Vidéo de présentation - {{ $displayName }}" 
+                              <img src="<?php echo e($thumbnailUrl); ?>" 
+                                   alt="Vidéo de présentation - <?php echo e($displayName); ?>" 
                                    class="video-thumbnail-img"
                                    loading="lazy"
                                    onerror="this.onerror=null; this.style.display='none'; this.parentElement.querySelector('.video-placeholder-fallback').style.display='flex';">
-            @endif
+            <?php endif; ?>
                             
                             <!-- Fallback élégant avec dégradé violet UNIQUEMENT si aucune miniature n'est disponible -->
-                            <div class="video-placeholder-fallback" style="display: {{ ($hasThumbnail && !empty($thumbnailUrl)) ? 'none' : 'flex' }}; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #7C3AED 100%); color: white; text-align: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;">
+                            <div class="video-placeholder-fallback" style="display: <?php echo e(($hasThumbnail && !empty($thumbnailUrl)) ? 'none' : 'flex'); ?>; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #7C3AED 100%); color: white; text-align: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;">
                               <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 16px;">
                                 <div style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255, 255, 255, 0.3);">
                                   <i class="fas fa-video" style="font-size: 36px; opacity: 0.95;"></i>
@@ -5664,7 +5689,7 @@
                             </div>
                             
                             <!-- Bouton Play centré (toujours visible) -->
-                            <button class="video-play-btn-v2" data-freelancer-id="{{ $freelancer->id }}" data-video-url="{{ $videoUrl ?? '' }}" aria-label="Lire la vidéo de présentation" style="z-index: 10;">
+                            <button class="video-play-btn-v2" data-freelancer-id="<?php echo e($freelancer->id); ?>" data-video-url="<?php echo e($videoUrl ?? ''); ?>" aria-label="Lire la vidéo de présentation" style="z-index: 10;">
                               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="6 4 18 12 6 20 6 4" fill="rgba(255, 255, 255, 0.15)"></polygon>
                               </svg>
@@ -5675,18 +5700,19 @@
 
                         <!-- Boutons d'action -->
                         <div class="quick-view-actions-v2">
-                          <a href="{{ route('freelance.show', $freelancer->id) }}" 
+                          <a href="<?php echo e(route('freelance.show', $freelancer->id)); ?>" 
                              class="quick-view-btn-primary-v2"
-                             @if(!$isAuthenticated || !$hasHomeSwapSubscription)
+                             <?php if(!$isAuthenticated || !$hasHomeSwapSubscription): ?>
                                onclick="event.preventDefault(); showPremiumModal('profil'); return false;"
-                             @endif>
-                            Voir le profil de {{ $displayName }}
+                             <?php endif; ?>>
+                            Voir le profil de <?php echo e($displayName); ?>
+
                           </a>
-                          <a href="{{ route('freelance.show', $freelancer->id) }}#agenda" 
+                          <a href="<?php echo e(route('freelance.show', $freelancer->id)); ?>#agenda" 
                              class="quick-view-btn-secondary-v2"
-                             @if(!$isAuthenticated || !$hasHomeSwapSubscription)
+                             <?php if(!$isAuthenticated || !$hasHomeSwapSubscription): ?>
                                onclick="event.preventDefault(); showPremiumModal('agenda'); return false;"
-                             @endif>
+                             <?php endif; ?>>
                             Voir tout l'agenda
                           </a>
                         </div>
@@ -5695,16 +5721,17 @@
                     <!-- Fin de la carte vidéo (positionnée à droite, en dehors du wrapper de contenu) -->
                   </div>
                 </div>
-            @endforeach
-            @endif
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
       </div>
 
-      {{-- Pagination --}}
-      @if($freelancers->hasPages())
+      
+      <?php if($freelancers->hasPages()): ?>
         <div style="margin-top: 40px; display: flex; justify-content: center;">
-          {{ $freelancers->links() }}
+          <?php echo e($freelancers->links()); ?>
+
         </div>
-      @endif
+      <?php endif; ?>
     </div>
   </section>
 </div>
@@ -5743,12 +5770,12 @@
   // Initialiser les boutons de temps et jours
   document.addEventListener('DOMContentLoaded', function() {
     // Restaurer les sélections depuis la requête
-    @php
+    <?php
       $savedTimes = request('availability_times', []);
       $savedDays = request('availability_days', []);
-    @endphp
-    selectedTimes = @json($savedTimes);
-    selectedDays = @json($savedDays);
+    ?>
+    selectedTimes = <?php echo json_encode($savedTimes, 15, 512) ?>;
+    selectedDays = <?php echo json_encode($savedDays, 15, 512) ?>;
     
     const timeButtons = document.querySelectorAll('.availability-time-btn');
     const dayButtons = document.querySelectorAll('.availability-day-btn');
@@ -6185,9 +6212,9 @@
         </div>
         <div class="preply-popover-actions">
           <a href="#" class="preply-popover-action-btn" id="popover-agenda-btn" 
-             @if(!$isAuthenticated || !$hasHomeSwapSubscription)
+             <?php if(!$isAuthenticated || !$hasHomeSwapSubscription): ?>
                onclick="event.preventDefault(); showPremiumModal('agenda'); return false;"
-             @endif>Voir tout l'agenda</a>
+             <?php endif; ?>>Voir tout l'agenda</a>
           <a href="#" class="preply-popover-action-btn" id="popover-profile-btn">Voir le profil</a>
         </div>
       `;
@@ -6387,13 +6414,13 @@
       profileBtn.href = profileUrl;
       profileBtn.textContent = 'Voir le profil de ' + firstName;
       // Ajouter gating premium pour le profil
-      @if(!$isAuthenticated || !$hasHomeSwapSubscription)
+      <?php if(!$isAuthenticated || !$hasHomeSwapSubscription): ?>
       profileBtn.addEventListener('click', function(e) {
         e.preventDefault();
         showPremiumModal('profil');
         return false;
       });
-      @endif
+      <?php endif; ?>
       
       // Bouton play
       const playBtn = popover.querySelector('#popover-play-btn');
@@ -6929,7 +6956,7 @@
 
   // Filtres HomeSwap : chargés via homeswap-filters.js (évite erreurs Blade/JS)
 </script>
-<script src="{{ asset('assets/front/js/homeswap-filters.js') }}"></script>
+<script src="<?php echo e(asset('assets/front/js/homeswap-filters.js')); ?>"></script>
 
 <!-- Modale vidéo -->
 <div id="videoModal" class="video-modal-overlay">
@@ -6976,18 +7003,18 @@
         </div>
       </div>
       <div class="premium-modal-cta">
-        @if($isAuthenticated)
-          <form action="{{ route('mission.homeswap.checkout') }}" method="POST" style="margin: 0;">
-            @csrf
+        <?php if($isAuthenticated): ?>
+          <form action="<?php echo e(route('mission.homeswap.checkout')); ?>" method="POST" style="margin: 0;">
+            <?php echo csrf_field(); ?>
             <button type="submit" class="premium-modal-btn">
               S'abonner (99€/an)
             </button>
           </form>
-        @else
-          <a href="{{ route('user.login', ['redirect' => route('services.homeswap')]) }}" class="premium-modal-btn">
+        <?php else: ?>
+          <a href="<?php echo e(route('user.login', ['redirect' => route('services.homeswap')])); ?>" class="premium-modal-btn">
             Se connecter pour s'abonner
           </a>
-        @endif
+        <?php endif; ?>
         <a href="#homeswapSubscription" class="premium-modal-link" onclick="closePremiumModal(); setTimeout(() => document.getElementById('homeswapSubscription').scrollIntoView({behavior: 'smooth'}), 100);">
           En savoir plus sur l'abonnement
         </a>
@@ -7207,9 +7234,11 @@
     color: var(--preply-primary-dark);
   }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
-{{-- Alpine.js pour la gestion interactive des cartes "Trois façons d'échanger" --}}
+<?php $__env->startPush('scripts'); ?>
+
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('frontend.layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\younes\Downloads\junspro-main (1)\junspro-main3\resources\views/services/homeswap.blade.php ENDPATH**/ ?>
