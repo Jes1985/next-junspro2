@@ -9,7 +9,31 @@
   <div class="filter-row-main homeswap-filter-row-main">
     <div class="filter-input-group" id="homeswapCountryGroup">
       <i class="fas fa-map-marker-alt filter-input-icon"></i>
-      <select name="country" id="homeswapFilterCountry" class="filter-input filter-select-homeswap">
+      <div class="homeswap-filter-dropdown" id="homeswapCountryDropdown">
+        <button
+          type="button"
+          id="homeswapCountryTrigger"
+          class="filter-input filter-select-homeswap homeswap-filter-trigger"
+          role="combobox"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="homeswapCountryListbox"
+          aria-label="{{ __('Sélectionner un pays') }}"
+        >
+          <span class="homeswap-filter-trigger-text">{{ __('Sélectionner un pays') }}</span>
+        </button>
+        <div
+          id="homeswapCountryListbox"
+          class="homeswap-filter-listbox"
+          role="listbox"
+          tabindex="-1"
+          aria-label="{{ __('Pays') }}"
+        >
+          <div class="homeswap-filter-listbox-scroll" id="homeswapCountryListboxScroll"></div>
+        </div>
+      </div>
+      <input type="hidden" name="country" id="homeswapCountryInput" value="{{ request('country') }}">
+      <select id="homeswapFilterCountry" class="filter-input filter-select-homeswap homeswap-filter-native" tabindex="-1" aria-hidden="true">
         <option value="">{{ __('Sélectionner un pays') }}</option>
         <option value="FR" {{ request('country') == 'FR' ? 'selected' : '' }}>{{ __('France') }}</option>
         <option value="GP" {{ request('country') == 'GP' ? 'selected' : '' }}>{{ __('Guadeloupe') }}</option>
@@ -41,7 +65,31 @@
     </div>
     <div class="filter-input-group" id="homeswapCityWrapper">
       <i class="fas fa-map-marker-alt filter-input-icon"></i>
-      <select name="city" id="homeswapFilterCity" class="filter-input filter-select-homeswap homeswap-filter-select">
+      <div class="homeswap-city-dropdown" id="homeswapCityDropdown">
+        <button
+          type="button"
+          id="homeswapCityTrigger"
+          class="filter-input filter-select-homeswap homeswap-city-trigger"
+          role="combobox"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="homeswapCityListbox"
+          aria-label="{{ __('Sélectionner une ville ou zone') }}"
+        >
+          <span class="homeswap-city-trigger-text">{{ __('Sélectionner une ville ou zone') }}</span>
+        </button>
+        <div
+          id="homeswapCityListbox"
+          class="homeswap-city-listbox"
+          role="listbox"
+          tabindex="-1"
+          aria-label="{{ __('Villes') }}"
+        >
+          <div class="homeswap-city-listbox-scroll" id="homeswapCityListboxScroll"></div>
+        </div>
+      </div>
+      <input type="hidden" name="city" id="homeswapCityInput" value="{{ request('city') }}">
+      <select id="homeswapFilterCity" class="filter-input filter-select-homeswap homeswap-filter-select homeswap-city-native" tabindex="-1" aria-hidden="true">
         <option value="">{{ __('Sélectionner une ville ou zone') }}</option>
       </select>
     </div>

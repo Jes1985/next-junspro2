@@ -1265,6 +1265,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    z-index: 2;
   }
   .homeswap-search-filter-section .filter-input-icon {
     position: absolute;
@@ -1285,6 +1286,8 @@
     transition: all 0.3s ease;
     color: #1a202c;
     appearance: auto;
+    position: relative;
+    z-index: 1;
   }
   /* Assistant post-sélection : icônes + bouton info (apparaît après sélection) */
   .homeswap-search-filter-section .filter-input-group {
@@ -1298,8 +1301,8 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    pointer-events: none;
-    z-index: 3;
+    pointer-events: auto;
+    z-index: 4;
   }
   .homeswap-city-assistant > * {
     pointer-events: auto;
@@ -1308,6 +1311,9 @@
     display: flex;
     align-items: center;
     gap: 0.35rem;
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
   }
   .homeswap-city-icon {
     display: inline-flex;
@@ -1317,10 +1323,28 @@
     height: 18px;
     color: #94a3b8;
     opacity: 0.7;
+    cursor: help;
+    pointer-events: auto;
+    user-select: none;
+    position: relative;
+    outline: none;
+    transition: opacity 0.2s ease;
+  }
+  .homeswap-city-icon::after {
+    content: '';
+    position: absolute;
+    inset: -7px;
+    background: transparent;
+    pointer-events: auto;
+  }
+  .homeswap-city-icon:hover,
+  .homeswap-city-icon:focus-visible {
+    opacity: 1;
   }
   .homeswap-city-icon svg {
     width: 100%;
     height: 100%;
+    pointer-events: none;
   }
   .homeswap-city-icon-popular {
     color: #6b7280;
@@ -1336,13 +1360,13 @@
     border: none;
     background: none;
     color: #94a3b8;
-    cursor: pointer;
+    cursor: help;
     opacity: 0.6;
     transition: all 0.2s ease;
   }
   .homeswap-city-info-btn:hover {
     opacity: 1;
-    color: #EC4899;
+    color: #a5b4fc;
   }
   .homeswap-city-info-btn:focus-visible {
     outline: 2px solid #EC4899;
@@ -1352,6 +1376,150 @@
   .homeswap-city-info-btn svg {
     width: 100%;
     height: 100%;
+  }
+  .homeswap-filter-dropdown,
+  .homeswap-city-dropdown {
+    position: relative;
+    width: 100%;
+  }
+  .homeswap-filter-trigger,
+  .homeswap-city-trigger {
+    text-align: left;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  .homeswap-filter-trigger:focus-visible,
+  .homeswap-city-trigger:focus-visible {
+    outline: none;
+    border-color: #EC4899;
+    box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
+  }
+  .homeswap-filter-trigger-text,
+  .homeswap-city-trigger-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  .homeswap-filter-native,
+  .homeswap-city-native {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .homeswap-filter-listbox,
+  .homeswap-city-listbox {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #ffffff;
+    border: 2px solid rgba(244, 114, 182, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(236, 72, 153, 0.12);
+    padding: 0.35rem 0;
+    display: none;
+    overflow: visible;
+  }
+  .homeswap-filter-listbox.is-open,
+  .homeswap-city-listbox.is-open {
+    display: block;
+  }
+  .homeswap-filter-listbox-scroll,
+  .homeswap-city-listbox-scroll {
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  .homeswap-filter-option,
+  .homeswap-city-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    color: #1a202c;
+    cursor: pointer;
+  }
+  .homeswap-filter-option:hover,
+  .homeswap-filter-option.is-active,
+  .homeswap-city-option:hover,
+  .homeswap-city-option.is-active {
+    background: rgba(236, 72, 153, 0.06);
+  }
+  .homeswap-filter-option[aria-selected="true"],
+  .homeswap-city-option[aria-selected="true"] {
+    font-weight: 600;
+  }
+  .homeswap-filter-option-text,
+  .homeswap-city-option-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .homeswap-icon-tip,
+  .homeswap-city-icon[data-tooltip] {
+    position: relative;
+    min-width: 32px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .homeswap-icon-tip::after,
+  .homeswap-icon-tip::before,
+  .homeswap-city-icon[data-tooltip]::after,
+  .homeswap-city-icon[data-tooltip]::before {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .homeswap-icon-tip::after,
+  .homeswap-city-icon[data-tooltip]::after {
+    content: attr(data-tooltip);
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translate(-50%, 6px);
+    background: rgba(15, 23, 42, 0.92);
+    color: #f8fafc;
+    padding: 0.5rem 0.65rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    white-space: pre-line;
+    max-width: 240px;
+    text-align: left;
+    z-index: 10002;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.2);
+  }
+  .homeswap-icon-tip::before,
+  .homeswap-city-icon[data-tooltip]::before {
+    content: '';
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translate(-50%, 6px);
+    border: 6px solid transparent;
+    border-top-color: rgba(15, 23, 42, 0.92);
+    z-index: 10001;
+  }
+  .homeswap-icon-tip:hover::after,
+  .homeswap-icon-tip:hover::before,
+  .homeswap-icon-tip:focus-visible::after,
+  .homeswap-icon-tip:focus-visible::before,
+  .homeswap-city-icon[data-tooltip]:hover::after,
+  .homeswap-city-icon[data-tooltip]:hover::before,
+  .homeswap-city-icon[data-tooltip]:focus-visible::after,
+  .homeswap-city-icon[data-tooltip]:focus-visible::before {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
   /* Popover informations ville (ultra-premium, discret) */
   .homeswap-city-popover {
@@ -1364,6 +1532,7 @@
     min-width: 240px;
     max-width: 320px;
     animation: homeswapPopoverFadeIn 0.2s ease;
+    pointer-events: none;
   }
   @keyframes homeswapPopoverFadeIn {
     from {
@@ -6131,6 +6300,7 @@
       } else {
         const form = document.getElementById('preplyFiltersForm');
         if (form) form.submit();
+      }
     });
   });
 
@@ -6929,7 +7099,7 @@
 
   // Filtres HomeSwap : chargés via homeswap-filters.js (évite erreurs Blade/JS)
 </script>
-<script src="{{ asset('assets/front/js/homeswap-filters.js') }}"></script>
+<script src="{{ asset('assets/front/js/homeswap-filters.js') }}?v=20260210a"></script>
 
 <!-- Modale vidéo -->
 <div id="videoModal" class="video-modal-overlay">

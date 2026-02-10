@@ -25,9 +25,9 @@
  * 
  * UX Ultra-Premium :
  * - Select : nom de ville uniquement (aucun badge visible)
- * - Post-sélection : icônes monochromes + bouton "i" apparaissent à droite du champ
- * - Popover : informations révélées uniquement au clic sur "i"
- * - Aucune info visible sans action volontaire
+ * - Post-sélection : icônes monochromes apparaissent à droite du champ
+ * - Tooltip : informations révélées uniquement au survol
+ * - Aucune info visible sans survol
  */
 (function() {
   'use strict';
@@ -408,6 +408,119 @@
     var countrySelect = document.getElementById('homeswapFilterCountry');
     var citySelect = document.getElementById('homeswapFilterCity');
     var cityWrapper = document.getElementById('homeswapCityWrapper');
+    var countryDropdown = document.getElementById('homeswapCountryDropdown');
+    var countryTrigger = document.getElementById('homeswapCountryTrigger');
+    var countryListbox = document.getElementById('homeswapCountryListbox');
+    var countryListboxScroll = document.getElementById('homeswapCountryListboxScroll');
+    var countryHiddenInput = document.getElementById('homeswapCountryInput');
+    var countryIsOpen = false;
+    var countryOptionEls = [];
+    var countryActiveIndex = -1;
+    var cityDropdown = document.getElementById('homeswapCityDropdown');
+    var cityTrigger = document.getElementById('homeswapCityTrigger');
+    var cityListbox = document.getElementById('homeswapCityListbox');
+    var cityListboxScroll = document.getElementById('homeswapCityListboxScroll');
+    var cityHiddenInput = document.getElementById('homeswapCityInput');
+    var cityIsOpen = false;
+    var cityOptionEls = [];
+    var cityActiveIndex = -1;
+
+    function syncCountryHiddenInput() {
+      if (countryHiddenInput && countrySelect) {
+        countryHiddenInput.value = countrySelect.value || '';
+      }
+    }
+
+    function syncCountryTriggerText() {
+      if (!countryTrigger || !countrySelect) return;
+      var opt = countrySelect.options[countrySelect.selectedIndex];
+      var label = opt && opt.textContent ? opt.textContent : 'Sélectionner un pays';
+      var textEl = countryTrigger.querySelector('.homeswap-filter-trigger-text');
+      if (textEl) textEl.textContent = label;
+    }
+
+    function renderCountryListbox() {
+      if (!countryListbox || !countrySelect) return;
+      var container = countryListboxScroll || countryListbox;
+      container.innerHTML = '';
+      countryOptionEls = [];
+      for (var i = 0; i < countrySelect.options.length; i++) {
+        var opt = countrySelect.options[i];
+        var optionEl = document.createElement('div');
+        optionEl.className = 'homeswap-filter-option';
+        optionEl.setAttribute('role', 'option');
+        optionEl.setAttribute('data-value', opt.value);
+        optionEl.id = 'homeswapCountryOption-' + i;
+        optionEl.setAttribute('aria-selected', opt.value === countrySelect.value ? 'true' : 'false');
+
+        var textSpan = document.createElement('span');
+        textSpan.className = 'homeswap-filter-option-text';
+        textSpan.textContent = opt.textContent;
+        optionEl.appendChild(textSpan);
+
+        optionEl.addEventListener('click', function(e) {
+          e.stopPropagation();
+          selectCountryValue(this.getAttribute('data-value'));
+        });
+        optionEl.addEventListener('mouseenter', (function(index) {
+          return function() { setActiveCountryIndex(index); };
+        })(i));
+
+        container.appendChild(optionEl);
+        countryOptionEls.push(optionEl);
+      }
+    }
+
+    function setActiveCountryIndex(nextIndex) {
+      if (!countryOptionEls.length) return;
+      if (nextIndex < 0) nextIndex = 0;
+      if (nextIndex >= countryOptionEls.length) nextIndex = countryOptionEls.length - 1;
+      countryActiveIndex = nextIndex;
+      countryOptionEls.forEach(function(opt, idx) {
+        opt.classList.toggle('is-active', idx === countryActiveIndex);
+      });
+      var activeEl = countryOptionEls[countryActiveIndex];
+      if (activeEl && countryTrigger) {
+        countryTrigger.setAttribute('aria-activedescendant', activeEl.id);
+        activeEl.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    function openCountryListbox() {
+      if (!countryListbox || !countryTrigger) return;
+      if (countryIsOpen) return;
+      countryIsOpen = true;
+      countryListbox.classList.add('is-open');
+      countryTrigger.setAttribute('aria-expanded', 'true');
+      if (countrySelect) {
+        var idx = Math.max(0, countrySelect.selectedIndex);
+        setActiveCountryIndex(idx);
+      }
+    }
+
+    function closeCountryListbox() {
+      if (!countryListbox || !countryTrigger) return;
+      if (!countryIsOpen) return;
+      countryIsOpen = false;
+      countryListbox.classList.remove('is-open');
+      countryTrigger.setAttribute('aria-expanded', 'false');
+      countryTrigger.removeAttribute('aria-activedescendant');
+    }
+
+    function toggleCountryListbox() {
+      if (countryIsOpen) closeCountryListbox();
+      else openCountryListbox();
+    }
+
+    function selectCountryValue(value) {
+      if (!countrySelect) return;
+      countrySelect.value = value;
+      syncCountryHiddenInput();
+      syncCountryTriggerText();
+      renderCountryListbox();
+      countrySelect.dispatchEvent(new Event('change', { bubbles: true }));
+      closeCountryListbox();
+    }
 
     function updateHomeswapCities() {
       if (!countrySelect || !citySelect) return;
@@ -462,23 +575,232 @@
           citySelect.value = selectedCity;
           form.removeAttribute('data-selected-city');
         }
+
+        syncCityTriggerText();
+        syncCityHiddenInput();
+        renderCityListbox();
         
         // Afficher l'assistant post-sélection si une ville est sélectionnée
         setTimeout(function() {
           updateCityAssistant();
         }, 50);
       }
+
+      syncCityTriggerText();
+      syncCityHiddenInput();
+      renderCityListbox();
     }
 
-    // Icônes SVG premium par objectif (monochrome, ligne fine)
-    var objectiveIcons = {
-      'Business': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 4.5V11.5H10.5V4.5M3.5 4.5H10.5M3.5 4.5V2.5C3.5 2.22386 3.72386 2 4 2H10C10.2761 2 10.5 2.22386 10.5 2.5V4.5M5.5 7H8.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-      'Workation': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 3.5C2.5 3.22386 2.72386 3 3 3H11C11.2761 3 11.5 3.22386 11.5 3.5V10.5C11.5 10.7761 11.2761 11 11 11H3C2.72386 11 2.5 10.7761 2.5 10.5V3.5Z" stroke="currentColor" stroke-width="1.25"/><path d="M5.5 7L6.5 8L8.5 6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-      'Famille': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5L3.5 5.5V11.5H5.5V7.5H8.5V11.5H10.5V5.5L7 2.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-      'Langue': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.25"/><path d="M2 7H12M7 2C7.5 3.5 7.5 4.5 7 7C6.5 9.5 6.5 10.5 7 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>',
-      'Repos': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 7C3.5 5.067 5.067 3.5 7 3.5C8.933 3.5 10.5 5.067 10.5 7C10.5 8.933 8.933 10.5 7 10.5C5.067 10.5 3.5 8.933 3.5 7Z" stroke="currentColor" stroke-width="1.25"/><path d="M5 7L6.5 8.5L9 6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-      'Culture': '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2V12M2 7H12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/><circle cx="7" cy="7" r="4" stroke="currentColor" stroke-width="1.25"/></svg>'
+    function syncCityHiddenInput() {
+      if (cityHiddenInput && citySelect) {
+        cityHiddenInput.value = citySelect.value || '';
+      }
+    }
+
+    function syncCityTriggerText() {
+      if (!cityTrigger || !citySelect) return;
+      var opt = citySelect.options[citySelect.selectedIndex];
+      var label = opt && opt.textContent ? opt.textContent : 'Sélectionner une ville ou zone';
+      var textEl = cityTrigger.querySelector('.homeswap-city-trigger-text');
+      if (textEl) textEl.textContent = label;
+    }
+
+    function setActiveCityIndex(nextIndex) {
+      if (!cityOptionEls.length) return;
+      if (nextIndex < 0) nextIndex = 0;
+      if (nextIndex >= cityOptionEls.length) nextIndex = cityOptionEls.length - 1;
+      cityActiveIndex = nextIndex;
+      cityOptionEls.forEach(function(opt, idx) {
+        opt.classList.toggle('is-active', idx === cityActiveIndex);
+      });
+      var activeEl = cityOptionEls[cityActiveIndex];
+      if (activeEl && cityTrigger) {
+        cityTrigger.setAttribute('aria-activedescendant', activeEl.id);
+        activeEl.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    function openCityListbox() {
+      if (!cityListbox || !cityTrigger) return;
+      if (cityIsOpen) return;
+      cityIsOpen = true;
+      cityListbox.classList.add('is-open');
+      cityTrigger.setAttribute('aria-expanded', 'true');
+      if (citySelect) {
+        var idx = Math.max(0, citySelect.selectedIndex);
+        setActiveCityIndex(idx);
+      }
+    }
+
+    function closeCityListbox() {
+      if (!cityListbox || !cityTrigger) return;
+      if (!cityIsOpen) return;
+      cityIsOpen = false;
+      cityListbox.classList.remove('is-open');
+      cityTrigger.setAttribute('aria-expanded', 'false');
+      cityTrigger.removeAttribute('aria-activedescendant');
+    }
+
+    function toggleCityListbox() {
+      if (cityIsOpen) closeCityListbox();
+      else openCityListbox();
+    }
+
+    function selectCityValue(value) {
+      if (!citySelect) return;
+      citySelect.value = value;
+      syncCityHiddenInput();
+      syncCityTriggerText();
+      renderCityListbox();
+      updateCityAssistant();
+      citySelect.dispatchEvent(new Event('change', { bubbles: true }));
+      closeCityListbox();
+    }
+
+    // Icônes SVG pour l'assistant (monochrome, ligne fine)
+    var assistantIcons = {
+      active: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.25"/><path d="M4.5 7.2L6.2 8.8L9.5 5.4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      fiche: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 2.5H8.5L10.5 4.5V11.5H4V2.5Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/><path d="M8.5 2.5V4.5H10.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>',
+      international: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.25"/><path d="M2 7H12M7 2C8 3.5 8 4.5 7 7C6 9.5 6 10.5 7 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>',
+      info: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.25"/><path d="M7 4.2V4.6M7 6.6V9.2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>'
     };
+
+    function buildTooltipText(sections) {
+      if (!sections || sections.length === 0) return '';
+      var lines = [];
+      for (var i = 0; i < sections.length; i++) {
+        var section = sections[i];
+        if (!section) continue;
+        if (section.title && section.text) {
+          lines.push(section.title + '\n' + section.text);
+        } else if (section.title) {
+          lines.push(section.title);
+        } else if (section.text) {
+          lines.push(section.text);
+        }
+      }
+      return lines.join('\n');
+    }
+
+    function createTooltipIcon(iconItem, tabindexValue) {
+      var iconWrapper = document.createElement('span');
+      iconWrapper.className = 'homeswap-city-icon homeswap-icon-tip';
+      iconWrapper.setAttribute('aria-label', iconItem.ariaLabel);
+      iconWrapper.setAttribute('tabindex', tabindexValue);
+      var tooltipText = buildTooltipText(iconItem.tooltip);
+      if (!tooltipText) tooltipText = iconItem.ariaLabel || '';
+      if (tooltipText) iconWrapper.setAttribute('data-tooltip', tooltipText);
+      iconWrapper.innerHTML = assistantIcons[iconItem.key] || '';
+      iconWrapper.addEventListener('mousedown', function(e) { e.stopPropagation(); });
+      iconWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
+      return iconWrapper;
+    }
+
+    function getCityIconConfigs(meta) {
+      var icons = [];
+      icons.push({
+        key: 'active',
+        ariaLabel: 'Ville active sur Junspro',
+        tooltip: [
+          { title: 'Ville active sur Junspro', text: 'Des échanges sont déjà possibles dans cette ville.' }
+        ]
+      });
+      if (meta.hasDetails) {
+        icons.push({
+          key: 'fiche',
+          ariaLabel: 'Informations détaillées disponibles',
+          tooltip: [
+            { text: 'Informations détaillées disponibles pour cette destination.' }
+          ]
+        });
+      }
+      if (meta.isInternational) {
+        icons.push({
+          key: 'international',
+          ariaLabel: 'Ville internationale',
+          tooltip: [
+            { title: 'Ville internationale', text: 'Ville fréquemment choisie pour des échanges internationaux.' }
+          ]
+        });
+      }
+      if (meta.showInfo) {
+        var infoSections = [];
+        infoSections.push({
+          title: 'Pourquoi cette ville ?',
+          text: meta.objectives.length > 0 ? 'Souvent choisie pour : ' + meta.objectives.join(' · ') : null
+        });
+        if (meta.isVeryPopular) {
+          infoSections.push({
+            text: 'Statut : Ville très demandée sur Junspro',
+            isBadge: true
+          });
+        }
+        icons.push({
+          key: 'info',
+          ariaLabel: 'Pourquoi cette ville ?',
+          tooltip: infoSections
+        });
+      }
+      return icons;
+    }
+
+    function renderCityListbox() {
+      if (!cityListbox || !citySelect) return;
+      var container = cityListboxScroll || cityListbox;
+      container.innerHTML = '';
+      cityOptionEls = [];
+      for (var i = 0; i < citySelect.options.length; i++) {
+        var opt = citySelect.options[i];
+        var optionEl = document.createElement('div');
+        optionEl.className = 'homeswap-city-option';
+        optionEl.setAttribute('role', 'option');
+        optionEl.setAttribute('data-value', opt.value);
+        optionEl.id = 'homeswapCityOption-' + i;
+        optionEl.setAttribute('aria-selected', opt.value === citySelect.value ? 'true' : 'false');
+
+        var textSpan = document.createElement('span');
+        textSpan.className = 'homeswap-city-option-text';
+        textSpan.textContent = opt.textContent;
+        optionEl.appendChild(textSpan);
+
+        if (opt.value) {
+          var badges = [];
+          var badgesJson = opt.getAttribute('data-badges');
+          if (badgesJson) {
+            try { badges = JSON.parse(badgesJson); } catch (e) { badges = []; }
+          }
+          var objectives = getDisplayBadges(badges);
+          var meta = {
+            objectives: objectives,
+            hasDetails: !!opt.getAttribute('data-seo-text'),
+            isInternational: countrySelect && countrySelect.value && countrySelect.value !== 'FR',
+            isVeryPopular: opt.getAttribute('data-very-popular') === 'true',
+            showInfo: objectives.length > 0 || opt.getAttribute('data-very-popular') === 'true'
+          };
+          var icons = getCityIconConfigs(meta);
+          if (icons.length) {
+            var iconsContainer = document.createElement('div');
+            iconsContainer.className = 'homeswap-city-icons';
+            for (var j = 0; j < icons.length; j++) {
+              var iconItem = icons[j];
+              iconsContainer.appendChild(createTooltipIcon(iconItem, '-1'));
+            }
+            optionEl.appendChild(iconsContainer);
+          }
+        }
+
+        optionEl.addEventListener('click', function(e) {
+          e.stopPropagation();
+          selectCityValue(this.getAttribute('data-value'));
+        });
+        optionEl.addEventListener('mouseenter', (function(index) {
+          return function() { setActiveCityIndex(index); };
+        })(i));
+
+        container.appendChild(optionEl);
+        cityOptionEls.push(optionEl);
+      }
+    }
 
     // Fonction pour mettre à jour l'assistant post-sélection (icônes + popover)
     function updateCityAssistant() {
@@ -512,56 +834,36 @@
         }
       }
       
-      // Ne rien afficher si aucune info disponible (objectifs affichés ou ville très demandée)
-      var displayBadgesForAssistant = getDisplayBadges(badges);
-      if (displayBadgesForAssistant.length === 0 && !isVeryPopular) {
-        return;
-      }
+      var objectives = getDisplayBadges(badges);
+      var hasDetails = !!seoText;
+      var isInternational = countrySelect && countrySelect.value && countrySelect.value !== 'FR';
+      var showInfo = objectives.length > 0 || isVeryPopular;
       
-      // Créer le wrapper assistant
       var assistant = document.createElement('div');
       assistant.className = 'homeswap-city-assistant';
       assistant.setAttribute('role', 'group');
       assistant.setAttribute('aria-label', 'Informations sur ' + cityName);
-      
-      // Icônes objectifs (liste fermée, max 2)
-      var displayBadges = getDisplayBadges(badges);
-      if (displayBadges.length > 0) {
-        var iconsContainer = document.createElement('div');
-        iconsContainer.className = 'homeswap-city-icons';
-        for (var i = 0; i < displayBadges.length; i++) {
-          var iconWrapper = document.createElement('span');
-          iconWrapper.className = 'homeswap-city-icon';
-          iconWrapper.setAttribute('aria-label', displayBadges[i]);
-          iconWrapper.innerHTML = objectiveIcons[displayBadges[i]] || '';
-          iconsContainer.appendChild(iconWrapper);
-        }
-        assistant.appendChild(iconsContainer);
+      var iconsContainer = document.createElement('div');
+      iconsContainer.className = 'homeswap-city-icons';
+
+      var icons = getCityIconConfigs({
+        objectives: objectives,
+        hasDetails: hasDetails,
+        isInternational: isInternational,
+        isVeryPopular: isVeryPopular,
+        showInfo: showInfo
+      });
+
+      if (icons.length === 0) {
+        return;
       }
 
-      // Icône "Ville très demandée en ce moment"
-      if (isVeryPopular) {
-        var popularIcon = document.createElement('span');
-        popularIcon.className = 'homeswap-city-icon homeswap-city-icon-popular';
-        popularIcon.setAttribute('aria-label', 'Ville très demandée en ce moment');
-        popularIcon.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.25"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg>';
-        assistant.appendChild(popularIcon);
+      for (var i = 0; i < icons.length; i++) {
+        var iconItem = icons[i];
+        iconsContainer.appendChild(createTooltipIcon(iconItem, '0'));
       }
-      
-      // Bouton info (micro "i")
-      if (displayBadgesForAssistant.length > 0 || isVeryPopular || seoText) {
-        var infoBtn = document.createElement('button');
-        infoBtn.type = 'button';
-        infoBtn.className = 'homeswap-city-info-btn';
-        infoBtn.setAttribute('aria-label', 'Informations sur ' + cityName);
-        infoBtn.setAttribute('aria-expanded', 'false');
-        infoBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.25"/><path d="M6 4V4.5M6 7.5V8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>';
-        infoBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          toggleCityPopover(cityName, displayBadgesForAssistant, isVeryPopular, seoText, infoBtn);
-        });
-        assistant.appendChild(infoBtn);
-      }
+
+      assistant.appendChild(iconsContainer);
       
       cityWrapper.appendChild(assistant);
       
@@ -571,88 +873,80 @@
       }
     }
 
-    // Fonction pour afficher/masquer le popover
-    function toggleCityPopover(cityName, badges, isVeryPopular, seoText, triggerBtn) {
-      var existingPopover = document.querySelector('.homeswap-city-popover');
-      if (existingPopover && existingPopover.dataset.city === cityName) {
-        existingPopover.remove();
-        triggerBtn.setAttribute('aria-expanded', 'false');
-        return;
-      }
-      
-      // Supprimer les autres popovers
-      var allPopovers = document.querySelectorAll('.homeswap-city-popover');
-      allPopovers.forEach(function(p) { p.remove(); });
-      document.querySelectorAll('.homeswap-city-info-btn').forEach(function(btn) {
-        btn.setAttribute('aria-expanded', 'false');
+    if (cityTrigger && cityListbox) {
+      cityTrigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleCityListbox();
       });
-      
-      // Créer le popover
-      var popover = document.createElement('div');
-      popover.className = 'homeswap-city-popover';
-      popover.setAttribute('role', 'dialog');
-      popover.setAttribute('aria-label', 'Informations sur ' + cityName);
-      popover.dataset.city = cityName;
-      
-      var popoverContent = document.createElement('div');
-      popoverContent.className = 'homeswap-city-popover-content';
-      popoverContent.setAttribute('aria-label', 'Information ville');
-
-      // Souvent choisie pour : [Objectif 1] • [Objectif 2] (max 2, liste fermée)
-      var displayBadgesPopover = badges && badges.length > 0 ? getDisplayBadges(badges) : [];
-      if (displayBadgesPopover.length > 0) {
-        var lineObjectives = document.createElement('p');
-        lineObjectives.className = 'homeswap-city-popover-text';
-        lineObjectives.textContent = 'Souvent choisie pour : ' + displayBadgesPopover.join(' • ');
-        popoverContent.appendChild(lineObjectives);
-      }
-
-      // Ville très demandée en ce moment (ligne séparée, optionnelle)
-      if (isVeryPopular) {
-        var linePopular = document.createElement('p');
-        linePopular.className = 'homeswap-city-popover-text homeswap-city-popover-badge';
-        linePopular.textContent = 'Ville très demandée en ce moment';
-        popoverContent.appendChild(linePopular);
-      }
-
-      popover.appendChild(popoverContent);
-      document.body.appendChild(popover);
-      
-      // Positionner le popover (centré sous le bouton, avec gestion des bords)
-      var rect = triggerBtn.getBoundingClientRect();
-      var popoverWidth = popover.offsetWidth || 280;
-      var popoverHeight = popover.offsetHeight || 120;
-      var leftPos = rect.left + rect.width / 2 - popoverWidth / 2;
-      var topPos = rect.bottom + 8;
-      
-      // Ajuster si le popover sort de l'écran
-      if (leftPos < 8) leftPos = 8;
-      if (leftPos + popoverWidth > window.innerWidth - 8) {
-        leftPos = window.innerWidth - popoverWidth - 8;
-      }
-      if (topPos + popoverHeight > window.innerHeight - 8) {
-        topPos = rect.top - popoverHeight - 8;
-      }
-      
-      popover.style.left = leftPos + 'px';
-      popover.style.top = topPos + 'px';
-      
-      triggerBtn.setAttribute('aria-expanded', 'true');
-      
-      // Fermer au clic extérieur
-      setTimeout(function() {
-        document.addEventListener('click', function closePopover(e) {
-          if (!popover.contains(e.target) && e.target !== triggerBtn) {
-            popover.remove();
-            triggerBtn.setAttribute('aria-expanded', 'false');
-            document.removeEventListener('click', closePopover);
+      cityTrigger.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (!cityIsOpen) openCityListbox();
+          else setActiveCityIndex(cityActiveIndex + 1);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (!cityIsOpen) openCityListbox();
+          else setActiveCityIndex(cityActiveIndex - 1);
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (!cityIsOpen) {
+            openCityListbox();
+          } else if (cityOptionEls[cityActiveIndex]) {
+            selectCityValue(cityOptionEls[cityActiveIndex].getAttribute('data-value'));
           }
-        });
-      }, 10);
+        } else if (e.key === 'Escape') {
+          closeCityListbox();
+        }
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!cityDropdown) return;
+        if (!cityDropdown.contains(e.target)) {
+          closeCityListbox();
+        }
+      });
+    }
+
+    if (countryTrigger && countryListbox) {
+      countryTrigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleCountryListbox();
+      });
+      countryTrigger.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (!countryIsOpen) openCountryListbox();
+          else setActiveCountryIndex(countryActiveIndex + 1);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (!countryIsOpen) openCountryListbox();
+          else setActiveCountryIndex(countryActiveIndex - 1);
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (!countryIsOpen) {
+            openCountryListbox();
+          } else if (countryOptionEls[countryActiveIndex]) {
+            selectCountryValue(countryOptionEls[countryActiveIndex].getAttribute('data-value'));
+          }
+        } else if (e.key === 'Escape') {
+          closeCountryListbox();
+        }
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!countryDropdown) return;
+        if (!countryDropdown.contains(e.target)) {
+          closeCountryListbox();
+        }
+      });
     }
 
 
     if (countrySelect && citySelect) {
+      syncCountryHiddenInput();
+      syncCountryTriggerText();
+      renderCountryListbox();
+
       // Tracker les clics sur le select ville (statistiques internes)
       citySelect.addEventListener('focus', function() {
         var currentCity = citySelect.value;
@@ -667,11 +961,17 @@
         if (selectedCity) {
           incrementCityStat(selectedCity, 'selections');
         }
+        syncCityHiddenInput();
+        syncCityTriggerText();
+        renderCityListbox();
         // Afficher l'assistant post-sélection
         updateCityAssistant();
       });
       
       countrySelect.addEventListener('change', function() {
+        syncCountryHiddenInput();
+        syncCountryTriggerText();
+        renderCountryListbox();
         updateHomeswapCities();
       });
       
@@ -694,11 +994,6 @@
           incrementCityStat(selectedCity, 'searches');
         }
       });
-    }
-
-    if (countrySelect && citySelect) {
-      countrySelect.addEventListener('change', updateHomeswapCities);
-      updateHomeswapCities();
     }
 
     var tripPurposeAutre = document.getElementById('homeswapTripPurposeAutre');
@@ -739,6 +1034,13 @@
         if (typeof updateHomeswapCities === 'function') {
           updateHomeswapCities();
         }
+        syncCountryHiddenInput();
+        syncCountryTriggerText();
+        renderCountryListbox();
+        syncCityHiddenInput();
+        syncCityTriggerText();
+        renderCityListbox();
+        updateCityAssistant();
         if (typeof window.applyFiltersAjax === 'function') {
           window.applyFiltersAjax({});
         } else {
