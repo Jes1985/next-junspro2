@@ -61,11 +61,11 @@
               @endphp
               @if (!property_exists($menuData, 'children'))
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ $href }}">{{ $menuData->text }}</a>
+                  <a class="nav-link" href="{{ $href }}">{{ str_replace(['Tarification', 'Tarificatication'], 'Abonnement', $menuData->text) }}</a>
                 </li>
               @else
                 <li class="nav-item">
-                  <a class="nav-link toggle" href="{{ $href }}">{{ $menuData->text }}<i
+                  <a class="nav-link toggle" href="{{ $href }}">{{ str_replace(['Tarification', 'Tarificatication'], 'Abonnement', $menuData->text) }}<i
                       class="fal fa-plus"></i></a>
                   <ul class="menu-dropdown">
                     @php $childMenuDatas = $menuData->children; @endphp
@@ -79,7 +79,7 @@
                         $child_href = get_href($childMenuData); 
                       @endphp
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ $child_href }}">{{ $childMenuData->text }}</a>
+                        <a class="nav-link" href="{{ $child_href }}">{{ str_replace(['Tarification', 'Tarificatication'], 'Abonnement', $childMenuData->text) }}</a>
                       </li>
                     @endforeach
                   </ul>
@@ -108,23 +108,6 @@
               </div>
             </div>
           @endif
-          <div class="item">
-            <a href="#searchBox" class="btn-search btn-icon rounded-pill" target="_self" aria-label="Search Form"
-              title="{{ __('Search Form') }}" data-effect="mfp-zoom-in">
-              <i class="far fa-search"></i>
-            </a>
-            <div id="searchBox" class="search-box mx-auto mfp-with-anim mfp-hide mt-30">
-              <form action="{{ route('services') }}" method="GET">
-                <div class="input-inline p-1 border rounded-pill">
-                  <input class="form-control border-0 color-light" placeholder="{{ __('Search Service') . '...' }}"
-                    type="text" name="keyword">
-                  <button class="btn-icon rounded-pill" type="submit" aria-label="button">
-                    <i class="far fa-search"></i>
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
           {{-- Menu Freelance (affiché uniquement si connecté en tant que seller) --}}
           @auth('seller')
           <div class="item">

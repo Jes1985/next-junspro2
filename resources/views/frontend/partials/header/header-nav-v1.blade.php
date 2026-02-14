@@ -63,12 +63,12 @@
                 @if (!property_exists($menuData, 'children'))
                   <li class="nav-item">
                     <a class="nav-link {{ url()->current() == $href ? 'active' : '' }}"
-                      href="{{ $href }}">{{ $menuData->text }}</a>
+                      href="{{ $href }}">{{ str_replace(['Tarification', 'Tarificatication'], 'Abonnement', $menuData->text) }}</a>
                   </li>
                 @else
                   <li class="nav-item">
                     <a class="nav-link toggle {{ url()->current() == $href ? 'active' : '' }}"
-                      href="{{ $href }}">{{ $menuData->text }}<i class="fal fa-plus"></i></a>
+                      href="{{ $href }}">{{ str_replace(['Tarification', 'Tarificatication'], 'Abonnement', $menuData->text) }}<i class="fal fa-plus"></i></a>
                     <ul class="menu-dropdown">
                       @php $childMenuDatas = $menuData->children; @endphp
 
@@ -82,7 +82,7 @@
                         @endphp
                         <li class="nav-item">
                           <a class="nav-link {{ url()->current() == $child_href ? 'active' : '' }}"
-                            href="{{ $child_href }}">{{ $childMenuData->text }}</a>
+                            href="{{ $child_href }}">{{ str_replace(['Tarification', 'Tarificatication'], 'Abonnement', $childMenuData->text) }}</a>
                         </li>
                       @endforeach
                     </ul>

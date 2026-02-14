@@ -224,6 +224,10 @@
   </script>
 @endif
 
+@if(($universe ?? '') === 'lessons')
+  @include('components.services.filters.partials.engagement-rituel-lessons')
+@endif
+
 @if(($config['showSector'] ?? false) && in_array($universe ?? '', ['projects', 'lessons', 'at-home', 'wellnesslive']))
   <div class="preply-filter-advanced sector-filter-container">
     <label class="preply-filter-label preply-filter-label-icon"><i class="fas fa-industry me-2"></i>Univers d'activité</label>

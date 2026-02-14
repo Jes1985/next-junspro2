@@ -82,6 +82,7 @@
 {{-- Le blocage est maintenant dans layout.blade.php (head) --}}
 
 @yield('script')
+<script type="text/javascript" src="{{ asset('assets/js/subscriptions/expressOptions.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/push-notification.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/floating-whatsapp.js') }}"></script>
 <!-- Main script JS -->

@@ -1,0 +1,25 @@
+/* Express Options — composant unique, design premium */
+.junspro-express-options .express-option-card {
+  padding: 6px 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: transparent;
+  color: #6B7280;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.junspro-express-options .express-option-card:hover {
+  border-color: #D1D5DB;
+  background: #F3F4F6;
+}
+.junspro-express-options .express-option-card.is-selected {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.express-options-toggle .express-option-card {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+}

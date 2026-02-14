@@ -25,7 +25,6 @@
             <h5>{{ __('Useful Links') }}</h5>
             @if (count($quickLinkInfos) == 0)
               <ul class="footer-links">
-                <li><a href="{{ route('dynamic_page', ['slug' => 'cgu']) }}">{{ __('CGU') }}</a></li>
                 <li><a href="{{ route('dynamic_page', ['slug' => 'mentions-legales']) }}">{{ __('Mentions légales') }}</a></li>
                 <li><a href="{{ route('dynamic_page', ['slug' => 'termes-et-conditions']) }}">{{ __('Termes et conditions') }}</a></li>
                 <li><a href="{{ route('dynamic_page', ['slug' => 'politique-de-confidentialite']) }}">{{ __('Politique de confidentialité') }}</a></li>

@@ -65,12 +65,12 @@ class ServicesController extends Controller
                 ],
                 'confidence' => 100
             ],
-            // WellnessLive
+            // WellnessLive / Ritual Motion
             'wellnesslive' => [
                 'keywords' => [
                     'pilates', 'yoga', 'bodybalance', 'bodysculpt', 'bodycombat', 'bodyattack',
                     'boxing', 'cross training', 'hiit', 'cardio', 'zumba',
-                    'stretching', 'gym soft', 'qi gong', 'tai chi',
+                    'stretching', 'ritual flow', 'ritual reset',
                     'lesmills', 'well circuit', 'wellrun',
                 ],
                 'confidence' => 100
@@ -113,6 +113,20 @@ class ServicesController extends Controller
         }
         
         return $bestMatch ? ['universe' => $bestMatch, 'confidence' => $bestScore] : null;
+    }
+
+    /**
+     * Construit la requête de base pour les freelances.
+     * Filtre status optionnel : si la colonne existe, on ne garde que les utilisateurs actifs (status=1).
+     */
+    private function getBaseFreelancersQuery()
+    {
+        return FreelancerProfile::with('user')
+            ->whereHas('user', function($q) {
+                if (Schema::hasColumn('users', 'status')) {
+                    $q->where('status', 1);
+                }
+            });
     }
 
     /**
@@ -214,47 +228,100 @@ class ServicesController extends Controller
         $queryResult['languageId'] = $language;
         $queryResult['breadcrumb'] = $misc->getBreadcrumb();
         
-        // Domaines V1 premium (5 intentions business haut niveau) — filtre "Domaine"
+        // Taxonomie V2 (Malt-inspired) — 11 domaines + spécialisations pro, max ~6 par domaine
         $queryResult['categories'] = [
             ['slug' => 'strategie-conseil', 'label' => 'Stratégie & Conseil', 'description' => 'Vision, structuration et décisions à fort enjeu.'],
             ['slug' => 'marketing-croissance', 'label' => 'Marketing & Croissance', 'description' => 'Positionnement, acquisition et développement durable.'],
             ['slug' => 'tech-produits-digitaux', 'label' => 'Tech & Produits digitaux', 'description' => 'Conception, évolution et performance des solutions digitales.'],
             ['slug' => 'creation-image-marque', 'label' => 'Création & Image de marque', 'description' => 'Identité, narration et impact de marque.'],
             ['slug' => 'formation-accompagnement', 'label' => 'Formation & Accompagnement', 'description' => 'Accompagnement stratégique et transmission ciblée.'],
+            ['slug' => 'gestion-projet-produit', 'label' => 'Gestion de projet & Produit', 'description' => 'Pilotage, delivery et coordination produit.'],
+            ['slug' => 'data-ia', 'label' => 'Data & IA', 'description' => 'Analyse, modèles et IA appliquée au business.'],
+            ['slug' => 'cybersecurite-it', 'label' => 'Cybersécurité & IT', 'description' => 'Sécurité, systèmes et fiabilité des environnements.'],
+            ['slug' => 'design-creation', 'label' => 'Design & Création', 'description' => 'Expérience, interfaces et identités visuelles.'],
+            ['slug' => 'photo-video-motion', 'label' => 'Photo / Vidéo / Motion', 'description' => 'Production, narration et contenus audiovisuels.'],
+            ['slug' => 'redaction-communication', 'label' => 'Rédaction & Communication', 'description' => 'Contenus, éditorial et communication de marque.'],
         ];
-        // Spécialisations par domaine — hero Domaine + Spécialisation (identique level-2-filters)
         $queryResult['domainSpecializations'] = [
             'strategie-conseil' => [
-                ['conseil_strategique', 'Conseil stratégique'],
-                ['business_plan_modelisation', 'Business plan & modélisation'],
-                ['etude_de_marche', 'Étude de marché'],
-                ['structuration_de_projet', 'Structuration de projet'],
-                ['pilotage_gouvernance', 'Pilotage & gouvernance'],
+                ['consultants_strategie', 'Consultants en stratégie'],
+                ['consultants_communication', 'Consultants en communication'],
+                ['business_developers', 'Business developers'],
+                ['consultants_organisation_transformation', 'Consultants organisation & transformation'],
+                ['consultants_finance_modelisation', 'Consultants finance & modélisation'],
             ],
             'marketing-croissance' => [
-                ['strategie_marketing', 'Stratégie marketing'],
-                ['branding_positionnement', 'Branding & positionnement'],
-                ['acquisition_visibilite', 'Acquisition & visibilité'],
-                ['content_marketing', 'Content marketing'],
+                ['consultants_marketing', 'Consultants marketing'],
+                ['consultants_webmarketing', 'Consultants webmarketing'],
+                ['consultants_analytics', 'Consultants analytics'],
+                ['consultants_seo', 'Consultants SEO'],
                 ['crm_email_marketing', 'CRM & Email marketing'],
+                ['acquisition_visibilite', 'Acquisition & visibilité'],
             ],
             'tech-produits-digitaux' => [
-                ['developpement_web', 'Développement web'],
-                ['nocode_automatisation', 'No-code & automatisation'],
-                ['maintenance_optimisation_continue', 'Maintenance & optimisation continue'],
-                ['outils_data_ia_appliquee', 'Outils data & IA appliquée (cas d\'usage business)'],
+                ['developpeurs_backend', 'Développeurs Back-End'],
+                ['developpeurs_frontend', 'Développeurs Front-End'],
+                ['developpeurs_fullstack', 'Développeurs Full-Stack'],
+                ['developpeurs_mobile', 'Développeurs mobile (iOS / Android)'],
+                ['devops_cloud', 'DevOps & Cloud'],
+                ['qa_tests', 'QA / Tests'],
             ],
             'creation-image-marque' => [
-                ['design_branding', 'Design & branding'],
-                ['ux_ui', 'UX / UI'],
-                ['video_motion_design', 'Vidéo & motion design'],
-                ['copywriting_strategique', 'Copywriting stratégique'],
+                ['brand_designers', 'Brand designers'],
+                ['directeurs_artistiques', 'Directeurs artistiques'],
+                ['graphistes', 'Graphistes'],
+                ['ux_designers', 'UX designers'],
+                ['ui_designers', 'UI designers'],
+                ['webdesigners', 'Webdesigners'],
             ],
             'formation-accompagnement' => [
                 ['coaching_professionnel', 'Coaching professionnel'],
                 ['formation_business', 'Formation business (dirigeants & équipes)'],
                 ['mentorat_strategique', 'Mentorat stratégique'],
                 ['accompagnement_dirigeants', 'Accompagnement dirigeants'],
+            ],
+            'gestion-projet-produit' => [
+                ['chefs_de_projet', 'Chefs de projet'],
+                ['product_managers', 'Product managers'],
+                ['coachs_agiles', 'Coachs agiles'],
+                ['scrum_masters', 'Scrum masters'],
+                ['pmo', 'PMO'],
+            ],
+            'data-ia' => [
+                ['data_analysts_bi', 'Data analysts / BI'],
+                ['data_scientists', 'Data scientists'],
+                ['data_engineers', 'Data engineers'],
+                ['machine_learning_engineers', 'Machine Learning engineers'],
+                ['ia_appliquee_business', 'IA appliquée (cas d\'usage business)'],
+            ],
+            'cybersecurite-it' => [
+                ['experts_cybersecurite', 'Experts cybersécurité'],
+                ['administrateurs_systemes_reseaux', 'Administrateurs systèmes & réseaux'],
+                ['administrateurs_base_donnees', 'Administrateurs base de données'],
+                ['support_it_helpdesk', 'Support IT / Helpdesk'],
+                ['gouvernance_conformite', 'Gouvernance & conformité'],
+            ],
+            'design-creation' => [
+                ['ux_designers', 'UX designers'],
+                ['ui_designers', 'UI designers'],
+                ['webdesigners', 'Webdesigners'],
+                ['graphistes', 'Graphistes'],
+                ['directeurs_artistiques', 'Directeurs artistiques'],
+                ['brand_designers', 'Brand designers'],
+            ],
+            'photo-video-motion' => [
+                ['photographes', 'Photographes'],
+                ['realisateurs', 'Réalisateurs'],
+                ['motion_designers', 'Motion designers'],
+                ['monteurs_video', 'Monteurs vidéo'],
+                ['sound_designers', 'Sound designers'],
+            ],
+            'redaction-communication' => [
+                ['community_managers', 'Community managers'],
+                ['concepteurs_redacteurs', 'Concepteurs-rédacteurs'],
+                ['responsables_editoriaux', 'Responsables éditoriaux'],
+                ['charges_relations_presse', 'Chargés de relations presse'],
+                ['strategie_contenu', 'Stratégie de contenu'],
             ],
         ];
 
@@ -265,13 +332,16 @@ class ServicesController extends Controller
             'tech-produits-digitaux' => ['tech', 'digital', 'produit', 'conception', 'développement', 'performance'],
             'creation-image-marque' => ['création', 'identité', 'marque', 'narration', 'branding', 'design'],
             'formation-accompagnement' => ['formation', 'accompagnement', 'compétence', 'mentorat', 'montée en compétence'],
+            'gestion-projet-produit' => ['projet', 'produit', 'pilotage', 'delivery', 'agile', 'scrum', 'pmo'],
+            'data-ia' => ['data', 'ia', 'intelligence artificielle', 'analytics', 'machine learning', 'bi'],
+            'cybersecurite-it' => ['cybersécurité', 'sécurité', 'systèmes', 'réseaux', 'it', 'infrastructure'],
+            'design-creation' => ['design', 'ux', 'ui', 'interface', 'expérience utilisateur', 'graphisme'],
+            'photo-video-motion' => ['photo', 'vidéo', 'motion', 'production', 'audiovisuel', 'montage'],
+            'redaction-communication' => ['rédaction', 'communication', 'éditorial', 'contenu', 'community', 'pr'],
         ];
         
         // Récupérer les freelances/professeurs avec leurs données
-        $freelancersQuery = FreelancerProfile::with('user')
-            ->whereHas('user', function($q) {
-                $q->where('status', 1);
-            });
+        $freelancersQuery = $this->getBaseFreelancersQuery();
         
         // Appliquer les filtres si présents
         if ($request->has('search') && $request->search) {
@@ -505,10 +575,7 @@ class ServicesController extends Controller
         ];
         
         // Récupérer les freelances/professeurs avec leurs données
-        $freelancersQuery = FreelancerProfile::with('user')
-            ->whereHas('user', function($q) {
-                $q->where('status', 1);
-            });
+        $freelancersQuery = $this->getBaseFreelancersQuery();
         
         // Appliquer les filtres si présents
         if ($request->has('search') && $request->search) {
@@ -702,10 +769,7 @@ class ServicesController extends Controller
         ];
         $queryResult['lessonGoals'] = [];
         
-        $freelancersQuery = FreelancerProfile::with('user')
-            ->whereHas('user', function($q) {
-                $q->where('status', 1);
-            });
+        $freelancersQuery = $this->getBaseFreelancersQuery();
         
         if ($request->has('search') && $request->search) {
             $search = $request->search;
@@ -840,20 +904,19 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
         $queryResult['languageId'] = $language;
         $queryResult['breadcrumb'] = $misc->getBreadcrumb();
         
-        // Catégories hiérarchiques (Ritual Motion : live + VOD + routines)
+        // Catégories hiérarchiques Ritual Motion — version finale premium (4 domaines × 6 spécialisations max)
         $queryResult['categories'] = [
             'Cardio-Training' => [
-                'Boxing', 'Cross Training', 'HIIT Cardio', 'HIIT Force', 'Step', 'TRX',
-                'RitualCircuit', 'RitualRun', 'Self-Défense'
+                'Boxing', 'Cross Training', 'HIIT Cardio', 'HIIT Force', 'Step', 'Self-Défense'
             ],
             'Renforcement Musculaire' => [
-                'Pilates', 'Pilates Petits Matériels', 'Pilates Ball', 'CAF', 'CA', 'TRX'
+                'Pilates', 'Pilates (petits matériels)', 'Pilates Ball', 'TRX', 'Cuisses-Abdos-Fessiers (CAF)', 'Abdos & Fessiers (AF)'
             ],
             'Bien-Etre' => [
-                'Stretching', 'Gym Soft', 'Pilates', 'Yoga', 'Yoga Energie', 'Yoga anti-stress', 'Gi Gong', 'Tai Chi'
+                'Stretching', 'Ritual Flow', 'Ritual Récup\'', 'Yoga', 'Yoga Énergie', 'Yoga Anti-stress'
             ],
             'Danse' => [
-                'Pole Dance', 'STEP', 'Zumba', 'Afro Move', 'Dance Classique', 'Hip Hop', 'Hit dance', 'Dance Workout', 'Tissu Aérien', 'Cerceau Aérien'
+                'Zumba', 'Hip-Hop', 'Afro Move', 'Dance Workout', 'Aérien (Pole Dance • Tissu • Cerceau)', 'Dance HIIT'
             ]
         ];
         // Micro-descriptions des domaines Ritual Motion (dropdown Domaine — titre + sous-texte)
@@ -865,10 +928,7 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
         ];
         $queryResult['lessonGoals'] = [];
         
-        $freelancersQuery = FreelancerProfile::with('user')
-            ->whereHas('user', function($q) {
-                $q->where('status', 1);
-            });
+        $freelancersQuery = $this->getBaseFreelancersQuery();
         
         if ($request->has('search') && $request->search) {
             $search = $request->search;
@@ -1103,10 +1163,7 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
         ];
         
         // Récupérer les freelances/professeurs avec leurs données
-        $freelancersQuery = FreelancerProfile::with('user')
-            ->whereHas('user', function($q) {
-                $q->where('status', 1);
-            });
+        $freelancersQuery = $this->getBaseFreelancersQuery();
         
         // Appliquer les filtres si présents
         if ($request->has('search') && $request->search) {
@@ -1218,10 +1275,7 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
         $queryResult['isAuthenticated'] = \Illuminate\Support\Facades\Auth::guard('web')->check();
         
         // Récupérer les freelances/professeurs avec leurs données
-        $freelancersQuery = FreelancerProfile::with('user')
-            ->whereHas('user', function($q) {
-                $q->where('status', 1);
-            });
+        $freelancersQuery = $this->getBaseFreelancersQuery();
         
         // Appliquer les filtres si présents
         if ($request->has('search') && $request->search) {

@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 class ClientDashboardController extends Controller
 {
@@ -27,8 +28,17 @@ class ClientDashboardController extends Controller
             
             $clientProfile = $user->clientProfile;
             if (!$clientProfile) {
-                return redirect()->route('user.dashboard')
-                    ->with('error', __('Vous devez avoir un profil client pour accéder à cette page.'));
+                $clientProfile = \App\Models\ClientProfile::firstOrCreate(['user_id' => $user->id]);
+            }
+
+            // Evite les crashes si certaines tables V2 ne sont pas encore migrées.
+            if (!Schema::hasTable('work_sessions') || !Schema::hasTable('subscriptions')) {
+                return view('frontend.client.dashboard.index', [
+                    'nextSession' => null,
+                    'upcomingSessions' => collect(),
+                    'lastReports' => collect(),
+                    'subscriptions' => collect(),
+                ]);
             }
 
             // Récupérer la prochaine session (workSession à venir)
@@ -103,14 +113,19 @@ class ClientDashboardController extends Controller
                 'subscriptions' => $subscriptions,
             ]);
         } catch (\Exception $e) {
-            \Log::error('Erreur dans ClientDashboardController@index: ' . $e->getMessage(), [
+            Log::error('Erreur dans ClientDashboardController@index: ' . $e->getMessage(), [
                 'file' => $e->getFile(),
                 'line' => $e->getLine(),
                 'trace' => $e->getTraceAsString()
             ]);
-            
-            return redirect()->route('user.dashboard')
-                ->with('error', __('Une erreur est survenue lors du chargement du dashboard. Veuillez réessayer.'));
+
+            // Pas de redirection vers user.dashboard pour éviter les boucles.
+            return view('frontend.client.dashboard.index', [
+                'nextSession' => null,
+                'upcomingSessions' => collect(),
+                'lastReports' => collect(),
+                'subscriptions' => collect(),
+            ])->with('error', __('Certaines données du dashboard sont indisponibles pour le moment.'));
         }
     }
 }

@@ -8,6 +8,7 @@ use App\Services\Junspro\ReferralService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class ReferralController extends Controller
 {
@@ -28,6 +29,7 @@ class ReferralController extends Controller
         $user = Auth::guard('web')->user();
         
         if (!$user) {
+            Session::put('redirectTo', route('referral.index'));
             return redirect()->route('user.login');
         }
 

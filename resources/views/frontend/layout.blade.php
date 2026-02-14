@@ -35,6 +35,8 @@
   <link rel="stylesheet" href="{{ asset('assets/front/css/language-selector-premium.css') }}">
   {{-- CSS Chatbot Junspro Premium --}}
   <link rel="stylesheet" href="{{ asset('assets/front/css/junspro-chatbot-premium.css') }}?v=6.3">
+  {{-- CSS Options Express (composant unique) --}}
+  <link rel="stylesheet" href="{{ asset('assets/front/css/express-options.css') }}">
   @php
     $primaryColor = $basicInfo->primary_color;
   @endphp

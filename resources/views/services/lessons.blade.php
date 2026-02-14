@@ -2983,6 +2983,19 @@
   .lessons-city-popover-content p + p { margin-top: 0.5rem; }
   .lessons-city-popover-text { font-size: 0.75rem; color: #64748b; line-height: 1.5; margin: 0; }
   .lessons-city-popover-badge { color: #6b7280; font-weight: 500; }
+
+  /* Engagement Rituel + Tarif accordéon — Lessons uniquement */
+  .page-lessons .lessons-affiner-tarif-link {
+    display: inline-flex; align-items: center; margin-top: 12px; font-size: 0.875rem; color: #2563EB;
+    text-decoration: none; font-weight: 500; transition: color 0.2s;
+  }
+  .page-lessons .lessons-affiner-tarif-link:hover { color: #1E40AF; text-decoration: underline; }
+  .page-lessons .lessons-tarif-accordion {
+    max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+  }
+  .page-lessons .lessons-tarif-accordion.is-open { max-height: 400px; }
+  .page-lessons .lessons-engagement-block .engagement-base-btn.is-active { background: #fff !important; color: #2563EB !important; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+  .page-lessons .lessons-engagement-block .engagement-base-btn:hover { color: #2563EB; background: rgba(37, 99, 235, 0.08); }
 </style>
 @endsection
 
@@ -3001,9 +3014,9 @@
     <x-home.search-filter formId="preplyFiltersForm" :formAction="route('services.lessons')" universe="lessons" keywordPlaceholder="Essayez 'Anglais', 'Maths', 'Excel'..." locationPlaceholder="Lieu (ex: Paris, Lyon...)" :categories="$categories" :categoryDescriptions="$categoryDescriptions ?? []" :lessonGoals="$lessonGoals ?? []" />
     </div>
 
-  {{-- Module Pause Souffle Inline (juste sous filtres, avant résultats) --}}
+  {{-- Module Pause Souffle Inline avec badge + titre (juste sous filtres, avant résultats) --}}
   <div class="container">
-    @include('frontend.components.pause-souffle.inline-premium')
+    @include('frontend.components.pause-souffle.inline-premium-projects')
   </div>
 
   {{-- Résultats --}}
@@ -4804,6 +4817,248 @@
   })();
 
   // Domaine → Spécialisation et Univers d'activité : init gérés par le composant search-filter (module réutilisable)
+
+  // ---------- Engagement Rituel + Tarif Lessons : accordéon, slider, sync, Recommandation Junspro + Express ----------
+  (function initLessonsEngagementRituel() {
+    const RITUEL_STORAGE_KEY = 'junspro_day_base_hours';
+    const PALIERS_B = [4, 8, 16, 24, 32, 48, 56, 64, 72, 80, 88];
+    var lessonsExpressMultiplier = 1;
+    function getLessonsExpressMultiplier() {
+      var input = document.querySelector('[data-express-input]');
+      var mode = (input && input.value) ? input.value : 'none';
+      return { none: 1, '24': 1.3, '48': 1.2, '72': 1.1 }[mode] || 1;
+    }
+    function getBaseHours() {
+      var v = parseInt(localStorage.getItem(RITUEL_STORAGE_KEY), 10);
+      return (v === 7 || v === 8) ? v : 7;
+    }
+    function setBaseHours(v) {
+      localStorage.setItem(RITUEL_STORAGE_KEY, String(v));
+    }
+    function snapToPalierB(targetHours) {
+      for (var i = 0; i < PALIERS_B.length; i++) {
+        if (PALIERS_B[i] >= targetHours) return PALIERS_B[i];
+      }
+      return PALIERS_B[PALIERS_B.length - 1];
+    }
+    function topupCapB(palier) {
+      return palier <= 32 ? palier : 32;
+    }
+    var budgetMapping = {
+      '0-1000': { min: 0, max: 1000 },
+      '1000-2500': { min: 1000, max: 2500 },
+      '2500-5000': { min: 2500, max: 5000 },
+      '5000-10000': { min: 5000, max: 10000 },
+      '10000-20000': { min: 10000, max: 20000 },
+      '20000-60000': { min: 20000, max: 60000 },
+      '60000+': { min: 60000, max: 999999 }
+    };
+    function applyLessonsExpress() {
+      lessonsExpressMultiplier = getLessonsExpressMultiplier();
+      var scope = document.querySelector('.page-lessons');
+      if (!scope) return;
+      scope.querySelectorAll('[data-express-target]').forEach(function(el) {
+        var base = parseFloat(el.getAttribute('data-base-value')) || 0;
+        el.textContent = String(Math.round(base * lessonsExpressMultiplier));
+      });
+    }
+    window.addEventListener('express:changed', function(e) {
+      lessonsExpressMultiplier = e.detail && e.detail.multiplier ? e.detail.multiplier : 1;
+      applyLessonsExpress();
+    });
+      function run() {
+      var engagementBlock = document.querySelector('.lessons-engagement-block');
+      if (!engagementBlock) return;
+      var budgetSelect = document.getElementById('lessonsBudgetFilter');
+      var estimateEl = document.getElementById('lessonsBudgetEstimate');
+      var recEl = document.getElementById('lessonsRecommandationJunspro');
+      var affinerLink = document.getElementById('lessonsAffinerTarifLink');
+      var accordion = document.getElementById('lessonsTarifAccordion');
+      var minInput = document.getElementById('lessons-rituel-price-min');
+      var maxInput = document.getElementById('lessons-rituel-price-max');
+      if (!budgetSelect || !estimateEl) return;
+      function getRate() {
+        if (minInput && maxInput) {
+          var mn = parseInt(minInput.value, 10) || 10;
+          var mx = parseInt(maxInput.value, 10) || 50;
+          return (mn + mx) / 2;
+        }
+        return 50;
+      }
+      function updateBudgetEstimate() {
+        var val = budgetSelect.value;
+        var volumeEl = estimateEl.querySelector('.budget-estimate-volume');
+        var pricesEl = estimateEl.querySelector('.budget-estimate-prices');
+        var hourlyEl = estimateEl.querySelector('[data-express-target="engagement-hourly-avg"]');
+        var dailyEl = estimateEl.querySelector('[data-express-target="engagement-daily-avg"]');
+        if (!val || !budgetMapping[val]) {
+          if (volumeEl) volumeEl.textContent = 'Sélectionnez un engagement pour afficher une estimation en rituels.';
+          if (pricesEl) pricesEl.style.display = 'none';
+          if (recEl) recEl.style.display = 'none';
+          return;
+        }
+        var budget = budgetMapping[val];
+        var rate = getRate();
+        var rituelsMin = Math.ceil(budget.min / rate);
+        var rituelsMax = budget.max === 999999 ? null : Math.floor(budget.max / rate);
+        var rMin = rituelsMin;
+        var rMax = rituelsMax || rituelsMin;
+        var targetHours = rMin;
+        var palier = snapToPalierB(targetHours);
+        var topup = topupCapB(palier);
+        var base = getBaseHours();
+        var tjm = Math.round(rate * base);
+        var rateRounded = Math.round(rate);
+        if (volumeEl) volumeEl.textContent = 'Volume estimé : ~' + rMin + (rMax ? '-' + rMax : '+') + ' rituels (~' + rMin + (rMax ? '-' + rMax : '+') + ' h)';
+        if (pricesEl) pricesEl.style.display = 'block';
+        if (hourlyEl) hourlyEl.setAttribute('data-base-value', String(rateRounded));
+        if (dailyEl) dailyEl.setAttribute('data-base-value', String(tjm));
+        applyLessonsExpress();
+        if (recEl) {
+          recEl.textContent = 'Recommandation Junspro : Recommandé : ' + palier + 'h / 4 semaines + jusqu\'à ' + topup + 'h supplémentaires';
+          recEl.style.display = 'block';
+        }
+      }
+      function updateRituelSummary() {
+        var summaryEl = document.getElementById('lessons-rituel-price-summary');
+        if (!minInput || !maxInput || !summaryEl) return;
+        var hourlyMinEl = summaryEl.querySelector('[data-express-target="slider-hourly-min"]');
+        var hourlyMaxEl = summaryEl.querySelector('[data-express-target="slider-hourly-max"]');
+        var dailyMinEl = summaryEl.querySelector('[data-express-target="slider-daily-min"]');
+        var dailyMaxEl = summaryEl.querySelector('[data-express-target="slider-daily-max"]');
+        if (!hourlyMinEl || !hourlyMaxEl || !dailyMinEl || !dailyMaxEl) return;
+        var base = getBaseHours();
+        var mn = Math.max(10, Math.min(parseInt(minInput.value, 10) || 10, 299));
+        var mx = Math.max(mn, Math.min(299, parseInt(maxInput.value, 10) || 50));
+        minInput.value = mn;
+        maxInput.value = mx;
+        var jourMin = mn * base;
+        var jourMax = mx * base;
+        hourlyMinEl.setAttribute('data-base-value', String(mn));
+        hourlyMaxEl.setAttribute('data-base-value', String(mx));
+        dailyMinEl.setAttribute('data-base-value', String(Math.round(jourMin)));
+        dailyMaxEl.setAttribute('data-base-value', String(Math.round(jourMax)));
+        applyLessonsExpress();
+      }
+      function syncFromTarifToBudget() {
+        var rate = getRate();
+        var val = budgetSelect.value;
+        if (!val || !budgetMapping[val]) return;
+        var budget = budgetMapping[val];
+        var midBudget = (budget.min + (budget.max === 999999 ? budget.min + 10000 : budget.max)) / 2;
+        var volEst = Math.round(midBudget / rate);
+        updateBudgetEstimate();
+      }
+      if (affinerLink && accordion) {
+        affinerLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          accordion.classList.toggle('is-open');
+          accordion.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      }
+      budgetSelect.addEventListener('change', function() {
+        updateBudgetEstimate();
+        if (minInput && maxInput && typeof jQuery !== 'undefined' && jQuery('#lessons-rituel-price-slider').length) {
+          var rate = getRate();
+          var val = budgetSelect.value;
+          if (val && budgetMapping[val]) {
+            var budget = budgetMapping[val];
+            var mid = (budget.min + (budget.max === 999999 ? budget.min + 10000 : budget.max)) / 2;
+            var sugg = Math.round(mid / rate);
+            var suggMin = Math.max(10, Math.min(50, Math.round(rate * 0.8)));
+            var suggMax = Math.max(suggMin, Math.min(299, Math.round(rate * 1.2)));
+            if (minInput && maxInput) {
+              minInput.value = suggMin;
+              maxInput.value = suggMax;
+              if (jQuery('#lessons-rituel-price-slider').slider('instance')) {
+                jQuery('#lessons-rituel-price-slider').slider('values', [suggMin, suggMax]);
+              }
+              updateRituelSummary();
+            }
+          }
+        }
+        updateBudgetEstimate();
+      });
+      engagementBlock.querySelectorAll('.engagement-base-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var base = parseInt(this.getAttribute('data-base'), 10);
+          setBaseHours(base);
+          engagementBlock.querySelectorAll('.engagement-base-btn').forEach(function(b) {
+            b.classList.toggle('is-active', parseInt(b.getAttribute('data-base'), 10) === base);
+          });
+          updateBudgetEstimate();
+          updateRituelSummary();
+        });
+      });
+      if (minInput && maxInput) {
+        minInput.addEventListener('change', function() { updateRituelSummary(); syncFromTarifToBudget(); });
+        maxInput.addEventListener('change', function() { updateRituelSummary(); syncFromTarifToBudget(); });
+        minInput.addEventListener('input', updateRituelSummary);
+        maxInput.addEventListener('input', updateRituelSummary);
+      }
+      var tarifWrap = document.querySelector('.lessons-affiner-tarif-wrap');
+      if (tarifWrap) {
+        tarifWrap.querySelectorAll('.rituel-base-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var base = parseInt(this.getAttribute('data-base'), 10);
+            setBaseHours(base);
+            tarifWrap.querySelectorAll('.rituel-base-btn').forEach(function(b) {
+              b.classList.toggle('is-active', parseInt(b.getAttribute('data-base'), 10) === base);
+            });
+            if (engagementBlock) {
+              engagementBlock.querySelectorAll('.engagement-base-btn').forEach(function(b) {
+                b.classList.toggle('is-active', parseInt(b.getAttribute('data-base'), 10) === base);
+              });
+            }
+            updateRituelSummary();
+            updateBudgetEstimate();
+          });
+        });
+      }
+      var base = getBaseHours();
+      if (engagementBlock) {
+        engagementBlock.querySelectorAll('.engagement-base-btn').forEach(function(b) {
+          b.classList.toggle('is-active', parseInt(b.getAttribute('data-base'), 10) === base);
+        });
+      }
+      if (tarifWrap) {
+        tarifWrap.querySelectorAll('.rituel-base-btn').forEach(function(b) {
+          b.classList.toggle('is-active', parseInt(b.getAttribute('data-base'), 10) === base);
+        });
+      }
+      if (typeof jQuery !== 'undefined' && jQuery.ui && jQuery.ui.slider) {
+        var sliderEl = document.getElementById('lessons-rituel-price-slider');
+        if (sliderEl) {
+          var mn = parseInt(minInput && minInput.value ? minInput.value : 10, 10);
+          var mx = parseInt(maxInput && maxInput.value ? maxInput.value : 50, 10);
+          jQuery(sliderEl).slider({
+            range: true,
+            min: 10,
+            max: 299,
+            values: [Math.max(10, mn), Math.min(299, mx)],
+            slide: function(ev, ui) {
+              if (minInput) minInput.value = ui.values[0];
+              if (maxInput) maxInput.value = ui.values[1];
+              updateRituelSummary();
+            },
+            change: function(ev, ui) {
+              if (minInput) minInput.value = ui.values[0];
+              if (maxInput) maxInput.value = ui.values[1];
+              updateRituelSummary();
+              syncFromTarifToBudget();
+            }
+          });
+          updateRituelSummary();
+        }
+      }
+      updateBudgetEstimate();
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
+    }
+  })();
 
   document.addEventListener('DOMContentLoaded', function() {
     // Gestion du dropdown Mon expérience (Critères avancés) — Niveau d'expertise attendu

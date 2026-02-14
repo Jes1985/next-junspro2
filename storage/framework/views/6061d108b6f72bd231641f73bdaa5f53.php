@@ -35,6 +35,8 @@
   <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/language-selector-premium.css')); ?>">
   
   <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/junspro-chatbot-premium.css')); ?>?v=6.3">
+  
+  <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/express-options.css')); ?>">
   <?php
     $primaryColor = $basicInfo->primary_color;
   ?>

@@ -140,9 +140,130 @@
 @endphp
 <form action="{{ $formAction }}" method="GET" id="{{ $formId }}" class="search-filter-form" data-lock-route="{{ $universe ? '1' : '0' }}" data-universe="{{ $universe ?? '' }}" @if($hasLocationDuo) data-initial-city="{{ request('city') }}" data-has-location-duo="1" @endif>
       <!-- Ligne 1: Domaine + Spécialisation (projects, lessons, at-home, wellnesslive, corporate) ou Recherche + Localisation -->
-      <div class="filter-row-main @if($hasHeroDomainSpec) filter-row-main--projects-hero @elseif($hasLocationDuo) filter-row-main--has-location-duo @endif">
-        @if($hasHeroDomainSpec)
-        {{-- Domaine/Univers + Spécialisation (même modèle que projects) : select natif, cascade — hub, lessons, at-home, wellnesslive, corporate --}}
+      @if($isProjects)<div class="projects-hero-filters">@endif
+      @if($isLessons)<div class="lessons-hero-filters">@endif
+      @if($isAtHome)<div class="at-home-hero-filters">@endif
+      @if($isWellnesslive)<div class="wellnesslive-hero-filters">@endif
+      @if($isCorporate)<div class="corporate-hero-filters">@endif
+      @if($isProjects)
+      {{-- Je pose mon besoin + Type de mission : déplacé du Filtres avancés vers le hero (projects uniquement) — au-dessus de Domaine, Spécialisation, etc. — sous l'onglet Rechercher un Rituel — présentation en cartes (modèle capture 2) --}}
+      <div class="projects-hero-besoin-block">
+        <h3 class="filters-level-title filters-level-1-title">Je pose mon besoin</h3>
+        <div class="filter-group filter-group--full">
+          <label class="filter-label"><i class="fas fa-tasks me-2"></i>{{ __('Type de mission') }}</label>
+          <div class="besoin-mission-segmented" role="group" aria-label="{{ __('Type de mission') }}">
+            @php $mt = (array) request('mission_type', []); @endphp
+            <label class="besoin-mission-card {{ in_array('one-shot', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="one-shot" {{ in_array('one-shot', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Projet Unique</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('long-term', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="long-term" {{ in_array('long-term', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Accompagnement à Long Terme</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('maintenance', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="maintenance" {{ in_array('maintenance', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Maintenance / Optimisation Continue</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      @elseif($isLessons)
+      {{-- Je pose mon besoin + Type de rituel : déplacé du Filtres avancés vers le hero (lessons uniquement) — au-dessus de Domaine, Spécialisation, etc. — sous l'onglet Rechercher un Rituel --}}
+      <div class="hero-besoin-block lessons-hero-besoin-block">
+        <h3 class="filters-level-title filters-level-1-title">Je pose mon besoin</h3>
+        <div class="filter-group filter-group--full">
+          <label class="filter-label"><i class="fas fa-tasks me-2"></i>Type de rituel</label>
+          <div class="besoin-mission-segmented" role="group" aria-label="Type de rituel">
+            @php $mt = (array) request('mission_type', []); @endphp
+            <label class="besoin-mission-card {{ in_array('one-shot', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="one-shot" {{ in_array('one-shot', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Séance ponctuelle</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('long-term', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="long-term" {{ in_array('long-term', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Suivi régulier</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('maintenance', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="maintenance" {{ in_array('maintenance', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Programme structuré</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      @elseif($isAtHome)
+      {{-- Je pose mon besoin + Type de prestation : déplacé du Filtres avancés vers le hero (at-home uniquement) — au-dessus de Domaine, Spécialisation, etc. — sous l'onglet Rechercher un Rituel --}}
+      <div class="hero-besoin-block at-home-hero-besoin-block">
+        <h3 class="filters-level-title filters-level-1-title">Je pose mon besoin</h3>
+        <div class="filter-group filter-group--full">
+          <label class="filter-label"><i class="fas fa-tasks me-2"></i>Type de prestation</label>
+          <div class="besoin-mission-segmented" role="group" aria-label="Type de prestation">
+            @php $mt = (array) request('mission_type', []); @endphp
+            <label class="besoin-mission-card {{ in_array('one-shot', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="one-shot" {{ in_array('one-shot', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Ponctuelle</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('long-term', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="long-term" {{ in_array('long-term', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Récurrente</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('maintenance', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="maintenance" {{ in_array('maintenance', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Programme structuré</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      @elseif($isWellnesslive)
+      {{-- Je pose mon besoin + Type de session Ritual Motion : déplacé du Filtres avancés vers le hero (wellnesslive uniquement) — au-dessus de Domaine, Spécialisation, etc. — sous l'onglet Rechercher un Rituel --}}
+      <div class="hero-besoin-block wellnesslive-hero-besoin-block">
+        <h3 class="filters-level-title filters-level-1-title">Je pose mon besoin</h3>
+        <div class="filter-group filter-group--full">
+          <label class="filter-label"><i class="fas fa-tasks me-2"></i>Type de session Ritual Motion</label>
+          <div class="besoin-mission-segmented" role="group" aria-label="Type de session">
+            @php $mt = (array) request('mission_type', []); @endphp
+            <label class="besoin-mission-card {{ in_array('live', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="live" {{ in_array('live', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Live</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('vod', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="vod" {{ in_array('vod', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">VOD</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('routines', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="routines" {{ in_array('routines', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Routines</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      @elseif($isCorporate)
+      {{-- Je pose mon besoin + Type de prestation : déplacé du Filtres avancés vers le hero (corporate uniquement) — cartes Ponctuelle, Récurrente, Programme structuré — sous l'onglet Rechercher un Rituel --}}
+      <div class="hero-besoin-block corporate-hero-besoin-block">
+        <h3 class="filters-level-title filters-level-1-title">Je pose mon besoin</h3>
+        <div class="filter-group filter-group--full">
+          <label class="filter-label"><i class="fas fa-tasks me-2"></i>Type de prestation</label>
+          <div class="besoin-mission-segmented" role="group" aria-label="Type de prestation">
+            @php $mt = (array) request('mission_type', []); @endphp
+            <label class="besoin-mission-card {{ in_array('one-shot', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="one-shot" {{ in_array('one-shot', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Ponctuelle</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('long-term', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="long-term" {{ in_array('long-term', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Récurrente</span>
+            </label>
+            <label class="besoin-mission-card {{ in_array('maintenance', $mt) ? 'is-active' : '' }}">
+              <input type="radio" name="mission_type[]" value="maintenance" {{ in_array('maintenance', $mt) ? 'checked' : '' }} class="sr-only">
+              <span class="besoin-mission-card-text">Programme structuré</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      @endif
+      <div class="filter-row-main @if($hasHeroDomainSpec) filter-row-main--projects-hero @elseif($hasLocationDuo) filter-row-main--has-location-duo @endif @if($isProjects) filter-row-main--projects-hero-grid @endif @if($isLessons) filter-row-main--lessons-hero-grid @endif @if($isAtHome) filter-row-main--at-home-hero-grid @endif @if($isWellnesslive) filter-row-main--wellnesslive-hero-grid @endif @if($isCorporate) filter-row-main--corporate-hero-grid @endif">
+        @if($hasHeroDomainSpec && $isHub)
+        {{-- Domaine/Univers + Spécialisation : hub uniquement (supprimé pour lessons, projects, at-home, wellnesslive, corporate) --}}
         <div data-hero-filter="{{ $universe }}" class="hero-filter-module" @if($isHub) style="overflow:visible;position:relative;z-index:50;" @endif>
         <div class="filter-input-group filter-hero-domain-spec filter-hero-domain-select-wrapper">
           <i class="fas fa-folder-open filter-input-icon" style="left: 1rem;" aria-hidden="true"></i>
@@ -340,34 +461,161 @@
             }
           }
           if (universe === 'projects') {
+            var cityBadgesProjects = {'Paris':['Business','Langue'],'Lyon':['Business','Famille'],'Marseille':['Famille','Langue'],'Bordeaux':['Workation','Repos'],'Nantes':['Business','Famille'],'Lille':['Business','Famille'],'Strasbourg':['Business','Langue'],'Rennes':['Business','Famille'],'Montpellier':['Workation','Famille'],'Toulouse':['Business','Famille'],'Nice':['Repos','Famille'],'Barcelone':['Workation','Famille'],'Madrid':['Business','Langue'],'Valence':['Famille','Repos'],'Séville':['Famille','Culture'],'Ibiza':['Repos'],'Lisbonne':['Workation','Business'],'Porto':['Repos','Langue'],'Faro':['Repos','Famille'],'Coimbra':['Langue','Culture'],'Londres':['Business','Langue'],'Brighton':['Langue','Famille'],'Manchester':['Business','Langue'],'Birmingham':['Business','Famille'],'Édimbourg':['Culture','Langue'],'Dublin':['Langue','Business'],'Montréal':['Langue','Famille'],'Toronto':['Business','Langue'],'Vancouver':['Workation','Repos'],'New York':['Business'],'San Francisco':['Business','Workation'],'Miami':['Repos','Business'],'Los Angeles':['Business','Repos'],'Chicago':['Business','Famille'],'Rome':['Famille','Culture'],'Florence':['Repos','Culture'],'Milan':['Business'],'Turin':['Business','Famille'],'Palerme':['Repos','Famille'],'Toscane':['Repos','Culture'],'Naples':['Famille','Culture'],'Amsterdam':['Business','Langue'],'Rotterdam':['Business','Famille'],'Berlin':['Business','Langue'],'Munich':['Business','Famille'],'Bruxelles':['Business','Langue'],'Anvers':['Business','Famille'],'Liège':['Famille','Langue'],'Zurich':['Business','Langue'],'Genève':['Business','Langue'],'Bâle':['Business','Famille'],'Split':['Repos','Famille'],'Dubrovnik':['Repos','Culture'],'Zagreb':['Business','Langue'],'Casablanca':['Business','Langue'],'Rabat':['Business','Famille'],'Tunis':['Business','Langue'],'Sfax':['Business','Famille'],'Dakar':['Business','Langue'],'Abidjan':['Business','Langue']};
+            var highDemandProjects = ['Paris','Lyon','Barcelone','Lisbonne','Montréal','Madrid','Nice','Bordeaux'];
+            var objectiveIconsProjects = {'Business':'<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 4.5V11.5H10.5V4.5M3.5 4.5H10.5M3.5 4.5V2.5C3.5 2.22386 3.72386 2 4 2H10C10.2761 2 10.5 2.22386 10.5 2.5V4.5M5.5 7H8.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>','Workation':'<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 3.5C2.5 3.22386 2.72386 3 3 3H11C11.2761 3 11.5 3.22386 11.5 3.5V10.5C11.5 10.7761 11.2761 11 11 11H3C2.72386 11 2.5 10.7761 2.5 10.5V3.5Z" stroke="currentColor" stroke-width="1.25"/><path d="M5.5 7L6.5 8L8.5 6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>','Famille':'<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5L3.5 5.5V11.5H5.5V7.5H8.5V11.5H10.5V5.5L7 2.5Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>','Langue':'<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.25"/><path d="M2 7H12M7 2C7.5 3.5 7.5 4.5 7 7C6.5 9.5 6.5 10.5 7 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>','Repos':'<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 7C3.5 5.067 5.067 3.5 7 3.5C8.933 3.5 10.5 5.067 10.5 7C10.5 8.933 8.933 10.5 7 10.5C5.067 10.5 3.5 8.933 3.5 7Z" stroke="currentColor" stroke-width="1.25"/><path d="M5 7L6.5 8.5L9 6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>','Culture':'<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2V12M2 7H12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/><circle cx="7" cy="7" r="4" stroke="currentColor" stroke-width="1.25"/></svg>'};
+            var allowedObj = ['Workation','Famille','Langue','Business','Repos','Culture'];
+            function getDisplayBadgesProjects(b){if(!b||!Array.isArray(b))return[];return b.filter(function(x){return allowedObj.indexOf(x)!==-1;}).slice(0,2);}
             function initProjectsCountryCity() {
               var countrySelect = document.getElementById('projectsFilterCountry');
               var citySelect = document.getElementById('projectsFilterCity');
               var cityWrapper = document.getElementById('projectsCityWrapper');
               if (!countrySelect || !citySelect) return;
               var citiesByCountry = {'FR':['Paris','Lyon','Marseille','Bordeaux','Nantes','Lille','Strasbourg','Rennes','Montpellier','Toulouse','Nice'],'BE':['Bruxelles','Anvers','Liège'],'CH':['Zurich','Genève','Bâle'],'ES':['Barcelone','Palma de Majorque','Valence','Séville','Madrid','Ibiza','Tenerife'],'DE':['Berlin','Munich','Hambourg'],'IT':['Rome','Milan','Turin','Palerme','Toscane','Florence','Naples'],'PT':['Lisbonne','Porto','Faro','Coimbra'],'NL':['Amsterdam','Rotterdam','La Haye'],'GB':['Londres','Manchester','Birmingham','Brighton','Édimbourg'],'CA':['Montréal','Toronto','Vancouver'],'US':['New York','Los Angeles','Chicago','San Francisco','Miami'],'MT':['Valetta','Sliema','Saint Julien','Msida','Gzira','Ta\'Xbiex','Pieta'],'MC':['Monte-Carlo','La Condamine','Fontvieille'],'LU':['Luxembourg-Ville','Kirchberg','Esch-sur-Alzette'],'MA':['Casablanca','Rabat','Tanger'],'TN':['Tunis','Sfax','Sousse'],'SN':['Dakar','Diamniadio','Thiès'],'CI':['Abidjan','Yamoussoukro','San Pedro'],'IE':['Dublin'],'HR':['Split','Dubrovnik'],'GP':['Pointe-à-Pitre','Basse-Terre','Saint-François'],'MQ':['Fort-de-France','Le Lamentin','Sainte-Anne'],'GF':['Cayenne','Kourou','Saint-Laurent-du-Maroni'],'RE':['Saint-Denis','Saint-Pierre','Saint-Gilles-les-Bains'],'NC':['Nouméa','Dumbéa','Mont-Dore'],'PF':['Papeete','Faa\'a','Moorea']};
+              function updateCityAssistantProj() {
+                if (!citySelect || !cityWrapper) return;
+                var ex = cityWrapper.querySelector('.location-city-assistant');
+                if (ex) ex.remove();
+                citySelect.style.paddingRight = '';
+                var opt = citySelect.options[citySelect.selectedIndex];
+                if (!opt || !opt.value) return;
+                var cityName = opt.value;
+                var badges = []; try { if (opt.getAttribute('data-badges')) badges = JSON.parse(opt.getAttribute('data-badges')); } catch (e) {}
+                var isVeryPopular = opt.getAttribute('data-very-popular') === 'true';
+                var displayBadges = getDisplayBadgesProjects(badges);
+                var assistant = document.createElement('div');
+                assistant.className = 'location-city-assistant';
+                assistant.setAttribute('aria-label', 'Informations sur ' + cityName);
+                if (displayBadges.length > 0) {
+                  var icons = document.createElement('div');
+                  icons.className = 'location-city-icons';
+                  for (var i = 0; i < displayBadges.length; i++) {
+                    var w = document.createElement('span');
+                    w.className = 'location-city-icon';
+                    w.setAttribute('aria-label', displayBadges[i]);
+                    w.innerHTML = objectiveIconsProjects[displayBadges[i]] || '';
+                    icons.appendChild(w);
+                  }
+                  assistant.appendChild(icons);
+                }
+                if (isVeryPopular) {
+                  var pop = document.createElement('span');
+                  pop.className = 'location-city-icon location-city-icon-popular';
+                  pop.setAttribute('aria-label', 'Ville très demandée');
+                  pop.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.25"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg>';
+                  assistant.appendChild(pop);
+                }
+                var infoBtn = document.createElement('button');
+                infoBtn.type = 'button';
+                infoBtn.className = 'location-city-info-btn';
+                infoBtn.setAttribute('aria-label', 'Informations sur ' + cityName);
+                infoBtn.setAttribute('aria-expanded', 'false');
+                infoBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.25"/><path d="M6 4V4.5M6 7.5V8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>';
+                infoBtn.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  togglePopoverProj(cityName, displayBadges, isVeryPopular, infoBtn);
+                });
+                assistant.appendChild(infoBtn);
+                cityWrapper.appendChild(assistant);
+                citySelect.style.paddingRight = '8rem';
+              }
+              function togglePopoverProj(cityName, badges, isVeryPopular, triggerBtn) {
+                var existing = document.querySelector('.location-city-popover');
+                if (existing && existing.dataset.city === cityName) {
+                  existing.remove();
+                  triggerBtn.setAttribute('aria-expanded', 'false');
+                  return;
+                }
+                document.querySelectorAll('.location-city-popover').forEach(function(p) { p.remove(); });
+                document.querySelectorAll('.location-city-info-btn').forEach(function(btn) { btn.setAttribute('aria-expanded', 'false'); });
+                var popover = document.createElement('div');
+                popover.className = 'location-city-popover';
+                popover.setAttribute('role', 'dialog');
+                popover.setAttribute('aria-label', 'Informations sur ' + cityName);
+                popover.dataset.city = cityName;
+                var content = document.createElement('div');
+                content.className = 'location-city-popover-content';
+                var dispBadges = badges && badges.length > 0 ? getDisplayBadgesProjects(badges) : [];
+                if (dispBadges.length > 0) {
+                  var p1 = document.createElement('p');
+                  p1.className = 'location-city-popover-text';
+                  p1.textContent = 'Souvent choisie pour : ' + dispBadges.join(' • ');
+                  content.appendChild(p1);
+                }
+                if (isVeryPopular) {
+                  var p2 = document.createElement('p');
+                  p2.className = 'location-city-popover-text location-city-popover-badge';
+                  p2.textContent = 'Ville très demandée en ce moment';
+                  content.appendChild(p2);
+                }
+                popover.appendChild(content);
+                document.body.appendChild(popover);
+                var rect = triggerBtn.getBoundingClientRect();
+                var w = popover.offsetWidth || 280;
+                var h = popover.offsetHeight || 120;
+                var left = rect.left + rect.width / 2 - w / 2;
+                var top = rect.bottom + 8;
+                if (left < 8) left = 8;
+                if (left + w > window.innerWidth - 8) left = window.innerWidth - w - 8;
+                if (top + h > window.innerHeight - 8) top = rect.top - h - 8;
+                popover.style.left = left + 'px';
+                popover.style.top = top + 'px';
+                triggerBtn.setAttribute('aria-expanded', 'true');
+                setTimeout(function() {
+                  document.addEventListener('click', function closePopover(e) {
+                    if (!popover.contains(e.target) && e.target !== triggerBtn) {
+                      popover.remove();
+                      triggerBtn.setAttribute('aria-expanded', 'false');
+                      document.removeEventListener('click', closePopover);
+                    }
+                  });
+                }, 10);
+              }
+              function startCityValueWatchProj() {
+                var lastVal = citySelect.value;
+                var n = 0;
+                var tick = function() {
+                  if (citySelect.value !== lastVal) {
+                    lastVal = citySelect.value;
+                    updateCityAssistantProj();
+                  }
+                  n++;
+                  if (n < 20) setTimeout(tick, 50);
+                };
+                setTimeout(tick, 50);
+              }
               function updateCities() {
                 var country = countrySelect.value;
-                citySelect.innerHTML = '<option value="">Sélectionner une ville</option>';
+                citySelect.innerHTML = '<option value="">Ville</option>';
                 citySelect.disabled = !country;
+                citySelect.style.paddingRight = '';
                 if (country && citiesByCountry[country]) {
                   var cities = citiesByCountry[country];
                   for (var i = 0; i < cities.length; i++) {
                     var opt = document.createElement('option');
                     opt.value = cities[i];
                     opt.textContent = cities[i];
+                    if (cityBadgesProjects[cities[i]] && cityBadgesProjects[cities[i]].length) opt.setAttribute('data-badges', JSON.stringify(cityBadgesProjects[cities[i]]));
+                    if (highDemandProjects.indexOf(cities[i]) !== -1) opt.setAttribute('data-very-popular', 'true');
                     citySelect.appendChild(opt);
                   }
                   if (cityWrapper) cityWrapper.classList.add('show');
                   var form = document.getElementById('{{ $formId }}');
                   var sel = (form && form.getAttribute('data-initial-city')) || '';
                   if (sel && cities.indexOf(sel) !== -1) citySelect.value = sel;
+                  setTimeout(updateCityAssistantProj, 50);
                 } else {
                   if (cityWrapper) cityWrapper.classList.remove('show');
                 }
               }
+              citySelect.addEventListener('change', function() { setTimeout(updateCityAssistantProj, 0); setTimeout(updateCityAssistantProj, 50); setTimeout(updateCityAssistantProj, 150); });
+              citySelect.addEventListener('input', function() { setTimeout(updateCityAssistantProj, 0); setTimeout(updateCityAssistantProj, 50); });
+              citySelect.addEventListener('blur', function() { if (citySelect.value) setTimeout(updateCityAssistantProj, 10); startCityValueWatchProj(); });
+              citySelect.addEventListener('focus', startCityValueWatchProj);
+              if (cityWrapper) cityWrapper.addEventListener('change', function(e) { if (e.target && e.target.id === 'projectsFilterCity') { setTimeout(updateCityAssistantProj, 0); setTimeout(updateCityAssistantProj, 50); } });
               countrySelect.addEventListener('change', updateCities);
               updateCities();
+              if (citySelect.value) setTimeout(updateCityAssistantProj, 100);
             }
             setTimeout(initProjectsCountryCity, 0);
             if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProjectsCountryCity);
@@ -413,12 +661,17 @@
           </div>
         </div>
         @endif
-        {{-- Lessons / Projects / Corporate : duo Pays + Ville (identique HomeSwap), pas de champ Lieu — Hub : Ville sous Pays, colonne unique élargie --}}
+        {{-- Lessons / Projects / Corporate / At-home / Wellnesslive : duo Pays + Ville (identique HomeSwap), pas de champ Lieu — Hub/Projects : Ville sous Pays — Lessons/At-home/Wellnesslive/Corporate : stack pour grille premium --}}
         @if($isHub)<div class="hub-location-stack">@endif
+        @if($isProjects)<div class="projects-location-stack">@endif
+        @if($isLessons)<div class="lessons-location-stack">@endif
+        @if($isAtHome)<div class="at-home-location-stack">@endif
+        @if($isWellnesslive)<div class="wellnesslive-location-stack">@endif
+        @if($isCorporate)<div class="corporate-location-stack">@endif
         <div class="filter-input-group filter-location-hero" id="homeLocationCountryGroup" data-hero-filter="{{ $isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isCorporate ? 'corporate' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub'))))) }}">
           <i class="fas fa-map-marker-alt filter-input-icon"></i>
           <select name="country" id="{{ $locationCountryId }}" class="filter-input filter-select home-location-country" data-location-country="true">
-            <option value="">{{ $isHub ? __('Pays') : __('Sélectionner un pays') }}</option>
+            <option value="">{{ ($isHub || $isProjects) ? __('Pays') : __('Sélectionner un pays') }}</option>
             <option value="FR" {{ request('country') == 'FR' ? 'selected' : '' }}>{{ __('France') }}</option>
             <option value="GP" {{ request('country') == 'GP' ? 'selected' : '' }}>{{ __('Guadeloupe') }}</option>
             <option value="MQ" {{ request('country') == 'MQ' ? 'selected' : '' }}>{{ __('Martinique') }}</option>
@@ -449,10 +702,15 @@
         </div>
         <div class="filter-input-group filter-location-hero" id="{{ $locationCityWrapperId }}" data-filter="city-wrapper" data-filter-label="Filtre Ville (Pays → Ville)" data-hero-filter="{{ $isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isCorporate ? 'corporate' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub'))))) }}">
           <i class="fas fa-map-marker-alt filter-input-icon"></i>
-          <select name="city" id="{{ $locationCityId }}" class="filter-input filter-select home-location-city" disabled data-filter="city-select" data-location-city="true" aria-label="{{ $isHub ? __('Ville') : __('Sélectionner une ville') }}">
-            <option value="">{{ $isHub ? __('Ville') : __('Sélectionner une ville') }}</option>
+          <select name="city" id="{{ $locationCityId }}" class="filter-input filter-select home-location-city" disabled data-filter="city-select" data-location-city="true" aria-label="{{ ($isHub || $isProjects) ? __('Ville') : __('Sélectionner une ville') }}">
+            <option value="">{{ ($isHub || $isProjects) ? __('Ville') : __('Sélectionner une ville') }}</option>
           </select>
         </div>
+        @if($isProjects)</div>@endif
+        @if($isLessons)</div>@endif
+        @if($isAtHome)</div>@endif
+        @if($isWellnesslive)</div>@endif
+        @if($isCorporate)</div>@endif
         @if($isHub)</div>@endif
         @if($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive)
         {{-- Helper text pour mode "En ligne" (affiché sous Pays/Ville) --}}
@@ -902,6 +1160,8 @@
         </button>
       </div>
 
+      @if($universe !== 'hub')
+      {{-- Filtres avancés : masqués pour /home et /services (universe hub) --}}
       <!-- Ligne 2: Filtres avancés (repliable) -->
       <div class="filter-advanced-toggle">
         <button type="button" class="filter-advanced-btn" id="toggleAdvancedFilters">
@@ -910,34 +1170,111 @@
           <i class="fas fa-chevron-down ms-2" id="chevronIcon"></i>
         </button>
       </div>
+      @endif
+      @if($isProjects)</div>{{-- .projects-hero-filters --}}@endif
+      @if($isLessons)</div>{{-- .lessons-hero-filters --}}@endif
+      @if($isAtHome)</div>{{-- .at-home-hero-filters --}}@endif
+      @if($isWellnesslive)</div>{{-- .wellnesslive-hero-filters --}}@endif
+      @if($isCorporate)</div>{{-- .corporate-hero-filters --}}@endif
 
+      @if($universe !== 'hub')
       <div class="filter-advanced-content" id="advancedFilters" style="display: none;">
         @if(in_array($universe, ['projects', 'lessons', 'corporate', 'homeswap', 'at-home', 'wellnesslive']) && !empty($categories))
-        {{-- Hiérarchie premium /services/projects ET /services/lessons (copie stricte) : Niveau 1 → 2 → 3 — Je pose mon besoin / Affiner / Critères avancés --}}
-        {{-- Lessons : Type de mission en cartes segmentées + Langues (maternelle + CECRL). Projects : checkboxes inchangés. --}}
-        <div class="filters-level filters-level-1 @if($universe === 'lessons') besoin-lessons @endif" data-level="besoin">
-          <h3 class="filters-level-title filters-level-1-title">Je pose mon besoin</h3>
+        @if($universe === 'projects')
+        {{-- Projects : Affiner la recherche au-dessus, Ma langue maternelle + Engagement + Univers --}}
+        <div class="filters-level filters-level-2" data-level="affiner">
+          <h3 class="filters-level-title">Affiner la recherche</h3>
           <div class="filters-level-inner">
-            @if($universe === 'lessons')
-            {{-- Lessons : Type de rituel — cartes segmentées (une seule sélection), même name/values — libellés adaptés Cours & Tutorat --}}
-            <div class="filter-group filter-group--full">
-              <label class="filter-label"><i class="fas fa-tasks me-2"></i>Type de rituel</label>
-              <div class="besoin-mission-segmented" role="group" aria-label="Type de rituel">
-                @php $mt = (array) request('mission_type', []); @endphp
-                <label class="besoin-mission-card {{ in_array('one-shot', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="one-shot" {{ in_array('one-shot', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">Séance ponctuelle</span>
-                </label>
-                <label class="besoin-mission-card {{ in_array('long-term', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="long-term" {{ in_array('long-term', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">Suivi régulier</span>
-                </label>
-                <label class="besoin-mission-card {{ in_array('maintenance', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="maintenance" {{ in_array('maintenance', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">Programme structuré</span>
-                </label>
+            @php
+              $besoin_languages = ['fr' => 'Français', 'en' => 'Anglais', 'es' => 'Espagnol', 'de' => 'Allemand', 'it' => 'Italien', 'pt' => 'Portugais', 'nl' => 'Néerlandais', 'ru' => 'Russe', 'zh' => 'Chinois', 'ar' => 'Arabe', 'ja' => 'Japonais', 'pl' => 'Polonais', 'el' => 'Grec', 'tr' => 'Turc', 'sv' => 'Suédois', 'ko' => 'Coréen', 'hi' => 'Hindi'];
+              $cecrl_levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+            @endphp
+            <div class="filter-group besoin-langues filter-group--full">
+              <label class="filter-label"><i class="fas fa-language me-2"></i>Ma langue maternelle</label>
+              <div class="besoin-langues-row">
+                <div class="besoin-mother-tongue-wrap">
+                  <select name="mother_tongue" id="besoin_mother_tongue" class="filter-select">
+                    <option value="">{{ __('Langue maternelle') }}</option>
+                    @foreach($besoin_languages as $code => $label)
+                      <option value="{{ $code }}" {{ request('mother_tongue') === $code ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="besoin-other-langs-wrap" id="besoin_other_langs_wrap">
+                  <span class="besoin-other-langs-label">Autres langues parlées</span>
+                  <div class="besoin-lang-chips" id="besoin_lang_chips"></div>
+                  <button type="button" class="besoin-add-lang-btn" id="besoin_add_lang_btn" aria-haspopup="true" aria-expanded="false">+ Ajouter</button>
+                  <input type="hidden" name="other_languages" id="other_languages_input" value="{{ is_string(request('other_languages')) ? request('other_languages') : '' }}">
+                  <div class="cecrl-popover" id="cecrl_popover" role="dialog" aria-label="Niveaux CECRL" hidden>
+                    <div class="cecrl-popover-inner">
+                      <div class="cecrl-table">
+                        <div class="cecrl-table-head">
+                          <span class="cecrl-th-lang">Langue</span>
+                          <span class="cecrl-th-level">Niveau</span>
+                        </div>
+                        @foreach($besoin_languages as $code => $label)
+                        <div class="cecrl-row" data-lang="{{ $code }}" data-lang-label="{{ $label }}">
+                          <span class="cecrl-lang">{{ $label }}</span>
+                          <div class="cecrl-pills">
+                            @foreach($cecrl_levels as $l)
+                            <button type="button" class="cecrl-pill" data-level="{{ $l }}" title="{{ $l }}">{{ $l }}</button>
+                            @endforeach
+                          </div>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+            <div class="projects-affiner-row">
+              <div class="filter-group filter-group-rituel">
+                <label class="filter-label"><i class="fas fa-coins me-2"></i>Engagement en Rituel</label>
+                <div class="engagement-select-wrapper">
+                  <select name="price_range" class="filter-select budget-filter" id="budgetFilter">
+                    <option value="" {{ empty(request('price_range')) ? 'selected' : '' }}>Tous les engagements</option>
+                    <option value="0-1000" data-min="0" data-max="1000" {{ request('price_range') == '0-1000' ? 'selected' : '' }}>0 – 1 000 € — Engagement exploratoire</option>
+                    <option value="1000-2500" data-min="1000" data-max="2500" {{ request('price_range') == '1000-2500' ? 'selected' : '' }}>1 000 – 2 500 € — Engagement ciblé</option>
+                    <option value="2500-5000" data-min="2500" data-max="5000" {{ request('price_range') == '2500-5000' ? 'selected' : '' }}>2 500 – 5 000 € — Engagement structuré</option>
+                    <option value="5000-10000" data-min="5000" data-max="10000" {{ request('price_range') == '5000-10000' ? 'selected' : '' }}>5 000 – 10 000 € — Engagement stratégique</option>
+                    <option value="10000-20000" class="engagement-progressive engagement-level-1" data-min="10000" data-max="20000" {{ request('price_range') == '10000-20000' ? 'selected' : '' }}>10 000 – 20 000 € — Engagement de partenariat</option>
+                    <option value="20000-60000" class="engagement-progressive engagement-level-2" data-min="20000" data-max="60000" {{ request('price_range') == '20000-60000' ? 'selected' : '' }}>20 000 – 60 000 € — Partenariat long terme</option>
+                    <option value="60000+" class="engagement-progressive engagement-level-3" data-min="60000" data-max="999999" {{ request('price_range') == '60000+' ? 'selected' : '' }}>60 000 € et + — Partenariat stratégique étendu</option>
+                  </select>
+                  <a href="#" class="engagement-progressive-link engagement-link-level-1" id="engagementLinkLevel1" style="display: none; margin-top: 6px; font-size: 11px; color: #6b7280; text-decoration: underline; cursor: pointer; font-family: inherit;">Explorer des engagements plus avancés</a>
+                  <a href="#" class="engagement-progressive-link engagement-link-level-2" id="engagementLinkLevel2" style="display: none; margin-top: 6px; font-size: 11px; color: #6b7280; text-decoration: underline; cursor: pointer; font-family: inherit;">Découvrir les partenariats long terme</a>
+                  <a href="#" class="engagement-progressive-link engagement-link-level-3" id="engagementLinkLevel3" style="display: none; margin-top: 6px; font-size: 11px; color: #6b7280; text-decoration: underline; cursor: pointer; font-family: inherit;">Voir les collaborations stratégiques étendues</a>
+                  <a href="#" class="engagement-progressive-link engagement-link-reset" id="engagementLinkReset" style="display: none; margin-top: 6px; font-size: 11px; color: #6b7280; text-decoration: underline; cursor: pointer; font-family: inherit;">Revenir à l'essentiel</a>
+                </div>
+                <div class="budget-estimate" id="budgetEstimate" style="font-size: 12px; margin-top: 6px; color: #6B7280; opacity: 0.8; font-weight: 400;">Sélectionnez un engagement pour afficher une estimation en rituels.</div>
+                <div class="budget-estimate-hourly" id="budgetEstimateHourly" style="font-size: 11px; margin-top: 4px; color: #059669; opacity: 0.9; font-weight: 400; display: none;"></div>
+                <div class="engagement-base-toggle-row" id="engagementBaseToggleRow" style="display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 11px; color: #6B7280;">
+                  <span class="engagement-base-label" style="font-weight: 500;">Base journée :</span>
+                  <span class="engagement-base-tooltip" data-tooltip="7h : référence 35h/semaine • 8h : journée standard selon organisation" title="7h : référence 35h/semaine • 8h : journée standard selon organisation" style="width: 16px; height: 16px; border-radius: 50%; background: #E5E7EB; color: #6B7280; font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; cursor: help;">i</span>
+                  <div class="engagement-base-toggle" style="display: inline-flex; border: 1px solid #E5E7EB; border-radius: 8px; padding: 2px; background: #F9FAFB;">
+                    <button type="button" class="engagement-base-btn is-active" data-base="7" style="padding: 4px 10px; border: none; background: transparent; color: #6B7280; font-size: 11px; cursor: pointer; border-radius: 6px;">7h</button>
+                    <button type="button" class="engagement-base-btn" data-base="8" style="padding: 4px 10px; border: none; background: transparent; color: #6B7280; font-size: 11px; cursor: pointer; border-radius: 6px;">8h</button>
+                  </div>
+                </div>
+                <x-subscription.express-options variant="toggle" />
+              </div>
+              @include('components.services.filters.partials.sector-filter')
+            </div>
+          </div>
+        </div>
+        @else
+        {{-- Hiérarchie premium /services/lessons, corporate, etc. : Niveau 1 — Je pose mon besoin --}}
+        <div class="filters-level filters-level-1 @if($universe === 'lessons') besoin-lessons @endif" data-level="besoin">
+          @if(!in_array($universe, ['projects', 'lessons', 'at-home', 'wellnesslive', 'corporate']))
+          <h3 class="filters-level-title filters-level-1-title">Je pose mon besoin</h3>
+          @endif
+          @if(in_array($universe, ['lessons', 'at-home', 'wellnesslive', 'corporate']))
+          <h3 class="filters-level-title">Affiner la recherche</h3>
+          @endif
+          <div class="filters-level-inner">
+            @if($universe === 'lessons')
+            {{-- Lessons : Type de rituel déplacé dans le hero ; Ma langue maternelle reste ici dans Filtres avancés --}}
             @php
               $besoin_languages = ['fr' => 'Français', 'en' => 'Anglais', 'es' => 'Espagnol', 'de' => 'Allemand', 'it' => 'Italien', 'pt' => 'Portugais', 'nl' => 'Néerlandais', 'ru' => 'Russe', 'zh' => 'Chinois', 'ar' => 'Arabe', 'ja' => 'Japonais', 'pl' => 'Polonais', 'el' => 'Grec', 'tr' => 'Turc', 'sv' => 'Suédois', 'ko' => 'Coréen', 'hi' => 'Hindi'];
               $cecrl_levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -982,46 +1319,98 @@
               </div>
             </div>
             @elseif($universe === 'at-home')
-            {{-- At-home : Type de prestation — cartes segmentées (services à domicile) --}}
-            <div class="filter-group filter-group--full">
-              <label class="filter-label"><i class="fas fa-tasks me-2"></i>Type de prestation</label>
-              <div class="besoin-mission-segmented" role="group" aria-label="Type de prestation">
-                @php $mt = (array) request('mission_type', []); @endphp
-                <label class="besoin-mission-card {{ in_array('one-shot', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="one-shot" {{ in_array('one-shot', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">Ponctuelle</span>
-                </label>
-                <label class="besoin-mission-card {{ in_array('long-term', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="long-term" {{ in_array('long-term', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">Récurrente</span>
-                </label>
-                <label class="besoin-mission-card {{ in_array('maintenance', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="maintenance" {{ in_array('maintenance', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">Programme structuré</span>
-                </label>
+            {{-- At-home : Ma langue maternelle + Autres langues parlées (au-dessus de Tarif du Rituel) --}}
+            @php
+              $besoin_languages = ['fr' => 'Français', 'en' => 'Anglais', 'es' => 'Espagnol', 'de' => 'Allemand', 'it' => 'Italien', 'pt' => 'Portugais', 'nl' => 'Néerlandais', 'ru' => 'Russe', 'zh' => 'Chinois', 'ar' => 'Arabe', 'ja' => 'Japonais', 'pl' => 'Polonais', 'el' => 'Grec', 'tr' => 'Turc', 'sv' => 'Suédois', 'ko' => 'Coréen', 'hi' => 'Hindi'];
+              $cecrl_levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+            @endphp
+            <div class="filter-group besoin-langues filter-group--full">
+              <label class="filter-label"><i class="fas fa-language me-2"></i>Ma langue maternelle</label>
+              <div class="besoin-langues-row">
+                <div class="besoin-mother-tongue-wrap">
+                  <select name="mother_tongue" id="besoin_mother_tongue" class="filter-select">
+                    <option value="">{{ __('Langue maternelle') }}</option>
+                    @foreach($besoin_languages as $code => $label)
+                      <option value="{{ $code }}" {{ request('mother_tongue') === $code ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="besoin-other-langs-wrap" id="besoin_other_langs_wrap">
+                  <span class="besoin-other-langs-label">Autres langues parlées</span>
+                  <div class="besoin-lang-chips" id="besoin_lang_chips"></div>
+                  <button type="button" class="besoin-add-lang-btn" id="besoin_add_lang_btn" aria-haspopup="true" aria-expanded="false">+ Ajouter</button>
+                  <input type="hidden" name="other_languages" id="other_languages_input" value="{{ is_string(request('other_languages')) ? request('other_languages') : '' }}">
+                  <div class="cecrl-popover" id="cecrl_popover" role="dialog" aria-label="Niveaux CECRL" hidden>
+                    <div class="cecrl-popover-inner">
+                      <div class="cecrl-table">
+                        <div class="cecrl-table-head">
+                          <span class="cecrl-th-lang">Langue</span>
+                          <span class="cecrl-th-level">Niveau</span>
+                        </div>
+                        @foreach($besoin_languages as $code => $label)
+                        <div class="cecrl-row" data-lang="{{ $code }}" data-lang-label="{{ $label }}">
+                          <span class="cecrl-lang">{{ $label }}</span>
+                          <div class="cecrl-pills">
+                            @foreach($cecrl_levels as $l)
+                            <button type="button" class="cecrl-pill" data-level="{{ $l }}" title="{{ $l }}">{{ $l }}</button>
+                            @endforeach
+                          </div>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             @elseif($universe === 'wellnesslive')
-            {{-- Junspro Ritual Motion : Type de session — cartes segmentées (Live / VOD / Routines) --}}
-            <div class="filter-group filter-group--full">
-              <label class="filter-label"><i class="fas fa-tasks me-2"></i>Type de session Ritual Motion</label>
-              <div class="besoin-mission-segmented" role="group" aria-label="Type de session">
-                @php $mt = (array) request('mission_type', []); @endphp
-                <label class="besoin-mission-card {{ in_array('live', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="live" {{ in_array('live', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">Live</span>
-                </label>
-                <label class="besoin-mission-card {{ in_array('vod', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="vod" {{ in_array('vod', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">VOD</span>
-                </label>
-                <label class="besoin-mission-card {{ in_array('routines', $mt) ? 'is-active' : '' }}">
-                  <input type="radio" name="mission_type[]" value="routines" {{ in_array('routines', $mt) ? 'checked' : '' }} class="sr-only">
-                  <span class="besoin-mission-card-text">Routines</span>
-                </label>
+            {{-- Wellnesslive : Ma langue maternelle + Autres langues parlées (au-dessus de Tarif du Rituel) --}}
+            @php
+              $besoin_languages = ['fr' => 'Français', 'en' => 'Anglais', 'es' => 'Espagnol', 'de' => 'Allemand', 'it' => 'Italien', 'pt' => 'Portugais', 'nl' => 'Néerlandais', 'ru' => 'Russe', 'zh' => 'Chinois', 'ar' => 'Arabe', 'ja' => 'Japonais', 'pl' => 'Polonais', 'el' => 'Grec', 'tr' => 'Turc', 'sv' => 'Suédois', 'ko' => 'Coréen', 'hi' => 'Hindi'];
+              $cecrl_levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+            @endphp
+            <div class="filter-group besoin-langues filter-group--full">
+              <label class="filter-label"><i class="fas fa-language me-2"></i>Ma langue maternelle</label>
+              <div class="besoin-langues-row">
+                <div class="besoin-mother-tongue-wrap">
+                  <select name="mother_tongue" id="besoin_mother_tongue" class="filter-select">
+                    <option value="">{{ __('Langue maternelle') }}</option>
+                    @foreach($besoin_languages as $code => $label)
+                      <option value="{{ $code }}" {{ request('mother_tongue') === $code ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="besoin-other-langs-wrap" id="besoin_other_langs_wrap">
+                  <span class="besoin-other-langs-label">Autres langues parlées</span>
+                  <div class="besoin-lang-chips" id="besoin_lang_chips"></div>
+                  <button type="button" class="besoin-add-lang-btn" id="besoin_add_lang_btn" aria-haspopup="true" aria-expanded="false">+ Ajouter</button>
+                  <input type="hidden" name="other_languages" id="other_languages_input" value="{{ is_string(request('other_languages')) ? request('other_languages') : '' }}">
+                  <div class="cecrl-popover" id="cecrl_popover" role="dialog" aria-label="Niveaux CECRL" hidden>
+                    <div class="cecrl-popover-inner">
+                      <div class="cecrl-table">
+                        <div class="cecrl-table-head">
+                          <span class="cecrl-th-lang">Langue</span>
+                          <span class="cecrl-th-level">Niveau</span>
+                        </div>
+                        @foreach($besoin_languages as $code => $label)
+                        <div class="cecrl-row" data-lang="{{ $code }}" data-lang-label="{{ $label }}">
+                          <span class="cecrl-lang">{{ $label }}</span>
+                          <div class="cecrl-pills">
+                            @foreach($cecrl_levels as $l)
+                            <button type="button" class="cecrl-pill" data-level="{{ $l }}" title="{{ $l }}">{{ $l }}</button>
+                            @endforeach
+                          </div>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             @else
+            {{-- Type de mission : pour projects et corporate déplacé dans le hero ; pour homeswap reste ici dans Filtres avancés --}}
+            @if(!in_array($universe, ['projects', 'corporate']))
             <div class="filter-group">
               <label class="filter-label"><i class="fas fa-tasks me-2"></i>{{ __('Type de mission') }}</label>
               <div class="filter-checkboxes">
@@ -1042,6 +1431,7 @@
                 </label>
               </div>
             </div>
+            @endif
             @if($universe === 'corporate')
             @php
               $besoin_languages = $besoin_languages ?? ['fr' => 'Français', 'en' => 'Anglais', 'es' => 'Espagnol', 'de' => 'Allemand', 'it' => 'Italien', 'pt' => 'Portugais', 'nl' => 'Néerlandais', 'ru' => 'Russe', 'zh' => 'Chinois', 'ar' => 'Arabe', 'ja' => 'Japonais', 'pl' => 'Polonais', 'el' => 'Grec', 'tr' => 'Turc', 'sv' => 'Suédois', 'ko' => 'Coréen', 'hi' => 'Hindi'];
@@ -1134,7 +1524,38 @@
             </div>
             @endif
             @if($universe === 'lessons' || $universe === 'at-home' || $universe === 'wellnesslive')
-            {{-- Lessons / At-home / Ritual Motion : Tarif du rituel (slider premium) + Format du rituel — binding price_min/price_max --}}
+            {{-- Lessons : Tarif en accordéon optionnel + lien Affiner. At-home/Wellnesslive : Tarif visible --}}
+            @if($universe === 'lessons')
+            <div class="lessons-affiner-tarif-wrap" data-lessons-filters>
+              <div class="lessons-tarif-accordion" id="lessonsTarifAccordion">
+                <div class="filter-group besoin-tarif-rituel">
+                  <label class="filter-label"><i class="fas fa-coins me-2"></i>Tarif du rituel / h</label>
+                  <div class="rituel-price-filter-wrapper">
+                    <div id="lessons-rituel-price-slider" class="rituel-price-slider"></div>
+                    <div class="rituel-price-range-display">
+                      <input type="number" name="price_min" id="lessons-rituel-price-min" class="rituel-price-input" min="10" max="299" value="{{ request('price_min', 10) }}" step="1">
+                      <span class="rituel-price-separator">-</span>
+                      <input type="number" name="price_max" id="lessons-rituel-price-max" class="rituel-price-input" min="10" max="299" value="{{ request('price_max', 50) }}" step="1">
+                      <span class="rituel-price-unit">€</span>
+                    </div>
+                    <div id="lessons-rituel-price-summary" class="rituel-price-summary" data-page="lessons">
+                      <div><span class="rituel-summary-label">Tarif horaire :</span> <span id="lessons-rituel-horaire-val"><span data-express-target="slider-hourly-min" data-base-value="10">10</span>–<span data-express-target="slider-hourly-max" data-base-value="50">50</span></span> €/h</div>
+                      <div><span class="rituel-summary-label">Tarif journalier :</span> <span id="lessons-rituel-journalier-val"><span data-express-target="slider-daily-min" data-base-value="70">70</span>–<span data-express-target="slider-daily-max" data-base-value="350">350</span></span> €/jour</div>
+                      <div class="rituel-base-toggle-row" style="display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 11px; color: #6B7280;">
+                        <span class="rituel-base-label" style="font-weight: 500;">Base journée :</span>
+                        <span class="rituel-base-tooltip" data-tooltip="7h : référence 35h/semaine • 8h : journée standard selon organisation" title="7h : référence 35h/semaine • 8h : journée standard selon organisation" style="width: 16px; height: 16px; border-radius: 50%; background: #E5E7EB; color: #6B7280; font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; cursor: help;">i</span>
+                        <div class="rituel-base-toggle" style="display: inline-flex; border: 1px solid #E5E7EB; border-radius: 8px; padding: 2px; background: #F9FAFB;">
+                          <button type="button" class="rituel-base-btn is-active" data-base="7" style="padding: 4px 10px; border: none; background: transparent; color: #6B7280; font-size: 11px; cursor: pointer; border-radius: 6px;">7h</button>
+                          <button type="button" class="rituel-base-btn" data-base="8" style="padding: 4px 10px; border: none; background: transparent; color: #6B7280; font-size: 11px; cursor: pointer; border-radius: 6px;">8h</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @else
+            {{-- At-home / Wellnesslive : Tarif visible (inchangé) --}}
             <div class="besoin-rituel-row">
               <div class="filter-group besoin-tarif-rituel">
                 <label class="filter-label"><i class="fas fa-coins me-2"></i>Tarif du rituel / h</label>
@@ -1146,6 +1567,19 @@
                     <input type="number" name="price_max" id="rituel-price-max" class="rituel-price-input" min="10" max="100" value="{{ request('price_max', 50) }}" step="1">
                     <span class="rituel-price-unit">€</span>
                   </div>
+                  <div id="rituel-price-summary" class="rituel-price-summary" data-page="{{ $universe }}">
+                    <div><span class="rituel-summary-label">Tarif horaire :</span> <span id="rituel-horaire-val"><span data-express-target="slider-hourly-min" data-base-value="10">10</span>–<span data-express-target="slider-hourly-max" data-base-value="50">50</span></span> €/h</div>
+                    <div><span class="rituel-summary-label">Tarif journalier :</span> <span id="rituel-journalier-val"><span data-express-target="slider-daily-min" data-base-value="70">70</span>–<span data-express-target="slider-daily-max" data-base-value="350">350</span></span> €/jour</div>
+                    <x-subscription.express-options variant="cards" :showMicroLine="true" />
+                    <div class="rituel-base-toggle-row" style="display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 11px; color: #6B7280;">
+                      <span class="rituel-base-label" style="font-weight: 500;">Base journée :</span>
+                      <span class="rituel-base-tooltip" data-tooltip="7h : référence 35h/semaine • 8h : journée standard selon organisation" title="7h : référence 35h/semaine • 8h : journée standard selon organisation" style="width: 16px; height: 16px; border-radius: 50%; background: #E5E7EB; color: #6B7280; font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; cursor: help;">i</span>
+                      <div class="rituel-base-toggle" style="display: inline-flex; border: 1px solid #E5E7EB; border-radius: 8px; padding: 2px; background: #F9FAFB;">
+                        <button type="button" class="rituel-base-btn is-active" data-base="7" style="padding: 4px 10px; border: none; background: transparent; color: #6B7280; font-size: 11px; cursor: pointer; border-radius: 6px;">7h</button>
+                        <button type="button" class="rituel-base-btn" data-base="8" style="padding: 4px 10px; border: none; background: transparent; color: #6B7280; font-size: 11px; cursor: pointer; border-radius: 6px;">8h</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="filter-group besoin-format-rituel">
@@ -1154,6 +1588,14 @@
                 <p class="besoin-format-rituel-micro">Un temps dédié à l'action, suivi d'un retour structuré et concret.</p>
               </div>
             </div>
+            @endif
+            @if($universe === 'lessons')
+            <div class="filter-group besoin-format-rituel">
+              <label class="filter-label"><i class="fas fa-clock me-2"></i>Format du rituel</label>
+              <div class="besoin-format-rituel-value">50 min focus · 10 min restitution</div>
+              <p class="besoin-format-rituel-micro">Un temps dédié à l'action, suivi d'un retour structuré et concret.</p>
+            </div>
+            @endif
             @else
             @if(!in_array($universe, ['projects', 'corporate', 'homeswap']))
             <div class="filter-group" id="budgetGroup">
@@ -1164,6 +1606,9 @@
                 <input type="number" name="budget_max" id="budgetMax" placeholder="{{ __('Max') }}" class="filter-input-small" value="{{ request('budget_max') }}">
               </div>
             </div>
+            @endif
+            @if($universe === 'corporate')
+            <div class="projects-affiner-row">
             @endif
             <div class="filter-group filter-group-rituel">
               <label class="filter-label"><i class="fas fa-coins me-2"></i>Engagement en Rituel</label>
@@ -1188,10 +1633,28 @@
               </div>
               <div class="budget-estimate" id="budgetEstimate" style="font-size: 12px; margin-top: 6px; color: #6B7280; opacity: 0.8; font-weight: 400;">Sélectionnez un engagement pour afficher une estimation en rituels.</div>
               <div class="budget-estimate-hourly" id="budgetEstimateHourly" style="font-size: 11px; margin-top: 4px; color: #059669; opacity: 0.9; font-weight: 400; display: none;"></div>
+              @if($universe === 'corporate')
+              <div class="engagement-base-toggle-row" id="engagementBaseToggleRow" style="display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 11px; color: #6B7280;">
+                <span class="engagement-base-label" style="font-weight: 500;">Base journée :</span>
+                <span class="engagement-base-tooltip" data-tooltip="7h : référence 35h/semaine • 8h : journée standard selon organisation" title="7h : référence 35h/semaine • 8h : journée standard selon organisation" style="width: 16px; height: 16px; border-radius: 50%; background: #E5E7EB; color: #6B7280; font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; cursor: help;">i</span>
+                <div class="engagement-base-toggle" style="display: inline-flex; border: 1px solid #E5E7EB; border-radius: 8px; padding: 2px; background: #F9FAFB;">
+                  <button type="button" class="engagement-base-btn is-active" data-base="7" style="padding: 4px 10px; border: none; background: transparent; color: #6B7280; font-size: 11px; cursor: pointer; border-radius: 6px;">7h</button>
+                  <button type="button" class="engagement-base-btn" data-base="8" style="padding: 4px 10px; border: none; background: transparent; color: #6B7280; font-size: 11px; cursor: pointer; border-radius: 6px;">8h</button>
+                </div>
+              </div>
+              @endif
+              @if(in_array($universe, ['projects', 'corporate']))
+              <x-subscription.express-options variant="toggle" />
+              @endif
             </div>
+            @if($universe === 'corporate')
+              @include('components.services.filters.partials.sector-filter')
+            </div>
+            @endif
             @endif
           </div>
         </div>
+        @endif
 
         @php
           $filterUniverse = $universe === 'corporate' ? 'projects' : ($universe === 'homeswap' ? 'projects' : $universe);
@@ -1216,7 +1679,10 @@
           :embedded="true"
           :excludeBudgetRituel="true"
           :hierarchyMode="in_array($universe, ['projects', 'lessons', 'corporate', 'homeswap', 'at-home', 'wellnesslive'])"
-          :hideDomainSpecInAdvanced="false"
+          :hideDomainSpecInAdvanced="in_array($universe, ['lessons', 'projects', 'at-home', 'wellnesslive', 'corporate'])"
+          :skipLevel2ForProjects="($universe === 'projects')"
+          :excludeSectorInLevel2="($universe === 'corporate')"
+          :hideAffinerTitleInLevel2="($universe === 'corporate')"
         />
 
         <div class="filters-level filters-level-3-extra" data-level="avances-extra">
@@ -1465,7 +1931,8 @@
               </div>
             </div>
           @else
-            {{-- FILTRES STANDARDS (Projects, Lessons, etc.) --}}
+            {{-- FILTRES STANDARDS (Projects, Lessons, etc.) — Mode d'intervention masqué pour projects, lessons, at-home, wellnesslive, corporate (déjà dans le hero) --}}
+          @if(!in_array($universe, ['projects', 'lessons', 'at-home', 'wellnesslive', 'corporate']))
           <div class="filter-group">
             <label class="filter-label"><i class="fas fa-laptop me-2"></i>{{ __('Mode d\'intervention') }}</label>
             <div class="filter-checkboxes">
@@ -1488,6 +1955,7 @@
               </label>
             </div>
           </div>
+          @endif
           @if(!in_array($universe, ['lessons', 'projects', 'corporate', 'at-home', 'wellnesslive']))
           <div class="filter-group">
             <label class="filter-label"><i class="fas fa-map-marker-alt me-2"></i>{{ __('Lieu') }}</label>
@@ -1629,6 +2097,7 @@
           <!-- Sera rempli dynamiquement selon l'univers sélectionné -->
         </div>
       </div>
+      @endif
     </form>
   </div>
 
@@ -1732,9 +2201,13 @@
     margin-bottom: 1.5rem;
   }
 
-  /* Projets : Domaine + Spécialisation + Pays + Ville — 5 colonnes */
+  /* Projets : Domaine + Spécialisation + Pays + Ville — 5 colonnes. Avec stack (Ville sous Pays) : 4 colonnes */
   .filter-row-main--projects-hero {
     grid-template-columns: minmax(180px, 1.5fr) minmax(180px, 1.5fr) minmax(160px, 1fr) minmax(160px, 1fr) auto;
+  }
+  .search-filter-form[data-universe="projects"] .filter-row-main--projects-hero:has(.projects-location-stack) {
+    grid-template-columns: minmax(calc(180px + 1cm), 1.5fr) minmax(calc(180px + 1cm), 1.5fr) minmax(200px, 1fr) minmax(calc(180px + 6cm), 1fr) auto;
+    column-gap: 1rem;
   }
   /* WellnessLive / At-home / Hub / Corporate : aligner filtre Pays et filtre Ville sur la même ligne (même hauteur) */
   .search-filter-form[data-universe="wellnesslive"] .filter-row-main--projects-hero,
@@ -1760,16 +2233,16 @@
   }
   /* Cours & Tutorat : duo Pays + Ville — 4 colonnes, bordures et padding identiques (référence HomeSwap) */
   .filter-row-main--has-location-duo:not(.filter-row-main--projects-hero) {
-    grid-template-columns: 2fr minmax(180px, 1fr) minmax(180px, 1fr) auto;
+    grid-template-columns: 2fr minmax(calc(180px + 2cm), 1fr) minmax(calc(180px + 2cm), 1fr) auto;
   }
   
   /* Hub/Home/Projects/Lessons/At-Home/WellnessLive : avec Mode d'intervention — ajuster la grille pour inclure le mode */
   .filter-row-main--has-location-duo:has(.filter-mode-intervention-hero) {
-    grid-template-columns: 2fr minmax(200px, 1fr) minmax(180px, 1fr) minmax(180px, 1fr) auto;
+    grid-template-columns: 2fr minmax(200px, 1fr) minmax(calc(180px + 2cm), 1fr) minmax(calc(180px + 2cm), 1fr) auto;
   }
   /* Hub uniquement : largeurs ajustées — univers/domaines +1cm, Pays/Ville -2cm */
   .search-filter-form[data-universe="hub"] .filter-row-main--projects-hero:has(.hub-location-stack) {
-    grid-template-columns: minmax(140px, 1fr) minmax(260px, 1fr) minmax(180px, 1fr) auto;
+    grid-template-columns: minmax(140px, 1fr) minmax(260px, 1fr) minmax(calc(180px + 2cm), 1fr) auto;
     column-gap: 0.75rem;
   }
   .search-filter-form[data-universe="hub"] .hero-filter-module {
@@ -1780,8 +2253,820 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    min-width: 180px;
+    min-width: calc(180px + 2cm);
     max-width: calc(100% - 2cm);
+  }
+  /* Projects : Ville sous Pays — +6cm en largeur (4cm + 2cm Pays/Ville). Marge + z-index pour éviter superposition sur "En présentiel" */
+  .search-filter-form[data-universe="projects"] .projects-location-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: calc(180px + 6cm);
+    margin-left: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .search-filter-form[data-universe="projects"] .projects-location-stack .filter-input-group.filter-location-hero {
+    min-width: 100%;
+  }
+
+  /* ========== Hero Filters premium (grille luxe) — scopé .page-projects /services/projects ========== */
+  .page-projects .projects-hero-filters {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1fr) minmax(calc(180px + 2cm), 1fr);
+    grid-template-rows: auto auto auto auto;
+    column-gap: 28px;
+    row-gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .page-projects .projects-hero-filters .projects-hero-besoin-block {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 0.5rem;
+  }
+  .page-projects .projects-hero-filters .projects-hero-besoin-block .filters-level-title {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .page-projects .projects-hero-filters .projects-hero-besoin-block .filter-checkboxes {
+    flex-wrap: wrap;
+  }
+  .page-projects .projects-hero-filters .filter-row-main--projects-hero-grid {
+    display: contents;
+  }
+  .page-projects .projects-hero-filters .hero-filter-module {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-projects .projects-hero-filters .filter-mode-intervention-hero {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .page-projects .projects-hero-filters .projects-location-stack {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 0;
+    min-width: 0;
+    width: 100%;
+    gap: 16px;
+  }
+  .page-projects .projects-hero-filters .projects-location-stack .filter-input-group.filter-location-hero {
+    width: 100%;
+  }
+  .page-projects .projects-hero-filters .location-helper-text-wrapper {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+  .page-projects .projects-hero-filters .filter-submit-btn {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    min-height: 3.25rem;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+  }
+  .page-projects .projects-hero-filters .filter-advanced-toggle {
+    grid-column: 2;
+    grid-row: 4;
+    align-self: center;
+    justify-self: center;
+  }
+  /* Colonne droite vide pour alignement */
+  .page-projects .projects-hero-filters::after {
+    content: '';
+    grid-column: 3;
+    grid-row: 4;
+  }
+
+  /* Projects Hero Filters — Responsive tablette (2 colonnes) */
+  @media (max-width: 1024px) {
+    .page-projects .projects-hero-filters {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+    }
+    .page-projects .projects-hero-filters .projects-hero-besoin-block {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+    .page-projects .projects-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .page-projects .projects-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      justify-self: start;
+    }
+    .page-projects .projects-hero-filters .projects-location-stack {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .page-projects .projects-hero-filters .location-helper-text-wrapper {
+      grid-column: 1 / -1;
+      grid-row: 4;
+    }
+    .page-projects .projects-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: 5;
+    }
+    .page-projects .projects-hero-filters .filter-advanced-toggle {
+      grid-column: 2;
+      grid-row: 5;
+      justify-self: start;
+    }
+    .page-projects .projects-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* Projects Hero Filters — Responsive mobile (1 colonne) */
+  @media (max-width: 768px) {
+    .page-projects .projects-hero-filters {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: 14px;
+    }
+    .page-projects .projects-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-projects .projects-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: start;
+    }
+    .page-projects .projects-hero-filters .projects-location-stack {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-projects .projects-hero-filters .location-helper-text-wrapper {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-projects .projects-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-projects .projects-hero-filters .filter-advanced-toggle {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: center;
+    }
+    .page-projects .projects-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* ========== Hero Filters premium (grille luxe) — scopé .page-lessons /services/lessons ========== */
+  .page-lessons .lessons-hero-filters {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1fr) minmax(calc(180px + 2cm), 1fr);
+    grid-template-rows: auto auto auto auto;
+    column-gap: 28px;
+    row-gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .page-lessons .lessons-hero-filters .lessons-hero-besoin-block {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 0.5rem;
+  }
+  .page-lessons .lessons-hero-filters .lessons-hero-besoin-block .filters-level-title {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .page-lessons .lessons-hero-filters .filter-row-main--lessons-hero-grid {
+    display: contents;
+  }
+  .page-lessons .lessons-hero-filters .hero-filter-module {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-lessons .lessons-hero-filters .filter-mode-intervention-hero {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .page-lessons .lessons-hero-filters .lessons-location-stack {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 0;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-lessons .lessons-hero-filters .lessons-location-stack .filter-input-group.filter-location-hero {
+    width: 100%;
+    min-width: 100%;
+  }
+  .page-lessons .lessons-hero-filters .location-helper-text-wrapper {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+  .page-lessons .lessons-hero-filters .filter-submit-btn {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    min-height: 3.25rem;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+  }
+  .page-lessons .lessons-hero-filters .filter-advanced-toggle {
+    grid-column: 2;
+    grid-row: 4;
+    align-self: center;
+    justify-self: center;
+  }
+  .page-lessons .lessons-hero-filters::after {
+    content: '';
+    grid-column: 3;
+    grid-row: 4;
+  }
+
+  /* Lessons Hero Filters — Responsive tablette (2 colonnes) */
+  @media (max-width: 1024px) {
+    .page-lessons .lessons-hero-filters {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+    }
+    .page-lessons .lessons-hero-filters .lessons-hero-besoin-block {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+    .page-lessons .lessons-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .page-lessons .lessons-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      justify-self: start;
+    }
+    .page-lessons .lessons-hero-filters .lessons-location-stack {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .page-lessons .lessons-hero-filters .location-helper-text-wrapper {
+      grid-column: 1 / -1;
+      grid-row: 4;
+    }
+    .page-lessons .lessons-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: 5;
+    }
+    .page-lessons .lessons-hero-filters .filter-advanced-toggle {
+      grid-column: 2;
+      grid-row: 5;
+      justify-self: start;
+    }
+    .page-lessons .lessons-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* Lessons Hero Filters — Responsive mobile (1 colonne) */
+  @media (max-width: 768px) {
+    .page-lessons .lessons-hero-filters {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: 14px;
+    }
+    .page-lessons .lessons-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-lessons .lessons-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: start;
+    }
+    .page-lessons .lessons-hero-filters .lessons-location-stack {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-lessons .lessons-hero-filters .location-helper-text-wrapper {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-lessons .lessons-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-lessons .lessons-hero-filters .filter-advanced-toggle {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: center;
+    }
+    .page-lessons .lessons-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* ========== Hero Filters premium (grille luxe) — scopé .page-at-home /services/at-home ========== */
+  .page-at-home .at-home-hero-filters {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1fr) minmax(calc(180px + 2cm), 1fr);
+    grid-template-rows: auto auto auto auto;
+    column-gap: 28px;
+    row-gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .page-at-home .at-home-hero-filters .at-home-hero-besoin-block {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 0.5rem;
+  }
+  .page-at-home .at-home-hero-filters .at-home-hero-besoin-block .filters-level-title {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .page-at-home .at-home-hero-filters .filter-row-main--at-home-hero-grid {
+    display: contents;
+  }
+  .page-at-home .at-home-hero-filters .hero-filter-module {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-at-home .at-home-hero-filters .filter-mode-intervention-hero {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .page-at-home .at-home-hero-filters .at-home-location-stack {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 0;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-at-home .at-home-hero-filters .at-home-location-stack .filter-input-group.filter-location-hero {
+    width: 100%;
+    min-width: 100%;
+  }
+  .page-at-home .at-home-hero-filters .location-helper-text-wrapper {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+  .page-at-home .at-home-hero-filters .filter-submit-btn {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    min-height: 3.25rem;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+  }
+  .page-at-home .at-home-hero-filters .filter-advanced-toggle {
+    grid-column: 2;
+    grid-row: 4;
+    align-self: center;
+    justify-self: center;
+  }
+  .page-at-home .at-home-hero-filters::after {
+    content: '';
+    grid-column: 3;
+    grid-row: 4;
+  }
+
+  /* At-home Hero Filters — Responsive tablette (2 colonnes) */
+  @media (max-width: 1024px) {
+    .page-at-home .at-home-hero-filters {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+    }
+    .page-at-home .at-home-hero-filters .at-home-hero-besoin-block {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+    .page-at-home .at-home-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .page-at-home .at-home-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      justify-self: start;
+    }
+    .page-at-home .at-home-hero-filters .at-home-location-stack {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .page-at-home .at-home-hero-filters .location-helper-text-wrapper {
+      grid-column: 1 / -1;
+      grid-row: 4;
+    }
+    .page-at-home .at-home-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: 5;
+    }
+    .page-at-home .at-home-hero-filters .filter-advanced-toggle {
+      grid-column: 2;
+      grid-row: 5;
+      justify-self: start;
+    }
+    .page-at-home .at-home-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* At-home Hero Filters — Responsive mobile (1 colonne) */
+  @media (max-width: 768px) {
+    .page-at-home .at-home-hero-filters {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: 14px;
+    }
+    .page-at-home .at-home-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-at-home .at-home-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: start;
+    }
+    .page-at-home .at-home-hero-filters .at-home-location-stack {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-at-home .at-home-hero-filters .location-helper-text-wrapper {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-at-home .at-home-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-at-home .at-home-hero-filters .filter-advanced-toggle {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: center;
+    }
+    .page-at-home .at-home-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* ========== Hero Filters premium (grille luxe) — scopé .page-wellnesslive /services/wellnesslive ========== */
+  .page-wellnesslive .wellnesslive-hero-filters {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1fr) minmax(calc(180px + 2cm), 1fr);
+    grid-template-rows: auto auto auto auto;
+    column-gap: 28px;
+    row-gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .wellnesslive-hero-besoin-block {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 0.5rem;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .wellnesslive-hero-besoin-block .filters-level-title {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .filter-row-main--wellnesslive-hero-grid {
+    display: contents;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .hero-filter-module {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .filter-mode-intervention-hero {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .wellnesslive-location-stack {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 0;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .wellnesslive-location-stack .filter-input-group.filter-location-hero {
+    width: 100%;
+    min-width: 100%;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .location-helper-text-wrapper {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .filter-submit-btn {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    min-height: 3.25rem;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters .filter-advanced-toggle {
+    grid-column: 2;
+    grid-row: 4;
+    align-self: center;
+    justify-self: center;
+  }
+  .page-wellnesslive .wellnesslive-hero-filters::after {
+    content: '';
+    grid-column: 3;
+    grid-row: 4;
+  }
+
+  /* Wellnesslive Hero Filters — Responsive tablette (2 colonnes) */
+  @media (max-width: 1024px) {
+    .page-wellnesslive .wellnesslive-hero-filters {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .wellnesslive-hero-besoin-block {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      justify-self: start;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .wellnesslive-location-stack {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .location-helper-text-wrapper {
+      grid-column: 1 / -1;
+      grid-row: 4;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: 5;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .filter-advanced-toggle {
+      grid-column: 2;
+      grid-row: 4;
+      justify-self: start;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* Wellnesslive Hero Filters — Responsive mobile (1 colonne) */
+  @media (max-width: 768px) {
+    .page-wellnesslive .wellnesslive-hero-filters {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: 14px;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: start;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .wellnesslive-location-stack {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .location-helper-text-wrapper {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters .filter-advanced-toggle {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: center;
+    }
+    .page-wellnesslive .wellnesslive-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* ========== Hero Filters premium (grille luxe) — scopé .page-corporate /services/corporate ========== */
+  .page-corporate .corporate-hero-filters {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1fr) minmax(calc(180px + 2cm), 1fr);
+    grid-template-rows: auto auto auto auto;
+    column-gap: 28px;
+    row-gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .page-corporate .corporate-hero-filters .corporate-hero-besoin-block {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 0.5rem;
+  }
+  .page-corporate .corporate-hero-filters .corporate-hero-besoin-block .filters-level-title {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .page-corporate .corporate-hero-filters .corporate-hero-besoin-block .filter-checkboxes {
+    flex-wrap: wrap;
+  }
+  .page-corporate .corporate-hero-filters .filter-row-main--corporate-hero-grid {
+    display: contents;
+  }
+  .page-corporate .corporate-hero-filters .hero-filter-module {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-corporate .corporate-hero-filters .filter-mode-intervention-hero {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .page-corporate .corporate-hero-filters .corporate-location-stack {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 0;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page-corporate .corporate-hero-filters .corporate-location-stack .filter-input-group.filter-location-hero {
+    width: 100%;
+    min-width: 100%;
+  }
+  .page-corporate .corporate-hero-filters .location-helper-text-wrapper {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+  .page-corporate .corporate-hero-filters .filter-submit-btn {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    min-height: 3.25rem;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+  }
+  .page-corporate .corporate-hero-filters .filter-advanced-toggle {
+    grid-column: 2;
+    grid-row: 4;
+    align-self: center;
+    justify-self: center;
+  }
+  .page-corporate .corporate-hero-filters::after {
+    content: '';
+    grid-column: 3;
+    grid-row: 4;
+  }
+
+  /* Corporate Hero Filters — Responsive tablette (2 colonnes) */
+  @media (max-width: 1024px) {
+    .page-corporate .corporate-hero-filters {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+    }
+    .page-corporate .corporate-hero-filters .corporate-hero-besoin-block {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+    .page-corporate .corporate-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .page-corporate .corporate-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      justify-self: start;
+    }
+    .page-corporate .corporate-hero-filters .corporate-location-stack {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .page-corporate .corporate-hero-filters .location-helper-text-wrapper {
+      grid-column: 1 / -1;
+      grid-row: 4;
+    }
+    .page-corporate .corporate-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: 5;
+    }
+    .page-corporate .corporate-hero-filters .filter-advanced-toggle {
+      grid-column: 2;
+      grid-row: 5;
+      justify-self: start;
+    }
+    .page-corporate .corporate-hero-filters::after {
+      display: none;
+    }
+  }
+
+  /* Corporate Hero Filters — Responsive mobile (1 colonne) */
+  @media (max-width: 768px) {
+    .page-corporate .corporate-hero-filters {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: 14px;
+    }
+    .page-corporate .corporate-hero-filters .hero-filter-module {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-corporate .corporate-hero-filters .filter-mode-intervention-hero {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: start;
+    }
+    .page-corporate .corporate-hero-filters .corporate-location-stack {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-corporate .corporate-hero-filters .location-helper-text-wrapper {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-corporate .corporate-hero-filters .filter-submit-btn {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .page-corporate .corporate-hero-filters .filter-advanced-toggle {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: center;
+    }
+    .page-corporate .corporate-hero-filters::after {
+      display: none;
+    }
   }
   .search-filter-form[data-universe="hub"] .hub-location-stack .filter-input-group.filter-location-hero {
     min-width: 100%;
@@ -2059,6 +3344,11 @@
   .search-filter-form[data-universe="hub"] #hubHeroSpecializationWrapper .filter-input {
     padding-left: 4rem;
   }
+  /* Spécialisation (wellnesslive, lessons, at-home, etc.) : éviter que l'icône chevauche le texte */
+  .filter-input-group.filter-hero-domain-spec:not(.filter-hero-domain-select-wrapper) .filter-input,
+  .filter-input-group.filter-hero-domain-spec:not(.filter-hero-domain-select-wrapper) select.filter-select {
+    padding-left: 4rem;
+  }
   /* Tous les domaines (hub) : aligner le texte sur Tous les univers (alignement à gauche) */
   .search-filter-form[data-universe="hub"] #hubHeroSpecializationSelect {
     text-align: left;
@@ -2209,6 +3499,61 @@
   /* ---------- Je pose mon besoin — Lessons : cartes segmentées + Langues (CECRL) — scopé .besoin-lessons ---------- */
   .besoin-lessons .filter-group--full { min-width: 100%; }
   .besoin-mission-segmented { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  /* Lessons : répartir les filtres sur tout l'espace disponible */
+  .search-filter-form[data-universe="lessons"] .besoin-lessons .filters-level-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+    width: 100%;
+  }
+  .search-filter-form[data-universe="lessons"] .besoin-lessons .filter-group.besoin-langues {
+    grid-column: 1 / -1;
+  }
+  .search-filter-form[data-universe="lessons"] .besoin-lessons .lessons-affiner-tarif-wrap {
+    grid-column: 1;
+  }
+  .search-filter-form[data-universe="lessons"] .besoin-lessons .filter-group.besoin-format-rituel {
+    grid-column: 2;
+    align-self: start;
+  }
+  @media (max-width: 768px) {
+    .search-filter-form[data-universe="lessons"] .besoin-lessons .filters-level-inner {
+      grid-template-columns: 1fr;
+    }
+    .search-filter-form[data-universe="lessons"] .besoin-lessons .lessons-affiner-tarif-wrap,
+    .search-filter-form[data-universe="lessons"] .besoin-lessons .filter-group.besoin-format-rituel {
+      grid-column: 1;
+    }
+  }
+  /* Lessons : filters-level-2 (Engagement + Univers) répartis sur toute la largeur */
+  .search-filter-form[data-universe="lessons"] .filters-level-2 .filters-level-inner {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    align-items: stretch;
+  }
+  /* Aligner Engagement et Univers : même hauteur et largeur des dropdowns */
+  .search-filter-form[data-universe="lessons"] .filters-level-2 .lessons-engagement-block,
+  .search-filter-form[data-universe="lessons"] .filters-level-2 .sector-filter-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .search-filter-form[data-universe="lessons"] .filters-level-2 .lessons-engagement-block .filter-label,
+  .search-filter-form[data-universe="lessons"] .filters-level-2 .sector-filter-container .preply-filter-label {
+    margin-bottom: 0.5rem;
+  }
+  .search-filter-form[data-universe="lessons"] .filters-level-2 .lessons-engagement-block .engagement-select-wrapper .filter-select,
+  .search-filter-form[data-universe="lessons"] .filters-level-2 .sector-filter-container .sector-dropdown-trigger {
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    box-sizing: border-box;
+  }
+  .search-filter-form[data-universe="lessons"] .filters-level-3 .filters-level-inner {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    width: 100%;
+  }
   
   /* Mode d'intervention segmented control (premium) - uniquement pour hub/home */
   .mode-intervention-segmented {
@@ -2249,6 +3594,7 @@
     font-weight: 500;
     color: #374151;
     transition: color 0.2s ease;
+    white-space: nowrap;
   }
   
   .mode-intervention-pill.is-active .mode-intervention-pill-text {
@@ -2257,6 +3603,11 @@
   
   .filter-mode-intervention-hero {
     min-width: 200px;
+  }
+  /* Projects : éviter que mode "En présentiel" déborde sur Pays/Ville */
+  .search-filter-form[data-universe="projects"] .filter-mode-intervention-hero {
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   /* Correctifs supplémentaires pour éviter superposition dropdown */
@@ -2319,14 +3670,14 @@
   .besoin-mission-card.is-active .besoin-mission-card-text { color: #1f2937; }
   .besoin-mission-card input.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0; }
 
-  .besoin-langues-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1rem 1.5rem; }
-  .besoin-mother-tongue-wrap { min-width: 180px; max-width: 220px; }
+  .besoin-langues-row { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 1rem 1.5rem; }
+  .besoin-mother-tongue-wrap { min-width: 180px; max-width: 220px; flex-shrink: 0; }
   .besoin-mother-tongue-wrap .filter-select { width: 100%; }
-  .besoin-other-langs-wrap { position: relative; flex: 1; min-width: 200px; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; }
+  .besoin-other-langs-wrap { position: relative; flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; }
   .besoin-other-langs-label { font-size: 0.8rem; color: #6b7280; margin: 0; flex-shrink: 0; }
   .besoin-lang-chips {
     display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem;
-    min-height: 2rem; padding: 0.1rem 0; flex: 1; min-width: 0;
+    min-height: 2rem; padding: 0.1rem 0; min-width: 0;
   }
   .besoin-lang-chip {
     display: inline-flex; align-items: center; gap: 0.35rem;
@@ -2339,7 +3690,7 @@
   .besoin-add-lang-btn {
     display: inline-flex; align-items: center; padding: 0.25rem 0.5rem; flex-shrink: 0;
     background: none; border: none; color: #6b7280; font-size: 0.85rem; font-weight: 500;
-    cursor: pointer; transition: color 0.2s;
+    cursor: pointer; transition: color 0.2s; margin-left: 2cm;
   }
   .besoin-add-lang-btn:hover { color: #06B6D4; }
 
@@ -2439,6 +3790,28 @@
     color: #6b7280;
     font-weight: 500;
   }
+  .rituel-price-summary {
+    font-size: 0.8125rem;
+    color: #374151;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+  .rituel-price-summary > div {
+    margin-bottom: 4px;
+  }
+  .rituel-price-summary > div:last-child {
+    margin-bottom: 0;
+  }
+  .rituel-summary-label {
+    font-weight: 600;
+    color: #374151;
+  }
+  /* Toggle Base journée 7h/8h (Tarif du rituel — Lessons/At-home/Wellnesslive) */
+  .rituel-base-btn.is-active { background: #fff !important; color: #0891B2 !important; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+  .rituel-base-btn:hover { color: #0891B2; background: rgba(6, 182, 212, 0.08); }
+  .rituel-base-tooltip:hover { background: #0891B2 !important; color: white !important; }
+  .rituel-base-tooltip { position: relative; }
+  .rituel-base-tooltip:hover::after { content: attr(data-tooltip); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); max-width: 240px; padding: 6px 10px; background: #1F2937; color: #fff; font-size: 10px; line-height: 1.4; border-radius: 6px; white-space: normal; z-index: 100; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
   .rituel-price-unit {
     color: #6b7280;
     font-size: 14px;
@@ -2470,6 +3843,69 @@
     gap: 1rem;
     align-items: start;
   }
+  .filters-level-2 .filter-group.besoin-langues {
+    grid-column: 1 / -1;
+  }
+  .filters-level-2 .projects-affiner-row,
+  .filters-level-1 .projects-affiner-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+    align-items: stretch;
+    width: 100%;
+    grid-column: 1 / -1;
+  }
+  /* Harmoniser Univers d'activité avec Engagement en Rituel (largeur, hauteur, style violet) */
+  .filters-level-2 .projects-affiner-row .filter-group,
+  .filters-level-2 .projects-affiner-row .sector-filter-container,
+  .filters-level-1 .projects-affiner-row .filter-group,
+  .filters-level-1 .projects-affiner-row .sector-filter-container {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .filters-level-2 .projects-affiner-row .sector-dropdown-wrapper,
+  .filters-level-1 .projects-affiner-row .sector-dropdown-wrapper {
+    width: 100%;
+  }
+  .filters-level-2 .projects-affiner-row .sector-filter-container .preply-filter-label,
+  .filters-level-1 .projects-affiner-row .sector-filter-container .preply-filter-label {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+  }
+  .filters-level-2 .projects-affiner-row .sector-dropdown-trigger,
+  .filters-level-1 .projects-affiner-row .sector-dropdown-trigger {
+    padding: 0.875rem 1.25rem;
+    border: 2px solid rgba(196, 181, 253, 0.3);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+  }
+  .filters-level-2 .projects-affiner-row .sector-dropdown-trigger:hover,
+  .filters-level-1 .projects-affiner-row .sector-dropdown-trigger:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.08);
+  }
+  .filters-level-2 .projects-affiner-row .sector-dropdown-trigger.active,
+  .filters-level-1 .projects-affiner-row .sector-dropdown-trigger.active {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+  }
+  .filters-level-2 .projects-affiner-row .sector-arrow,
+  .filters-level-1 .projects-affiner-row .sector-arrow {
+    color: #7c3aed;
+    font-size: 0.75rem;
+  }
+  @media (max-width: 768px) {
+    .filters-level-2 .projects-affiner-row,
+    .filters-level-1 .projects-affiner-row {
+      grid-template-columns: 1fr;
+    }
+  }
   @media (min-width: 769px) {
     .filters-level-2 .filters-level-inner {
       grid-template-columns: repeat(3, 1fr);
@@ -2489,15 +3925,74 @@
 
   .filters-level-3 .filters-level-inner {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     align-items: end;
+    justify-items: stretch;
   }
 
-  /* Filtre Mes disponibilités : +2 cm (Critères avancés /services/projects) */
+  /* Répartition uniforme des 3 filtres (Mon expérience, Profils d'experts, Mes disponibilités) */
+  .filters-level-3 .preply-experience-group,
+  .filters-level-3 .preply-filter-advanced,
   .filters-level-3 .preply-availability-group {
-    min-width: calc(200px + 2cm);
-    max-width: calc(350px + 8cm);
+    min-width: 0;
+    max-width: none;
+  }
+
+  /* Dropdown Mon expérience (Critères avancés) — copie corporate/projects */
+  .experience-dropdown-wrapper { position: relative; }
+  .experience-dropdown-trigger {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--preply-border);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    background: rgba(255, 255, 255, 0.98);
+    color: var(--preply-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  }
+  .experience-dropdown-trigger:hover {
+    border-color: rgba(var(--preply-primary-rgb, 139, 92, 246), 0.3);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    transform: translateY(-1px);
+  }
+  .experience-dropdown-trigger.active {
+    border-color: var(--preply-primary);
+    box-shadow: 0 4px 12px rgba(var(--preply-primary-rgb, 139, 92, 246), 0.2);
+  }
+  .experience-selected-text { flex: 1; }
+  .experience-arrow { font-size: 0.75rem; color: var(--preply-text-light); transition: transform 0.2s; }
+  .experience-dropdown-trigger.active .experience-arrow { transform: rotate(180deg); }
+  .experience-dropdown-menu {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--preply-bg);
+    border: 1px solid var(--preply-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  .experience-option {
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--preply-text);
+    font-size: 0.9375rem;
+  }
+  .experience-option:hover { background-color: var(--preply-hover); }
+  .experience-option.selected {
+    background-color: rgba(var(--preply-primary-rgb, 139, 92, 246), 0.1);
+    color: var(--preply-primary);
+    font-weight: 500;
   }
 
   .filters-level-3-extra {
@@ -2969,6 +4464,18 @@
 </style>
 
 <script>
+  @if($universe === 'projects' && !empty($categories) && isset($categories[0]['slug']) && isset($categories[0]['description']))
+  @php
+    $descMap = [];
+    foreach ($categories ?? [] as $c) {
+      if (!empty($c['description'] ?? '') && !empty($c['slug'] ?? '')) {
+        $descMap[$c['slug']] = $c['description'];
+      }
+    }
+  @endphp
+  window.__domainLongDescriptions = @json($descMap);
+  @endif
+
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('{{ $formId }}');
     
@@ -3301,6 +4808,56 @@
       }
     })();
 
+    // Dropdown Mon expérience (Critères avancés) — projects, corporate, lessons, at-home, wellnesslive
+    (function initExperienceDropdown() {
+      var experienceTrigger = document.getElementById('experienceDropdownTrigger');
+      var experienceMenu = document.getElementById('experienceDropdownMenu');
+      var experienceLevelInput = document.getElementById('experienceLevelInput');
+      var experienceSelectedText = document.getElementById('experienceSelectedText');
+      var experienceArrow = document.getElementById('experienceArrow');
+      if (!experienceTrigger || !experienceMenu || !experienceLevelInput || !experienceSelectedText) return;
+      experienceTrigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = experienceMenu.style.display === 'block';
+        experienceMenu.style.display = isOpen ? 'none' : 'block';
+        experienceTrigger.classList.toggle('active', !isOpen);
+        if (experienceArrow) experienceArrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+      document.addEventListener('click', function(e) {
+        if (!experienceMenu.contains(e.target) && !experienceTrigger.contains(e.target)) {
+          experienceMenu.style.display = 'none';
+          experienceTrigger.classList.remove('active');
+          if (experienceArrow) experienceArrow.style.transform = 'rotate(0deg)';
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && experienceMenu.style.display === 'block') {
+          experienceMenu.style.display = 'none';
+          experienceTrigger.classList.remove('active');
+          if (experienceArrow) experienceArrow.style.transform = 'rotate(0deg)';
+        }
+      });
+      document.querySelectorAll('.experience-option').forEach(function(opt) {
+        opt.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var value = opt.getAttribute('data-value');
+          var text = opt.textContent.trim();
+          experienceLevelInput.value = value;
+          experienceSelectedText.textContent = text;
+          document.querySelectorAll('.experience-option').forEach(function(o) { o.classList.remove('selected'); });
+          opt.classList.add('selected');
+          experienceMenu.style.display = 'none';
+          experienceTrigger.classList.remove('active');
+          if (experienceArrow) experienceArrow.style.transform = 'rotate(0deg)';
+          if (typeof applyFiltersAjax === 'function') applyFiltersAjax({ experience_level: value });
+          else if (form) form.submit();
+        });
+      });
+      var currentExp = experienceLevelInput.value || '';
+      var expOpt = document.querySelector('.experience-option[data-value="' + currentExp + '"]');
+      if (expOpt) expOpt.classList.add('selected');
+    })();
+
     // Cascade Domaine → Spécialisation (lessons, at-home, wellnesslive) — même logique que Lessons
     (function initDomainSpecialization() {
       var domainTrigger = document.getElementById('domainDropdownTrigger');
@@ -3449,7 +5006,7 @@
       'wellnesslive': [
         'pilates', 'yoga', 'bodybalance', 'bodysculpt', 'bodycombat', 'bodyattack',
         'boxing', 'cross training', 'hiit', 'cardio', 'zumba',
-        'stretching', 'gym soft', 'qi gong', 'tai chi'
+        'stretching', 'ritual flow', 'ritual reset'
       ],
       'corporate': [
         'bien-être en entreprise', 'entreprise', 'corporate', 'séances', 'conférences', 'ateliers'
@@ -3585,6 +5142,61 @@
     }
 
     // ---------- Je pose mon besoin — Lessons : Slider Tarif du rituel / h (premium) ----------
+    const RITUEL_STORAGE_KEY = 'junspro_day_base_hours';
+    function getRituelBaseHours() {
+      var v = parseInt(localStorage.getItem(RITUEL_STORAGE_KEY), 10);
+      return (v === 7 || v === 8) ? v : 7;
+    }
+    function setRituelBaseHours(v) {
+      localStorage.setItem(RITUEL_STORAGE_KEY, String(v));
+    }
+    function syncRituelToggleUI(base) {
+      document.querySelectorAll('.rituel-base-btn').forEach(function(btn) {
+        if (parseInt(btn.getAttribute('data-base'), 10) === base) {
+          btn.classList.add('is-active');
+        } else {
+          btn.classList.remove('is-active');
+        }
+      });
+    }
+    var rituelExpressMultiplier = 1;
+    function syncRituelExpressFromDom() {
+      var input = document.querySelector('[data-express-input]');
+      var mode = (input && input.value) ? input.value : 'none';
+      rituelExpressMultiplier = { none: 1, '24': 1.3, '48': 1.2, '72': 1.1 }[mode] || 1;
+    }
+    window.addEventListener('express:changed', function(e) {
+      rituelExpressMultiplier = e.detail && e.detail.multiplier ? e.detail.multiplier : 1;
+      updateRituelPriceSummary();
+    });
+    function updateRituelPriceSummary() {
+      syncRituelExpressFromDom();
+      const minInput = document.getElementById('rituel-price-min');
+      const maxInput = document.getElementById('rituel-price-max');
+      const summaryEl = document.getElementById('rituel-price-summary');
+      if (!minInput || !maxInput || !summaryEl) return;
+      const hourlyMinEl = summaryEl.querySelector('[data-express-target="slider-hourly-min"]');
+      const hourlyMaxEl = summaryEl.querySelector('[data-express-target="slider-hourly-max"]');
+      const dailyMinEl = summaryEl.querySelector('[data-express-target="slider-daily-min"]');
+      const dailyMaxEl = summaryEl.querySelector('[data-express-target="slider-daily-max"]');
+      if (!hourlyMinEl || !hourlyMaxEl || !dailyMinEl || !dailyMaxEl) return;
+      const base = getRituelBaseHours();
+      const min = Math.round(parseInt(minInput.value) || 10);
+      const max = Math.round(parseInt(maxInput.value) || 50);
+      const minClamped = Math.max(10, Math.min(min, max));
+      const maxClamped = Math.max(minClamped, Math.min(100, max));
+      const jourMin = Math.round(minClamped * base);
+      const jourMax = Math.round(maxClamped * base);
+      var mult = rituelExpressMultiplier;
+      hourlyMinEl.setAttribute('data-base-value', String(minClamped));
+      hourlyMaxEl.setAttribute('data-base-value', String(maxClamped));
+      dailyMinEl.setAttribute('data-base-value', String(jourMin));
+      dailyMaxEl.setAttribute('data-base-value', String(jourMax));
+      hourlyMinEl.textContent = String(Math.round(minClamped * mult));
+      hourlyMaxEl.textContent = String(Math.round(maxClamped * mult));
+      dailyMinEl.textContent = String(Math.round(jourMin * mult));
+      dailyMaxEl.textContent = String(Math.round(jourMax * mult));
+    }
     function initRituelPriceSlider() {
       const sliderEl = document.getElementById('rituel-price-slider');
       const minInput = document.getElementById('rituel-price-min');
@@ -3611,30 +5223,52 @@
         slide: function(event, ui) {
           minInput.value = ui.values[0];
           maxInput.value = ui.values[1];
+          updateRituelPriceSummary();
         },
         change: function(event, ui) {
           minInput.value = ui.values[0];
           maxInput.value = ui.values[1];
+          updateRituelPriceSummary();
         }
       });
       
-      // Synchroniser les inputs avec le slider
-      minInput.addEventListener('change', function() {
-        const val = Math.max(10, Math.min(parseInt(this.value) || 10, parseInt(maxInput.value) || 50));
-        this.value = val;
+      // Synchroniser les inputs avec le slider (change = blur)
+      function syncMinInput() {
+        const val = Math.max(10, Math.min(parseInt(minInput.value) || 10, parseInt(maxInput.value) || 50));
+        minInput.value = val;
         const values = slider.slider('values');
         slider.slider('values', [val, values[1]]);
-      });
-      
-      maxInput.addEventListener('change', function() {
-        const val = Math.max(parseInt(minInput.value) || 10, Math.min(100, parseInt(this.value) || 50));
-        this.value = val;
+        updateRituelPriceSummary();
+      }
+      function syncMaxInput() {
+        const val = Math.max(parseInt(minInput.value) || 10, Math.min(100, parseInt(maxInput.value) || 50));
+        maxInput.value = val;
         const values = slider.slider('values');
         slider.slider('values', [values[0], val]);
-      });
+        updateRituelPriceSummary();
+      }
+      minInput.addEventListener('change', syncMinInput);
+      maxInput.addEventListener('change', syncMaxInput);
+      minInput.addEventListener('input', updateRituelPriceSummary);
+      maxInput.addEventListener('input', updateRituelPriceSummary);
       
       // Initialiser les valeurs depuis les inputs
       slider.slider('values', [minValue, maxValue]);
+      syncRituelExpressFromDom();
+      updateRituelPriceSummary();
+      
+      // Toggle Base journée 7h/8h
+      syncRituelToggleUI(getRituelBaseHours());
+      document.querySelectorAll('.rituel-base-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var base = parseInt(this.getAttribute('data-base'), 10);
+          setRituelBaseHours(base);
+          syncRituelToggleUI(base);
+          updateRituelPriceSummary();
+        });
+      });
+      
+      // Express : géré par expressOptions.js (express:changed)
     }
     
     // Initialiser le slider au chargement du DOM

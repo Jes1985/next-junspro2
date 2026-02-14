@@ -357,15 +357,7 @@ class HomeController extends Controller
       ]
     ];
 
-    if ($themeVersion == 1) {
-      return view('frontend.home.index-v1', $queryResult);
-    } else if ($themeVersion == 2) {
-      return view('frontend.home.index-v2', $queryResult);
-    } else if ($themeVersion == 3) {
-      return view('frontend.home.index-v3', $queryResult);
-    }
-    
-    // Par défaut, utiliser la version 3 (la plus récente)
+    // Toujours afficher la version 3 (nouvelle home premium)
     return view('frontend.home.index-v3', $queryResult);
   }
 

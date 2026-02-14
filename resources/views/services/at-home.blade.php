@@ -18,6 +18,7 @@
   /* Variables couleurs At Home - Dégradé jaune orange bleu royal */
   :root {
     --preply-primary: #FB923C; /* Orange-400 */
+    --preply-primary-rgb: 251, 146, 60;
     --preply-primary-dark: #FBBF24; /* Amber-400 - Jaune */
     --preply-primary-light: #2563EB; /* Blue-600 - Bleu royal */
     --preply-pink: #F97316; /* Orange-500 */
@@ -692,9 +693,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #7C3AED 100%);
+    background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%);
     border: 2px solid rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.2), 0 2px 8px rgba(124, 58, 237, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(251, 191, 36, 0.2), 0 2px 8px rgba(251, 146, 60, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -966,7 +967,7 @@
 
   .cta-primary-v2 {
     padding: 9px 11px;
-    background: linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #4F46E5 100%);
+    background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%);
     color: white;
     border-radius: 9999px;
     font-size: 15px;
@@ -974,12 +975,12 @@
     text-align: center;
     text-decoration: none;
     transition: all 0.2s;
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+    box-shadow: 0 2px 8px rgba(251, 146, 60, 0.25);
   }
 
   .cta-primary-v2:hover {
-    background: linear-gradient(135deg, #4338CA 0%, #6D28D9 100%);
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #1D4ED8 100%);
+    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.4);
     transform: translateY(-1px);
     color: white;
   }
@@ -1175,14 +1176,14 @@
 
   .quick-view-btn-primary-v2 {
     padding: 19px 16px;
-    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+    background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%);
     color: white;
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 2px 8px rgba(251, 146, 60, 0.3);
   }
 
   .quick-view-btn-primary-v2:hover {
-    background: linear-gradient(135deg, #4338CA 0%, #6D28D9 100%);
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #1D4ED8 100%);
+    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.4);
     transform: translateY(-1px);
     color: white;
   }
@@ -2390,7 +2391,7 @@
   }
 
   .category-filter-card-icon.super-icon {
-    background: linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%);
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
     color: var(--preply-primary);
   }
 
@@ -2523,7 +2524,7 @@
 
   /* Bouton loupe rond intégré (style premium) */
   .search-box-modern .btn-search {
-    background: linear-gradient(135deg, #4c1d95 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563eb 100%);
     color: white;
     border: none;
     width: 42px;
@@ -2532,7 +2533,7 @@
     font-weight: 500;
     font-size: 1rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(76, 29, 149, 0.3);
+    box-shadow: 0 2px 8px rgba(251, 146, 60, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2548,9 +2549,9 @@
   }
 
   .search-box-modern .btn-search:hover {
-    background: linear-gradient(135deg, #5B52F0 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #1D4ED8 100%);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(76, 29, 149, 0.4);
+    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.4);
   }
 
   /* ========== DESIGN SYSTEM PREMIUM (scopé .page-at-home) ========== */
@@ -2576,6 +2577,47 @@
   .page-at-home .freelancer-card-premium-v2:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08); }
   .page-at-home .services-hero__btn--primary { transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; }
   .page-at-home .services-hero__btn--primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(var(--preply-primary-rgb), 0.25); }
+  /* Overrides search-filter + Pause Souffle : dégradé jaune orangé bleu royal */
+  .page-at-home .filter-tab:hover { color: #FB923C; }
+  .page-at-home .filter-tab.active { color: #FB923C; }
+  .page-at-home .filter-tab.active::after { background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%); }
+  .page-at-home .mode-intervention-pill.is-active { background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%); }
+  .page-at-home .filter-submit-btn { background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%) !important; box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3) !important; }
+  .page-at-home .filter-submit-btn:hover { box-shadow: 0 8px 24px rgba(251, 146, 60, 0.4) !important; }
+  .page-at-home .filter-advanced-toggle { background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-at-home .filter-advanced-toggle:hover { background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #1D4ED8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-at-home [data-hero-filter="at-home"] .filter-input-icon,
+  .page-at-home .filter-hero-domain-spec .filter-input-icon { color: #FB923C !important; }
+  .page-at-home [data-hero-filter="at-home"] .filter-select-domain-hero,
+  .page-at-home [data-hero-filter="at-home"] .filter-hero-domain-select-wrapper .filter-select,
+  .page-at-home .filter-hero-domain-spec .filter-select { border-color: rgba(251, 146, 60, 0.3); }
+  .page-at-home [data-hero-filter="at-home"] .filter-select-domain-hero:hover,
+  .page-at-home [data-hero-filter="at-home"] .filter-hero-domain-select-wrapper .filter-select:hover,
+  .page-at-home .filter-hero-domain-spec .filter-select:hover { border-color: rgba(251, 146, 60, 0.5); }
+  .page-at-home [data-hero-filter="at-home"] .filter-select-domain-hero:focus,
+  .page-at-home [data-hero-filter="at-home"] .filter-hero-domain-select-wrapper .filter-select:focus,
+  .page-at-home .filter-hero-domain-spec .filter-select:focus { border-color: #FB923C; box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.1); }
+  .page-at-home .hero-domain-custom-wrapper .hero-domain-trigger.active { border-color: rgba(251, 146, 60, 0.5) !important; box-shadow: 0 0 0 2px rgba(251, 146, 60, 0.1) !important; }
+  .page-at-home .hero-domain-menu .hero-domain-option.selected { background: rgba(251, 146, 60, 0.1) !important; color: #FB923C !important; }
+  .page-at-home .hero-domain-menu .hero-domain-option.selected .domain-option-desc { color: rgba(251, 146, 60, 0.85) !important; }
+  .page-at-home .filter-input-group.filter-location-hero .filter-input.filter-select,
+  .page-at-home .filter-input-group.filter-location-hero .filter-select { border-color: rgba(251, 146, 60, 0.3); }
+  .page-at-home .filter-input-group.filter-location-hero .filter-select:focus { border-color: #FB923C; box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.1); }
+  .page-at-home .pause-souffle-inline-projects__badge { background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%) !important; box-shadow: 0 2px 4px rgba(251, 146, 60, 0.3); }
+  .page-at-home .pause-souffle-inline-projects .pause-souffle-inline-premium__cta { background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%) !important; }
+  .page-at-home .pause-souffle-inline-projects .pause-souffle-inline-premium__cta:hover { background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #1D4ED8 100%) !important; box-shadow: 0 2px 4px rgba(251, 146, 60, 0.2); }
+  .page-at-home .pause-souffle-inline-projects .pause-souffle-inline-premium__cta:focus { outline-color: #FB923C; }
+  /* Slider Tarif du rituel + Toggle Base journée — dégradé jaune orangé bleu royal */
+  .page-at-home .rituel-price-slider .ui-slider-handle { background: #FB923C !important; }
+  .page-at-home .rituel-price-slider .ui-slider-handle:hover { background: #F59E0B !important; box-shadow: 0 2px 8px rgba(251, 146, 60, 0.3) !important; }
+  .page-at-home .rituel-price-slider .ui-slider-range { background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%) !important; }
+  /* Express option — style premium at-home */
+  .page-at-home .junspro-express-options .express-option-card.is-selected { color: #F59E0B; border-color: rgba(251, 146, 60, 0.4); }
+  .page-at-home .junspro-express-options .express-option-card:hover { color: #F59E0B; border-color: rgba(251, 146, 60, 0.3); }
+  .page-at-home .rituel-price-input:focus { border-color: #FB923C !important; box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1) !important; }
+  .page-at-home .rituel-base-btn.is-active { color: #FB923C !important; }
+  .page-at-home .rituel-base-btn:hover { color: #FB923C; background: rgba(251, 146, 60, 0.08); }
+  .page-at-home .rituel-base-tooltip:hover { background: #FB923C !important; color: white !important; }
 </style>
 @endsection
 
@@ -2603,9 +2645,9 @@
     />
   </div>
 
-  {{-- Module Pause Souffle Inline (juste sous filtres, avant résultats) --}}
+  {{-- Module Pause Souffle Inline avec badge + titre (juste sous filtres, avant résultats) --}}
   <div class="container">
-    @include('frontend.components.pause-souffle.inline-premium')
+    @include('frontend.components.pause-souffle.inline-premium-projects')
   </div>
 
   {{-- Résultats --}}
@@ -3037,7 +3079,7 @@
             @endif
                             
                             <!-- Fallback élégant avec dégradé violet UNIQUEMENT si aucune miniature n'est disponible -->
-                            <div class="video-placeholder-fallback" style="display: {{ ($hasThumbnail && !empty($thumbnailUrl)) ? 'none' : 'flex' }}; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #7C3AED 100%); color: white; text-align: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;">
+                            <div class="video-placeholder-fallback" style="display: {{ ($hasThumbnail && !empty($thumbnailUrl)) ? 'none' : 'flex' }}; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #FBBF24 0%, #FB923C 50%, #2563EB 100%); color: white; text-align: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;">
                               <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 16px;">
                                 <div style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255, 255, 255, 0.3);">
                                   <i class="fas fa-video" style="font-size: 36px; opacity: 0.95;"></i>

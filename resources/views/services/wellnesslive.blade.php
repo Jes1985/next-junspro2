@@ -1744,9 +1744,9 @@
     box-shadow: none;
   }
 
-  /* Bouton loupe rond intégré (style premium) */
+  /* Bouton loupe rond intégré (style premium) - couleurs wellnesslive */
   .search-box-modern .btn-search {
-    background: linear-gradient(135deg, #4c1d95 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%);
     color: white;
     border: none;
     width: 42px;
@@ -1755,7 +1755,7 @@
     font-weight: 500;
     font-size: 1rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(76, 29, 149, 0.3);
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1771,9 +1771,9 @@
   }
 
   .search-box-modern .btn-search:hover {
-    background: linear-gradient(135deg, #5B52F0 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #FB923C 0%, #EA580C 50%, #DC2626 100%);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(76, 29, 149, 0.4);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
   }
 
   /* ============================================
@@ -2011,9 +2011,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #7C3AED 100%);
+    background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%);
     border: 2px solid rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.2), 0 2px 8px rgba(124, 58, 237, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(249, 115, 22, 0.2), 0 2px 8px rgba(234, 88, 12, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -2591,6 +2591,121 @@
   .page-wellnesslive .services-hero__btn--primary { transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; }
   .page-wellnesslive .services-hero__btn--primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(var(--preply-primary-rgb), 0.25); }
   .page-wellnesslive .services-hero__micro { white-space: pre-line; }
+  /* Overrides search-filter + Pause Souffle : couleurs wellnesslive (orange/rouge) */
+  .page-wellnesslive .filter-tab:hover { color: #F97316; }
+  .page-wellnesslive .filter-tab.active { color: #F97316; }
+  .page-wellnesslive .filter-tab.active::after { background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%); }
+  .page-wellnesslive .mode-intervention-pill.is-active { background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%); }
+  .page-wellnesslive .filter-submit-btn { background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%) !important; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3) !important; }
+  .page-wellnesslive .filter-submit-btn:hover { box-shadow: 0 8px 24px rgba(249, 115, 22, 0.4) !important; }
+  .page-wellnesslive .filter-advanced-toggle { background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-wellnesslive .filter-advanced-toggle:hover { background: linear-gradient(135deg, #FB923C 0%, #EA580C 50%, #DC2626 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-wellnesslive [data-hero-filter="wellnesslive"] .filter-input-icon,
+  .page-wellnesslive .filter-hero-domain-spec .filter-input-icon { color: #F97316 !important; }
+  .page-wellnesslive [data-hero-filter="wellnesslive"] .filter-select-domain-hero,
+  .page-wellnesslive [data-hero-filter="wellnesslive"] .filter-hero-domain-select-wrapper .filter-select,
+  .page-wellnesslive .filter-hero-domain-spec .filter-select { border-color: rgba(249, 115, 22, 0.3); }
+  .page-wellnesslive [data-hero-filter="wellnesslive"] .filter-select-domain-hero:hover,
+  .page-wellnesslive [data-hero-filter="wellnesslive"] .filter-hero-domain-select-wrapper .filter-select:hover,
+  .page-wellnesslive .filter-hero-domain-spec .filter-select:hover { border-color: rgba(249, 115, 22, 0.5); }
+  .page-wellnesslive [data-hero-filter="wellnesslive"] .filter-select-domain-hero:focus,
+  .page-wellnesslive [data-hero-filter="wellnesslive"] .filter-hero-domain-select-wrapper .filter-select:focus,
+  .page-wellnesslive .filter-hero-domain-spec .filter-select:focus { border-color: #F97316; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1); }
+  .page-wellnesslive .hero-domain-custom-wrapper .hero-domain-trigger.active { border-color: rgba(249, 115, 22, 0.5) !important; box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.1) !important; }
+  .page-wellnesslive .hero-domain-menu .hero-domain-option.selected { background: rgba(249, 115, 22, 0.1) !important; color: #F97316 !important; }
+  .page-wellnesslive .hero-domain-menu .hero-domain-option.selected .domain-option-desc { color: rgba(249, 115, 22, 0.85) !important; }
+  .page-wellnesslive .filter-input-group.filter-location-hero .filter-input.filter-select,
+  .page-wellnesslive .filter-input-group.filter-location-hero .filter-select { border-color: rgba(249, 115, 22, 0.3); }
+  .page-wellnesslive .filter-input-group.filter-location-hero .filter-select:focus { border-color: #F97316; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1); }
+  .page-wellnesslive .pause-souffle-inline-projects__badge { background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%) !important; box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3); }
+  .page-wellnesslive .pause-souffle-inline-projects .pause-souffle-inline-premium__cta { background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%) !important; }
+  .page-wellnesslive .pause-souffle-inline-projects .pause-souffle-inline-premium__cta:hover { background: linear-gradient(135deg, #FB923C 0%, #EA580C 50%, #DC2626 100%) !important; box-shadow: 0 2px 4px rgba(249, 115, 22, 0.2); }
+  .page-wellnesslive .pause-souffle-inline-projects .pause-souffle-inline-premium__cta:focus { outline-color: #F97316; }
+  .page-wellnesslive .category-filter-card-icon.super-icon { background: linear-gradient(135deg, #FFEDD5 0%, #FED7AA 100%) !important; color: #F97316 !important; }
+  .page-wellnesslive .rituel-price-slider .ui-slider-handle { background: #F97316 !important; }
+  .page-wellnesslive .rituel-price-slider .ui-slider-handle:hover { background: #EA580C !important; box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3) !important; }
+  .page-wellnesslive .rituel-price-slider .ui-slider-range { background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%) !important; }
+  /* Express option — style premium wellnesslive */
+  .page-wellnesslive .junspro-express-options .express-option-card.is-selected { color: #EA580C; border-color: rgba(249, 115, 22, 0.4); }
+  .page-wellnesslive .junspro-express-options .express-option-card:hover { color: #EA580C; border-color: rgba(249, 115, 22, 0.3); }
+  .page-wellnesslive .rituel-price-input:focus { border-color: #F97316 !important; box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1) !important; }
+  .page-wellnesslive .rituel-base-btn.is-active { color: #F97316 !important; }
+  .page-wellnesslive .rituel-base-btn:hover { color: #F97316; background: rgba(249, 115, 22, 0.08); }
+  .page-wellnesslive .rituel-base-tooltip:hover { background: #F97316 !important; color: white !important; }
+
+  /* ========== SECTION PROGRAMME & PLANNING (Ritual Motion premium) ========== */
+  .ritual-motion-programme-section { padding: 48px 0 56px; background: #FAFAFA; }
+  .ritual-motion-programme-section .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+  .programme-header { text-align: center; margin-bottom: 40px; }
+  .programme-badge { display: inline-block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; color: #F97316; background: linear-gradient(135deg, #FFEDD5 0%, #FED7AA 100%); padding: 6px 14px; border-radius: 999px; margin-bottom: 8px; }
+  .programme-micro { font-size: 0.75rem; color: #6B7280; margin: 0 0 12px; }
+  .programme-title { font-size: 2rem; font-weight: 700; color: #1F2937; margin: 0 0 12px; }
+  .programme-subtitle { font-size: 1.0625rem; color: #6B7280; line-height: 1.6; max-width: 600px; margin: 0 auto; }
+  .programme-rituels-format { margin-bottom: 40px; }
+  .rituel-format-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 12px; }
+  @media (max-width: 768px) { .rituel-format-grid { grid-template-columns: repeat(2, 1fr); } }
+  .rituel-format-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all 0.18s ease; }
+  .rituel-format-card:hover { border-color: rgba(249, 115, 22, 0.4); box-shadow: 0 4px 12px rgba(249, 115, 22, 0.1); }
+  .rituel-duree { display: block; font-size: 1.125rem; font-weight: 700; color: #F97316; margin-bottom: 4px; }
+  .rituel-detail { font-size: 0.8125rem; color: #6B7280; }
+  .rituel-format-note { font-size: 0.75rem; color: #9CA3AF; text-align: center; margin: 0; }
+  .programme-rythme { margin-bottom: 40px; }
+  .programme-rythme-title { font-size: 1.25rem; font-weight: 700; color: #1F2937; margin: 0 0 4px; }
+  .programme-rythme-sub { font-size: 0.9375rem; color: #6B7280; margin: 0 0 16px; }
+  .programme-rythme-segmented { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .rythme-pill { display: inline-flex; align-items: center; padding: 12px 20px; background: #fff; border: 1px solid #E5E7EB; border-radius: 10px; font-size: 0.9375rem; font-weight: 500; color: #374151; cursor: pointer; transition: all 0.18s ease; }
+  .rythme-pill:hover { border-color: rgba(249, 115, 22, 0.5); }
+  .rythme-pill input { display: none; }
+  .rythme-pill:has(input:checked) { background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%); color: #fff; border-color: transparent; }
+  .programme-rythme-dynamic { font-size: 0.9375rem; color: #6B7280; margin: 0; }
+  .programme-rythme-dynamic strong { color: #F97316; }
+  .programme-disciplines { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; }
+  @media (max-width: 768px) { .programme-disciplines { grid-template-columns: 1fr; } }
+  .discipline-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 16px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: all 0.18s ease; }
+  .discipline-card:hover { border-color: rgba(249, 115, 22, 0.25); box-shadow: 0 8px 24px rgba(249, 115, 22, 0.08); }
+  .discipline-title { font-size: 1.125rem; font-weight: 700; color: #1F2937; margin: 0 0 8px; }
+  .discipline-phrase { font-size: 0.9375rem; color: #6B7280; line-height: 1.5; margin: 0 0 16px; }
+  .discipline-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .discipline-chips span { font-size: 0.8125rem; font-weight: 500; color: #374151; background: #F3F4F6; padding: 6px 12px; border-radius: 8px; }
+  .discipline-micro { font-size: 0.75rem; color: #9CA3AF; margin: 12px 0 0; line-height: 1.4; }
+  .programme-planning { background: #fff; border: 1px solid #E5E7EB; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .planning-tabs { display: flex; border-bottom: 1px solid #E5E7EB; }
+  .planning-tab { flex: 1; padding: 16px 20px; background: #F9FAFB; border: none; cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 4px; transition: all 0.18s ease; }
+  .planning-tab:hover { background: #F3F4F6; }
+  .planning-tab.is-active { background: #fff; border-bottom: 2px solid #F97316; }
+  .planning-tab-badge { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.05em; }
+  .planning-badge-privilege { color: #EA580C; position: relative; }
+  .planning-tab.is-active .planning-badge-privilege::after { content: '✦'; position: absolute; right: -12px; font-size: 0.5rem; opacity: 0.5; animation: sparkle 2s ease-in-out infinite; }
+  @keyframes sparkle { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.7; } }
+  .planning-badge-offert { color: #059669; }
+  .planning-tab-title { font-size: 0.9375rem; font-weight: 600; color: #1F2937; }
+  .planning-panels { padding: 24px; }
+  .planning-panel { display: none; }
+  .planning-panel.is-active { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .planning-panel-text { font-size: 1rem; color: #374151; margin: 0 0 16px; }
+  .planning-panel-micro { font-size: 0.875rem; color: #6B7280; margin: 0 0 16px; }
+  .planning-cta { display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%); color: #fff; font-weight: 600; font-size: 0.9375rem; border-radius: 10px; text-decoration: none; transition: all 0.18s ease; }
+  .planning-cta:hover { box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35); }
+  .planning-cta-secondary { background: #fff; color: #F97316; border: 2px solid #F97316; }
+  .planning-note { font-size: 0.8125rem; color: #6B7280; margin: 12px 0 0; }
+  .planning-progress-bar { height: 6px; background: #E5E7EB; border-radius: 3px; margin: 16px 0; overflow: hidden; }
+  .planning-progress-fill { height: 100%; background: linear-gradient(90deg, #FDBA74, #F97316); transition: width 0.3s ease; }
+  .planning-link { font-size: 0.8125rem; color: #F97316; text-decoration: none; display: inline-block; margin-top: 8px; }
+  .planning-link:hover { text-decoration: underline; }
+
+  /* Toggle open/close premium */
+  .programme-toggle-trigger { width: 100%; padding: 24px 0; background: transparent; border: none; cursor: pointer; text-align: center; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 20px; transition: all 0.2s ease; border-radius: 16px; }
+  .programme-toggle-trigger:hover { background: rgba(249, 115, 22, 0.06); }
+  .programme-toggle-trigger .programme-badge { margin: 0; }
+  .programme-toggle-trigger .programme-toggle-title { margin: 0; font-size: 1.5rem; }
+  .programme-toggle-icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; color: #F97316; transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+  .ritual-motion-programme-section.is-collapsed .programme-toggle-icon { transform: rotate(180deg); }
+  .programme-content-wrapper { overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease; }
+  .programme-content-wrapper:not(.is-open) { max-height: 0; opacity: 0; margin-top: 0; pointer-events: none; }
+  .programme-content-wrapper.is-open { max-height: 4000px; opacity: 1; }
+  .ritual-motion-programme-section.is-collapsed .programme-toggle-trigger { border-bottom: 1px solid rgba(229, 231, 235, 0.8); padding-bottom: 20px; margin-bottom: 0; }
+  .ritual-motion-programme-section:not(.is-collapsed) .programme-toggle-trigger { margin-bottom: 8px; }
 </style>
 @endsection
 
@@ -2605,7 +2720,7 @@ Nous vous offrons le meilleur pour bouger
 Live : rituel 50+10. VOD : programmes + routines + conseils premium."
     :cta="[
       ['text' => 'Trouver un live', 'url' => '#results', 'variant' => 'primary'],
-      ['text' => 'Voir le programme', 'url' => '#program', 'variant' => 'secondary']
+      ['text' => 'Voir le programme', 'url' => '#programme', 'variant' => 'secondary']
     ]"
   />
 
@@ -2622,9 +2737,123 @@ Live : rituel 50+10. VOD : programmes + routines + conseils premium."
     />
   </div>
 
-  {{-- Module Pause Souffle Inline (juste sous filtres, avant résultats) --}}
+  {{-- ========== SECTION PROGRAMME & PLANNING (Ritual Motion premium) ========== --}}
+  <section id="programme" class="ritual-motion-programme-section">
+    <div class="container">
+      {{-- Barre toggle premium (toujours visible) --}}
+      <button type="button" class="programme-toggle-trigger" id="programmeToggle" aria-expanded="true" aria-controls="programmeContent">
+        <span class="programme-badge">PROGRAMME — RITUELS EN DIRECT</span>
+        <h2 class="programme-title programme-toggle-title">Le programme Ritual Motion</h2>
+        <span class="programme-toggle-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+      </button>
+      {{-- Contenu repliable --}}
+      <div id="programmeContent" class="programme-content-wrapper is-open">
+      {{-- A) En-tête --}}
+      <div class="programme-header">
+        <span class="programme-badge">PROGRAMME — RITUELS EN DIRECT</span>
+        <p class="programme-micro">Live • VOD • Rituels courts</p>
+        <h2 class="programme-title">Le programme Ritual Motion</h2>
+        <p class="programme-subtitle">Des rituels précis, progressifs et accessibles — pour bouger, respirer et récupérer, sans surcharge.</p>
+      </div>
+
+      {{-- B) Format des rituels (4 mini-cartes) --}}
+      <div class="programme-rituels-format">
+        <div class="rituel-format-grid">
+          <div class="rituel-format-card"><span class="rituel-duree">15 min</span><span class="rituel-detail">10 min focus + 5 min Récup'</span></div>
+          <div class="rituel-format-card"><span class="rituel-duree">30 min</span><span class="rituel-detail">20 min focus + 10 min Récup'</span></div>
+          <div class="rituel-format-card"><span class="rituel-duree">45 min</span><span class="rituel-detail">35 min focus + 10 min Récup'</span></div>
+          <div class="rituel-format-card"><span class="rituel-duree">60 min</span><span class="rituel-detail">50 min focus + 10 min Récup'</span></div>
+        </div>
+        <p class="rituel-format-note">Le focus fait monter l'énergie. La Récup' remet le corps d'aplomb.</p>
+      </div>
+
+      {{-- C) Votre rythme --}}
+      <div class="programme-rythme">
+        <h3 class="programme-rythme-title">Votre rythme</h3>
+        <p class="programme-rythme-sub">Choisissez votre cadence — ajustable à tout moment.</p>
+        <div class="programme-rythme-segmented" role="group">
+          <label class="rythme-pill" data-rituels="2"><input type="radio" name="rythme" value="essentiel" checked><span>Essentiel — 2 rituels / semaine</span></label>
+          <label class="rythme-pill" data-rituels="4"><input type="radio" name="rythme" value="equilibre"><span>Équilibré — 4 rituels / semaine</span></label>
+          <label class="rythme-pill" data-rituels="6"><input type="radio" name="rythme" value="intensif"><span>Intensif — 6 rituels / semaine</span></label>
+        </div>
+        <p class="programme-rythme-dynamic">Vous visez <strong>2</strong> rituels / semaine — idéal pour installer une routine stable, sans pression.</p>
+      </div>
+
+      {{-- D) 4 disciplines (cartes premium) --}}
+      <div class="programme-disciplines">
+        <div class="discipline-card">
+          <h4 class="discipline-title">Cardio-Training</h4>
+          <p class="discipline-phrase">Endurance, explosivité et cardio maîtrisé — pour monter en puissance rituel après rituel.</p>
+          <div class="discipline-chips"><span>Boxing</span><span>Cross Training</span><span>HIIT Cardio</span><span>HIIT Force</span><span>Step</span><span>Self-Défense</span></div>
+        </div>
+        <div class="discipline-card">
+          <h4 class="discipline-title">Renforcement musculaire</h4>
+          <p class="discipline-phrase">Force utile, posture et tonicité globale — tout le corps, avec un focus profond sur le centre.</p>
+          <div class="discipline-chips"><span>Pilates</span><span>Pilates (petits matériels)</span><span>Pilates Ball</span><span>TRX</span><span>Cuisses-Abdos-Fessiers (CAF)</span><span>Abdos & Fessiers (AF)</span></div>
+          <p class="discipline-micro">Pilates (petits matériels) : roller, circle, élastiques.</p>
+        </div>
+        <div class="discipline-card">
+          <h4 class="discipline-title">Bien-Être</h4>
+          <p class="discipline-phrase">Mobilité, souffle et relâchement actif — pour récupérer, s'aligner et se sentir léger.</p>
+          <div class="discipline-chips"><span>Stretching</span><span>Ritual Flow</span><span>Ritual Récup'</span><span>Yoga</span><span>Yoga Énergie</span><span>Yoga Anti-stress</span></div>
+          <p class="discipline-micro">Ritual Flow : Tai Chi, Pilates, Yoga & Stretching : alignement, mobilité, calme actif.</p>
+          <p class="discipline-micro">Ritual Récup' : Le rituel d'auto-massage qui remet le corps d'aplomb.</p>
+        </div>
+        <div class="discipline-card">
+          <h4 class="discipline-title">Danse</h4>
+          <p class="discipline-phrase">Cardio joyeux, coordination et expression — du rythme, du fun et du résultat.</p>
+          <div class="discipline-chips"><span>Zumba</span><span>Hip-Hop</span><span>Afro Move</span><span>Dance Workout</span><span>Aérien (Pole Dance • Tissu • Cerceau)</span><span>Dance HIIT</span></div>
+        </div>
+      </div>
+
+      {{-- E) Planning premium (2 tabs) --}}
+      <div class="programme-planning">
+        <div class="planning-tabs">
+          <button type="button" class="planning-tab is-active" data-tab="privilege">
+            <span class="planning-tab-badge planning-badge-privilege">Accès privilège</span>
+            <span class="planning-tab-title">Pilates inclus (avantage client)</span>
+          </button>
+          <button type="button" class="planning-tab" data-tab="decouverte">
+            <span class="planning-tab-badge planning-badge-offert">Offert</span>
+            <span class="planning-tab-title">Rituels découverte</span>
+          </button>
+        </div>
+        <div class="planning-panels">
+          {{-- TAB 1 — Accès privilège --}}
+          <div class="planning-panel is-active" id="panel-privilege">
+            <p class="planning-panel-text">Des rituels Pilates inclus, réservés aux clients éligibles.</p>
+            <div class="planning-etat planning-etat-eligible">
+              <a href="#" class="planning-cta">Voir mes créneaux Pilates inclus</a>
+              <p class="planning-note">Accès confirmé — vous pouvez réserver.</p>
+            </div>
+            <div class="planning-etat planning-etat-noneligible" style="display:none;">
+              <a href="#" class="planning-cta planning-cta-secondary">Débloquer l'accès privilège</a>
+              <div class="planning-progress-bar"><div class="planning-progress-fill" style="width:60%"></div></div>
+              <p class="planning-note">Encore quelques étapes avant d'activer vos rituels Pilates inclus.</p>
+              <a href="#" class="planning-link">Comment débloquer cet avantage ?</a>
+            </div>
+            <p class="planning-loading" style="display:none;">Chargement des créneaux…</p>
+            <p class="planning-empty" style="display:none;">Aucun créneau cette semaine. <a href="#">Voir la semaine suivante</a> · <a href="#">Être notifié…</a></p>
+          </div>
+          {{-- TAB 2 — Rituels découverte --}}
+          <div class="planning-panel" id="panel-decouverte">
+            <p class="planning-panel-text">15–30 min — pour tester une discipline, sans engagement.</p>
+            <p class="planning-panel-micro">Des coachs ouvrent des créneaux découverte pour se présenter et vous faire vivre l'expérience.</p>
+            <a href="#" class="planning-cta">Réserver un rituel découverte</a>
+            <p class="planning-note">Places limitées.</p>
+            <a href="#" class="planning-link">Je suis coach : proposer un créneau</a>
+            <p class="planning-loading" style="display:none;">Chargement des créneaux…</p>
+            <p class="planning-empty" style="display:none;">Aucun créneau cette semaine. <a href="#">Voir la semaine suivante</a> · <a href="#">Être notifié…</a></p>
+          </div>
+        </div>
+      </div>
+      </div>{{-- /programme-content-wrapper --}}
+    </div>
+  </section>
+
+  {{-- Module Pause Souffle Inline avec badge + titre (juste sous filtres, avant résultats) --}}
   <div class="container">
-    @include('frontend.components.pause-souffle.inline-premium')
+    @include('frontend.components.pause-souffle.inline-premium-projects')
   </div>
 
   {{-- Résultats --}}
@@ -3056,7 +3285,7 @@ Live : rituel 50+10. VOD : programmes + routines + conseils premium."
             @endif
                             
                             <!-- Fallback élégant avec dégradé violet UNIQUEMENT si aucune miniature n'est disponible -->
-                            <div class="video-placeholder-fallback" style="display: {{ ($hasThumbnail && !empty($thumbnailUrl)) ? 'none' : 'flex' }}; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #7C3AED 100%); color: white; text-align: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;">
+                            <div class="video-placeholder-fallback" style="display: {{ ($hasThumbnail && !empty($thumbnailUrl)) ? 'none' : 'flex' }}; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #FDBA74 0%, #F97316 50%, #EA580C 100%); color: white; text-align: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;">
                               <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 16px;">
                                 <div style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255, 255, 255, 0.3);">
                                   <i class="fas fa-video" style="font-size: 36px; opacity: 0.95;"></i>
@@ -3147,6 +3376,45 @@ Live : rituel 50+10. VOD : programmes + routines + conseils premium."
       trigger.classList.add('active');
     }
   }
+
+  // Programme & planning : toggle + rythme + tabs
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggleBtn = document.getElementById('programmeToggle');
+    var section = document.querySelector('.ritual-motion-programme-section');
+    var content = document.getElementById('programmeContent');
+    if (toggleBtn && section && content) {
+      toggleBtn.addEventListener('click', function() {
+        var isOpen = content.classList.contains('is-open');
+        content.classList.toggle('is-open', !isOpen);
+        section.classList.toggle('is-collapsed', isOpen);
+        toggleBtn.setAttribute('aria-expanded', !isOpen);
+        content.setAttribute('aria-hidden', isOpen);
+      });
+      if (window.location.hash === '#programme') {
+        content.classList.add('is-open');
+        section.classList.remove('is-collapsed');
+      }
+    }
+    var dynText = document.querySelector('.programme-rythme-dynamic');
+    document.querySelectorAll('.rythme-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var n = this.getAttribute('data-rituels') || '2';
+        if (dynText) {
+          dynText.innerHTML = 'Vous visez <strong>' + n + '</strong> rituels / semaine — idéal pour installer une routine stable, sans pression.';
+        }
+      });
+    });
+    document.querySelectorAll('.planning-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = this.getAttribute('data-tab');
+        document.querySelectorAll('.planning-tab').forEach(function(t){ t.classList.remove('is-active'); });
+        document.querySelectorAll('.planning-panel').forEach(function(p){ p.classList.remove('is-active'); });
+        this.classList.add('is-active');
+        var panel = document.getElementById('panel-' + target);
+        if (panel) panel.classList.add('is-active');
+      });
+    });
+  });
 
   // Initialiser les boutons de temps et jours + tri
   document.addEventListener('DOMContentLoaded', function() {

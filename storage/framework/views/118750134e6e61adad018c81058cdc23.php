@@ -3035,12 +3035,13 @@
                 </div>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            <!-- Navigation (suivant uniquement, défilement continu) -->
+            <!-- Navigation -->
+            <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
             <!-- Pagination -->
             <div class="swiper-pagination"></div>
-            </div>
           </div>
+        </div>
         <div class="row mt-5">
           <div class="col-12">
             <div class="freelances-actions">
@@ -3199,6 +3200,7 @@
           },
           navigation: {
             nextEl: '.freelancers-recommended-slider .swiper-button-next',
+            prevEl: '.freelancers-recommended-slider .swiper-button-prev',
           },
           breakpoints: {
             640: { slidesPerView: 2, spaceBetween: 24 },

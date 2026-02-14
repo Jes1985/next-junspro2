@@ -1,0 +1,42 @@
+================================================================================
+DIFF / PATCH — PROUVER LES CHANGEMENTS SUR /about
+Fichier : resources/views/frontend/aboutus.blade.php
+================================================================================
+
+--- AVANT (ancienne structure template) ---
+- Section about-area-v1 avec $aboutData->title, $aboutData->text (contenu DB)
+- Section testimonial-area avec $testimonials (Harry Potter, Jane Doe, Lorem Ipsum)
+- Section sponsor-area avec $partners
+- Contenu dynamique depuis DB (about_sections, testimonials)
+- Texte "Take Your Business Life To The Next Level", "Fiverr", etc.
+
++++ APRÈS (refonte JUNSPRO 50/50) ---
+
+Ligne 648: <h1>Moins de pression. Plus de progrès.</h1>
+Ligne 649: <p class="hero-lead">Junspro est né d'une conviction : ce qui fait avancer un projet...</p>
+Ligne 657-658: <a href="{{ route('mission.form') }}">Entrer dans l'expérience</a>
+             <a href="{{ route('faq') }}">Comprendre le Rituel</a>
+
+Ligne 659-674: Module "Le Rituel, en 3 gestes" (50 min Focus, 10 min Feedback, Rapport)
+Ligne 677-712: Bloc vidéo conservé + pastilles Alpine (Côté client, Freelance, Pourquoi ça marche)
+Ligne 714-732: Tabs "Choisissez votre rythme" (Ajouter, Pause, Transférer)
+Ligne 734-753: Bloc photo laptop conservé + 3 cartes (Client, Freelance, Humain)
+Ligne 755-790: Mythes vs Réalité (accordéon 4 items)
+Ligne 792-822: 6 univers (Projet & Consulting, Cours & Tutorat, At home, Ritual Motion, Présence, Échange de logement)
+Ligne 824-846: Slider partenaires conservé + upgrade CSS (grayscale → couleur au hover)
+Ligne 848-860: CTA final "Prêt pour votre premier Rituel ?" + "Paiement sécurisé par Stripe"
+
+COULEURS (lignes 47-56):
+  background: linear-gradient(180deg, #F6F3FF 0%, #F1F6FF 100%);
+  gradient: #A78BFA → #6D28D9 → #1D4ED8
+
+SUPPRIMÉ:
+- Toute référence à $aboutData->text (contenu DB template)
+- Section testimonials complète (faux profils, Lorem Ipsum)
+- Lorem Ipsum, Harry Potter, Jane Doe, Fiverr
+
+================================================================================
+COMMANDE POUR VÉRIFIER LA PRÉSENCE DU H1 :
+  grep -n "Moins de pression" resources/views/frontend/aboutus.blade.php
+  Attendu : 648:        <h1>Moins de pression. Plus de progrès.</h1>
+================================================================================

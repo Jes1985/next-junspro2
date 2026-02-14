@@ -144,4 +144,37 @@ class MiscellaneousController extends Controller
 
     return view('errors.503', compact('info'));
   }
+
+
+  /**
+   * Page "Comment on estime les tarifs" — baromètres internes Junspro (slider + engagement)
+   * Univers : request > referer > default lessons.
+   * Projects + Corporate = journalier d'abord ; Lessons + WellnessLive + at-home = horaire d'abord.
+   */
+  public function commentOnEstimeLesTarifs()
+  {
+    $universe = $this->detectUniverseForTarifs();
+    return view('frontend.comment-on-estime-les-tarifs', ['universe' => $universe]);
+  }
+
+  /**
+   * Détecte l'univers pour la page tarifs (request > referer > default).
+   */
+  private function detectUniverseForTarifs(): string
+  {
+    $valid = ['projects', 'corporate', 'lessons', 'wellnesslive', 'at-home'];
+    $param = request('universe');
+    if ($param && in_array(strtolower($param), $valid)) {
+      return strtolower($param);
+    }
+    $referer = request()->headers->get('referer');
+    if ($referer) {
+      if (str_contains($referer, '/services/projects')) return 'projects';
+      if (str_contains($referer, '/services/corporate')) return 'corporate';
+      if (str_contains($referer, '/services/lessons')) return 'lessons';
+      if (str_contains($referer, '/services/wellnesslive')) return 'wellnesslive';
+      if (str_contains($referer, '/services/at-home')) return 'at-home';
+    }
+    return 'lessons';
+  }
 }

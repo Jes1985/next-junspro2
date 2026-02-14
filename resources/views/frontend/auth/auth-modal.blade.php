@@ -2,6 +2,7 @@
   $role = $role ?? 'client'; // 'client' ou 'freelance'
   $mode = $mode ?? 'login'; // 'login' ou 'register'
   $isModal = $isModal ?? false;
+  $googleRecaptchaStatus = $googleRecaptchaStatus ?? 0;
 @endphp
 
 <div class="auth-container {{ $isModal ? 'auth-modal' : 'auth-page' }}" id="authContainer">
@@ -84,15 +85,6 @@
         </svg>
         <div style="flex: 1;">
           <span>{{ session('error') }}</span>
-          @if(session('unverified_email'))
-            <form action="{{ route('user.resend_verification') }}" method="POST" style="margin-top: 8px;">
-              @csrf
-              <input type="hidden" name="email" value="{{ session('unverified_email') }}">
-              <button type="submit" class="auth-resend-btn" style="background: none; border: none; color: var(--auth-primary); text-decoration: underline; cursor: pointer; font-size: 13px; padding: 0;">
-                Renvoyer l'email de vérification
-              </button>
-            </form>
-          @endif
         </div>
       </div>
     @endif

@@ -64,6 +64,6 @@ class MatchEmailRule implements Rule
    */
   public function message()
   {
-    return 'This email does not exist!';
+    return __('Cette adresse e-mail n\'existe pas dans notre base. Créez un compte si vous n\'en avez pas.');
   }
 }

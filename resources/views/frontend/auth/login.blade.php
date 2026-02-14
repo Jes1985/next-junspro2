@@ -30,7 +30,8 @@
     'isModal' => false,
     'websiteInfo' => $websiteInfo ?? null,
     'googleEnabled' => $googleEnabled ?? false,
-    'facebookEnabled' => $facebookEnabled ?? false
+    'facebookEnabled' => $facebookEnabled ?? false,
+    'googleRecaptchaStatus' => $googleRecaptchaStatus ?? 0
   ])
 </body>
 </html>

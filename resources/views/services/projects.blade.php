@@ -2947,12 +2947,9 @@
       top: auto !important;
       left: auto !important;
       right: auto !important;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .freelancer-quick-view-v2 {
-      display: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: all !important;
     }
   }
 
@@ -3287,6 +3284,16 @@
   .projects-city-popover-text { font-size: 0.75rem; color: #64748b; line-height: 1.5; margin: 0; }
   .projects-city-popover-badge { color: #6b7280; font-weight: 500; }
 
+  /* Toggle Base journée 7h/8h (Engagement en Rituel) */
+  .page-projects .engagement-base-btn.is-active { background: #fff !important; color: #7c3aed !important; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+  .page-projects .engagement-base-btn:hover { color: #7c3aed; background: rgba(124, 58, 237, 0.08); }
+  /* Express option — style premium aligné Engagement */
+  .page-projects .junspro-express-options .express-option-card.is-selected { background: #fff !important; color: #7c3aed !important; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+  .page-projects .junspro-express-options .express-option-card:hover { color: #7c3aed; background: rgba(124, 58, 237, 0.08); }
+  .page-projects .engagement-base-tooltip:hover { background: #7c3aed !important; color: white !important; }
+  .page-projects .engagement-base-tooltip:hover::after { content: attr(data-tooltip); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); max-width: 240px; padding: 6px 10px; background: #1F2937; color: #fff; font-size: 10px; line-height: 1.4; border-radius: 6px; white-space: normal; z-index: 100; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .page-projects .engagement-base-tooltip { position: relative; }
+
   /* Hero Domaine + Spécialisation (dropdown premium) — z-index pour que le menu s’affiche au-dessus du hero */
   .page-projects .home-search-filter-section { overflow: visible; }
   [data-hero-filter="projects"] { position: relative; z-index: 50; overflow: visible; }
@@ -3326,9 +3333,9 @@
 
   {{-- Barre de filtres horizontaux Preply : intégrée dans "Filtres avancés" du search-filter pour /services/projects --}}
 
-  {{-- Module Pause Souffle Inline (juste sous filtres, avant résultats) --}}
+  {{-- Module Pause Souffle Inline avec badge + titre (juste sous filtres, avant résultats) --}}
   <div class="container">
-    @include('frontend.components.pause-souffle.inline-premium')
+    @include('frontend.components.pause-souffle.inline-premium-projects')
   </div>
 
   {{-- Résultats --}}
@@ -5175,10 +5182,43 @@
   });
 
   // ============================================
-  // ESTIMATION BUDGET HEURES / RITUELS
+  // ESTIMATION BUDGET HEURES / RITUELS + EXPRESS
+  // Utilise express:changed (module expressOptions.js)
   // ============================================
   (function() {
     'use strict';
+    const STORAGE_KEY = 'junspro_day_base_hours';
+    var expressMultiplier = 1;
+    var updateBudgetEstimateRef = null;
+    function getBaseHours() {
+      var v = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+      return (v === 7 || v === 8) ? v : 7;
+    }
+    function setBaseHours(v) {
+      localStorage.setItem(STORAGE_KEY, String(v));
+    }
+    function getExpressMultiplier() {
+      syncExpressFromDom();
+      return expressMultiplier;
+    }
+    function syncExpressFromDom() {
+      var input = document.querySelector('[data-express-input]');
+      var mode = (input && input.value) ? input.value : 'none';
+      expressMultiplier = { none: 1, '24': 1.3, '48': 1.2, '72': 1.1 }[mode] || 1;
+    }
+    window.addEventListener('express:changed', function(e) {
+      expressMultiplier = e.detail && e.detail.multiplier ? e.detail.multiplier : 1;
+      if (updateBudgetEstimateRef) updateBudgetEstimateRef();
+    });
+    function syncToggleUI(base) {
+      document.querySelectorAll('.engagement-base-btn').forEach(function(btn) {
+        if (parseInt(btn.getAttribute('data-base'), 10) === base) {
+          btn.classList.add('is-active');
+        } else {
+          btn.classList.remove('is-active');
+        }
+      });
+    }
     
     // Fonction d'initialisation qui s'exécute quand le DOM est prêt
     function initBudgetEstimate() {
@@ -5272,34 +5312,27 @@
         const budget = budgetMapping[selectedValue];
         const rates = getVisibleHourlyRates();
         
-        // Si aucun taux trouvé
-        if (rates.length === 0) {
-          estimateElement.textContent = 'Estimation affichée dès qu\'un tarif est disponible.';
-          return;
-        }
-        
-        // Obtenir le taux à utiliser (médiane ou premier)
-        const rate = getRateToUse(rates);
-        if (!rate || rate <= 0) {
-          estimateElement.textContent = 'Estimation affichée dès qu\'un tarif est disponible.';
-          return;
-        }
+        // Tarif de référence : cartes visibles ou fallback (39 €/h) pour afficher une estimation même sans résultats
+        const FALLBACK_RATE = 39;
+        let rateBase = (rates.length > 0) ? getRateToUse(rates) : null;
+        if (!rateBase || rateBase <= 0) rateBase = FALLBACK_RATE;
+        // Express : multiplicateur appliqué UNIQUEMENT aux montants € affichés, jamais aux heures/rituels
+        const expressMult = getExpressMultiplier();
+        const rate = rateBase * expressMult;
         
         // ============================================
         // CALCUL ESTIMATION EN RITUELS (système actuel)
+        // Volume/heures inchangés — Express n'ajoute pas d'heures
         // ============================================
-        // Calculer les rituels selon les règles métier
-        // Pour une fourchette : rituelsMin = ceil(minBudget / taux), rituelsMax = floor(maxBudget / taux)
         let rituelsMin, rituelsMax;
         let isUnlimited = false;
         
         if (budget.max === 999999) {
-          // Cas "5000€+" : afficher "≈ {rituelsMin}+ rituels • soit ~{hMin}+ h"
-          rituelsMin = Math.ceil(budget.min / rate);
+          rituelsMin = Math.ceil(budget.min / rateBase);
           isUnlimited = true;
         } else {
-          rituelsMin = Math.ceil(budget.min / rate);
-          rituelsMax = Math.floor(budget.max / rate);
+          rituelsMin = Math.ceil(budget.min / rateBase);
+          rituelsMax = Math.floor(budget.max / rateBase);
         }
         
         // Les heures = rituels (1 rituel = 1 heure)
@@ -5314,51 +5347,67 @@
         
         // ============================================
         // CALCUL ESTIMATION "À L'HEURE" (nouveau système)
+        // Heures inchangées — Express n'affecte pas le volume
         // ============================================
-        // Calcul direct en heures avec le tarif horaire moyen
-        // Plus précis car basé sur le tarif réel des freelances visibles
         let hoursDirectMin, hoursDirectMax;
         
         if (budget.max === 999999) {
-          hoursDirectMin = Math.ceil(budget.min / rate);
+          hoursDirectMin = Math.ceil(budget.min / rateBase);
           hoursDirectMax = null;
         } else {
-          // Calcul direct : heures = budget / tarif horaire
-          hoursDirectMin = Math.ceil(budget.min / rate);
-          hoursDirectMax = Math.floor(budget.max / rate);
+          hoursDirectMin = Math.ceil(budget.min / rateBase);
+          hoursDirectMax = Math.floor(budget.max / rateBase);
         }
         
         const hoursDirectMinFormatted = formatEstimate(hoursDirectMin);
         const hoursDirectMaxFormatted = hoursDirectMax ? formatEstimate(hoursDirectMax) : null;
-        const rateFormatted = formatEstimate(rate);
         
-        // Statistiques supplémentaires pour plus de transparence
+        // Tarifs affichés = base * (1 + % express)
+        const rateFormatted = formatEstimate(rate);
         const ratesCount = rates.length;
-        const rateMin = Math.min(...rates);
-        const rateMax = Math.max(...rates);
+        const rateMinBase = ratesCount > 0 ? Math.min(...rates) : rateBase;
+        const rateMaxBase = ratesCount > 0 ? Math.max(...rates) : rateBase;
+        const rateMin = rateMinBase * expressMult;
+        const rateMax = rateMaxBase * expressMult;
         const rateMinFormatted = formatEstimate(rateMin);
         const rateMaxFormatted = formatEstimate(rateMax);
         
-        // Afficher l'estimation combinée (rituels + estimation à l'heure)
+        // Conversion journalier (base 7h ou 8h) — arrondi à l'euro — avec Express
+        const base = getBaseHours();
+        const tjmMoyen = Math.round(rate * base);
+        const tjmMin = Math.round(rateMin * base);
+        const tjmMax = Math.round(rateMax * base);
+        const tjmLine = (tjmMoyen > 0 && !isNaN(tjmMoyen)) ? `
+            <div style="color: #059669; font-weight: 500; font-size: 11px; margin-top: 4px;">
+              Tarif journalier moyen (${base}h) : ${tjmMoyen} €/jour${ratesCount > 1 ? ` (fourchette : ${tjmMin}–${tjmMax} €/jour)` : ''}
+            </div>
+          ` : '';
+        const horaireLine = `
+            <div style="color: #059669; font-weight: 500; font-size: 11px; margin-top: 4px;">
+              Tarif horaire moyen : ${rateFormatted} €/h${ratesCount > 1 ? ` (fourchette : ${rateMinFormatted}–${rateMaxFormatted} €/h)` : ''}
+            </div>
+          `;
+        var expressPct = (expressMult - 1) * 100;
+        var expressMicroLine = expressPct > 0
+          ? '<div style="font-size: 10px; color: #6B7280; margin-top: 6px;">Supplément Express appliqué : +' + Math.round(expressPct) + '%</div>'
+          : '<div style="font-size: 10px; color: #6B7280; margin-top: 6px;">Standard : aucun supplément</div>';
         if (isUnlimited) {
           estimateElement.innerHTML = `
             <div style="margin-bottom: 4px;">
-              ≈ ${rituelsMinFormatted}+ rituels (soit ~${hoursMinFormatted}+ h)
+              Volume estimé : ~${rituelsMinFormatted}+ rituels (≈ ${hoursMinFormatted}+ h)
             </div>
-            <div style="color: #059669; font-weight: 500; font-size: 11px;">
-              Estimation à l'heure : ~${hoursDirectMinFormatted}+ h • Tarif moyen : ${rateFormatted}€/h
-              ${ratesCount > 1 ? ` (${rateMinFormatted}€-${rateMaxFormatted}€)` : ''}
-            </div>
+            ${tjmLine}
+            ${horaireLine}
+            ${expressMicroLine}
           `;
         } else {
           estimateElement.innerHTML = `
             <div style="margin-bottom: 4px;">
-              ≈ ${rituelsMinFormatted}–${rituelsMaxFormatted} rituels (soit ~${hoursMinFormatted}–${hoursMaxFormatted} h)
+              Volume estimé : ~${rituelsMinFormatted}–${rituelsMaxFormatted} rituels (≈ ${hoursMinFormatted}–${hoursMaxFormatted} h)
             </div>
-            <div style="color: #059669; font-weight: 500; font-size: 11px;">
-              Estimation à l'heure : ~${hoursDirectMinFormatted}–${hoursDirectMaxFormatted} h • Tarif moyen : ${rateFormatted}€/h
-              ${ratesCount > 1 ? ` (fourchette : ${rateMinFormatted}€-${rateMaxFormatted}€)` : ''}
-            </div>
+            ${tjmLine}
+            ${horaireLine}
+            ${expressMicroLine}
           `;
         }
       }
@@ -5370,6 +5419,19 @@
         e.stopPropagation(); // Empêcher la propagation de l'événement
         updateBudgetEstimate();
       }, true); // Capture phase = true pour intercepter en premier
+    
+    // Toggle Base journée 7h/8h
+    syncToggleUI(getBaseHours());
+    document.querySelectorAll('.engagement-base-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var base = parseInt(this.getAttribute('data-base'), 10);
+        setBaseHours(base);
+        syncToggleUI(base);
+        updateBudgetEstimate();
+      });
+    });
+    
+    // Express : géré par expressOptions.js (express:changed)
     
     // Observer les changements dans les résultats (filtrage, tri, pagination)
     const resultsContainer = document.querySelector('.preply-teachers-list, .freelancers-grid-premium, .freelancers-list-wrapper');
@@ -5398,7 +5460,8 @@
       });
     }
     
-    // Mettre à jour au chargement initial (déjà dans initBudgetEstimate)
+    // Mettre à jour au chargement initial
+    updateBudgetEstimateRef = updateBudgetEstimate;
     setTimeout(updateBudgetEstimate, 300);
     
     // Mettre à jour après les changements de filtres (via le formulaire)
@@ -5427,12 +5490,18 @@
     });
     } // Fin de initBudgetEstimate
     
-    // Initialiser quand le DOM est prêt
+    // Initialiser quand le DOM est prêt (avec retry si search-filter pas encore rendu)
+    function tryInitBudgetEstimate() {
+      if (document.getElementById('budgetFilter') && document.getElementById('budgetEstimate')) {
+        initBudgetEstimate();
+      } else {
+        setTimeout(tryInitBudgetEstimate, 100);
+      }
+    }
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initBudgetEstimate);
+      document.addEventListener('DOMContentLoaded', tryInitBudgetEstimate);
     } else {
-      // DOM déjà chargé, initialiser immédiatement
-      initBudgetEstimate();
+      setTimeout(tryInitBudgetEstimate, 50);
     }
 
     // Dropdown Premium "Le prof parle" (remplace l'ancien système "Autre...")
@@ -6257,6 +6326,10 @@
     const sectorNoResults = document.getElementById('sectorNoResults');
 
     if (!sectorTrigger || !sectorMenu || !sectorSelectedText || !sectorInput) {
+      return;
+    }
+    // Le filtre Univers d'activité est dans le search-filter : son init gère déjà le dropdown
+    if (sectorTrigger.closest('#homeSearchFilter')) {
       return;
     }
 

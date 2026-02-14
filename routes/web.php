@@ -346,7 +346,7 @@ Route::prefix('/user')->middleware(['change.lang'])->group(function () {
 
 // Routes de parrainage
 Route::prefix('/parrainage')->middleware(['change.lang'])->group(function () {
-  Route::get('/', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'index'])->name('referral.index')->middleware('auth:web');
+  Route::get('/', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'index'])->name('referral.index');
   Route::get('/conditions', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'conditions'])->name('referral.conditions');
 });
 
@@ -579,6 +579,30 @@ Route::prefix('/admin')->middleware('guest:admin')->group(function () {
 });
 
 
+
+/*
+|--------------------------------------------------------------------------
+| Pages légales statiques (avec sommaire)
+|--------------------------------------------------------------------------
+*/
+Route::get('/mentions-legales', function () {
+  return view('frontend.mentions-legales');
+})->name('mentions_legales')->middleware('change.lang');
+
+Route::get('/termes-et-conditions', function () {
+  return view('frontend.terms-conditions');
+})->name('termes_conditions')->middleware('change.lang');
+
+Route::get('/politique-de-confidentialite', function () {
+  return view('frontend.privacy-policy');
+})->name('politique_confidentialite')->middleware('change.lang');
+
+Route::get('/conditions-generales-de-vente', function () {
+  return view('frontend.sales-terms');
+})->name('conditions_generales_vente')->middleware('change.lang');
+
+Route::get('/comment-on-estime-les-tarifs', [\App\Http\Controllers\FrontEnd\MiscellaneousController::class, 'commentOnEstimeLesTarifs'])
+  ->name('comment_on_estime_les_tarifs')->middleware('change.lang');
 
 /*
 |--------------------------------------------------------------------------

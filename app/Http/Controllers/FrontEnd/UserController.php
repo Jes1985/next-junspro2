@@ -45,13 +45,24 @@ class UserController extends Controller
 {
   public function login()
   {
+    session()->forget(['unverified_email', 'unverified_user_id']);
+
     // Nouvelle vue moderne d'authentification
     // websiteInfo et currentLanguageInfo sont partagés globalement via AppServiceProvider
-    $basic = Basic::query()->select('google_login_status', 'facebook_login_status', 'google_client_id', 'google_client_secret', 'facebook_app_id', 'facebook_app_secret')->first();
+    $basic = Basic::query()->select(
+      'google_login_status',
+      'facebook_login_status',
+      'google_client_id',
+      'google_client_secret',
+      'facebook_app_id',
+      'facebook_app_secret',
+      'google_recaptcha_status'
+    )->first();
     
     return view('frontend.auth.login', [
       'googleEnabled' => $basic && $basic->google_login_status == 1 && !empty($basic->google_client_id) && !empty($basic->google_client_secret),
       'facebookEnabled' => $basic && $basic->facebook_login_status == 1 && !empty($basic->facebook_app_id) && !empty($basic->facebook_app_secret),
+      'googleRecaptchaStatus' => $basic ? (int) $basic->google_recaptcha_status : 0,
     ]);
   }
 
@@ -267,6 +278,11 @@ class UserController extends Controller
 
   public function loginSubmit(LoginRequest $request)
   {
+    $selectedRole = $request->input('role', 'client');
+    $failedLoginRedirect = redirect()
+      ->route('user.login', ['role' => $selectedRole])
+      ->withInput($request->only('email_address'));
+
     // get the email-address and password which has provided by the user
     $credentials = [
       'email_address' => $request->email_address,
@@ -276,9 +292,6 @@ class UserController extends Controller
     // login attempt
     if (Auth::guard('web')->attempt($credentials)) {
       $authUser = Auth::guard('web')->user();
-      
-      // Récupérer le rôle depuis la requête (si présent)
-      $selectedRole = $request->input('role', null);
       
       // Déterminer la redirection selon le type d'utilisateur
       if ($request->session()->has('redirectTo')) {
@@ -298,28 +311,14 @@ class UserController extends Controller
         }
       }
 
-      // first, check whether the user's email address verified or not
-      if (is_null($authUser->email_verified_at)) {
-        // Sauvegarder l'email dans la session pour permettre le renvoi
-        $request->session()->put('unverified_email', $authUser->email_address);
-        $request->session()->put('unverified_user_id', $authUser->id);
-        
-        $request->session()->flash('error', 'Veuillez vérifier votre adresse e-mail. Si vous n\'avez pas reçu l\'email de vérification, vous pouvez le renvoyer depuis la page de connexion.');
-
-        // logout auth user as condition not satisfied
-        Auth::guard('web')->logout();
-
-        return redirect()->back();
-      }
-
-      // second, check whether the user's account is active or not
+      // check whether the user's account is active or not
       if ($authUser->status == 0) {
         $request->session()->flash('error', 'Désolé, votre compte a été désactivé.');
 
         // logout auth user as condition not satisfied
         Auth::guard('web')->logout();
 
-        return redirect()->back();
+        return $failedLoginRedirect;
       }
 
       // before, redirect to next url forget the session value
@@ -333,7 +332,7 @@ class UserController extends Controller
     } else {
       $request->session()->flash('error', 'Adresse e-mail ou mot de passe incorrect.');
 
-      return redirect()->back();
+      return $failedLoginRedirect;
     }
   }
 
@@ -466,8 +465,6 @@ class UserController extends Controller
         ->with('info', __('Vous êtes déjà connecté.'));
     }
 
-    $websiteTitle = Basic::query()->pluck('website_title')->first();
-    
     // Récupérer le rôle (client par défaut)
     $role = $request->input('role', 'client');
 
@@ -489,66 +486,24 @@ class UserController extends Controller
         $user->phone = $phoneNumber;
       }
       
-      // Stocker les langues et le service principal en session pour utilisation après vérification email
-      if ($request->filled('languages')) {
-        Session::put('languages_' . $user->id, $request->languages);
-      }
-      if ($request->filled('main_service')) {
-        // Si "Autre" est sélectionné, utiliser la valeur personnalisée
-        $serviceToStore = $request->main_service;
-        if ($serviceToStore === 'Autre' && $request->filled('other_service')) {
-          $serviceToStore = $request->other_service;
-        }
-        Session::put('main_service_' . $user->id, $serviceToStore);
-      }
     }
 
-    // first, generate a random string
-    $randStr = Str::random(20);
-
-    // second, generate a token
-    $token = md5($randStr . $request->username . $request->email_address);
-
-    $user->verification_token = $token;
+    // Désactivation de la vérification email : activation immédiate du compte.
+    $user->email_verified_at = date('Y-m-d H:i:s');
+    $user->status = 1;
+    $user->verification_token = null;
     $user->save();
     
-    // Enregistrer le code de parrainage depuis le cookie (sera traité après vérification email)
+    // Enregistrer le code de parrainage immédiatement.
     $referralCode = $request->cookie('referral_code');
-    if ($referralCode) {
-      Session::put('pending_referral_code_' . $user->id, $referralCode);
+    if ($referralCode && class_exists(\App\Services\Junspro\ReferralService::class)) {
+      try {
+        $referralService = app(\App\Services\Junspro\ReferralService::class);
+        $referralService->registerReferral($referralCode, $user);
+      } catch (\Exception $e) {
+        \Log::warning('Erreur lors de l\'enregistrement du parrainage: ' . $e->getMessage());
+      }
     }
-    
-    // Créer le profil selon le rôle après vérification email
-    // (sera fait dans signupVerify)
-    Session::put('pending_role_' . $user->id, $role);
-    
-    // Stocker aussi la confirmation d'âge pour les freelances
-    if ($role === 'freelance' && $request->has('age_confirmation')) {
-      Session::put('age_confirmation_' . $user->id, true);
-    }
-
-    /**
-     * prepare a verification mail and, send it to user to verify his/her email address,
-     * get the mail template information from db
-     */
-    $mailTemplate = MailTemplate::query()->where('mail_type', '=', 'verify_email')->first();
-    $mailData['subject'] = $mailTemplate->mail_subject;
-    $mailBody = $mailTemplate->mail_body;
-
-    $link = '<a href=' . url("user/signup-verify/" . $token) . '>Click Here</a>';
-
-    $mailBody = str_replace('{username}', $request->username, $mailBody);
-    $mailBody = str_replace('{verification_link}', $link, $mailBody);
-    $mailBody = str_replace('{website_title}', $websiteTitle, $mailBody);
-
-    $mailData['body'] = $mailBody;
-
-    $mailData['recipient'] = $request->email_address;
-
-    $mailData['sessionMessage'] = 'A verification link has been sent to your email address.';
-
-    // Envoyer l'email de vérification en arrière-plan (ne pas bloquer)
-    BasicMailer::sendMail($mailData);
 
     // Pour les freelances : connecter immédiatement et rediriger vers l'onboarding
     if ($role === 'freelance') {
@@ -566,6 +521,27 @@ class UserController extends Controller
             'is_verified' => false,
           ]
         );
+        $freelancerProfile = \App\Models\FreelancerProfile::where('user_id', $user->id)->first();
+        if ($freelancerProfile) {
+          if ($request->filled('languages')) {
+            $freelancerProfile->languages = $request->languages;
+          }
+
+          if ($request->filled('main_service')) {
+            $mainService = $request->main_service;
+            if ($mainService === 'Autre' && $request->filled('other_service')) {
+              $mainService = $request->other_service;
+            }
+
+            $skills = $freelancerProfile->skills ?? [];
+            if (!in_array($mainService, $skills)) {
+              array_unshift($skills, $mainService);
+              $freelancerProfile->skills = $skills;
+            }
+          }
+
+          $freelancerProfile->save();
+        }
       }
       
         // Nettoyer localStorage après inscription réussie
@@ -573,11 +549,16 @@ class UserController extends Controller
       
       // Rediriger vers l'étape 1 de l'onboarding
       return redirect()->route('freelance.onboarding.step1')
-        ->with('success', __('Votre compte a été créé avec succès. Un email de vérification a été envoyé à votre adresse. Vous pouvez continuer à compléter votre profil.'));
+        ->with('success', __('Votre compte a été créé avec succès. Vous pouvez continuer à compléter votre profil.'));
     }
 
-    // Pour les clients : comportement standard (attendre vérification email)
-    return redirect()->back();
+    if (class_exists(\App\Models\ClientProfile::class)) {
+      \App\Models\ClientProfile::firstOrCreate(['user_id' => $user->id]);
+    }
+
+    Auth::guard('web')->login($user);
+    return redirect()->route('client.dashboard.index')
+      ->with('success', __('Votre compte a été créé avec succès.'));
   }
 
   public function resendVerificationEmail(Request $request)
@@ -747,25 +728,13 @@ class UserController extends Controller
     if ($user->freelancerProfile) {
       return redirect()->route('freelance.dashboard');
     }
-    
-    // PRIORITÉ 2 : Si l'utilisateur a un profil client, rediriger vers le nouveau dashboard client
-    if ($user->clientProfile) {
-      return redirect()->route('client.dashboard.index');
+
+    // Tous les comptes web non-freelance utilisent le dashboard client V2.
+    if (!$user->clientProfile && class_exists(\App\Models\ClientProfile::class)) {
+      \App\Models\ClientProfile::firstOrCreate(['user_id' => $user->id]);
     }
 
-    // Sinon, utiliser l'ancien dashboard (pour les autres types d'utilisateurs)
-    $misc = new MiscellaneousController();
-
-    $queryResult['breadcrumb'] = $misc->getBreadcrumb();
-
-    $queryResult['authUser'] = $user;
-
-    $queryResult['numOfServiceOrders'] = $user->serviceOrder()->count();
-
-    $queryResult['numOfWishlistedServices'] = $user->wishlistedService()->count();
-    $queryResult['numOfsupportTicket'] = $user->supportTickets()->count();
-
-    return view('frontend.user.dashboard', $queryResult);
+    return redirect()->route('client.dashboard.index');
   }
   public function followings()
   {

@@ -4,59 +4,51 @@
   <div class="footer-main">
     <div class="container">
       <div class="row g-4">
-        <!-- Colonne 1 : À propos -->
+        <!-- Colonne 1 : Marque + signature premium + Univers -->
         <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="footer-column">
+          <div class="footer-column footer-brand-column">
             <h5 class="footer-title">JUNSPRO</h5>
             <p class="footer-about">
-              Plateforme de mise en relation avec des freelances experts, disponibles à la semaine.
-              Liberté, confiance, connaissance, sagesse, joie.
+              Des experts disponibles à la semaine pour avancer avec méthode et sérénité.
             </p>
+            <p class="footer-about-signature">Liberté d'agir • Confiance durable • Décisions plus justes</p>
+            <div class="footer-univers-line">
+              <span class="footer-univers-label">Univers :</span>
+              <span class="footer-univers-links">
+                <a href="<?php echo e(route('services.projects')); ?>">Projet &amp; Consulting</a><span class="footer-univers-sep">•</span>
+                <a href="<?php echo e(route('services.lessons')); ?>">Cours &amp; Tutorat</a><span class="footer-univers-sep">•</span>
+                <a href="<?php echo e(route('services.at-home')); ?>">At-home Rituals Services</a><span class="footer-univers-sep">•</span>
+                <a href="<?php echo e(route('services.wellnesslive')); ?>">Ritual Motion</a><span class="footer-univers-sep">•</span>
+                <a href="<?php echo e(route('services.homeswap')); ?>">Échange de logement</a><span class="footer-univers-sep">•</span>
+                <a href="<?php echo e(route('services.corporate')); ?>">Présence</a>
+              </span>
+            </div>
           </div>
         </div>
 
-        <!-- Colonne 2 : Liens utiles -->
+        <!-- Colonne 2 : Liens utiles (pages légales avec sommaire) -->
         <div class="col-lg-2 col-md-6 col-sm-6">
           <div class="footer-column">
             <h5 class="footer-title"><?php echo e(__('Liens utiles')); ?></h5>
             <ul class="footer-links-list">
-              <?php if(count($quickLinkInfos) > 0): ?>
-                <?php $__currentLoopData = $quickLinkInfos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $quickLinkInfo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <li>
-                    <?php
-                      // Vérifier si l'URL est interne (commence par /) ou externe
-                      $url = $quickLinkInfo->url;
-                      $isInternal = strpos($url, '/') === 0 || strpos($url, url('/')) === 0;
-                      // Si c'est une URL interne, retirer target="_blank"
-                      $target = $isInternal ? '' : 'target="_blank"';
-                    ?>
-                    <a href="<?php echo e($url); ?>" <?php echo e($target); ?>><?php echo e($quickLinkInfo->title); ?></a>
-                  </li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-              <?php else: ?>
-                
-                <li><a href="<?php echo e(route('dynamic_page', ['slug' => 'cgu'])); ?>"><?php echo e(__('CGU')); ?></a></li>
-                <li><a href="<?php echo e(route('dynamic_page', ['slug' => 'mentions-legales'])); ?>"><?php echo e(__('Mentions légales')); ?></a></li>
-                <li><a href="<?php echo e(route('dynamic_page', ['slug' => 'termes-et-conditions'])); ?>"><?php echo e(__('Termes et conditions')); ?></a></li>
-                <li><a href="<?php echo e(route('dynamic_page', ['slug' => 'politique-de-confidentialite'])); ?>"><?php echo e(__('Politique de confidentialité')); ?></a></li>
-                <li><a href="<?php echo e(route('dynamic_page', ['slug' => 'conditions-generales-de-vente'])); ?>"><?php echo e(__('Conditions générales de vente')); ?></a></li>
-              <?php endif; ?>
-              <?php if(auth()->guard('web')->check()): ?>
-                <li><a href="<?php echo e(route('referral.index')); ?>"><?php echo e(__('Parrainage')); ?></a></li>
-              <?php endif; ?>
+              
+              <li><a href="<?php echo e(route('mentions_legales')); ?>"><?php echo e(__('Mentions légales')); ?></a></li>
+              <li><a href="<?php echo e(route('termes_conditions')); ?>"><?php echo e(__('Termes et conditions')); ?></a></li>
+              <li><a href="<?php echo e(route('politique_confidentialite')); ?>"><?php echo e(__('Politique de confidentialité')); ?></a></li>
+              <li><a href="<?php echo e(route('conditions_generales_vente')); ?>"><?php echo e(__('Conditions générales de vente')); ?></a></li>
+              <li><a href="<?php echo e(route('referral.index')); ?>"><?php echo e(__('Parrainage')); ?></a></li>
               <li><a href="<?php echo e(route('referral.conditions')); ?>"><?php echo e(__('Conditions du parrainage')); ?></a></li>
             </ul>
           </div>
         </div>
 
-        <!-- Colonne 3 : Démarrer (avec Pause Souffle) -->
-        <div class="col-lg-2 col-md-6 col-sm-6">
+        <!-- Colonne 3 : Démarrer (Pause Souffle, Déposer projet, Devenir freelance, Explorer services) -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
           <?php echo $__env->make('frontend.components.pause-souffle.footer-section-premium', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </div>
 
-
         <!-- Colonne 4 : Newsletter -->
-        <div class="col-lg-5 col-md-6 col-sm-6">
+        <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="footer-column">
             <h5 class="footer-title"><?php echo e(__('Restez informé')); ?></h5>
             <p class="footer-newsletter-text">
@@ -79,6 +71,7 @@
                 </button>
               </div>
             </form>
+            <p class="footer-newsletter-disclaimer">1 email / mois. Désinscription en un clic.</p>
           </div>
         </div>
       </div>
@@ -94,7 +87,16 @@
         </div>
         <div class="footer-social">
           <?php if(count($socialMediaInfos) > 0): ?>
-            <?php $__currentLoopData = $socialMediaInfos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socialMediaInfo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php
+              $seenIcons = [];
+              $socialMediaUnique = collect($socialMediaInfos)->filter(function ($s) use (&$seenIcons) {
+                $key = strtolower($s->icon ?? '');
+                if (in_array($key, $seenIcons)) return false;
+                $seenIcons[] = $key;
+                return true;
+              })->take(5)->values();
+            ?>
+            <?php $__currentLoopData = $socialMediaUnique; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socialMediaInfo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <a href="<?php echo e($socialMediaInfo->url); ?>" target="_blank" class="footer-social-icon" aria-label="<?php echo e($socialMediaInfo->icon); ?>">
                 <i class="<?php echo e($socialMediaInfo->icon); ?>"></i>
               </a>
@@ -198,6 +200,64 @@
     max-width: 280px;
   }
 
+  .footer-brand-column .footer-about {
+    max-width: 260px;
+  }
+
+  .footer-about-signature {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #9CA3AF;
+    opacity: 0.7;
+    margin: 8px 0 16px 0;
+    max-width: 260px;
+  }
+
+  .footer-univers-line {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 6px;
+    max-width: 320px;
+  }
+
+  .footer-univers-label {
+    font-size: 13px;
+    color: #9CA3AF;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .footer-univers-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 6px;
+  }
+
+  .footer-univers-links a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #9CA3AF;
+    text-decoration: none;
+    transition: opacity 0.2s ease, text-decoration 0.2s ease;
+  }
+
+  .footer-univers-links a:hover {
+    opacity: 0.9;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+
+  .footer-univers-sep {
+    font-size: 11px;
+    color: #9CA3AF;
+    opacity: 0.6;
+    user-select: none;
+  }
+
   /* Liens utiles */
   .footer-links-list {
     list-style: none;
@@ -223,6 +283,15 @@
 
   .footer-links-list a:hover {
     color: #7B3FF2;
+  }
+
+  .footer-micro-desc {
+    display: block;
+    font-size: 0.8125rem;
+    color: #6B7280;
+    margin-top: 2px;
+    font-weight: 400;
+    line-height: 1.4;
   }
 
   /* Contact */
@@ -331,6 +400,14 @@
 
   .footer-newsletter-btn:active {
     transform: translateY(0);
+  }
+
+  .footer-newsletter-disclaimer {
+    font-size: 11px;
+    color: #9CA3AF;
+    opacity: 0.6;
+    margin: 10px 0 0 0;
+    line-height: 1.4;
   }
 
   /* Bloc B : Copyright et réseaux sociaux */

@@ -82,8 +82,9 @@
 
 
 <?php echo $__env->yieldContent('script'); ?>
+<script type="text/javascript" src="<?php echo e(asset('assets/js/subscriptions/expressOptions.js')); ?>"></script>
 <script type="text/javascript" src="<?php echo e(asset('assets/js/push-notification.js')); ?>"></script>
 <script type="text/javascript" src="<?php echo e(asset('assets/js/floating-whatsapp.js')); ?>"></script>
 <!-- Main script JS -->
 <script type="text/javascript" src="<?php echo e(asset('assets/front/js/script.js')); ?>"></script>
-<?php /**PATH C:\Users\younes\Downloads\junspro-main (1)\junspro-main3\resources\views/frontend/partials/scripts/script-v3.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\younes\Downloads\junspro-main (1)\junspro-main3\resources\views/frontend/partials/scripts/script-v2.blade.php ENDPATH**/ ?>

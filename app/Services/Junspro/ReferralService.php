@@ -7,6 +7,7 @@ use App\Models\Referral;
 use App\Models\ClientProfile;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Service de gestion du parrainage Junspro V2
@@ -31,6 +32,10 @@ class ReferralService
      */
     public function getOrCreateReferralCode(User $user): string
     {
+        if (!Schema::hasColumn('users', 'referral_code')) {
+            return strtoupper(Str::random(8));
+        }
+
         if ($user->referral_code) {
             return $user->referral_code;
         }
@@ -50,6 +55,10 @@ class ReferralService
      */
     public function registerReferral(string $referralCode, User $referredUser): ?Referral
     {
+        if (!Schema::hasColumn('users', 'referral_code') || !Schema::hasTable('referrals')) {
+            return null;
+        }
+
         // Trouver le parrain
         $referrer = User::where('referral_code', $referralCode)->first();
 
@@ -63,7 +72,7 @@ class ReferralService
         }
 
         // Vérifier si l'utilisateur a déjà un parrain
-        if ($referredUser->referred_by_user_id) {
+        if (Schema::hasColumn('users', 'referred_by_user_id') && $referredUser->referred_by_user_id) {
             return null;
         }
 
@@ -76,7 +85,9 @@ class ReferralService
         ]);
 
         // Lier le filleul au parrain
-        $referredUser->update(['referred_by_user_id' => $referrer->id]);
+        if (Schema::hasColumn('users', 'referred_by_user_id')) {
+            $referredUser->update(['referred_by_user_id' => $referrer->id]);
+        }
 
         return $referral;
     }
@@ -86,6 +97,10 @@ class ReferralService
      */
     public function applyBenefitToBooking(ClientProfile $clientProfile, float $bookingAmount): ?float
     {
+        if (!Schema::hasTable('referrals')) {
+            return null;
+        }
+
         // Vérifier si c'est la première réservation éligible
         $referral = Referral::where('referred_id', $clientProfile->user_id)
             ->where('status', 'pending')
@@ -119,6 +134,10 @@ class ReferralService
      */
     public function creditReferrerAfterServiceConfirmation(ClientProfile $clientProfile): ?Referral
     {
+        if (!Schema::hasTable('referrals')) {
+            return null;
+        }
+
         $referral = Referral::where('referred_id', $clientProfile->user_id)
             ->where('status', 'pending')
             ->whereNotNull('first_booking_at')
@@ -165,6 +184,16 @@ class ReferralService
      */
     public function getReferralStats(User $user): array
     {
+        if (!Schema::hasTable('referrals')) {
+            return [
+                'pending_total' => 0,
+                'earned_total' => 0,
+                'total_referrals' => 0,
+                'pending_count' => 0,
+                'completed_count' => 0,
+            ];
+        }
+
         $referrals = Referral::where('referrer_id', $user->id)->get();
 
         $pending = $referrals->where('status', 'pending')->sum('reward_amount');
@@ -184,6 +213,10 @@ class ReferralService
      */
     public function getReferralsList(User $user, string $status = 'all', int $perPage = 20)
     {
+        if (!Schema::hasTable('referrals')) {
+            return Referral::query()->whereRaw('1 = 0')->paginate($perPage);
+        }
+
         $query = Referral::where('referrer_id', $user->id)
             ->with(['referred', 'clientProfile'])
             ->orderBy('created_at', 'desc');

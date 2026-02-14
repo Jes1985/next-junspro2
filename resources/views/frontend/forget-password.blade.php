@@ -293,6 +293,7 @@
       </form>
       <div class="page-forget-password__links">
         <a href="{{ route('user.login') }}">Retour à la connexion</a>
+        <a href="{{ route('user.signup') }}">Créer un compte</a>
         <a href="{{ route('contact') }}">Besoin d'aide ? Nous contacter</a>
       </div>
     </div>
