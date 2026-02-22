@@ -1,0 +1,66 @@
+
+<nav class="dashboard-nav">
+  <a href="<?php echo e(route('client.dashboard.index')); ?>" class="dashboard-nav-item <?php echo e(request()->routeIs('user.dashboard') || request()->routeIs('client.dashboard.index') ? 'active' : ''); ?>"><?php echo e(__('Accueil')); ?></a>
+  <a href="<?php echo e(route('user.messages.index')); ?>" class="dashboard-nav-item <?php echo e(request()->routeIs('user.messages.*') || request()->routeIs('client.messages.*') ? 'active' : ''); ?>"><?php echo e(__('Messages')); ?></a>
+  <a href="<?php echo e(route('user.projects_sessions.index')); ?>" class="dashboard-nav-item <?php echo e(request()->routeIs('user.projects_sessions.*') || request()->routeIs('client.subscriptions.*') ? 'active' : ''); ?>"><?php echo e(__('Projets & sessions')); ?></a>
+  <a href="<?php echo e(route('user.settings.index')); ?>" class="dashboard-nav-item <?php echo e(request()->routeIs('user.settings.*') || request()->routeIs('user.edit_profile') || request()->routeIs('user.change_password') ? 'active' : ''); ?>"><?php echo e(__('Paramètres')); ?></a>
+</nav>
+
+<style>
+  .dashboard-nav {
+    background: white;
+    border-radius: 16px;
+    padding: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .dashboard-nav a {
+    pointer-events: auto !important;
+  }
+  
+  .dashboard-nav a.dashboard-nav-item {
+    pointer-events: auto !important;
+  }
+
+  .dashboard-nav-item {
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .dashboard-nav-item:not([href]),
+  .dashboard-nav-item[href="#"],
+  .dashboard-nav-item[href=""] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .dashboard-nav-item:hover {
+    color: var(--junspro-purple, #7C3AED);
+    background: #f3f4f6;
+  }
+
+  .dashboard-nav-item.active {
+    color: #fff !important;
+    background: linear-gradient(135deg, #7C3AED 0%, #1e40af 100%) !important;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3) !important;
+    border-bottom: none !important;
+  }
+</style>
+<?php /**PATH C:\Users\younes\Downloads\junspro-main (1)\junspro-main3\resources\views\frontend\client\partials\dashboard-nav.blade.php ENDPATH**/ ?>

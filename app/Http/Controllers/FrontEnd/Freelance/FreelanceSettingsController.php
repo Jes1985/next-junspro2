@@ -41,10 +41,18 @@ class FreelanceSettingsController extends Controller
     {
         $user = Auth::guard('web')->user();
         $freelancerProfile = FreelancerProfile::where('user_id', $user->id)->first();
-        
+
+        $hubConfig = config('services_universes', []);
+        $hubUniversesList = $hubConfig['universes'] ?? [];
+        $hubDomainsByUniverse = $hubConfig['domains_by_universe'] ?? [];
+        $hubUniverses = collect($hubUniversesList)->map(fn ($label, $slug) => ['slug' => $slug, 'label' => $label])->values()->all();
+        $hubUniverseDomains = $hubDomainsByUniverse;
+
         return view('frontend.freelance.settings.identity', [
             'user' => $user,
             'freelancerProfile' => $freelancerProfile,
+            'hubUniverses' => $hubUniverses,
+            'hubUniverseDomains' => $hubUniverseDomains,
         ]);
     }
 

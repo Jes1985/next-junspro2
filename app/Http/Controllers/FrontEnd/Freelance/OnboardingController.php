@@ -7,6 +7,7 @@ use App\Models\FreelancerProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -51,6 +52,7 @@ class OnboardingController extends Controller
 
         // Récupérer les données existantes
         $services = $freelancerProfile->skills ?? [];
+        $serviceScope = $this->extractServiceScope($freelancerProfile);
         $languages = $freelancerProfile->languages ?? [];
         
         // Si pas de langues, initialiser avec une langue vide
@@ -85,13 +87,27 @@ class OnboardingController extends Controller
             'age_confirmation' => old('age_confirmation', false),
             'services' => old('services', $services),
             'languages' => old('languages', $languages),
+            'service_scope' => $serviceScope,
+            'matching_filters' => old('matching_filters', $this->extractMatchingFilters($freelancerProfile)),
+            'specialization_main' => old('specialization_main', (string)($freelancerProfile->specialization ?? '')),
+            'specialization_additional' => old('specialization_additional', $this->extractAdditionalSpecializations($freelancerProfile)),
         ];
+        $onboardingUniverseFilters = $this->buildOnboardingUniverseFilters();
+        $specializationsByDomain = $this->buildSpecializationsByDomain();
+
+        $identityDocuments = $this->extractIdentityDocuments($freelancerProfile->identity_document);
+        $data['identity_document_front'] = $identityDocuments['front'];
+        $data['identity_document_back'] = $identityDocuments['back'];
+        $data['identity_document_front_name'] = $identityDocuments['front'] ? basename($identityDocuments['front']) : null;
+        $data['identity_document_back_name'] = $identityDocuments['back'] ? basename($identityDocuments['back']) : null;
 
         return view('frontend.freelance.onboarding.step1', [
             'user' => $user,
             'freelancerProfile' => $freelancerProfile,
             'data' => $data,
             'serviceCategories' => $serviceCategories,
+            'onboardingUniverseFilters' => $onboardingUniverseFilters,
+            'specializationsByDomain' => $specializationsByDomain,
         ]);
     }
 
@@ -106,63 +122,6 @@ class OnboardingController extends Controller
             return redirect()->route('user.login')->with('error', __('Vous devez être connecté.'));
         }
 
-        $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'birth_country' => 'required|string|max:3',
-            'services' => 'required|array|min:1',
-            'services.*' => 'string|max:255',
-            'languages' => 'required|array|min:1',
-            'languages.*.language' => 'required|string|max:255',
-            'languages.*.level' => 'required|string|in:native,fluent,intermediate,beginner',
-            'phone' => 'nullable|string|max:20',
-            'phone_country_code' => 'nullable|string|max:10',
-            'age_confirmation' => 'required|accepted',
-            'identity_document' => 'required|file|mimes:jpeg,jpg,png,pdf|max:5120',
-        ], [
-            'first_name.required' => __('Le prénom est obligatoire.'),
-            'last_name.required' => __('Le nom est obligatoire.'),
-            'birth_country.required' => __('Le pays de naissance est obligatoire.'),
-            'services.required' => __('Vous devez sélectionner au moins un service.'),
-            'languages.required' => __('Vous devez ajouter au moins une langue.'),
-            'age_confirmation.required' => __('Vous devez confirmer avoir plus de 18 ans.'),
-            'age_confirmation.accepted' => __('Vous devez confirmer avoir plus de 18 ans.'),
-            'identity_document.required' => __('La pièce d\'identité est obligatoire.'),
-            'identity_document.file' => __('Le fichier de pièce d\'identité est invalide.'),
-            'identity_document.mimes' => __('La pièce d\'identité doit être au format JPEG, JPG, PNG ou PDF.'),
-            'identity_document.max' => __('La pièce d\'identité ne doit pas dépasser 5 Mo.'),
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        // Mettre à jour l'utilisateur
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->country_code = $request->birth_country;
-        $user->address = $request->address;
-        $user->postal_code = $request->postal_code ?? '10001';
-        
-        // Mettre à jour le téléphone si fourni
-        if ($request->filled('phone')) {
-            $phoneNumber = ($request->phone_country_code ?? '+33') . ' ' . $request->phone;
-            $user->phone_number = $phoneNumber;
-        }
-        
-        $user->save();
-
-        // Gérer l'upload de la pièce d'identité
-        $identityDocumentPath = null;
-        if ($request->hasFile('identity_document')) {
-            $file = $request->file('identity_document');
-            $filename = 'identity_' . $user->id . '_' . time() . '.' . $file->getClientOriginalExtension();
-            $identityDocumentPath = $file->storeAs('identity_documents', $filename, 'public');
-        }
-
-        // Mettre à jour le profil freelance
         $freelancerProfile = FreelancerProfile::firstOrCreate(
             ['user_id' => $user->id],
             [
@@ -173,15 +132,451 @@ class OnboardingController extends Controller
                 'is_verified' => false,
             ]
         );
-        $freelancerProfile->skills = $request->services;
-        $freelancerProfile->languages = $request->languages;
-        if ($identityDocumentPath) {
-            $freelancerProfile->identity_document = $identityDocumentPath;
+
+        $servicesConfig = config('services_universes', []);
+        $allowedUniverses = array_keys((array)($servicesConfig['universes'] ?? []));
+        $domainsByUniverse = (array)($servicesConfig['domains_by_universe'] ?? []);
+        $allowedDomainsByUniverse = [];
+        foreach ($domainsByUniverse as $universeSlug => $domainRows) {
+            $allowedDomainsByUniverse[$universeSlug] = [];
+            foreach ((array)$domainRows as $row) {
+                if (is_array($row) && isset($row[0])) {
+                    $allowedDomainsByUniverse[$universeSlug][] = (string)$row[0];
+                }
+            }
         }
+
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'universes' => 'required|array|min:1',
+            'universes.*' => 'required|string|max:64',
+            'domains' => 'required|array|min:1',
+            'domains.*' => 'required|string|max:128',
+            'intervention_mode' => 'required|string|in:online,onsite,hybrid',
+            'onsite_country' => 'required_if:intervention_mode,onsite,hybrid|nullable|string|max:8',
+            'onsite_city' => 'required_if:intervention_mode,onsite,hybrid|nullable|string|max:255',
+            'languages' => 'required|array|min:1',
+            'languages.*.language' => 'required|string|max:255',
+            'languages.*.level' => 'required|string|in:A1,A2,B1,B2,C1,C2,native,fluent,intermediate,beginner',
+            'phone' => 'nullable|string|max:20',
+            'phone_country_code' => 'nullable|string|max:10',
+            'matching_filters' => 'nullable|array',
+            'specialization_main' => 'nullable|string|max:128',
+            'specialization_additional' => 'nullable|array',
+            'specialization_additional.*' => 'nullable|string|max:128',
+        ], [
+            'first_name.required' => __('Le prénom est obligatoire.'),
+            'last_name.required' => __('Le nom est obligatoire.'),
+            'universes.required' => __('Vous devez sélectionner au moins un univers.'),
+            'domains.required' => __('Vous devez sélectionner au moins un domaine.'),
+            'intervention_mode.required' => __('Le mode d\'intervention est obligatoire.'),
+            'onsite_country.required_if' => __('Le pays est obligatoire pour une intervention en présentiel/hybride.'),
+            'onsite_city.required_if' => __('La ville est obligatoire pour une intervention en présentiel/hybride.'),
+            'languages.required' => __('Vous devez ajouter au moins une langue.'),
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $selectedUniverses = array_values(array_unique(array_filter((array)$request->input('universes', []), function ($u) use ($allowedUniverses) {
+            return is_string($u) && in_array($u, $allowedUniverses, true);
+        })));
+        if (count($selectedUniverses) === 0) {
+            return redirect()->back()
+                ->withErrors(['universes' => __('Vous devez sélectionner au moins un univers valide.')])
+                ->withInput();
+        }
+
+        $allowedDomains = [];
+        foreach ($selectedUniverses as $u) {
+            $allowedDomains = array_merge($allowedDomains, $allowedDomainsByUniverse[$u] ?? []);
+        }
+        $allowedDomains = array_values(array_unique($allowedDomains));
+
+        $selectedDomains = array_values(array_unique(array_filter((array)$request->input('domains', []), function ($d) use ($allowedDomains) {
+            return is_string($d) && in_array($d, $allowedDomains, true);
+        })));
+        if (count($selectedDomains) === 0) {
+            return redirect()->back()
+                ->withErrors(['domains' => __('Vous devez sélectionner au moins un domaine valide.')])
+                ->withInput();
+        }
+
+        $mode = (string)$request->input('intervention_mode', 'online');
+        $canOnline = in_array($mode, ['online', 'hybrid'], true);
+        $canOnsite = in_array($mode, ['onsite', 'hybrid'], true);
+        $onsiteCountry = $canOnsite ? (string)$request->input('onsite_country', '') : null;
+        $onsiteCity = $canOnsite ? (string)$request->input('onsite_city', '') : null;
+        $specializationsByDomain = $this->buildSpecializationsByDomain();
+        $allowedSpecializationSlugs = [];
+        foreach ($selectedDomains as $domainSlug) {
+            $rows = (array)($specializationsByDomain[$domainSlug]['options'] ?? []);
+            foreach ($rows as $row) {
+                if (is_array($row) && isset($row[0])) {
+                    $allowedSpecializationSlugs[] = (string)$row[0];
+                }
+            }
+        }
+        $allowedSpecializationSlugs = array_values(array_unique($allowedSpecializationSlugs));
+        $specializationMain = (string)$request->input('specialization_main', '');
+        if ($specializationMain === '' || !in_array($specializationMain, $allowedSpecializationSlugs, true)) {
+            $specializationMain = '';
+        }
+        $additionalSpecializations = array_values(array_unique(array_filter((array)$request->input('specialization_additional', []), function ($slug) use ($allowedSpecializationSlugs, $specializationMain) {
+            return is_string($slug) && $slug !== '' && $slug !== $specializationMain && in_array($slug, $allowedSpecializationSlugs, true);
+        })));
+        $incomingMatchingFilters = (array)$request->input('matching_filters', []);
+        $matchingFilters = [];
+        foreach ($selectedUniverses as $universeSlug) {
+            $payload = $incomingMatchingFilters[$universeSlug] ?? null;
+            if (!is_array($payload)) {
+                continue;
+            }
+            $matchingFilters[$universeSlug] = array_filter($payload, function ($v) {
+                return is_string($v) || is_numeric($v) || is_array($v);
+            });
+        }
+
+        // Mettre à jour l'utilisateur
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        
+        // Mettre à jour le téléphone si fourni
+        if ($request->filled('phone')) {
+            $phoneNumber = ($request->phone_country_code ?? '+33') . ' ' . $request->phone;
+            $user->phone_number = $phoneNumber;
+        }
+        
+        $user->save();
+
+        $domainLabelMap = [];
+        foreach ($domainsByUniverse as $domainRows) {
+            foreach ((array)$domainRows as $row) {
+                if (is_array($row) && isset($row[0], $row[1])) {
+                    $domainLabelMap[(string)$row[0]] = (string)$row[1];
+                }
+            }
+        }
+        $freelancerProfile->skills = array_values(array_map(function ($slug) use ($domainLabelMap) {
+            return $domainLabelMap[$slug] ?? $slug;
+        }, $selectedDomains));
+        $freelancerProfile->languages = $request->languages;
+        $freelancerProfile->specialization = $specializationMain !== '' ? $specializationMain : null;
+
+        if (Schema::hasColumn('freelancer_profiles', 'universes')) {
+            $freelancerProfile->universes = $selectedUniverses;
+        }
+        if (Schema::hasColumn('freelancer_profiles', 'domains')) {
+            $freelancerProfile->domains = $selectedDomains;
+        }
+        if (Schema::hasColumn('freelancer_profiles', 'can_online')) {
+            $freelancerProfile->can_online = $canOnline;
+        }
+        if (Schema::hasColumn('freelancer_profiles', 'can_onsite')) {
+            $freelancerProfile->can_onsite = $canOnsite;
+        }
+        if (Schema::hasColumn('freelancer_profiles', 'onsite_country')) {
+            $freelancerProfile->onsite_country = $onsiteCountry ?: null;
+        }
+        if (Schema::hasColumn('freelancer_profiles', 'onsite_city')) {
+            $freelancerProfile->onsite_city = $onsiteCity ?: null;
+        }
+        if (Schema::hasColumn('freelancer_profiles', 'matching_filters')) {
+            $freelancerProfile->matching_filters = $matchingFilters;
+        }
+        if (Schema::hasColumn('freelancer_profiles', 'additional_specialization_ids')) {
+            $freelancerProfile->additional_specialization_ids = $additionalSpecializations;
+        }
+
         $freelancerProfile->save();
 
         return redirect()->route('freelance.onboarding.step2')
             ->with('success', __('Étape 1 enregistrée avec succès.'));
+    }
+
+    private function extractIdentityDocuments(?string $identityDocument): array
+    {
+        if (empty($identityDocument)) {
+            return ['front' => null, 'back' => null];
+        }
+
+        $decoded = json_decode($identityDocument, true);
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+            return [
+                'front' => $decoded['front'] ?? null,
+                'back' => $decoded['back'] ?? null,
+            ];
+        }
+
+        // Rétrocompatibilité: ancienne valeur string = document unique (assimilé recto).
+        return ['front' => $identityDocument, 'back' => null];
+    }
+
+    private function extractServiceScope(FreelancerProfile $profile): array
+    {
+        $servicesConfig = config('services_universes', []);
+        $universesMap = (array)($servicesConfig['universes'] ?? []);
+        $domainsByUniverse = (array)($servicesConfig['domains_by_universe'] ?? []);
+
+        $domains = [];
+        $universes = [];
+        $domainUniverseIndex = [];
+        $domainLabelIndex = [];
+        foreach ($domainsByUniverse as $universeSlug => $rows) {
+            foreach ((array)$rows as $row) {
+                if (is_array($row) && isset($row[0], $row[1])) {
+                    $slug = (string)$row[0];
+                    $label = (string)$row[1];
+                    $domainUniverseIndex[$slug] = $universeSlug;
+                    $domainLabelIndex[\Illuminate\Support\Str::lower($label)] = $slug;
+                }
+            }
+        }
+
+        if (Schema::hasColumn('freelancer_profiles', 'universes') && is_array($profile->universes)) {
+            $universes = array_values(array_filter($profile->universes, fn ($u) => isset($universesMap[$u])));
+        }
+        if (Schema::hasColumn('freelancer_profiles', 'domains') && is_array($profile->domains)) {
+            $domains = array_values(array_filter($profile->domains, fn ($d) => isset($domainUniverseIndex[$d])));
+        }
+
+        if (empty($domains) && !empty($profile->skills) && is_array($profile->skills)) {
+            foreach ($profile->skills as $skillLabel) {
+                if (!is_string($skillLabel)) {
+                    continue;
+                }
+                $slug = $domainLabelIndex[\Illuminate\Support\Str::lower($skillLabel)] ?? null;
+                if ($slug && !in_array($slug, $domains, true)) {
+                    $domains[] = $slug;
+                }
+            }
+        }
+
+        if (empty($universes) && !empty($domains)) {
+            foreach ($domains as $domainSlug) {
+                $u = $domainUniverseIndex[$domainSlug] ?? null;
+                if ($u && !in_array($u, $universes, true)) {
+                    $universes[] = $u;
+                }
+            }
+        }
+
+        $canOnline = Schema::hasColumn('freelancer_profiles', 'can_online') ? (bool)$profile->can_online : true;
+        $canOnsite = Schema::hasColumn('freelancer_profiles', 'can_onsite') ? (bool)$profile->can_onsite : false;
+        $mode = 'online';
+        if ($canOnline && $canOnsite) {
+            $mode = 'hybrid';
+        } elseif (!$canOnline && $canOnsite) {
+            $mode = 'onsite';
+        }
+
+        $onsiteCountry = Schema::hasColumn('freelancer_profiles', 'onsite_country') ? (string)($profile->onsite_country ?? '') : '';
+        $onsiteCity = Schema::hasColumn('freelancer_profiles', 'onsite_city') ? (string)($profile->onsite_city ?? '') : '';
+
+        return [
+            'universes' => $universes,
+            'domains' => $domains,
+            'intervention_mode' => $mode,
+            'can_online' => $canOnline,
+            'can_onsite' => $canOnsite,
+            'onsite_country' => $onsiteCountry,
+            'onsite_city' => $onsiteCity,
+        ];
+    }
+
+    private function extractMatchingFilters(FreelancerProfile $profile): array
+    {
+        if (!Schema::hasColumn('freelancer_profiles', 'matching_filters')) {
+            return [];
+        }
+        return is_array($profile->matching_filters) ? $profile->matching_filters : [];
+    }
+
+    private function extractAdditionalSpecializations(FreelancerProfile $profile): array
+    {
+        if (!Schema::hasColumn('freelancer_profiles', 'additional_specialization_ids')) {
+            return [];
+        }
+        return is_array($profile->additional_specialization_ids) ? array_values(array_filter($profile->additional_specialization_ids, fn ($v) => is_string($v) && $v !== '')) : [];
+    }
+
+    private function buildSpecializationsByDomain(): array
+    {
+        return [
+            'strategie-conseil' => ['label' => 'Stratégie & Conseil', 'options' => [
+                ['conseil_strategique', 'Conseil stratégique'],
+                ['business_plan_modelisation', 'Business plan & modélisation'],
+                ['etude_de_marche', 'Étude de marché'],
+                ['structuration_de_projet', 'Structuration de projet'],
+                ['pilotage_gouvernance', 'Pilotage & gouvernance'],
+            ]],
+            'marketing-croissance' => ['label' => 'Marketing & Croissance', 'options' => [
+                ['strategie_marketing', 'Stratégie marketing'],
+                ['branding_positionnement', 'Branding & positionnement'],
+                ['acquisition_visibilite', 'Acquisition & visibilité'],
+                ['content_marketing', 'Content marketing'],
+                ['crm_email_marketing', 'CRM & Email marketing'],
+            ]],
+            'tech-produits-digitaux' => ['label' => 'Tech & Produits digitaux', 'options' => [
+                ['developpement_web', 'Développement web'],
+                ['nocode_automatisation', 'No-code & automatisation'],
+                ['maintenance_optimisation_continue', 'Maintenance & optimisation continue'],
+                ['outils_data_ia_appliquee', 'Outils data & IA appliquée'],
+            ]],
+            'creation-image-marque' => ['label' => 'Création & Image de marque', 'options' => [
+                ['design_branding', 'Design & branding'],
+                ['ux_ui', 'UX / UI'],
+                ['video_motion_design', 'Vidéo & motion design'],
+                ['copywriting_strategique', 'Copywriting stratégique'],
+            ]],
+            'formation-accompagnement' => ['label' => 'Formation & Accompagnement', 'options' => [
+                ['coaching_professionnel', 'Coaching professionnel'],
+                ['formation_business', 'Formation business'],
+                ['mentorat_strategique', 'Mentorat stratégique'],
+                ['accompagnement_dirigeants', 'Accompagnement dirigeants'],
+            ]],
+            'langues' => ['label' => 'Langues', 'options' => [
+                ['anglais', 'Anglais'], ['francais', 'Français'], ['espagnol', 'Espagnol'], ['allemand', 'Allemand'], ['italien', 'Italien'], ['arabe', 'Arabe'],
+            ]],
+            'certifications' => ['label' => 'Certifications', 'options' => [
+                ['ielts', 'IELTS'], ['toefl', 'TOEFL'], ['toeic', 'TOEIC'], ['cambridge', 'Cambridge (A2–C2)'], ['delf', 'DELF'], ['dalf', 'DALF'],
+            ]],
+            'soutien-scolaire' => ['label' => 'Soutien scolaire', 'options' => [
+                ['mathematiques', 'Mathématiques'], ['francais_scolaire', 'Français'], ['anglais_scolaire', 'Anglais scolaire'], ['physique', 'Physique'], ['chimie', 'Chimie'], ['biologie', 'Biologie'],
+            ]],
+            'etudes-superieur' => ['label' => 'Études & supérieur', 'options' => [
+                ['statistiques', 'Statistiques'], ['droit_bases', 'Droit (bases)'], ['sciences_sociales', 'Sciences sociales'], ['philosophie', 'Philosophie'], ['methodologie', 'Méthodologie'],
+            ]],
+            'tech-outils' => ['label' => 'Tech & outils', 'options' => [
+                ['programmation', 'Programmation'], ['developpement_web', 'Développement Web'], ['data_ia_initiation', 'Data / IA (initiation)'], ['bureautique', 'Bureautique'], ['nocode', 'No-code'], ['cyber_bases', 'Cybersécurité (bases)'],
+            ]],
+            'carriere-soft-skills' => ['label' => 'Carrière & soft skills', 'options' => [
+                ['communication_pro', 'Communication pro'], ['presentations', 'Présentations'], ['entretiens', 'Entretiens d\'embauche'], ['cv_linkedin', 'CV / LinkedIn'], ['gestion_projet', 'Gestion de projet'],
+            ]],
+            'beaute-soins' => ['label' => 'Beauté & soins', 'options' => [
+                ['beaute', 'Beauté'], ['coiffure', 'Coiffure'], ['manucure', 'Manucure'], ['soins_visage', 'Soins du visage'], ['epilation', 'Épilation'], ['maquillage', 'Maquillage'],
+            ]],
+            'massage-relaxation' => ['label' => 'Massage & relaxation', 'options' => [
+                ['massage_relaxation', 'Massage & relaxation'], ['amma_assis', 'Amma assis'], ['do_in', 'Do-In'], ['reflexologie', 'Réflexologie'], ['relaxation', 'Relaxation'],
+            ]],
+            'menage-repassage' => ['label' => 'Ménage & repassage', 'options' => [
+                ['menage', 'Ménage'], ['repassage', 'Repassage'], ['entretien_domicile', 'Entretien du domicile'],
+            ]],
+            'bien-etre-sport' => ['label' => 'Bien-être & sport', 'options' => [
+                ['coaching_sportif', 'Coaching sportif'], ['bien_etre', 'Bien-être'], ['yoga_domicile', 'Yoga à domicile'], ['pilates', 'Pilates'], ['stretching', 'Stretching'],
+            ]],
+            'accompagnement' => ['label' => 'Accompagnement', 'options' => [
+                ['accompagnement_familial', 'Accompagnement familial'], ['garde_enfants', 'Garde d\'enfants'], ['aide_personne', 'Aide à la personne'],
+            ]],
+            'cardio-training' => ['label' => 'Cardio-Training', 'options' => [
+                ['boxing', 'Boxing'], ['cross_training', 'Cross Training'], ['hiit_cardio', 'HIIT Cardio'], ['hiit_force', 'HIIT Force'], ['step', 'Step'], ['self_defense', 'Self-Défense'],
+            ]],
+            'renforcement-musculaire' => ['label' => 'Renforcement Musculaire', 'options' => [
+                ['pilates', 'Pilates'], ['pilates_materiels', 'Pilates (petits matériels)'], ['pilates_ball', 'Pilates Ball'], ['trx', 'TRX'], ['caf', 'Cuisses-Abdos-Fessiers (CAF)'], ['af', 'Abdos & Fessiers (AF)'],
+            ]],
+            'bien-etre' => ['label' => 'Bien-Etre', 'options' => [
+                ['stretching', 'Stretching'], ['ritual_flow', 'Ritual Flow'], ['ritual_recup', 'Ritual Récup\''], ['yoga', 'Yoga'], ['yoga_energie', 'Yoga Énergie'], ['yoga_antistress', 'Yoga Anti-stress'],
+            ]],
+            'danse' => ['label' => 'Danse', 'options' => [
+                ['zumba', 'Zumba'], ['hiphop', 'Hip-Hop'], ['afro_move', 'Afro Move'], ['dance_workout', 'Dance Workout'], ['aerien', 'Aérien'], ['dance_hiit', 'Dance HIIT'],
+            ]],
+            'court-sejour' => ['label' => 'Court séjour', 'options' => [['court_sejour', 'Court séjour']]],
+            'moyen-sejour' => ['label' => 'Moyen séjour', 'options' => [['moyen_sejour', 'Moyen séjour']]],
+            'long-sejour' => ['label' => 'Long séjour', 'options' => [['long_sejour', 'Long séjour']]],
+            'pause-souffle' => ['label' => 'Pause Souffle', 'options' => [
+                ['clarte_priorites', 'Clarté & priorités'], ['transition_vie', 'Transition de vie'], ['equilibre_charge_mentale', 'Équilibre & charge mentale'], ['leadership_decision', 'Leadership & décision'],
+            ]],
+            'experiences-bien-etre-serinite' => ['label' => 'Expériences Bien-Être & Sérénité', 'options' => [
+                ['massage_amma_entreprise', 'Massage amma assis (entreprise)'], ['journee_bien_etre_entreprise', 'Journée bien-être en entreprise'], ['espace_bien_etre_evenementiel', 'Espace bien-être événementiel'],
+            ]],
+            'team-building-cohesion-qvt' => ['label' => 'Team Building & Cohésion (QVT)', 'options' => [
+                ['team_building_presentiel', 'Team building en présentiel'], ['journee_qvt', 'Journée QVT'], ['cohesion_equipe', 'Cohésion d\'équipe'],
+            ]],
+            'evenements-vie-celebrations' => ['label' => 'Événements de Vie & Célébrations', 'options' => [
+                ['evjf', 'EVJF'], ['evg', 'EVG'], ['preparation_mariage', 'Préparation mariage'], ['anniversaire', 'Anniversaire'],
+            ]],
+            'vitalite-experiences-immersives' => ['label' => 'Vitalité & Expériences Immersives', 'options' => [
+                ['journee_vitalite', 'Journée vitalité'], ['pilates_groupe', 'Pilates en groupe'], ['yoga_groupe', 'Yoga en groupe'],
+            ]],
+            'intervenants-experts-experience-humaine' => ['label' => 'Intervenants & Experts en Expérience Humaine', 'options' => [
+                ['praticien_massage_amma', 'Praticien massage amma'], ['professeur_pilates', 'Professeur Pilates'], ['professeur_yoga', 'Professeur yoga'], ['conferencier', 'Conférencier'],
+            ]],
+            'partenaires-logistique-evenementielle' => ['label' => 'Partenaires & Logistique Événementielle', 'options' => [
+                ['location_salle', 'Location de salle'], ['traiteur_evenementiel', 'Traiteur événementiel'], ['personnel_evenementiel', 'Personnel événementiel'], ['son_audiovisuel', 'Son & audiovisuel'],
+            ]],
+        ];
+    }
+
+    private function buildOnboardingUniverseFilters(): array
+    {
+        $cfg = config('services_universes', []);
+        $domainsByUniverse = (array)($cfg['domains_by_universe'] ?? []);
+
+        $projectsLike = function (string $u) use ($domainsByUniverse): array {
+            $rows = [];
+            foreach ((array)($domainsByUniverse[$u] ?? []) as $row) {
+                if (is_array($row) && isset($row[0], $row[1])) {
+                    $rows[] = ['slug' => (string)$row[0], 'label' => (string)$row[1], 'description' => ''];
+                }
+            }
+            return $rows;
+        };
+
+        $lessonsLike = function (string $u) use ($domainsByUniverse): array {
+            $rows = [];
+            foreach ((array)($domainsByUniverse[$u] ?? []) as $row) {
+                if (is_array($row) && isset($row[1])) {
+                    $label = (string)$row[1];
+                    $rows[$label] = [$label];
+                }
+            }
+            return $rows;
+        };
+
+        return [
+            'projects' => [
+                'categories' => $projectsLike('projects'),
+                'lessonGoals' => [],
+                'hierarchyMode' => true,
+            ],
+            'lessons' => [
+                'categories' => $lessonsLike('lessons'),
+                'lessonGoals' => [
+                    'conversation_beginner' => 'Conversation (Débutant)',
+                    'conversation_intermediate' => 'Conversation (Intermédiaire)',
+                    'conversation_advanced' => 'Conversation (Avancé)',
+                    'business' => 'Business',
+                    'exams' => 'Examens',
+                    'kids' => 'Enfants',
+                    'travel' => 'Voyage',
+                ],
+                'hierarchyMode' => true,
+            ],
+            'at-home' => [
+                'categories' => $lessonsLike('at-home'),
+                'lessonGoals' => [],
+                'hierarchyMode' => true,
+            ],
+            'wellnesslive' => [
+                'categories' => $lessonsLike('wellnesslive'),
+                'lessonGoals' => [],
+                'hierarchyMode' => true,
+            ],
+            'homeswap' => [
+                'categories' => $projectsLike('homeswap'),
+                'lessonGoals' => [],
+                'hierarchyMode' => true,
+            ],
+            'corporate' => [
+                'categories' => $projectsLike('corporate'),
+                'lessonGoals' => [],
+                'hierarchyMode' => true,
+            ],
+        ];
     }
 
     /**
@@ -1075,10 +1470,11 @@ class OnboardingController extends Controller
                 ->with('error', __('Veuillez d\'abord compléter l\'étape 1.'));
         }
 
-        // Récupérer le tarif et les données bancaires existantes
+        // Récupérer le tarif, la banque et les données KYC existantes
         $hourlyRate = old('hourly_rate', $freelancerProfile->hourly_rate ?? 0);
         $bankIban = old('bank_iban', $freelancerProfile->bank_iban ?? '');
         $bankAccountHolder = old('bank_account_holder', $freelancerProfile->bank_account_holder ?? '');
+        $identityDocuments = $this->extractIdentityDocuments($freelancerProfile->identity_document);
 
         // Formater l'IBAN pour l'affichage (ajouter des espaces tous les 4 caractères)
         if (!empty($bankIban)) {
@@ -1097,6 +1493,14 @@ class OnboardingController extends Controller
             'hourly_rate' => $hourlyRate,
             'bank_iban' => $bankIban,
             'bank_account_holder' => $bankAccountHolder,
+            'birth_country' => old('birth_country', $user->country_code ?? ''),
+            'address' => old('address', $user->address ?? ''),
+            'postal_code' => old('postal_code', $user->postal_code ?? '10001'),
+            'age_confirmation' => old('age_confirmation', false),
+            'identity_document_front' => $identityDocuments['front'],
+            'identity_document_back' => $identityDocuments['back'],
+            'identity_document_front_name' => $identityDocuments['front'] ? basename($identityDocuments['front']) : null,
+            'identity_document_back_name' => $identityDocuments['back'] ? basename($identityDocuments['back']) : null,
         ];
 
         return view('frontend.freelance.onboarding.step8', [
@@ -1124,11 +1528,9 @@ class OnboardingController extends Controller
                 ->with('error', __('Veuillez d\'abord compléter l\'étape 1.'));
         }
 
-        // Vérifier que la pièce d'identité a été téléchargée
-        if (empty($freelancerProfile->identity_document)) {
-            return redirect()->route('freelance.onboarding.step1')
-                ->with('error', __('Vous devez d\'abord télécharger votre pièce d\'identité à l\'étape 1.'));
-        }
+        $identityDocuments = $this->extractIdentityDocuments($freelancerProfile->identity_document);
+        $hasFrontDocument = !empty($identityDocuments['front']);
+        $hasBackDocument = !empty($identityDocuments['back']);
 
         // Nettoyer l'IBAN avant validation (retirer les espaces)
         $ibanClean = strtoupper(str_replace(' ', '', $request->bank_iban ?? ''));
@@ -1138,10 +1540,22 @@ class OnboardingController extends Controller
             'hourly_rate' => $request->hourly_rate,
             'bank_iban' => $ibanClean,
             'bank_account_holder' => $request->bank_account_holder,
+            'birth_country' => $request->birth_country,
+            'address' => $request->address,
+            'postal_code' => $request->postal_code,
+            'age_confirmation' => $request->age_confirmation,
+            'identity_document_front' => $request->file('identity_document_front'),
+            'identity_document_back' => $request->file('identity_document_back'),
         ], [
             'hourly_rate' => 'required|numeric|min:5|max:1000',
             'bank_iban' => 'required|string|regex:/^[A-Z]{2}[0-9]{2}[A-Z0-9]{10,30}$/',
             'bank_account_holder' => 'required|string|max:255|min:2',
+            'birth_country' => 'required|string|max:3',
+            'address' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:20',
+            'age_confirmation' => 'required|accepted',
+            'identity_document_front' => ($hasFrontDocument ? 'nullable' : 'required') . '|file|mimes:jpeg,jpg,png,pdf|max:5120',
+            'identity_document_back' => ($hasBackDocument ? 'nullable' : 'required') . '|file|mimes:jpeg,jpg,png,pdf|max:5120',
         ], [
             'hourly_rate.required' => __('Le tarif est obligatoire.'),
             'hourly_rate.numeric' => __('Le tarif doit être un nombre.'),
@@ -1151,6 +1565,19 @@ class OnboardingController extends Controller
             'bank_iban.regex' => __('L\'IBAN doit être au format valide (ex: FR76 1234 5678 9012 3456 7890 123).'),
             'bank_account_holder.required' => __('Le nom du titulaire du compte est obligatoire.'),
             'bank_account_holder.min' => __('Le nom du titulaire doit contenir au moins 2 caractères.'),
+            'birth_country.required' => __('Le pays de naissance est obligatoire.'),
+            'address.required' => __('L\'adresse est obligatoire.'),
+            'postal_code.required' => __('Le code postal est obligatoire.'),
+            'age_confirmation.required' => __('Vous devez confirmer avoir plus de 18 ans.'),
+            'age_confirmation.accepted' => __('Vous devez confirmer avoir plus de 18 ans.'),
+            'identity_document_front.required' => __('Le recto de la pièce d\'identité est obligatoire.'),
+            'identity_document_back.required' => __('Le verso de la pièce d\'identité est obligatoire.'),
+            'identity_document_front.file' => __('Le fichier du recto est invalide.'),
+            'identity_document_back.file' => __('Le fichier du verso est invalide.'),
+            'identity_document_front.mimes' => __('Le recto doit être au format JPEG, JPG, PNG ou PDF.'),
+            'identity_document_back.mimes' => __('Le verso doit être au format JPEG, JPG, PNG ou PDF.'),
+            'identity_document_front.max' => __('Le recto ne doit pas dépasser 5 Mo.'),
+            'identity_document_back.max' => __('Le verso ne doit pas dépasser 5 Mo.'),
         ]);
 
         if ($validator->fails()) {
@@ -1159,11 +1586,39 @@ class OnboardingController extends Controller
                 ->withInput();
         }
 
+        if ($request->hasFile('identity_document_front')) {
+            if (!empty($identityDocuments['front']) && Storage::disk('public')->exists($identityDocuments['front'])) {
+                Storage::disk('public')->delete($identityDocuments['front']);
+            }
+            $frontFile = $request->file('identity_document_front');
+            $frontFilename = 'identity_front_' . $user->id . '_' . time() . '.' . $frontFile->getClientOriginalExtension();
+            $identityDocuments['front'] = $frontFile->storeAs('identity_documents', $frontFilename, 'public');
+        }
+
+        if ($request->hasFile('identity_document_back')) {
+            if (!empty($identityDocuments['back']) && Storage::disk('public')->exists($identityDocuments['back'])) {
+                Storage::disk('public')->delete($identityDocuments['back']);
+            }
+            $backFile = $request->file('identity_document_back');
+            $backFilename = 'identity_back_' . $user->id . '_' . time() . '.' . $backFile->getClientOriginalExtension();
+            $identityDocuments['back'] = $backFile->storeAs('identity_documents', $backFilename, 'public');
+        }
+
         // Sauvegarder le tarif et les coordonnées bancaires
         $freelancerProfile->hourly_rate = $request->hourly_rate;
         $freelancerProfile->bank_iban = $ibanClean; // Utiliser l'IBAN déjà nettoyé
         $freelancerProfile->bank_account_holder = $request->bank_account_holder;
+        if (!empty($identityDocuments['front']) || !empty($identityDocuments['back'])) {
+            $freelancerProfile->identity_document = json_encode([
+                'front' => $identityDocuments['front'],
+                'back' => $identityDocuments['back'],
+            ], JSON_UNESCAPED_SLASHES);
+        }
         $freelancerProfile->save();
+
+        $user->country_code = $request->birth_country;
+        $user->address = $request->address;
+        $user->postal_code = $request->postal_code ?: '10001';
 
         // Marquer l'utilisateur comme freelance
         $user->is_freelancer = true;

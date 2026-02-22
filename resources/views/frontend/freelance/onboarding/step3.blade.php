@@ -17,7 +17,7 @@
     }
 
     .onboarding-container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
@@ -114,7 +114,7 @@
       font-size: 2.25rem;
       font-weight: 800;
       color: #1a202c;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, #1a202c 0%, #4c1d95 100%);
       -webkit-background-clip: text;
@@ -451,8 +451,9 @@
 @section('content')
   <div class="onboarding-page">
     <div class="onboarding-container">
+      @include('frontend.freelance.onboarding.partials.premium-stepper', ['routeStep' => 3])
       <!-- Barre de progression -->
-      <div class="onboarding-progress">
+      <div class="onboarding-progress" style="display:none;">
         <div class="progress-steps">
           <div class="progress-step completed">
             <div class="progress-step-number">✓</div>

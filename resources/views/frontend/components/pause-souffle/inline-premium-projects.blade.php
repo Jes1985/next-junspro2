@@ -7,9 +7,9 @@
   <h2 class="pause-souffle-inline-projects__title">Pause Souffle</h2>
   <p class="pause-souffle-inline-premium__signature">
     Pause Souffle, c'est un temps pour se poser les bonnes questions avant de passer à l'action.
-    <a href="{{ route('presence.pause-souffle') }}" class="pause-souffle-inline-premium__cta">Faire une Pause Souffle</a>
   </p>
-  <p class="pause-souffle-inline-premium__micro">Guidé • Court • Sans engagement</p>
+  <a href="{{ route('presence.pause-souffle') }}" class="pause-souffle-inline-premium__cta">Faire une Pause Souffle</a>
+  <p class="pause-souffle-inline-premium__micro">Guidé • A votre rythme • En toute sérénité</p>
 </div>
 
 <style>
@@ -45,16 +45,16 @@
   }
   
   .pause-souffle-inline-projects .pause-souffle-inline-premium__signature {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.75rem 0;
     color: #1F2937;
     font-size: 0.9375rem;
     line-height: 1.6;
-    display: inline;
+    display: block;
   }
   
   .pause-souffle-inline-projects .pause-souffle-inline-premium__cta {
     display: inline-block;
-    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
     color: #FFFFFF;
@@ -64,7 +64,6 @@
     font-weight: 500;
     transition: all 0.2s ease;
     white-space: nowrap;
-    vertical-align: baseline;
   }
   
   .pause-souffle-inline-projects .pause-souffle-inline-premium__cta:hover {
@@ -108,8 +107,7 @@
     }
     
     .pause-souffle-inline-projects .pause-souffle-inline-premium__cta {
-      margin-left: 0;
-      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
       display: inline-block;
       font-size: 0.8125rem;
       padding: 0.5rem 1rem;

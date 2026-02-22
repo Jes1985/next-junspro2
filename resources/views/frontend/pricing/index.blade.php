@@ -1,523 +1,396 @@
-@extends('frontend.layout')
+﻿@extends('frontend.layout')
 
 @section('pageHeading')
-  {{ __('Pricing') }}
-@endsection
-
-@section('metaKeywords')
-  {{ __('abonnements, prix, abonnement, freelance, junspro') }}
+  {{ __('Formules & Tarifs') }}
 @endsection
 
 @section('metaDescription')
-  {{ __('Découvrez nos formules d\'abonnement flexibles de 1 à 24h par semaine. Tarifs transparents et adaptés à tous les projets.') }}
+  {{ __("Découvrez les formules d'abonnement Junspro  de 1 à 22 Rituels par semaine. Transparent, flexible, sans engagement.") }}
 @endsection
 
 @section('content')
-  {{-- Breadcrumb supprimé pour éviter la superposition avec le hero premium --}}
-  <!-- Hero Pricing Premium - Style page d'accueil (raffiné et classe) -->
-  <section class="pricing-hero-premium">
-    <div class="pricing-hero-container">
-      <div class="pricing-hero-content">
-        <h1 class="pricing-hero-title">
-          <span class="hero-title-line-1">{{ __('Pricing') }} <span class="highlight">{{ __('transparente') }}</span></span>
-          <span class="hero-title-line-2">{{ __('et flexible') }}</span>
-        </h1>
-        @if(isset($selectedFreelancer) && $selectedFreelancer)
-          <div class="pricing-hero-freelancer-info mb-4">
-            <span class="hero-stat-text">{{ __('Freelance sélectionné') }} : {{ $selectedFreelancer->user->name ?? 'Freelance' }} ({{ number_format($selectedFreelancer->hourly_rate, 2, ',', ' ') }} €/h)</span>
-          </div>
-        @endif
-        <p class="pricing-hero-subtitle">
-          {{ __('Explorez nos freelances experts, puis choisissez la formule d\'abonnement qui correspond à vos besoins. De 1 à 24h par semaine, adaptez selon l\'évolution de votre projet.') }}
-        </p>
-        <div class="pricing-hero-stats">
-          <span class="hero-stat-text">{{ __('+10 000 freelances vérifiés') }}</span>
+
+  {{-- 
+       HERO
+   --}}
+  <section class="jp-pricing-hero">
+    <div class="jp-pricing-hero__inner">
+      <span class="jp-pricing-hero__eyebrow">Formules &amp; Tarifs</span>
+      <h1 class="jp-pricing-hero__title">
+        Choisissez votre<br>
+        <span class="jp-pricing-hero__accent">cadence de Rituels</span>
+      </h1>
+      <p class="jp-pricing-hero__sub">
+        1 Rituel = 50 min focus + 10 min restitution &amp; rapport.<br>
+        Cycles de 4 semaines  Top-up possible  Sans engagement de durée.
+      </p>
+      @if(isset($selectedFreelancer) && $selectedFreelancer)
+        <div class="jp-pricing-hero__freelancer">
+          <img src="{{ $selectedFreelancer->user->profile_photo_path ? asset('storage/'.$selectedFreelancer->user->profile_photo_path) : asset('assets/img/noimage.jpg') }}"
+               alt="{{ $selectedFreelancer->user->name ?? '' }}" class="jp-pricing-hero__freelancer-img">
+          <span>{{ $selectedFreelancer->user->name ?? 'Freelance sélectionné' }}</span>
+          <strong> {{ number_format($selectedFreelancer->hourly_rate ?? 0, 0, ',', ' ') }} €/h</strong>
         </div>
-      </div>
+      @endif
     </div>
+    <div class="jp-pricing-hero__orb jp-pricing-hero__orb--1"></div>
+    <div class="jp-pricing-hero__orb jp-pricing-hero__orb--2"></div>
   </section>
 
-  <!-- Pricing Plans Section -->
-  <section class="pt-60 pb-80">
-    <div class="container">
-      <div class="row mb-50">
-        <div class="col-12 text-center">
-          <h2 class="h3 mb-10">{{ __('Nos formules d\'abonnement') }}</h2>
-          <p class="text-muted">
-            {{ __('Une fois que vous aurez trouvé le freelance qui vous convient, vous pourrez choisir votre formule d\'abonnement. Le prix dépend du tarif horaire du freelance choisi (entre 10€ et 299€/h)') }}
-          </p>
+  {{-- 
+       TOGGLE UNIVERS
+   --}}
+  <section class="jp-universe-section">
+    <div class="jp-universe-section__inner">
+
+      <div class="jp-universe-explainer">
+        <div class="jp-universe-explainer__card jp-universe-explainer__card--a">
+          <span class="jp-universe-explainer__badge jp-universe-explainer__badge--a">Univers A</span>
+          <h3 class="jp-universe-explainer__title">Cours, Bien-être &amp; Corporate</h3>
+          <p class="jp-universe-explainer__desc">Lessons  WellnessLive  Corporate  Paliers 4 à 32 Rituels/cycle  Top-up jusqu'à 100 % du palier</p>
+        </div>
+        <div class="jp-universe-explainer__card jp-universe-explainer__card--b">
+          <span class="jp-universe-explainer__badge jp-universe-explainer__badge--b">Univers B</span>
+          <h3 class="jp-universe-explainer__title">Projets &amp; À domicile</h3>
+          <p class="jp-universe-explainer__desc">Projects  At-home  Paliers 4 à 88 Rituels/cycle  Top-up plafonné à 32 Rituels</p>
         </div>
       </div>
 
-      <div class="row g-4">
-        @foreach($subscriptionPlans as $plan)
-          <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 50 }}">
-            <div class="card border-0 shadow-lg h-100 pricing-card position-relative overflow-hidden">
-              @if($loop->index == 3 || $loop->index == 4)
-                <div class="position-absolute top-0 end-0 text-white px-3 py-1" style="background: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%); font-size: 11px; transform: rotate(15deg) translate(15px, 5px); border-radius: 4px;">
-                  {{ __('Populaire') }}
+      <div class="jp-tabs" id="jpUniverseTabs">
+        <button class="jp-tabs__btn jp-tabs__btn--active" data-tab="universeA">
+          <i class="fas fa-graduation-cap"></i> Cours, Bien-être &amp; Corporate
+        </button>
+        <button class="jp-tabs__btn" data-tab="universeB">
+          <i class="fas fa-folder-open"></i> Projets &amp; À domicile
+        </button>
+      </div>
+
+      {{-- Plans Univers A --}}
+      <div class="jp-plans-grid" id="universeA">
+        @foreach($plansA as $plan)
+          @php
+            $isCurrent = $currentPalier === $plan['hours_per_cycle'] && in_array($currentUniverse ?? '', ['lessons','wellnesslive','corporate']);
+            $price = isset($selectedFreelancer) && $selectedFreelancer ? $selectedFreelancer->hourly_rate * $plan['hours_per_cycle'] : null;
+          @endphp
+          <div class="jp-plan-card {{ $plan['popular'] ? 'jp-plan-card--popular' : '' }} {{ $isCurrent ? 'jp-plan-card--current' : '' }}">
+            @if($plan['popular'])<div class="jp-plan-card__popular-badge"> Le plus populaire</div>@endif
+            @if($isCurrent)<div class="jp-plan-card__current-badge"> Votre formule</div>@endif
+            <div class="jp-plan-card__header">
+              <div class="jp-plan-card__icon-wrap"><i class="{{ $plan['icon'] }}"></i></div>
+              <h3 class="jp-plan-card__name">{{ $plan['name'] }}</h3>
+              <p class="jp-plan-card__desc">{{ $plan['description'] }}</p>
+            </div>
+            <div class="jp-plan-card__body">
+              <div class="jp-plan-card__volume">
+                <span class="jp-plan-card__volume-main">{{ $plan['hours_per_cycle'] }}</span>
+                <span class="jp-plan-card__volume-unit">Rituels<br><small>/cycle 4s</small></span>
+              </div>
+              <div class="jp-plan-card__rhythm">{{ $plan['hours_per_week'] }}h par semaine</div>
+              @if($price !== null)
+                <div class="jp-plan-card__price">
+                  <span class="jp-plan-card__price-amount">{{ number_format($price, 0, ',', ' ') }} €</span>
+                  <span class="jp-plan-card__price-period">/cycle</span>
                 </div>
               @endif
-              <div class="card-body p-4 text-center">
-                <div class="mb-3">
-                  <div class="d-inline-flex justify-content-center align-items-center rounded-circle bg-primary-soft mb-3" style="width: 60px; height: 60px;">
-                    <i class="{{ $plan['icon'] }} fa-2x text-primary"></i>
-                  </div>
+              <div class="jp-plan-card__topup">
+                <div class="jp-plan-card__topup-row">
+                  <span class="jp-plan-card__topup-label">Top-up max</span>
+                  <span class="jp-plan-card__topup-val">+{{ $plan['topup_max'] }} Rituels</span>
                 </div>
-                <h4 class="h5 mb-2 fw-bold">{{ $plan['name'] }}</h4>
-                <p class="text-muted small mb-3">{{ $plan['description'] }}</p>
-                <div class="mb-3">
-                  <span class="h3 text-primary fw-bold">{{ $plan['hours_per_week'] }}h</span>
-                  <span class="text-muted">/semaine</span>
-                </div>
-                <div class="mb-3">
-                  <small class="text-muted d-block">{{ $plan['hours_per_month'] }}h par mois</small>
-                  <small class="text-muted">(4 semaines)</small>
-                </div>
-                @if(isset($selectedFreelancer) && $selectedFreelancer)
-                  <div class="mb-3">
-                    <small class="text-muted d-block">
-                      <strong>{{ __('Prix total') }} :</strong>
-                      <span class="text-primary fw-bold">
-                        {{ number_format($selectedFreelancer->hourly_rate * $plan['hours_per_week'] * 4, 2, ',', ' ') }} €
-                      </span>
-                    </small>
-                    <small class="text-muted">
-                      ({{ $plan['hours_per_week'] }}h × {{ number_format($selectedFreelancer->hourly_rate, 2, ',', ' ') }} €/h × 4)
-                    </small>
-                  </div>
-                @endif
-                <div class="mt-auto pt-3">
-                  @if(isset($selectedFreelancer) && $selectedFreelancer)
-                    <form method="POST" action="{{ route('pricing.subscribe') }}" class="w-100">
-                      @csrf
-                      <input type="hidden" name="freelancer_id" value="{{ $selectedFreelancer->id }}">
-                      <input type="hidden" name="weekly_hours" value="{{ $plan['hours_per_week'] }}">
-                      <button type="submit" class="btn btn-primary btn-sm w-100">
-                        {{ __('Choisir cet abonnement') }}
-                      </button>
-                    </form>
-                  @else
-                    <a href="{{ route('explore') }}" class="btn btn-primary btn-sm w-100">
-                      {{ __('Choisir cet abonnement') }}
-                    </a>
-                  @endif
+                <div class="jp-plan-card__topup-row jp-plan-card__topup-row--total">
+                  <span class="jp-plan-card__topup-label">Max cycle</span>
+                  <span class="jp-plan-card__topup-val">{{ $plan['cycle_max_total'] }} Rituels</span>
                 </div>
               </div>
+            </div>
+            <div class="jp-plan-card__footer">
+              @if(isset($selectedFreelancer) && $selectedFreelancer)
+                <form method="POST" action="{{ route('pricing.subscribe') }}">
+                  @csrf
+                  <input type="hidden" name="freelancer_id" value="{{ $selectedFreelancer->id }}">
+                  <input type="hidden" name="weekly_hours" value="{{ $plan['hours_per_week'] }}">
+                  <button type="submit" class="jp-plan-card__cta {{ $plan['popular'] ? 'jp-plan-card__cta--primary' : '' }}">Choisir {{ $plan['name'] }}</button>
+                </form>
+              @else
+                <a href="{{ route('explore') }}" class="jp-plan-card__cta {{ $plan['popular'] ? 'jp-plan-card__cta--primary' : '' }}">Choisir {{ $plan['name'] }}</a>
+              @endif
             </div>
           </div>
         @endforeach
       </div>
 
-      <div class="row mt-50">
-        <div class="col-12 text-center">
-          <p class="text-muted mb-0">
-            <i class="fas fa-info-circle text-primary"></i>
-            {{ __('Le prix final = (heures/semaine × tarif horaire du freelance × 4) + options Express si choisies') }}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Express Options Section -->
-  <section class="pt-60 pb-80 bg-light">
-    <div class="container">
-      <div class="row mb-50">
-        <div class="col-12 text-center">
-          <h2 class="h3 mb-10">{{ __('Options Express (optionnelles)') }}</h2>
-          <p class="text-muted">
-            {{ __('Accélérez vos livraisons avec nos options Express') }}
-          </p>
-        </div>
-      </div>
-
-      <div class="row g-4 justify-content-center">
-        @foreach($expressOptions as $option)
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-            <div class="card border-0 shadow-lg h-100 express-card">
-              <div class="card-body p-4 text-center">
-                <div class="mb-3">
-                  <div class="d-inline-flex justify-content-center align-items-center rounded-circle mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(65, 105, 225, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);">
-                    <i class="fas fa-bolt fa-2x" style="color: #4169E1;"></i>
-                  </div>
-                </div>
-                <h5 class="mb-2 fw-bold">{{ $option['name'] }}</h5>
-                <div class="mb-3">
-                  <span class="badge text-white fs-5 px-3 py-2" style="background: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%);">{{ $option['percentage'] }}</span>
-                </div>
-                <p class="text-muted small mb-0">{{ $option['description'] }}</p>
+      {{-- Plans Univers B --}}
+      <div class="jp-plans-grid" id="universeB" style="display:none;">
+        @foreach($plansB as $plan)
+          @php
+            $isCurrent = $currentPalier === $plan['hours_per_cycle'] && in_array($currentUniverse ?? '', ['projects','at-home']);
+            $price = isset($selectedFreelancer) && $selectedFreelancer ? $selectedFreelancer->hourly_rate * $plan['hours_per_cycle'] : null;
+          @endphp
+          <div class="jp-plan-card {{ $plan['popular'] ? 'jp-plan-card--popular' : '' }} {{ $isCurrent ? 'jp-plan-card--current' : '' }}">
+            @if($plan['popular'])<div class="jp-plan-card__popular-badge"> Le plus populaire</div>@endif
+            @if($isCurrent)<div class="jp-plan-card__current-badge"> Votre formule</div>@endif
+            <div class="jp-plan-card__header">
+              <div class="jp-plan-card__icon-wrap"><i class="{{ $plan['icon'] }}"></i></div>
+              <h3 class="jp-plan-card__name">{{ $plan['name'] }}</h3>
+              <p class="jp-plan-card__desc">{{ $plan['description'] }}</p>
+            </div>
+            <div class="jp-plan-card__body">
+              <div class="jp-plan-card__volume">
+                <span class="jp-plan-card__volume-main">{{ $plan['hours_per_cycle'] }}</span>
+                <span class="jp-plan-card__volume-unit">Rituels<br><small>/cycle 4s</small></span>
               </div>
+              <div class="jp-plan-card__rhythm">{{ $plan['hours_per_week'] }}h par semaine</div>
+              @if($price !== null)
+                <div class="jp-plan-card__price">
+                  <span class="jp-plan-card__price-amount">{{ number_format($price, 0, ',', ' ') }} €</span>
+                  <span class="jp-plan-card__price-period">/cycle</span>
+                </div>
+              @endif
+              <div class="jp-plan-card__topup">
+                <div class="jp-plan-card__topup-row">
+                  <span class="jp-plan-card__topup-label">Top-up max</span>
+                  <span class="jp-plan-card__topup-val">+{{ $plan['topup_max'] }} Rituels</span>
+                </div>
+                <div class="jp-plan-card__topup-row jp-plan-card__topup-row--total">
+                  <span class="jp-plan-card__topup-label">Max cycle</span>
+                  <span class="jp-plan-card__topup-val">{{ $plan['cycle_max_total'] }} Rituels</span>
+                </div>
+              </div>
+            </div>
+            <div class="jp-plan-card__footer">
+              @if(isset($selectedFreelancer) && $selectedFreelancer)
+                <form method="POST" action="{{ route('pricing.subscribe') }}">
+                  @csrf
+                  <input type="hidden" name="freelancer_id" value="{{ $selectedFreelancer->id }}">
+                  <input type="hidden" name="weekly_hours" value="{{ $plan['hours_per_week'] }}">
+                  <button type="submit" class="jp-plan-card__cta {{ $plan['popular'] ? 'jp-plan-card__cta--primary' : '' }}">Choisir {{ $plan['name'] }}</button>
+                </form>
+              @else
+                <a href="{{ route('explore') }}" class="jp-plan-card__cta {{ $plan['popular'] ? 'jp-plan-card__cta--primary' : '' }}">Choisir {{ $plan['name'] }}</a>
+              @endif
             </div>
           </div>
         @endforeach
       </div>
+
     </div>
   </section>
 
-  <!-- How It Works Section -->
-  <section class="pt-60 pb-80">
-    <div class="container">
-      <div class="row mb-50">
-        <div class="col-12 text-center">
-          <h2 class="h3 mb-10">{{ __('Comment ça fonctionne ?') }}</h2>
-        </div>
+  {{-- TOP-UP EXPLAINER --}}
+  <section class="jp-topup-section">
+    <div class="jp-topup-section__inner">
+      <div class="jp-topup-section__text">
+        <h2 class="jp-topup-section__title">Comment fonctionne le Top-up ?</h2>
+        <p class="jp-topup-section__sub">Votre cycle de 4 semaines se remplit plus vite que prévu ? Ajoutez des Rituels à la volée, sans changer de formule.</p>
+        <ul class="jp-topup-points">
+          <li><i class="fas fa-check-circle"></i> Disponible à tout moment depuis votre tableau de bord</li>
+          <li><i class="fas fa-check-circle"></i> Fenêtre rolling de 28 jours  le quota se renouvelle automatiquement</li>
+          <li><i class="fas fa-check-circle"></i> Plafond = 100 % de votre palier (Univers A) ou 32 Rituels max (Univers B)</li>
+          <li><i class="fas fa-check-circle"></i> Si vous top-uppez régulièrement, une formule supérieure sera suggérée</li>
+        </ul>
       </div>
-
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up">
-          <div class="text-center">
-            <div class="mb-3">
-              <span class="d-inline-flex justify-content-center align-items-center rounded-circle text-white"
-                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%);">1</span>
-            </div>
-            <h5 class="mb-2">{{ __('1. Trouvez votre freelance') }}</h5>
-            <p class="text-muted small">
-              {{ __('Explorez notre catalogue et trouvez le freelance expert qui correspond à votre projet') }}
-            </p>
+      <div class="jp-topup-section__visual">
+        <div class="jp-topup-visual">
+          <div class="jp-topup-visual__row">
+            <span class="jp-topup-visual__label">Palier abonnement</span>
+            <div class="jp-topup-visual__bar"><div class="jp-topup-visual__fill jp-topup-visual__fill--base" style="width:50%"></div><span class="jp-topup-visual__bar-label">16 Rituels</span></div>
           </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="text-center">
-            <div class="mb-3">
-              <span class="d-inline-flex justify-content-center align-items-center rounded-circle text-white"
-                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%);">2</span>
-            </div>
-            <h5 class="mb-2">{{ __('2. Séance d\'essai (1h)') }}</h5>
-            <p class="text-muted small">
-              {{ __('Testez le freelance avec une séance d\'essai de 1h (50 min travail + 10 min rapport)') }}
-            </p>
+          <div class="jp-topup-visual__row">
+            <span class="jp-topup-visual__label">+ Top-up</span>
+            <div class="jp-topup-visual__bar"><div class="jp-topup-visual__fill jp-topup-visual__fill--topup" style="width:100%"></div><span class="jp-topup-visual__bar-label">+16 Rituels</span></div>
           </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-center">
-            <div class="mb-3">
-              <span class="d-inline-flex justify-content-center align-items-center rounded-circle text-white"
-                style="width: 60px; height: 60px; font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%);">3</span>
-            </div>
-            <h5 class="mb-2">{{ __('3. Choisissez votre abonnement') }}</h5>
-            <p class="text-muted small">
-              {{ __('Sur la page du freelance, choisissez votre formule (1-24h/semaine) et finalisez votre abonnement') }}
-            </p>
+          <div class="jp-topup-visual__row">
+            <span class="jp-topup-visual__label">Total max cycle</span>
+            <div class="jp-topup-visual__bar"><div class="jp-topup-visual__fill jp-topup-visual__fill--total" style="width:100%"></div><span class="jp-topup-visual__bar-label">= 32 Rituels</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Guarantees Section -->
-  <section class="pt-60 pb-80 bg-light">
-    <div class="container">
-      <div class="row mb-50">
-        <div class="col-12 text-center">
-          <h2 class="h3 mb-10">{{ __('Nos garanties') }}</h2>
-        </div>
-      </div>
-
-      <div class="row g-4">
-        @foreach($guarantees as $guarantee)
-          <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 50 }}">
-            <div class="card border-0 shadow-sm h-100">
-              <div class="card-body p-4">
-                <div class="mb-3">
-                  <i class="{{ $guarantee['icon'] }} fa-2x text-primary"></i>
-                </div>
-                <h5 class="mb-2">{{ $guarantee['title'] }}</h5>
-                <p class="text-muted small mb-0">{{ $guarantee['description'] }}</p>
-              </div>
-            </div>
+  {{-- GARANTIES --}}
+  <section class="jp-guarantees">
+    <div class="jp-guarantees__inner">
+      <h2 class="jp-guarantees__title">Inclus dans chaque formule</h2>
+      <div class="jp-guarantees__grid">
+        @foreach($guarantees as $g)
+          <div class="jp-guarantee-item">
+            <div class="jp-guarantee-item__icon"><i class="{{ $g['icon'] }}"></i></div>
+            <h4 class="jp-guarantee-item__title">{{ $g['title'] }}</h4>
+            <p class="jp-guarantee-item__desc">{{ $g['description'] }}</p>
           </div>
         @endforeach
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="pt-60 pb-80">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center" data-aos="fade-up">
-          <h2 class="h3 mb-20">{{ __('Prêt à commencer ?') }}</h2>
-          <p class="lead text-muted mb-30">
-            {{ __('Explorez notre catalogue de freelances experts et trouvez celui qui correspond à votre projet.') }}
-          </p>
-          <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="{{ route('explore') }}" class="btn btn-lg btn-primary">
-              {{ __('Choisir cet abonnement') }}
-            </a>
-            <a href="{{ route('contact') }}" class="btn btn-lg btn-outline-primary">
-              {{ __('Nous contacter') }}
-            </a>
-          </div>
-        </div>
+  {{-- CTA FINAL --}}
+  <section class="jp-cta-final">
+    <div class="jp-cta-final__inner">
+      <h2 class="jp-cta-final__title">Pas encore de freelance en tête ?</h2>
+      <p class="jp-cta-final__sub">Explorez notre catalogue, déclenchez une séance d'essai de 1h, puis choisissez votre formule.</p>
+      <div class="jp-cta-final__btns">
+        <a href="{{ route('explore') }}" class="jp-btn jp-btn--primary">Trouver un freelance</a>
+        @auth
+          <a href="{{ route('user.settings.subscription') }}" class="jp-btn jp-btn--ghost">Mon abonnement</a>
+        @endauth
       </div>
+      <p class="jp-cta-final__signature">{{ $ritualSignature }}</p>
     </div>
   </section>
 
   <style>
     :root {
-      --royal-blue: #4169E1;
-      --royal-blue-dark: #1E40AF;
-      --purple: #7C3AED;
-      --purple-light: #8B5CF6;
-      --gradient-primary: linear-gradient(135deg, #4169E1 0%, #7C3AED 100%);
-      --gradient-secondary: linear-gradient(135deg, #7C3AED 0%, #4169E1 100%);
+      --jp-indigo: #4F46E5;
+      --jp-violet: #7C3AED;
+      --jp-gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+      --jp-gradient-r: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
+      --jp-card-radius: 20px;
+      --jp-shadow: 0 4px 24px rgba(79,70,229,.08);
+      --jp-shadow-hover: 0 12px 40px rgba(79,70,229,.18);
     }
-
-    /* Hero Pricing Premium - Style page d'accueil (raffiné et classe) */
-    .pricing-hero-premium {
-      background: linear-gradient(135deg, #020617 0%, #111827 30%, #1d2a6d 70%, #5b21b6 100%);
-      position: relative;
-      overflow: hidden;
-      padding: 120px 0 90px;
-      margin-top: 0;
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-      z-index: 1;
+    .jp-pricing-hero {
+      background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #3B0764 100%);
+      position: relative; overflow: hidden;
+      padding: 130px 24px 90px; text-align: center; color: #fff;
     }
-
-    /* S'assurer que le header ne se superpose pas au hero */
-    body .pricing-hero-premium {
-      margin-top: 0 !important;
-      padding-top: 120px !important;
+    .jp-pricing-hero__inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .jp-pricing-hero__eyebrow {
+      display: inline-block; padding: 4px 18px;
+      border: 1px solid rgba(167,139,250,.4); border-radius: 999px;
+      font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: #a78bfa; margin-bottom: 1.5rem;
     }
-
-    /* Texture abstraite bleu/violet (comme le drapé doré de ComeUp) */
-    .pricing-hero-premium::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(65, 105, 225, 0.08) 0%, transparent 50%);
-      opacity: 0.6;
-      z-index: 1;
+    .jp-pricing-hero__title { font-size: clamp(2.2rem,5vw,3.6rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.25rem; color: #fff; }
+    .jp-pricing-hero__accent { background: linear-gradient(90deg,#818CF8 0%,#C084FC 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .jp-pricing-hero__sub { font-size: 1rem; color: rgba(255,255,255,.72); line-height: 1.7; margin-bottom: 2rem; }
+    .jp-pricing-hero__freelancer {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      padding: 8px 20px; border-radius: 999px; font-size: .9rem; color: #e0e7ff;
     }
+    .jp-pricing-hero__freelancer-img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .jp-pricing-hero__orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35; pointer-events: none; }
+    .jp-pricing-hero__orb--1 { width: 400px; height: 400px; background: #4F46E5; top: -120px; left: -100px; }
+    .jp-pricing-hero__orb--2 { width: 350px; height: 350px; background: #7C3AED; bottom: -100px; right: -80px; }
 
-    /* Dégradé noir transparent sur la moitié gauche pour garantir la lisibilité */
-    .pricing-hero-premium::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 55%;
-      height: 100%;
-      background: linear-gradient(to right, rgba(2, 6, 23, 0.4) 0%, transparent 100%);
-      z-index: 1;
+    .jp-universe-section { background: #F8F7FF; padding: 60px 24px 80px; }
+    .jp-universe-section__inner { max-width: 1280px; margin: 0 auto; }
+    .jp-universe-explainer { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem; }
+    .jp-universe-explainer__card { padding: 1.25rem 1.5rem; border-radius: 14px; border: 1.5px solid transparent; background: #fff; }
+    .jp-universe-explainer__card--a { border-color: #818CF8; }
+    .jp-universe-explainer__card--b { border-color: #C084FC; }
+    .jp-universe-explainer__badge { display: inline-block; padding: 2px 12px; border-radius: 999px; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; }
+    .jp-universe-explainer__badge--a { background: #EEF2FF; color: #4F46E5; }
+    .jp-universe-explainer__badge--b { background: #F5F3FF; color: #7C3AED; }
+    .jp-universe-explainer__title { font-size: 1rem; font-weight: 700; color: #1E1B4B; margin-bottom: .25rem; }
+    .jp-universe-explainer__desc { font-size: .8125rem; color: #6B7280; line-height: 1.5; margin: 0; }
+
+    .jp-tabs { display: flex; gap: .5rem; background: rgba(79,70,229,.06); border-radius: 14px; padding: 5px; width: fit-content; margin: 0 auto 2.5rem; }
+    .jp-tabs__btn { padding: .625rem 1.5rem; border-radius: 10px; border: none; background: transparent; font-size: .9rem; font-weight: 500; color: #6B7280; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: .4rem; }
+    .jp-tabs__btn--active { background: var(--jp-gradient); color: #fff; box-shadow: 0 4px 14px rgba(79,70,229,.3); }
+    .jp-tabs__btn:not(.jp-tabs__btn--active):hover { background: rgba(79,70,229,.08); color: #4F46E5; }
+
+    .jp-plans-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(230px,1fr)); gap: 1.25rem; }
+
+    .jp-plan-card { background: #fff; border-radius: var(--jp-card-radius); border: 1.5px solid #E5E7EB; box-shadow: var(--jp-shadow); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; position: relative; overflow: hidden; }
+    .jp-plan-card:hover { transform: translateY(-6px); box-shadow: var(--jp-shadow-hover); border-color: #818CF8; }
+    .jp-plan-card--popular { border-color: #4F46E5; box-shadow: 0 8px 32px rgba(79,70,229,.2); }
+    .jp-plan-card--popular::before { content: ''; position: absolute; inset: 0; border-radius: var(--jp-card-radius); background: linear-gradient(160deg,rgba(79,70,229,.04) 0%,rgba(124,58,237,.06) 100%); pointer-events: none; }
+    .jp-plan-card--current { border-color: #10B981; box-shadow: 0 8px 28px rgba(16,185,129,.15); }
+    .jp-plan-card__popular-badge { position: absolute; top: 0; left: 0; right: 0; background: var(--jp-gradient); color: #fff; font-size: .72rem; font-weight: 700; text-align: center; padding: 5px 0; letter-spacing: .04em; }
+    .jp-plan-card--popular .jp-plan-card__header { padding-top: 2.5rem; }
+    .jp-plan-card__current-badge { position: absolute; top: 0; left: 0; right: 0; background: #10B981; color: #fff; font-size: .72rem; font-weight: 700; text-align: center; padding: 5px 0; }
+    .jp-plan-card--current .jp-plan-card__header { padding-top: 2.5rem; }
+    .jp-plan-card__header { padding: 1.5rem 1.5rem 1rem; text-align: center; }
+    .jp-plan-card__icon-wrap { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg,#EEF2FF 0%,#F5F3FF 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto .875rem; font-size: 1.25rem; color: #4F46E5; }
+    .jp-plan-card--popular .jp-plan-card__icon-wrap { background: var(--jp-gradient); color: #fff; }
+    .jp-plan-card__name { font-size: 1.1rem; font-weight: 700; color: #111827; margin-bottom: .25rem; }
+    .jp-plan-card__desc { font-size: .78rem; color: #6B7280; line-height: 1.4; margin: 0; }
+    .jp-plan-card__body { padding: 0 1.5rem 1rem; flex: 1; }
+    .jp-plan-card__volume { display: flex; align-items: baseline; gap: .35rem; margin-bottom: .25rem; }
+    .jp-plan-card__volume-main { font-size: 2.8rem; font-weight: 800; color: #111827; line-height: 1; }
+    .jp-plan-card__volume-unit { font-size: .75rem; color: #6B7280; line-height: 1.3; }
+    .jp-plan-card__rhythm { font-size: .8125rem; color: #9CA3AF; margin-bottom: .875rem; }
+    .jp-plan-card__price { margin-bottom: .875rem; }
+    .jp-plan-card__price-amount { font-size: 1.25rem; font-weight: 700; color: #4F46E5; }
+    .jp-plan-card__price-period { font-size: .78rem; color: #9CA3AF; }
+    .jp-plan-card__topup { background: #F9FAFB; border-radius: 10px; padding: .625rem .875rem; display: flex; flex-direction: column; gap: .3rem; }
+    .jp-plan-card__topup-row { display: flex; justify-content: space-between; font-size: .78rem; color: #6B7280; }
+    .jp-plan-card__topup-row--total .jp-plan-card__topup-val { font-weight: 700; color: #111827; }
+    .jp-plan-card__footer { padding: 1rem 1.5rem 1.5rem; }
+    .jp-plan-card__cta { display: block; width: 100%; padding: .625rem 1rem; border-radius: 10px; border: 1.5px solid #D1D5DB; background: #fff; color: #374151; font-size: .875rem; font-weight: 600; text-align: center; text-decoration: none; cursor: pointer; transition: all .2s; }
+    .jp-plan-card__cta:hover { border-color: #4F46E5; color: #4F46E5; background: #EEF2FF; }
+    .jp-plan-card__cta--primary { background: var(--jp-gradient); border-color: transparent; color: #fff; box-shadow: 0 4px 14px rgba(79,70,229,.3); }
+    .jp-plan-card__cta--primary:hover { background: var(--jp-gradient-r); color: #fff; box-shadow: 0 6px 20px rgba(79,70,229,.4); }
+
+    .jp-topup-section { background: #fff; padding: 80px 24px; }
+    .jp-topup-section__inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .jp-topup-section__title { font-size: 1.75rem; font-weight: 700; color: #111827; margin-bottom: .75rem; }
+    .jp-topup-section__sub { font-size: .95rem; color: #6B7280; line-height: 1.6; margin-bottom: 1.5rem; }
+    .jp-topup-points { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .625rem; }
+    .jp-topup-points li { display: flex; align-items: flex-start; gap: .6rem; font-size: .875rem; color: #374151; line-height: 1.5; }
+    .jp-topup-points li i { color: #10B981; flex-shrink: 0; margin-top: 2px; }
+    .jp-topup-visual { display: flex; flex-direction: column; gap: 1rem; }
+    .jp-topup-visual__row { display: flex; align-items: center; gap: .75rem; }
+    .jp-topup-visual__label { font-size: .78rem; color: #6B7280; width: 120px; flex-shrink: 0; text-align: right; }
+    .jp-topup-visual__bar { flex: 1; background: #F3F4F6; border-radius: 6px; height: 28px; position: relative; overflow: hidden; }
+    .jp-topup-visual__fill { height: 100%; border-radius: 6px; }
+    .jp-topup-visual__fill--base { background: linear-gradient(90deg,#818CF8,#A78BFA); }
+    .jp-topup-visual__fill--topup { background: linear-gradient(90deg,#A78BFA,#C084FC); }
+    .jp-topup-visual__fill--total { background: var(--jp-gradient); }
+    .jp-topup-visual__bar-label { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: .72rem; font-weight: 700; color: #fff; }
+
+    .jp-guarantees { background: #F8F7FF; padding: 80px 24px; }
+    .jp-guarantees__inner { max-width: 1100px; margin: 0 auto; }
+    .jp-guarantees__title { font-size: 1.75rem; font-weight: 700; color: #111827; text-align: center; margin-bottom: 2.5rem; }
+    .jp-guarantees__grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1.25rem; }
+    .jp-guarantee-item { background: #fff; border-radius: 16px; padding: 1.5rem; border: 1px solid #E5E7EB; transition: box-shadow .2s, transform .2s; }
+    .jp-guarantee-item:hover { transform: translateY(-4px); box-shadow: var(--jp-shadow-hover); }
+    .jp-guarantee-item__icon { width: 44px; height: 44px; border-radius: 12px; background: var(--jp-gradient); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #fff; margin-bottom: .875rem; }
+    .jp-guarantee-item__title { font-size: .95rem; font-weight: 700; color: #111827; margin-bottom: .375rem; }
+    .jp-guarantee-item__desc { font-size: .8125rem; color: #6B7280; line-height: 1.5; margin: 0; }
+
+    .jp-cta-final { background: linear-gradient(135deg,#0F172A 0%,#1E1B4B 60%,#3B0764 100%); padding: 90px 24px; text-align: center; color: #fff; }
+    .jp-cta-final__inner { max-width: 640px; margin: 0 auto; }
+    .jp-cta-final__title { font-size: clamp(1.75rem,4vw,2.5rem); font-weight: 700; margin-bottom: .75rem; }
+    .jp-cta-final__sub { font-size: 1rem; color: rgba(255,255,255,.72); margin-bottom: 2rem; line-height: 1.6; }
+    .jp-cta-final__btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .jp-cta-final__signature { font-size: .78rem; color: rgba(255,255,255,.4); font-style: italic; margin: 0; }
+    .jp-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .75rem 2rem; border-radius: 12px; font-size: .9375rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all .2s; border: none; }
+    .jp-btn--primary { background: var(--jp-gradient); color: #fff; box-shadow: 0 4px 18px rgba(79,70,229,.35); }
+    .jp-btn--primary:hover { background: var(--jp-gradient-r); box-shadow: 0 8px 28px rgba(79,70,229,.45); transform: translateY(-2px); color: #fff; }
+    .jp-btn--ghost { background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25); color: #fff; }
+    .jp-btn--ghost:hover { background: rgba(255,255,255,.18); color: #fff; }
+
+    @media (max-width: 900px) {
+      .jp-topup-section__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .jp-universe-explainer { grid-template-columns: 1fr; }
     }
-
-    .pricing-hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .pricing-hero-content {
-      text-align: center;
-      color: white;
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .pricing-hero-title {
-      font-size: 3.8rem;
-      font-weight: 400;
-      color: #FFFFFF;
-      line-height: 1.2;
-      margin-bottom: 2rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      display: block;
-      letter-spacing: -0.02em;
-      max-width: 100%;
-      width: 100%;
-      text-align: center;
-    }
-
-    /* Style ComeUp : 2 lignes avec mot-clé en couleur accent */
-    .pricing-hero-title .hero-title-line-1 {
-      display: block !important;
-      line-height: 1.2;
-      font-weight: 400;
-      color: #FFFFFF;
-      margin-bottom: 0.75rem;
-      white-space: nowrap;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .pricing-hero-title .hero-title-line-1 .highlight {
-      font-weight: 600;
-      background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #C084FC 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: #60A5FA;
-      display: inline-block;
-    }
-
-    .pricing-hero-title .hero-title-line-2 {
-      display: block !important;
-      line-height: 1.2;
-      font-weight: 400;
-      color: #FFFFFF;
-      white-space: nowrap;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .pricing-hero-subtitle {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 2.5rem;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-      font-weight: 400;
-      line-height: 1.6;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    .pricing-hero-freelancer-info {
-      margin-bottom: 1.5rem;
-    }
-
-    .pricing-hero-stats {
-      margin-top: 1rem;
-    }
-
-    .hero-stat-text {
-      display: inline-block;
-      padding: 10px 24px;
-      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: white;
-      border: 1px solid rgba(124, 58, 237, 0.3);
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .pricing-hero-premium {
-        padding: 130px 0 90px !important;
-      }
-
-      .pricing-hero-title {
-        font-size: 2.8rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .pricing-hero-premium {
-        padding: 100px 0 70px !important;
-      }
-
-      .pricing-hero-title {
-        font-size: 2rem;
-      }
-
-      .pricing-hero-subtitle {
-        font-size: 1rem;
-      }
-
-      .hero-stat-text {
-        font-size: 0.875rem;
-        padding: 8px 18px;
-      }
-    }
-
-    .pricing-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(65, 105, 225, 0.2) !important;
-      border-color: var(--royal-blue);
-    }
-
-    .pricing-card .card-body {
-      display: flex;
-      flex-direction: column;
-      min-height: 300px;
-    }
-
-    .express-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-radius: 12px;
-    }
-
-    .express-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15) !important;
-    }
-
-    .bg-primary-soft {
-      background: linear-gradient(135deg, rgba(65, 105, 225, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
-    }
-
-    .bg-warning-soft {
-      background: linear-gradient(135deg, rgba(65, 105, 225, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
-    }
-
-    /* Remplacement de la couleur verte par bleu royal/violet */
-    .btn-primary {
-      background: var(--gradient-primary) !important;
-      border: none !important;
-      color: white !important;
-    }
-
-    .btn-primary:hover {
-      background: var(--gradient-secondary) !important;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(65, 105, 225, 0.3) !important;
-    }
-
-    .btn-primary:focus,
-    .btn-primary:active {
-      background: var(--gradient-primary) !important;
-      box-shadow: 0 0 0 0.2rem rgba(65, 105, 225, 0.25) !important;
-    }
-
-    .text-primary {
-      color: var(--royal-blue) !important;
-    }
-
-    .badge.bg-primary {
-      background: var(--gradient-primary) !important;
-    }
-
-    @media (max-width: 768px) {
-      .pricing-card .card-body {
-        min-height: auto;
-      }
-    }
-
-    /* Animation pour les garanties */
-    .card {
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
+    @media (max-width: 640px) {
+      .jp-tabs { flex-direction: column; width: 100%; }
+      .jp-plans-grid { grid-template-columns: 1fr; }
     }
   </style>
-@endsection
 
+  <script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var tabs = document.querySelectorAll('#jpUniverseTabs .jp-tabs__btn');
+      tabs.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          tabs.forEach(function(b) { b.classList.remove('jp-tabs__btn--active'); });
+          btn.classList.add('jp-tabs__btn--active');
+          var target = btn.getAttribute('data-tab');
+          document.getElementById('universeA').style.display = (target === 'universeA') ? 'grid' : 'none';
+          document.getElementById('universeB').style.display = (target === 'universeB') ? 'grid' : 'none';
+        });
+      });
+      @if(isset($currentUniverse) && in_array($currentUniverse, ['projects','at-home']))
+        document.querySelector('[data-tab="universeB"]').click();
+      @endif
+    });
+  })();
+  </script>
+
+@endsection

@@ -475,12 +475,17 @@ class ServicesController extends Controller
         // Filtre par mode d'intervention (mode[])
         if ($request->has('mode') && is_array($request->mode)) {
             $modes = $request->mode;
-            // Si "onsite" est sélectionné, on doit avoir country et city
-            if (in_array('onsite', $modes)) {
-                // Le filtre géographique est déjà appliqué via country/city ci-dessus
-                // On peut ajouter une logique spécifique si nécessaire
+            if (in_array('hybrid', $modes)) {
+                // Hybride : freelancers qui peuvent travailler en ligne ET en présentiel
+                $freelancersQuery->where('can_online', true)->where('can_onsite', true);
+            } elseif (in_array('online', $modes) && !in_array('onsite', $modes)) {
+                // En ligne uniquement
+                $freelancersQuery->where('can_online', true);
+            } elseif (in_array('onsite', $modes) && !in_array('online', $modes)) {
+                // En présentiel uniquement
+                $freelancersQuery->where('can_onsite', true);
             }
-            // Pour "online" et "offline", pas de filtre géographique supplémentaire
+            // Si les deux sont sélectionnés (online + onsite), pas de filtre restrictif
         }
 
         // Filtre par catégorie/domaine (V1 : 5 slugs → recherche par mots-clés)

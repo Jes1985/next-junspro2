@@ -187,6 +187,177 @@
       margin-bottom: 0.5rem;
     }
 
+    /* ── Jauge d'utilisation du cycle jp- ─────────────────────────── */
+    .jp-usage-gauge-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 1rem 0 0.5rem;
+    }
+    .jp-gauge-svg {
+      width: 110px;
+      height: 110px;
+      overflow: visible;
+    }
+    .jp-gauge-track {
+      fill: none;
+      stroke: #e5e7eb;
+      stroke-width: 8;
+      stroke-linecap: round;
+    }
+    .jp-gauge-fill {
+      fill: none;
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.6s ease, stroke 0.4s ease;
+    }
+    .jp-gauge-pct {
+      font-size: 18px;
+      font-weight: 700;
+      fill: #111827;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .jp-gauge-sub {
+      font-size: 9px;
+      fill: #6b7280;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .jp-gauge-legend {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .jp-gauge-legend-used {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .jp-gauge-legend-left {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+    .jp-gauge-legend-topup {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      font-style: italic;
+    }
+    /* ── fin jauge ─────────────────────────────────────────────────── */
+
+    /* ── Nudge banner (inline dans la carte) ───────────────────────── */
+    .jp-nudge-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      border: 1px solid transparent;
+      user-select: none;
+    }
+    .jp-nudge-banner:hover { opacity: 0.85; }
+    .jp-nudge-banner.jp-nudge-soft70    { background: #fffbeb; border-color: #fcd34d; }
+    .jp-nudge-banner.jp-nudge-strong85,
+    .jp-nudge-banner.jp-nudge-repeat    { background: #fff1f2; border-color: #fca5a5; }
+    .jp-nudge-banner.jp-nudge-afterTopup { background: #eff6ff; border-color: #93c5fd; }
+    .jp-nudge-content { display: flex; align-items: flex-start; gap: 0.4rem; flex: 1; min-width: 0; }
+    .jp-nudge-icon { font-size: 1rem; flex-shrink: 0; line-height: 1.4; }
+    .jp-nudge-text { font-size: 0.75rem; color: #374151; line-height: 1.4; }
+    .jp-nudge-cta  { font-size: 0.7rem; font-weight: 600; color: #4f46e5; white-space: nowrap; flex-shrink: 0; }
+
+    /* ── Bottom-sheet nudge upgrade ────────────────────────────────── */
+    .jp-nudge-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 9990;
+      display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .jp-nudge-backdrop.active {
+      opacity: 1; pointer-events: all;
+    }
+    .jp-nudge-sheet {
+      width: 100%; max-width: 520px;
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      padding-bottom: env(safe-area-inset-bottom, 0);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    .jp-nudge-backdrop.active .jp-nudge-sheet {
+      transform: translateY(0);
+    }
+    .jp-sheet-handle-bar {
+      width: 44px; height: 5px;
+      background: #e5e7eb;
+      border-radius: 3px;
+      margin: 12px auto 0;
+    }
+    .jp-sheet-inner {
+      padding: 0.75rem 1.5rem 2rem;
+      position: relative;
+      text-align: center;
+    }
+    .jp-sheet-close-btn {
+      position: absolute; top: 0.25rem; right: 1rem;
+      background: none; border: none;
+      font-size: 1.1rem; color: #9ca3af;
+      cursor: pointer; padding: 0.25rem; line-height: 1;
+    }
+    .jp-sheet-eyebrow {
+      font-size: 0.65rem; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #6b7280;
+      margin: 0.5rem 0 0.2rem;
+    }
+    .jp-sheet-title {
+      font-size: 1.05rem; font-weight: 700; color: #111827;
+      margin: 0 0 1rem;
+    }
+    .jp-sheet-compare {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.75rem; margin-bottom: 0.875rem;
+    }
+    .jp-sheet-plan {
+      flex: 1; padding: 0.6rem 0.5rem;
+      border-radius: 12px; border: 2px solid #e5e7eb;
+      background: #f9fafb;
+    }
+    .jp-sheet-plan-next { border-color: #4f46e5; background: #eef2ff; }
+    .jp-sheet-plan-label { font-size: 0.6rem; text-transform: uppercase; color: #9ca3af; margin: 0 0 0.2rem; }
+    .jp-sheet-plan-hours { font-size: 1.6rem; font-weight: 800; color: #111827; margin: 0; line-height: 1.1; }
+    .jp-sheet-plan-next .jp-sheet-plan-hours { color: #4f46e5; }
+    .jp-sheet-plan-sub { font-size: 0.6rem; color: #6b7280; margin: 0.1rem 0 0; }
+    .jp-sheet-arrow { font-size: 1.3rem; color: #9ca3af; flex-shrink: 0; }
+    .jp-sheet-reason {
+      font-size: 0.78rem; color: #4b5563;
+      line-height: 1.5; margin-bottom: 1rem;
+      background: #f3f4f6; border-radius: 8px;
+      padding: 0.55rem 0.75rem; text-align: left;
+    }
+    .jp-sheet-upgrade-btn {
+      display: block; width: 100%;
+      padding: 0.8rem 1rem;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff; font-weight: 700; font-size: 0.875rem;
+      border-radius: 10px; text-decoration: none;
+      margin-bottom: 0.5rem;
+      transition: opacity 0.15s;
+      text-align: center;
+    }
+    .jp-sheet-upgrade-btn:hover { opacity: 0.9; color: #fff; }
+    .jp-sheet-dismiss-btn {
+      background: none; border: none;
+      font-size: 0.78rem; color: #9ca3af;
+      cursor: pointer; padding: 0.25rem;
+    }
+    /* ── fin bottom-sheet nudge ─────────────────────────────────────── */
+
     .subscription-status-badge {
       display: block;
       padding: 0.375rem 0.875rem;
@@ -761,6 +932,37 @@
               $nextBillingDate = $subscription->next_billing_at ? \Carbon\Carbon::parse($subscription->next_billing_at) : null;
                 $daysUntilRenewal = $nextBillingDate ? now()->diffInDays($nextBillingDate, false) : null;
                 $hoursRemaining = $subscription->calculated_hours_remaining ?? 0;
+
+              // ── Données jauge cycle ──────────────────────────────
+              $cycleUsageSvc  = app(\App\Services\Junspro\CycleUsageService::class);
+              $universeType   = $cycleUsageSvc->universeType($subscription->universe ?? '');
+              $hoursPerCycle  = ($subscription->hours_per_week ?? 0) * 4;
+              $palier         = $cycleUsageSvc->snapToPalier($hoursPerCycle, $universeType);
+              $cycleMax       = $cycleUsageSvc->cycleMaxTotal($hoursPerCycle, $universeType);
+              $topupMax       = $cycleUsageSvc->topupCap($hoursPerCycle, $universeType);
+              $usedHours      = max(0, $hoursPerCycle - (float)$hoursRemaining);
+              $usageRatio     = $hoursPerCycle > 0 ? min(1, $usedHours / $hoursPerCycle) : 0;
+              // Arc SVG : cercle r=44, circonférence = 2π×44 ≈ 276.5
+              $svgR           = 44;
+              $svgCirc        = round(2 * M_PI * $svgR, 2);
+              $svgOffset      = round($svgCirc * (1 - $usageRatio), 2);
+              // Couleur selon ratio
+              $gaugeColor     = $usageRatio < 0.70 ? '#10B981' : ($usageRatio < 0.85 ? '#F59E0B' : '#EF4444');
+              $nudge          = $cycleUsageSvc->shouldShowUpgradeNudge(
+                $usageRatio,
+                false, // topup utilisé — à brancher plus tard depuis la DB
+                0
+              );
+
+              // ── Palier suivant (pour bottom-sheet nudge) ─────────
+              $paliersArr       = $universeType === \App\Services\Junspro\CycleUsageService::UNIVERSE_B
+                                    ? \App\Services\Junspro\CycleUsageService::PALIERS_B
+                                    : \App\Services\Junspro\CycleUsageService::PALIERS_A;
+              $currentPalierIdx = array_search($palier, $paliersArr);
+              $nextPalierCycle  = ($currentPalierIdx !== false && isset($paliersArr[$currentPalierIdx + 1]))
+                                    ? $paliersArr[$currentPalierIdx + 1]
+                                    : $palier;
+              $isAtMaxPalier    = ($nextPalierCycle === $palier);
             @endphp
 
               <div class="subscription-card-preply">
@@ -933,8 +1135,61 @@
                       @endif
                       {{ number_format($hoursRemaining, 1) }} {{ __('Rituels restants') }} (= {{ number_format($hoursRemaining, 1) }}h)
                   </div>
-                    @if(isset($subscription->nudge_show) && $subscription->nudge_show && !empty($subscription->nudge_message))
-                      <p class="subscription-nudge-helper" style="font-size: 0.8rem; color: #6b7280; margin-top: 0.5rem; font-style: italic;">{{ $subscription->nudge_message }}</p>
+                    {{-- ── JAUGE D'UTILISATION DU CYCLE ─────────────────── --}}
+                    <div class="jp-usage-gauge-wrap" data-sub-id="{{ $subscription->id }}">
+                      <svg viewBox="0 0 100 100" class="jp-gauge-svg"
+                           role="img" aria-label="{{ round($usageRatio * 100) }}% consommé">
+                        {{-- Piste de fond --}}
+                        <circle cx="50" cy="50" r="{{ $svgR }}"
+                                class="jp-gauge-track"
+                                stroke-dasharray="{{ $svgCirc }}"
+                                stroke-dashoffset="0"
+                                transform="rotate(-90 50 50)"/>
+                        {{-- Arc de remplissage --}}
+                        <circle cx="50" cy="50" r="{{ $svgR }}"
+                                class="jp-gauge-fill"
+                                stroke="{{ $gaugeColor }}"
+                                stroke-dasharray="{{ $svgCirc }}"
+                                stroke-dashoffset="{{ $svgOffset }}"
+                                transform="rotate(-90 50 50)"/>
+                        {{-- Texte central --}}
+                        <text x="50" y="46" class="jp-gauge-pct">{{ round($usageRatio * 100) }}%</text>
+                        <text x="50" y="60" class="jp-gauge-sub">utilisé</text>
+                      </svg>
+                      <div class="jp-gauge-legend">
+                        <span class="jp-gauge-legend-used" style="color:{{ $gaugeColor }}">
+                          {{ number_format($usedHours, 1) }} Rituels consommés
+                        </span>
+                        <span class="jp-gauge-legend-left">
+                          {{ number_format($hoursRemaining, 1) }} restants / {{ number_format($hoursPerCycle, 0) }} ce cycle
+                        </span>
+                        @if($topupMax > 0)
+                          <span class="jp-gauge-legend-topup">
+                            Top-up possible : +{{ number_format($topupMax, 0) }} Rituels max
+                          </span>
+                        @endif
+                      </div>
+                    </div>
+                    {{-- ── FIN JAUGE ────────────────────────────────────── --}}
+
+                    @if($nudge['show'])
+                      {{-- ── NUDGE BANNER : ouvre le bottom-sheet ──── --}}
+                      <div class="jp-nudge-banner jp-nudge-{{ $nudge['level'] }}"
+                           role="button" tabindex="0"
+                           onclick="jpOpenNudgeSheet({{ $subscription->id }}, {{ (int)($subscription->hours_per_week ?? 0) }}, '{{ $universeType }}', {{ $nextPalierCycle }}, '{{ $nudge['level'] }}', {{ json_encode($nudge['message']) }})"
+                           onkeydown="if(event.key==='Enter'||event.key===' ')this.click()"
+                           aria-label="Voir les options de montée en palier">
+                        <div class="jp-nudge-content">
+                          <span class="jp-nudge-icon">
+                            @if($nudge['level'] === 'strong85' || $nudge['level'] === 'repeat')🔴
+                            @elseif($nudge['level'] === 'soft70')🟡
+                            @else⚡
+                            @endif
+                          </span>
+                          <span class="jp-nudge-text">{{ $nudge['message'] }}</span>
+                        </div>
+                        <span class="jp-nudge-cta">Voir les options →</span>
+                      </div>
                     @endif
                     <div style="display: flex; justify-content: center; margin-top: 0.75rem;">
                       <span class="subscription-status-badge {{ $subscription->status === 'active' ? 'active' : ($subscription->status === 'paused' ? 'paused' : 'cancelled') }}">
@@ -1201,6 +1456,39 @@
   <x-subscription.cancel.step3-confirm />
   <x-subscription.cancel.step4-alternative />
 
+  {{-- ── BOTTOM-SHEET NUDGE UPGRADE ────────────────────────────────── --}}
+  <div id="jp-nudge-backdrop" class="jp-nudge-backdrop"
+       role="dialog" aria-modal="true" aria-labelledby="jp-sheet-title"
+       onclick="jpCloseNudgeSheet()">
+    <div id="jp-nudge-sheet" class="jp-nudge-sheet" onclick="event.stopPropagation()">
+      <div class="jp-sheet-handle-bar"></div>
+      <div class="jp-sheet-inner">
+        <button class="jp-sheet-close-btn" onclick="jpCloseNudgeSheet()" aria-label="Fermer">✕</button>
+        <p class="jp-sheet-eyebrow">Optimisez votre rythme</p>
+        <h3 class="jp-sheet-title" id="jp-sheet-title">Passez au palier supérieur</h3>
+        <div class="jp-sheet-compare">
+          <div class="jp-sheet-plan jp-sheet-plan-current">
+            <p class="jp-sheet-plan-label">Formule actuelle</p>
+            <p class="jp-sheet-plan-hours" id="jp-sheet-current-hrs">–</p>
+            <p class="jp-sheet-plan-sub">Rituels/semaine</p>
+          </div>
+          <div class="jp-sheet-arrow">→</div>
+          <div class="jp-sheet-plan jp-sheet-plan-next">
+            <p class="jp-sheet-plan-label">Formule suivante</p>
+            <p class="jp-sheet-plan-hours" id="jp-sheet-next-hrs">–</p>
+            <p class="jp-sheet-plan-sub">Rituels/semaine</p>
+          </div>
+        </div>
+        <p class="jp-sheet-reason" id="jp-sheet-reason"></p>
+        <a id="jp-sheet-upgrade-btn" href="/pricing" class="jp-sheet-upgrade-btn">
+          Voir la formule suivante
+        </a>
+        <button class="jp-sheet-dismiss-btn" onclick="jpCloseNudgeSheet()">Plus tard</button>
+      </div>
+    </div>
+  </div>
+  {{-- ── FIN BOTTOM-SHEET ───────────────────────────────────────────── --}}
+
   {{-- Script Alpine.js pour les modals --}}
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="{{ asset('assets/js/subscriptions/topupModal.js') }}?v={{ filemtime(public_path('assets/js/subscriptions/topupModal.js')) }}"></script>
@@ -1215,6 +1503,38 @@
       }));
     }
  
+    // ── Nudge bottom-sheet ──────────────────────────────────────────
+    function jpOpenNudgeSheet(subId, currentWeekly, universeType, nextPalierCycle, nudgeLevel, nudgeMsg) {
+      var nextWeekly = Math.round(nextPalierCycle / 4);
+      var atMax      = (nextWeekly === currentWeekly);
+      document.getElementById('jp-sheet-current-hrs').textContent = currentWeekly;
+      document.getElementById('jp-sheet-next-hrs').textContent    = atMax ? currentWeekly : nextWeekly;
+      document.getElementById('jp-sheet-reason').textContent      = nudgeMsg || '';
+      var btn = document.getElementById('jp-sheet-upgrade-btn');
+      if (atMax) {
+        btn.textContent           = 'Vous êtes à la formule maximum';
+        btn.style.pointerEvents   = 'none';
+        btn.style.background      = '#9ca3af';
+        btn.removeAttribute('href');
+      } else {
+        btn.textContent           = 'Voir la formule ' + nextWeekly + ' Rituels/semaine';
+        btn.style.pointerEvents   = '';
+        btn.style.background      = '';
+        btn.href = '/pricing?suggest=' + nextWeekly + '&from_subscription=' + subId;
+      }
+      document.getElementById('jp-nudge-backdrop').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function jpCloseNudgeSheet() {
+      document.getElementById('jp-nudge-backdrop').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    // Fermeture au clavier (Echap)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') jpCloseNudgeSheet();
+    });
+    // ── fin nudge bottom-sheet ──────────────────────────────────────
+
     // Fonction pour ouvrir le flow d'annulation
     function openSubscriptionCancelFlow(payload) {
       window.dispatchEvent(new CustomEvent('openSubscriptionCancelStep1', {

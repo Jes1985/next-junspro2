@@ -133,6 +133,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
+    box-shadow: none;
   }
 
   /* Supprimer tout espace sous le footer */
@@ -176,7 +177,7 @@
 
   /* Bloc A : Contenu principal */
   .footer-main {
-    padding: 60px 0 50px;
+    padding: 24px 0 16px;
     background: #050816;
   }
 
@@ -412,7 +413,7 @@
 
   /* Bloc B : Copyright et réseaux sociaux */
   .footer-bottom {
-    padding: 30px 0 0 0 !important;
+    padding: 12px 0 !important;
     background: #030510;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 0 !important;

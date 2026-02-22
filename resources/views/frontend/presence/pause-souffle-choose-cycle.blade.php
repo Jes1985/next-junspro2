@@ -193,6 +193,74 @@
     cursor: not-allowed;
   }
 
+  /* ── Stepper visuel — bulles cycle ────────────────────────── */
+  .jp-bubble-recap {
+    margin: 0 0 1.25rem;
+    text-align: center;
+  }
+  .jp-bubble-recap-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
+    margin-bottom: 0.6rem;
+  }
+  .jp-bubble-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 0.55rem;
+  }
+  .jp-bubble {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 2px solid #e5e7eb;
+    background: #f3f4f6;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 700;
+    color: #d1d5db;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    flex-shrink: 0;
+  }
+  .jp-bubble.is-pack {
+    background: #6366f1;
+    border-color: #4f46e5;
+    color: #fff;
+    transform: scale(1.08);
+  }
+  .jp-bubble.is-addon {
+    background: #f59e0b;
+    border-color: #d97706;
+    color: #fff;
+    transform: scale(1.05);
+  }
+  .jp-bubble-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.72rem;
+    color: #6b7280;
+  }
+  .jp-legend-dot {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .jp-bubble-total-line {
+    margin-top: 0.55rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  .jp-bubble-total-line .jp-total-highlight {
+    color: #6366f1;
+    font-size: 1rem;
+  }
+  /* ── fin stepper visuel ────────────────────────────────────── */
+
   @media (max-width: 768px) {
     .pause-souffle-choose-cycle-header h1 {
       font-size: 2rem;
@@ -200,6 +268,11 @@
 
     .pause-souffle-packs-grid {
       grid-template-columns: 1fr;
+    }
+
+    .jp-bubble {
+      width: 30px; height: 30px;
+      font-size: 0.6rem;
     }
   }
 </style>
@@ -216,6 +289,11 @@
     <form id="chooseCycleForm" method="POST" action="{{ route('pause-souffle.activate-cycle') }}">
       @csrf
       <input type="hidden" name="intake_id" value="{{ $intake->id }}">
+      @if(!empty($isPreview))
+        <div style="margin-bottom:1.5rem;padding:0.75rem 1rem;background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;font-size:0.82rem;color:#92400e;text-align:center;">
+          ⚠️ Mode aperçu — les prix sont indicatifs et la soumission est désactivée.
+        </div>
+      @endif
 
       <div class="pause-souffle-packs-grid">
         @foreach(['pack_1' => '1 rituel', 'pack_2' => '2 rituels', 'pack_4' => '4 rituels', 'pack_8' => '8 rituels'] as $packKey => $packLabel)
@@ -240,6 +318,23 @@
       <div class="pause-souffle-addon-section">
         <h2>Rituels supplémentaires</h2>
         <p>Ajoutez jusqu'à 12 rituels au total par cycle (pack + add-on).</p>
+
+        {{-- ── Stepper visuel : bulles 1…12 ──────────────────── --}}
+        <div class="jp-bubble-recap">
+          <p class="jp-bubble-recap-label">Aperçu de votre cycle (12 rituels max)</p>
+          <div class="jp-bubble-row" id="jp-bubble-row">
+            {{-- Les 12 bulles sont générées par JS --}}
+          </div>
+          <div class="jp-bubble-legend">
+            <span><span class="jp-legend-dot" style="background:#6366f1"></span>Pack sélectionné</span>
+            <span><span class="jp-legend-dot" style="background:#f59e0b"></span>Add-on</span>
+            <span><span class="jp-legend-dot" style="background:#f3f4f6; border:1.5px solid #e5e7eb; box-sizing:border-box;"></span>Disponible</span>
+          </div>
+          <p class="jp-bubble-total-line" id="jp-bubble-total" style="display:none">
+            Total sélectionné : <span class="jp-total-highlight" id="jp-total-count">0</span> rituels / 4 semaines
+          </p>
+        </div>
+        {{-- ── fin bulles ────────────────────────────────────────────── --}}
         
         <div class="pause-souffle-stepper">
           <button type="button" class="pause-souffle-stepper-btn" onclick="decreaseAddon()" id="decreaseBtn">-</button>
@@ -254,7 +349,8 @@
         </div>
       </div>
 
-      <button type="submit" class="pause-souffle-activate-btn" id="activateBtn" disabled>
+      <button type="submit" class="pause-souffle-activate-btn" id="activateBtn"
+              {{ !empty($isPreview) ? 'disabled title="Mode aperçu : soumission désactivée"' : '' }}>
         Activer mon cycle (4 semaines)
       </button>
     </form>
@@ -265,6 +361,41 @@
   let selectedPack = null;
   let addonQty = 0;
   const maxRituals = 12;
+  const isPreview = {{ !empty($isPreview) ? 'true' : 'false' }};
+
+  // ── Rendu visuel des bulles ──────────────────────────────
+  function renderBubbles() {
+    const packRituals = selectedPack ? getPackRituals(selectedPack) : 0;
+    const total = packRituals + addonQty;
+    const row   = document.getElementById('jp-bubble-row');
+    if (!row) return;
+
+    row.innerHTML = '';
+    for (let i = 1; i <= maxRituals; i++) {
+      const b = document.createElement('div');
+      b.className = 'jp-bubble';
+      b.textContent = i;
+      if (i <= packRituals) {
+        b.classList.add('is-pack');
+        b.title = 'Inclus dans le pack';
+      } else if (i <= packRituals + addonQty) {
+        b.classList.add('is-addon');
+        b.title = 'Add-on';
+      } else {
+        b.title = 'Disponible';
+      }
+      row.appendChild(b);
+    }
+
+    // Ligne récap total
+    const totalLine  = document.getElementById('jp-bubble-total');
+    const totalCount = document.getElementById('jp-total-count');
+    if (totalLine && totalCount) {
+      totalLine.style.display  = selectedPack ? 'block' : 'none';
+      totalCount.textContent   = total;
+    }
+  }
+  // ── fin renderBubbles ─────────────────────────────────────────
 
   function selectPack(packKey) {
     // Désélectionner tous les packs
@@ -280,7 +411,14 @@
       if (radio) {
         radio.checked = true;
         selectedPack = packKey;
+        // Réinitialiser add-on si le pack change et dépasse le max
+        const maxAddon = maxRituals - getPackRituals(packKey);
+        if (addonQty > maxAddon) {
+          addonQty = maxAddon;
+          updateAddonDisplay();
+        }
         updateTotal();
+        renderBubbles();
         checkActivateButton();
       }
     }
@@ -307,6 +445,7 @@
       addonQty++;
       updateAddonDisplay();
       updateTotal();
+      renderBubbles();
     }
   }
 
@@ -315,6 +454,7 @@
       addonQty--;
       updateAddonDisplay();
       updateTotal();
+      renderBubbles();
     }
   }
 
@@ -345,13 +485,14 @@
 
   function checkActivateButton() {
     const activateBtn = document.getElementById('activateBtn');
-    activateBtn.disabled = !selectedPack;
+    activateBtn.disabled = !selectedPack || isPreview;
   }
 
   // Initialiser au chargement
   document.addEventListener('DOMContentLoaded', function() {
     checkActivateButton();
     updateAddonDisplay();
+    renderBubbles(); // dessiner les 12 bulles grises vides
   });
 </script>
 @endsection

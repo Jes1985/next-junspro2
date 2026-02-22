@@ -117,6 +117,14 @@ Route::post('/pricing/subscribe', [\App\Http\Controllers\FrontEnd\PricingControl
   
   // Dashboard Freelance One-Page Premium (DOIT être AVANT /freelance/{id} pour éviter le conflit)
   Route::get('/freelance/dashboard', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceDashboardController::class, 'index'])->name('freelance.dashboard')->middleware('auth:web');
+
+  // Disponibilités calendrier freelance (onglet Agenda)
+  Route::middleware(['auth:web'])->prefix('/freelance/calendar')->name('freelance.calendar.')->group(function () {
+    Route::get('/slots', [\App\Http\Controllers\FrontEnd\Freelance\AvailabilityController::class, 'index'])->name('slots.index');
+    Route::post('/slots', [\App\Http\Controllers\FrontEnd\Freelance\AvailabilityController::class, 'store'])->name('slots.store');
+    Route::put('/slots/{slot}', [\App\Http\Controllers\FrontEnd\Freelance\AvailabilityController::class, 'update'])->whereNumber('slot')->name('slots.update');
+    Route::delete('/slots/{slot}', [\App\Http\Controllers\FrontEnd\Freelance\AvailabilityController::class, 'destroy'])->whereNumber('slot')->name('slots.destroy');
+  });
   
   // Settings Freelance (séparé des settings client)
   Route::middleware(['auth:web'])->prefix('/freelance/settings')->name('freelance.settings.')->group(function () {

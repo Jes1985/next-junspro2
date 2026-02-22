@@ -17,7 +17,7 @@
     }
 
     .onboarding-container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
@@ -111,10 +111,15 @@
     }
 
     .onboarding-title {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 2.25rem;
+      font-weight: 800;
       color: #1a202c;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1a202c 0%, #4c1d95 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .onboarding-description {
@@ -263,6 +268,65 @@
     /* Critères photo */
     .photo-criteria {
       margin-top: 3rem;
+    }
+
+    .photo-criteria .advice-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .photo-criteria .advice-header:hover {
+      background: linear-gradient(135deg, #f3e8ff 0%, #e5e7eb 100%);
+    }
+
+    .photo-criteria .advice-header-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a202c;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .photo-criteria .advice-header-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--junspro-gradient);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .photo-criteria .advice-toggle-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--junspro-purple);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-criteria .advice-header.active .advice-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .photo-criteria-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0;
+    }
+
+    .photo-criteria-content.expanded {
+      max-height: 1200px;
+      padding: 1.25rem 0 0 0;
     }
 
     .photo-criteria-title {
@@ -423,8 +487,9 @@
 @section('content')
   <div class="onboarding-page">
     <div class="onboarding-container">
+      @include('frontend.freelance.onboarding.partials.premium-stepper', ['routeStep' => 2])
       <!-- Barre de progression -->
-      <div class="onboarding-progress">
+      <div class="onboarding-progress" style="display:none;">
         <div class="progress-steps">
           <div class="progress-step completed">
             <div class="progress-step-number">✓</div>
@@ -553,55 +618,71 @@
 
           <!-- Critères photo -->
           <div class="photo-criteria">
-            <h2 class="photo-criteria-title">Les critères à suivre pour une photo réussie</h2>
-            
-            <!-- Exemples visuels en haut -->
-            <div class="photo-examples" style="margin-bottom: 2rem;">
-              <div class="photo-example" style="width: 100px; height: 100px;">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="Exemple">
+            <div class="advice-header" onclick="togglePhotoCriteria()" style="margin-bottom: 1rem;">
+              <div class="advice-header-title">
+                <div class="advice-header-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                </div>
+                <span>Les critères à suivre pour une photo réussie</span>
               </div>
-              <div class="photo-example" style="width: 100px; height: 100px;">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face" alt="Exemple">
-              </div>
-              <div class="photo-example" style="width: 100px; height: 100px;">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face" alt="Exemple">
-              </div>
-              <div class="photo-example" style="width: 100px; height: 100px;">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face" alt="Exemple">
-              </div>
+              <svg class="advice-toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </div>
 
-            <!-- Liste des critères -->
-            <ul class="photo-criteria-list" style="grid-template-columns: 1fr; gap: 0.75rem;">
-              <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
-                <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
-                <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Vous devez faire face à l'objectif</span>
-              </li>
-              <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
-                <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
-                <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Assurez-vous que votre tête et vos épaules sont bien cadrées</span>
-              </li>
-              <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
-                <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
-                <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Vous devez apparaître au centre de la photo</span>
-              </li>
-              <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
-                <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
-                <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Votre visage et vos yeux doivent être entièrement visibles (sauf pour des motifs religieux)</span>
-              </li>
-              <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
-                <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
-                <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Vous devez être la seule personne sur la photo</span>
-              </li>
-              <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
-                <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
-                <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Utilisez une photo en couleurs, en haute définition et sans filtres</span>
-              </li>
-              <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
-                <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
-                <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">N'ajoutez pas de logo ni vos coordonnées</span>
-              </li>
-            </ul>
+            <div class="photo-criteria-content" id="photoCriteriaContent">
+              <!-- Exemples visuels en haut -->
+              <div class="photo-examples" style="margin-bottom: 2rem;">
+                <div class="photo-example" style="width: 100px; height: 100px;">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="Exemple">
+                </div>
+                <div class="photo-example" style="width: 100px; height: 100px;">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face" alt="Exemple">
+                </div>
+                <div class="photo-example" style="width: 100px; height: 100px;">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face" alt="Exemple">
+                </div>
+                <div class="photo-example" style="width: 100px; height: 100px;">
+                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face" alt="Exemple">
+                </div>
+              </div>
+
+              <!-- Liste des critères -->
+              <ul class="photo-criteria-list" style="grid-template-columns: 1fr; gap: 0.75rem;">
+                <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
+                  <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
+                  <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Vous devez faire face à l'objectif</span>
+                </li>
+                <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
+                  <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
+                  <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Assurez-vous que votre tête et vos épaules sont bien cadrées</span>
+                </li>
+                <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
+                  <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
+                  <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Vous devez apparaître au centre de la photo</span>
+                </li>
+                <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
+                  <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
+                  <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Votre visage et vos yeux doivent être entièrement visibles (sauf pour des motifs religieux)</span>
+                </li>
+                <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
+                  <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
+                  <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Vous devez être la seule personne sur la photo</span>
+                </li>
+                <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
+                  <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
+                  <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">Utilisez une photo en couleurs, en haute définition et sans filtres</span>
+                </li>
+                <li class="photo-criteria-item" style="background: white; border: 1px solid #e5e7eb;">
+                  <span class="photo-criteria-icon" style="color: #10b981; font-size: 1.5rem;">✓</span>
+                  <span class="photo-criteria-text" style="font-size: 0.95rem; font-weight: 500;">N'ajoutez pas de logo ni vos coordonnées</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
           <!-- Actions -->
@@ -653,6 +734,15 @@
         handleFileSelect(e.target.files[0]);
       }
     });
+
+    // Accordéon critères photo (pattern step 5)
+    function togglePhotoCriteria() {
+      const header = document.querySelector('.photo-criteria .advice-header');
+      const content = document.getElementById('photoCriteriaContent');
+      if (!header || !content) return;
+      header.classList.toggle('active');
+      content.classList.toggle('expanded');
+    }
 
     function handleFileSelect(file) {
       // Vérifier le type de fichier

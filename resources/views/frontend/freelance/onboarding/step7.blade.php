@@ -17,16 +17,18 @@
     }
 
     .onboarding-container {
-      max-width: 700px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
     /* Barre de progression */
     .onboarding-progress {
-      background: transparent;
-      padding: 0;
-      margin-bottom: 3rem;
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .progress-steps {
@@ -105,11 +107,15 @@
     }
 
     .onboarding-title {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 2.25rem;
+      font-weight: 800;
       color: #1a202c;
-      margin-bottom: 2rem;
-      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1a202c 0%, #4c1d95 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     /* Sections fluides sans blocs */
@@ -136,6 +142,95 @@
       color: #6b7280;
       line-height: 1.6;
       margin-bottom: 1.5rem;
+    }
+
+    /* Critères avancés - filtre disponibilités (matching) */
+    .advanced-matching-filters {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+      padding: 0.75rem;
+    }
+    .advanced-matching-filters .preply-filter-label {
+      display: block;
+      font-size: 0.9rem;
+      color: #111827;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .advanced-matching-filters .preply-availability-trigger {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      background: #fff;
+      padding: 0.6rem 0.7rem;
+      font-size: 0.95rem;
+      color: #111827;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .advanced-matching-filters .preply-availability-panel {
+      margin-top: 0.45rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #fff;
+      padding: 0.6rem;
+      display: none;
+    }
+    .advanced-matching-filters .preply-availability-panel.active { display: block; }
+    .advanced-matching-filters .availability-section-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #111827;
+      margin: 0 0 0.45rem 0;
+    }
+    .advanced-matching-filters .availability-time-slots,
+    .advanced-matching-filters .availability-days {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.45rem;
+    }
+    .advanced-matching-filters .availability-time-btn,
+    .advanced-matching-filters .availability-day-btn {
+      border: 1px solid #d1d5db;
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.32rem 0.5rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      color: #111827;
+    }
+    .advanced-matching-filters .availability-time-btn.active,
+    .advanced-matching-filters .availability-day-btn.active {
+      border-color: #4f46e5;
+      background: #eef2ff;
+      color: #3730a3;
+      font-weight: 700;
+    }
+    .advanced-matching-filters .availability-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.45rem;
+      margin-top: 0.45rem;
+    }
+    .advanced-matching-filters .availability-clear-btn,
+    .advanced-matching-filters .availability-apply-btn {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #fff;
+      padding: 0.45rem 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .advanced-matching-filters .availability-apply-btn {
+      border-color: #4f46e5;
+      background: #4f46e5;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.18);
     }
 
     /* Question fuseau horaire */
@@ -437,8 +532,9 @@
 @section('content')
   <div class="onboarding-page">
     <div class="onboarding-container">
+      @include('frontend.freelance.onboarding.partials.premium-stepper', ['routeStep' => 7])
       <!-- Barre de progression -->
-      <div class="onboarding-progress">
+      <div class="onboarding-progress" style="display:none;">
         <div class="progress-steps">
           <div class="progress-step completed">
             <div class="progress-step-number">✓</div>
@@ -472,7 +568,7 @@
           <span class="progress-chevron">›</span>
           <div class="progress-step active">
             <div class="progress-step-number">7</div>
-            <span class="progress-step-label">Disponibilité</span>
+            <span class="progress-step-label">Disponibilité &amp; conditions</span>
           </div>
           <span class="progress-chevron">›</span>
           <div class="progress-step pending">
@@ -484,7 +580,7 @@
 
       <!-- Contenu principal - Directement sur le fond -->
       <div class="onboarding-content">
-        <h1 class="onboarding-title">Disponibilité</h1>
+        <h1 class="onboarding-title">Disponibilité &amp; conditions</h1>
 
         @if(session('success'))
           <div style="padding: 1rem; background: #f0fdf4; border-left: 4px solid #10b981; border-radius: 4px; color: #166534; margin-bottom: 2rem;">
@@ -504,6 +600,66 @@
 
         <form action="{{ route('freelance.onboarding.step7.store') }}" method="POST" id="availabilityForm">
           @csrf
+
+          <!-- Critères avancés (optionnel) : filtre matching disponibilités -->
+          <div class="section">
+            <div class="section-title">Critères avancés (optionnel)</div>
+            <p class="section-description">Affinez votre matching côté client grâce à vos plages disponibles.</p>
+            <div class="advanced-matching-filters">
+              <div class="preply-filter-group preply-availability-group">
+                <label class="preply-filter-label preply-filter-label-icon"><i class="fas fa-calendar-alt me-2"></i>Mes disponibilités</label>
+                <button type="button" class="preply-availability-trigger" id="matchingAvailabilityTrigger">
+                  <span class="availability-selected-text" id="matchingAvailabilityLabel">Toutes les heures</span>
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="preply-availability-panel" id="matchingAvailabilityPanel">
+                  <div class="availability-section" style="width:100%;">
+                    <h4 class="availability-section-title">Jours</h4>
+                    <div class="availability-days">
+                      <button type="button" class="availability-day-btn" data-day="0">Dim</button>
+                      <button type="button" class="availability-day-btn" data-day="1">Lun</button>
+                      <button type="button" class="availability-day-btn" data-day="2">Mar</button>
+                      <button type="button" class="availability-day-btn" data-day="3">Mer</button>
+                      <button type="button" class="availability-day-btn" data-day="4">Jeu</button>
+                      <button type="button" class="availability-day-btn" data-day="5">Ven</button>
+                      <button type="button" class="availability-day-btn" data-day="6">Sam</button>
+                    </div>
+                  </div>
+                  <div class="availability-section" style="width:100%;">
+                    <h4 class="availability-section-title">Heures</h4>
+                    <div class="availability-time-group">
+                      <div class="availability-time-label">Journée</div>
+                      <div class="availability-time-slots">
+                        <button type="button" class="availability-time-btn" data-time="9-12"><i class="fas fa-sun"></i><span>9-12</span></button>
+                        <button type="button" class="availability-time-btn" data-time="12-15"><i class="fas fa-sun"></i><span>12-15</span></button>
+                        <button type="button" class="availability-time-btn" data-time="15-18"><i class="fas fa-sun"></i><span>15-18</span></button>
+                      </div>
+                    </div>
+                    <div class="availability-time-group">
+                      <div class="availability-time-label">Soir et nuit</div>
+                      <div class="availability-time-slots">
+                        <button type="button" class="availability-time-btn" data-time="18-21"><i class="fas fa-sun"></i><span>18-21</span></button>
+                        <button type="button" class="availability-time-btn" data-time="21-24"><i class="fas fa-moon"></i><span>21-24</span></button>
+                        <button type="button" class="availability-time-btn" data-time="0-3"><i class="fas fa-moon"></i><span>0-3</span></button>
+                      </div>
+                    </div>
+                    <div class="availability-time-group">
+                      <div class="availability-time-label">Tôt le matin</div>
+                      <div class="availability-time-slots">
+                        <button type="button" class="availability-time-btn" data-time="3-6"><i class="fas fa-moon"></i><span>3-6</span></button>
+                        <button type="button" class="availability-time-btn" data-time="6-9"><i class="fas fa-sun"></i><span>6-9</span></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="availability-actions">
+                    <button type="button" class="availability-clear-btn" id="matchingAvailabilityClear">Effacer</button>
+                    <button type="button" class="availability-apply-btn" id="matchingAvailabilityApply">Appliquer</button>
+                  </div>
+                </div>
+                <input type="hidden" name="matching_availability" id="matchingAvailabilityInput" value="{{ old('matching_availability', $data['matching_availability'] ?? '') }}">
+              </div>
+            </div>
+          </div>
 
           <!-- Section confirmation fuseau horaire -->
           <div class="section">
@@ -587,7 +743,7 @@
           <div class="section">
             <div class="section-title">Définissez vos disponibilités</div>
             <p class="section-description">
-              Votre disponibilité correspond à vos heures de travail. Les clients peuvent réserver des consultations durant ces horaires.
+              Votre disponibilité correspond à vos heures de travail. Les clients peuvent réserver des Rituels durant ces horaires.
             </p>
 
             @php
@@ -678,6 +834,83 @@
   </div>
 
   <script>
+    (function() {
+      const trigger = document.getElementById('matchingAvailabilityTrigger');
+      const panel = document.getElementById('matchingAvailabilityPanel');
+      const label = document.getElementById('matchingAvailabilityLabel');
+      const hidden = document.getElementById('matchingAvailabilityInput');
+      const applyBtn = document.getElementById('matchingAvailabilityApply');
+      const clearBtn = document.getElementById('matchingAvailabilityClear');
+      if (!trigger || !panel || !label || !hidden || !applyBtn || !clearBtn) return;
+
+      function updateLabel(count) {
+        const active = typeof count === 'number' ? count : panel.querySelectorAll('.availability-time-btn.active').length;
+        label.textContent = active ? `${active} créneau(x) sélectionné(s)` : 'Toutes les heures';
+      }
+
+      function hydrateFromHidden() {
+        let times = [];
+        let days = [];
+        try {
+          const parsed = JSON.parse(hidden.value || 'null');
+          if (parsed && Array.isArray(parsed.times)) times = parsed.times;
+          if (parsed && Array.isArray(parsed.days)) days = parsed.days;
+        } catch (e) {
+          times = (hidden.value || '').split(',').map(v => v.trim()).filter(Boolean);
+        }
+
+        if (times.length) {
+          panel.querySelectorAll('.availability-time-btn').forEach(btn => {
+            const val = btn.getAttribute('data-time');
+            btn.classList.toggle('active', times.includes(val));
+          });
+        }
+        if (days.length) {
+          panel.querySelectorAll('.availability-day-btn').forEach(btn => {
+            const val = btn.getAttribute('data-day');
+            btn.classList.toggle('active', days.includes(val));
+          });
+        }
+        updateLabel(times.length);
+      }
+
+      function serializeSelection() {
+        const times = Array.from(panel.querySelectorAll('.availability-time-btn.active')).map(el => el.getAttribute('data-time')).filter(Boolean);
+        const days = Array.from(panel.querySelectorAll('.availability-day-btn.active')).map(el => el.getAttribute('data-day')).filter(Boolean);
+        hidden.value = JSON.stringify({ times, days });
+        updateLabel(times.length);
+      }
+
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        panel.classList.toggle('active');
+      });
+
+      panel.querySelectorAll('.availability-time-btn, .availability-day-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          btn.classList.toggle('active');
+        });
+      });
+
+      clearBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        panel.querySelectorAll('.availability-time-btn.active, .availability-day-btn.active').forEach(function(el) {
+          el.classList.remove('active');
+        });
+        hidden.value = '';
+        updateLabel(0);
+      });
+
+      applyBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        serializeSelection();
+        panel.classList.remove('active');
+      });
+
+      hydrateFromHidden();
+    })();
+
     // Gestion de la confirmation du fuseau horaire
     function selectTimezoneOption(isYes) {
       const btnYes = document.getElementById('btnYes');

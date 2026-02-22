@@ -10,6 +10,9 @@
   'domainSpecializations' => [], // pour /services/projects : spécialisations par domaine (hero Domaine + Spécialisation)
   'hubUniverses' => [], // pour /services (hub) : liste [['slug'=>'...','label'=>'...'], ...]
   'hubUniverseDomains' => [], // pour /services (hub) : map universe_slug => [[slug, label], ...]
+  'initialUniverse' => '', // valeur pré-sélectionnée pour l'univers (ex: page identity freelance)
+  'initialDomain' => '',   // valeur pré-sélectionnée pour le domaine
+  'initialMode' => '',     // valeur pré-sélectionnée pour le mode ('online', 'onsite' ou 'hybrid')
 ])
 
 @php
@@ -262,7 +265,7 @@
       </div>
       @endif
       <div class="filter-row-main @if($hasHeroDomainSpec) filter-row-main--projects-hero @elseif($hasLocationDuo) filter-row-main--has-location-duo @endif @if($isProjects) filter-row-main--projects-hero-grid @endif @if($isLessons) filter-row-main--lessons-hero-grid @endif @if($isAtHome) filter-row-main--at-home-hero-grid @endif @if($isWellnesslive) filter-row-main--wellnesslive-hero-grid @endif @if($isCorporate) filter-row-main--corporate-hero-grid @endif">
-        @if($hasHeroDomainSpec && $isHub)
+        @if($hasHeroDomainSpec && ($isHub || $isProjects || $isLessons || $isAtHome || $isWellnesslive || $isCorporate))
         {{-- Domaine/Univers + Spécialisation : hub uniquement (supprimé pour lessons, projects, at-home, wellnesslive, corporate) --}}
         <div data-hero-filter="{{ $universe }}" class="hero-filter-module" @if($isHub) style="overflow:visible;position:relative;z-index:50;" @endif>
         <div class="filter-input-group filter-hero-domain-spec filter-hero-domain-select-wrapper">
@@ -271,7 +274,8 @@
           <select name="universe" id="{{ $heroDomainSelectId }}" class="filter-input filter-select filter-select-domain-hero" aria-label="{{ __('Tous les univers') }}">
             <option value="">{{ __('Tous les univers') }}</option>
             @foreach($heroCategories as $cat)
-              <option value="{{ $cat['slug'] ?? '' }}" {{ request('universe') === ($cat['slug'] ?? '') ? 'selected' : '' }}>{{ $cat['label'] ?? '' }}</option>
+              @php $__selectedUniverse = request('universe') ?: ($initialUniverse ?? ''); @endphp
+              <option value="{{ $cat['slug'] ?? '' }}" {{ $__selectedUniverse === ($cat['slug'] ?? '') ? 'selected' : '' }}>{{ in_array(($cat['label'] ?? ''), ['WellnessLive', 'Wellnesslive']) ? 'Ritual Motion' : ($cat['label'] ?? '') }}</option>
             @endforeach
           </select>
           @elseif(in_array($universe, ['projects', 'corporate', 'lessons', 'at-home', 'wellnesslive']) && !empty($heroCategories) && isset($heroCategories[0]['description']))
@@ -303,7 +307,7 @@
           </select>
           @endif
         </div>
-        <div class="filter-input-group filter-hero-domain-spec" id="{{ $heroSpecWrapperId }}" data-initial-specialization="{{ request('specialization') ?? '' }}" data-spec-disabled-text="{{ $isHub ? __('Tous les domaines') : 'Spécialisation' }}" @if($isHub) style="overflow:visible;position:relative;z-index:50;" @endif>
+        <div class="filter-input-group filter-hero-domain-spec" id="{{ $heroSpecWrapperId }}" data-initial-specialization="{{ request('specialization') ?: ($initialDomain ?? '') }}" data-spec-disabled-text="{{ $isHub ? __('Tous les domaines') : 'Spécialisation' }}" @if($isHub) style="overflow:visible;position:relative;z-index:50;" @endif>
           <i class="fas fa-folder-open filter-input-icon" style="left: 1rem;" aria-hidden="true"></i>
           <select name="specialization" id="{{ $heroSpecSelectId }}" class="filter-input filter-select" disabled aria-label="{{ $isHub ? __('Tous les domaines') : 'Spécialisation' }}">
             <option value="">{{ $isHub ? __('Tous les domaines') : 'Spécialisation' }}</option>
@@ -641,14 +645,19 @@
         {{-- Mode d'intervention (pour hub/home, hub/services, projects, lessons, corporate, at-home et wellnesslive) : segmented control premium avant Pays/Ville --}}
         @if($isHub || $isProjects || $isLessons || $isCorporate || $isAtHome || $isWellnesslive)
         <div class="filter-input-group filter-mode-intervention-hero" data-hero-filter="{{ $heroFilterScope }}">
-          <label class="filter-label-visually-hidden">{{ __('Mode d\'intervention') }}</label>
+          <span class="mode-intervention-label">{{ __('Mode d\'intervention') }}</span>
           <div class="mode-intervention-segmented" role="group" aria-label="{{ __('Mode d\'intervention') }}">
             @php
               $currentMode = request('mode', []);
-              $isOnline = is_array($currentMode) && in_array('online', $currentMode);
-              $isOnsite = (is_array($currentMode) && in_array('onsite', $currentMode)) || empty($currentMode);
-              // Par défaut, si aucun mode n'est sélectionné, on considère "En présentiel"
-              $hasNoMode = !$isOnline && !$isOnsite;
+              // Si aucun mode dans la requête mais une valeur initiale fournie (ex: page identity freelance),
+              // on l'utilise pour présélectionner le mode en HTML
+              if (empty($currentMode) && !empty($initialMode)) {
+                $currentMode = [$initialMode];
+              }
+              $isOnline  = is_array($currentMode) && in_array('online',  $currentMode);
+              $isOnsite  = is_array($currentMode) && in_array('onsite',  $currentMode);
+              $isHybrid  = is_array($currentMode) && in_array('hybrid',  $currentMode);
+              $hasNoMode = !$isOnline && !$isOnsite && !$isHybrid;
             @endphp
             <label class="mode-intervention-pill {{ $isOnline ? 'is-active' : '' }}" data-mode="online">
               <input type="radio" name="mode[]" value="online" {{ $isOnline ? 'checked' : '' }} class="sr-only mode-intervention-radio">
@@ -657,6 +666,11 @@
             <label class="mode-intervention-pill {{ ($isOnsite || $hasNoMode) ? 'is-active' : '' }}" data-mode="onsite">
               <input type="radio" name="mode[]" value="onsite" {{ ($isOnsite || $hasNoMode) ? 'checked' : '' }} class="sr-only mode-intervention-radio">
               <span class="mode-intervention-pill-text">{{ __('En présentiel') }}</span>
+            </label>
+            <label class="mode-intervention-pill mode-intervention-pill--hybrid {{ $isHybrid ? 'is-active' : '' }}" data-mode="hybrid">
+              <input type="radio" name="mode[]" value="hybrid" {{ $isHybrid ? 'checked' : '' }} class="sr-only mode-intervention-radio">
+              <span class="mode-intervention-pill-icon" aria-hidden="true">⚡</span>
+              <span class="mode-intervention-pill-text">{{ __('Hybride') }}</span>
             </label>
           </div>
         </div>
@@ -752,6 +766,8 @@
             });
             
             var isOnline = selectedMode === 'online';
+            // Hybride = même comportement que présentiel (Pays/Ville requis)
+            var isHybridMode = selectedMode === 'hybrid';
             
             // Mettre à jour les pills visuellement
             var pills = heroModule.querySelectorAll('.mode-intervention-pill');
@@ -788,7 +804,7 @@
                 countryWrapper.style.pointerEvents = 'none';
               }
             } else {
-              // Mode "En présentiel" : réactiver Pays/Ville
+              // Mode "En présentiel" ou "Hybride" : réactiver Pays/Ville
               countrySelect.disabled = false;
               citySelect.disabled = false;
               
@@ -865,10 +881,18 @@
               var onlineRadio = Array.prototype.find.call(modeRadios, function(r) { return r.value === 'online'; });
               if (onlineRadio) {
                 onlineRadio.checked = true;
+                heroModule.querySelectorAll('.mode-intervention-pill').forEach(function(p) { p.classList.remove('is-active'); });
                 var onlinePill = heroModule.querySelector('.mode-intervention-pill[data-mode="online"]');
                 if (onlinePill) onlinePill.classList.add('is-active');
-                var onsitePill = heroModule.querySelector('.mode-intervention-pill[data-mode="onsite"]');
-                if (onsitePill) onsitePill.classList.remove('is-active');
+              }
+            } else if (urlMode === 'hybrid') {
+              // Si mode=hybrid dans l'URL, sélectionner "Hybride"
+              var hybridRadio = Array.prototype.find.call(modeRadios, function(r) { return r.value === 'hybrid'; });
+              if (hybridRadio) {
+                hybridRadio.checked = true;
+                heroModule.querySelectorAll('.mode-intervention-pill').forEach(function(p) { p.classList.remove('is-active'); });
+                var hybridPill = heroModule.querySelector('.mode-intervention-pill[data-mode="hybrid"]');
+                if (hybridPill) hybridPill.classList.add('is-active');
               }
             } else {
               // S'assurer qu'au moins un mode est sélectionné (par défaut "En présentiel")
@@ -1318,6 +1342,7 @@
                 </div>
               </div>
             </div>
+            @include('components.services.filters.partials.engagement-rituel-lessons')
             @elseif($universe === 'at-home')
             {{-- At-home : Ma langue maternelle + Autres langues parlées (au-dessus de Tarif du Rituel) --}}
             @php
@@ -2041,7 +2066,7 @@
             @php
               $selectedUniverses = request('universe', []);
               if (!is_array($selectedUniverses)) { $selectedUniverses = $selectedUniverses ? [$selectedUniverses] : []; }
-              $universes = ['projects' => __('Projets et Consulting'), 'lessons' => __('Cours'), 'at-home' => __('Services at Home'), 'wellnesslive' => __('WellnessLive'), 'corporate' => __('Bien-être en entreprise'), 'homeswap' => __('Échanges de logement')];
+              $universes = ['projects' => __('Projets et Consulting'), 'lessons' => __('Cours'), 'at-home' => __('Services at Home'), 'wellnesslive' => __('Ritual Motion'), 'corporate' => __('Bien-être en entreprise'), 'homeswap' => __('Échanges de logement')];
             @endphp
             @foreach($universes as $key => $label)
               <label class="filter-checkbox-label">
@@ -3556,9 +3581,30 @@
   }
   
   /* Mode d'intervention segmented control (premium) - uniquement pour hub/home */
+
+  /* Label "Mode d'intervention" affiché au-dessus des pills */
+  .mode-intervention-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    padding-left: 2px;
+    white-space: nowrap;
+  }
+
+  /* Wrapper vertical pour empiler label + segmented */
+  .filter-mode-intervention-hero.filter-input-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
   .mode-intervention-segmented {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.375rem;
     background: #f3f4f6;
     border-radius: 12px;
     padding: 4px;
@@ -3570,17 +3616,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.625rem 1.25rem;
+    gap: 0.3rem;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     background: transparent;
     border: none;
     position: relative;
+    white-space: nowrap;
   }
   
   .mode-intervention-pill:hover {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
   }
   
   .mode-intervention-pill.is-active {
@@ -3588,9 +3636,33 @@
     color: #ffffff;
     box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
   }
-  
+
+  /* Pill Hybride : gradient bicolore distinctif au repos */
+  .mode-intervention-pill--hybrid {
+    position: relative;
+  }
+  .mode-intervention-pill--hybrid:not(.is-active) {
+    background: rgba(16, 185, 129, 0.07);
+  }
+  .mode-intervention-pill--hybrid:not(.is-active):hover {
+    background: rgba(16, 185, 129, 0.14);
+  }
+  .mode-intervention-pill--hybrid.is-active {
+    background: linear-gradient(135deg, #059669 0%, #2563eb 60%, #7c3aed 100%);
+    box-shadow: 0 2px 10px rgba(5, 150, 105, 0.3);
+  }
+
+  .mode-intervention-pill-icon {
+    font-size: 0.8rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  .mode-intervention-pill.is-active .mode-intervention-pill-icon {
+    transform: scale(1.15);
+  }
+
   .mode-intervention-pill-text {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 500;
     color: #374151;
     transition: color 0.2s ease;
@@ -3600,11 +3672,29 @@
   .mode-intervention-pill.is-active .mode-intervention-pill-text {
     color: #ffffff;
   }
+  .mode-intervention-pill--hybrid:not(.is-active) .mode-intervention-pill-text {
+    color: #059669;
+    font-weight: 600;
+  }
   
   .filter-mode-intervention-hero {
     min-width: 200px;
   }
-  /* Projects : éviter que mode "En présentiel" déborde sur Pays/Ville */
+
+  /* Mobile : pills en 2 colonnes pour 3 modes */
+  @media (max-width: 576px) {
+    .mode-intervention-segmented {
+      flex-wrap: wrap;
+    }
+    .mode-intervention-pill {
+      flex: 1 1 calc(50% - 0.375rem);
+      min-width: 0;
+      padding: 0.5rem 0.75rem;
+    }
+    .mode-intervention-pill--hybrid {
+      flex: 1 1 100%;
+    }
+  }
   .search-filter-form[data-universe="projects"] .filter-mode-intervention-hero {
     max-width: 100%;
     box-sizing: border-box;

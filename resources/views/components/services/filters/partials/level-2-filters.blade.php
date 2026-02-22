@@ -100,7 +100,7 @@
       <input type="hidden" name="category" id="domainInput" value="{{ request('category') }}">
     </div>
     {{-- Micro-description premium sous le filtre Domaine (affiché uniquement lorsqu'un domaine est sélectionné) --}}
-    <div id="domainPremiumDesc" class="domain-premium-desc" style="display: none;" aria-live="polite">
+    <div id="domainPremiumDesc" class="domain-premium-desc" style="display: none;" aria-live="polite" data-domain-descriptions='@json($domainLongDescriptions)'>
       <span class="domain-premium-desc-icon" aria-hidden="true">✦</span>
       <span id="domainPremiumDescText"></span>
     </div>
@@ -213,7 +213,7 @@
       ];
     }
   @endphp
-  <div class="preply-filter-advanced" id="specializationFilterWrapper" data-initial-specialization="{{ request('specialization') ?? '' }}" style="display: none;">
+  <div class="preply-filter-advanced" id="specializationFilterWrapper" data-initial-specialization="{{ request('specialization') ?? '' }}" data-domain-specializations='@json($domainSpecializations)' style="display: none;">
     <label class="preply-filter-label preply-filter-label-icon"><i class="fas fa-graduation-cap me-2"></i>Spécialisation</label>
     <select name="specialization" id="specializationSelect" class="preply-filter-select">
       <option value="">Spécialisation</option>
@@ -222,10 +222,6 @@
   <script>
     window.__domainSpecializations = @json($domainSpecializations);
   </script>
-@endif
-
-@if(($universe ?? '') === 'lessons')
-  @include('components.services.filters.partials.engagement-rituel-lessons')
 @endif
 
 @if(($config['showSector'] ?? false) && in_array($universe ?? '', ['projects', 'lessons', 'at-home', 'wellnesslive']))

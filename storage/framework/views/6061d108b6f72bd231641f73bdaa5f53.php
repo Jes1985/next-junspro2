@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/user-menu-premium.css')); ?>">
   
   <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/language-selector-premium.css')); ?>">
+  <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/junspro-logo-premium.css')); ?>">
   
   <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/junspro-chatbot-premium.css')); ?>?v=6.3">
   
@@ -732,6 +733,16 @@
     /* S'assurer que request-loader est masqué par défaut */
     .request-loader:not(.show) {
       display: none !important;
+    }
+    /* Forcer la disparition totale des loaders */
+    #preLoader,
+    .request-loader {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      pointer-events: none !important;
     }
   </style>
   

@@ -758,8 +758,9 @@
 @section('content')
   <div class="onboarding-page">
     <div class="onboarding-container">
+      @include('frontend.freelance.onboarding.partials.premium-stepper', ['routeStep' => 6])
       <!-- Barre de progression -->
-      <div class="onboarding-progress">
+      <div class="onboarding-progress" style="display:none;">
         <div class="progress-steps">
           <div class="progress-step completed">
             <div class="progress-step-number">✓</div>

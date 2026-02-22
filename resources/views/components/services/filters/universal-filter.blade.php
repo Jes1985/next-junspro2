@@ -8,6 +8,7 @@
     'excludeBudgetRituel' => false, // true = ne pas afficher Budget en Rituel (déjà rendu au‑dessus)
     'hierarchyMode' => false,   // true = hiérarchie premium /services/projects (Niveau 2 + 3)
     'hideDomainSpecInAdvanced' => false, // true = ne pas afficher Domaine + Spécialisation (déjà dans hero, ex: projects)
+    'disableExpertFilter' => false, // true = masque "Profils d'experts" (onboarding miroir)
 ])
 
 @php
@@ -15,28 +16,32 @@
      * Fonction helper pour normaliser une valeur en string sûre pour les comparaisons et les value=""
      * Gère les strings simples et les arrays structurés
      */
-    function normalizeValue($item) {
-        if (is_string($item)) {
-            return \Illuminate\Support\Str::slug($item);
+    if (!function_exists('normalizeValue')) {
+        function normalizeValue($item) {
+            if (is_string($item)) {
+                return \Illuminate\Support\Str::slug($item);
+            }
+            if (is_array($item)) {
+                $rawValue = $item['value'] ?? $item['slug'] ?? $item['label'] ?? $item['name'] ?? $item['title'] ?? '';
+                return \Illuminate\Support\Str::slug($rawValue);
+            }
+            return '';
         }
-        if (is_array($item)) {
-            $rawValue = $item['value'] ?? $item['slug'] ?? $item['label'] ?? $item['name'] ?? $item['title'] ?? '';
-            return \Illuminate\Support\Str::slug($rawValue);
-        }
-        return '';
     }
     
     /**
      * Fonction helper pour obtenir le label d'un item (string ou array)
      */
-    function getLabel($item) {
-        if (is_string($item)) {
-            return $item;
+    if (!function_exists('getLabel')) {
+        function getLabel($item) {
+            if (is_string($item)) {
+                return $item;
+            }
+            if (is_array($item)) {
+                return $item['label'] ?? $item['name'] ?? $item['title'] ?? '';
+            }
+            return '';
         }
-        if (is_array($item)) {
-            return $item['label'] ?? $item['name'] ?? $item['title'] ?? '';
-        }
-        return '';
     }
     
     // Configuration par univers
@@ -70,7 +75,6 @@
             'showSpecialization' => true,
             'showSector' => true,
             'showAvailability' => true,
-            'showExperience' => true,
             'showTeacherSpeaks' => true,
             'showNativeOnly' => true,
             'showCategoryFilter' => true,
@@ -83,7 +87,6 @@
             'showSpecialization' => true,
             'showSector' => true,
             'showAvailability' => true,
-            'showExperience' => true,
             'showTeacherSpeaks' => true,
             'showNativeOnly' => true,
             'showCategoryFilter' => true,
@@ -112,6 +115,9 @@
     ];
     
     $config = $universeConfig[$universe] ?? $universeConfig['projects'];
+    if ($disableExpertFilter) {
+      $config['showCategoryFilter'] = false;
+    }
     $accentColor = $config['accent'] ?? $accentColor;
 @endphp
 

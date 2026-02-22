@@ -16,9 +16,24 @@
   <div class="budget-estimate" id="lessonsBudgetEstimate" style="font-size: 12px; margin-top: 6px; color: #6B7280; opacity: 0.8; font-weight: 400;">
     <span class="budget-estimate-volume">Sélectionnez un engagement pour afficher une estimation en rituels.</span>
     <div class="budget-estimate-prices" style="display: none; font-size: 11px; color: #059669; margin-top: 4px;">
-      <span>Tarif horaire moyen : <span data-express-target="engagement-hourly-avg" data-base-value="0">0</span> €/h</span><br>
-      <span>Tarif journalier moyen : <span data-express-target="engagement-daily-avg" data-base-value="0">0</span> €/jour</span>
+      <span>
+        Tarif journalier moyen (<span class="budget-estimate-base-hours">7</span>h) :
+        <span data-express-target="engagement-daily-avg" data-base-value="0">0</span> €/jour
+        <span class="budget-estimate-daily-range" style="display: none;">
+          (fourchette :
+          <span data-express-target="engagement-daily-min" data-base-value="0">0</span>–<span data-express-target="engagement-daily-max" data-base-value="0">0</span> €/jour)
+        </span>
+      </span><br>
+      <span>
+        Tarif horaire moyen :
+        <span data-express-target="engagement-hourly-avg" data-base-value="0">0</span> €/h
+        <span class="budget-estimate-hourly-range" style="display: none;">
+          (fourchette :
+          <span data-express-target="engagement-hourly-min" data-base-value="0">0</span>–<span data-express-target="engagement-hourly-max" data-base-value="0">0</span> €/h)
+        </span>
+      </span>
     </div>
+    <div class="budget-estimate-express" style="display: none; font-size: 10px; color: #6B7280; margin-top: 6px;"></div>
   </div>
   <div class="budget-estimate-hourly" id="lessonsBudgetEstimateHourly" style="font-size: 11px; margin-top: 4px; color: #059669; opacity: 0.9; font-weight: 400; display: none;"></div>
   <div class="budget-recommandation-junspro" id="lessonsRecommandationJunspro" style="font-size: 11px; margin-top: 6px; color: #2563EB; font-weight: 500; display: none;"></div>

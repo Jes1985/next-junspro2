@@ -304,8 +304,37 @@ class PauseSouffleController extends Controller
      */
     public function chooseCycle(Request $request)
     {
+        $misc     = $this->miscController;
+        $language = $misc->getLanguage();
+
+        // ── Mode aperçu (dev / design) : ?preview=1 ────────────────────────
+        // Permet de visualiser la page sans passer par le tunnel Stripe.
+        if ($request->boolean('preview') && config('app.debug')) {
+            $mockIntake = new \stdClass();
+            $mockIntake->id            = 0;
+            $mockIntake->status        = 'paid';
+            $mockIntake->plan_key      = 'trial';
+            $mockIntake->subscription_id = null;
+
+            $mockPacks = [
+                'pack_1' => ['price_id' => 'preview', 'amount' => 49,  'currency' => 'EUR', 'label' => '1 rituel',  'rituals_per_cycle' => 1],
+                'pack_2' => ['price_id' => 'preview', 'amount' => 89,  'currency' => 'EUR', 'label' => '2 rituels', 'rituals_per_cycle' => 2],
+                'pack_4' => ['price_id' => 'preview', 'amount' => 159, 'currency' => 'EUR', 'label' => '4 rituels', 'rituals_per_cycle' => 4],
+                'pack_8' => ['price_id' => 'preview', 'amount' => 279, 'currency' => 'EUR', 'label' => '8 rituels', 'rituals_per_cycle' => 8],
+            ];
+
+            return view('frontend.presence.pause-souffle-choose-cycle', [
+                'intake'     => $mockIntake,
+                'packs'      => $mockPacks,
+                'breadcrumb' => $misc->getBreadcrumb(),
+                'language'   => $language,
+                'isPreview'  => true,
+            ]);
+        }
+        // ── Fin mode aperçu ─────────────────────────────────────────────────
+
         $intakeId = $request->query('intake_id');
-        
+
         if (!$intakeId) {
             return redirect()->route('presence.pause-souffle')->with('error', 'Demande introuvable.');
         }
@@ -329,14 +358,12 @@ class PauseSouffleController extends Controller
         // Récupérer les prix Stripe pour les packs
         $packs = $this->getPauseSoufflePacks();
 
-        $misc = $this->miscController;
-        $language = $misc->getLanguage();
-        
         return view('frontend.presence.pause-souffle-choose-cycle', [
-            'intake' => $intake,
-            'packs' => $packs,
+            'intake'     => $intake,
+            'packs'      => $packs,
             'breadcrumb' => $misc->getBreadcrumb(),
-            'language' => $language,
+            'language'   => $language,
+            'isPreview'  => false,
         ]);
     }
 

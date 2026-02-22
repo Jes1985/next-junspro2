@@ -9,23 +9,17 @@
       --junspro-gradient: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
     }
 
-    /* Layout principal - Fond dégradé très subtil avec halos */
+    /* Layout principal - Fond blanc solide (empêche toute zone sombre résiduelle) */
     body {
-      background: linear-gradient(135deg, rgba(30, 64, 175, 0.04) 0%, rgba(76, 29, 149, 0.05) 50%, rgba(124, 58, 237, 0.06) 100%);
+      background: #ffffff !important;
+      background-color: #ffffff !important;
       position: relative;
     }
 
+    /* Pseudo-élément body::before désactivé pour éviter tout halo sombre */
     body::before {
-      content: '';
-      position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 20% 30%, rgba(30, 64, 175, 0.08) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
+      display: none !important;
+      content: none !important;
     }
 
     .freelance-dashboard-wrapper {
@@ -33,20 +27,21 @@
       z-index: 1;
       padding: 2rem 1rem;
       min-height: calc(100vh - 200px);
+      background: #ffffff;
+      overflow: hidden;
     }
 
     /* Container glass premium */
     .freelance-dashboard-container {
       max-width: 1400px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.8);
       border-radius: 24px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
       padding: 2.5rem;
       color: #1f2937;
+      overflow: hidden;
     }
     
     /* CORRECTION CAUSE RACINE : Supprimer max-width et padding pour jobs-page-wrapper-light */
@@ -161,7 +156,7 @@
       gap: 8px !important;
     }
 
-    .nav-item, 
+    .freelance-dashboard-wrapper .nav-item, 
     .vertical-nav a {
       display: flex !important;
       align-items: center !important;
@@ -897,7 +892,7 @@
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     }
 
-    .nav-item {
+    .vertical-nav .nav-item {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -910,12 +905,12 @@
       cursor: pointer;
     }
 
-    .nav-item:hover {
+    .vertical-nav .nav-item:hover {
       background: rgba(124, 58, 237, 0.1);
       transform: scale(1.1);
     }
 
-    .nav-item.active {
+    .vertical-nav .nav-item.active {
       background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
       box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
     }
@@ -1317,6 +1312,13 @@
   </script>
 
   <style>
+    /* ===== FIX GLOBAL : Empêcher les min-height: 100vh empilés de créer un débordement sous le footer ===== */
+    .dashboard-tab-content [class$="-page-wrapper-light"],
+    .dashboard-tab-content [class$="-page-wrapper-light"] .dashboard-container,
+    .dashboard-tab-content [class$="-page-wrapper-light"] .main-content {
+      min-height: auto !important;
+    }
+
     /* ===== GARANTIE VISIBILITÉ DU FOOTER ===== */
     /* S'assurer que le footer Junspro est toujours visible */
     .junspro-footer {

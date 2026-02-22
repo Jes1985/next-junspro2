@@ -4,146 +4,115 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FrontEnd\MiscellaneousController;
+use App\Services\Junspro\CycleUsageService;
 use Illuminate\Http\Request;
 
 class PricingController extends Controller
 {
     /**
+     * Méta-données premium pour chaque palier (nom, description, icône, populaire).
+     */
+    private function planMeta(): array
+    {
+        return [
+            4  => ['name' => 'Essentiel',  'description' => 'Pour démarrer en douceur',         'icon' => 'fas fa-seedling',   'popular' => false],
+            8  => ['name' => 'Starter',    'description' => 'Idéal pour un projet régulier',     'icon' => 'fas fa-rocket',     'popular' => false],
+            16 => ['name' => 'Business',   'description' => 'Le plus choisi — rythme soutenu',   'icon' => 'fas fa-briefcase',  'popular' => true],
+            24 => ['name' => 'Pro',        'description' => 'Pour les projets ambitieux',         'icon' => 'fas fa-chart-line', 'popular' => false],
+            32 => ['name' => 'Premium',    'description' => 'Immersion totale dans le projet',   'icon' => 'fas fa-crown',      'popular' => false],
+            48 => ['name' => 'Growth',     'description' => 'Cadence intensive',                 'icon' => 'fas fa-bolt',       'popular' => true],
+            56 => ['name' => 'Scale',      'description' => 'Pour accélérer fort',               'icon' => 'fas fa-expand-alt', 'popular' => false],
+            64 => ['name' => 'Elite',      'description' => 'Expertise dédiée à plein régime',   'icon' => 'fas fa-gem',        'popular' => false],
+            72 => ['name' => 'Expert',     'description' => 'Priorité absolue au projet',        'icon' => 'fas fa-star',       'popular' => false],
+            80 => ['name' => 'Master',     'description' => 'Collaboration quasi temps-plein',   'icon' => 'fas fa-trophy',     'popular' => false],
+            88 => ['name' => 'Enterprise', 'description' => 'Volume maximal, impact maximum',   'icon' => 'fas fa-building',   'popular' => false],
+        ];
+    }
+
+    /**
+     * Construit les plans d'un univers à partir des paliers CycleUsageService.
+     */
+    private function buildPlans(array $paliers, string $universeType, CycleUsageService $svc): array
+    {
+        $meta = $this->planMeta();
+        $plans = [];
+        foreach ($paliers as $palier) {
+            $topupMax   = $svc->topupCap($palier, $universeType);
+            $cycleMax   = $svc->cycleMaxTotal($palier, $universeType);
+            $plans[] = [
+                'hours_per_cycle' => $palier,
+                'hours_per_week'  => $palier / 4,
+                'topup_max'       => $topupMax,
+                'cycle_max_total' => $cycleMax,
+                'name'            => $meta[$palier]['name']        ?? "{$palier}h/cycle",
+                'description'     => $meta[$palier]['description'] ?? '',
+                'icon'            => $meta[$palier]['icon']        ?? 'fas fa-circle',
+                'popular'         => $meta[$palier]['popular']     ?? false,
+            ];
+        }
+        return $plans;
+    }
+
+    /**
      * Afficher la page de tarification Junspro V2
      */
-    public function index(Request $request)
+    public function index(Request $request, CycleUsageService $cycleUsage)
     {
         $misc = new MiscellaneousController();
         $breadcrumb = $misc->getBreadcrumb();
-        
-        // Récupérer le freelance sélectionné si présent
+
+        // Freelance pré-sélectionné (optionnel)
         $selectedFreelancer = null;
         if ($request->has('freelancer_id')) {
             $selectedFreelancer = \App\Models\FreelancerProfile::with('user')->find($request->freelancer_id);
         }
-        
-        // Formules d'abonnement disponibles
-        $subscriptionPlans = [
-            [
-                'hours_per_week' => 1,
-                'hours_per_month' => 4,
-                'name' => 'Essentiel',
-                'description' => 'Parfait pour les projets ponctuels',
-                'icon' => 'fas fa-star',
-            ],
-            [
-                'hours_per_week' => 2,
-                'hours_per_month' => 8,
-                'name' => 'Starter',
-                'description' => 'Idéal pour démarrer votre projet',
-                'icon' => 'fas fa-rocket',
-            ],
-            [
-                'hours_per_week' => 4,
-                'hours_per_month' => 16,
-                'name' => 'Business',
-                'description' => 'Pour les projets réguliers',
-                'icon' => 'fas fa-briefcase',
-            ],
-            [
-                'hours_per_week' => 8,
-                'hours_per_month' => 32,
-                'name' => 'Professional',
-                'description' => 'Pour un suivi intensif',
-                'icon' => 'fas fa-chart-line',
-            ],
-            [
-                'hours_per_week' => 12,
-                'hours_per_month' => 48,
-                'name' => 'Enterprise',
-                'description' => 'Pour les projets ambitieux',
-                'icon' => 'fas fa-building',
-            ],
-            [
-                'hours_per_week' => 16,
-                'hours_per_month' => 64,
-                'name' => 'Premium',
-                'description' => 'Maximum de flexibilité',
-                'icon' => 'fas fa-crown',
-            ],
-            [
-                'hours_per_week' => 20,
-                'hours_per_month' => 80,
-                'name' => 'Elite',
-                'description' => 'Pour les projets complexes',
-                'icon' => 'fas fa-gem',
-            ],
-            [
-                'hours_per_week' => 24,
-                'hours_per_month' => 96,
-                'name' => 'Ultimate',
-                'description' => 'Dédié à votre projet',
-                'icon' => 'fas fa-trophy',
-            ],
-        ];
 
-        // Options Express
+        // Plans par univers
+        $plansA = $this->buildPlans(CycleUsageService::PALIERS_A, CycleUsageService::UNIVERSE_A, $cycleUsage);
+        $plansB = $this->buildPlans(CycleUsageService::PALIERS_B, CycleUsageService::UNIVERSE_B, $cycleUsage);
+
+        // Abonnement actif de l'utilisateur (pour surligner son palier courant)
+        $currentPalier    = null;
+        $currentUniverse  = null;
+        $user = auth('web')->user();
+        if ($user && $user->clientProfile) {
+            $activeSub = \App\Models\Subscription::where('client_id', $user->clientProfile->id)
+                ->where('status', 'active')
+                ->latest()
+                ->first();
+            if ($activeSub) {
+                $currentPalier   = $cycleUsage->snapToPalier($activeSub->hours_per_week * 4, $cycleUsage->universeType($activeSub->universe ?? ''));
+                $currentUniverse = $activeSub->universe ?? null;
+            }
+        }
+
+        // Options Express (inchangées)
         $expressOptions = [
-            [
-                'name' => 'Express 24h',
-                'multiplier' => 1.30,
-                'percentage' => '+30%',
-                'description' => 'Livraison en 24h',
-            ],
-            [
-                'name' => 'Express 48h',
-                'multiplier' => 1.20,
-                'percentage' => '+20%',
-                'description' => 'Livraison en 48h',
-            ],
-            [
-                'name' => 'Express 72h',
-                'multiplier' => 1.10,
-                'percentage' => '+10%',
-                'description' => 'Livraison en 72h',
-            ],
+            ['name' => 'Express 24h', 'multiplier' => 1.30, 'percentage' => '+30%', 'description' => 'Livraison en 24h'],
+            ['name' => 'Express 48h', 'multiplier' => 1.20, 'percentage' => '+20%', 'description' => 'Livraison en 48h'],
+            ['name' => 'Express 72h', 'multiplier' => 1.10, 'percentage' => '+10%', 'description' => 'Livraison en 72h'],
         ];
 
-        // Garanties
+        // Garanties (inchangées)
         $guarantees = [
-            [
-                'icon' => 'fas fa-shield-alt',
-                'title' => 'Paiements sécurisés',
-                'description' => 'Transactions protégées par Stripe',
-            ],
-            [
-                'icon' => 'fas fa-clock',
-                'title' => 'Séance d\'essai de 1h',
-                'description' => 'Testez un freelance sur 1 heure avant de vous engager davantage. Vous voyez sa façon de travailler, sa pédagogie et la qualité du rapport final.',
-            ],
-            [
-                'icon' => 'fas fa-file-alt',
-                'title' => 'Rapport après chaque heure',
-                'description' => '50 minutes de travail concentré + 10 minutes de rapport pédagogique : ce qui a été fait, pourquoi, et les prochaines étapes pour votre projet.',
-            ],
-            [
-                'icon' => 'fas fa-sync-alt',
-                'title' => 'Abonnement flexible',
-                'description' => 'Transférez vos heures ou votre abonnement à un autre freelance, mettez-le en pause jusqu\'à 20 jours, ou résiliez quand vous le souhaitez. Vous gardez le contrôle sur votre budget et votre organisation.',
-            ],
-            [
-                'icon' => 'fas fa-pause',
-                'title' => 'Mise en pause',
-                'description' => 'Mettez en pause votre abonnement à tout moment',
-            ],
-            [
-                'icon' => 'fas fa-headset',
-                'title' => 'Support dédié',
-                'description' => 'Équipe disponible pour vous accompagner',
-            ],
+            ['icon' => 'fas fa-shield-alt',  'title' => 'Paiements sécurisés',       'description' => 'Transactions protégées par Stripe'],
+            ['icon' => 'fas fa-clock',        'title' => 'Séance d\'essai de 1h',     'description' => 'Testez un freelance sur 1 heure avant de vous engager davantage.'],
+            ['icon' => 'fas fa-file-alt',     'title' => 'Rapport après chaque heure','description' => '50 min de travail concentré + 10 min de rapport pédagogique.'],
+            ['icon' => 'fas fa-sync-alt',     'title' => 'Abonnement flexible',       'description' => 'Pause, transfert ou résiliation à tout moment.'],
+            ['icon' => 'fas fa-bolt',         'title' => 'Options Express',           'description' => 'Accélérez les livraisons avec +10%, +20%, +30%.'],
+            ['icon' => 'fas fa-headset',      'title' => 'Support dédié',             'description' => 'Équipe disponible pour vous accompagner.'],
         ];
 
         return view('frontend.pricing.index', [
-            'breadcrumb' => $breadcrumb,
-            'subscriptionPlans' => $subscriptionPlans,
-            'expressOptions' => $expressOptions,
-            'guarantees' => $guarantees,
+            'breadcrumb'       => $breadcrumb,
+            'plansA'           => $plansA,
+            'plansB'           => $plansB,
+            'expressOptions'   => $expressOptions,
+            'guarantees'       => $guarantees,
             'selectedFreelancer' => $selectedFreelancer,
+            'currentPalier'    => $currentPalier,
+            'currentUniverse'  => $currentUniverse,
+            'ritualSignature'  => CycleUsageService::RITUAL_SIGNATURE,
         ]);
     }
     

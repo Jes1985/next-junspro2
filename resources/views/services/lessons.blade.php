@@ -4889,16 +4889,28 @@
         var val = budgetSelect.value;
         var volumeEl = estimateEl.querySelector('.budget-estimate-volume');
         var pricesEl = estimateEl.querySelector('.budget-estimate-prices');
+        var expressEl = estimateEl.querySelector('.budget-estimate-express');
+        var baseHoursEl = estimateEl.querySelector('.budget-estimate-base-hours');
+        var hourlyRangeEl = estimateEl.querySelector('.budget-estimate-hourly-range');
+        var dailyRangeEl = estimateEl.querySelector('.budget-estimate-daily-range');
         var hourlyEl = estimateEl.querySelector('[data-express-target="engagement-hourly-avg"]');
+        var hourlyMinEl = estimateEl.querySelector('[data-express-target="engagement-hourly-min"]');
+        var hourlyMaxEl = estimateEl.querySelector('[data-express-target="engagement-hourly-max"]');
         var dailyEl = estimateEl.querySelector('[data-express-target="engagement-daily-avg"]');
+        var dailyMinEl = estimateEl.querySelector('[data-express-target="engagement-daily-min"]');
+        var dailyMaxEl = estimateEl.querySelector('[data-express-target="engagement-daily-max"]');
         if (!val || !budgetMapping[val]) {
           if (volumeEl) volumeEl.textContent = 'Sélectionnez un engagement pour afficher une estimation en rituels.';
           if (pricesEl) pricesEl.style.display = 'none';
+          if (expressEl) expressEl.style.display = 'none';
           if (recEl) recEl.style.display = 'none';
           return;
         }
         var budget = budgetMapping[val];
-        var rate = getRate();
+        var rateMin = minInput ? (parseInt(minInput.value, 10) || 10) : 10;
+        var rateMax = maxInput ? (parseInt(maxInput.value, 10) || 50) : 50;
+        if (rateMax < rateMin) rateMax = rateMin;
+        var rate = (rateMin + rateMax) / 2;
         var rituelsMin = Math.ceil(budget.min / rate);
         var rituelsMax = budget.max === 999999 ? null : Math.floor(budget.max / rate);
         var rMin = rituelsMin;
@@ -4908,11 +4920,30 @@
         var topup = topupCapB(palier);
         var base = getBaseHours();
         var tjm = Math.round(rate * base);
+        var tjmMin = Math.round(rateMin * base);
+        var tjmMax = Math.round(rateMax * base);
         var rateRounded = Math.round(rate);
+        var rateMinRounded = Math.round(rateMin);
+        var rateMaxRounded = Math.round(rateMax);
+        var hasRange = rateMaxRounded > rateMinRounded;
+        var expressPct = (lessonsExpressMultiplier - 1) * 100;
         if (volumeEl) volumeEl.textContent = 'Volume estimé : ~' + rMin + (rMax ? '-' + rMax : '+') + ' rituels (~' + rMin + (rMax ? '-' + rMax : '+') + ' h)';
         if (pricesEl) pricesEl.style.display = 'block';
+        if (baseHoursEl) baseHoursEl.textContent = String(base);
         if (hourlyEl) hourlyEl.setAttribute('data-base-value', String(rateRounded));
+        if (hourlyMinEl) hourlyMinEl.setAttribute('data-base-value', String(rateMinRounded));
+        if (hourlyMaxEl) hourlyMaxEl.setAttribute('data-base-value', String(rateMaxRounded));
         if (dailyEl) dailyEl.setAttribute('data-base-value', String(tjm));
+        if (dailyMinEl) dailyMinEl.setAttribute('data-base-value', String(tjmMin));
+        if (dailyMaxEl) dailyMaxEl.setAttribute('data-base-value', String(tjmMax));
+        if (hourlyRangeEl) hourlyRangeEl.style.display = hasRange ? 'inline' : 'none';
+        if (dailyRangeEl) dailyRangeEl.style.display = hasRange ? 'inline' : 'none';
+        if (expressEl) {
+          expressEl.textContent = expressPct > 0
+            ? 'Supplement Express applique : +' + Math.round(expressPct) + '%'
+            : 'Standard : aucun supplement';
+          expressEl.style.display = 'block';
+        }
         applyLessonsExpress();
         if (recEl) {
           recEl.textContent = 'Recommandation Junspro : Recommandé : ' + palier + 'h / 4 semaines + jusqu\'à ' + topup + 'h supplémentaires';

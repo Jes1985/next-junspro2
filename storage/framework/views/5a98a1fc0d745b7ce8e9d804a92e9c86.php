@@ -1,5 +1,7 @@
 
 <div class="pause-souffle-inline-premium">
+  <div class="pause-souffle-inline-premium__badge">Service phare</div>
+  <h2 class="pause-souffle-inline-premium__title">Pause Souffle</h2>
   <p class="pause-souffle-inline-premium__signature">
     Pause Souffle, c'est un temps pour se poser les bonnes questions avant de passer à l'action.
   </p>
@@ -22,7 +24,30 @@
     border: none;
     max-width: 100%;
   }
-  
+
+  .pause-souffle-inline-premium__badge {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 9999px;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
+  }
+
+  .pause-souffle-inline-premium__title {
+    margin: 0 0 0.75rem 0;
+    color: #111827;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
   .pause-souffle-inline-premium__signature {
     margin: 0 0 0.75rem 0;
     color: #1F2937;

@@ -808,7 +808,7 @@ class UserController extends Controller
       $imageName = UploadFile::update('./assets/img/users/', $newImg, $oldImg);
     }
 
-    $authUser->update($request->except('image', 'freelancer_bio', 'freelancer_hourly_rate', 'video_thumbnail_url', 'video_thumbnail_image') + [
+    $authUser->update($request->except('image', 'freelancer_bio', 'freelancer_hourly_rate', 'video_thumbnail_url', 'video_thumbnail_image', 'profile_universe', 'profile_domain', 'profile_mode', 'country_code', 'native_language', 'other_languages') + [
       'image' => $request->hasFile('image') ? $imageName : $authUser->image
     ]);
 
@@ -858,12 +858,52 @@ class UserController extends Controller
         }
       }
       
+      // Univers, domaines et mode d'intervention depuis la page identity
+      if ($request->has('profile_universe') && \Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'universes')) {
+        $profileUniverse = $request->input('profile_universe');
+        $freelancerData['universes'] = $profileUniverse ? [$profileUniverse] : [];
+      }
+      if ($request->has('profile_domain') && \Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'domains')) {
+        $profileDomain = $request->input('profile_domain');
+        $freelancerData['domains'] = $profileDomain ? [$profileDomain] : [];
+      }
+      if ($request->has('profile_mode')) {
+        $profileMode = $request->input('profile_mode');
+        if (\Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'can_online')) {
+          $freelancerData['can_online'] = in_array($profileMode, ['online', 'hybrid']);
+        }
+        if (\Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'can_onsite')) {
+          $freelancerData['can_onsite'] = in_array($profileMode, ['onsite', 'hybrid']);
+        }
+        // Synchroniser onsite_country et onsite_city en mode présentiel ou hybride
+        if (in_array($profileMode, ['onsite', 'hybrid'])) {
+          if ($request->has('country_code') && \Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'onsite_country')) {
+            $freelancerData['onsite_country'] = $request->input('country_code');
+          }
+          if ($request->has('city') && \Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'onsite_city')) {
+            $freelancerData['onsite_city'] = $request->input('city');
+          }
+        }
+      }
+
+      // Langue maternelle et autres langues parlées (depuis page identity)
+      if ($request->has('native_language') && \Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'native_language')) {
+        $freelancerData['native_language'] = $request->input('native_language') ?: null;
+      }
+      if ($request->has('other_languages') && \Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'spoken_languages')) {
+        $freelancerData['spoken_languages'] = $request->input('other_languages') ?: null;
+      }
+
       if (!empty($freelancerData)) {
         $freelancerProfile->update($freelancerData);
       }
     }
 
     $request->session()->flash('success', 'Your profile has been updated successfully.');
+
+    if ($request->filled('_redirect')) {
+      return redirect()->to($request->input('_redirect'));
+    }
 
     return redirect()->back();
   }

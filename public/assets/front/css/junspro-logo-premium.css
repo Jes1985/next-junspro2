@@ -125,3 +125,60 @@
     margin-top: 6px;
   }
 }
+
+/* ============================================
+   PREMIUM HEADER UPGRADES
+   ============================================ */
+
+/* ── Layout logo : icône + texte côte à côte ── */
+.junspro-logo-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.junspro-logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.brand-icon-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Icône logo : supprimer le fond blanc de logo.png ── */
+.junspro-logo-icon {
+  height: 40px;
+  width: auto;
+  display: block;
+  mix-blend-mode: multiply;  /* dissout le fond blanc sur fond sombre */
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* ── Header : styles typographie nav uniquement (fond géré par layout) ── */
+
+/* ── Icône logo : fond blanc → mix-blend-mode normal ── */
+.junspro-logo-icon {
+  mix-blend-mode: normal !important;
+  filter: none !important;
+}
+
+/* ── Logo texte en couleur marque ── */
+.header-area .junspro-logo-text {
+  color: #1e40af !important;
+}
+
+.header-area .junspro-logo-line {
+  background: linear-gradient(90deg, #4c1d95 0%, #7c3aed 100%) !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 991px) {
+  .junspro-logo-icon {
+    height: 34px;
+  }
+}

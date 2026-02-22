@@ -25,12 +25,10 @@
         'freelancerProfile' => $freelancerProfile ?? null
       ])
 
-      <!-- Header de page -->
-      <div class="page-header">
-        <h1>Aperçu</h1>
-        <p class="page-subtitle">
-          Tableau de bord de votre activité freelance. Suivez vos performances et gérez vos missions.
-        </p>
+      <!-- Header de page - Divider subtil -->
+      <div class="page-header page-header-divider">
+        <span class="divider-dot"></span>
+        <h2 class="divider-title">Tableau de bord</h2>
       </div>
 
       <!-- Contenu principal -->
@@ -1002,6 +1000,382 @@
     
     .overview-page-wrapper-light .nav-icon {
       font-size: 1.125rem !important;
+    }
+  }
+
+  /* ===== HERO PREMIUM - LAYOUT 2 COLONNES (DESKTOP) ===== */
+  .overview-page-wrapper-light .dashboard-overview-hero {
+    position: relative !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 3rem !important;
+    padding: 0 !important;
+    border: none !important;
+    border-bottom: none !important;
+    background: transparent !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero.is-overview {
+    background: transparent !important;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-glow {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(30, 64, 175, 0.1) 35%, transparent 80%);
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 3rem 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #111827;
+    margin: 0;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 400;
+    max-width: 550px;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .btn-hero {
+    padding: 1rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .btn-hero-primary {
+    background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+    color: white;
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25);
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .btn-hero-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.35);
+    color: white;
+    text-decoration: none;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary {
+    background: white;
+    color: #1e40af;
+    border: 2px solid #1e40af;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary:hover {
+    background: #f0f4ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.15);
+    color: #1e40af;
+    text-decoration: none;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .btn-text {
+    display: inline;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .btn-icon {
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .btn-hero:hover .btn-icon {
+    transform: translateX(3px);
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-hint {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-visual-card {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .hero-visual-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(100px, -100px);
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .visual-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #ddd6fe 0%, #e9d5ff 100%);
+    color: #6d28d9;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .visual-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .overview-page-wrapper-light .dashboard-overview-hero .visual-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.5;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== RESPONSIVE HERO PREMIUM ===== */
+  @media (max-width: 1024px) {
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-glow {
+      width: 600px;
+      height: 450px;
+      top: -30px;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-title {
+      font-size: 2rem;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-visual-card {
+      max-width: 280px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .overview-page-wrapper-light .dashboard-overview-hero {
+      margin-bottom: 2rem !important;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-glow {
+      width: 400px;
+      height: 300px;
+      top: 0;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-content {
+      padding: 2rem 0;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-title {
+      font-size: 1.75rem;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-ctas {
+      flex-direction: column;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .btn-hero {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-visual {
+      padding: 1.5rem;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-visual-card {
+      max-width: 250px;
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-title {
+      font-size: 1.5rem;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .hero-subtitle {
+      font-size: 0.95rem;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .btn-hero {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .overview-page-wrapper-light .dashboard-overview-hero .visual-icon {
+      font-size: 2.5rem;
+    }
+
+  /* ===== PAGE HEADER DIVIDER - SUBTIL ===== */
+  .overview-page-wrapper-light .page-header-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2rem 0 2.5rem 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    width: 100% !important;
+  }
+
+  .overview-page-wrapper-light .page-header-divider .divider-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #7c3aed, #1e40af);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .overview-page-wrapper-light .page-header-divider .divider-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #374151;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 1024px) {
+    .overview-page-wrapper-light .page-header-divider {
+      margin: 1.5rem 0 2rem 0 !important;
+    }
+
+    .overview-page-wrapper-light .page-header-divider .divider-title {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .overview-page-wrapper-light .page-header-divider {
+      margin: 1.25rem 0 1.75rem 0 !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .overview-page-wrapper-light .page-header-divider .divider-title {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* ===== OVERRIDE PAGE-HEADER ANCIEN STYLE (si applicable) ===== */
+  .overview-page-wrapper-light .page-header {
+    border-bottom: none !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .overview-page-wrapper-light .page-header h1,
+  .overview-page-wrapper-light .page-header-divider h1 {
+    display: none;
+  }
+
+  .overview-page-wrapper-light .page-header .page-subtitle {
+    display: none !important;
+  }
+
+  /* ===== RESPONSIVE PAGE HEADER ===== */
+  @media (max-width: 768px) {
+    .overview-page-wrapper-light {
+      padding: 0 10px !important; /* Marges latérales de 1cm (10px) à gauche ET à droite */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .overview-page-wrapper-light .dashboard-container {
+      padding: 1.5rem !important;
+      gap: 0 !important;
     }
   }
 </style>

@@ -17,16 +17,18 @@
     }
 
     .onboarding-container {
-      max-width: 700px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
     /* Barre de progression */
     .onboarding-progress {
-      background: transparent;
-      padding: 0;
-      margin-bottom: 3rem;
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .progress-steps {
@@ -96,13 +98,24 @@
       margin: 0 0.5rem;
     }
 
-    /* Contenu principal - Directement sur le fond, sans bloc */
+    /* Contenu principal */
+    .onboarding-content {
+      background: white;
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
     .onboarding-title {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 2.25rem;
+      font-weight: 800;
       color: #1a202c;
-      margin-bottom: 2rem;
-      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1a202c 0%, #4c1d95 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     /* Sections fluides sans blocs */
@@ -285,6 +298,66 @@
       margin-top: 0.5rem;
     }
 
+    .kyc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .kyc-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      background: #f8fafc;
+      padding: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .kyc-card:hover {
+      border-color: rgba(124, 58, 237, 0.35);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .kyc-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.25rem;
+    }
+
+    .kyc-subtitle {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .kyc-input {
+      width: 100%;
+      padding: 0.7rem;
+      border: 2px dashed #818cf8;
+      border-radius: 10px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .kyc-preview {
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    .kyc-preview.show {
+      display: block;
+    }
+
+    .kyc-preview-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: 10px;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .progress-steps {
@@ -313,6 +386,10 @@
       .price-symbol {
         font-size: 1.25rem;
       }
+
+      .kyc-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 @endsection
@@ -320,8 +397,9 @@
 @section('content')
   <div class="onboarding-page">
     <div class="onboarding-container">
+      @include('frontend.freelance.onboarding.partials.premium-stepper', ['routeStep' => 8])
       <!-- Barre de progression -->
-      <div class="onboarding-progress">
+      <div class="onboarding-progress" style="display:none;">
         <div class="progress-steps">
           <div class="progress-step completed">
             <div class="progress-step-number">✓</div>
@@ -365,74 +443,74 @@
         </div>
       </div>
 
-      <!-- Contenu principal - Directement sur le fond, sans bloc -->
-      <h1 class="onboarding-title">Fixez le tarif de vos séances</h1>
+      <div class="onboarding-content">
+        <h1 class="onboarding-title">Fixez le tarif de vos séances</h1>
 
-      @if(session('success'))
-        <div style="padding: 1rem 0; color: #166534; margin-bottom: 2rem;">
-          ✓ {{ session('success') }}
-        </div>
-      @endif
-
-      @if($errors->any())
-        <div style="padding: 0; color: #991b1b; margin-bottom: 2rem;">
-          <ul style="margin: 0; padding-left: 1.25rem;">
-            @foreach($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-      @endif
-
-      <form action="{{ route('freelance.onboarding.step8.store') }}" method="POST" id="pricingForm">
-        @csrf
-
-        <!-- Section tarif -->
-        <div class="section">
-          <div class="price-input-wrapper">
-            <span class="price-symbol">€</span>
-            <input 
-              type="number" 
-              name="hourly_rate" 
-              id="hourly_rate"
-              class="price-input @error('hourly_rate') form-input-error @enderror"
-              value="{{ old('hourly_rate', $data['hourly_rate'] ?? '') }}"
-              placeholder="0"
-              min="0"
-              step="0.01"
-              required
-            >
+        @if(session('success'))
+          <div style="padding: 1rem 0; color: #166534; margin-bottom: 2rem;">
+            ✓ {{ session('success') }}
           </div>
-          <p class="price-currency-note">Prix en EUR uniquement</p>
-          @error('hourly_rate')
-            <span class="form-error">{{ $message }}</span>
-          @enderror
-        </div>
+        @endif
 
-        <!-- Section frais de service -->
-        <div class="section commission-section">
-          <div class="commission-toggle" onclick="toggleCommission()">
-            <span class="commission-title">Frais de service de Junspro</span>
-            <svg class="commission-icon" id="commissionIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
+        @if($errors->any())
+          <div style="padding: 0; color: #991b1b; margin-bottom: 2rem;">
+            <ul style="margin: 0; padding-left: 1.25rem;">
+              @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
           </div>
-          <div class="commission-content" id="commissionContent">
-            <p class="commission-text">
-              Junspro applique des frais de service dégressifs de 20% à 12% sur chaque Rituel réservé. Ces frais de service couvrent les frais de plateforme, le traitement des paiements sécurisés, le support client, notre système de discipline et la promotion de votre profil. Vous recevrez 80% à 88% du montant de chaque Rituel après déduction des frais de service.
+        @endif
+
+        <form action="{{ route('freelance.onboarding.step8.store') }}" method="POST" id="pricingForm" enctype="multipart/form-data">
+          @csrf
+
+          <!-- Section tarif -->
+          <div class="section">
+            <div class="price-input-wrapper">
+              <span class="price-symbol">€</span>
+              <input 
+                type="number" 
+                name="hourly_rate" 
+                id="hourly_rate"
+                class="price-input @error('hourly_rate') form-input-error @enderror"
+                value="{{ old('hourly_rate', $data['hourly_rate'] ?? '') }}"
+                placeholder="0"
+                min="0"
+                step="0.01"
+                required
+              >
+            </div>
+            <p class="price-currency-note">Prix en EUR uniquement</p>
+            @error('hourly_rate')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+          </div>
+
+          <!-- Section frais de service -->
+          <div class="section commission-section">
+            <div class="commission-toggle" onclick="toggleCommission()">
+              <span class="commission-title">Frais de service de Junspro</span>
+              <svg class="commission-icon" id="commissionIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="commission-content" id="commissionContent">
+              <p class="commission-text">
+                Junspro applique des frais de service de 20% sur chaque Rituel réservé. Ces frais de service couvrent les frais de plateforme, le traitement des paiements sécurisés, le support client, notre système de discipline et la promotion de votre profil. Vous recevrez 80% du montant de chaque Rituel après déduction des frais de service.
+              </p>
+              <p class="commission-text" style="margin-top: 1rem;">
+                Exemple : Si vous fixez votre tarif à 50€ par séance, vous recevrez 40€ par séance réservée (50€ - 20% = 40€).
+              </p>
+            </div>
+          </div>
+
+          <!-- Section vérification et paiements -->
+          <div class="section">
+            <h2 class="section-title">Vérification & Paiements (KYC)</h2>
+            <p class="section-description">
+              Renseignez vos informations de paiement et de vérification. Ces données sont nécessaires pour activer les paiements et sont sécurisées.
             </p>
-            <p class="commission-text" style="margin-top: 1rem;">
-              Exemple : Si vous fixez votre tarif à 50€ par séance, vous recevrez 40€ par séance réservée (50€ - 20% = 40€).
-            </p>
-          </div>
-        </div>
-
-        <!-- Section coordonnées bancaires -->
-        <div class="section">
-          <h2 class="section-title">Coordonnées bancaires</h2>
-          <p class="section-description">
-            Ces informations sont nécessaires pour recevoir vos paiements. Elles sont sécurisées et cryptées conformément aux normes bancaires.
-          </p>
 
           <!-- IBAN -->
           <div style="margin-bottom: 1.5rem;">
@@ -473,6 +551,137 @@
               Le nom doit correspondre exactement à celui indiqué sur votre compte bancaire.
             </p>
             @error('bank_account_holder')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label for="birth_country" class="section-title" style="font-size: 0.95rem; margin-bottom: 0.5rem; display: block;">Pays de naissance</label>
+            <select id="birth_country" name="birth_country" class="price-input @error('birth_country') form-input-error @enderror" style="font-size: 1rem; padding: 0.875rem 0; padding-left: 0;" required>
+              <option value="">Choisissez votre pays...</option>
+              @foreach(['FR' => 'France', 'BE' => 'Belgique', 'CH' => 'Suisse', 'CA' => 'Canada', 'US' => 'États-Unis', 'GB' => 'Royaume-Uni', 'DE' => 'Allemagne', 'ES' => 'Espagne', 'IT' => 'Italie', 'PT' => 'Portugal'] as $code => $name)
+                <option value="{{ $code }}" {{ old('birth_country', $data['birth_country'] ?? '') === $code ? 'selected' : '' }}>{{ $name }}</option>
+              @endforeach
+            </select>
+            @error('birth_country')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label for="address" class="section-title" style="font-size: 0.95rem; margin-bottom: 0.5rem; display: block;">Adresse</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="price-input @error('address') form-input-error @enderror"
+              value="{{ old('address', $data['address'] ?? '') }}"
+              placeholder="123 Rue de la République"
+              style="font-size: 1rem; padding: 0.875rem 0; padding-left: 0;"
+              required
+            >
+            @error('address')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label for="postal_code" class="section-title" style="font-size: 0.95rem; margin-bottom: 0.5rem; display: block;">Code postal</label>
+            <input
+              type="text"
+              id="postal_code"
+              name="postal_code"
+              class="price-input @error('postal_code') form-input-error @enderror"
+              value="{{ old('postal_code', $data['postal_code'] ?? '10001') }}"
+              placeholder="10001"
+              style="font-size: 1rem; padding: 0.875rem 0; padding-left: 0;"
+              required
+            >
+            <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">
+              Si vous ne connaissez pas votre code postal, utilisez 10001 par défaut.
+            </p>
+            @error('postal_code')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label class="section-title" style="font-size: 0.95rem; margin-bottom: 0.5rem; display: block;">Pièce d'identité</label>
+            <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">
+              Téléchargez le recto et le verso de votre pièce d'identité, passeport ou permis.
+            </p>
+            <div class="kyc-grid">
+              <div class="kyc-card">
+                <div class="kyc-title">Recto</div>
+                <div class="kyc-subtitle">Face avant du document</div>
+                <input
+                  type="file"
+                  id="identity_document_front"
+                  name="identity_document_front"
+                  accept="image/*,.pdf"
+                  class="kyc-input @error('identity_document_front') form-input-error @enderror"
+                  onchange="previewIdentityDocument('front')"
+                  {{ empty($data['identity_document_front']) ? 'required' : '' }}
+                >
+                <div id="identityPreviewFront" class="kyc-preview {{ !empty($data['identity_document_front_name']) ? 'show' : '' }}">
+                  <div class="kyc-preview-inner">
+                    <span style="font-size: 1.5rem;">📄</span>
+                    <div style="flex: 1;">
+                      <p style="margin: 0; font-weight: 600; color: #1a202c;" id="identityFileNameFront">{{ $data['identity_document_front_name'] ?? '' }}</p>
+                      <p style="margin: 0.25rem 0 0; font-size: 0.875rem; color: #6b7280;">Recto téléchargé</p>
+                    </div>
+                    <button type="button" onclick="removeIdentityDocument('front')" style="padding: 0.5rem; background: #fee2e2; border: none; border-radius: 6px; color: #dc2626; cursor: pointer;">✕</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="kyc-card">
+                <div class="kyc-title">Verso</div>
+                <div class="kyc-subtitle">Face arrière du document</div>
+                <input
+                  type="file"
+                  id="identity_document_back"
+                  name="identity_document_back"
+                  accept="image/*,.pdf"
+                  class="kyc-input @error('identity_document_back') form-input-error @enderror"
+                  onchange="previewIdentityDocument('back')"
+                  {{ empty($data['identity_document_back']) ? 'required' : '' }}
+                >
+                <div id="identityPreviewBack" class="kyc-preview {{ !empty($data['identity_document_back_name']) ? 'show' : '' }}">
+                  <div class="kyc-preview-inner">
+                    <span style="font-size: 1.5rem;">📄</span>
+                    <div style="flex: 1;">
+                      <p style="margin: 0; font-weight: 600; color: #1a202c;" id="identityFileNameBack">{{ $data['identity_document_back_name'] ?? '' }}</p>
+                      <p style="margin: 0.25rem 0 0; font-size: 0.875rem; color: #6b7280;">Verso téléchargé</p>
+                    </div>
+                    <button type="button" onclick="removeIdentityDocument('back')" style="padding: 0.5rem; background: #fee2e2; border: none; border-radius: 6px; color: #dc2626; cursor: pointer;">✕</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @error('identity_document_front')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+            @error('identity_document_back')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+          </div>
+
+          <div>
+            <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+              <input
+                type="checkbox"
+                id="age_confirmation"
+                name="age_confirmation"
+                value="1"
+                class="@error('age_confirmation') form-input-error @enderror"
+                {{ old('age_confirmation', $data['age_confirmation'] ?? false) ? 'checked' : '' }}
+                required
+                style="width: 20px; height: 20px; cursor: pointer;"
+              >
+              <span style="font-size: 0.95rem; color: #374151;">Je confirme avoir plus de 18 ans</span>
+            </label>
+            @error('age_confirmation')
               <span class="form-error">{{ $message }}</span>
             @enderror
           </div>
@@ -559,6 +768,29 @@
         return false;
       }
     });
+
+    function previewIdentityDocument(side) {
+      const input = document.getElementById(side === 'front' ? 'identity_document_front' : 'identity_document_back');
+      const preview = document.getElementById(side === 'front' ? 'identityPreviewFront' : 'identityPreviewBack');
+      const fileName = document.getElementById(side === 'front' ? 'identityFileNameFront' : 'identityFileNameBack');
+      if (!input || !preview || !fileName) return;
+
+      if (input.files && input.files[0]) {
+        fileName.textContent = input.files[0].name;
+        preview.classList.add('show');
+      }
+    }
+
+    function removeIdentityDocument(side) {
+      const input = document.getElementById(side === 'front' ? 'identity_document_front' : 'identity_document_back');
+      const preview = document.getElementById(side === 'front' ? 'identityPreviewFront' : 'identityPreviewBack');
+      const fileName = document.getElementById(side === 'front' ? 'identityFileNameFront' : 'identityFileNameBack');
+      if (!input || !preview || !fileName) return;
+
+      input.value = '';
+      fileName.textContent = '';
+      preview.classList.remove('show');
+    }
   </script>
 @endsection
 

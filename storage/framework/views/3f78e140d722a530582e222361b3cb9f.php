@@ -1,0 +1,1311 @@
+<?php $__env->startSection('style'); ?>
+  <link rel="stylesheet" href="<?php echo e(asset('assets/css/summernote-content.css')); ?>">
+  <style>
+    :root {
+      --junspro-purple: #7C3AED;
+      --junspro-blue: #1e40af;
+      --junspro-gradient: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --card-shadow-hover: 0 8px 30px rgba(30, 64, 175, 0.15);
+    }
+
+    /* Layout principal Messages */
+    .messages-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
+      min-height: calc(100vh - 200px);
+      display: grid;
+      grid-template-columns: 25% 50% 25%;
+      gap: 1.5rem;
+      height: calc(100vh - 200px);
+    }
+
+    /* Colonne gauche - Liste des conversations */
+    .messages-sidebar {
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .messages-sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      position: relative;
+      z-index: 2;
+      background: white;
+    }
+
+    .messages-sidebar-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin: 0 0 1rem 0;
+    }
+
+    .messages-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid #f3f4f6;
+    }
+
+    .messages-tab {
+      padding: 0.75rem 1rem;
+      background: none;
+      border: none;
+      color: #6b7280;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .messages-tab:hover {
+      color: var(--junspro-purple);
+      background: rgba(124, 58, 237, 0.05);
+    }
+
+    .messages-tab.active {
+      color: var(--junspro-purple);
+      border-bottom-color: var(--junspro-purple);
+    }
+
+    .messages-tab-badge {
+      display: inline-block;
+      background: var(--junspro-purple);
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      margin-left: 0.5rem;
+    }
+
+    .conversations-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.5rem;
+    }
+
+    .conversation-item {
+      padding: 1rem;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 0.5rem;
+      border: 2px solid transparent;
+      position: relative;
+      z-index: 1;
+    }
+
+    .conversation-item:hover {
+      background: #f9fafb;
+      border-color: rgba(124, 58, 237, 0.2);
+    }
+
+    .conversation-item.active {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+      border-color: var(--junspro-purple);
+    }
+
+    .conversation-item-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .conversation-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--junspro-gradient);
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .conversation-avatar-initials {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--junspro-gradient);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    .conversation-status-dot {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid white;
+      background: #10b981;
+      z-index: 2;
+    }
+
+    .conversation-status-dot.offline {
+      background: #9ca3af;
+    }
+
+    .conversation-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .conversation-name {
+      font-weight: 600;
+      color: #1a202c;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .conversation-tag {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+    }
+
+    .conversation-preview {
+      font-size: 0.85rem;
+      color: #6b7280;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 0.25rem;
+    }
+
+    .conversation-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .conversation-time {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .conversation-unread-badge {
+      background: var(--junspro-purple);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .messages-empty-state {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #6b7280;
+    }
+
+    .messages-empty-state-icon {
+      font-size: 4rem;
+      color: #d1d5db;
+      margin-bottom: 1rem;
+    }
+
+    /* Colonne centrale - Fil de messages */
+    .messages-thread {
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .messages-thread-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 3;
+      background: white;
+    }
+
+    .thread-freelancer-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .thread-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--junspro-gradient);
+    }
+
+    .thread-avatar-initials {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--junspro-gradient);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .thread-info h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin: 0 0 0.25rem 0;
+    }
+
+    .thread-info-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .thread-badges {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .thread-badge {
+      padding: 0.4rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .thread-badge.active {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .thread-badge.paused {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .thread-archive-btn {
+      background: none;
+      border: none;
+      color: #9ca3af;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .thread-archive-btn:hover {
+      background: #f3f4f6;
+      color: var(--junspro-purple);
+    }
+
+    .messages-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .message-date-separator {
+      text-align: center;
+      padding: 0.75rem 0;
+      position: relative;
+    }
+
+    .message-date-separator::before,
+    .message-date-separator::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #e5e7eb;
+    }
+
+    .message-date-separator::before {
+      left: 0;
+    }
+
+    .message-date-separator::after {
+      right: 0;
+    }
+
+    .message-date-separator span {
+      background: white;
+      padding: 0 1rem;
+      color: #6b7280;
+      font-size: 0.85rem;
+      position: relative;
+    }
+
+    .message-item {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 70%;
+    }
+
+    .message-item.sent {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .message-item.received {
+      align-self: flex-start;
+    }
+
+    .message-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .message-avatar-initials {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--junspro-gradient);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .message-bubble {
+      padding: 0.875rem 1.125rem;
+      border-radius: 18px;
+      word-wrap: break-word;
+      position: relative;
+    }
+
+    .message-item.sent .message-bubble {
+      background: var(--junspro-gradient);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message-item.received .message-bubble {
+      background: #f3f4f6;
+      color: #1a202c;
+      border-bottom-left-radius: 4px;
+    }
+
+    .message-item.system .message-bubble {
+      background: #fef3c7;
+      color: #92400e;
+      text-align: center;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      margin-top: 0.25rem;
+      padding: 0 0.5rem;
+    }
+
+    .message-item.sent .message-time {
+      text-align: right;
+    }
+
+    .messages-composer {
+      padding: 1.5rem;
+      border-top: 1px solid #e5e7eb;
+      background: white;
+      position: relative;
+      z-index: 3;
+    }
+
+    .messages-composer-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .composer-action-btn {
+      background: none;
+      border: none;
+      color: #6b7280;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .composer-action-btn:hover {
+      background: #f3f4f6;
+      color: var(--junspro-purple);
+    }
+
+    .messages-composer-form {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-end;
+    }
+
+    .composer-textarea {
+      flex: 1;
+      padding: 0.875rem 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      resize: none;
+      min-height: 48px;
+      max-height: 120px;
+      transition: all 0.2s ease;
+    }
+
+    .composer-textarea:focus {
+      outline: none;
+      border-color: var(--junspro-purple);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    }
+
+    .composer-send-btn {
+      padding: 0.875rem 2rem;
+      background: var(--junspro-gradient);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .composer-send-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+    }
+
+    .composer-send-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .messages-thread-empty {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #6b7280;
+      padding: 3rem;
+    }
+
+    /* Colonne droite - Infos projet & freelance */
+    .messages-sidebar-info {
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 1.5rem;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-block {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .info-block:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-block-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 1rem;
+    }
+
+    .freelancer-card-large {
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .freelancer-card-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 4px solid var(--junspro-purple);
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+    }
+
+    .freelancer-card-avatar-initials {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--junspro-gradient);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+      border: 4px solid var(--junspro-purple);
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+    }
+
+    .freelancer-card-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 0.5rem;
+    }
+
+    .freelancer-card-role {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .freelancer-card-rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: #1a202c;
+    }
+
+    .rating-stars {
+      color: #fbbf24;
+    }
+
+    .info-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      font-size: 0.9rem;
+    }
+
+    .info-line-label {
+      color: #6b7280;
+    }
+
+    .info-line-value {
+      color: #1a202c;
+      font-weight: 600;
+    }
+
+    .info-btn {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-btn-primary {
+      background: var(--junspro-gradient);
+      color: white;
+    }
+
+    .info-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+      color: white;
+    }
+
+    .info-btn-secondary {
+      background: #f3f4f6;
+      color: #1a202c;
+    }
+
+    .info-btn-secondary:hover {
+      background: #e5e7eb;
+      color: #1a202c;
+    }
+
+    .info-list-item {
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      color: #4b5563;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .info-list-item:last-child {
+      border-bottom: none;
+    }
+
+    .notes-textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 0.75rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .notes-textarea:focus {
+      outline: none;
+      border-color: var(--junspro-purple);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .messages-container {
+        grid-template-columns: 30% 45% 25%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .messages-container {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .messages-sidebar,
+      .messages-thread,
+      .messages-sidebar-info {
+        height: auto;
+        max-height: 600px;
+      }
+
+      .messages-thread-empty {
+        min-height: 400px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .messages-container {
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .message-item {
+        max-width: 85%;
+      }
+    }
+  </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+  <!-- Navigation principale (onglets) -->
+  <div style="max-width: 1400px; margin: 0 auto; padding: 3rem 1.5rem 0;">
+    <?php echo $__env->make('frontend.client.partials.dashboard-nav', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+  </div>
+
+  <div class="messages-container">
+    <!-- Colonne gauche - Liste des conversations -->
+    <div class="messages-sidebar">
+      <div class="messages-sidebar-header">
+        <h2><?php echo e(__('Messages')); ?></h2>
+        <div class="messages-tabs">
+          <a href="<?php echo e(route('user.messages.index', ['tab' => 'all'])); ?>" 
+             class="messages-tab <?php echo e($currentTab === 'all' ? 'active' : ''); ?>">
+            <?php echo e(__('Tous')); ?>
+
+          </a>
+          <a href="<?php echo e(route('user.messages.index', ['tab' => 'unread'])); ?>" 
+             class="messages-tab <?php echo e($currentTab === 'unread' ? 'active' : ''); ?>">
+            <?php echo e(__('Non lus')); ?>
+
+            <?php
+              $totalUnread = is_array($conversations) ? collect($conversations)->sum('unreadCount') : 0;
+            ?>
+            <?php if($totalUnread > 0): ?>
+              <span class="messages-tab-badge"><?php echo e($totalUnread); ?></span>
+            <?php endif; ?>
+          </a>
+          <a href="<?php echo e(route('user.messages.index', ['tab' => 'archived'])); ?>" 
+             class="messages-tab <?php echo e($currentTab === 'archived' ? 'active' : ''); ?>">
+            <?php echo e(__('Archivés')); ?>
+
+          </a>
+        </div>
+      </div>
+
+      <div class="conversations-list">
+        <?php if(isset($conversations) && count($conversations) > 0): ?>
+          <?php $__currentLoopData = $conversations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $conv): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php
+              $convType = $conv['type'] ?? 'subscription';
+              $subscription = $conv['subscription'];
+              $leadConversation = $conv['leadConversation'] ?? null;
+              $freelancer = $conv['freelancer'];
+              $freelancerProfile = $conv['freelancerProfile'] ?? null;
+              $lastMessage = $conv['lastMessage'];
+              $unreadCount = $conv['unreadCount'];
+              
+              // ÉTAPE 4.3 : Déterminer si cette conversation est active (par freelancer_id, pas par type)
+              $isActive = false;
+              if (isset($selectedConversation) && isset($selectedConversation['freelancerProfile'])) {
+                $selectedFreelancerId = $selectedConversation['freelancerProfile']->id ?? null;
+                $currentFreelancerId = $freelancerProfile->id ?? null;
+                $isActive = $selectedFreelancerId && $currentFreelancerId && $selectedFreelancerId === $currentFreelancerId;
+              }
+              
+              // ÉTAPE 4.3 : URL canonique — toujours utiliser subscription si elle existe
+              $convUrl = $subscription
+                ? route('user.messages.index', ['conversation' => $subscription->id, 'tab' => $currentTab])
+                : route('user.messages.index', ['lead' => $leadConversation->id, 'tab' => $currentTab]);
+              
+              // Format date
+              $dateText = '';
+              if ($lastMessage) {
+                $messageDate = \Carbon\Carbon::parse($lastMessage->created_at);
+                if ($messageDate->isToday()) {
+                  $dateText = $messageDate->format('H:i');
+                } elseif ($messageDate->isYesterday()) {
+                  $dateText = __('Hier');
+                } else {
+                  $dateText = $messageDate->format('d/m');
+                }
+              }
+              
+              // Tag de conversation (subscription vs lead)
+              $convTag = $subscription
+                ? __('Abonnement') . ' ' . ($subscription->hours_per_week ?? '') . 'h/semaine'
+                : __('Pré-réservation');
+              
+              // Filtrage coordonnées pour preview du dernier message
+              // Si le dernier message est un lead => filtrer
+              // Si le dernier message est subscription => filtrer si subscription non active
+              $shouldFilter = false;
+              if ($lastMessage) {
+                if ($lastMessage->lead_conversation_id) {
+                  $shouldFilter = true;
+                } elseif ($lastMessage->subscription_id && $subscription) {
+                  $shouldFilter = $subscription->status !== 'active';
+                }
+              }
+            ?>
+            <div class="conversation-item <?php echo e($isActive ? 'active' : ''); ?>"
+                 onclick="window.location.href='<?php echo e($convUrl); ?>'">
+              <div class="conversation-item-header">
+                <?php if($freelancer->image): ?>
+                  <img src="<?php echo e(asset('assets/img/users/' . $freelancer->image)); ?>" 
+                       alt="<?php echo e($freelancer->name); ?>" 
+                       class="conversation-avatar"
+                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <div class="conversation-avatar-initials" style="display: none;">
+                    <?php echo e(strtoupper(substr($freelancer->name, 0, 1))); ?>
+
+                  </div>
+                <?php else: ?>
+                  <div class="conversation-avatar-initials">
+                    <?php echo e(strtoupper(substr($freelancer->name, 0, 1))); ?>
+
+                  </div>
+                <?php endif; ?>
+                <div class="conversation-info">
+                  <div class="conversation-name"><?php echo e($freelancer->name); ?></div>
+                  <div class="conversation-tag"><?php echo e($convTag); ?></div>
+                  <?php if($lastMessage): ?>
+                    <?php
+                      $previewText = $shouldFilter
+                        ? \App\Services\Junspro\ContactGuardService::filterContactCoordinates($lastMessage->message)
+                        : $lastMessage->message;
+                    ?>
+                    <div class="conversation-preview"><?php echo e(\Illuminate\Support\Str::limit($previewText, 50)); ?></div>
+                  <?php endif; ?>
+                  <div class="conversation-meta">
+                    <?php if($lastMessage): ?>
+                      <span class="conversation-time"><?php echo e($dateText); ?></span>
+                    <?php endif; ?>
+                    <?php if($unreadCount > 0): ?>
+                      <span class="conversation-unread-badge"><?php echo e($unreadCount); ?></span>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php else: ?>
+          <div class="messages-empty-state">
+            <div class="messages-empty-state-icon"><i class="far fa-comments"></i></div>
+            <h3><?php echo e(__('Aucune conversation')); ?></h3>
+            <p><?php echo e(__("Vous n'avez pas encore de messages. Réservez une première heure avec un freelance pour commencer votre projet.")); ?></p>
+            <a href="<?php echo e(route('explore')); ?>" class="info-btn info-btn-primary" style="margin-top: 1rem; display: inline-block;"><?php echo e(__('Trouver un freelance')); ?></a>
+          </div>
+        <?php endif; ?>
+      </div>
+    </div>
+
+    <!-- Colonne centrale - Fil de messages -->
+    <div class="messages-thread">
+      <?php if(isset($selectedConversation)): ?>
+        <?php
+          $convType = $selectedConversation['type'] ?? 'subscription';
+          $subscription = $selectedConversation['subscription'];
+          $leadConversation = $selectedConversation['leadConversation'] ?? null;
+          $freelancer = $selectedConversation['freelancer'];
+          $freelancerProfile = $selectedConversation['freelancerProfile'];
+          
+          // ÉTAPE 4.3 : Garde-fous appliqués PAR MESSAGE
+          // La bannière s'affiche si AU MOINS UN message nécessite filtrage :
+          // - subscription non active OU lead_conversation existe
+          $hasLeadMessages = $leadConversation !== null;
+          $subscriptionIsActive = $subscription && $subscription->status === 'active';
+          $showBanner = $hasLeadMessages || ($subscription && !$subscriptionIsActive);
+          
+          // Sous-titre
+          $threadSubtitle = $subscription
+            ? __('Freelance expert') . ' – ' . __('Abonnement') . ' ' . ($subscription->hours_per_week ?? '') . 'h/semaine'
+            : __('Freelance expert') . ' – ' . __('Pré-réservation');
+        ?>
+        
+        <div class="messages-thread-header">
+          <div class="thread-freelancer-info">
+            <?php if($freelancer->image): ?>
+              <img src="<?php echo e(asset('assets/img/users/' . $freelancer->image)); ?>" 
+                   alt="<?php echo e($freelancer->name); ?>" 
+                   class="thread-avatar"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="thread-avatar-initials" style="display: none;">
+                <?php echo e(strtoupper(substr($freelancer->name, 0, 1))); ?>
+
+              </div>
+            <?php else: ?>
+              <div class="thread-avatar-initials">
+                <?php echo e(strtoupper(substr($freelancer->name, 0, 1))); ?>
+
+              </div>
+            <?php endif; ?>
+            <div class="thread-info">
+              <h3><?php echo e($freelancer->name); ?></h3>
+              <p class="thread-info-subtitle"><?php echo e($threadSubtitle); ?></p>
+            </div>
+          </div>
+          <div class="thread-badges">
+            <?php if($subscription): ?>
+              <?php if($subscription->status === 'active'): ?>
+                <span class="thread-badge active"><?php echo e(__('Projet actif')); ?></span>
+              <?php elseif($subscription->status === 'paused'): ?>
+                <span class="thread-badge paused"><?php echo e(__('En pause')); ?></span>
+              <?php else: ?>
+                <span class="thread-badge paused"><?php echo e(ucfirst($subscription->status ?? 'pending')); ?></span>
+              <?php endif; ?>
+            <?php else: ?>
+              <span class="thread-badge paused"><?php echo e(__('Pré-réservation')); ?></span>
+            <?php endif; ?>
+            <button class="thread-archive-btn" aria-label="<?php echo e(__('Archiver la conversation')); ?>">
+              <i class="far fa-folder"></i>
+            </button>
+          </div>
+        </div>
+
+        <?php if($showBanner): ?>
+          <div class="messages-coordinates-guard" style="padding: 0.5rem 1rem; background: #f0f9ff; color: #0c4a6e; font-size: 0.75rem; border-bottom: 1px solid #bae6fd;">
+            <div style="margin-bottom: 0.25rem;"><?php echo e(\App\Services\Junspro\ContactGuardService::$infoMessage); ?></div>
+            <div style="opacity: 0.9; font-size: clamp(0.75rem, 2.5vw, 0.8125rem);"><?php echo e(__('Paiement sécurisé')); ?> • <?php echo e(__('Annulation simplifiée')); ?> • <?php echo e(__('Facture')); ?> • <?php echo e(__('Support')); ?></div>
+          </div>
+        <?php endif; ?>
+
+        <div class="messages-content" id="messagesContent">
+          <?php
+            $currentDate = null;
+          ?>
+          <?php $__currentLoopData = $messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php
+              $messageDate = \Carbon\Carbon::parse($message->created_at);
+              $showDateSeparator = !$currentDate || !$messageDate->isSameDay($currentDate);
+              $currentDate = $messageDate;
+              
+              $isClient = $message->sender_id === Auth::guard('web')->id();
+              $dateSeparatorText = '';
+              if ($messageDate->isToday()) {
+                $dateSeparatorText = __("Aujourd'hui");
+              } elseif ($messageDate->isYesterday()) {
+                $dateSeparatorText = __('Hier');
+              } else {
+                $dateSeparatorText = $messageDate->format('d F Y');
+              }
+              
+              // ÉTAPE 4.3 : Garde-fous PAR MESSAGE
+              // - Si message a lead_conversation_id => toujours filtrer
+              // - Si message a subscription_id => filtrer seulement si subscription.status !== 'active'
+              $shouldFilterThisMessage = false;
+              if ($message->lead_conversation_id) {
+                // Message lead => toujours filtrer
+                $shouldFilterThisMessage = true;
+              } elseif ($message->subscription_id) {
+                // Message subscription => filtrer si subscription non active
+                $shouldFilterThisMessage = !$subscriptionIsActive;
+              }
+            ?>
+            
+            <?php if($showDateSeparator): ?>
+              <div class="message-date-separator">
+                <span><?php echo e($dateSeparatorText); ?></span>
+              </div>
+            <?php endif; ?>
+
+            <div class="message-item <?php echo e($isClient ? 'sent' : 'received'); ?>">
+              <?php if(!$isClient): ?>
+                <?php if($freelancer->image): ?>
+                  <img src="<?php echo e(asset('assets/img/users/' . $freelancer->image)); ?>" 
+                       alt="<?php echo e($freelancer->name); ?>" 
+                       class="message-avatar"
+                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <div class="message-avatar-initials" style="display: none;">
+                    <?php echo e(strtoupper(substr($freelancer->name, 0, 1))); ?>
+
+                  </div>
+                <?php else: ?>
+                  <div class="message-avatar-initials">
+                    <?php echo e(strtoupper(substr($freelancer->name, 0, 1))); ?>
+
+                  </div>
+                <?php endif; ?>
+              <?php endif; ?>
+              <div>
+                <?php
+                  // Appliquer le filtrage PAR MESSAGE
+                  $displayMessage = $shouldFilterThisMessage
+                    ? \App\Services\Junspro\ContactGuardService::filterContactCoordinates($message->message)
+                    : $message->message;
+                ?>
+                <div class="message-bubble"><?php echo e($displayMessage); ?></div>
+                <div class="message-time"><?php echo e($messageDate->format('H:i')); ?></div>
+              </div>
+            </div>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+
+        <div class="messages-composer">
+          <form id="messageForm" action="<?php echo e(route('user.messages.send')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+            
+            <?php if($subscription): ?>
+              <input type="hidden" name="subscription_id" value="<?php echo e($subscription->id); ?>">
+            <?php elseif($leadConversation): ?>
+              <input type="hidden" name="lead_conversation_id" value="<?php echo e($leadConversation->id); ?>">
+            <?php endif; ?>
+            <div class="messages-composer-actions">
+              <button type="button" class="composer-action-btn" aria-label="<?php echo e(__('Joindre un fichier')); ?>">
+                <i class="far fa-paperclip"></i>
+              </button>
+              <button type="button" class="composer-action-btn" aria-label="<?php echo e(__('Emoji')); ?>">
+                <i class="far fa-smile"></i>
+              </button>
+            </div>
+            <div class="messages-composer-form">
+              <textarea name="message" 
+                        id="messageTextarea" 
+                        class="composer-textarea" 
+                        placeholder="<?php echo e(__('Votre message…')); ?>" 
+                        rows="1"></textarea>
+              <button type="submit" class="composer-send-btn" id="sendMessageBtn" disabled>
+                <?php echo e(__('Envoyer')); ?>
+
+              </button>
+            </div>
+          </form>
+        </div>
+      <?php else: ?>
+        <div class="messages-thread-empty">
+          <div>
+            <i class="far fa-comments" style="font-size: 4rem; color: #d1d5db; margin-bottom: 1rem;"></i>
+            <h3><?php echo e(__('Choisissez un freelance')); ?></h3>
+            <p><?php echo e(__('Choisissez un freelance dans la liste à gauche pour démarrer une conversation.')); ?></p>
+          </div>
+        </div>
+      <?php endif; ?>
+    </div>
+
+    <!-- Colonne droite - Infos projet & freelance -->
+    <?php if(isset($selectedConversation)): ?>
+      <?php
+        // ÉTAPE 4.3 : On n'utilise plus $convType, on vérifie directement si subscription existe
+        $subscription = $selectedConversation['subscription'];
+        $leadConversation = $selectedConversation['leadConversation'] ?? null;
+        $freelancer = $selectedConversation['freelancer'];
+        $freelancerProfile = $selectedConversation['freelancerProfile'];
+        
+        // Variables pour subscription uniquement
+        $hoursRemaining = 0;
+        $lastReport = null;
+        $nextSession = null;
+        
+        if ($subscription) {
+          // Calculer les heures restantes
+          $completedSessions = \App\Models\WorkSession::where('subscription_id', $subscription->id)
+            ->where('status', 'completed')
+            ->get();
+          $usedHours = $completedSessions->sum(function($session) {
+            return ($session->duration_minutes ?? 60) / 60;
+          });
+          $hoursRemaining = max(0, ($subscription->hours_remaining ?? ($subscription->hours_total_month ?? 0) - $usedHours));
+          
+          // Dernier rapport
+          $lastReport = \App\Models\WorkSession::where('subscription_id', $subscription->id)
+            ->where('status', 'completed')
+            ->whereNotNull('report_text')
+            ->orderBy('end_at', 'desc')
+            ->first();
+          
+          // Prochaine session
+          $nextSession = \App\Models\WorkSession::where('subscription_id', $subscription->id)
+            ->where('start_at', '>', now())
+            ->where('status', '!=', 'cancelled')
+            ->orderBy('start_at', 'asc')
+            ->first();
+        }
+      ?>
+      
+      <div class="messages-sidebar-info">
+        <!-- Bloc 1 - Identité freelance -->
+        <div class="info-block">
+          <div class="freelancer-card-large">
+            <?php if($freelancer->image): ?>
+              <img src="<?php echo e(asset('assets/img/users/' . $freelancer->image)); ?>" 
+                   alt="<?php echo e($freelancer->name); ?>" 
+                   class="freelancer-card-avatar"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="freelancer-card-avatar-initials" style="display: none;">
+                <?php echo e(strtoupper(substr($freelancer->name, 0, 1))); ?>
+
+              </div>
+            <?php else: ?>
+              <div class="freelancer-card-avatar-initials">
+                <?php echo e(strtoupper(substr($freelancer->name, 0, 1))); ?>
+
+              </div>
+            <?php endif; ?>
+            <div class="freelancer-card-name"><?php echo e($freelancer->name); ?></div>
+            <div class="freelancer-card-role"><?php echo e(__('Freelance expert')); ?></div>
+            <div class="freelancer-card-rating">
+              <span class="rating-stars">★★★★★</span>
+              <span>4.8 (23 <?php echo e(__('avis')); ?>)</span>
+            </div>
+          </div>
+        </div>
+
+        <?php if($subscription): ?>
+          <!-- Bloc 2 - Abonnement / Rituels (subscription existe) -->
+          <div class="info-block">
+            <h3 class="info-block-title"><?php echo e(__('Votre formule avec ce freelance')); ?></h3>
+            <div class="info-line">
+              <span class="info-line-label"><?php echo e(__('Tarif')); ?></span>
+              <span class="info-line-value"><?php echo e(number_format($freelancerProfile->hourly_rate ?? 0, 0, ',', ' ')); ?> € / Rituel</span>
+            </div>
+            <div class="info-line">
+              <span class="info-line-label"><?php echo e(__('Solde')); ?></span>
+              <span class="info-line-value"><?php echo e(number_format($hoursRemaining, 1)); ?> <?php echo e(__('Rituels restants')); ?></span>
+            </div>
+            <?php if($lastReport): ?>
+              <div class="info-line">
+                <span class="info-line-label"><?php echo e(__('Dernier rapport')); ?></span>
+                <span class="info-line-value"><?php echo e(\Carbon\Carbon::parse($lastReport->end_at)->format('d/m, H:i')); ?></span>
+              </div>
+            <?php endif; ?>
+            <?php if($nextSession): ?>
+              <div class="info-line">
+                <span class="info-line-label"><?php echo e(__('Prochain Rituel')); ?></span>
+                <span class="info-line-value"><?php echo e(\Carbon\Carbon::parse($nextSession->start_at)->format('d/m, H:i')); ?></span>
+              </div>
+            <?php endif; ?>
+            <a href="<?php echo e(route('client.subscriptions.show', $subscription->id)); ?>" class="info-btn info-btn-primary">
+              <?php echo e(__('Ajouter des Rituels')); ?>
+
+            </a>
+            <a href="<?php echo e(route('freelance.show', $freelancerProfile->id)); ?>" class="info-btn info-btn-secondary">
+              <?php echo e(__('Voir le calendrier')); ?>
+
+            </a>
+          </div>
+
+          <!-- Bloc 3 - Actions projet (subscription uniquement) -->
+          <div class="info-block">
+            <h3 class="info-block-title"><?php echo e(__('Actions projet')); ?></h3>
+            <a href="<?php echo e(route('client.subscriptions.show', $subscription->id)); ?>" class="info-btn info-btn-primary">
+              <?php echo e(__('Voir les rapports')); ?>
+
+            </a>
+            <button class="info-btn info-btn-secondary">
+              <?php echo e(__('Laisser un avis')); ?>
+
+            </button>
+          </div>
+
+          <!-- Bloc 4 - Informations techniques (subscription uniquement) -->
+          <div class="info-block">
+            <h3 class="info-block-title"><?php echo e(__('Informations techniques')); ?></h3>
+            <div class="info-list-item">
+              <strong><?php echo e(__('Type de projet')); ?>:</strong> <?php echo e(__('Abonnement')); ?> <?php echo e($subscription->hours_per_week); ?>h/semaine
+            </div>
+            <div class="info-list-item">
+              <strong><?php echo e(__('Statut')); ?>:</strong> 
+              <?php if($subscription->status === 'active'): ?>
+                <?php echo e(__('En cours')); ?>
+
+              <?php elseif($subscription->status === 'paused'): ?>
+                <?php echo e(__('En pause')); ?>
+
+              <?php else: ?>
+                <?php echo e(ucfirst($subscription->status)); ?>
+
+              <?php endif; ?>
+            </div>
+          </div>
+        <?php else: ?>
+          <!-- Bloc 2 - Pré-réservation (lead uniquement) -->
+          <div class="info-block">
+            <h3 class="info-block-title"><?php echo e(__('Pré-réservation')); ?></h3>
+            <div class="info-line">
+              <span class="info-line-label"><?php echo e(__('Tarif')); ?></span>
+              <span class="info-line-value"><?php echo e(number_format($freelancerProfile->hourly_rate ?? 0, 0, ',', ' ')); ?> € / Rituel</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #6b7280; margin: 1rem 0;">
+              <?php echo e(__('Discutez avec ce freelance pour définir votre projet avant de réserver.')); ?>
+
+            </p>
+            <a href="<?php echo e(route('freelance.booking', $freelancerProfile->id)); ?>" class="info-btn info-btn-primary">
+              <?php echo e(__('Réserver un Rituel')); ?>
+
+            </a>
+            <a href="<?php echo e(route('freelance.show', $freelancerProfile->id)); ?>" class="info-btn info-btn-secondary">
+              <?php echo e(__('Voir le profil')); ?>
+
+            </a>
+          </div>
+        <?php endif; ?>
+
+        <!-- Bloc 5 - Notes privées (toujours visible) -->
+        <div class="info-block">
+          <h3 class="info-block-title"><?php echo e(__('Mes notes')); ?></h3>
+          <textarea class="notes-textarea" placeholder="<?php echo e(__('Notez vos idées, décisions, prochaines étapes…')); ?>"></textarea>
+        </div>
+      </div>
+    <?php else: ?>
+      <div class="messages-sidebar-info">
+        <div class="messages-empty-state">
+          <i class="far fa-info-circle" style="font-size: 3rem; color: #d1d5db; margin-bottom: 1rem;"></i>
+          <p><?php echo e(__('Sélectionnez une conversation pour voir les informations du projet.')); ?></p>
+        </div>
+      </div>
+    <?php endif; ?>
+  </div>
+
+  <script>
+    // Auto-resize textarea
+    const textarea = document.getElementById('messageTextarea');
+    const sendBtn = document.getElementById('sendMessageBtn');
+    
+    if (textarea) {
+      textarea.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        
+        // Enable/disable send button
+        if (sendBtn) {
+          sendBtn.disabled = this.value.trim().length === 0;
+        }
+      });
+
+      // Send with Ctrl+Enter
+      textarea.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && e.ctrlKey) {
+          e.preventDefault();
+          const form = document.getElementById('messageForm');
+          if (form && !sendBtn.disabled) {
+            form.submit();
+          }
+        }
+      });
+
+      // Scroll to bottom on load
+      const messagesContent = document.getElementById('messagesContent');
+      if (messagesContent) {
+        messagesContent.scrollTop = messagesContent.scrollHeight;
+      }
+    }
+
+    // Form submission
+    const messageForm = document.getElementById('messageForm');
+    if (messageForm) {
+      messageForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const messageText = formData.get('message');
+        
+        if (messageText.trim().length === 0) {
+          return;
+        }
+
+        fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Reload page to show new message
+            window.location.reload();
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('<?php echo e(__("Erreur lors de l'envoi du message.")); ?>');
+        });
+      });
+    }
+  </script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('frontend.layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\younes\Downloads\junspro-main (1)\junspro-main3\resources\views\frontend\client\messages\index.blade.php ENDPATH**/ ?>

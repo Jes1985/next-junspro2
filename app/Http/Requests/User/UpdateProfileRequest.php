@@ -31,12 +31,14 @@ class UpdateProfileRequest extends FormRequest
         'dimensions:min_width=80,max_width=80,min_width=80,min_height=80'
       ] : '',
       'first_name' => 'required',
-      'username' => 'required|unique:users,username,' . Auth::guard('web')->user()->id,
-      'last_name' => 'required',
-      'phone_number' => 'required',
-      'address' => 'required',
-      'city' => 'required',
-      'country' => 'required'
+      'last_name'  => 'required',
+      'username'     => 'sometimes|required|unique:users,username,' . Auth::guard('web')->user()->id,
+      'phone_number' => 'sometimes|nullable',
+      'address'      => 'sometimes|nullable',
+      'city'         => 'sometimes|nullable',
+      'country'         => 'sometimes|nullable',
+      'native_language'  => 'sometimes|nullable|string|max:10',
+      'other_languages'  => 'sometimes|nullable|string|max:500',
     ];
   }
 }

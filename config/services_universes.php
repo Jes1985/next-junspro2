@@ -15,7 +15,7 @@ return [
         'projects' => 'Projet & Consulting',
         'lessons' => 'Cours & Tutorat',
         'at-home' => 'Rituals Services',
-        'wellnesslive' => 'WellnessLive',
+        'wellnesslive' => 'Ritual Motion',
         'homeswap' => 'Échange de logement',
         'corporate' => 'Présence',
     ],
