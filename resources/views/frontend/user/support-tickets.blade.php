@@ -118,15 +118,71 @@
         margin-bottom: 2rem;
       }
     }
+
+    /* === Dashboard Hero === */
+    .dashboard-hero {
+      background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #a855f7 100%);
+      border-radius: 40px;
+      padding: 3rem 4rem;
+      margin-bottom: 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      box-shadow: 0 32px 80px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .dashboard-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -5%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .dashboard-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .dashboard-hero-content { flex: 1; position: relative; z-index: 2; }
+    .dashboard-hero-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: white;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .dashboard-hero-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 0;
+      font-weight: 300;
+    }
   </style>
 @endsection
 
-@section('pageHeading')
-  {{ $title }}
-@endsection
-
 @section('content')
-  @includeIf('frontend.partials.breadcrumb', ['breadcrumb' => $breadcrumb, 'title' => $title])
+@php
+  $heroFirstName = Auth::guard('web')->user() ? explode(' ', trim(Auth::guard('web')->user()->name))[0] : 'vous';
+@endphp
+<div class="container" style="padding-top: 2rem; padding-bottom: 0;">
+  <div class="dashboard-hero">
+    <div class="dashboard-hero-content">
+      <h1 class="dashboard-hero-title">Bonjour {{ $heroFirstName }} !</h1>
+      <p class="dashboard-hero-subtitle">Bienvenue dans votre espace</p>
+    </div>
+  </div>
+</div>
 
   <!--====== Start Support Tickets Section ======-->
   <section class="user-dashboard pt-100 pb-60">
