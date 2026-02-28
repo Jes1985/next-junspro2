@@ -604,7 +604,7 @@
 
             <div class="card mb-30">
               <div class="card-body">
-                <h5>{{ __('Informations du Rituel') }}</h5>
+                <h5>{{ __('Détails du Rituel') }}</h5>
                 <ul class="list-unstyled">
                   <li><strong>{{ __('Heures par semaine') }}:</strong> {{ $subscription->hours_per_week }}h</li>
                   <li><strong>{{ __('Prix de base (4 semaines') }}:</strong> {{ number_format($subscription->price_base, 2, ',', ' ') }} €</li>
