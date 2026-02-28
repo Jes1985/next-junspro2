@@ -134,6 +134,18 @@ class ClientMessagesController extends Controller
         });
 
         // ========================================
+        // Redirection automatique vers la première conversation si aucune n'est sélectionnée
+        // ========================================
+        if (!$request->has('conversation') && !$request->has('lead') && !empty($conversations)) {
+            $first = $conversations[0];
+            if ($first['subscription']) {
+                return redirect()->route('user.messages.index', ['conversation' => $first['subscription']->id, 'tab' => $tab]);
+            } elseif ($first['leadConversation']) {
+                return redirect()->route('user.messages.index', ['lead' => $first['leadConversation']->id, 'tab' => $tab]);
+            }
+        }
+
+        // ========================================
         // Conversation sélectionnée (subscription OU lead)
         // ========================================
         $selectedSubscriptionId = $request->get('conversation');
