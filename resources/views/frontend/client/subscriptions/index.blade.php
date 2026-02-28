@@ -649,7 +649,7 @@
                   <i class="fas fa-plus"></i> {{ __('Ajouter des heures') }}
                 </a>
                 <a href="{{ route('user.messages.index', ['conversation' => $subscription->id]) }}" class="btn-project-action">
-                  <i class="fas fa-calendar"></i> {{ __('Calendrier') }}
+                  <i class="fas fa-comments"></i> {{ __('Messages') }}
                 </a>
               </div>
             </div>
