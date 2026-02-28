@@ -1892,15 +1892,19 @@
                   </div>
                   @if($isCurrent)
                     <div style="font-size:0.75rem;color:rgba(255,255,255,0.9);font-weight:700;padding:0.45rem;background:rgba(255,255,255,0.18);border-radius:10px;">✓ Votre formule</div>
-                  @elseif($firstActive)
-                    <button
-                      onclick="openChangePlanFlow({subscriptionId:{{ $firstActive->id }},tutorName:'{{ addslashes((optional(optional($firstActive->freelancer)->user)->first_name ?? '').' '.(optional(optional($firstActive->freelancer)->user)->last_name ?? '')) }}',avatarUrl:'',currentHours:{{ $firstActive->hours_per_week ?? 0 }},currentPrice:{{ $firstActive->price_base ?? 0 }},unitPrice:{{ $firstActive->client_hourly_rate_snapshot ?? $firstActive->base_hourly_rate_snapshot ?? 0 }},nextBillingDate:'{{ $firstActive->next_billing_at ? \Carbon\Carbon::parse($firstActive->next_billing_at)->format('Y-m-d H:i:s') : '' }}',contextUrl:'{{ route('user.account.subscriptions.change-plan-context', $firstActive->id) }}',submitUrl:'{{ route('user.account.subscriptions.change-plan', $firstActive->id) }}',csrf:'{{ csrf_token() }}'})"
-                      style="width:100%;padding:0.5rem 0.25rem;border:2px solid {{ $plan['popular'] ? '#7c3aed' : '#e5e7eb' }};border-radius:11px;font-size:0.77rem;font-weight:700;cursor:pointer;background:{{ $plan['popular'] ? 'linear-gradient(135deg,#4f46e5,#7c3aed)' : '#fff' }};color:{{ $plan['popular'] ? '#fff' : '#374151' }};transition:all 0.18s;"
-                      onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-                      Choisir {{ $plan['name'] }}
-                    </button>
+                  @elseif($firstActive && $firstActive->freelancer_id)
+                    <form method="POST" action="{{ route('pricing.subscribe') }}" style="margin:0;">
+                      @csrf
+                      <input type="hidden" name="freelancer_id" value="{{ $firstActive->freelancer_id }}">
+                      <input type="hidden" name="weekly_hours" value="{{ $plan['hours_per_week'] }}">
+                      <button type="submit"
+                        style="width:100%;padding:0.5rem 0.25rem;border:2px solid {{ $plan['popular'] ? '#7c3aed' : '#e5e7eb' }};border-radius:11px;font-size:0.77rem;font-weight:700;cursor:pointer;background:{{ $plan['popular'] ? 'linear-gradient(135deg,#4f46e5,#7c3aed)' : '#fff' }};color:{{ $plan['popular'] ? '#fff' : '#374151' }};transition:all 0.18s;"
+                        onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                        Choisir {{ $plan['name'] }}
+                      </button>
+                    </form>
                   @else
-                    <a href="{{ route('pricing') }}" style="display:block;width:100%;padding:0.5rem 0.25rem;border:2px solid {{ $plan['popular'] ? '#7c3aed' : '#e5e7eb' }};border-radius:11px;font-size:0.77rem;font-weight:700;cursor:pointer;background:{{ $plan['popular'] ? 'linear-gradient(135deg,#4f46e5,#7c3aed)' : '#fff' }};color:{{ $plan['popular'] ? '#fff' : '#374151' }};text-decoration:none;text-align:center;box-sizing:border-box;">
+                    <a href="{{ route('explore') }}" style="display:block;width:100%;padding:0.5rem 0.25rem;border:2px solid {{ $plan['popular'] ? '#7c3aed' : '#e5e7eb' }};border-radius:11px;font-size:0.77rem;font-weight:700;cursor:pointer;background:{{ $plan['popular'] ? 'linear-gradient(135deg,#4f46e5,#7c3aed)' : '#fff' }};color:{{ $plan['popular'] ? '#fff' : '#374151' }};text-decoration:none;text-align:center;box-sizing:border-box;">
                       Choisir {{ $plan['name'] }}
                     </a>
                   @endif
@@ -1947,15 +1951,19 @@
                   </div>
                   @if($isCurrent)
                     <div style="font-size:0.75rem;color:rgba(255,255,255,0.9);font-weight:700;padding:0.45rem;background:rgba(255,255,255,0.18);border-radius:10px;">✓ Votre formule</div>
-                  @elseif($firstActive)
-                    <button
-                      onclick="openChangePlanFlow({subscriptionId:{{ $firstActive->id }},tutorName:'{{ addslashes((optional(optional($firstActive->freelancer)->user)->first_name ?? '').' '.(optional(optional($firstActive->freelancer)->user)->last_name ?? '')) }}',avatarUrl:'',currentHours:{{ $firstActive->hours_per_week ?? 0 }},currentPrice:{{ $firstActive->price_base ?? 0 }},unitPrice:{{ $firstActive->client_hourly_rate_snapshot ?? $firstActive->base_hourly_rate_snapshot ?? 0 }},nextBillingDate:'{{ $firstActive->next_billing_at ? \Carbon\Carbon::parse($firstActive->next_billing_at)->format('Y-m-d H:i:s') : '' }}',contextUrl:'{{ route('user.account.subscriptions.change-plan-context', $firstActive->id) }}',submitUrl:'{{ route('user.account.subscriptions.change-plan', $firstActive->id) }}',csrf:'{{ csrf_token() }}'})"
-                      style="width:100%;padding:0.5rem 0.25rem;border:2px solid {{ $plan['popular'] ? '#7c3aed' : '#e5e7eb' }};border-radius:11px;font-size:0.77rem;font-weight:700;cursor:pointer;background:{{ $plan['popular'] ? 'linear-gradient(135deg,#4f46e5,#7c3aed)' : '#fff' }};color:{{ $plan['popular'] ? '#fff' : '#374151' }};transition:all 0.18s;"
-                      onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-                      Choisir {{ $plan['name'] }}
-                    </button>
+                  @elseif($firstActive && $firstActive->freelancer_id)
+                    <form method="POST" action="{{ route('pricing.subscribe') }}" style="margin:0;">
+                      @csrf
+                      <input type="hidden" name="freelancer_id" value="{{ $firstActive->freelancer_id }}">
+                      <input type="hidden" name="weekly_hours" value="{{ $plan['hours_per_week'] }}">
+                      <button type="submit"
+                        style="width:100%;padding:0.5rem 0.25rem;border:2px solid {{ $plan['popular'] ? '#7c3aed' : '#e5e7eb' }};border-radius:11px;font-size:0.77rem;font-weight:700;cursor:pointer;background:{{ $plan['popular'] ? 'linear-gradient(135deg,#4f46e5,#7c3aed)' : '#fff' }};color:{{ $plan['popular'] ? '#fff' : '#374151' }};transition:all 0.18s;"
+                        onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                        Choisir {{ $plan['name'] }}
+                      </button>
+                    </form>
                   @else
-                    <a href="{{ route('pricing') }}" style="display:block;width:100%;padding:0.5rem 0.25rem;border:2px solid {{ $plan['popular'] ? '#7c3aed' : '#e5e7eb' }};border-radius:11px;font-size:0.77rem;font-weight:700;cursor:pointer;background:{{ $plan['popular'] ? 'linear-gradient(135deg,#4f46e5,#7c3aed)' : '#fff' }};color:{{ $plan['popular'] ? '#fff' : '#374151' }};text-decoration:none;text-align:center;box-sizing:border-box;">
+                    <a href="{{ route('explore') }}" style="display:block;width:100%;padding:0.5rem 0.25rem;border:2px solid {{ $plan['popular'] ? '#7c3aed' : '#e5e7eb' }};border-radius:11px;font-size:0.77rem;font-weight:700;cursor:pointer;background:{{ $plan['popular'] ? 'linear-gradient(135deg,#4f46e5,#7c3aed)' : '#fff' }};color:{{ $plan['popular'] ? '#fff' : '#374151' }};text-decoration:none;text-align:center;box-sizing:border-box;">
                       Choisir {{ $plan['name'] }}
                     </a>
                   @endif
