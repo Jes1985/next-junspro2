@@ -584,12 +584,7 @@
   </style>
 @endsection
 
-@section('pageHeading')
-  {{ __('Détails du Rituel') }}
-@endsection
-
 @section('content')
-  @includeIf('frontend.partials.breadcrumb', ['breadcrumb' => $breadcrumb, 'title' => __('Détails du Rituel')])
 
   <section class="user-dashboard pt-100 pb-60">
     <div class="container">
