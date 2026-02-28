@@ -585,11 +585,11 @@
 @endsection
 
 @section('pageHeading')
-  {{ __('Détails de l\'abonnement') }}
+  {{ __('Détails du Rituel') }}
 @endsection
 
 @section('content')
-  @includeIf('frontend.partials.breadcrumb', ['breadcrumb' => $breadcrumb, 'title' => __('Détails de l\'abonnement')])
+  @includeIf('frontend.partials.breadcrumb', ['breadcrumb' => $breadcrumb, 'title' => __('Détails du Rituel')])
 
   <section class="user-dashboard pt-100 pb-60">
     <div class="container">
@@ -599,12 +599,12 @@
         <div class="col-lg-9">
           <div class="user-profile-details mb-30">
             <div class="title mb-30">
-              <h4>{{ __('Abonnement avec') }} {{ $subscription->freelancer->user->name ?? 'N/A' }}</h4>
+              <h4>{{ __('Rituel avec') }} {{ $subscription->freelancer->user->name ?? 'N/A' }}</h4>
             </div>
 
             <div class="card mb-30">
               <div class="card-body">
-                <h5>{{ __('Informations de l\'abonnement') }}</h5>
+                <h5>{{ __('Informations du Rituel') }}</h5>
                 <ul class="list-unstyled">
                   <li><strong>{{ __('Heures par semaine') }}:</strong> {{ $subscription->hours_per_week }}h</li>
                   <li><strong>{{ __('Prix de base (4 semaines') }}:</strong> {{ number_format($subscription->price_base, 2, ',', ' ') }} €</li>
