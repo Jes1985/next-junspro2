@@ -1216,10 +1216,55 @@ class UserController extends Controller
           ->first();
       });
 
+      // Plans disponibles
+      $planMeta = [
+        4  => ['name'=>'Essentiel',  'description'=>'Pour démarrer en douceur',       'icon'=>'fas fa-seedling',   'popular'=>false],
+        8  => ['name'=>'Starter',    'description'=>'Idéal pour un Rituel régulier',  'icon'=>'fas fa-rocket',     'popular'=>false],
+        16 => ['name'=>'Business',   'description'=>'Le plus choisi — rythme soutenu','icon'=>'fas fa-briefcase',  'popular'=>true],
+        24 => ['name'=>'Pro',        'description'=>'Pour les Rituels ambitieux',     'icon'=>'fas fa-chart-line', 'popular'=>false],
+        32 => ['name'=>'Premium',    'description'=>'Immersion totale dans le Rituel','icon'=>'fas fa-crown',      'popular'=>false],
+        48 => ['name'=>'Growth',     'description'=>'Cadence intensive',              'icon'=>'fas fa-bolt',       'popular'=>true],
+        56 => ['name'=>'Scale',      'description'=>'Pour accélérer fort',            'icon'=>'fas fa-expand-alt', 'popular'=>false],
+        64 => ['name'=>'Elite',      'description'=>'Expertise dédiée à plein régime','icon'=>'fas fa-gem',        'popular'=>false],
+        72 => ['name'=>'Expert',     'description'=>'Priorité absolue au Rituel',     'icon'=>'fas fa-star',       'popular'=>false],
+        80 => ['name'=>'Master',     'description'=>'Collaboration quasi temps-plein','icon'=>'fas fa-trophy',     'popular'=>false],
+        88 => ['name'=>'Enterprise', 'description'=>'Volume maximal, impact maximum', 'icon'=>'fas fa-building',   'popular'=>false],
+      ];
+      $buildPlans = function (array $paliers, string $universeType) use ($cycleUsage, $planMeta) {
+        return collect($paliers)->map(function ($palier) use ($cycleUsage, $planMeta, $universeType) {
+          return [
+            'hours_per_cycle' => $palier,
+            'hours_per_week'  => $palier / 4,
+            'topup_max'       => $cycleUsage->topupCap($palier, $universeType),
+            'cycle_max_total' => $cycleUsage->cycleMaxTotal($palier, $universeType),
+            'name'            => $planMeta[$palier]['name']        ?? "{$palier}h/cycle",
+            'description'     => $planMeta[$palier]['description'] ?? '',
+            'icon'            => $planMeta[$palier]['icon']        ?? 'fas fa-circle',
+            'popular'         => $planMeta[$palier]['popular']     ?? false,
+          ];
+        })->all();
+      };
+      $plansA = $buildPlans(\App\Services\Junspro\CycleUsageService::PALIERS_A, \App\Services\Junspro\CycleUsageService::UNIVERSE_A);
+      $plansB = $buildPlans(\App\Services\Junspro\CycleUsageService::PALIERS_B, \App\Services\Junspro\CycleUsageService::UNIVERSE_B);
+
+      $currentPalier   = null;
+      $currentUniverse = null;
+      $activeSub = $subscriptions->where('status', 'active')->first() ?? $subscriptions->first();
+      if ($activeSub) {
+        $currentUniverse = $activeSub->universe ?? null;
+        $universeType    = $cycleUsage->universeType($currentUniverse ?? '');
+        $hpc             = $cycleUsage->hoursPerCycleFromWeekly((int)($activeSub->hours_per_week ?? 0));
+        $currentPalier   = $cycleUsage->snapToPalier($hpc, $universeType);
+      }
+
       return view('frontend.client.settings.subscription', [
-        'activeSection' => 'subscription',
-        'subscriptions' => $subscriptions,
+        'activeSection'   => 'subscription',
+        'subscriptions'   => $subscriptions,
         'ritualSignature' => $cycleUsage->ritualSignatureText(),
+        'plansA'          => $plansA,
+        'plansB'          => $plansB,
+        'currentPalier'   => $currentPalier,
+        'currentUniverse' => $currentUniverse,
       ]);
     }
 
