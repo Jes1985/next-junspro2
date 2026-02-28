@@ -667,6 +667,7 @@
     }
 
     .info-btn {
+      display: block;
       width: 100%;
       padding: 1rem 1.25rem;
       border-radius: 14px;
@@ -678,6 +679,7 @@
       border: none;
       cursor: pointer;
       margin-bottom: 0.75rem;
+      box-sizing: border-box;
     }
 
     .info-btn-primary {
