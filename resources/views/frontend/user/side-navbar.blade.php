@@ -175,5 +175,3 @@
     </ul>
   </aside>
 </div>
-  </aside>
-</div>

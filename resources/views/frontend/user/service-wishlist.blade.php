@@ -140,14 +140,14 @@
               <div class="user-profile-details mb-40">
                 <div class="account-info">
                   <div class="title">
-                    <h4>{{ __('Services') }}</h4>
+                    <h4>{{ __('Favoris de service') }}</h4>
                   </div>
 
                   <div class="main-info">
                     @if (count($listedServices) == 0)
                       <div class="row text-center mt-2">
                         <div class="col">
-                          <h4>{{ __('No Service Found') . '!' }}</h4>
+                          <h4>Aucun favori de service pour le moment.</h4>
                         </div>
                       </div>
                     @else
