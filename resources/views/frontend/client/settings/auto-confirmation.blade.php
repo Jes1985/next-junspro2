@@ -397,12 +397,17 @@
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.password') }}" class="{{ request()->routeIs('user.settings.password') ? 'active' : '' }}">
-              {{ __('Mot de passe') }}
+              Modifiez le mot de passe
             </a>
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.email.edit') }}" class="{{ request()->routeIs('user.settings.email.*') ? 'active' : '' }}">
-              {{ __('Adresse e-mail') }}
+              Modifiez votre adresse email
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.edit_profile') }}" class="{{ request()->routeIs('user.edit_profile') ? 'active' : '' }}">
+              Modifiez votre profil
             </a>
           </li>
           <li class="settings-menu-item">
@@ -455,6 +460,26 @@
             </a>
           </li>
           <li class="settings-menu-item">
+            <a href="{{ route('user.service_orders') }}" class="{{ request()->routeIs('user.service_orders') || request()->routeIs('user.service_order.details') ? 'active' : '' }}">
+              Commandes de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.service_wishlist') }}" class="{{ request()->routeIs('user.service_wishlist') ? 'active' : '' }}">
+              Favoris de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.support_tickets') }}" class="{{ request()->routeIs('user.support_tickets') || request()->routeIs('user.support_tickets.create') || request()->routeIs('user.support_ticket.conversation') ? 'active' : '' }}">
+              Tickets de support
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.followings') }}" class="{{ request()->routeIs('user.followings') ? 'active' : '' }}">
+              Mes favoris
+            </a>
+          </li>
+          <li class="settings-menu-item">
             @php
               try {
                 $deleteAccountUrl = route('user.settings.delete_account');
@@ -473,7 +498,7 @@
       <main class="settings-content">
         <!-- En-tête -->
         <div class="settings-header">
-          <h1>{{ __('Confirmation automatique des sessions') }}</h1>
+          <h1>{{ __('Confirmation automatique des Rituels') }}</h1>
           <p>{{ __('Junspro vous aide à garder un rythme régulier : chaque Rituel comprend 50 min de travail et 10 min de rapport. Si vous ne signalez pas de problème, les Rituels sont confirmés automatiquement après un certain délai.') }}</p>
         </div>
 
@@ -505,11 +530,11 @@
                      @if(old('auto_confirm_enabled', $settings['auto_confirm_enabled'] ?? true)) checked @endif>
               <span class="switch"></span>
               <span class="switch-text">
-                {{ __('Activer la confirmation automatique des sessions') }}
+                {{ __('Activer la confirmation automatique des Rituels') }}
               </span>
             </label>
             <p class="form-hint">
-              {{ __('Quand cette option est activée, une session est considérée comme validée automatiquement si vous ne signalez pas de problème dans le délai choisi.') }}
+              {{ __('Quand cette option est activée, un Rituel est considéré comme validé automatiquement si vous ne signalez pas de problème dans le délai choisi.') }}
             </p>
           </div>
 
@@ -531,7 +556,7 @@
               @endforeach
             </select>
             <p class="form-hint">
-              {{ __('Exemple : avec 48 heures, si vous ne signalez rien dans les 2 jours suivant la session, celle-ci est automatiquement confirmée.') }}
+              {{ __('Exemple : avec 48 heures, si vous ne signalez rien dans les 2 jours suivant le Rituel, celui-ci est automatiquement confirmé.') }}
             </p>
           </div>
 
@@ -567,13 +592,13 @@
             <ul class="info-list">
               <li>
                 {{ __('Le freelance travaille') }} <strong>50 minutes</strong> {{ __('et rédige un') }}
-                <strong>{{ __('rapport de 10 minutes') }}</strong> {{ __('à la fin de chaque session.') }}
+                <strong>{{ __('rapport de 10 minutes') }}</strong> {{ __('à la fin de chaque Rituel.') }}
               </li>
               <li>
                 {{ __('Vous recevez ce rapport dans votre tableau de bord et par e-mail.') }}
               </li>
               <li>
-                {{ __('Si tout est OK, vous n\'avez rien à faire : la session sera marquée comme') }}
+                {{ __('Si tout est OK, vous n\'avez rien à faire : le Rituel sera marqué comme') }}
                 <strong>{{ __('validée automatiquement') }}</strong> {{ __('une fois le délai écoulé.') }}
               </li>
               <li>

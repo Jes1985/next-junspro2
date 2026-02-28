@@ -560,7 +560,7 @@
             {{ __('Restons en') }} <span class="highlight">{{ __('contact') }}</span>
           </h1>
           <p class="contact-hero-subtitle">
-            {{ __('Que vous cherchiez un freelance pour votre projet ou que vous souhaitiez proposer vos services, notre équipe est là pour vous accompagner et répondre à toutes vos questions.') }}
+            {{ __('Que vous cherchiez un freelance pour votre Rituel ou que vous souhaitiez proposer vos services, notre équipe est là pour vous accompagner et répondre à toutes vos questions.') }}
           </p>
         </div>
         <div class="contact-hero-image">

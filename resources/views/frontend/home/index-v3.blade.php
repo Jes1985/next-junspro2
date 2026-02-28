@@ -2610,7 +2610,7 @@
                   <i class="fas fa-video"></i>
                 </div>
                 <div class="hero-proof-text">
-                  <span style="display: block; white-space: nowrap;">{{ __('Séance d\'essai') }}</span>
+                  <span style="display: block; white-space: nowrap;">{{ __('Rituel d\'essai') }}</span>
                   <span style="display: block; white-space: nowrap;">{{ __('de 1h') }}</span>
                 </div>
               </div>
@@ -2731,7 +2731,7 @@
             
             <div style="text-align: left; font-size: 1.1rem; line-height: 1.9; color: #1a202c; margin-bottom: 2rem;">
               <p style="margin-bottom: 1.5rem;">
-                <strong>FreelancesX by Junspro</strong> est né d'une conviction : ce qui fait avancer un projet, ce n'est pas la pression — c'est la discipline.<br>
+                <strong>FreelancesX by Junspro</strong> est né d'une conviction : ce qui fait avancer un Rituel, ce n'est pas la pression — c'est la discipline.<br>
                 Une discipline douce, progressive, qui respecte l'humain… mais qui ne laisse pas la procrastination s'installer.
               </p>
               
@@ -2767,7 +2767,7 @@
                 
                 <p style="margin-bottom: 2.5rem; font-size: 1.15rem; font-weight: 500;">
                   <strong>FreelancesX by Junspro</strong>, c'est ça : un espace où l'on avance avec calme, mais avec rigueur.<br>
-                  Un endroit où la discipline devient un cadeau — pour vos projets, et pour votre vie.
+                  Un endroit où la discipline devient un cadeau — pour vos Rituels, et pour votre vie.
                 </p>
                 
                 <div style="text-align: center; margin-top: 3rem;">

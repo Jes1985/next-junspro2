@@ -562,7 +562,7 @@
             <div class="step-number">3</div>
             <h3 class="step-title">{{ __('Recevez vos premières demandes') }}</h3>
             <p class="step-description">
-              {{ __('Les clients réservent vos créneaux et vous travaillez ensemble sur leurs projets.') }}
+              {{ __('Les clients réservent vos créneaux et vous travaillez ensemble sur leurs Rituels.') }}
             </p>
           </div>
         </div>

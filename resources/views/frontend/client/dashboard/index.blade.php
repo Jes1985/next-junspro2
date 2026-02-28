@@ -7,130 +7,236 @@
     :root {
       --junspro-purple: #7C3AED;
       --junspro-blue: #1e40af;
-      --junspro-gradient: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      --card-shadow-hover: 0 8px 30px rgba(30, 64, 175, 0.15);
+      --junspro-gradient: linear-gradient(135deg, #7c3aed 0%, #1e40af 100%);
+      --junspro-gradient-alt: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.12);
+      --shadow-md: 0 8px 24px rgba(124, 58, 237, 0.15);
+      --shadow-lg: 0 16px 48px rgba(124, 58, 237, 0.20);
+      --shadow-xl: 0 24px 64px rgba(124, 58, 237, 0.25);
+      --card-shadow: var(--shadow-md);
+      --card-shadow-hover: var(--shadow-lg);
     }
 
     /* Layout principal (style Preply - fond blanc) */
     .client-dashboard-container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
-      padding-top: 3rem;
-      background: #ffffff;
+      padding: 3rem 2rem;
+      padding-top: 4rem;
+      background: linear-gradient(135deg, #f9f5ff 0%, #f0f4ff 50%, #faf8ff 100%) !important;
       min-height: calc(100vh - 200px);
-      color: #1f2937;
+      color: #1a202c;
+      position: relative;
+    }
+
+    .client-dashboard-container::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      right: -50%;
+      width: 1000px;
+      height: 1000px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
     }
 
     /* Hero bandeau d'accueil (style Preply) */
     .dashboard-hero {
-      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-      border-radius: 24px;
-      padding: 2.5rem;
-      margin-bottom: 2rem;
+      background: var(--junspro-gradient-alt) !important;
+      border-radius: 40px !important;
+      padding: 4rem !important;
+      margin-bottom: 4rem;
       color: white;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 2rem;
+      gap: 3rem;
       flex-wrap: wrap;
+      box-shadow: 0 32px 80px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255,255,255,0.2) !important;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    }
+
+    .dashboard-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .dashboard-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     .dashboard-hero-content {
       flex: 1;
       min-width: 300px;
+      z-index: 2;
     }
 
     .dashboard-hero-title {
-      font-size: 2.25rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
+      font-size: 3.5rem !important;
+      font-weight: 900 !important;
+      margin-bottom: 1.5rem;
       color: white;
-      line-height: 1.2;
+      line-height: 1.05;
+      letter-spacing: -0.03em !important;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
 
     .dashboard-hero-subtitle {
-      font-size: 1.25rem;
-      opacity: 0.95;
+      font-size: 1.25rem !important;
+      opacity: 0.95 !important;
       margin-bottom: 0;
-      font-weight: 400;
+      font-weight: 300 !important;
+      letter-spacing: 0.01em;
     }
 
     .dashboard-hero-actions {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
       align-items: center;
+      z-index: 2;
     }
 
     .btn-hero-primary {
-      background: white;
-      color: var(--junspro-purple);
-      border: none;
-      padding: 0.875rem 1.75rem;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      background: white !important;
+      color: #7c3aed !important;
+      border: none !important;
+      padding: 1.2rem 2.5rem !important;
+      border-radius: 18px !important;
+      font-weight: 800 !important;
+      font-size: 1.1rem !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1) !important;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-hero-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(-6px) !important;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .btn-hero-secondary {
+      background: rgba(255,255,255,0.18) !important;
+      border: 2px solid rgba(255,255,255,0.4) !important;
+      color: white !important;
+      font-weight: 800 !important;
+      font-size: 1.1rem !important;
+      padding: 1rem 2.25rem !important;
+      border-radius: 18px !important;
+      backdrop-filter: blur(12px) !important;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    }
+
+    .btn-hero-secondary:hover {
+      background: rgba(255,255,255,0.28) !important;
+      border-color: rgba(255,255,255,0.6) !important;
+      transform: translateY(-4px) !important;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.2) !important;
+    }
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-hero-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
       color: var(--junspro-purple);
       text-decoration: none;
     }
 
+    .btn-hero-primary:active {
+      transform: translateY(-2px);
+    }
+
     .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.15);
       color: white;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      padding: 0.875rem 1.75rem;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      padding: 1rem 2.25rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
     }
 
     .btn-hero-secondary:hover {
-      background: rgba(255, 255, 255, 0.3);
-      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.55);
       color: white;
       text-decoration: none;
+      transform: translateY(-2px);
     }
 
     /* Carte Prochain Rituel (grande carte style Preply) */
     .next-ritual-card {
       background: white;
-      border-radius: 24px;
-      padding: 2.5rem;
+      border-radius: 28px;
+      padding: 3rem;
       box-shadow: var(--card-shadow);
-      margin-bottom: 2rem;
-      transition: all 0.3s ease;
+      margin-bottom: 3rem;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      border: 1px solid rgba(124, 58, 237, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .next-ritual-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), transparent);
     }
 
     .next-ritual-card:hover {
       box-shadow: var(--card-shadow-hover);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      border-color: rgba(124, 58, 237, 0.15);
     }
 
     .next-ritual-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.08);
     }
 
     .next-ritual-info {
@@ -140,81 +246,95 @@
 
     .next-ritual-badge {
       display: inline-block;
-      padding: 0.5rem 1rem;
-      background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(30, 64, 175, 0.12) 100%);
       color: var(--junspro-purple);
-      border-radius: 12px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(124, 58, 237, 0.15);
     }
 
     .next-ritual-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 0.5rem;
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #1a202c;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
     }
 
     .next-ritual-subtitle {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #6b7280;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.01px;
     }
 
     .next-ritual-freelancer {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.06) 0%, rgba(30, 64, 175, 0.06) 100%);
+      padding: 1.25rem;
+      border-radius: 18px;
+      border: 1px solid rgba(124, 58, 237, 0.1);
     }
 
     .next-ritual-avatar {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #f3f4f6;
+      border: 3px solid white;
       background: var(--junspro-gradient);
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.25);
     }
 
     .next-ritual-freelancer-info h4 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #1f2937;
-      margin: 0 0 0.25rem 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin: 0 0 0.35rem 0;
     }
 
     .next-ritual-freelancer-info p {
       margin: 0;
       color: #6b7280;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      font-weight: 400;
     }
 
     .next-ritual-details {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-      background: #f9fafb;
-      border-radius: 16px;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f3ff 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(124, 58, 237, 0.1);
     }
 
     .next-ritual-detail-item {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1rem;
     }
 
     .next-ritual-detail-item i {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       color: var(--junspro-purple);
+      min-width: 32px;
     }
 
     .next-ritual-detail-item span {
-      font-size: 0.95rem;
-      color: #374151;
+      font-size: 1rem;
+      color: #1a202c;
       font-weight: 500;
     }
 
@@ -227,27 +347,33 @@
       background: var(--junspro-gradient);
       color: white;
       border: none;
-      padding: 0.875rem 2rem;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      padding: 1rem 2.5rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      position: relative;
+      z-index: 1;
     }
 
     .btn-ritual-join:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(124, 58, 237, 0.45);
       color: white;
       text-decoration: none;
     }
 
+    .btn-ritual-join:active {
+      transform: translateY(-1px);
+    }
+
     .btn-ritual-join:disabled {
-      opacity: 0.6;
+      opacity: 0.55;
       cursor: not-allowed;
       transform: none;
     }
@@ -255,37 +381,59 @@
     /* Section Prochainement (Timeline style Preply) */
     .upcoming-section {
       background: white;
-      border-radius: 24px;
-      padding: 2rem;
+      border-radius: 28px;
+      padding: 3rem;
       box-shadow: var(--card-shadow);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(124, 58, 237, 0.08);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .upcoming-section:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1f2937;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #1a202c;
       margin: 0;
+      letter-spacing: -0.01em;
     }
 
     .section-link {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--junspro-purple);
       text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s ease;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-link::after {
+      content: '→';
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     .section-link:hover {
-      text-decoration: underline;
       color: var(--junspro-blue);
+    }
+
+    .section-link:hover::after {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .timeline-list {
@@ -296,10 +444,10 @@
 
     .timeline-item {
       position: relative;
-      padding-left: 3rem;
-      padding-bottom: 1.5rem;
-      border-left: 2px solid #e5e7eb;
-      margin-left: 1rem;
+      padding-left: 3.5rem;
+      padding-bottom: 2rem;
+      border-left: 2px solid rgba(124, 58, 237, 0.15);
+      margin-left: 1.25rem;
     }
 
     .timeline-item:last-child {
@@ -310,31 +458,33 @@
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -8px;
-      top: 0.5rem;
-      width: 14px;
-      height: 14px;
+      left: -9.5px;
+      top: 0.75rem;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
-      background: var(--junspro-purple);
+      background: var(--junspro-gradient);
       border: 3px solid white;
-      box-shadow: 0 0 0 2px var(--junspro-purple);
+      box-shadow: 0 0 0 2px var(--junspro-purple), 0 4px 12px rgba(124, 58, 237, 0.3);
     }
 
     .timeline-card {
-      background: white;
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f3ff 100%);
+      border-radius: 14px;
+      padding: 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
-      transition: all 0.2s ease;
-      border: 1px solid #e5e7eb;
+      gap: 1.25rem;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      border: 1.5px solid rgba(124, 58, 237, 0.1);
     }
 
     .timeline-card:hover {
-      background: #f9fafb;
-      border-color: #d1d5db;
+      background: white;
+      border-color: rgba(124, 58, 237, 0.2);
+      box-shadow: var(--shadow-md);
+      transform: translateX(8px);
     }
 
     .timeline-content {
@@ -359,38 +509,46 @@
     }
 
     .timeline-date {
-      font-size: 0.875rem;
-      color: #1f2937;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+      color: #1a202c;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
     }
 
     .timeline-time {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       color: #6b7280;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.35rem;
+      font-weight: 400;
     }
 
     .timeline-project {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #1f2937;
-      margin-bottom: 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin-bottom: 0.25rem;
     }
 
     .timeline-freelancer {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       color: #6b7280;
+      font-weight: 400;
     }
 
 
     /* Section Résumés de Rituels (IA) */
     .ai-reports-section {
       background: white;
-      border-radius: 24px;
-      padding: 2rem;
+      border-radius: 28px;
+      padding: 3rem;
       box-shadow: var(--card-shadow);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(124, 58, 237, 0.08);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .ai-reports-section:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .ai-reports-list {
@@ -403,15 +561,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.25rem;
-      border-radius: 12px;
-      transition: all 0.2s ease;
+      padding: 1.5rem 1.75rem;
+      border-radius: 14px;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
       cursor: pointer;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f3ff 100%);
+      border: 1.5px solid rgba(124, 58, 237, 0.1);
     }
 
     .ai-report-item:hover {
-      background: #f9fafb;
+      background: white;
+      border-color: rgba(124, 58, 237, 0.2);
+      box-shadow: var(--shadow-md);
+      transform: translateX(6px);
     }
 
     .ai-report-content {
@@ -426,76 +589,93 @@
     }
 
     .ai-report-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1f2937;
-      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 0.35rem;
     }
 
     .ai-report-meta {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       color: #6b7280;
+      font-weight: 400;
     }
 
     .ai-report-badge {
       display: inline-block;
-      padding: 0.25rem 0.75rem;
-      background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+      padding: 0.4rem 0.9rem;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(30, 64, 175, 0.12) 100%);
       color: var(--junspro-purple);
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-left: 0.5rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-left: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(124, 58, 237, 0.15);
     }
 
     .ai-report-arrow {
-      color: #9ca3af;
-      font-size: 1.25rem;
+      color: #c4b5fd;
+      font-size: 1.4rem;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .ai-report-item:hover .ai-report-arrow {
+      color: var(--junspro-purple);
+      transform: translateX(4px);
     }
 
     /* Section Continuez à avancer (Onglets style Preply) */
     .continue-section {
       background: white;
-      border-radius: 24px;
-      padding: 2rem;
+      border-radius: 28px;
+      padding: 3rem;
       box-shadow: var(--card-shadow);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(124, 58, 237, 0.08);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .continue-section:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .tabs-container {
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .tabs-list {
       display: flex;
       gap: 0.5rem;
-      border-bottom: 2px solid #e5e7eb;
-      margin-bottom: 2rem;
+      border-bottom: 2px solid rgba(124, 58, 237, 0.1);
+      margin-bottom: 2.5rem;
       overflow-x: auto;
     }
 
     .tab-button {
-      padding: 0.875rem 1.5rem;
+      padding: 1rem 1.75rem;
       background: none;
       border: none;
       color: #6b7280;
-      font-weight: 500;
-      font-size: 0.95rem;
+      font-weight: 600;
+      font-size: 0.98rem;
       cursor: pointer;
       border-bottom: 3px solid transparent;
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
       white-space: nowrap;
+      position: relative;
     }
 
     .tab-button:hover {
       color: var(--junspro-purple);
-      background: rgba(124, 58, 237, 0.05);
+      background: rgba(124, 58, 237, 0.06);
     }
 
     .tab-button.active {
       color: var(--junspro-purple);
       border-bottom-color: var(--junspro-purple);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .tab-content {
@@ -514,180 +694,458 @@
     }
 
     .tip-card {
-      background: #f9fafb;
-      border-radius: 16px;
-      padding: 1.5rem;
-      border: 1px solid #e5e7eb;
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f3ff 100%);
+      border-radius: 18px;
+      padding: 2rem;
+      border: 1.5px solid rgba(124, 58, 237, 0.1);
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      backdrop-filter: blur(10px);
     }
 
     .tip-card:hover {
       background: white;
-      box-shadow: var(--card-shadow);
-      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      border-color: rgba(124, 58, 237, 0.2);
     }
 
     .tip-card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1f2937;
-      margin-bottom: 0.5rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.005em;
     }
 
     .tip-card-text {
-      font-size: 0.9rem;
-      color: #6b7280;
-      line-height: 1.6;
+      font-size: 0.95rem;
+      color: #4b5563;
+      line-height: 1.7;
       margin-bottom: 0;
+      font-weight: 400;
     }
 
     /* Section Abonnements (style Preply exact) */
     .subscriptions-section {
       background: white;
-      border-radius: 24px;
-      padding: 2rem;
+      border-radius: 28px;
+      padding: 3rem;
       box-shadow: var(--card-shadow);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(124, 58, 237, 0.08);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
-    .subscriptions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+    .subscriptions-section:hover {
+      box-shadow: var(--shadow-md);
     }
 
-    .subscription-card {
-      background: #f9fafb;
-      border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid #e5e7eb;
-      transition: all 0.3s ease;
-    }
+    /* Carousel Abonnements Style Preply */
 
-    .subscription-card:hover {
-      box-shadow: var(--card-shadow-hover);
-      transform: translateY(-2px);
-      border-color: var(--junspro-purple);
-    }
-
-    .subscription-header {
+    .subscriptions-carousel-wrapper {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 1.5rem;
     }
 
-    .subscription-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: var(--junspro-gradient);
-      border: 2px solid #e5e7eb;
-    }
-
-    .subscription-header-info {
+    .subscriptions-carousel {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      padding: 1rem 0;
       flex: 1;
     }
 
-    .subscription-freelancer {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 0.25rem;
+    .subscriptions-carousel::-webkit-scrollbar {
+      display: none;
     }
 
-    .subscription-project {
-      font-size: 0.9rem;
-      color: #6b7280;
-    }
-
-    .subscription-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding: 1rem;
+    .carousel-nav {
+      min-width: 48px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid rgba(124, 58, 237, 0.2);
       background: white;
-      border-radius: 12px;
+      color: #1a202c;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .carousel-nav:hover {
+      background: var(--junspro-gradient);
+      border-color: var(--junspro-purple);
+      color: white;
+      transform: scale(1.1);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* JP Premium Card Style - adapté pour carousel */
+    .subscription-preply-card {
+      flex: 0 0 420px;
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      border: 1.5px solid rgba(124, 58, 237, 0.08);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .subscription-preply-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px);
+      border-color: rgba(124, 58, 237, 0.15);
+    }
+
+    /* Header band avec gradient et info */
+    .subscription-preply-header {
+      background: var(--junspro-gradient-alt);
+      padding: 2rem 2rem 2.25rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .subscription-preply-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.75);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+      flex-shrink: 0;
+      background: white;
+    }
+
+    .subscription-preply-avatar-initials {
+      width: 79px;
+      height: 79px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.18);
+      border: 2.5px solid rgba(255,255,255,0.5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      backdrop-filter: blur(4px);
+    }
+
+    .subscription-preply-header-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .subscription-preply-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin: 0 0 0.25rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      letter-spacing: -0.01em;
+    }
+
+    .subscription-preply-subtitle {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.85);
+      margin: 0;
+      font-weight: 400;
+      letter-spacing: 0.02px;
+    }
+
+    /* Menu kebab button */
+    .subscription-menu-wrapper {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 100;
+    }
+
+    .subscription-menu-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .subscription-menu-btn:hover {
+      background: rgba(255,255,255,0.28);
+      transform: scale(1.08);
+    }
+
+    .subscription-menu-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 4px 16px rgba(124,58,237,0.10);
+      min-width: 260px;
+      z-index: 9999;
+      display: none;
+      overflow: hidden;
+      border: 1px solid rgba(124,58,237,0.08);
+      animation: jpMenuIn 0.22s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    @keyframes jpMenuIn {
+      from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .subscription-menu-dropdown.active {
+      display: block;
+    }
+
+    .subscription-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.82rem 1.25rem;
+      color: #1f2937;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.18s, color 0.18s;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .subscription-menu-item:hover {
+      background: #f5f3ff;
+      color: #7c3aed;
+    }
+
+    /* Status badge pour header */
+    .subscription-preply-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+
+    .subscription-preply-header .subscription-preply-status {
+      position: relative;
+      top: auto;
+      left: auto;
+    }
+
+    .subscription-preply-status.active {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .subscription-preply-status.paused {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .subscription-preply-status.cancelled {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .subscription-preply-status.active .status-dot {
+      background: #10b981;
+    }
+
+    .subscription-preply-status.paused .status-dot {
+      background: #f59e0b;
+    }
+
+    .subscription-preply-status.cancelled .status-dot {
+      background: #ef4444;
+    }
+
+    /* Card body */
+    .subscription-preply-body {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Stats row */
+    .subscription-stats-row {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
     }
 
     .subscription-stat {
+      flex: 1;
+      background: linear-gradient(135deg, #f5f3ff 0%, #fafafa 100%);
+      border-radius: 14px;
+      padding: 1rem;
       text-align: center;
+      border: 1.5px solid rgba(124, 58, 237, 0.12);
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
-    .subscription-stat-label {
-      font-size: 0.85rem;
-      color: #6b7280;
-      margin-bottom: 0.25rem;
+    .subscription-preply-card:hover .subscription-stat {
+      border-color: rgba(124, 58, 237, 0.2);
     }
 
     .subscription-stat-value {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #6d28d9;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subscription-stat-label {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       font-weight: 700;
-      color: var(--junspro-purple);
     }
 
-    .subscription-status {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .subscription-status.active {
-      background: rgba(16, 185, 129, 0.1);
-      color: #10b981;
-    }
-
-    .subscription-status.paused {
-      background: rgba(245, 158, 11, 0.1);
-      color: #f59e0b;
-    }
-
-    .subscription-actions {
+    /* Usage gauge */
+    .usage-gauge-wrap {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 1rem 0 0.5rem;
     }
 
-    .subscription-action-btn {
-      flex: 1;
-      min-width: 120px;
-      padding: 0.75rem 1rem;
-      border-radius: 10px;
+    .gauge-svg {
+      width: 100px;
+      height: 100px;
+      overflow: visible;
+    }
+
+    .gauge-track {
+      fill: none;
+      stroke: #e5e7eb;
+      stroke-width: 8;
+      stroke-linecap: round;
+    }
+
+    .gauge-fill {
+      fill: none;
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.6s ease, stroke 0.4s ease;
+    }
+
+    .gauge-pct {
+      font-size: 18px;
+      font-weight: 700;
+      fill: #111827;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .gauge-sub {
+      font-size: 9px;
+      fill: #6b7280;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .gauge-legend {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+
+    .gauge-legend-used {
+      font-size: 0.8rem;
       font-weight: 600;
-      font-size: 0.9rem;
+    }
+
+    .gauge-legend-left {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    /* Quick actions grid */
+    .subscription-quick-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .qa-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 0.6rem;
+      border-radius: 10px;
+      border: 1.5px solid #e5e7eb;
+      background: white;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #374151;
       text-align: center;
       text-decoration: none;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
     }
 
-    .subscription-action-btn-primary {
-      background: var(--junspro-gradient);
-      color: white;
-    }
-
-    .subscription-action-btn-primary:hover {
+    .qa-btn:hover {
+      border-color: #7c3aed;
+      color: #7c3aed;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
-      color: white;
-      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(124,58,237,0.13);
     }
 
-    .subscription-action-btn-secondary {
-      background: #e5e7eb;
-      color: #1f2937;
-    }
-
-    .subscription-action-btn-secondary:hover {
-      background: #d1d5db;
-      color: #1f2937;
-      text-decoration: none;
+    .qa-icon {
+      font-size: 1.2rem;
+      line-height: 1;
     }
 
     /* États vides */
@@ -883,7 +1341,7 @@
           'id' => $report->id,
           'title' => 'Résumé de Rituel',
           'date' => \Carbon\Carbon::parse($report->end_at)->format('d/m/Y à H:i'),
-          'project' => 'Projet #' . $report->subscription_id,
+          'project' => 'Rituel #' . $report->subscription_id,
           'freelancer' => $report->subscription->freelancer->user->name ?? 'Freelance',
         ];
       });
@@ -1007,9 +1465,9 @@
       @else
         <div class="empty-state">
           <div class="empty-state-icon"><i class="far fa-calendar"></i></div>
-          <h3 class="empty-state-title">Aucune session planifiée</h3>
-          <p class="empty-state-text">Planifiez de nouvelles sessions pour continuer à avancer sur vos projets.</p>
-          <a href="{{ route('explore') }}" class="btn-hero-primary">Planifier une session</a>
+          <h3 class="empty-state-title">Aucun Rituel planifié</h3>
+          <p class="empty-state-text">Planifiez de nouveaux Rituels pour continuer à avancer.</p>
+          <a href="{{ route('explore') }}" class="btn-hero-primary">Planifier un Rituel</a>
         </div>
     @endif
       </div>
@@ -1031,7 +1489,7 @@
                 <div class="ai-report-info">
                   <div class="ai-report-title">{{ Str::limit($report->report_text ?? 'Résumé de Rituel', 50) }}</div>
                   <div class="ai-report-meta">
-                    {{ \Carbon\Carbon::parse($report->end_at)->format('d/m/Y à H:i') }} · Projet #{{ $report->subscription_id }}
+                    {{ \Carbon\Carbon::parse($report->end_at)->format('d/m/Y à H:i') }} · Rituel #{{ $report->subscription_id }}
                     <span class="ai-report-badge">IA</span>
               </div>
               </div>
@@ -1071,7 +1529,7 @@
               <p class="tip-card-text">Un briefing clair permet à votre freelance de mieux comprendre vos besoins et d'être plus efficace.</p>
             </div>
             <div class="tip-card">
-              <h3 class="tip-card-title">Planifiez vos sessions</h3>
+              <h3 class="tip-card-title">Planifiez vos Rituels</h3>
               <p class="tip-card-text">Organisez vos Rituels à l'avance pour maintenir un rythme régulier et progresser efficacement.</p>
             </div>
           </div>
@@ -1081,7 +1539,7 @@
           <div class="tips-grid">
             <div class="tip-card">
               <h3 class="tip-card-title">Développez vos compétences</h3>
-              <p class="tip-card-text">Chaque Rituel est une opportunité d'apprendre et de progresser sur votre projet.</p>
+              <p class="tip-card-text">Chaque Rituel est une opportunité d'apprendre et de progresser.</p>
             </div>
             <div class="tip-card">
               <h3 class="tip-card-title">Utilisez les rapports</h3>
@@ -1094,7 +1552,7 @@
           <div class="tips-grid">
             <div class="tip-card">
               <h3 class="tip-card-title">Gérez vos abonnements</h3>
-              <p class="tip-card-text">Suivez vos Rituels restants et ajustez vos abonnements selon vos besoins réels.</p>
+              <p class="tip-card-text">Suivez vos Rituels à programmer et ajustez vos abonnements selon vos besoins réels.</p>
             </div>
             <div class="tip-card">
               <h3 class="tip-card-title">Optimisez vos coûts</h3>
@@ -1105,83 +1563,202 @@
       </div>
     </div>
 
-    <!-- 5) Section "Abonnements" (style Preply exact) -->
+    <!-- 5) Section "Abonnements" (style Preply avec Carousel) -->
     <div class="subscriptions-section">
       <div class="section-header">
         <h2 class="section-title">Abonnements</h2>
-        <a href="{{ route('client.subscriptions.index') }}" class="section-link">Gérer</a>
+        <a href="{{ route('user.settings.subscription') }}" class="section-link">Gérer</a>
       </div>
 
       @if($subscriptions->count() > 0)
-        <div class="subscriptions-grid">
-          @foreach($subscriptions as $subscription)
-            <div class="subscription-card">
-              <div class="subscription-header">
-                @if($subscription->freelancer->user->image)
-                  <img src="{{ asset('assets/img/users/' . $subscription->freelancer->user->image) }}" 
-                       alt="{{ $subscription->freelancer->user->name }}" 
-                       class="subscription-avatar"
-                       onerror="this.src='{{ asset('assets/img/blank-user.jpg') }}'">
-                @else
-                  <div class="subscription-avatar" style="display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.25rem;">
-                    {{ strtoupper(substr($subscription->freelancer->user->name, 0, 1)) }}
+        <div class="subscriptions-carousel-wrapper">
+          <button class="carousel-nav carousel-nav-prev" onclick="scrollCarousel(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          
+          <div class="subscriptions-carousel" id="subscriptionsCarousel">
+            @foreach($subscriptions as $subscription)
+              @php
+                $freelancer = $subscription->freelancer->user ?? null;
+                $freelancerName = $freelancer ? ($freelancer->first_name . ' ' . $freelancer->last_name) : 'Freelance';
+                $nextBillingDate = $subscription->next_billing_at ? \Carbon\Carbon::parse($subscription->next_billing_at) : null;
+                $hoursRemaining = $subscription->calculated_hours_remaining ?? $subscription->hours_remaining ?? 0;
+                
+                // Service name from freelancer bio
+                $bio = $freelancer && $freelancer->bio ? $freelancer->bio : null;
+                $serviceName = 'Abonnement';
+                if ($bio) { $serviceName = \Illuminate\Support\Str::limit($bio, 32); }
+                
+                // ── Données jauge cycle ──────────────────────────────
+                $cycleUsageSvc = app(\App\Services\Junspro\CycleUsageService::class);
+                $universeType = $cycleUsageSvc->universeType($subscription->universe ?? '');
+                $hoursPerCycle = ($subscription->hours_per_week ?? 0) * 4;
+                $palier = $cycleUsageSvc->snapToPalier($hoursPerCycle, $universeType);
+                $usedHours = max(0, $hoursPerCycle - (float)$hoursRemaining);
+                $usageRatio = $hoursPerCycle > 0 ? min(1, $usedHours / $hoursPerCycle) : 0;
+                
+                // SVG Gauge
+                $svgR = 44;
+                $svgCirc = round(2 * M_PI * $svgR, 2);
+                $svgOffset = round($svgCirc * (1 - $usageRatio), 2);
+                
+                // Couleur selon ratio
+                $gaugeColor = $usageRatio < 0.70 ? '#10B981' : ($usageRatio < 0.85 ? '#F59E0B' : '#EF4444');
+                
+                // Initiales
+                $nameParts = explode(' ', $freelancerName);
+                $initials = count($nameParts) >= 2
+                  ? strtoupper(substr($nameParts[0],0,1).substr($nameParts[count($nameParts)-1],0,1))
+                  : strtoupper(substr($freelancerName,0,2));
+                
+                // Pending sessions
+                $pendingSessions = \App\Models\WorkSession::where('subscription_id', $subscription->id)
+                  ->where('status', 'pending')
+                  ->count();
+              @endphp
+
+              <div class="subscription-preply-card">
+                
+                {{-- Header band dégradé --}}
+                <div class="subscription-preply-header">
+                  {{-- Avatar --}}
+                  @if($freelancer && $freelancer->image)
+                    <img src="{{ asset('assets/img/users/'.$freelancer->image) }}"
+                         alt="{{ $freelancerName }}"
+                         class="subscription-preply-avatar"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <div class="subscription-preply-avatar-initials" style="display:none;">{{ $initials }}</div>
+                  @else
+                    <div class="subscription-preply-avatar-initials">{{ $initials }}</div>
+                  @endif
+
+                  {{-- Header info --}}
+                  <div class="subscription-preply-header-info">
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                      <p class="subscription-preply-name">{{ $freelancerName }}</p>
+                      {{-- Status badge next to name --}}
+                      <span class="subscription-preply-status {{ $subscription->status === 'active' ? 'active' : ($subscription->status === 'paused' ? 'paused' : 'cancelled') }}">
+                        <span class="status-dot"></span>
+                        @if($subscription->status === 'active') Actif
+                        @elseif($subscription->status === 'paused') En pause
+                        @else Annulé @endif
+                      </span>
+                    </div>
                   </div>
-                @endif
-                <div class="subscription-header-info">
-                  <div class="subscription-freelancer">{{ $subscription->freelancer->user->name }}</div>
-                  <div class="subscription-project">Abonnement hebdomadaire – {{ $subscription->hours_per_week }}h/semaine</div>
-                </div>
-              </div>
 
-              <div class="subscription-stats">
-                <div class="subscription-stat">
-                  <div class="subscription-stat-label">Heures restantes</div>
-                  <div class="subscription-stat-value">{{ number_format($subscription->calculated_hours_remaining ?? $subscription->hours_remaining ?? 0, 1) }}h</div>
-                </div>
-                @if($subscription->next_billing_at)
-                  <div class="subscription-stat">
-                    <div class="subscription-stat-label">Prochaine échéance</div>
-                    <div class="subscription-stat-value" style="font-size: 1rem;">{{ \Carbon\Carbon::parse($subscription->next_billing_at)->format('d/m') }}</div>
+                  {{-- Bouton kebab --}}
+                  <div class="subscription-menu-wrapper">
+                    <button class="subscription-menu-btn" type="button" onclick="toggleSubscriptionMenu({{ $subscription->id }})" aria-label="Actions">⋯</button>
+                    {{-- Menu --}}
+                    <div class="subscription-menu-dropdown" id="menu-{{ $subscription->id }}">
+                      <a href="{{ route('client.subscriptions.show', $subscription->id) }}" class="subscription-menu-item">
+                        <span>📅</span> Programmer des Rituels
+                      </a>
+                      <button type="button" class="subscription-menu-item" onclick="window.openTopUpModal({subscriptionId: {{ $subscription->id }}, tutorName: '{{ addslashes($freelancerName) }}', avatarUrl: '{{ $freelancer && $freelancer->image ? asset('assets/img/users/'.$freelancer->image) : '' }}', unitPrice: {{ $subscription->client_hourly_rate_snapshot ?? $subscription->base_hourly_rate_snapshot ?? 0 }}, scheduleUntil: '{{ $nextBillingDate ? $nextBillingDate->format('d M Y') : '' }}', postUrl: '{{ route('user.account.subscriptions.topup', $subscription->id) }}', quotaUrl: '{{ route('user.account.subscriptions.topup-quota', $subscription->id) }}', csrf: '{{ csrf_token() }}', ritualSignature: '', upgradeDetails: ''})">
+                        <span>➕</span> Ajouter des Rituels
+                      </button>
+                      <button type="button" class="subscription-menu-item" onclick="window.openChangePlanFlow({subscriptionId: {{ $subscription->id }}, tutorName: '{{ addslashes($freelancerName) }}', avatarUrl: '{{ $freelancer && $freelancer->image ? asset('assets/img/users/'.$freelancer->image) : '' }}', currentHours: {{ $subscription->hours_per_week }}, currentPrice: {{ $subscription->price_base ?? 0 }}, unitPrice: {{ $subscription->client_hourly_rate_snapshot ?? $subscription->base_hourly_rate_snapshot ?? 0 }}, nextBillingDate: '{{ $nextBillingDate ? $nextBillingDate->format('Y-m-d H:i:s') : '' }}', contextUrl: '{{ route('user.account.subscriptions.change-plan-context', $subscription->id) }}', submitUrl: '{{ route('user.account.subscriptions.change-plan', $subscription->id) }}', csrf: '{{ csrf_token() }}'})">
+                        <span>🔄</span> Changer de formule
+                      </button>
+                      <button type="button" class="subscription-menu-item" onclick="window.openTransferEntryModal({subscriptionId: {{ $subscription->id }}, tutorName: '{{ addslashes($freelancerName) }}', avatarUrl: '{{ $freelancer && $freelancer->image ? asset('assets/img/users/'.$freelancer->image) : '' }}', credit: {{ $subscription->hours_remaining ?? 0 }}, creditAmount: {{ ($subscription->hours_remaining ?? 0) * ($subscription->client_hourly_rate_snapshot ?? $subscription->base_hourly_rate_snapshot ?? 0) }}})">
+                        <span>↗️</span> Transférer le solde
+                      </button>
+                      @if($subscription->status === 'active')
+                        <form method="POST" action="{{ route('user.settings.subscription.pause', $subscription->id) }}" style="contents">
+                          @csrf
+                          <button type="submit" class="subscription-menu-item">
+                            <span>⏸️</span> Mettre en pause
+                          </button>
+                        </form>
+                      @elseif($subscription->status === 'paused')
+                        <form method="POST" action="{{ route('user.settings.subscription.resume', $subscription->id) }}" style="contents">
+                          @csrf
+                          <button type="submit" class="subscription-menu-item">
+                            <span>▶️</span> Reprendre
+                          </button>
+                        </form>
+                      @endif
+                    </div>
                   </div>
-                @endif
-              </div>
+                </div>
 
-              <span class="subscription-status {{ $subscription->status }}">
-                @if($subscription->status == 'active')
-                  Actif
-                @elseif($subscription->status == 'paused')
-                  En pause
-                @else
-                  {{ ucfirst($subscription->status) }}
-                @endif
-              </span>
+                {{-- Card body --}}
+                <div class="subscription-preply-body">
+                  
+                  {{-- Stats row --}}
+                  <div class="subscription-stats-row">
+                    <div class="subscription-stat">
+                      <div class="subscription-stat-value">{{ number_format($hoursRemaining, 0) }}</div>
+                      <div class="subscription-stat-label">Rituels à programmer</div>
+                    </div>
+                    <div class="subscription-stat">
+                      <div class="subscription-stat-value">{{ $subscription->hours_per_week * 2 }}</div>
+                      <div class="subscription-stat-label">Rituels / cycle de 4 sem</div>
+                    </div>
+                  </div>
 
-              <div class="subscription-actions">
-                <a href="{{ route('client.subscriptions.show', $subscription->id) }}" class="subscription-action-btn subscription-action-btn-primary">Voir les sessions</a>
-                @if($subscription->status == 'active')
-                  <form action="{{ route('client.subscriptions.pause', $subscription->id) }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="subscription-action-btn subscription-action-btn-secondary" onclick="return confirm('{{ __('Êtes-vous sûr de vouloir mettre cet abonnement en pause ?') }}')">
-                      Mettre en pause
+                  {{-- Usage gauge --}}
+                  <div class="usage-gauge-wrap">
+                    <svg viewBox="0 0 100 100" class="gauge-svg" role="img" aria-label="{{ round($usageRatio * 100) }}% consommé">
+                      <circle cx="50" cy="50" r="{{ $svgR }}" class="gauge-track"
+                              stroke-dasharray="{{ $svgCirc }}" stroke-dashoffset="0"
+                              transform="rotate(-90 50 50)"/>
+                      <circle cx="50" cy="50" r="{{ $svgR }}" class="gauge-fill"
+                              stroke="{{ $gaugeColor }}"
+                              stroke-dasharray="{{ $svgCirc }}" stroke-dashoffset="{{ $svgOffset }}"
+                              transform="rotate(-90 50 50)"/>
+                      <text x="50" y="46" class="gauge-pct">{{ round($usageRatio * 100) }}%</text>
+                      <text x="50" y="60" class="gauge-sub">utilisé</text>
+                    </svg>
+                    <div class="gauge-legend">
+                      <span class="gauge-legend-used" style="color:{{ $gaugeColor }}">
+                        {{ number_format($usedHours, 1) }} consommés
+                      </span>
+                      <span class="gauge-legend-left">
+                        {{ number_format($hoursRemaining, 1) }} à programmer / {{ number_format($hoursPerCycle, 0) }}
+                      </span>
+                    </div>
+
+                    {{-- Total cycle line --}}
+                    <div style="margin-top: 0.5rem; font-size: 0.85rem; color: #6b7280;">
+                      Total cycle (inclus + top-up) : {{ $hoursPerCycle }}
+                    </div>
+                  </div>
+
+                  {{-- Infos --}}
+                  <div style="font-size: 0.8rem; color: #6b7280; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #f3f4f6;">
+                    @if($nextBillingDate)
+                      📄 Abonnement de {{ $hoursPerCycle / 2 }} Rituels,<br>renouvelé automatiquement le <strong>{{ $nextBillingDate->translatedFormat('d F') }}</strong>.
+                    @endif
+                  </div>
+
+                  {{-- Quick actions --}}
+                  <div class="subscription-quick-actions">
+                    <a href="{{ route('client.subscriptions.show', $subscription->id) }}" class="qa-btn">
+                      <span class="qa-icon">📅</span>
+                      <span>Programmer des Rituels</span>
+                    </a>
+                    <button type="button" class="qa-btn" onclick="window.openChangePlanFlow({subscriptionId: {{ $subscription->id }}, tutorName: '{{ addslashes($freelancerName) }}', avatarUrl: '{{ $freelancer && $freelancer->image ? asset('assets/img/users/'.$freelancer->image) : '' }}', currentHours: {{ $subscription->hours_per_week }}, currentPrice: {{ $subscription->price_base ?? 0 }}, unitPrice: {{ $subscription->client_hourly_rate_snapshot ?? $subscription->base_hourly_rate_snapshot ?? 0 }}, nextBillingDate: '{{ $nextBillingDate ? $nextBillingDate->format('Y-m-d H:i:s') : '' }}', contextUrl: '{{ route('user.account.subscriptions.change-plan-context', $subscription->id) }}', submitUrl: '{{ route('user.account.subscriptions.change-plan', $subscription->id) }}', csrf: '{{ csrf_token() }}'})">
+                      <span class="qa-icon">🔄</span>
+                      <span>Changer de formule</span>
                     </button>
-                  </form>
-                @elseif($subscription->status == 'paused')
-                  <form action="{{ route('client.subscriptions.resume', $subscription->id) }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="subscription-action-btn subscription-action-btn-primary">
-                      Reprendre
-                    </button>
-                  </form>
-                @endif
+                  </div>
+
+                </div>
+
               </div>
-            </div>
-          @endforeach
+            @endforeach
+          </div>
+
+          <button class="carousel-nav carousel-nav-next" onclick="scrollCarousel(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       @else
         <div class="empty-state">
           <div class="empty-state-icon"><i class="far fa-calendar-check"></i></div>
           <h3 class="empty-state-title">Vous n'avez pas encore d'abonnement actif</h3>
-          <p class="empty-state-text">Découvrez nos offres pour démarrer un projet avec un freelance Junspro.</p>
+          <p class="empty-state-text">Découvrez nos offres pour démarrer un Rituel avec un freelance Junspro.</p>
           <a href="{{ route('explore') }}" class="btn-hero-primary">Découvrir les offres</a>
         </div>
       @endif
@@ -1201,7 +1778,7 @@
           ['id' => 2, 'icon' => 'fas fa-user-check', 'title' => 'Profil complété', 'unlocked' => true, 'color' => '#3b82f6'],
           ['id' => 3, 'icon' => 'fas fa-paper-plane', 'title' => 'Brief envoyé', 'unlocked' => false, 'color' => '#8b5cf6'],
           ['id' => 4, 'icon' => 'fas fa-calendar-check', 'title' => 'Régularité', 'unlocked' => false, 'color' => '#10b981'],
-          ['id' => 5, 'icon' => 'fas fa-trophy', 'title' => 'Projet terminé', 'unlocked' => false, 'color' => '#f59e0b'],
+          ['id' => 5, 'icon' => 'fas fa-trophy', 'title' => 'Rituel terminé', 'unlocked' => false, 'color' => '#f59e0b'],
           ['id' => 6, 'icon' => 'fas fa-fire', 'title' => 'Série de 5', 'unlocked' => false, 'color' => '#ef4444'],
         ];
         $unlockedCount = collect($rewards)->where('unlocked', true)->count();
@@ -1284,6 +1861,111 @@
           document.getElementById('tab-' + targetTab).classList.add('active');
         });
       });
+
+      // Carousel Abonnements
+      window.scrollCarousel = function(direction) {
+        const carousel = document.getElementById('subscriptionsCarousel');
+        if (carousel) {
+          const scrollAmount = 450;
+          carousel.scrollLeft += direction * scrollAmount;
+        }
+      };
+
+      // Menu Dropdown Abonnements - nouvelle structure
+      window.toggleSubscriptionMenu = function(subscriptionId) {
+        const menuDropdown = document.getElementById('menu-' + subscriptionId);
+        if (menuDropdown) {
+          menuDropdown.classList.toggle('active');
+          
+          // Fermer les autres menus
+          document.querySelectorAll('.subscription-menu-dropdown.active').forEach(menu => {
+            if (menu.id !== 'menu-' + subscriptionId) {
+              menu.classList.remove('active');
+            }
+          });
+        }
+      };
+
+      // Toggle menu ancienne API (backward compatibility)
+      window.toggleMenu = function(btn) {
+        if (btn && btn.closest) {
+          const wrapper = btn.closest('.subscription-menu-wrapper');
+          if (wrapper) {
+            const dropdown = wrapper.querySelector('.subscription-menu-dropdown');
+            if (dropdown) {
+              dropdown.classList.toggle('active');
+              document.querySelectorAll('.subscription-menu-dropdown.active').forEach(menu => {
+                if (menu !== dropdown) {
+                  menu.classList.remove('active');
+                }
+              });
+            }
+          }
+        }
+      };
+
+      // Fermer les menus en cliquant ailleurs
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.subscription-menu-wrapper') && !event.target.closest('.subscription-menu-btn')) {
+          document.querySelectorAll('.subscription-menu-dropdown.active').forEach(menu => {
+            menu.classList.remove('active');
+          });
+        }
+      });
+
+      // Pause abonnement (backward compatibility)
+      window.pauseSubscription = function(id) {
+        if (confirm('Êtes-vous sûr de vouloir mettre cet abonnement en pause ?')) {
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = '/user/account/subscriptions/' + id + '/pause';
+          form.innerHTML = '<input type="hidden" name="_token" value="' + document.querySelector('meta[name="csrf-token"]').content + '">';
+          document.body.appendChild(form);
+          form.submit();
+        }
+      };
     });
   </script>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ALPINE.JS MODALES - Logique complète de subscription 
+       ══════════════════════════════════════════════════════════ -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="{{ asset('assets/js/subscriptions/topupModal.js') }}?v={{ filemtime(public_path('assets/js/subscriptions/topupModal.js')) }}"></script>
+  <script src="{{ asset('assets/js/subscriptions/changePlanFlow.js') }}?v={{ filemtime(public_path('assets/js/subscriptions/changePlanFlow.js')) }}"></script>
+  
+  <!-- Composants modales Alpine.js -->
+  <x-subscription.topup-modal />
+  <x-subscription.change-plan-root />
+
+  <!-- CSS pour les modales (inclus dans les fichiers mais chargement explicite) -->
+  <link rel="stylesheet" href="{{ asset('assets/css/components/topup-modal.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/components/change-plan-modal.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/components/transfer-modal.css') }}">
+
+  <!-- Composants modales pour transfert de solde -->
+  <x-subscription.transfer.entry />
+  <x-subscription.transfer.replace.step1-select-freelance />
+  <x-subscription.transfer.replace.step2-pick-plan />
+  <x-subscription.transfer.replace.step3-confirm />
+  <x-subscription.transfer.replace.step4-payment />
+  <x-subscription.transfer.add.step2-select-freelance />
+  <x-subscription.transfer.add.step3-pick-qty />
+  <x-subscription.transfer.add.step4-pick-plan />
+  <x-subscription.transfer.add.step5-confirm />
+  <x-subscription.transfer.add.step6-payment />
+  <x-subscription.transfer.active.step2-select-freelance />
+  <x-subscription.transfer.active.step3-pick-qty />
+  <x-subscription.transfer.active.step4-confirm />
+  <x-subscription.transfer.active.step5-success />
+
+  <!-- Fonction pour ouvrir la modal de transfert -->
+  <script>
+    function openTransferEntryModal(payload) {
+      window.dispatchEvent(new CustomEvent('openTransferEntryModal', {
+        detail: payload
+      }));
+    }
+  </script>
+
 @endsection

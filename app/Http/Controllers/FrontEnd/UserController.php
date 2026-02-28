@@ -250,12 +250,12 @@ class UserController extends Controller
       if (Session::has('redirectTo')) {
         $redirectURL = Session::get('redirectTo');
       } else {
-        // Vérifier si l'utilisateur a un profil freelance (créé ci-dessus)
+        // Vérifier si l'utilisateur a un profil client (priorité) ou freelance
         $user->refresh(); // Recharger pour avoir les relations
-        if ($user->freelancerProfile) {
-          $redirectURL = route('freelance.dashboard');
-        } elseif ($user->clientProfile) {
+        if ($user->clientProfile) {
           $redirectURL = route('client.dashboard.index');
+        } elseif ($user->freelancerProfile) {
+          $redirectURL = route('freelance.dashboard');
         } else {
           $redirectURL = route('user.dashboard');
         }
@@ -279,20 +279,30 @@ class UserController extends Controller
       
       // Récupérer le rôle depuis la requête (si présent)
       $selectedRole = $request->input('role', null);
-      
+
+      // Stocker le rôle actif en session pour les redirections ultérieures (ex: bouton "Tableau de bord")
+      if ($selectedRole === 'freelance' && $authUser->freelancerProfile) {
+        $request->session()->put('active_role', 'freelance');
+      } elseif ($authUser->clientProfile) {
+        $request->session()->put('active_role', 'client');
+      } elseif ($authUser->freelancerProfile) {
+        $request->session()->put('active_role', 'freelance');
+      }
+
       // Déterminer la redirection selon le type d'utilisateur
       if ($request->session()->has('redirectTo')) {
         $redirectURL = $request->session()->get('redirectTo');
       } else {
-        // Si l'utilisateur a sélectionné "client", rediriger vers le dashboard client
-        if ($selectedRole === 'client' && $authUser->clientProfile) {
-          $redirectURL = route('client.dashboard.index');
-        }
-        // Sinon, vérifier si l'utilisateur a un profil freelance
-        elseif ($authUser->freelancerProfile) {
+        // Respecter le rôle sélectionné sur la page de connexion (role=freelance ou role=client)
+        if ($selectedRole === 'freelance' && $authUser->freelancerProfile) {
           $redirectURL = route('freelance.dashboard');
-        } elseif ($authUser->clientProfile) {
+        } elseif ($selectedRole === 'client' && $authUser->clientProfile) {
           $redirectURL = route('client.dashboard.index');
+        } elseif ($authUser->clientProfile) {
+          // Pas de rôle précisé : priorité client
+          $redirectURL = route('client.dashboard.index');
+        } elseif ($authUser->freelancerProfile) {
+          $redirectURL = route('freelance.dashboard');
         } else {
           $redirectURL = route('user.dashboard');
         }
@@ -435,10 +445,10 @@ class UserController extends Controller
       }
       // Si c'est un client connecté, rediriger vers le dashboard approprié
       $user = Auth::guard('web')->user();
-      if ($user->freelancerProfile) {
-        return redirect()->route('freelance.dashboard');
-      } elseif ($user->clientProfile) {
+      if ($user->clientProfile) {
         return redirect()->route('client.dashboard.index');
+      } elseif ($user->freelancerProfile) {
+        return redirect()->route('freelance.dashboard');
       }
       return redirect()->route('user.dashboard');
     }
@@ -725,10 +735,10 @@ class UserController extends Controller
 
       // Vérifier si l'utilisateur a un profil freelance ou client après vérification email
       $user->refresh(); // Recharger pour avoir les relations
-      if ($user->freelancerProfile) {
-        return redirect()->route('freelance.dashboard');
-      } elseif ($user->clientProfile) {
+      if ($user->clientProfile) {
         return redirect()->route('client.dashboard.index');
+      } elseif ($user->freelancerProfile) {
+        return redirect()->route('freelance.dashboard');
       }
 
       return redirect()->route('user.dashboard');
@@ -742,15 +752,25 @@ class UserController extends Controller
   public function redirectToDashboard()
   {
     $user = Auth::guard('web')->user();
-    
-    // PRIORITÉ 1 : Si l'utilisateur a un profil freelance, rediriger vers le dashboard freelance
-    if ($user->freelancerProfile) {
+
+    // Utiliser le rôle actif stocké en session lors de la connexion
+    $activeRole = session('active_role');
+
+    if ($activeRole === 'freelance' && $user->freelancerProfile) {
       return redirect()->route('freelance.dashboard');
     }
-    
-    // PRIORITÉ 2 : Si l'utilisateur a un profil client, rediriger vers le nouveau dashboard client
+
+    if ($activeRole === 'client' && $user->clientProfile) {
+      return redirect()->route('client.dashboard.index');
+    }
+
+    // Fallback si pas de session de rôle
     if ($user->clientProfile) {
       return redirect()->route('client.dashboard.index');
+    }
+
+    if ($user->freelancerProfile) {
+      return redirect()->route('freelance.dashboard');
     }
 
     // Sinon, utiliser l'ancien dashboard (pour les autres types d'utilisateurs)

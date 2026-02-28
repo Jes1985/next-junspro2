@@ -27,7 +27,7 @@
         <p><strong>{{ __('Pour le parrain :') }}</strong></p>
         <ul>
           <li>{{ __('Vous recevez :amount€ de crédit Junspro après confirmation de la première prestation de votre filleul', ['amount' => $config['reward_amount']]) }}</li>
-          <li>{{ __('Le crédit est ajouté à votre solde et appliqué automatiquement lors du paiement de vos prochains cours') }}</li>
+          <li>{{ __('Le crédit est ajouté à votre solde et appliqué automatiquement lors du paiement de vos prochains Rituels') }}</li>
           <li>{{ __('Le délai d\'attribution peut prendre jusqu\'à :hours heures pour vérification', ['hours' => $config['cooldown_hours']]) }}</li>
         </ul>
         

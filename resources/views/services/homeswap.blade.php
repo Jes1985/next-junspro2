@@ -4778,7 +4778,7 @@
           </button>
           <button type="button" class="filter-tab" data-tab="submit" id="homeswapTabSubmit">
             <i class="fas fa-paper-plane me-2"></i>
-            {{ __('Déposer un projet') }}
+            {{ __('Déposer un Rituel') }}
           </button>
         </div>
       </div>
@@ -4788,11 +4788,11 @@
       <div class="filter-content" id="homeswapContentSubmit" style="display: none;">
         <div class="submit-project-cta">
           <div class="submit-project-content">
-            <h3 class="submit-project-title">{{ __('Déposez votre projet et trouvez le freelance idéal') }}</h3>
+            <h3 class="submit-project-title">{{ __('Déposez votre Rituel et trouvez le freelance idéal') }}</h3>
             <p class="submit-project-text">{{ __('Décrivez votre besoin, définissez votre budget et recevez des propositions de freelances qualifiés.') }}</p>
             <a href="{{ route('deposer-projet') }}" class="submit-project-btn">
               <i class="fas fa-paper-plane me-2"></i>
-              {{ __('Déposer mon projet') }}
+              {{ __('Déposer mon Rituel') }}
             </a>
           </div>
         </div>
@@ -4954,7 +4954,7 @@
             </div>
             <div class="homeswap-exchange-details-body">
               <div class="homeswap-exchange-details-section">
-                <p class="homeswap-exchange-card-detail"><strong>Idéal pour :</strong> vacances scolaires, projets longs, familles.</p>
+                <p class="homeswap-exchange-card-detail"><strong>Idéal pour :</strong> vacances scolaires, Rituels longs, familles.</p>
                 <p class="homeswap-exchange-card-detail"><strong>À savoir :</strong> un accord clair rend l'échange fluide et premium.</p>
               </div>
             </div>
@@ -5091,7 +5091,7 @@
     <div class="homeswap-options-container">
       <div class="homeswap-options-header">
         <h2 class="homeswap-options-title">Options d'accompagnement Junspro</h2>
-        <p class="homeswap-options-subtitle">Choisissez le niveau d'accompagnement adapté à votre projet d'échange</p>
+        <p class="homeswap-options-subtitle">Choisissez le niveau d'accompagnement adapté à votre Rituel d'échange</p>
         </div>
       <div class="homeswap-options-grid">
         <div class="homeswap-option-card">
@@ -5103,7 +5103,7 @@
             Cadrage, checklist, contrat moral, sécurisation, suivi : nous vous accompagnons de A à Z pour un échange serein.
           </p>
           <ul class="homeswap-option-features">
-            <li>Cadrage du projet d'échange</li>
+            <li>Cadrage du Rituel d'échange</li>
             <li>Checklist sécurité & confiance</li>
             <li>Contrat moral & règles maison</li>
             <li>Sécurisation & suivi</li>

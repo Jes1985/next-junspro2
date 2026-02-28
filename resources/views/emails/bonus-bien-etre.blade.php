@@ -9,20 +9,20 @@
         <h2 style="color: #28a745;">Félicitations {{ $mission->client_nom }} !</h2>
         
         <div style="background: #d4edda; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #28a745;">
-            <h3 style="margin-top: 0; color: #155724;">Votre projet vous donne droit à un bonus bien-être :</h3>
+            <h3 style="margin-top: 0; color: #155724;">Votre Rituel vous donne droit à un bonus bien-être :</h3>
             <p style="font-size: 24px; font-weight: bold; color: #155724;">
                 🎁 Bonus {{ $bonusLabel }}
             </p>
         </div>
 
-        <p>En raison du montant de votre projet ({{ number_format($mission->budget, 2, ',', ' ') }} €), vous bénéficiez automatiquement d'une séance de bien-être offerte !</p>
+        <p>En raison du montant de votre Rituel ({{ number_format($mission->budget, 2, ',', ' ') }} €), vous bénéficiez automatiquement d'un Rituel de bien-être offert !</p>
 
         <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #ffc107;">
-            <h3 style="margin-top: 0;">Réservez votre séance :</h3>
+            <h3 style="margin-top: 0;">Réservez votre Rituel :</h3>
             <p style="text-align: center; margin: 20px 0;">
                 <a href="{{ $mission->calendly_link }}" 
                    style="background: #28a745; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
-                    Cliquez ici pour réserver votre séance
+                    Cliquez ici pour réserver votre Rituel
                 </a>
             </p>
             <p><small>Le lien Zoom vous sera envoyé après confirmation de votre rendez-vous.</small></p>

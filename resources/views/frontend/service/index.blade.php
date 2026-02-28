@@ -30,7 +30,7 @@
       <div class="services-hero-content">
           <h1 class="services-hero-title">
             <span class="hero-title-line-1">{{ __('Trouvez le') }} <span class="highlight">{{ __('service idéal') }}</span></span>
-            <span class="hero-title-line-2">{{ __('pour votre projet') }}</span>
+            <span class="hero-title-line-2">{{ __('pour votre Rituel') }}</span>
           </h1>
         <p class="services-hero-subtitle">
           {{ __('Filtrez par prix horaire, langues, pays et découvrez les profils les plus adaptés à votre besoin.') }}

@@ -444,7 +444,7 @@
       </div>
 
       <div class="onboarding-content">
-        <h1 class="onboarding-title">Fixez le tarif de vos séances</h1>
+        <h1 class="onboarding-title">Fixez le tarif de vos Rituels</h1>
 
         @if(session('success'))
           <div style="padding: 1rem 0; color: #166534; margin-bottom: 2rem;">
@@ -500,7 +500,7 @@
                 Junspro applique des frais de service de 20% sur chaque Rituel réservé. Ces frais de service couvrent les frais de plateforme, le traitement des paiements sécurisés, le support client, notre système de discipline et la promotion de votre profil. Vous recevrez 80% du montant de chaque Rituel après déduction des frais de service.
               </p>
               <p class="commission-text" style="margin-top: 1rem;">
-                Exemple : Si vous fixez votre tarif à 50€ par séance, vous recevrez 40€ par séance réservée (50€ - 20% = 40€).
+                Exemple : Si vous fixez votre tarif à 50€ par Rituel, vous recevrez 40€ par Rituel réservé (50€ - 20% = 40€).
               </p>
             </div>
           </div>
@@ -748,7 +748,7 @@
 
       if (parseFloat(hourlyRate) < 5) {
         e.preventDefault();
-        alert('Le tarif minimum est de 5€ par séance.');
+        alert('Le tarif minimum est de 5€ par Rituel.');
         return false;
       }
 

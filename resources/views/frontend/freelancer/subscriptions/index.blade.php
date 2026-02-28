@@ -43,7 +43,7 @@
                         </td>
                         <td>
                           <a href="{{ route('freelancer.subscriptions.show', $subscription->id) }}" class="btn btn-sm btn-primary">
-                            {{ __('Voir les sessions') }}
+                            {{ __('Voir les Rituels') }}
                           </a>
                         </td>
                       </tr>

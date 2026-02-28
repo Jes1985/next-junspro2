@@ -22,7 +22,7 @@
             @if($subscription->status === 'active')
               <div class="card mb-30">
                 <div class="card-body">
-                  <h5 class="mb-20">{{ __('Enregistrer une session de travail (50 min travail + 10 min rapport)') }}</h5>
+                  <h5 class="mb-20">{{ __('Enregistrer un Rituel (50 min travail + 10 min rapport)') }}</h5>
                   
                   <form action="{{ route('freelancer.subscriptions.work-session', $subscription->id) }}" method="POST">
                     @csrf
@@ -50,7 +50,7 @@
 
                     <div class="mb-15">
                       <label>{{ __('Résumé du travail effectué (rapport)') }} * (min 20 caractères)</label>
-                      <textarea name="work_summary" class="form-control" rows="5" minlength="20" required placeholder="{{ __('Décrivez le travail effectué pendant cette session (50 min) et le rapport (10 min)...') }}"></textarea>
+                      <textarea name="work_summary" class="form-control" rows="5" minlength="20" required placeholder="{{ __('Décrivez le travail effectué pendant ce Rituel (50 min) et le rapport (10 min)...') }}"></textarea>
                     </div>
 
                     <div class="mb-15">
@@ -59,7 +59,7 @@
                       <small class="text-muted">{{ __('Formats acceptés : PDF, DOC, DOCX, JPG, PNG') }}</small>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{ __('Enregistrer la session') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Enregistrer le Rituel') }}</button>
                   </form>
                 </div>
               </div>
@@ -67,7 +67,7 @@
 
             <!-- Liste des sessions -->
             <div class="title mb-30">
-              <h5>{{ __('Sessions de travail enregistrées') }}</h5>
+              <h5>{{ __('Rituels enregistrés') }}</h5>
             </div>
 
             @if($workSessions->count() > 0)
@@ -103,7 +103,7 @@
               </div>
             @else
               <div class="alert alert-info">
-                {{ __('Aucune session enregistrée pour le moment.') }}
+                {{ __('Aucun Rituel enregistré pour le moment.') }}
               </div>
             @endif
           </div>

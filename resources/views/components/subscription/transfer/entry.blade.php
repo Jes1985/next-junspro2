@@ -401,7 +401,7 @@
         
         // Formater le texte du solde
         if (this.credit > 0 || this.creditAmount > 0) {
-          const sessionsText = this.credit === 1 ? 'cours' : 'cours';
+          const sessionsText = this.credit === 1 ? 'Rituel' : 'Rituels';
           const amountText = this.creditAmount > 0 
             ? new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(this.creditAmount)
             : '0,00 €';

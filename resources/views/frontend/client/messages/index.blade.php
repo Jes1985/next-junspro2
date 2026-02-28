@@ -2,92 +2,103 @@
 
 @section('style')
   <link rel="stylesheet" href="{{ asset('assets/css/summernote-content.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/luxury-theme.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/dashboard-luxury-revamp.css') }}">
   <style>
     :root {
       --junspro-purple: #7C3AED;
       --junspro-blue: #1e40af;
-      --junspro-gradient: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      --card-shadow-hover: 0 8px 30px rgba(30, 64, 175, 0.15);
+      --junspro-gradient: linear-gradient(135deg, #7c3aed 0%, #1e40af 100%);
+      --junspro-gradient-alt: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.12);
+      --shadow-md: 0 8px 24px rgba(124, 58, 237, 0.15);
+      --shadow-lg: 0 16px 48px rgba(124, 58, 237, 0.20);
+      --shadow-xl: 0 24px 64px rgba(124, 58, 237, 0.25);
+      --card-shadow: var(--shadow-md);
+      --card-shadow-hover: var(--shadow-lg);
     }
 
     /* Layout principal Messages */
     .messages-container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f3ff 100%);
       min-height: calc(100vh - 200px);
       display: grid;
       grid-template-columns: 25% 50% 25%;
-      gap: 1.5rem;
+      gap: 2rem;
       height: calc(100vh - 200px);
     }
 
     /* Colonne gauche - Liste des conversations */
     .messages-sidebar {
       background: white;
-      border-radius: 20px;
+      border-radius: 24px;
       box-shadow: var(--card-shadow);
       display: flex;
       flex-direction: column;
       overflow: hidden;
       position: relative;
       z-index: 1;
+      border: 1px solid rgba(124, 58, 237, 0.08);
     }
 
     .messages-sidebar-header {
-      padding: 1.5rem;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 2rem;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.08);
       position: relative;
       z-index: 2;
       background: white;
     }
 
     .messages-sidebar-header h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.6rem;
+      font-weight: 800;
       color: #1a202c;
-      margin: 0 0 1rem 0;
+      margin: 0 0 1.25rem 0;
+      letter-spacing: -0.01em;
     }
 
     .messages-tabs {
       display: flex;
       gap: 0.5rem;
-      border-bottom: 2px solid #f3f4f6;
+      border-bottom: 2px solid rgba(124, 58, 237, 0.1);
     }
 
     .messages-tab {
-      padding: 0.75rem 1rem;
+      padding: 0.875rem 1.25rem;
       background: none;
       border: none;
       color: #6b7280;
-      font-weight: 500;
-      font-size: 0.9rem;
+      font-weight: 600;
+      font-size: 0.95rem;
       cursor: pointer;
       border-bottom: 3px solid transparent;
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
       position: relative;
     }
 
     .messages-tab:hover {
       color: var(--junspro-purple);
-      background: rgba(124, 58, 237, 0.05);
+      background: rgba(124, 58, 237, 0.06);
     }
 
     .messages-tab.active {
       color: var(--junspro-purple);
       border-bottom-color: var(--junspro-purple);
+      font-weight: 700;
     }
 
     .messages-tab-badge {
       display: inline-block;
-      background: var(--junspro-purple);
+      background: var(--junspro-gradient);
       color: white;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 12px;
-      margin-left: 0.5rem;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 14px;
+      margin-left: 0.6rem;
+      font-weight: 700;
     }
 
     .conversations-list {
@@ -97,11 +108,11 @@
     }
 
     .conversation-item {
-      padding: 1rem;
+      padding: 1.25rem;
       border-radius: 16px;
       cursor: pointer;
-      transition: all 0.2s ease;
-      margin-bottom: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      margin-bottom: 0.75rem;
       border: 2px solid transparent;
       position: relative;
       z-index: 1;
@@ -113,7 +124,7 @@
     }
 
     .conversation-item.active {
-      background: linear-gradient(135deg, rgba(30, 64, 175, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(30, 64, 175, 0.08) 100%);
       border-color: var(--junspro-purple);
     }
 
@@ -125,20 +136,20 @@
     }
 
     .conversation-avatar {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       object-fit: cover;
       background: var(--junspro-gradient);
-      border: 2px solid white;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 2.5px solid white;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
       position: relative;
       flex-shrink: 0;
     }
 
     .conversation-avatar-initials {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       background: var(--junspro-gradient);
       color: white;
@@ -146,9 +157,9 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 1.1rem;
-      border: 2px solid white;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      font-size: 1.2rem;
+      border: 2.5px solid white;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
       flex-shrink: 0;
     }
 
@@ -174,13 +185,14 @@
     }
 
     .conversation-name {
-      font-weight: 600;
+      font-weight: 700;
       color: #1a202c;
-      margin-bottom: 0.25rem;
-      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      letter-spacing: -0.005em;
     }
 
     .conversation-tag {
@@ -235,18 +247,19 @@
     /* Colonne centrale - Fil de messages */
     .messages-thread {
       background: white;
-      border-radius: 20px;
+      border-radius: 24px;
       box-shadow: var(--card-shadow);
       display: flex;
       flex-direction: column;
       overflow: hidden;
       position: relative;
       z-index: 2;
+      border: 1px solid rgba(124, 58, 237, 0.08);
     }
 
     .messages-thread-header {
-      padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -262,16 +275,16 @@
     }
 
     .thread-avatar {
-      width: 50px;
-      height: 50px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       object-fit: cover;
       background: var(--junspro-gradient);
     }
 
     .thread-avatar-initials {
-      width: 50px;
-      height: 50px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       background: var(--junspro-gradient);
       color: white;
@@ -279,20 +292,22 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
     }
 
     .thread-info h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 1.2rem;
+      font-weight: 800;
       color: #1a202c;
-      margin: 0 0 0.25rem 0;
+      margin: 0 0 0.35rem 0;
+      letter-spacing: -0.01em;
     }
 
     .thread-info-subtitle {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #6b7280;
       margin: 0;
+      font-weight: 400;
     }
 
     .thread-badges {
@@ -336,10 +351,10 @@
     .messages-content {
       flex: 1;
       overflow-y: auto;
-      padding: 1.5rem;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .message-date-separator {
@@ -412,30 +427,35 @@
     }
 
     .message-bubble {
-      padding: 0.875rem 1.125rem;
-      border-radius: 18px;
+      padding: 1rem 1.35rem;
+      border-radius: 20px;
       word-wrap: break-word;
       position: relative;
+      font-size: 0.98rem;
+      line-height: 1.6;
     }
 
     .message-item.sent .message-bubble {
       background: var(--junspro-gradient);
       color: white;
       border-bottom-right-radius: 4px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
     }
 
     .message-item.received .message-bubble {
       background: #f3f4f6;
       color: #1a202c;
       border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     }
 
     .message-item.system .message-bubble {
-      background: #fef3c7;
+      background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
       color: #92400e;
       text-align: center;
       max-width: 100%;
       margin: 0 auto;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.15);
     }
 
     .message-time {
@@ -486,43 +506,45 @@
 
     .composer-textarea {
       flex: 1;
-      padding: 0.875rem 1rem;
-      border: 2px solid #e5e7eb;
-      border-radius: 16px;
-      font-size: 0.95rem;
+      padding: 1rem 1.25rem;
+      border: 2px solid rgba(124, 58, 237, 0.15);
+      border-radius: 18px;
+      font-size: 0.98rem;
       font-family: inherit;
       resize: none;
-      min-height: 48px;
+      min-height: 52px;
       max-height: 120px;
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      background: white;
     }
 
     .composer-textarea:focus {
       outline: none;
       border-color: var(--junspro-purple);
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      box-shadow: 0 0 0 3.5px rgba(124, 58, 237, 0.12);
     }
 
     .composer-send-btn {
-      padding: 0.875rem 2rem;
+      padding: 1rem 2.25rem;
       background: var(--junspro-gradient);
       color: white;
       border: none;
-      border-radius: 16px;
-      font-weight: 600;
-      font-size: 0.95rem;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
       white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
     }
 
     .composer-send-btn:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
     }
 
     .composer-send-btn:disabled {
-      opacity: 0.5;
+      opacity: 0.55;
       cursor: not-allowed;
     }
 
@@ -539,20 +561,21 @@
     /* Colonne droite - Infos projet & freelance */
     .messages-sidebar-info {
       background: white;
-      border-radius: 20px;
+      border-radius: 24px;
       box-shadow: var(--card-shadow);
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      padding: 1.5rem;
-      gap: 1.5rem;
+      padding: 2rem;
+      gap: 2rem;
       position: relative;
       z-index: 1;
+      border: 1px solid rgba(124, 58, 237, 0.08);
     }
 
     .info-block {
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.08);
     }
 
     .info-block:last-child {
@@ -561,10 +584,11 @@
     }
 
     .info-block-title {
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-size: 1.2rem;
+      font-weight: 800;
       color: #1a202c;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
     }
 
     .freelancer-card-large {
@@ -573,18 +597,18 @@
     }
 
     .freelancer-card-avatar {
-      width: 100px;
-      height: 100px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 0 auto 1rem;
+      margin: 0 auto 1.5rem;
       border: 4px solid var(--junspro-purple);
-      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
     }
 
     .freelancer-card-avatar-initials {
-      width: 100px;
-      height: 100px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
       background: var(--junspro-gradient);
       color: white;
@@ -592,23 +616,25 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 2rem;
-      margin: 0 auto 1rem;
+      font-size: 2.2rem;
+      margin: 0 auto 1.5rem;
       border: 4px solid var(--junspro-purple);
-      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
     }
 
     .freelancer-card-name {
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.35rem;
+      font-weight: 800;
       color: #1a202c;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
     }
 
     .freelancer-card-role {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #6b7280;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
     }
 
     .freelancer-card-rating {
@@ -642,13 +668,13 @@
 
     .info-btn {
       width: 100%;
-      padding: 0.875rem 1rem;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.9rem;
+      padding: 1rem 1.25rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
       text-align: center;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
       border: none;
       cursor: pointer;
       margin-bottom: 0.75rem;
@@ -657,21 +683,24 @@
     .info-btn-primary {
       background: var(--junspro-gradient);
       color: white;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
     }
 
     .info-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
       color: white;
     }
 
     .info-btn-secondary {
-      background: #f3f4f6;
+      background: linear-gradient(135deg, #f5f3ff 0%, #fafafa 100%);
       color: #1a202c;
+      border: 1.5px solid rgba(124, 58, 237, 0.12);
     }
 
     .info-btn-secondary:hover {
-      background: #e5e7eb;
+      background: white;
+      border-color: rgba(124, 58, 237, 0.2);
       color: #1a202c;
     }
 
@@ -688,19 +717,21 @@
 
     .notes-textarea {
       width: 100%;
-      min-height: 120px;
-      padding: 0.75rem;
-      border: 2px solid #e5e7eb;
-      border-radius: 12px;
-      font-size: 0.9rem;
+      min-height: 130px;
+      padding: 1rem;
+      border: 2px solid rgba(124, 58, 237, 0.15);
+      border-radius: 14px;
+      font-size: 0.95rem;
       font-family: inherit;
       resize: vertical;
+      background: white;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     .notes-textarea:focus {
       outline: none;
       border-color: var(--junspro-purple);
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      box-shadow: 0 0 0 3.5px rgba(124, 58, 237, 0.12);
     }
 
     /* Responsive */
@@ -872,7 +903,7 @@
           <div class="messages-empty-state">
             <div class="messages-empty-state-icon"><i class="far fa-comments"></i></div>
             <h3>{{ __('Aucune conversation') }}</h3>
-            <p>{{ __("Vous n'avez pas encore de messages. Réservez une première heure avec un freelance pour commencer votre projet.") }}</p>
+            <p>{{ __("Vous n'avez pas encore de messages. Réservez une première heure avec un freelance pour commencer votre Rituel.") }}</p>
             <a href="{{ route('explore') }}" class="info-btn info-btn-primary" style="margin-top: 1rem; display: inline-block;">{{ __('Trouver un freelance') }}</a>
           </div>
         @endif
@@ -925,7 +956,7 @@
           <div class="thread-badges">
             @if($subscription)
               @if($subscription->status === 'active')
-                <span class="thread-badge active">{{ __('Projet actif') }}</span>
+                <span class="thread-badge active">{{ __('Rituel actif') }}</span>
               @elseif($subscription->status === 'paused')
                 <span class="thread-badge paused">{{ __('En pause') }}</span>
               @else
@@ -1156,7 +1187,7 @@
 
           <!-- Bloc 3 - Actions projet (subscription uniquement) -->
           <div class="info-block">
-            <h3 class="info-block-title">{{ __('Actions projet') }}</h3>
+            <h3 class="info-block-title">{{ __('Actions Rituel') }}</h3>
             <a href="{{ route('client.subscriptions.show', $subscription->id) }}" class="info-btn info-btn-primary">
               {{ __('Voir les rapports') }}
             </a>
@@ -1169,7 +1200,7 @@
           <div class="info-block">
             <h3 class="info-block-title">{{ __('Informations techniques') }}</h3>
             <div class="info-list-item">
-              <strong>{{ __('Type de projet') }}:</strong> {{ __('Abonnement') }} {{ $subscription->hours_per_week }}h/semaine
+              <strong>{{ __('Type de Rituel') }}:</strong> {{ __('Abonnement') }} {{ $subscription->hours_per_week }}h/semaine
             </div>
             <div class="info-list-item">
               <strong>{{ __('Statut') }}:</strong> 
@@ -1191,7 +1222,7 @@
               <span class="info-line-value">{{ number_format($freelancerProfile->hourly_rate ?? 0, 0, ',', ' ') }} € / Rituel</span>
             </div>
             <p style="font-size: 0.85rem; color: #6b7280; margin: 1rem 0;">
-              {{ __('Discutez avec ce freelance pour définir votre projet avant de réserver.') }}
+              {{ __('Discutez avec ce freelance pour définir votre Rituel avant de réserver.') }}
             </p>
             <a href="{{ route('freelance.booking', $freelancerProfile->id) }}" class="info-btn info-btn-primary">
               {{ __('Réserver un Rituel') }}
@@ -1212,7 +1243,7 @@
       <div class="messages-sidebar-info">
         <div class="messages-empty-state">
           <i class="far fa-info-circle" style="font-size: 3rem; color: #d1d5db; margin-bottom: 1rem;"></i>
-          <p>{{ __('Sélectionnez une conversation pour voir les informations du projet.') }}</p>
+          <p>{{ __('Sélectionnez une conversation pour voir les informations du Rituel.') }}</p>
         </div>
       </div>
     @endif

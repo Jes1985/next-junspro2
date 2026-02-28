@@ -1027,7 +1027,7 @@
   <x-services.hero
     title="Cours"
     subtitle="Des progrès qui se voient."
-    micro="Séance d'essai, objectifs clairs, suivi régulier. Vous avancez sereinement."
+    micro="Rituel d'essai, objectifs clairs, suivi régulier. Vous avancez sereinement."
     :cta="['text' => 'Réserver un essai', 'url' => '#results', 'variant' => 'primary']"
   />
 
@@ -1388,14 +1388,14 @@
               {{-- Prix et CTA - Colonne 3 (240px) --}}
               <div class="preply-teacher-pricing">
                 <div class="preply-teacher-price">{{ number_format($hourlyRate, 0) }} €</div>
-                <div class="preply-teacher-price-label">Cours de 50 min</div>
+                <div class="preply-teacher-price-label">Rituel de 50 min</div>
                 <div class="preply-teacher-rating">
                   <span class="preply-teacher-rating-score">{{ $rating }}</span>
                   <span class="preply-teacher-rating-count">{{ $reviewsCount }} avis</span>
                 </div>
                 <div class="preply-teacher-stats">
                   {{ $studentsCount }} élèves<br>
-                  {{ number_format($coursesCount) }} cours
+                  {{ number_format($coursesCount) }} Rituels
                 </div>
                 <a href="{{ route('freelance.show', $freelancer->id) }}" class="preply-teacher-btn preply-teacher-btn-primary">
                   Réserver un Rituel d'essai

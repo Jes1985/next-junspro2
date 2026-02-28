@@ -52,10 +52,10 @@
       <div class="freelancers-hero-content">
         <h1 class="freelancers-hero-title">
           <span class="hero-title-line-1">{{ __('Trouvez le') }} <span class="highlight">{{ __('freelance idéal') }}</span></span>
-          <span class="hero-title-line-2">{{ __('pour votre projet') }}</span>
+          <span class="hero-title-line-2">{{ __('pour votre Rituel') }}</span>
         </h1>
         <p class="freelancers-hero-subtitle">
-          {{ __('Des experts vérifiés pour vos projets clés en main : landing pages, tunnels de vente, branding, automatisation...') }}
+          {{ __('Des experts vérifiés pour vos Rituels clés en main : landing pages, tunnels de vente, branding, automatisation...') }}
         </p>
         <div class="freelancers-hero-stats">
           <span class="hero-stat-item">
@@ -99,7 +99,7 @@
                   <input type="text" 
                          name="search" 
                          class="filter-search-input" 
-                         placeholder="{{ __('Mot-clé, compétence, type de projet ou secteur') }}"
+                         placeholder="{{ __('Mot-clé, compétence, type de Rituel ou secteur') }}"
                          value="{{ request()->input('search') }}">
                 </div>
               </div>
@@ -114,7 +114,7 @@
                       {{ __('Tarif horaire') }}
                     </button>
                     <button type="button" class="filter-toggle-btn" data-mode="project">
-                      {{ __('Budget par projet') }}
+                      {{ __('Budget par Rituel') }}
                     </button>
                   </div>
                   
@@ -137,7 +137,7 @@
                       <input type="number" name="project_min" id="project-min" class="price-input" min="0" max="50000" value="{{ request()->input('project_min', 300) }}">
                       <span>{{ __('à') }}:</span>
                       <input type="number" name="project_max" id="project-max" class="price-input" min="0" max="50000" value="{{ request()->input('project_max', 3000) }}">
-                      <span class="price-unit">€ / {{ __('projet') }}</span>
+                      <span class="price-unit">€ / {{ __('Rituel') }}</span>
                     </div>
                   </div>
                 </div>
@@ -279,7 +279,7 @@
 
               <!-- TYPE DE PROJET -->
               <div class="filter-section">
-                <h4 class="filter-title">{{ __('TYPE DE PROJET') }}</h4>
+                <h4 class="filter-title">{{ __('TYPE DE RITUEL') }}</h4>
                 <div class="filter-content">
                   <div class="filter-checkboxes">
                     <label class="filter-checkbox-item">
@@ -354,7 +354,7 @@
                   <div class="filter-checkboxes">
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="mission_type[]" value="one-shot" {{ in_array('one-shot', (array)request()->input('mission_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Projet unique (one-shot)') }}</span>
+                      <span>{{ __('Rituel unique (one-shot)') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="mission_type[]" value="long-term" {{ in_array('long-term', (array)request()->input('mission_type', [])) ? 'checked' : '' }}>

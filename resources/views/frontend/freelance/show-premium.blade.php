@@ -567,7 +567,7 @@
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px;">
               <div>
                 <div class="stat-number" style="font-size: 24px;">{{ $projectsCount }}</div>
-                <div class="stat-label">{{ __('projets') }}</div>
+                <div class="stat-label">{{ __('Rituels') }}</div>
               </div>
               <div>
                 <div class="stat-number" style="font-size: 24px;">{{ $recurringClients }}</div>
@@ -612,7 +612,7 @@
               </div>
               <div style="flex: 1;">
                 <p style="font-size: 14px; line-height: 1.6; color: var(--junspro-text); margin: 0;">
-                  {{ $user->name }} {{ __('ne vous correspond pas ?') }} {{ __('Vous pouvez encore suivre 2 cours d\'essai gratuits pour trouver le freelance idéal.') }}
+                  {{ $user->name }} {{ __('ne vous correspond pas ?') }} {{ __('Vous pouvez encore suivre 2 Rituels d\'essai gratuits pour trouver le freelance idéal.') }}
                 </p>
               </div>
             </div>
@@ -664,7 +664,7 @@
                 {{ __('Style de travail') }}
               </div>
               <div class="freelancer-profile-summary-text">
-                {{ __('Il utilise des plans de projet personnalisés adaptés aux besoins et aux objectifs de chaque client, favorisant un environnement encourageant pour la collaboration et l\'atteinte des résultats.') }}
+                {{ __('Il utilise des plans de Rituel personnalisés adaptés aux besoins et aux objectifs de chaque client, favorisant un environnement encourageant pour la collaboration et l\'atteinte des résultats.') }}
               </div>
               <div class="freelancer-profile-ai-badge">
                 <i class="fas fa-sparkles"></i>
@@ -727,11 +727,11 @@
             </div>
           @endif
 
-          <!-- Note du projet -->
+          <!-- Note du Rituel -->
           <div class="freelancer-profile-section-premium">
             <h2 class="freelancer-profile-section-title">
               <i class="fas fa-star"></i>
-              {{ __('Note du projet') }}
+              {{ __('Note du Rituel') }}
             </h2>
             <div class="freelancer-profile-rating-criteria">
               <div class="freelancer-profile-rating-item">
@@ -945,10 +945,10 @@
                         <strong>{{ __('Types de missions') }}</strong> : {{ __('Projets complets, refontes, optimisations') }}
                       </p>
                       <p style="font-size: 14px; line-height: 1.7; color: var(--junspro-text-light); margin-bottom: 12px;">
-                        <strong>{{ __('Exemples de résultats') }}</strong> : {{ __('+300% de conversions, projets livrés dans les délais') }}
+                        <strong>{{ __('Exemples de résultats') }}</strong> : {{ __('+300% de conversions, Rituels livrés dans les délais') }}
                       </p>
                       <p style="font-size: 14px; line-height: 1.7; color: var(--junspro-text-light); margin: 0;">
-                        <strong>{{ __('Fourchette de prix') }}</strong> : {{ number_format($freelancer->hourly_rate * 10, 0) }}€ - {{ number_format($freelancer->hourly_rate * 50, 0) }}€ / projet
+                        <strong>{{ __('Fourchette de prix') }}</strong> : {{ number_format($freelancer->hourly_rate * 10, 0) }}€ - {{ number_format($freelancer->hourly_rate * 50, 0) }}€ / Rituel
                       </p>
                     </div>
                   </div>

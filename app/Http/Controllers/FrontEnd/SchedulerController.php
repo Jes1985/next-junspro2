@@ -78,7 +78,7 @@ class SchedulerController extends Controller
         return response()->json([
             'ok' => true,
             'success' => true,
-            'message' => 'Projet lancé avec succès !'
+            'message' => 'Rituel lancé avec succès !'
         ]);
     }
 

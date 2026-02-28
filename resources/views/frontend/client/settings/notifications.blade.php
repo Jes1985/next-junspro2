@@ -356,12 +356,17 @@
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.password') }}" class="{{ request()->routeIs('user.settings.password') ? 'active' : '' }}">
-              {{ __('Mot de passe') }}
+              Modifiez le mot de passe
             </a>
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.email.edit') }}" class="{{ request()->routeIs('user.settings.email.*') ? 'active' : '' }}">
-              {{ __('Adresse e-mail') }}
+              Modifiez votre adresse email
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.edit_profile') }}" class="{{ request()->routeIs('user.edit_profile') ? 'active' : '' }}">
+              Modifiez votre profil
             </a>
           </li>
           <li class="settings-menu-item">
@@ -414,6 +419,26 @@
             </a>
           </li>
           <li class="settings-menu-item">
+            <a href="{{ route('user.service_orders') }}" class="{{ request()->routeIs('user.service_orders') || request()->routeIs('user.service_order.details') ? 'active' : '' }}">
+              Commandes de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.service_wishlist') }}" class="{{ request()->routeIs('user.service_wishlist') ? 'active' : '' }}">
+              Favoris de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.support_tickets') }}" class="{{ request()->routeIs('user.support_tickets') || request()->routeIs('user.support_tickets.create') || request()->routeIs('user.support_ticket.conversation') ? 'active' : '' }}">
+              Tickets de support
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.followings') }}" class="{{ request()->routeIs('user.followings') ? 'active' : '' }}">
+              Mes favoris
+            </a>
+          </li>
+          <li class="settings-menu-item">
             @php
               try {
                 $deleteAccountUrl = route('user.settings.delete_account');
@@ -433,7 +458,7 @@
         <!-- En-tête -->
         <div class="settings-header">
           <h1>{{ __('Notifications') }}</h1>
-          <p>{{ __('Choisissez les e-mails que vous souhaitez recevoir. L\'objectif : être informé des étapes importantes de vos projets, sans être submergé.') }}</p>
+          <p>{{ __('Choisissez les e-mails que vous souhaitez recevoir. L\'objectif : être informé des étapes importantes de vos Rituels, sans être submergé.') }}</p>
         </div>
 
         @if (session('status') === 'notifications-updated' || session('success'))
@@ -457,7 +482,7 @@
 
           <!-- Section : Projets & sessions -->
           <div class="notification-section">
-            <h2 class="notification-section-title">{{ __('Projets & sessions') }}</h2>
+            <h2 class="notification-section-title">{{ __('Rituels') }}</h2>
 
             <!-- Sessions planifiées / modifiées / annulées -->
             <div class="switch-group">
@@ -468,9 +493,9 @@
                        @if(old('email_sessions', $settings['email_sessions'] ?? true)) checked @endif>
                 <span class="switch"></span>
                 <div class="switch-content">
-                  <div class="switch-title">{{ __('Être informé des sessions planifiées, modifiées ou annulées') }}</div>
+                  <div class="switch-title">{{ __('Être informé des Rituels planifiés, modifiés ou annulés') }}</div>
                   <div class="switch-description">
-                    {{ __('Vous recevez un e-mail à chaque fois qu\'une nouvelle session est ajoutée à votre agenda ou qu\'un horaire change.') }}
+                    {{ __('Vous recevez un e-mail à chaque fois qu\'un nouveau Rituel est ajouté à votre agenda ou qu\'un horaire change.') }}
                   </div>
                 </div>
               </label>
@@ -485,9 +510,9 @@
                        @if(old('email_reports', $settings['email_reports'] ?? true)) checked @endif>
                 <span class="switch"></span>
                 <div class="switch-content">
-                  <div class="switch-title">{{ __('Recevoir le rapport après chaque session') }}</div>
+                  <div class="switch-title">{{ __('Recevoir le rapport après chaque Rituel') }}</div>
                   <div class="switch-description">
-                    {{ __('Le freelance vous envoie un rapport écrit en fin de session (10 minutes). Vous pouvez le recevoir directement dans votre boîte mail.') }}
+                    {{ __('Le freelance vous envoie un rapport écrit en fin de Rituel (10 minutes). Vous pouvez le recevoir directement dans votre boîte mail.') }}
                   </div>
                 </div>
               </label>
@@ -509,7 +534,7 @@
                 <div class="switch-content">
                   <div class="switch-title">{{ __('Être averti des nouveaux messages de vos freelances') }}</div>
                   <div class="switch-description">
-                    {{ __('Utile pour ne pas rater une question importante ou une mise à jour sur votre projet.') }}
+                    {{ __('Utile pour ne pas rater une question importante ou une mise à jour sur votre Rituel.') }}
                   </div>
                 </div>
               </label>
@@ -564,7 +589,7 @@
           <div class="info-box">
             <h2 class="info-title">{{ __('Notre philosophie des notifications') }}</h2>
             <p class="info-text" style="margin: 0; font-size: 0.95rem; color: #374151; line-height: 1.7;">
-              {{ __('Junspro est conçu pour vous aider à avancer sur vos projets sans vous fatiguer avec des e-mails inutiles. Nous vous recommandons de garder les notifications liées aux sessions, aux rapports et à la facturation, et de désactiver ce qui ne vous sert pas.') }}
+              {{ __('Junspro est conçu pour vous aider à avancer sur vos Rituels sans vous fatiguer avec des e-mails inutiles. Nous vous recommandons de garder les notifications liées aux Rituels, aux rapports et à la facturation, et de désactiver ce qui ne vous sert pas.') }}
             </p>
           </div>
 

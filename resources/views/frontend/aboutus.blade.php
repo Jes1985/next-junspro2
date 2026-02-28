@@ -819,7 +819,7 @@
       {{-- HERO --}}
       <section class="about-hero">
         <h1>Moins de pression. Plus de progrès.</h1>
-        <p class="hero-lead">Junspro est né d'une conviction : ce qui fait avancer un projet, ce n'est pas la pression — c'est la discipline. Une discipline douce, progressive, qui respecte l'humain… sans laisser la procrastination s'installer.</p>
+        <p class="hero-lead">Junspro est né d'une conviction : ce qui fait avancer un Rituel, ce n'est pas la pression — c'est la discipline. Une discipline douce, progressive, qui respecte l'humain… sans laisser la procrastination s'installer.</p>
         <p class="hero-ritual">Un Rituel = 1h : 50 minutes de focus + 10 minutes de feedback / rapport.<br>Rituel après rituel, l'élan devient résultat.</p>
         <div class="hero-ctas">
           <a href="{{ route('mission.form') }}" class="btn btn-junspro btn-junspro-primary">Entrer dans l'expérience</a>

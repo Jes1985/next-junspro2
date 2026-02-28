@@ -1559,8 +1559,8 @@ class OnboardingController extends Controller
         ], [
             'hourly_rate.required' => __('Le tarif est obligatoire.'),
             'hourly_rate.numeric' => __('Le tarif doit être un nombre.'),
-            'hourly_rate.min' => __('Le tarif minimum est de 5€ par séance.'),
-            'hourly_rate.max' => __('Le tarif maximum est de 1000€ par séance.'),
+            'hourly_rate.min' => __('Le tarif minimum est de 5€ par Rituel.'),
+            'hourly_rate.max' => __('Le tarif maximum est de 1000€ par Rituel.'),
             'bank_iban.required' => __('L\'IBAN est obligatoire.'),
             'bank_iban.regex' => __('L\'IBAN doit être au format valide (ex: FR76 1234 5678 9012 3456 7890 123).'),
             'bank_account_holder.required' => __('Le nom du titulaire du compte est obligatoire.'),

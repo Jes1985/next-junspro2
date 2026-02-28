@@ -369,6 +369,7 @@ class FreelancerController extends Controller
             'slots.*.minute' => 'required|integer|in:0,30',
             'duration' => 'nullable|integer|in:30,50,60',
             'booking_type' => 'nullable|string|in:weekly,onetime',
+            'week_offset' => 'nullable|integer',
         ]);
 
         $freelancer = FreelancerProfile::with('user')->findOrFail($id);
@@ -511,8 +512,8 @@ class FreelancerController extends Controller
             }
 
             $message = count($workSessions) === 1 
-                ? __('Votre séance a été programmée avec succès.')
-                : __('Vos :count séances ont été programmées avec succès.', ['count' => count($workSessions)]);
+                ? __('Votre Rituel a été programmé avec succès.')
+                : __('Vos :count Rituels ont été programmés avec succès.', ['count' => count($workSessions)]);
 
             return response()->json([
                 'success' => true,
@@ -561,7 +562,7 @@ class FreelancerController extends Controller
             null
         );
 
-        return redirect()->back()->with('success', __('Votre séance d\'essai a été créée. Nous vous recontactons pour le kick-off.'));
+        return redirect()->back()->with('success', __('Votre Rituel d\'essai a été créé. Nous vous recontactons pour le kick-off.'));
     }
 
     public function subscribe(Request $request, SubscriptionService $subscriptionService, $id)

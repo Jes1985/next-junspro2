@@ -9,7 +9,7 @@
   <div class="alert alert-info d-flex align-items-start mb-3" role="alert">
     <i class="fas fa-info-circle me-2 mt-1"></i>
     <div>
-      <small>{{ __('Sélectionnez l\'heure de votre premier cours. Les heures sont affichées dans votre fuseau horaire.') }}</small>
+      <small>{{ __('Sélectionnez l\'heure de votre premier Rituel. Les heures sont affichées dans votre fuseau horaire.') }}</small>
     </div>
   </div>
 

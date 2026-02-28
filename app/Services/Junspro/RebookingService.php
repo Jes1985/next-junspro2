@@ -33,7 +33,7 @@ class RebookingService
         if ($workSession->rebook_count >= 1) {
             return [
                 'allowed' => false,
-                'reason' => 'Cette session a déjà été reprogrammée une fois. Une seule reprogrammation est autorisée par session.',
+                'reason' => 'Ce Rituel a déjà été reprogrammé une fois. Une seule reprogrammation est autorisée par Rituel.',
             ];
         }
 

@@ -154,7 +154,7 @@ class FreelancerSubscriptionController extends Controller
             ],
         ]);
 
-        return back()->with('success', 'Session de travail enregistrée avec succès. Le client sera notifié.');
+        return back()->with('success', 'Rituel enregistré avec succès. Le client sera notifié.');
     }
 }
 

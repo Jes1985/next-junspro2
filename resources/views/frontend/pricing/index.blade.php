@@ -85,7 +85,7 @@
                 <span class="jp-plan-card__volume-main">{{ $plan['hours_per_cycle'] }}</span>
                 <span class="jp-plan-card__volume-unit">Rituels<br><small>/cycle 4s</small></span>
               </div>
-              <div class="jp-plan-card__rhythm">{{ $plan['hours_per_week'] }}h par semaine</div>
+              <div class="jp-plan-card__rhythm" style="color:#10B981;font-weight:600;">{{ $plan['hours_per_week'] }}h par semaine</div>
               @if($price !== null)
                 <div class="jp-plan-card__price">
                   <span class="jp-plan-card__price-amount">{{ number_format($price, 0, ',', ' ') }} €</span>
@@ -139,7 +139,7 @@
                 <span class="jp-plan-card__volume-main">{{ $plan['hours_per_cycle'] }}</span>
                 <span class="jp-plan-card__volume-unit">Rituels<br><small>/cycle 4s</small></span>
               </div>
-              <div class="jp-plan-card__rhythm">{{ $plan['hours_per_week'] }}h par semaine</div>
+              <div class="jp-plan-card__rhythm" style="color:#10B981;font-weight:600;">{{ $plan['hours_per_week'] }}h par semaine</div>
               @if($price !== null)
                 <div class="jp-plan-card__price">
                   <span class="jp-plan-card__price-amount">{{ number_format($price, 0, ',', ' ') }} €</span>
@@ -228,7 +228,7 @@
   <section class="jp-cta-final">
     <div class="jp-cta-final__inner">
       <h2 class="jp-cta-final__title">Pas encore de freelance en tête ?</h2>
-      <p class="jp-cta-final__sub">Explorez notre catalogue, déclenchez une séance d'essai de 1h, puis choisissez votre formule.</p>
+      <p class="jp-cta-final__sub">Explorez notre catalogue, déclenchez un Rituel d'essai de 1h, puis choisissez votre formule.</p>
       <div class="jp-cta-final__btns">
         <a href="{{ route('explore') }}" class="jp-btn jp-btn--primary">Trouver un freelance</a>
         @auth

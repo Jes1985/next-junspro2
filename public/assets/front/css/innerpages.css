@@ -2949,17 +2949,44 @@ input[type="email"]:focus,
 .order-details,
 .account-info,
 .invoice-details {
-  border: 1px solid var(--border-color);
-  padding: 30px;
-  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(59, 130, 246, 0.15);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+  box-shadow: 
+    0 20px 60px rgba(59, 130, 246, 0.1),
+    0 8px 24px rgba(99, 102, 241, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.account-info:hover {
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 
+    0 30px 80px rgba(59, 130, 246, 0.15),
+    0 12px 32px rgba(99, 102, 241, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  transform: translateY(-4px);
 }
 
 .user-dashboard .title {
-  padding-bottom: 15px;
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 20px;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.4) 30%, rgba(99, 102, 241, 0.3) 70%, transparent 100%) 1;
+  margin-bottom: 1.5rem;
   display: flex;
   justify-content: space-between;
+}
+
+.user-dashboard .title h4 {
+  background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  font-size: 1.75rem;
+  letter-spacing: -0.01em;
 }
 
 .user-dashboard .main-info {
@@ -2976,11 +3003,26 @@ input[type="email"]:focus,
 }
 
 .user-dashboard .main-info ul.list li {
-  padding: 10px 20px;
-  border-radius: 5px;
-  background: var(--bg-1);
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border: 1.5px solid rgba(99, 102, 241, 0.15);
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 4px 12px rgba(59, 130, 246, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.user-dashboard .main-info ul.list li:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(59, 130, 246, 0.12) 100%);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateX(6px) translateY(-2px);
+  box-shadow: 
+    0 12px 32px rgba(59, 130, 246, 0.15),
+    0 4px 16px rgba(99, 102, 241, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
 .user-dashboard .main-info ul.list li:not(:last-child) {
@@ -2989,9 +3031,20 @@ input[type="email"]:focus,
 }
 
 .user-dashboard .main-info ul.list li span:first-child {
-  font-weight: var(--font-medium);
-  -webkit-margin-end: 10px;
-  margin-inline-end: 10px;
+  font-weight: 700;
+  -webkit-margin-end: 0.75rem;
+  margin-inline-end: 0.75rem;
+  color: rgba(59, 130, 246, 0.9);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.user-dashboard .main-info ul.list li span:last-child {
+  color: #1e293b;
+  font-weight: 600;
+  flex-grow: 1;
+  text-align: right;
 }
 
 .user-dashboard .main-info ul.list li p span {
@@ -3000,58 +3053,158 @@ input[type="email"]:focus,
 }
 
 .card-box {
-  padding: 30px 20px;
+  padding: 2rem 1.5rem;
+  border-radius: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.card-box:after {
+.card-box::before {
+  content: '';
   position: absolute;
-  bottom: 15px;
-  right: 8px;
-  font-family: "Font Awesome 5 Pro";
-  font-size: 90px;
-  font-weight: 300;
-  color: var(--text-white);
-  opacity: .7;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%);
+  border-radius: 0.75rem;
+  transition: opacity 0.3s ease;
+}
+
+.card-box:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 28px 64px rgba(0, 0, 0, 0.25),
+    0 12px 32px rgba(0, 0, 0, 0.18),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.card-box .card-info {
+  position: relative;
+  z-index: 2;
+}
+
+.card-box h5 {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.card-box p {
+  color: rgba(255, 255, 255, 1);
+  font-weight: 900;
+  font-size: 2.5rem;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-box.box-1 {
-  background: #6963FF;
+  background: linear-gradient(135deg, #6963FF 0%, #7c3aed 100%);
 }
 
 .card-box.box-1:after {
-  content: '\f1b3';
+  content: '';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+}
+
+.card-box.box-1:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
 }
 
 .card-box.box-2 {
-  background: #EC7424;
+  background: linear-gradient(135deg, #EC7424 0%, #f97316 100%);
 }
 
 .card-box.box-2:after {
-  content: '\f004';
+  content: '';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+}
+
+.card-box.box-2:hover {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
 }
 
 .card-box.box-3 {
-  background: #07BFA7;
+  background: linear-gradient(135deg, #07BFA7 0%, #14b8a6 100%);
 }
 
 .card-box.box-3:after {
-  content: '\f07a';
+  content: '';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+}
+
+.card-box.box-3:hover {
+  background: linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%);
 }
 
 .card-box.box-4 {
-  background: #ffb30e;
+  background: linear-gradient(135deg, #ffb30e 0%, #fbbf24 100%);
 }
 
 .card-box.box-4:after {
-  content: '\f46d';
+  content: '';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+}
+
+.card-box.box-4:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #fcd34d 100%);
 }
 
 .card-box.box-5 {
-  background: #13c7df;
+  background: linear-gradient(135deg, #13c7df 0%, #06b6d4 100%);
 }
 
 .card-box.box-5:after {
-  content: '\f82d';
+  content: '';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+}
+
+.card-box.box-5:hover {
+  background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
 }
 
 .card-box.box-6 {

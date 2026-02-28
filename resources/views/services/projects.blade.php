@@ -3604,7 +3604,7 @@
                           
                           <!-- Phrase d'accroche (headline) -->
                           @php
-                            $headline = $freelancer->headline ?? 'Freelance expert pour vos projets.';
+                            $headline = $freelancer->headline ?? 'Freelance expert pour vos Rituels.';
                           @endphp
                           <p class="freelancer-headline">
                             {{ $headline }}
@@ -3683,7 +3683,7 @@
                         <div class="freelancer-stats-v2">
                           <div class="stat-item-v2">
                             <span class="stat-number">{{ $freelancer->subscriptions()->count() ?? 0 }}</span>
-                            <span class="stat-label-v2">{{ __('projets livrés') }}</span>
+                            <span class="stat-label-v2">{{ __('Rituels livrés') }}</span>
                           </div>
                           <div class="stat-item-v2">
                             <span class="stat-number">{{ $freelancer->subscriptions()->where('status', 'active')->count() ?? 0 }}</span>

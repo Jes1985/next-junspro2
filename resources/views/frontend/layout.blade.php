@@ -712,20 +712,17 @@
   {{-- Fix transparence globale - Force background opaque sur html/body et masque preloader --}}
   <style>
     html {
-      background: #ffffff !important;
+      background: transparent !important;
       min-height: 100% !important;
-      background-color: #ffffff !important;
     }
     body {
-      background: #ffffff !important;
-      background-color: #ffffff !important;
+      background: transparent !important;
       opacity: 1 !important;
       min-height: 100vh !important;
       position: relative !important;
     }
     .main-wrapper {
-      background: #ffffff !important;
-      background-color: #ffffff !important;
+      background: transparent !important;
       opacity: 1 !important;
       position: relative !important;
       min-height: 100vh !important;

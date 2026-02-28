@@ -1,16 +1,47 @@
+# Dependencies
 /node_modules
+/vendor
+/bower_components
+
+# Environment
+.env
+.env.backup
+.env.*.php
+.env.*.backup
+
+# Laravel
+/storage
+/bootstrap/cache
+.phpunit.result.cache
+.env.testing
+
+# IDE & OS
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log
+yarn-error.log
+*.log
+
+# Build & Demo
 /demo
 /public/hot
 /public/storage
-/storage/*.key
-.env
-.env.backup
-.phpunit.result.cache
+/dist
+/build
+
+# Dev tools
+*.ps1
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
-npm-debug.log
-yarn-error.log
 
-/vendor
-*.ps1
+# Temp files
+*.tmp
+*.temp
+*.bak

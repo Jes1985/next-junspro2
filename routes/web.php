@@ -525,6 +525,7 @@ Route::prefix('/user')->middleware(['auth:web', 'account.status', 'change.lang']
   // Junspro V2 - Dashboards abonnements
   Route::prefix('/account/subscriptions')->group(function () {
     Route::get('/', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'index'])->name('client.subscriptions.index');
+    Route::get('/first', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'firstSubscription'])->name('client.subscriptions.first');
     Route::get('/{id}', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'show'])->name('client.subscriptions.show');
     Route::get('/{id}/sessions', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'show'])->name('client.subscriptions.sessions');
     Route::post('/{id}/pause', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'pause'])->name('client.subscriptions.pause');

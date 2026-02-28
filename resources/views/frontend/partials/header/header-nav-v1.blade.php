@@ -134,12 +134,12 @@
             <div class="item">
               <div class="dropdown">
                   <button class="user-menu-btn dropdown-toggle" type="button"
-                    data-bs-toggle="dropdown" aria-expanded="false" style="background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);">
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     @if(Auth::guard('seller')->user()->photo)
                       <img src="{{ asset('assets/admin/img/seller-photo/' . Auth::guard('seller')->user()->photo) }}" 
                            alt="Freelance">
                     @else
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                       </svg>
@@ -177,22 +177,10 @@
               <div class="dropdown">
                 <button class="user-menu-btn dropdown-toggle" type="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
-                  @auth('web')
-                    @if(Auth::guard('web')->user()->image)
-                      <img src="{{ asset('assets/img/users/' . Auth::guard('web')->user()->image) }}" 
-                           alt="User">
-                    @else
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                      </svg>
-                    @endif
-                  @else
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                  @endauth
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end user-menu-premium">
                   @guest('web')

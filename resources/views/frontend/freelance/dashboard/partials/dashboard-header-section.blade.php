@@ -5,7 +5,8 @@
     <div class="hero-text">
       <h1 class="hero-title">Tableau de bord Freelance</h1>
       <p class="hero-subtitle">
-        Un espace clair pour avancer sans relances : vos clients voient l'avancement, vous gardez le rythme.
+        Un espace clair pour avancer sans relances : vos clients voient l'avancement,<br>
+        vous gardez le rythme.
       </p>
       <div class="hero-ctas">
         <a href="{{ route('freelance.services.create') }}" class="btn-hero btn-hero-primary">

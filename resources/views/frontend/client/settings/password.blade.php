@@ -343,12 +343,17 @@
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.password') }}" class="{{ request()->routeIs('user.settings.password') ? 'active' : '' }}">
-              {{ __('Mot de passe') }}
+              Modifiez le mot de passe
             </a>
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.email.edit') }}" class="{{ request()->routeIs('user.settings.email.*') ? 'active' : '' }}">
-              {{ __('Adresse e-mail') }}
+              Modifiez votre adresse email
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.edit_profile') }}" class="{{ request()->routeIs('user.edit_profile') ? 'active' : '' }}">
+              Modifiez votre profil
             </a>
           </li>
           <li class="settings-menu-item">
@@ -398,6 +403,26 @@
             @endphp
             <a href="{{ $connectionsUrl }}" class="{{ request()->routeIs('user.settings.connections*') ? 'active' : '' }}">
               {{ __('Connexions & autorisations') }}
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.service_orders') }}" class="{{ request()->routeIs('user.service_orders') || request()->routeIs('user.service_order.details') ? 'active' : '' }}">
+              Commandes de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.service_wishlist') }}" class="{{ request()->routeIs('user.service_wishlist') ? 'active' : '' }}">
+              Favoris de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.support_tickets') }}" class="{{ request()->routeIs('user.support_tickets') || request()->routeIs('user.support_tickets.create') || request()->routeIs('user.support_ticket.conversation') ? 'active' : '' }}">
+              Tickets de support
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.followings') }}" class="{{ request()->routeIs('user.followings') ? 'active' : '' }}">
+              Mes favoris
             </a>
           </li>
           <li class="settings-menu-item">

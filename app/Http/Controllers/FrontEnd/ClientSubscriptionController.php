@@ -299,7 +299,7 @@ class ClientSubscriptionController extends Controller
             if ($finalAction === 'find_freelancer') {
                 $subscription->update(['can_transfer' => true]);
                 return redirect()->route('explore')
-                    ->with('info', __('Recherchez un nouveau freelance pour votre projet.'));
+                    ->with('info', __('Recherchez un nouveau freelance pour votre Rituel.'));
             }
 
             if ($finalAction === 'keep') {
@@ -346,6 +346,33 @@ class ClientSubscriptionController extends Controller
         }
 
         return back()->with('error', __('Action non reconnue.'));
+    }
+
+    /**
+     * Redirige vers la première subscription active pour l'onglet "Sessions"
+     */
+    public function firstSubscription()
+    {
+        $user = Auth::guard('web')->user();
+        
+        $clientProfile = $user->clientProfile;
+        if (!$clientProfile) {
+            return redirect()->route('client.dashboard.index')
+                ->with('error', __('Vous devez avoir un profil client pour accéder à cette page.'));
+        }
+
+        // Récupérer la première subscription active ou paused
+        $subscription = Subscription::where('client_id', $clientProfile->id)
+            ->whereIn('status', ['active', 'paused'])
+            ->orderBy('created_at', 'asc')
+            ->first();
+
+        if (!$subscription) {
+            return redirect()->route('client.dashboard.index')
+                ->with('info', __('Aucun Rituel actif. Découvrez nos offres.'));
+        }
+
+        return redirect()->route('client.subscriptions.show', $subscription->id);
     }
 }
 

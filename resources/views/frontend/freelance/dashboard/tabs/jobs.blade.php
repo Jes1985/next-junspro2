@@ -20,7 +20,7 @@
       <div class="page-header">
         <h1>Prestations</h1>
         <p class="page-subtitle">
-          Gérez vos missions et sessions Rituel. Structurez votre travail, suivez votre progression,
+          Gérez vos missions et Rituels. Structurez votre travail, suivez votre progression,
           et gardez vos clients informés automatiquement.
         </p>
       </div>
@@ -53,32 +53,32 @@
         <!-- Workflow en 3 étapes -->
         <div class="workflow-section">
           <h3 class="workflow-title">Comment démarrer en 3 étapes</h3>
-          <div class="workflow-grid">
+          <div class="workflow-grid" style="margin-left: -4rem; margin-right: -32vw; width: calc(100% + 32vw); padding: 0 4rem;">
             <!-- Étape 1 -->
-            <div class="workflow-card">
-              <div class="step-number">1</div>
-              <h3>Créer un Rituel</h3>
-              <p>
+            <div class="workflow-card" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #f8fafc 100%); border: 2.5px solid rgba(59, 130, 246, 0.25); box-shadow: 0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); border-radius: 32px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);" onmouseover="this.style.boxShadow='0 40px 100px rgba(59, 130, 246, 0.3), 0 16px 48px rgba(59, 130, 246, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(59, 130, 246, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(59, 130, 246, 0.25)';">
+              <div class="step-number" style="font-size: 3.2rem; font-weight: 900; background: linear-gradient(135deg, #3B82F6, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem;">1</div>
+              <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.03em;">Créer un Rituel</h3>
+              <p style="font-size: 1rem; line-height: 1.8; color: #334155; font-weight: 500;">
                 Définissez clairement ce que vous proposez, vos livrables,
                 et votre tarification. Un Rituel bien défini attire des clients alignés.
               </p>
             </div>
 
             <!-- Étape 2 -->
-            <div class="workflow-card">
-              <div class="step-number">2</div>
-              <h3>Recevoir des demandes</h3>
-              <p>
+            <div class="workflow-card" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #f8fafc 100%); border: 2.5px solid rgba(168, 85, 247, 0.25); box-shadow: 0 32px 80px rgba(168, 85, 247, 0.2), 0 12px 32px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); border-radius: 32px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);" onmouseover="this.style.boxShadow='0 40px 100px rgba(168, 85, 247, 0.3), 0 16px 48px rgba(168, 85, 247, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(168, 85, 247, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(168, 85, 247, 0.2), 0 12px 32px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(168, 85, 247, 0.25)';">
+              <div class="step-number" style="font-size: 3.2rem; font-weight: 900; background: linear-gradient(135deg, #a855f7, #d946ef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem;">2</div>
+              <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.03em;">Recevoir des demandes</h3>
+              <p style="font-size: 1rem; line-height: 1.8; color: #334155; font-weight: 500;">
                 Vos services apparaissent dans les recherches des clients correspondants.
                 Un profil optimisé augmente votre visibilité.
               </p>
             </div>
 
             <!-- Étape 3 -->
-            <div class="workflow-card">
-              <div class="step-number">3</div>
-              <h3>Lancer un Rituel</h3>
-              <p>
+            <div class="workflow-card" style="background: linear-gradient(135deg, #ffffff 0%, #fef3f2 50%, #f8fafc 100%); border: 2.5px solid rgba(30, 64, 175, 0.25); box-shadow: 0 32px 80px rgba(30, 64, 175, 0.2), 0 12px 32px rgba(30, 64, 175, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); border-radius: 32px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);" onmouseover="this.style.boxShadow='0 40px 100px rgba(30, 64, 175, 0.3), 0 16px 48px rgba(30, 64, 175, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(30, 64, 175, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(30, 64, 175, 0.2), 0 12px 32px rgba(30, 64, 175, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(30, 64, 175, 0.25)';">
+              <div class="step-number" style="font-size: 3.2rem; font-weight: 900; background: linear-gradient(135deg, #1e40af, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem;">3</div>
+              <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.03em;">Lancer un Rituel</h3>
+              <p style="font-size: 1rem; line-height: 1.8; color: #334155; font-weight: 500;">
                 Transformez une demande acceptée en Rituel - l'unité de travail standard
                 qui garantit transparence et cadence pour vos clients.
               </p>
@@ -110,36 +110,58 @@
 
           <div class="ritual-grid">
             <!-- Rituel en ligne -->
-            <div class="ritual-card online">
+            <div class="ritual-card online" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #f8fafc 100%); border: 2.5px solid rgba(59, 130, 246, 0.25); box-shadow: 0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); border-radius: 32px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);" onmouseover="this.style.boxShadow='0 40px 100px rgba(59, 130, 246, 0.3), 0 16px 48px rgba(59, 130, 246, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(59, 130, 246, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(59, 130, 246, 0.25)';">
               <div class="ritual-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>
               </div>
-              <h4>En ligne</h4>
-              <p class="ritual-mode">Cours, coaching, consultation en direct</p>
+              <h4 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.03em;">En ligne</h4>
+              <p class="ritual-mode" style="font-size: 1rem; color: #334155; line-height: 1.8; font-weight: 500;">Rituel, coaching, consultation en direct</p>
               <div class="ritual-process">
                 <div class="process-step">
                   <span class="process-time">50 min</span>
-                  <span class="process-label">Session focus</span>
+                  <span class="process-label">Rituel focus</span>
                 </div>
                 <div class="process-plus">+</div>
                 <div class="process-step">
                   <span class="process-time">10 min</span>
-                  <span class="process-label">Pause entre sessions</span>
+                  <span class="process-label">Pause entre Rituels</span>
                 </div>
               </div>
             </div>
 
-            <!-- Rituel hors ligne -->
-            <div class="ritual-card offline">
+            <!-- Rituel en présentiel -->
+            <div class="ritual-card presentiel" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f8fafc 100%); border: 2.5px solid rgba(16, 185, 129, 0.25); box-shadow: 0 32px 80px rgba(16, 185, 129, 0.2), 0 12px 32px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); border-radius: 32px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);" onmouseover="this.style.boxShadow='0 40px 100px rgba(16, 185, 129, 0.3), 0 16px 48px rgba(16, 185, 129, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(16, 185, 129, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(16, 185, 129, 0.2), 0 12px 32px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(16, 185, 129, 0.25)';">
               <div class="ritual-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.1h-15V5h15v14.1zm0-16.1h-15c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                  <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
                 </svg>
               </div>
-              <h4>Hors ligne</h4>
-              <p class="ritual-mode">Design, développement, rédaction autonome</p>
+              <h4 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.03em;">En présentiel</h4>
+              <p class="ritual-mode" style="font-size: 1rem; color: #334155; line-height: 1.8; font-weight: 500;">Atelier, formation, accompagnement sur site</p>
+              <div class="ritual-process">
+                <div class="process-step">
+                  <span class="process-time">50 min</span>
+                  <span class="process-label">Rituel en salle</span>
+                </div>
+                <div class="process-plus">+</div>
+                <div class="process-step">
+                  <span class="process-time">10 min</span>
+                  <span class="process-label">Bilan sur place</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rituel hybride -->
+            <div class="ritual-card hybrid" style="background: linear-gradient(135deg, #ffffff 0%, #fffbeb 50%, #f8fafc 100%); border: 2.5px solid rgba(245, 158, 11, 0.25); box-shadow: 0 32px 80px rgba(245, 158, 11, 0.2), 0 12px 32px rgba(245, 158, 11, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); border-radius: 32px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);" onmouseover="this.style.boxShadow='0 40px 100px rgba(245, 158, 11, 0.3), 0 16px 48px rgba(245, 158, 11, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(245, 158, 11, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(245, 158, 11, 0.2), 0 12px 32px rgba(245, 158, 11, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(245, 158, 11, 0.25)';">
+              <div class="ritual-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                </svg>
+              </div>
+              <h4 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.03em;">Hybride</h4>
+              <p class="ritual-mode" style="font-size: 1rem; color: #334155; line-height: 1.8; font-weight: 500;">Mix distanciel et présentiel, flexibilité maximale</p>
               <div class="ritual-process">
                 <div class="process-step">
                   <span class="process-time">50 min</span>
@@ -157,12 +179,8 @@
       </div>
     </main>
 
-    <!-- ===== SIDEBAR (30%) - LIGHT ===== -->
-    @include('frontend.freelance.dashboard.partials.dashboard-sidebar-section', [
-      'activeTab' => $activeTab ?? 'jobs'
-    ])
   </div>
-        </div>
+</div>
 
 {{-- Styles CSS communs du shell premium --}}
 @include('frontend.freelance.dashboard.partials.dashboard-shell-styles')
@@ -302,39 +320,108 @@
   }
   
   .jobs-page-wrapper-light .dashboard-container {
-    display: grid !important;
-    grid-template-columns: 70% 30% !important; /* Layout premium 70/30 */
+    display: block !important;
+    grid-template-columns: unset !important;
     min-height: 100vh;
     max-width: none !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 2rem !important; /* Padding pour créer l'espace autour du contenu comme dans Demandes */
-    background: white !important; /* Fond blanc comme dans Demandes */
-    border-radius: var(--radius-xl) !important; /* Bords arrondis (20px) comme dans Demandes */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important; /* Ombre légère identique à Demandes */
+    padding: 2rem !important;
+    background: white !important;
+    border-radius: var(--radius-xl) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
     box-sizing: border-box;
-    gap: 0 10px !important; /* Espacement de 1cm (10px) entre les zones 70% et 30% */
-    align-items: start !important;
+    gap: 0 !important;
     overflow-x: visible !important;
   }
   
-  /* ===== ZONE PRINCIPALE (70%) - GAUCHE - PREMIUM ===== */
+  /* ===== ZONE PRINCIPALE (100%) - PLEINE LARGEUR ===== */
   .jobs-page-wrapper-light .main-content {
-    padding: 4rem 10px !important; /* Padding vertical + 1cm (10px) de chaque côté */
-    border-right: none !important; /* Suppression complète de la bordure */
-    min-height: 100vh;
+    padding: 2rem 0 !important;
+    border-right: none !important;
+    min-height: auto;
     background: #F5F7FA;
     box-sizing: border-box;
-    overflow-x: visible !important; /* Permet au contenu de s'étendre */
+    overflow-x: visible !important;
     position: relative;
-    max-width: none !important; /* Pas de limite de largeur */
-    width: 100% !important; /* Force la pleine largeur */
-    min-width: 0 !important; /* Permet au grid de gérer la largeur */
-    grid-column: 1 !important; /* Première colonne (gauche) */
+    max-width: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
     display: flex;
     flex-direction: column;
   }
   
+  /* ===== HERO HEADER - IDENTIQUE À OVERVIEW ===== */
+  .jobs-page-wrapper-light .dashboard-overview-hero {
+    position: relative !important; margin: 0 !important; margin-bottom: 3rem !important;
+    padding: 0 !important; border: none !important; background: transparent !important;
+    width: 100% !important; max-width: 100% !important; overflow: visible !important;
+  }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-glow {
+    position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(30, 64, 175, 0.1) 35%, transparent 80%);
+    border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-content {
+    position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center; padding: 3rem 0; width: 100%; box-sizing: border-box;
+  }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-text { display: flex; flex-direction: column; gap: 1.5rem; padding: 0; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-title {
+    font-size: 2.5rem; font-weight: 800; line-height: 1.2; color: #111827; margin: 0; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-subtitle { font-size: 1.125rem; line-height: 1.6; color: #6b7280; margin: 0; font-weight: 400; max-width: 550px; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .btn-hero {
+    padding: 1rem 1.75rem; font-size: 1rem; font-weight: 600; border-radius: 14px; border: none;
+    cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-family: inherit;
+  }
+  .jobs-page-wrapper-light .dashboard-overview-hero .btn-hero-primary { background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); color: white; box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25); }
+  .jobs-page-wrapper-light .dashboard-overview-hero .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(124, 58, 237, 0.35); color: white; text-decoration: none; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary { background: white; color: #1e40af; border: 2px solid #1e40af; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1); }
+  .jobs-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary:hover { background: #f0f4ff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30, 64, 175, 0.15); color: #1e40af; text-decoration: none; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .btn-text { display: inline; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .btn-icon { font-size: 1.2rem; display: inline-block; transition: transform 0.3s ease; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .btn-hero:hover .btn-icon { transform: translateX(3px); }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-hint { font-size: 0.9rem; color: #6b7280; margin: 0; margin-top: 0.5rem; font-weight: 500; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-visual { display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-visual-card {
+    position: relative; width: 100%; max-width: 350px; padding: 3rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0;
+    border-radius: 24px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.08); overflow: hidden;
+  }
+  .jobs-page-wrapper-light .dashboard-overview-hero .hero-visual-card::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+    border-radius: 50%; transform: translate(100px, -100px);
+  }
+  .jobs-page-wrapper-light .dashboard-overview-hero .visual-badge {
+    display: inline-block; padding: 0.5rem 1rem; background: linear-gradient(135deg, #ddd6fe 0%, #e9d5ff 100%);
+    color: #6d28d9; font-size: 0.85rem; font-weight: 600; border-radius: 20px; margin-bottom: 1.5rem; position: relative; z-index: 1;
+  }
+  .jobs-page-wrapper-light .dashboard-overview-hero .visual-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; position: relative; z-index: 1; }
+  .jobs-page-wrapper-light .dashboard-overview-hero .visual-text { font-size: 1.25rem; font-weight: 700; color: #111827; line-height: 1.5; margin: 0; position: relative; z-index: 1; }
+  @media (max-width: 1024px) {
+    .jobs-page-wrapper-light .dashboard-overview-hero .hero-content { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 0; }
+    .jobs-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 2rem; }
+    .jobs-page-wrapper-light .dashboard-overview-hero .hero-visual-card { max-width: 280px; }
+  }
+  @media (max-width: 768px) {
+    .jobs-page-wrapper-light .dashboard-overview-hero .hero-content { padding: 2rem 0; }
+    .jobs-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 1.75rem; }
+    .jobs-page-wrapper-light .dashboard-overview-hero .hero-ctas { flex-direction: column; }
+    .jobs-page-wrapper-light .dashboard-overview-hero .btn-hero { width: 100%; justify-content: center; }
+    .jobs-page-wrapper-light .dashboard-overview-hero .hero-visual-card { max-width: 250px; padding: 2rem 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .jobs-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 1.5rem; }
+    .jobs-page-wrapper-light .dashboard-overview-hero .btn-hero { padding: 0.875rem 1.5rem; font-size: 0.95rem; }
+    .jobs-page-wrapper-light .dashboard-overview-hero .visual-icon { font-size: 2.5rem; }
+  }
+
   /* ===== HEADER PREMIUM - CENTRÉ (Style identique à Demandes) ===== */
   .jobs-page-wrapper-light .page-header {
     margin-top: 2cm !important; /* Décalage de 2 cm du bloc Tableau de bord Freelance */
@@ -559,14 +646,14 @@
     border-radius: 2px;
   }
   
-  /* ===== WORKFLOW GRID - SOLUTION CSS GRID =====
+  /* ===== WORKFLOW GRID - SOLUTION CSS GRID ULTRA PREMIUM =====
    * Utilisation de CSS Grid pour un contrôle précis de la largeur
-   * et garantir que les 3 cartes utilisent toute la zone 70% disponible
+   * et garantir que les 3 cartes utilisent toute la zone disponible
    */
   .jobs-page-wrapper-light .workflow-grid {
     display: grid !important;
     grid-template-columns: 1fr !important; /* Mobile : 1 colonne par défaut */
-    gap: 1.5rem !important; /* Espacement entre les cartes */
+    gap: 2.5rem !important; /* Espacement entre les cartes */
     margin-top: 3rem !important;
     margin-bottom: 0 !important;
     margin-left: 0 !important;
@@ -594,7 +681,7 @@
   @media (min-width: 768px) {
     .jobs-page-wrapper-light .workflow-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* 2 colonnes égales */
-      gap: 2rem !important; /* Espacement de 32px entre les cartes */
+      gap: 2.5rem !important; /* Espacement de 40px entre les cartes */
     }
   }
   
@@ -602,7 +689,7 @@
   @media (min-width: 1024px) {
     .jobs-page-wrapper-light .workflow-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr)) !important; /* 3 colonnes égales qui utilisent toute la largeur */
-      gap: 2rem !important; /* Espacement de 32px entre les cartes */
+      gap: 2.5rem !important; /* Espacement de 40px entre les cartes */
       width: 100% !important;
       max-width: none !important; /* Pas de limite de largeur */
       min-width: 100% !important;
@@ -622,24 +709,24 @@
     }
   }
   
-  /* ===== STYLES DES CARTES WORKFLOW =====
+  /* ===== STYLES DES CARTES WORKFLOW - ULTRA PREMIUM =====
    * Chaque carte doit avoir :
    * - Largeur égale (gérée par CSS Grid)
-   * - Alignement vertical et horizontal cohérent
-   * - Transition fluide en responsive
+   * - Ombres dramatiques et dégradés luxueux
+   * - Animations spring fluides
    * - Utilise toute la largeur disponible dans sa colonne Grid
    */
   .jobs-page-wrapper-light .workflow-card {
     box-sizing: border-box !important;
     background: var(--bg-card) !important;
-    border: 1px solid rgba(148, 163, 184, 0.45) !important; /* Border translucide */
-    border-radius: 24px !important; /* 20-24px comme demandé */
-    padding: 28px !important; /* 24-28px comme demandé */
+    border: 2.5px solid rgba(148, 163, 184, 0.45) !important; /* Border translucide renforcée */
+    border-radius: 32px !important; /* 32px ultra premium */
+    padding: 2.5rem !important; /* 40px ultra premium */
     text-align: left !important; /* Alignement gauche pour meilleure lisibilité */
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Transition fluide */
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important; /* Spring animation */
     position: relative !important; /* Relative pour les pseudo-éléments */
     overflow: hidden !important; /* Empêche tout débordement interne */
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06) !important; /* Shadow très douce */
+    box-shadow: 0 32px 80px rgba(15, 23, 42, 0.15), 0 12px 32px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important; /* Ombre ultra premium */
     display: flex !important;
     flex-direction: column !important; /* Contenu aligné verticalement */
     justify-content: flex-start !important; /* Alignement en haut */
@@ -689,9 +776,9 @@
   }
   
   .jobs-page-wrapper-light .workflow-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-14px) scale(1.02);
     border-color: var(--primary-light);
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 40px 100px rgba(15, 23, 42, 0.25), 0 16px 48px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
   }
   
   .jobs-page-wrapper-light .workflow-card:hover::before {
@@ -708,27 +795,29 @@
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 1.125rem;
+    font-size: 3.2rem !important; /* Ultra premium */
     margin-bottom: 22px; /* Aligné en haut */
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3) !important; /* Ombre premium */
     flex-shrink: 0; /* Empêche la compression */
   }
   
   .jobs-page-wrapper-light .workflow-card h3 {
-    font-size: 1.5rem; /* 24px */
-    font-weight: 800;
+    font-size: 1.35rem !important; /* Ultra premium */
+    font-weight: 900 !important; /* Très bold */
     margin-bottom: 1rem;
     margin-top: 0;
     color: var(--text-primary);
     line-height: 1.3;
+    letter-spacing: -0.03em; /* Tight letter spacing */
   }
   
   .jobs-page-wrapper-light .workflow-card p {
     color: var(--text-secondary);
-    line-height: 1.7;
-    font-size: 1rem; /* 16px */
+    line-height: 1.8 !important; /* Ligne plus aérée */
+    font-size: 1rem !important; /* Taille premium */
     margin-bottom: 0;
     flex-grow: 1; /* Prend l'espace disponible */
+    font-weight: 500; /* Medium weight */
   }
   
   /* Alignement du contenu en colonne avec espacement */
@@ -853,11 +942,11 @@
     min-width: 100% !important; /* Force l'utilisation de toute la largeur */
   }
   
-  /* Grid ritual - 2 colonnes égales sur toute la largeur */
+  /* Grid ritual - 3 colonnes égales sur toute la largeur */
   .jobs-page-wrapper-light .ritual-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr) !important; /* 2 colonnes égales qui utilisent toute la largeur */
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr) !important; /* 3 colonnes égales : En ligne, En présentiel, Hybride */
+    gap: 2.5rem;
     width: 100% !important;
     min-width: 100% !important; /* Force l'utilisation de toute la largeur */
     box-sizing: border-box;
@@ -875,24 +964,24 @@
     width: 100% !important; /* Utilise toute la largeur de la colonne */
     box-sizing: border-box;
     background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xl);
+    border: 2.5px solid var(--border);
+    border-radius: 32px;
     padding: 2.5rem;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-md);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 32px 80px rgba(15, 23, 42, 0.15), 0 12px 32px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
     overflow: hidden; /* Empêche débordement interne */
   }
   
   .jobs-page-wrapper-light .ritual-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-14px) scale(1.02);
     border-color: var(--primary-light);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 40px 100px rgba(15, 23, 42, 0.25), 0 16px 48px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
   
   .jobs-page-wrapper-light .ritual-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: var(--radius-lg);
+    width: 72px;
+    height: 72px;
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -901,27 +990,47 @@
   }
   
   .jobs-page-wrapper-light .ritual-card.online .ritual-icon {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.08) 100%);
     color: var(--primary);
   }
   
   .jobs-page-wrapper-light .ritual-card.offline .ritual-icon {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.08) 100%);
     color: var(--accent);
+  }
+
+  .jobs-page-wrapper-light .ritual-card.presentiel .ritual-icon {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.08) 100%);
+    color: #10b981;
+  }
+
+  .jobs-page-wrapper-light .ritual-card.hybrid .ritual-icon {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%);
+    color: #f59e0b;
+  }
+
+  .jobs-page-wrapper-light .ritual-card.presentiel .process-time {
+    color: #10b981;
+  }
+
+  .jobs-page-wrapper-light .ritual-card.hybrid .process-time {
+    color: #f59e0b;
   }
   
   .jobs-page-wrapper-light .ritual-card h4 {
-    font-size: 1.375rem;
+    font-size: 1.35rem;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
-    font-weight: 700;
+    font-weight: 900;
+    letter-spacing: -0.03em;
   }
   
   .jobs-page-wrapper-light .ritual-mode {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
     font-weight: 500;
+    line-height: 1.8;
   }
   
   .jobs-page-wrapper-light .ritual-process {
@@ -929,10 +1038,10 @@
     align-items: center;
     justify-content: space-around;
     background: var(--bg-secondary);
-    border-radius: var(--radius-lg);
+    border-radius: 24px;
     padding: 1.5rem;
     margin-top: 1.5rem;
-    border: 1px solid var(--border-light);
+    border: 2px solid var(--border-light);
   }
   
   .jobs-page-wrapper-light .process-step {
@@ -1253,14 +1362,15 @@
     }
     
     .jobs-page-wrapper-light .dashboard-container {
-      grid-template-columns: 70% 30% !important; /* Maintien du ratio 70/30 */
-      gap: 0 10px !important; /* Gap de 1cm maintenu */
+      display: block !important;
+      grid-template-columns: unset !important;
+      gap: 0 !important;
     }
     
     .jobs-page-wrapper-light .main-content {
-      padding: 3rem 10px !important; /* Padding vertical + 1cm de chaque côté */
+      padding: 2rem 0 !important;
       max-width: none !important;
-      min-width: 0 !important; /* Permet au grid de gérer */
+      min-width: 0 !important;
     }
     
     .jobs-page-wrapper-light .sidebar {
@@ -1284,11 +1394,9 @@
     }
     
     .jobs-page-wrapper-light .dashboard-container {
-      grid-template-columns: 1fr !important; /* Une seule colonne sur mobile */
-      gap: 10px 0 !important; /* Gap vertical de 1cm entre contenu et sidebar */
-      margin: 0 !important;
-      width: 100% !important;
-      max-width: none !important;
+      display: block !important;
+      grid-template-columns: unset !important;
+      gap: 0 !important;
     }
     
     .jobs-page-wrapper-light .main-content {

@@ -43,13 +43,14 @@ class CustomUserProvider implements UserProvider
 
         $query = $this->model->newQuery();
 
-        // Gérer 'email' ou 'email_address' comme identifiant
+        // Détecte dynamiquement la colonne email selon le schéma de la base
+        $emailColumn = \Illuminate\Support\Facades\Schema::hasColumn('users', 'email') ? 'email' : 'email_address';
+
         if (isset($credentials['email'])) {
-            // Toujours utiliser 'email_address' car la colonne 'email' n'existe pas
-            $query->where('email_address', $credentials['email']);
+            $query->where($emailColumn, $credentials['email']);
             unset($credentials['email']);
         } elseif (isset($credentials['email_address'])) {
-            $query->where('email_address', $credentials['email_address']);
+            $query->where($emailColumn, $credentials['email_address']);
             unset($credentials['email_address']);
         }
 

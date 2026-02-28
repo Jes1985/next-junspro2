@@ -25,27 +25,15 @@
     <!-- ===== ZONE PRINCIPALE (70%) ===== -->
     <main class="main-content">
       <!-- Bloc Tableau de bord Freelance -->
-      <div class="dashboard-header">
-        <h1>Tableau de bord Freelance</h1>
-        <p class="dashboard-header-subtitle">
-          Un espace clair pour avancer sans relances : vos clients voient l'avancement, vous gardez le rythme.
-        </p>
-        <div class="dashboard-header-ctas">
-          <a href="{{ route('freelance.dashboard', ['tab' => 'services']) }}" class="btn-premium btn-premium-primary">
-            Créer un service
-          </a>
-          <a href="{{ route('freelance.show', ['id' => $freelancerProfile->id ?? 0]) }}" target="_blank" class="btn-premium btn-premium-secondary">
-            Voir mon profil public
-          </a>
-        </div>
-        <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #6b7280;">💡 Plus vos informations sont complètes, plus vous remontez dans les résultats.</p>
-      </div>
+      @include('frontend.freelance.dashboard.partials.dashboard-header-section', [
+        'freelancerProfile' => $freelancerProfile ?? null
+      ])
 
       <!-- Header de page -->
       <div class="page-header">
         <h1>Agenda</h1>
         <p class="page-subtitle">
-          Gérez vos disponibilités et planifiez vos sessions Rituel. Configurez vos créneaux horaires pour permettre aux clients de réserver directement.
+          Gérez vos disponibilités et planifiez vos Rituels. Configurez vos créneaux horaires pour permettre aux clients de réserver directement.
         </p>
       </div>
 
@@ -79,7 +67,7 @@
           </div>
 
           <div class="calendar-grid" data-calendar-grid></div>
-          <div class="calendar-empty" data-empty-state style="display: none;">
+          <div class="calendar-empty" data-empty-state>
             <div class="empty-illustration">✨</div>
             <div class="empty-title">Aucun créneau cette semaine</div>
             <div class="empty-sub">Ajoutez vos premières disponibilités pour être réservable immédiatement.</div>
@@ -90,7 +78,7 @@
 
           <!-- CTA Ajouter disponibilités -->
           <div class="calendar-cta">
-            <button class="btn-primary" type="button" data-scroll-to-availability>
+            <button class="btn-primary" type="button" data-open-modal>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v14M5 12h14"/>
               </svg>
@@ -106,8 +94,8 @@
             <div>
               <h2 class="visio-title">Visio</h2>
               <p class="visio-description">
-                Activez la visio quand vous en avez besoin : coaching, formation, appel projet. 
-                Configurez une salle de visioconférence pour vos sessions Rituel.
+                Activez la visio quand vous en avez besoin : coaching, formation, appel Rituel. 
+                Configurez une salle de visioconférence pour vos Rituels.
               </p>
             </div>
           </div>
@@ -196,91 +184,9 @@
       </div>
     </main>
 
-    <!-- ===== SIDEBAR (30%) - LIGHT ===== -->
-    <aside class="sidebar">
-      <!-- Navigation -->
-      <div class="nav-section">
-        <h4 class="nav-title">Navigation</h4>
-        <div class="nav-list">
-          <a href="{{ route('freelance.dashboard', ['tab' => 'overview']) }}" class="nav-item {{ $currentActiveTab === 'overview' ? 'active' : '' }}">
-            <span class="nav-icon">📈</span>
-            <span>Aperçu</span>
-          </a>
-          <a href="{{ route('freelance.dashboard', ['tab' => 'requests']) }}" class="nav-item {{ $currentActiveTab === 'requests' ? 'active' : '' }}">
-            <span class="nav-icon">📥</span>
-            <span>Demandes</span>
-          </a>
-          <a href="{{ route('freelance.dashboard', ['tab' => 'jobs']) }}" class="nav-item {{ $currentActiveTab === 'jobs' ? 'active' : '' }}">
-            <span class="nav-icon">⚙️</span>
-            <span>Prestations</span>
-          </a>
-          <a href="{{ route('freelance.dashboard', ['tab' => 'calendar']) }}" class="nav-item {{ $currentActiveTab === 'calendar' ? 'active' : '' }}">
-            <span class="nav-icon">📅</span>
-            <span>Agenda</span>
-          </a>
-          <a href="{{ route('freelance.dashboard', ['tab' => 'messages']) }}" class="nav-item {{ $currentActiveTab === 'messages' ? 'active' : '' }}">
-            <span class="nav-icon">✉️</span>
-            <span>Messages</span>
-          </a>
-          <a href="{{ route('freelance.dashboard', ['tab' => 'earnings']) }}" class="nav-item {{ $currentActiveTab === 'earnings' ? 'active' : '' }}">
-            <span class="nav-icon">💳</span>
-            <span>Revenus</span>
-          </a>
-        </div>
-      </div>
+    {{-- Sidebar navigation supprimée : le contenu utilise toute la largeur --}}
 
-      <!-- Statistiques -->
-      <div class="stats-section">
-        <h4 class="stats-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-          </svg>
-          Vos indicateurs
-        </h4>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <span class="stat-label">Créneaux ouverts</span>
-            <span class="stat-value">4</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Réservations à venir</span>
-            <span class="stat-value">0</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Taux d'occupation</span>
-            <span class="stat-value">0%</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Prochaine dispo</span>
-            <span class="stat-value highlight">Lun 09:00</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- Conseils -->
-      <div class="tips-section">
-        <div class="tip-header">
-          <span class="tip-icon">💡</span>
-          <h4 class="tip-title">Conseil stratégique</h4>
-        </div>
-        <p class="tip-content">
-          Un agenda bien configuré avec des créneaux réguliers augmente votre visibilité et facilite 
-          la réservation pour vos clients. Planifiez vos disponibilités à l'avance.
-        </p>
-      </div>
-
-      <!-- Citation -->
-      <div class="tips-section" style="margin-top: 1.5rem;">
-        <div class="tip-header">
-          <span class="tip-icon">🚀</span>
-          <h4 class="tip-title">Boost de visibilité</h4>
-        </div>
-        <p class="tip-content">
-          Les freelances avec un agenda optimisé reçoivent en moyenne
-          <strong>2× plus de réservations</strong> dans leur premier mois.
-        </p>
-      </div>
-    </aside>
   </div>
 </div>
 
@@ -406,8 +312,8 @@
   }
   
   .calendar-page-wrapper-light .dashboard-container {
-    display: grid !important;
-    grid-template-columns: 70% 30% !important; /* Layout premium 70/30 */
+    display: block !important;
+    grid-template-columns: unset !important;
     min-height: auto;
     max-width: none !important;
     width: 100% !important;
@@ -416,28 +322,97 @@
     background: transparent;
     box-shadow: none;
     box-sizing: border-box;
-    gap: 0 10px !important; /* Espacement de 1cm (10px) entre les zones 70% et 30% */
-    align-items: start !important;
+    gap: 0 !important;
     overflow-x: visible !important;
   }
   
-  /* ===== ZONE PRINCIPALE (70%) - GAUCHE - PREMIUM ===== */
+  /* ===== ZONE PRINCIPALE (100%) - PLEINE LARGEUR ===== */
   .calendar-page-wrapper-light .main-content {
-    padding: 4rem 10px !important; /* Padding vertical + 1cm (10px) de chaque côté */
+    padding: 2rem 0 !important;
     border-right: none !important;
     min-height: auto;
     background: transparent;
     box-sizing: border-box;
     overflow-x: visible !important;
     position: relative;
-    max-width: none !important;
+    max-width: 100% !important;
     width: 100% !important;
     min-width: 0 !important;
-    grid-column: 1 !important;
     display: flex;
     flex-direction: column;
   }
   
+  /* ===== HERO HEADER - IDENTIQUE À OVERVIEW ===== */
+  .calendar-page-wrapper-light .dashboard-overview-hero {
+    position: relative !important; margin: 0 !important; margin-bottom: 3rem !important;
+    padding: 0 !important; border: none !important; background: transparent !important;
+    width: 100% !important; max-width: 100% !important; overflow: visible !important;
+  }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-glow {
+    position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(30, 64, 175, 0.1) 35%, transparent 80%);
+    border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-content {
+    position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center; padding: 3rem 0; width: 100%; box-sizing: border-box;
+  }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-text { display: flex; flex-direction: column; gap: 1.5rem; padding: 0; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-title {
+    font-size: 2.5rem; font-weight: 800; line-height: 1.2; color: #111827; margin: 0; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-subtitle { font-size: 1.125rem; line-height: 1.6; color: #6b7280; margin: 0; font-weight: 400; max-width: 550px; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .btn-hero {
+    padding: 1rem 1.75rem; font-size: 1rem; font-weight: 600; border-radius: 14px; border: none;
+    cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-family: inherit;
+  }
+  .calendar-page-wrapper-light .dashboard-overview-hero .btn-hero-primary { background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); color: white; box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25); }
+  .calendar-page-wrapper-light .dashboard-overview-hero .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(124, 58, 237, 0.35); color: white; text-decoration: none; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary { background: white; color: #1e40af; border: 2px solid #1e40af; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1); }
+  .calendar-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary:hover { background: #f0f4ff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30, 64, 175, 0.15); color: #1e40af; text-decoration: none; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .btn-text { display: inline; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .btn-icon { font-size: 1.2rem; display: inline-block; transition: transform 0.3s ease; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .btn-hero:hover .btn-icon { transform: translateX(3px); }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-hint { font-size: 0.9rem; color: #6b7280; margin: 0; margin-top: 0.5rem; font-weight: 500; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-visual { display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-visual-card {
+    position: relative; width: 100%; max-width: 350px; padding: 3rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0;
+    border-radius: 24px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.08); overflow: hidden;
+  }
+  .calendar-page-wrapper-light .dashboard-overview-hero .hero-visual-card::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+    border-radius: 50%; transform: translate(100px, -100px);
+  }
+  .calendar-page-wrapper-light .dashboard-overview-hero .visual-badge {
+    display: inline-block; padding: 0.5rem 1rem; background: linear-gradient(135deg, #ddd6fe 0%, #e9d5ff 100%);
+    color: #6d28d9; font-size: 0.85rem; font-weight: 600; border-radius: 20px; margin-bottom: 1.5rem; position: relative; z-index: 1;
+  }
+  .calendar-page-wrapper-light .dashboard-overview-hero .visual-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; position: relative; z-index: 1; }
+  .calendar-page-wrapper-light .dashboard-overview-hero .visual-text { font-size: 1.25rem; font-weight: 700; color: #111827; line-height: 1.5; margin: 0; position: relative; z-index: 1; }
+  @media (max-width: 1024px) {
+    .calendar-page-wrapper-light .dashboard-overview-hero .hero-content { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 0; }
+    .calendar-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 2rem; }
+    .calendar-page-wrapper-light .dashboard-overview-hero .hero-visual-card { max-width: 280px; }
+  }
+  @media (max-width: 768px) {
+    .calendar-page-wrapper-light .dashboard-overview-hero .hero-content { padding: 2rem 0; }
+    .calendar-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 1.75rem; }
+    .calendar-page-wrapper-light .dashboard-overview-hero .hero-ctas { flex-direction: column; }
+    .calendar-page-wrapper-light .dashboard-overview-hero .btn-hero { width: 100%; justify-content: center; }
+    .calendar-page-wrapper-light .dashboard-overview-hero .hero-visual-card { max-width: 250px; padding: 2rem 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .calendar-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 1.5rem; }
+    .calendar-page-wrapper-light .dashboard-overview-hero .btn-hero { padding: 0.875rem 1.5rem; font-size: 0.95rem; }
+    .calendar-page-wrapper-light .dashboard-overview-hero .visual-icon { font-size: 2.5rem; }
+  }
+
   /* ===== HEADER PREMIUM - CENTRÉ ===== */
   .calendar-page-wrapper-light .page-header {
     margin-bottom: 4rem;
@@ -451,27 +426,28 @@
     padding-right: 0 !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 2.5px solid rgba(59, 130, 246, 0.2);
     text-align: center !important; /* Centrage du contenu */
   }
   
   .calendar-page-wrapper-light .page-header::after {
     content: '';
     position: absolute;
-    bottom: -1px;
+    bottom: -2.5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 50%, #8B5CF6 100%);
     border-radius: 2px;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
   }
   
   .calendar-page-wrapper-light .page-header h1 {
     font-size: 3rem !important; /* 48px desktop - MÊME TAILLE QUE PRESTATIONS */
-    font-weight: 800;
+    font-weight: 900;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    background: linear-gradient(135deg, #1e40af 0%, #3B82F6 50%, #8B5CF6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -489,7 +465,7 @@
     max-width: 100%;
     width: 100%;
     line-height: 1.75;
-    font-weight: 400;
+    font-weight: 500;
     word-wrap: break-word;
     margin-top: 0.5rem;
     text-align: center !important; /* Centrage du sous-texte */
@@ -508,16 +484,23 @@
     box-sizing: border-box;
   }
   
-  /* ===== SECTION DISPONIBILITÉS ===== */
+  /* ===== SECTION DISPONIBILITÉS ULTRA PREMIUM ===== */
   .calendar-page-wrapper-light .availability-section {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(139, 92, 246, 0.01) 100%);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #f8fafc 100%);
+    border: 2.5px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 32px;
+    padding: 2.5rem;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 100% !important;
     box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .calendar-page-wrapper-light .availability-section:hover {
+    box-shadow: 0 40px 100px rgba(59, 130, 246, 0.3), 0 16px 48px rgba(59, 130, 246, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(59, 130, 246, 0.4);
   }
   
   .calendar-page-wrapper-light .section-header {
@@ -531,38 +514,42 @@
   
   .calendar-page-wrapper-light .section-title {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 900;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
   }
   
   .calendar-page-wrapper-light .section-description {
     color: var(--text-secondary);
     margin-bottom: 0;
     line-height: 1.6;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-weight: 500;
   }
   
   /* ===== BOUTONS ===== */
   .calendar-page-wrapper-light .btn-primary {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-md);
-    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 32px;
+    font-weight: 700;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
-    font-size: 0.95rem;
+    gap: 0.75rem;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size: 1rem;
     text-decoration: none;
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
+    letter-spacing: -0.02em;
   }
   
   .calendar-page-wrapper-light .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 20px 48px rgba(59, 130, 246, 0.4);
   }
   
   .calendar-page-wrapper-light .btn-secondary {
@@ -681,8 +668,9 @@
     gap: 0.5rem;
     box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
     min-height: 180px;
+    max-height: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .calendar-page-wrapper-light .calendar-day.today {
@@ -723,6 +711,28 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 0.35rem;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 0.25rem;
+  }
+
+  .calendar-page-wrapper-light .slots-stack::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .calendar-page-wrapper-light .slots-stack::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .calendar-page-wrapper-light .slots-stack::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 3px;
+  }
+
+  .calendar-page-wrapper-light .slots-stack::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.5);
   }
 
   .calendar-page-wrapper-light .slot-pill {
@@ -730,42 +740,60 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.6rem 0.75rem;
+    padding: 0.65rem 0.8rem;
     border-radius: var(--radius-md);
-    border: 1px solid var(--border);
+    border: 1.5px solid var(--border);
     background: var(--bg-secondary);
     cursor: pointer;
     transition: all 0.2s ease;
+    flex-shrink: 0;
+    min-height: 40px;
   }
 
   .calendar-page-wrapper-light .slot-pill:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.15);
     border-color: var(--primary-light);
+    background: rgba(255, 255, 255, 0.8);
   }
 
   .calendar-page-wrapper-light .slot-pill .slot-time {
     font-weight: 700;
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    flex: 0 0 auto;
   }
 
   .calendar-page-wrapper-light .slot-pill .slot-meta {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--text-tertiary);
-    font-weight: 500;
+    font-weight: 600;
+    text-align: right;
+    flex: 0 0 auto;
   }
 
   .calendar-page-wrapper-light .slot-pill.status-available {
-    border-color: rgba(16, 185, 129, 0.25);
-    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.12);
     color: #047857;
   }
 
+  .calendar-page-wrapper-light .slot-pill.status-available:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    background: rgba(16, 185, 129, 0.18);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.2);
+  }
+
   .calendar-page-wrapper-light .slot-pill.status-unavailable {
-    border-color: rgba(148, 163, 184, 0.4);
-    background: rgba(148, 163, 184, 0.1);
+    border-color: rgba(148, 163, 184, 0.5);
+    background: rgba(148, 163, 184, 0.12);
     color: #475569;
+  }
+
+  .calendar-page-wrapper-light .slot-pill.status-unavailable:hover {
+    border-color: rgba(148, 163, 184, 0.7);
+    background: rgba(148, 163, 184, 0.18);
+    box-shadow: 0 8px 16px rgba(148, 163, 184, 0.2);
   }
 
   .calendar-page-wrapper-light .slot-empty {
@@ -1187,31 +1215,53 @@
     margin-bottom: 1.5rem;
   }
   
+  /* ===== SECTION VISIO ULTRA PREMIUM ===== */
+  .calendar-page-wrapper-light .visio-section {
+    background: linear-gradient(135deg, #ffffff 0%, #fef3f2 50%, #f8fafc 100%);
+    border: 2.5px solid rgba(30, 64, 175, 0.25);
+    box-shadow: 0 32px 80px rgba(30, 64, 175, 0.2), 0 12px 32px rgba(30, 64, 175, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 32px;
+    padding: 2.5rem;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .calendar-page-wrapper-light .visio-section:hover {
+    box-shadow: 0 40px 100px rgba(30, 64, 175, 0.3), 0 16px 48px rgba(30, 64, 175, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(30, 64, 175, 0.4);
+  }
+  
   .calendar-page-wrapper-light .visio-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
-    border-radius: var(--radius-md);
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.15) 0%, rgba(30, 64, 175, 0.08) 100%);
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary);
-    font-size: 1.25rem;
+    color: #1e40af;
+    font-size: 2rem;
     flex-shrink: 0;
+    box-shadow: 0 12px 32px rgba(30, 64, 175, 0.2);
   }
   
   .calendar-page-wrapper-light .visio-title {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.35rem;
+    font-weight: 900;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
   }
   
   .calendar-page-wrapper-light .visio-description {
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.8;
     margin-bottom: 0;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-weight: 500;
   }
   
   /* ===== SIDEBAR (30%) - DROITE - PREMIUM CARD AVEC SCROLL ===== */
@@ -1434,12 +1484,13 @@
     }
     
     .calendar-page-wrapper-light .dashboard-container {
-      grid-template-columns: 70% 30% !important;
-      gap: 0 10px !important;
+      display: block !important;
+      grid-template-columns: unset !important;
+      gap: 0 !important;
     }
     
     .calendar-page-wrapper-light .main-content {
-      padding: 3rem 10px !important;
+      padding: 2rem 10px !important;
     }
     
     .calendar-page-wrapper-light .sidebar {
@@ -1550,6 +1601,7 @@
   const weekSubEl = root.querySelector('[data-week-sub]');
   const timezoneChip = root.querySelector('[data-week-timezone]');
   const emptyState = root.querySelector('[data-empty-state]');
+  const ctaSection = root.querySelector('.calendar-cta');
   const loader = root.querySelector('[data-calendar-loader]');
   const modal = root.querySelector('[data-calendar-modal]');
   const tzModal = root.querySelector('[data-tz-modal]');
@@ -1792,10 +1844,6 @@
     }
 
     if (weekSubEl) weekSubEl.textContent = `${total} créneau${total > 1 ? 'x' : ''}`;
-
-    if (emptyState) {
-      emptyState.style.display = total === 0 ? 'block' : 'none';
-    }
   }
 
   function openModal(mode, slot) {
@@ -1806,15 +1854,29 @@
     const defaultDate = slot?.date || formatDateKey(new Date());
     dateField.value = defaultDate;
     if (datePicker) datePicker.setDate(defaultDate, false, 'Y-m-d');
-    startField.value = slot?.start_time || '23:00';
-    endField.value = slot?.end_time || '00:00';
-    if (startTimePicker) startTimePicker.setDate(startField.value, false, 'H:i');
-    if (endTimePicker) endTimePicker.setDate(endField.value, false, 'H:i');
+    
+    // Remplir les champs heure correctement
+    const startTime = slot?.start_time || '09:00';
+    const endTime = slot?.end_time || '10:00';
+    
+    // Mettre à jour les champs directement et via flatpickr
+    setTimeout(() => {
+      if (startTimePicker) {
+        startTimePicker.setDate(startTime, false, 'H:i');
+        startField.value = startTime;
+      }
+      if (endTimePicker) {
+        endTimePicker.setDate(endTime, false, 'H:i');
+        endField.value = endTime;
+      }
+    }, 100);
+    
     statusField.value = slot?.status || 'available';
     slotIdField.value = slot?.id || '';
 
-    console.log('📋 Modal opened with mode:', mode, 'slot:', slot);
-    console.log('📋 Form initialized - statusField.value:', statusField.value);
+    console.log('📋 Modal opened - Mode:', mode);
+    console.log('📋 Slot data:', slot);
+    console.log('📋 Setting times - start:', startTime, 'end:', endTime);
 
     submitLabel.textContent = mode === 'edit' ? 'Mettre à jour' : 'Enregistrer';
     deleteBtn.style.display = mode === 'edit' ? 'inline-flex' : 'none';
@@ -1912,16 +1974,6 @@
   function bindEvents() {
     const openButtons = root.querySelectorAll('[data-open-modal]');
     openButtons.forEach(btn => btn.addEventListener('click', () => openModal('create')));
-
-    const scrollBtn = document.querySelector('[data-scroll-to-availability]');
-    if (scrollBtn) {
-      scrollBtn.addEventListener('click', () => {
-        const availSection = document.querySelector('.availability-section');
-        if (availSection) {
-          availSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    }
 
     const closeButtons = root.querySelectorAll('[data-close-modal]');
     closeButtons.forEach(btn => btn.addEventListener('click', closeModal));

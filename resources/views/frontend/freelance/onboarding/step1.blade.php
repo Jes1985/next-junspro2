@@ -1058,6 +1058,64 @@
         justify-content: center;
       }
     }
+
+    /* Bloc photo de profil */
+    .profile-photo-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .profile-photo-preview {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e5e7eb;
+      flex-shrink: 0;
+    }
+
+    .profile-photo-actions {
+      flex: 1;
+    }
+
+    .profile-photo-actions h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin: 0 0 1rem 0;
+    }
+
+    .btn-upload-photo {
+      padding: 0.75rem 1.5rem;
+      background: white;
+      border: 2px solid var(--junspro-purple);
+      color: var(--junspro-purple);
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-upload-photo:hover {
+      background: var(--junspro-purple);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    }
+
+    .profile-photo-help {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
   </style>
 @endsection
 
@@ -1135,6 +1193,28 @@
           </div>
         @endif
 
+        <!-- Bloc photo de profil -->
+        <div class="profile-photo-section">
+          @if($data['avatar'] ?? null)
+            <img src="{{ asset('storage/' . $data['avatar']) }}" alt="{{ __('Photo de profil') }}" class="profile-photo-preview" id="profile-photo-preview">
+          @else
+            <div class="profile-photo-preview" id="profile-photo-preview" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--junspro-purple) 0%, var(--junspro-blue) 100%); color: white; font-size: 2.5rem; font-weight: 700;">
+              {{ strtoupper(substr($data['first_name'] ?? 'U', 0, 1) . substr($data['last_name'] ?? 'S', 0, 1)) }}
+            </div>
+          @endif
+          <div class="profile-photo-actions">
+            <h3>{{ __('Photo de profil') }}</h3>
+            <label for="profile-photo-input" class="btn-upload-photo">
+              <i class="fas fa-upload"></i> {{ __('Importer une photo') }}
+            </label>
+            <input type="file" id="profile-photo-input" name="avatar" accept="image/jpeg,image/png,image/jpg" style="display: none;">
+            <div class="profile-photo-help">
+              {{ __('Taille maximale : 2 Mo') }}<br>
+              {{ __('Format JPG ou PNG') }}
+            </div>
+          </div>
+        </div>
+
         <form action="{{ route('freelance.onboarding.step1.store') }}" method="POST" class="onboarding-form" enctype="multipart/form-data">
           @csrf
 
@@ -1166,6 +1246,196 @@
               required
             >
             @error('last_name')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+          </div>
+
+          <!-- Numéro de téléphone (optionnel) -->
+          <div class="form-group">
+            <label for="phone" class="form-label">Numéro de téléphone (optionnel)</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <select 
+                id="phone_country_code" 
+                name="phone_country_code" 
+                class="form-select"
+                style="flex: 0 0 120px;"
+              >
+                <option value="+33" {{ old('phone_country_code', $data['phone_country_code'] ?? '+33') === '+33' ? 'selected' : '' }}>🇫🇷 +33</option>
+                <option value="+1" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+1' ? 'selected' : '' }}>🇺🇸 +1</option>
+                <option value="+44" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+44' ? 'selected' : '' }}>🇬🇧 +44</option>
+                <option value="+32" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+32' ? 'selected' : '' }}>🇧🇪 +32</option>
+                <option value="+41" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+41' ? 'selected' : '' }}>🇨🇭 +41</option>
+                <option value="+34" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+34' ? 'selected' : '' }}>🇪🇸 +34</option>
+                <option value="+39" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+39' ? 'selected' : '' }}>🇮🇹 +39</option>
+                <option value="+49" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+49' ? 'selected' : '' }}>🇩🇪 +49</option>
+                <option value="+351" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+351' ? 'selected' : '' }}>🇵🇹 +351</option>
+                <option value="+31" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+31' ? 'selected' : '' }}>🇳🇱 +31</option>
+                <option value="+212" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+212' ? 'selected' : '' }}>🇲🇦 +212</option>
+                <option value="+213" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+213' ? 'selected' : '' }}>🇩🇿 +213</option>
+                <option value="+216" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+216' ? 'selected' : '' }}>🇹🇳 +216</option>
+                <option value="+225" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+225' ? 'selected' : '' }}>🇨🇮 +225</option>
+                <option value="+221" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+221' ? 'selected' : '' }}>🇸🇳 +221</option>
+              </select>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                class="form-input @error('phone') form-input-error @enderror"
+                value="{{ old('phone', $data['phone'] ?? '') }}"
+                placeholder="6 12 34 56 78"
+                style="flex: 1;"
+              >
+            </div>
+            @error('phone')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+          </div>
+
+          <!-- Langues parlées -->
+          <div class="form-group">
+            <label class="form-label">Langues parlées</label>
+            @php
+              $languageCatalog = [
+                'fr' => 'Français',
+                'en' => 'Anglais',
+                'es' => 'Espagnol',
+                'de' => 'Allemand',
+                'it' => 'Italien',
+                'pt' => 'Portugais',
+                'nl' => 'Néerlandais',
+                'ru' => 'Russe',
+                'zh' => 'Chinois',
+                'ar' => 'Arabe',
+                'ja' => 'Japonais',
+                'pl' => 'Polonais',
+                'el' => 'Grec',
+                'tr' => 'Turc',
+                'sv' => 'Suédois',
+                'ko' => 'Coréen',
+                'hi' => 'Hindi',
+              ];
+              $cecrlLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+              $legacyToCecrl = [
+                'native' => 'C2',
+                'fluent' => 'C1',
+                'intermediate' => 'B1',
+                'beginner' => 'A2',
+              ];
+
+              $rawLanguages = old('languages', $data['languages'] ?? []);
+              $motherLanguageCode = old('mother_language');
+              $otherLanguagesFromOld = old('other_languages');
+              $normalizedOthers = [];
+              $seenOtherCodes = [];
+
+              if (is_string($otherLanguagesFromOld) && $otherLanguagesFromOld !== '') {
+                $decodedOther = json_decode($otherLanguagesFromOld, true);
+                if (json_last_error() === JSON_ERROR_NONE && is_array($decodedOther)) {
+                  $otherLanguagesFromOld = $decodedOther;
+                }
+              }
+
+              if (empty($rawLanguages) || !is_array($rawLanguages)) {
+                $rawLanguages = [];
+              }
+
+              foreach ($rawLanguages as $idx => $entry) {
+                $languageValue = is_array($entry) ? ($entry['code'] ?? ($entry['language'] ?? ($entry['name'] ?? ''))) : $entry;
+                $code = null;
+                if (is_string($languageValue) && isset($languageCatalog[$languageValue])) {
+                  $code = $languageValue;
+                } elseif (is_string($languageValue)) {
+                  $foundCode = array_search($languageValue, $languageCatalog, true);
+                  $code = $foundCode !== false ? $foundCode : null;
+                }
+                if (!$code) {
+                  continue;
+                }
+
+                $rawLevel = is_array($entry) ? ($entry['level'] ?? ($entry['proficiency'] ?? null)) : null;
+                $level = is_string($rawLevel) && isset($legacyToCecrl[$rawLevel]) ? $legacyToCecrl[$rawLevel] : $rawLevel;
+                if (!in_array($level, $cecrlLevels, true)) {
+                  $level = 'B1';
+                }
+
+                $role = is_array($entry) ? ($entry['role'] ?? null) : null;
+                if (!$motherLanguageCode && ($role === 'mother' || $rawLevel === 'native' || $idx === 0)) {
+                  $motherLanguageCode = $code;
+                  continue;
+                }
+
+                if (!isset($seenOtherCodes[$code])) {
+                  $seenOtherCodes[$code] = true;
+                  $normalizedOthers[] = ['language' => $code, 'level' => $level];
+                }
+              }
+
+              if (is_array($otherLanguagesFromOld)) {
+                foreach ($otherLanguagesFromOld as $otherItem) {
+                  $otherCodeValue = is_array($otherItem) ? ($otherItem['language'] ?? null) : null;
+                  if (!is_string($otherCodeValue) || !isset($languageCatalog[$otherCodeValue])) {
+                    continue;
+                  }
+                  $otherLevelValue = is_array($otherItem) ? ($otherItem['level'] ?? 'B1') : 'B1';
+                  if (!in_array($otherLevelValue, $cecrlLevels, true)) {
+                    $otherLevelValue = 'B1';
+                  }
+                  if (!isset($seenOtherCodes[$otherCodeValue])) {
+                    $seenOtherCodes[$otherCodeValue] = true;
+                    $normalizedOthers[] = ['language' => $otherCodeValue, 'level' => $otherLevelValue];
+                  }
+                }
+              }
+
+              if (!$motherLanguageCode || !isset($languageCatalog[$motherLanguageCode])) {
+                $motherLanguageCode = 'fr';
+              }
+
+              $normalizedOthers = array_values(array_filter($normalizedOthers, fn ($item) => ($item['language'] ?? null) !== $motherLanguageCode));
+              @endphp
+
+            <div
+              class="onboarding-languages-premium"
+              id="onboardingLanguagesPremium"
+              data-mother-initial="{{ $motherLanguageCode }}"
+              data-other-initial='@json($normalizedOthers)'
+            >
+              <div class="onboarding-language-row">
+                <div class="onboarding-language-card">
+                  <div class="onboarding-language-card-title">Ma langue maternelle</div>
+                  <select id="onboardingMotherLanguage" class="form-select">
+                    @foreach($languageCatalog as $langCode => $langLabel)
+                      <option value="{{ $langCode }}" {{ $motherLanguageCode === $langCode ? 'selected' : '' }}>{{ $langLabel }}</option>
+                    @endforeach
+                  </select>
+                  <p class="onboarding-language-helper">Langue principale pour votre profil.</p>
+                </div>
+
+                <div class="onboarding-language-card" style="position: relative;">
+                  <div class="onboarding-language-card-title">Autres langues parlées</div>
+                  <div class="onboarding-language-chips" id="onboardingLanguageChips"></div>
+                  <button type="button" class="onboarding-add-language-btn" id="onboardingAddLanguageBtn">+ Ajouter</button>
+
+                  <div class="onboarding-language-popover" id="onboardingLanguagePopover">
+                    <div class="onboarding-language-table">
+                      <div class="onboarding-language-table-head">
+                        <span>Langue</span>
+                        <span>Niveau CECRL</span>
+            </div>
+                      <div id="onboardingLanguageTableRows"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <input type="hidden" name="mother_language" id="onboardingMotherLanguageInput" value="{{ $motherLanguageCode }}">
+              <input type="hidden" name="other_languages" id="onboardingOtherLanguagesInput" value='@json($normalizedOthers)'>
+              <div id="onboardingLanguagesHiddenInputs"></div>
+            </div>
+            @error('languages')
+              <span class="form-error">{{ $message }}</span>
+            @enderror
+            @error('mother_language')
               <span class="form-error">{{ $message }}</span>
             @enderror
           </div>
@@ -1457,196 +1727,6 @@
               @endforeach
             </div>
             </div>
-          </div>
-
-          <!-- Numéro de téléphone (optionnel) -->
-          <div class="form-group">
-            <label for="phone" class="form-label">Numéro de téléphone (optionnel)</label>
-            <div style="display: flex; gap: 0.5rem;">
-              <select 
-                id="phone_country_code" 
-                name="phone_country_code" 
-                class="form-select"
-                style="flex: 0 0 120px;"
-              >
-                <option value="+33" {{ old('phone_country_code', $data['phone_country_code'] ?? '+33') === '+33' ? 'selected' : '' }}>🇫🇷 +33</option>
-                <option value="+1" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+1' ? 'selected' : '' }}>🇺🇸 +1</option>
-                <option value="+44" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+44' ? 'selected' : '' }}>🇬🇧 +44</option>
-                <option value="+32" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+32' ? 'selected' : '' }}>🇧🇪 +32</option>
-                <option value="+41" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+41' ? 'selected' : '' }}>🇨🇭 +41</option>
-                <option value="+34" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+34' ? 'selected' : '' }}>🇪🇸 +34</option>
-                <option value="+39" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+39' ? 'selected' : '' }}>🇮🇹 +39</option>
-                <option value="+49" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+49' ? 'selected' : '' }}>🇩🇪 +49</option>
-                <option value="+351" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+351' ? 'selected' : '' }}>🇵🇹 +351</option>
-                <option value="+31" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+31' ? 'selected' : '' }}>🇳🇱 +31</option>
-                <option value="+212" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+212' ? 'selected' : '' }}>🇲🇦 +212</option>
-                <option value="+213" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+213' ? 'selected' : '' }}>🇩🇿 +213</option>
-                <option value="+216" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+216' ? 'selected' : '' }}>🇹🇳 +216</option>
-                <option value="+225" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+225' ? 'selected' : '' }}>🇨🇮 +225</option>
-                <option value="+221" {{ old('phone_country_code', $data['phone_country_code'] ?? '') === '+221' ? 'selected' : '' }}>🇸🇳 +221</option>
-              </select>
-              <input 
-                type="tel" 
-                id="phone" 
-                name="phone" 
-                class="form-input @error('phone') form-input-error @enderror"
-                value="{{ old('phone', $data['phone'] ?? '') }}"
-                placeholder="6 12 34 56 78"
-                style="flex: 1;"
-              >
-            </div>
-            @error('phone')
-              <span class="form-error">{{ $message }}</span>
-            @enderror
-          </div>
-
-          <!-- Langues parlées -->
-          <div class="form-group">
-            <label class="form-label">Langues parlées</label>
-            @php
-              $languageCatalog = [
-                'fr' => 'Français',
-                'en' => 'Anglais',
-                'es' => 'Espagnol',
-                'de' => 'Allemand',
-                'it' => 'Italien',
-                'pt' => 'Portugais',
-                'nl' => 'Néerlandais',
-                'ru' => 'Russe',
-                'zh' => 'Chinois',
-                'ar' => 'Arabe',
-                'ja' => 'Japonais',
-                'pl' => 'Polonais',
-                'el' => 'Grec',
-                'tr' => 'Turc',
-                'sv' => 'Suédois',
-                'ko' => 'Coréen',
-                'hi' => 'Hindi',
-              ];
-              $cecrlLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-              $legacyToCecrl = [
-                'native' => 'C2',
-                'fluent' => 'C1',
-                'intermediate' => 'B1',
-                'beginner' => 'A2',
-              ];
-
-              $rawLanguages = old('languages', $data['languages'] ?? []);
-              $motherLanguageCode = old('mother_language');
-              $otherLanguagesFromOld = old('other_languages');
-              $normalizedOthers = [];
-              $seenOtherCodes = [];
-
-              if (is_string($otherLanguagesFromOld) && $otherLanguagesFromOld !== '') {
-                $decodedOther = json_decode($otherLanguagesFromOld, true);
-                if (json_last_error() === JSON_ERROR_NONE && is_array($decodedOther)) {
-                  $otherLanguagesFromOld = $decodedOther;
-                }
-              }
-
-              if (empty($rawLanguages) || !is_array($rawLanguages)) {
-                $rawLanguages = [];
-              }
-
-              foreach ($rawLanguages as $idx => $entry) {
-                $languageValue = is_array($entry) ? ($entry['code'] ?? ($entry['language'] ?? ($entry['name'] ?? ''))) : $entry;
-                $code = null;
-                if (is_string($languageValue) && isset($languageCatalog[$languageValue])) {
-                  $code = $languageValue;
-                } elseif (is_string($languageValue)) {
-                  $foundCode = array_search($languageValue, $languageCatalog, true);
-                  $code = $foundCode !== false ? $foundCode : null;
-                }
-                if (!$code) {
-                  continue;
-                }
-
-                $rawLevel = is_array($entry) ? ($entry['level'] ?? ($entry['proficiency'] ?? null)) : null;
-                $level = is_string($rawLevel) && isset($legacyToCecrl[$rawLevel]) ? $legacyToCecrl[$rawLevel] : $rawLevel;
-                if (!in_array($level, $cecrlLevels, true)) {
-                  $level = 'B1';
-                }
-
-                $role = is_array($entry) ? ($entry['role'] ?? null) : null;
-                if (!$motherLanguageCode && ($role === 'mother' || $rawLevel === 'native' || $idx === 0)) {
-                  $motherLanguageCode = $code;
-                  continue;
-                }
-
-                if (!isset($seenOtherCodes[$code])) {
-                  $seenOtherCodes[$code] = true;
-                  $normalizedOthers[] = ['language' => $code, 'level' => $level];
-                }
-              }
-
-              if (is_array($otherLanguagesFromOld)) {
-                foreach ($otherLanguagesFromOld as $otherItem) {
-                  $otherCodeValue = is_array($otherItem) ? ($otherItem['language'] ?? null) : null;
-                  if (!is_string($otherCodeValue) || !isset($languageCatalog[$otherCodeValue])) {
-                    continue;
-                  }
-                  $otherLevelValue = is_array($otherItem) ? ($otherItem['level'] ?? 'B1') : 'B1';
-                  if (!in_array($otherLevelValue, $cecrlLevels, true)) {
-                    $otherLevelValue = 'B1';
-                  }
-                  if (!isset($seenOtherCodes[$otherCodeValue])) {
-                    $seenOtherCodes[$otherCodeValue] = true;
-                    $normalizedOthers[] = ['language' => $otherCodeValue, 'level' => $otherLevelValue];
-                  }
-                }
-              }
-
-              if (!$motherLanguageCode || !isset($languageCatalog[$motherLanguageCode])) {
-                $motherLanguageCode = 'fr';
-              }
-
-              $normalizedOthers = array_values(array_filter($normalizedOthers, fn ($item) => ($item['language'] ?? null) !== $motherLanguageCode));
-              @endphp
-
-            <div
-              class="onboarding-languages-premium"
-              id="onboardingLanguagesPremium"
-              data-mother-initial="{{ $motherLanguageCode }}"
-              data-other-initial='@json($normalizedOthers)'
-            >
-              <div class="onboarding-language-row">
-                <div class="onboarding-language-card">
-                  <div class="onboarding-language-card-title">Ma langue maternelle</div>
-                  <select id="onboardingMotherLanguage" class="form-select">
-                    @foreach($languageCatalog as $langCode => $langLabel)
-                      <option value="{{ $langCode }}" {{ $motherLanguageCode === $langCode ? 'selected' : '' }}>{{ $langLabel }}</option>
-                    @endforeach
-                  </select>
-                  <p class="onboarding-language-helper">Langue principale pour votre profil.</p>
-                </div>
-
-                <div class="onboarding-language-card" style="position: relative;">
-                  <div class="onboarding-language-card-title">Autres langues parlées</div>
-                  <div class="onboarding-language-chips" id="onboardingLanguageChips"></div>
-                  <button type="button" class="onboarding-add-language-btn" id="onboardingAddLanguageBtn">+ Ajouter</button>
-
-                  <div class="onboarding-language-popover" id="onboardingLanguagePopover">
-                    <div class="onboarding-language-table">
-                      <div class="onboarding-language-table-head">
-                        <span>Langue</span>
-                        <span>Niveau CECRL</span>
-            </div>
-                      <div id="onboardingLanguageTableRows"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <input type="hidden" name="mother_language" id="onboardingMotherLanguageInput" value="{{ $motherLanguageCode }}">
-              <input type="hidden" name="other_languages" id="onboardingOtherLanguagesInput" value='@json($normalizedOthers)'>
-              <div id="onboardingLanguagesHiddenInputs"></div>
-            </div>
-            @error('languages')
-              <span class="form-error">{{ $message }}</span>
-            @enderror
-            @error('mother_language')
-              <span class="form-error">{{ $message }}</span>
-            @enderror
           </div>
 
 
@@ -3457,6 +3537,31 @@
       initUniverseMatchingPanels();
     });
     
+
+    // Preview de la photo de profil
+    document.getElementById('profile-photo-input')?.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const preview = document.getElementById('profile-photo-preview');
+          if (preview.tagName === 'IMG') {
+            preview.src = e.target.result;
+          } else {
+            // Remplacer la div par une image
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.className = 'profile-photo-preview';
+            img.alt = '{{ __("Photo de profil") }}';
+            preview.parentNode.replaceChild(img, preview);
+            // Mettre à jour l'ID pour la référence future
+            img.id = 'profile-photo-preview';
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
     // Nettoyer localStorage après inscription réussie (on est arrivé sur step1)
     document.addEventListener('DOMContentLoaded', function() {
       // Nettoyer toutes les clés de localStorage liées à l'inscription

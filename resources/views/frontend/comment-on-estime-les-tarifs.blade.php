@@ -704,7 +704,7 @@
         <h3>Baromètre d'engagement</h3>
         <p>Choisissez un niveau d'engagement. Le volume estimé et les fourchettes s'ajustent automatiquement.</p>
         <ul>
-          <li>Pensé pour les projets récurrents</li>
+          <li>Pensé pour les Rituels récurrents</li>
           <li>Comparaison simple : heure vs jour</li>
         </ul>
         <a href="#etape-2" class="barometres-10sec-link">Voir le baromètre d'engagement →</a>

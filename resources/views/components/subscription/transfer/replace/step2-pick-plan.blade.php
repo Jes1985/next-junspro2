@@ -175,14 +175,14 @@
           >
             <div class="transfer-ritual-tier-label">12–24</div>
             <div class="transfer-ritual-tier-title">{{ __('Approfondissement') }}</div>
-            <div class="transfer-ritual-tier-subtitle">{{ __('Transformation / projet') }}</div>
+            <div class="transfer-ritual-tier-subtitle">{{ __('Transformation / Rituel') }}</div>
           </button>
         </div>
       </div>
 
       <!-- Message pour Approfondissement -->
       <div x-show="selectedValue >= 12" class="transfer-ritual-deep-message">
-        <p>{{ __('Idéal pour projets intensifs, accompagnements professionnels ou immersion complète.') }}</p>
+        <p>{{ __('Idéal pour Rituels intensifs, accompagnements professionnels ou immersion complète.') }}</p>
       </div>
 
       <!-- Résumé chiffré -->

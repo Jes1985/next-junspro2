@@ -711,7 +711,7 @@
             <div class="pause-souffle-radio-group">
               <div class="pause-souffle-radio-item">
                 <input type="radio" name="rythme" id="rythme-1-session" value="1-session" required>
-                <label for="rythme-1-session">1 session</label>
+                <label for="rythme-1-session">1 Rituel</label>
               </div>
               <div class="pause-souffle-radio-item">
                 <input type="radio" name="rythme" id="rythme-4-semaines" value="4-semaines" required>
@@ -745,7 +745,7 @@
               </div>
               <div class="pause-souffle-checkbox-item">
                 <input type="checkbox" name="protect[]" id="protect-projet" value="projet">
-                <label for="protect-projet">Projet</label>
+                <label for="protect-projet">Rituel</label>
               </div>
               <div class="pause-souffle-checkbox-item">
                 <input type="checkbox" name="protect[]" id="protect-sante" value="sante">

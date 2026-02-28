@@ -16,7 +16,7 @@
       'bien-etre-sport' => "Énergie, mobilité, équilibre : un accompagnement juste et progressif.",
       'accompagnement' => "Soutien du quotidien, présence fiable et organisation sans charge mentale.",
     ] : (($universe ?? '') === 'wellnesslive' ? [
-      'cardio-training' => "Endurance, énergie et intensité maîtrisée pour progresser séance après séance.",
+      'cardio-training' => "Endurance, énergie et intensité maîtrisée pour progresser Rituel après Rituel.",
       'renforcement-musculaire' => "Force, tonus et posture : un travail précis, efficace et évolutif.",
       'bien-etre' => "Mobilité, respiration et équilibre : retrouver un corps léger et aligné.",
       'danse' => "Rythme, expression et fluidité : bouger avec grâce et confiance.",

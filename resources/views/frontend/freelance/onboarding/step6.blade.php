@@ -1010,7 +1010,7 @@
                     <div class="script-time">10s</div>
                     <div class="script-content">
                       <div class="script-item-title">Appel à l'action</div>
-                      <div class="script-item-text">Invitez les clients à vous contacter ("Écrivez-moi...", "Contactez-moi pour discuter de votre projet...").</div>
+                      <div class="script-item-text">Invitez les clients à vous contacter ("Écrivez-moi...", "Contactez-moi pour discuter de votre Rituel...").</div>
                     </div>
                   </div>
                 </div>

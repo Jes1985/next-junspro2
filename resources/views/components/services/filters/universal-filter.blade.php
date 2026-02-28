@@ -352,10 +352,10 @@
           </div>
         @endif
 
-        {{-- Objectif du cours (uniquement lessons) --}}
+        {{-- Objectif du Rituel (uniquement lessons) --}}
         @if($universe === 'lessons' && !empty($lessonGoals))
           <div class="preply-filter-group">
-            <label class="preply-filter-label">Objectif du cours</label>
+            <label class="preply-filter-label">Objectif du Rituel</label>
             <select name="lesson_goal" class="preply-filter-select">
               <option value="">Tous les objectifs</option>
               @foreach($lessonGoals as $key => $label)

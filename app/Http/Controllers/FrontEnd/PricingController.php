@@ -16,14 +16,14 @@ class PricingController extends Controller
     {
         return [
             4  => ['name' => 'Essentiel',  'description' => 'Pour démarrer en douceur',         'icon' => 'fas fa-seedling',   'popular' => false],
-            8  => ['name' => 'Starter',    'description' => 'Idéal pour un projet régulier',     'icon' => 'fas fa-rocket',     'popular' => false],
+            8  => ['name' => 'Starter',    'description' => 'Idéal pour un Rituel régulier',     'icon' => 'fas fa-rocket',     'popular' => false],
             16 => ['name' => 'Business',   'description' => 'Le plus choisi — rythme soutenu',   'icon' => 'fas fa-briefcase',  'popular' => true],
-            24 => ['name' => 'Pro',        'description' => 'Pour les projets ambitieux',         'icon' => 'fas fa-chart-line', 'popular' => false],
-            32 => ['name' => 'Premium',    'description' => 'Immersion totale dans le projet',   'icon' => 'fas fa-crown',      'popular' => false],
+            24 => ['name' => 'Pro',        'description' => 'Pour les Rituels ambitieux',         'icon' => 'fas fa-chart-line', 'popular' => false],
+            32 => ['name' => 'Premium',    'description' => 'Immersion totale dans le Rituel',   'icon' => 'fas fa-crown',      'popular' => false],
             48 => ['name' => 'Growth',     'description' => 'Cadence intensive',                 'icon' => 'fas fa-bolt',       'popular' => true],
             56 => ['name' => 'Scale',      'description' => 'Pour accélérer fort',               'icon' => 'fas fa-expand-alt', 'popular' => false],
             64 => ['name' => 'Elite',      'description' => 'Expertise dédiée à plein régime',   'icon' => 'fas fa-gem',        'popular' => false],
-            72 => ['name' => 'Expert',     'description' => 'Priorité absolue au projet',        'icon' => 'fas fa-star',       'popular' => false],
+            72 => ['name' => 'Expert',     'description' => 'Priorité absolue au Rituel',        'icon' => 'fas fa-star',       'popular' => false],
             80 => ['name' => 'Master',     'description' => 'Collaboration quasi temps-plein',   'icon' => 'fas fa-trophy',     'popular' => false],
             88 => ['name' => 'Enterprise', 'description' => 'Volume maximal, impact maximum',   'icon' => 'fas fa-building',   'popular' => false],
         ];
@@ -96,7 +96,7 @@ class PricingController extends Controller
         // Garanties (inchangées)
         $guarantees = [
             ['icon' => 'fas fa-shield-alt',  'title' => 'Paiements sécurisés',       'description' => 'Transactions protégées par Stripe'],
-            ['icon' => 'fas fa-clock',        'title' => 'Séance d\'essai de 1h',     'description' => 'Testez un freelance sur 1 heure avant de vous engager davantage.'],
+            ['icon' => 'fas fa-clock',        'title' => 'Rituel d\'essai de 1h',     'description' => 'Testez un freelance sur 1 heure avant de vous engager davantage.'],
             ['icon' => 'fas fa-file-alt',     'title' => 'Rapport après chaque heure','description' => '50 min de travail concentré + 10 min de rapport pédagogique.'],
             ['icon' => 'fas fa-sync-alt',     'title' => 'Abonnement flexible',       'description' => 'Pause, transfert ou résiliation à tout moment.'],
             ['icon' => 'fas fa-bolt',         'title' => 'Options Express',           'description' => 'Accélérez les livraisons avec +10%, +20%, +30%.'],

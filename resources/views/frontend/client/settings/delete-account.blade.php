@@ -534,12 +534,17 @@
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.password') }}" class="{{ request()->routeIs('user.settings.password') ? 'active' : '' }}">
-              {{ __('Mot de passe') }}
+              Modifiez le mot de passe
             </a>
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.email.edit') }}" class="{{ request()->routeIs('user.settings.email.*') ? 'active' : '' }}">
-              {{ __('Adresse e-mail') }}
+              Modifiez votre adresse email
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.edit_profile') }}" class="{{ request()->routeIs('user.edit_profile') ? 'active' : '' }}">
+              Modifiez votre profil
             </a>
           </li>
           <li class="settings-menu-item">
@@ -591,8 +596,26 @@
               {{ __('Connexions & autorisations') }}
             </a>
           </li>
+          <li class="settings-menu-item">            <a href="{{ route('user.service_orders') }}" class="{{ request()->routeIs('user.service_orders') || request()->routeIs('user.service_order.details') ? 'active' : '' }}">
+              Commandes de service
+            </a>
+          </li>
           <li class="settings-menu-item">
-            @php
+            <a href="{{ route('user.service_wishlist') }}" class="{{ request()->routeIs('user.service_wishlist') ? 'active' : '' }}">
+              Favoris de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.support_tickets') }}" class="{{ request()->routeIs('user.support_tickets') || request()->routeIs('user.support_tickets.create') || request()->routeIs('user.support_ticket.conversation') ? 'active' : '' }}">
+              Tickets de support
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.followings') }}" class="{{ request()->routeIs('user.followings') ? 'active' : '' }}">
+              Mes favoris
+            </a>
+          </li>
+          <li class="settings-menu-item">            @php
               try {
                 $deleteAccountUrl = route('user.settings.delete_account');
               } catch (\Exception $e) {
@@ -638,17 +661,17 @@
         <div class="warning-box">
           <h2 class="warning-title">{{ __('Ce qui va se passer :') }}</h2>
           <ul class="warning-list">
-            <li>{{ __('Votre accès au tableau de bord Junspro sera désactivé (projets, messages, agenda…).') }}</li>
+            <li>{{ __('Votre accès au tableau de bord Junspro sera désactivé (Rituels, messages, agenda…).') }}</li>
             <li>{{ __('Vos abonnements en cours seront résiliés ou clôturés selon les conditions de votre formule.') }}</li>
             <li>{{ __('Vos factures et informations de paiement pourront être conservées à des fins légales (comptabilité, obligations réglementaires).') }}</li>
-            <li>{{ __('Les freelances avec lesquels vous travaillez ne pourront plus planifier de nouvelles sessions via votre compte.') }}</li>
+            <li>{{ __('Les freelances avec lesquels vous travaillez ne pourront plus planifier de nouveaux Rituels via votre compte.') }}</li>
           </ul>
         </div>
 
         <p class="info-text">
           {{ __('Si vous souhaitez simplement faire une pause, vous pouvez d\'abord') }}
           <a href="{{ route('user.settings.subscription') }}">{{ __('mettre votre abonnement en pause') }}</a>
-          {{ __('ou réduire votre rythme de sessions, plutôt que de supprimer définitivement votre compte.') }}
+          {{ __('ou réduire votre rythme de Rituels, plutôt que de supprimer définitivement votre compte.') }}
         </p>
 
         <hr class="settings-divider">

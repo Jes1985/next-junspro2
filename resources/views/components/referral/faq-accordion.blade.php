@@ -156,7 +156,7 @@
           x-collapse
         >
           <p>
-            {{ __('Oui. Selon les règles Junspro, vous pouvez changer de freelance et transférer des heures/abonnements pour garantir la continuité du projet.') }}
+            {{ __('Oui. Selon les règles Junspro, vous pouvez changer de freelance et transférer des heures/abonnements pour garantir la continuité du Rituel.') }}
           </p>
         </div>
       </div>

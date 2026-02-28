@@ -7,6 +7,11 @@
   <div class="dashboard-container">
     <!-- ===== ZONE PRINCIPALE (70%) ===== -->
     <main class="main-content">
+      <!-- Bloc Tableau de bord Freelance -->
+      @include('frontend.freelance.dashboard.partials.dashboard-header-section', [
+        'freelancerProfile' => $freelancerProfile ?? null
+      ])
+
       <!-- Header de page -->
       <div class="page-header">
         <h1>Rituels Junspro</h1>
@@ -20,35 +25,47 @@
 
       <!-- Contenu principal -->
       <div class="content-section">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2rem; margin-bottom: 2rem; margin-left: -4rem; margin-right: -32vw; width: calc(100% + 32vw); padding: 0 4rem;">
           <!-- Carte A — "Démarrer un Rituel" -->
-          <div class="premium-card">
-            <h3 class="premium-card-title">Démarrer un Rituel</h3>
-            <p class="premium-card-text">Lancez 50 minutes de focus. À la fin, un bilan guidé (10 min) est envoyé au client.</p>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
-              <a href="#" class="btn-premium btn-premium-primary">Démarrer un Rituel (50 min)</a>
-              <a href="#" class="btn-premium btn-premium-secondary">Rédiger un bilan</a>
+          <div class="premium-card" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #f8fafc 100%); border: 2.5px solid rgba(59, 130, 246, 0.25); box-shadow: 0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border-radius: 32px; position: relative; overflow: hidden; padding: 0;" onmouseover="this.style.boxShadow='0 40px 100px rgba(59, 130, 246, 0.3), 0 16px 48px rgba(59, 130, 246, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(59, 130, 246, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(59, 130, 246, 0.25)';">
+            <div style="padding: 1.2rem 1.5rem; background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 50%, #93c5fd 100%); border-radius: 30px 30px 0 0; margin: -0rem 0 2rem 0; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.3);">
+              <h3 class="premium-card-title" style="color: white; margin: 0; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">🚀 Démarrer un Rituel</h3>
             </div>
-            <p class="premium-card-microcopy">📌 Un bilan clair = un client rassuré, sans effort de relance.</p>
+            <div style="padding: 0 2rem;">
+              <p class="premium-card-text" style="font-size: 1rem; line-height: 1.8; color: #334155; font-weight: 500;">Lancez 50 minutes de focus. À la fin, un bilan guidé (10 min) est envoyé au client.</p>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="#" class="btn-premium btn-premium-primary" style="background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #4f46e5 100%); padding: 0.95rem 1.75rem; font-weight: 800; border-radius: 16px; box-shadow: 0 12px 32px rgba(124, 58, 237, 0.32), 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); color: white; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.03em; border: 2px solid transparent;" onmouseover="this.style.boxShadow='0 16px 48px rgba(124, 58, 237, 0.42), 0 4px 16px rgba(0, 0, 0, 0.12)'; this.style.transform='scale(1.08) translateY(-2px)';" onmouseout="this.style.boxShadow='0 12px 32px rgba(124, 58, 237, 0.32), 0 2px 8px rgba(0, 0, 0, 0.08)'; this.style.transform='scale(1) translateY(0)';" onclick="this.style.transform='scale(0.96) translateY(0px)'">Démarrer un Rituel</a>
+                <a href="#" class="btn-premium btn-premium-secondary" style="border: 2.5px solid #3B82F6; color: #3B82F6; padding: 0.9rem 1.75rem; font-weight: 800; border-radius: 16px; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 249, 255, 0.5)); text-decoration: none; font-size: 0.95rem; letter-spacing: 0.03em;" onmouseover="this.style.background='linear-gradient(135deg, #3B82F6, #60A5FA)'; this.style.color='white'; this.style.boxShadow='0 12px 32px rgba(59, 130, 246, 0.32)'; this.style.transform='scale(1.08) translateY(-2px)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 249, 255, 0.5))'; this.style.color='#3B82F6'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.15)'; this.style.transform='scale(1) translateY(0)';" onclick="this.style.transform='scale(0.96) translateY(0px)'">Rédiger un bilan</a>
+              </div>
+              <p class="premium-card-microcopy" style="margin-top: 1.5rem; font-size: 0.85rem; color: #64748b; line-height: 1.6; font-weight: 500;">📌 Un bilan clair = un client rassuré, sans effort de relance.</p>
+            </div>
           </div>
 
           <!-- Carte B — "Reprogrammation (1 fois)" -->
-          <div class="premium-card" style="background: #f0f9ff; border-color: rgba(30, 64, 175, 0.2);">
-            <h3 class="premium-card-title">Reprogrammation (1 fois)</h3>
-            <p class="premium-card-text">En cas d'imprévu, vous pouvez proposer UNE reprogrammation.</p>
-            <div style="display: inline-block; padding: 0.5rem 1rem; background: rgba(30, 64, 175, 0.1); border-radius: 8px; font-size: 0.85rem; color: #1e40af; font-weight: 600; margin: 0.75rem 0;">
-              Fenêtre autorisée : entre 24h et 72h après l'horaire initial.
+          <div class="premium-card" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #f8fafc 100%); border: 2.5px solid rgba(30, 64, 175, 0.25); box-shadow: 0 32px 80px rgba(30, 64, 175, 0.2), 0 12px 32px rgba(30, 64, 175, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border-radius: 32px; position: relative; overflow: hidden; padding: 0;" onmouseover="this.style.boxShadow='0 40px 100px rgba(30, 64, 175, 0.3), 0 16px 48px rgba(30, 64, 175, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(30, 64, 175, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(30, 64, 175, 0.2), 0 12px 32px rgba(30, 64, 175, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(30, 64, 175, 0.25)';">
+            <div style="padding: 1.2rem 1.5rem; background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 50%, #60A5FA 100%); border-radius: 30px 30px 0 0; margin: -0rem 0 2rem 0; box-shadow: 0 8px 24px rgba(30, 64, 175, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.3);">
+              <h3 class="premium-card-title" style="color: white; margin: 0; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">⏱️ Reprogrammation (1 fois)</h3>
             </div>
-            <p class="premium-card-text" style="margin-top: 0.5rem;">L'annulation reste possible à tout moment.</p>
-            <p class="premium-card-microcopy">Cette marge protège votre organisation et clarifie la suite pour le client.</p>
+            <div style="padding: 0 2rem;">
+              <p class="premium-card-text" style="font-size: 1rem; line-height: 1.8; color: #334155; font-weight: 500;">En cas d'imprévu, vous pouvez proposer UNE reprogrammation.</p>
+              <div style="display: inline-block; padding: 1rem 1.4rem; background: linear-gradient(135deg, rgba(30, 64, 175, 0.12), rgba(59, 130, 246, 0.08)); border-radius: 16px; border-left: 5px solid #1e40af; font-size: 0.95rem; color: #1e40af; font-weight: 800; margin: 1rem 0; box-shadow: 0 4px 16px rgba(30, 64, 175, 0.12), inset 0 2px 4px rgba(255, 255, 255, 0.4); letter-spacing: 0.02em;">
+                📅 Fenêtre : 24h - 72h après l'horaire initial
+              </div>
+              <p class="premium-card-text" style="margin-top: 1rem; font-size: 1rem; color: #334155; font-weight: 500;">L'annulation reste possible à tout moment.</p>
+              <p class="premium-card-microcopy" style="margin-top: 1.5rem; font-size: 0.85rem; color: #64748b; line-height: 1.6; font-weight: 500;">Cette marge protège votre organisation et clarifie la suite pour le client.</p>
+            </div>
           </div>
 
           <!-- Carte C — "Visibilité (sanction naturelle)" -->
-          <div class="premium-card">
-            <h3 class="premium-card-title">Visibilité (sanction naturelle, sans menace)</h3>
-            <p class="premium-card-text">Votre visibilité s'améliore quand vos engagements sont tenus et que vos bilans sont réguliers.</p>
-            <p class="premium-card-text" style="margin-top: 0.5rem;">Des reports répétés peuvent réduire la mise en avant automatiquement.</p>
-            <p class="premium-card-microcopy">🌿 Transparence + régularité = plus de confiance, donc plus de demandes.</p>
+          <div class="premium-card" style="background: linear-gradient(135deg, #ffffff 0%, #fef3f2 50%, #f8fafc 100%); border: 2.5px solid rgba(168, 85, 247, 0.25); box-shadow: 0 32px 80px rgba(168, 85, 247, 0.2), 0 12px 32px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border-radius: 32px; position: relative; overflow: hidden; padding: 0;" onmouseover="this.style.boxShadow='0 40px 100px rgba(168, 85, 247, 0.3), 0 16px 48px rgba(168, 85, 247, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-14px) scale(1.02)'; this.style.borderColor='rgba(168, 85, 247, 0.4)';" onmouseout="this.style.boxShadow='0 32px 80px rgba(168, 85, 247, 0.2), 0 12px 32px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(168, 85, 247, 0.25)';">
+            <div style="padding: 1.2rem 1.5rem; background: linear-gradient(135deg, #A855F7 0%, #D946EF 50%, #ec4899 100%); border-radius: 30px 30px 0 0; margin: -0rem 0 2rem 0; box-shadow: 0 8px 24px rgba(168, 85, 247, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.3);">
+              <h3 class="premium-card-title" style="color: white; margin: 0; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">⭐ Visibilité naturelle</h3>
+            </div>
+            <div style="padding: 0 2rem;">
+              <p class="premium-card-text" style="font-size: 1rem; line-height: 1.8; color: #334155; font-weight: 500;">Votre visibilité s'améliore quand vos engagements sont tenus et que vos bilans sont réguliers.</p>
+              <p class="premium-card-text" style="margin-top: 1rem; font-size: 1rem; color: #334155; font-weight: 500;">Des reports répétés peuvent réduire la mise en avant automatiquement.</p>
+              <p class="premium-card-microcopy" style="margin-top: 1.5rem; font-size: 0.85rem; color: #64748b; line-height: 1.6; font-weight: 500;">🌿 Transparence + régularité = plus de confiance, donc plus de demandes.</p>
+            </div>
           </div>
         </div>
 
@@ -162,6 +179,83 @@
     flex-direction: column;
   }
   
+  /* ===== HERO HEADER - IDENTIQUE À OVERVIEW ===== */
+  .rituals-page-wrapper-light .dashboard-overview-hero {
+    position: relative !important;
+    margin: 0 !important;
+    margin-bottom: 3rem !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-glow {
+    position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(30, 64, 175, 0.1) 35%, transparent 80%);
+    border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-content {
+    position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center; padding: 3rem 0; width: 100%; box-sizing: border-box;
+  }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-text { display: flex; flex-direction: column; gap: 1.5rem; padding: 0; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-title {
+    font-size: 2.5rem; font-weight: 800; line-height: 1.2; color: #111827; margin: 0; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-subtitle { font-size: 1.125rem; line-height: 1.6; color: #6b7280; margin: 0; font-weight: 400; max-width: 550px; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .btn-hero {
+    padding: 1rem 1.75rem; font-size: 1rem; font-weight: 600; border-radius: 14px; border: none;
+    cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-family: inherit;
+  }
+  .rituals-page-wrapper-light .dashboard-overview-hero .btn-hero-primary { background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); color: white; box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25); }
+  .rituals-page-wrapper-light .dashboard-overview-hero .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(124, 58, 237, 0.35); color: white; text-decoration: none; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary { background: white; color: #1e40af; border: 2px solid #1e40af; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1); }
+  .rituals-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary:hover { background: #f0f4ff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30, 64, 175, 0.15); color: #1e40af; text-decoration: none; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .btn-text { display: inline; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .btn-icon { font-size: 1.2rem; display: inline-block; transition: transform 0.3s ease; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .btn-hero:hover .btn-icon { transform: translateX(3px); }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-hint { font-size: 0.9rem; color: #6b7280; margin: 0; margin-top: 0.5rem; font-weight: 500; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-visual { display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-visual-card {
+    position: relative; width: 100%; max-width: 350px; padding: 3rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0;
+    border-radius: 24px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.08); overflow: hidden;
+  }
+  .rituals-page-wrapper-light .dashboard-overview-hero .hero-visual-card::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+    border-radius: 50%; transform: translate(100px, -100px);
+  }
+  .rituals-page-wrapper-light .dashboard-overview-hero .visual-badge {
+    display: inline-block; padding: 0.5rem 1rem; background: linear-gradient(135deg, #ddd6fe 0%, #e9d5ff 100%);
+    color: #6d28d9; font-size: 0.85rem; font-weight: 600; border-radius: 20px; margin-bottom: 1.5rem; position: relative; z-index: 1;
+  }
+  .rituals-page-wrapper-light .dashboard-overview-hero .visual-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; position: relative; z-index: 1; }
+  .rituals-page-wrapper-light .dashboard-overview-hero .visual-text { font-size: 1.25rem; font-weight: 700; color: #111827; line-height: 1.5; margin: 0; position: relative; z-index: 1; }
+  @media (max-width: 1024px) {
+    .rituals-page-wrapper-light .dashboard-overview-hero .hero-content { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 0; }
+    .rituals-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 2rem; }
+    .rituals-page-wrapper-light .dashboard-overview-hero .hero-visual-card { max-width: 280px; }
+  }
+  @media (max-width: 768px) {
+    .rituals-page-wrapper-light .dashboard-overview-hero .hero-content { padding: 2rem 0; }
+    .rituals-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 1.75rem; }
+    .rituals-page-wrapper-light .dashboard-overview-hero .hero-ctas { flex-direction: column; }
+    .rituals-page-wrapper-light .dashboard-overview-hero .btn-hero { width: 100%; justify-content: center; }
+    .rituals-page-wrapper-light .dashboard-overview-hero .hero-visual-card { max-width: 250px; padding: 2rem 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .rituals-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 1.5rem; }
+    .rituals-page-wrapper-light .dashboard-overview-hero .btn-hero { padding: 0.875rem 1.5rem; font-size: 0.95rem; }
+    .rituals-page-wrapper-light .dashboard-overview-hero .visual-icon { font-size: 2.5rem; }
+  }
+
   /* ===== HEADER PREMIUM - CENTRÉ (Style identique à Demandes) ===== */
   .rituals-page-wrapper-light .page-header {
     margin-top: 0 !important;

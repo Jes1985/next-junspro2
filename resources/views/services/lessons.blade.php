@@ -3005,7 +3005,7 @@
   <x-services.hero
     title="Cours et Tutorat"
     subtitle="Des progrès qui se voient."
-    micro="Séance d'essai, objectifs clairs, suivi régulier. Vous avancez sereinement. Nous vous offrons le meilleur pour développer vos compétences."
+    micro="Rituel d'essai, objectifs clairs, suivi régulier. Vous avancez sereinement. Nous vous offrons le meilleur pour développer vos compétences."
     :cta="['text' => 'Réserver un essai', 'url' => '#results', 'variant' => 'primary']"
   />
 
@@ -3348,7 +3348,7 @@
                         <div class="freelancer-stats-v2">
                           <div class="stat-item-v2">
                             <span class="stat-number">{{ $freelancer->subscriptions()->count() ?? 0 }}</span>
-                            <span class="stat-label-v2">cours donnés</span>
+                            <span class="stat-label-v2">Rituels donnés</span>
                           </div>
                           <div class="stat-item-v2">
                             <span class="stat-number">{{ $freelancer->subscriptions()->where('status', 'active')->count() ?? 0 }}</span>

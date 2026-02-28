@@ -25,7 +25,7 @@
     .freelance-dashboard-wrapper {
       position: relative;
       z-index: 1;
-      padding: 2rem 1rem;
+      padding: 1.5rem 2rem;
       min-height: calc(100vh - 200px);
       background: #ffffff;
       overflow: hidden;
@@ -33,7 +33,8 @@
 
     /* Container glass premium */
     .freelance-dashboard-container {
-      max-width: 1400px;
+      max-width: 100%;
+      width: 100%;
       margin: 0 auto;
       background: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.8);
@@ -239,14 +240,16 @@
     }
 
     .btn-premium-primary {
-      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-      color: white;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      background: #ede9fe;
+      color: #7c3aed;
+      box-shadow: 0 2px 8px rgba(167, 139, 250, 0.2);
+      border: 1px solid #ddd6fe;
     }
 
     .btn-premium-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      background: #ddd6fe;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(167, 139, 250, 0.35);
     }
 
     .btn-premium-secondary {
@@ -1153,7 +1156,12 @@
 @section('content')
   <div class="freelance-dashboard-wrapper">
     <div class="freelance-dashboard-container">
-      @if($activeTab !== 'overview' && $activeTab !== 'requests' && $activeTab !== 'jobs' && $activeTab !== 'calendar')
+      {{-- Module Pause Souffle Inline - avant le header Tableau de bord --}}
+      <div style="margin: 1.5rem 0;">
+        @include('frontend.components.pause-souffle.inline-premium')
+      </div>
+
+      @if($activeTab !== 'overview' && $activeTab !== 'requests' && $activeTab !== 'jobs' && $activeTab !== 'calendar' && $activeTab !== 'services' && $activeTab !== 'rituals' && $activeTab !== 'settings' && $activeTab !== 'profile' && $activeTab !== 'earnings' && $activeTab !== 'messages')
         <!-- Header de page (masqué sur l'onglet Aperçu, Demandes, Prestations et Agenda) -->
         <div class="dashboard-header">
           <h1>Tableau de bord Freelance</h1>
@@ -1177,11 +1185,6 @@
           <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #6b7280;">💡 Plus vos informations sont complètes, plus vous remontez dans les résultats.</p>
         </div>
       @endif
-
-      {{-- Module Pause Souffle Inline (en haut du contenu principal, avant sections secondaires) --}}
-      <div style="margin: 1.5rem 0;">
-        @include('frontend.components.pause-souffle.inline-premium')
-      </div>
 
       <!-- Contenu de l'onglet actif -->
       <div class="dashboard-tab-content" data-active-tab="{{ $activeTab }}">

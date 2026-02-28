@@ -1,0 +1,491 @@
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY THEME — Junspro Ultra Premium Design
+   Gradient: Violet (#7C3AED) → Royal Blue (#1e40af)
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --junspro-purple: #7C3AED;
+  --junspro-blue: #1e40af;
+  --junspro-purple-dark: #6d28d9;
+  --junspro-blue-dark: #1832a3;
+  --junspro-gradient: linear-gradient(135deg, #7c3aed 0%, #1e40af 100%);
+  --junspro-gradient-reverse: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+  --junspro-gradient-alt: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+  
+  /* Shadows for luxury depth */
+  --shadow-xs: 0 1px 4px rgba(124, 58, 237, 0.08);
+  --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.12);
+  --shadow-md: 0 8px 24px rgba(124, 58, 237, 0.15);
+  --shadow-lg: 0 16px 48px rgba(124, 58, 237, 0.2);
+  --shadow-xl: 0 24px 64px rgba(124, 58, 237, 0.25);
+  --shadow-2xl: 0 32px 80px rgba(124, 58, 237, 0.3);
+  
+  /* Color palette */
+  --bg-luxury: linear-gradient(135deg, #f8f6ff 0%, #f0f0ff 50%, #faf8ff 100%);
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+  --border-color: #e2e8f0;
+  --border-luxury: linear-gradient(135deg, #e2e8f0 0%, #c7d2e0 50%, #e2e8f0 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL LUXURY ENHANCEMENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Fluid Typography */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+h5, h6 {
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY CARDS
+   ═══════════════════════════════════════════════════════════════ */
+
+.luxury-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(124, 58, 237, 0.06);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--junspro-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.luxury-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(124, 58, 237, 0.15);
+  transform: translateY(-4px);
+}
+
+.luxury-card:hover::before {
+  transform: scaleX(1);
+}
+
+.card-luxury-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-luxury-header h3 {
+  margin: 0;
+  background: var(--junspro-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY BUTTONS
+   ═══════════════════════════════════════════════════════════════ */
+
+.btn-luxury {
+  background: var(--junspro-gradient);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--junspro-gradient-reverse);
+  transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: -1;
+}
+
+.btn-luxury:hover {
+  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-luxury:hover::before {
+  left: 0;
+}
+
+.btn-luxury:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
+}
+
+.btn-luxury-secondary {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--junspro-purple);
+  border: 2px solid rgba(124, 58, 237, 0.3);
+  box-shadow: none;
+}
+
+.btn-luxury-secondary:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-luxury-outline {
+  background: transparent;
+  color: var(--junspro-purple);
+  border: 2px solid var(--junspro-purple);
+  box-shadow: none;
+}
+
+.btn-luxury-outline:hover {
+  background: var(--junspro-gradient);
+  color: white;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY INPUTS & FORMS
+   ═══════════════════════════════════════════════════════════════ */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+select,
+textarea {
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  background: #fufffb;
+  color: var(--text-primary);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--junspro-purple);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  background: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY BADGES & TAGS
+   ═══════════════════════════════════════════════════════════════ */
+
+.badge-luxury {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--junspro-purple);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.badge-luxury.gradient {
+  background: var(--junspro-gradient);
+  color: white;
+  border: none;
+}
+
+.badge-luxury:hover {
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY SECTION DIVIDERS
+   ═══════════════════════════════════════════════════════════════ */
+
+.section-divider {
+  height: 1px;
+  background: var(--border-luxury);
+  margin: 3rem 0;
+  border: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY TABS & NAVIGATION
+   ═══════════════════════════════════════════════════════════════ */
+
+.nav-luxury {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.nav-luxury-item {
+  position: relative;
+  padding: 1.25rem 1.5rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-luxury-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--junspro-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav-luxury-item.active {
+  color: var(--junspro-purple);
+}
+
+.nav-luxury-item.active::after {
+  transform: scaleX(1);
+}
+
+.nav-luxury-item:hover {
+  color: var(--junspro-purple);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY PAGE CONTAINER
+   ═══════════════════════════════════════════════════════════════ */
+
+.luxury-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background: var(--bg-luxury);
+  min-height: 100vh;
+}
+
+.luxury-page-header {
+  margin-bottom: 3rem;
+}
+
+.luxury-page-header h1 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.luxury-page-header p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY GRID LAYOUTS
+   ═══════════════════════════════════════════════════════════════ */
+
+.grid-luxury {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.grid-luxury-2 {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.grid-luxury-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-luxury-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .grid-luxury-2,
+  .grid-luxury-3,
+  .grid-luxury-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY MODALS & OVERLAYS
+   ═══════════════════════════════════════════════════════════════ */
+
+.modal-luxury {
+  background: var(--bg-card);
+  border-radius: 24px;
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  box-shadow: var(--shadow-2xl);
+  animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY SCROLLBAR
+   ═══════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--junspro-gradient);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--junspro-gradient-reverse);
+}

@@ -399,9 +399,10 @@
   .profile-page-wrapper-light .btn-premium-primary,
   .settings-page-wrapper-light .btn-premium-primary,
   .rituals-page-wrapper-light .btn-premium-primary {
-    background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    background: #ede9fe;
+    color: #7c3aed;
+    border: 1px solid #ddd6fe;
+    box-shadow: 0 2px 8px rgba(167, 139, 250, 0.2);
   }
 
   .dashboard-page-wrapper-light .btn-premium-primary:hover,
@@ -415,9 +416,10 @@
   .profile-page-wrapper-light .btn-premium-primary:hover,
   .settings-page-wrapper-light .btn-premium-primary:hover,
   .rituals-page-wrapper-light .btn-premium-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
-    color: white;
+    background: #ddd6fe;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(167, 139, 250, 0.35);
+    color: #7c3aed;
     text-decoration: none;
   }
 

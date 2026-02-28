@@ -3106,7 +3106,7 @@ Live : rituel 50+10. VOD : programmes + routines + conseils premium."
                           
                           <!-- Phrase d'accroche (headline) -->
                           @php
-                            $headline = $freelancer->headline ?? 'Coach Ritual Motion expérimenté pour vos sessions.';
+                            $headline = $freelancer->headline ?? 'Coach Ritual Motion expérimenté pour vos Rituels.';
                           @endphp
                           <p class="freelancer-headline">
                             {{ $headline }}
@@ -3185,7 +3185,7 @@ Live : rituel 50+10. VOD : programmes + routines + conseils premium."
                         <div class="freelancer-stats-v2">
                           <div class="stat-item-v2">
                             <span class="stat-number">{{ $freelancer->subscriptions()->count() ?? 0 }}</span>
-                            <span class="stat-label-v2">sessions données</span>
+                            <span class="stat-label-v2">Rituels donnés</span>
                           </div>
                           <div class="stat-item-v2">
                             <span class="stat-number">{{ $freelancer->subscriptions()->where('status', 'active')->count() ?? 0 }}</span>
@@ -3197,7 +3197,7 @@ Live : rituel 50+10. VOD : programmes + routines + conseils premium."
                         <div class="freelancer-cta-v2">
                           <a href="{{ route('freelance.show', $freelancer->id) }}#agenda" 
                              class="cta-primary-v2">
-                  Réserver une session
+                  Réserver un Rituel
                 </a>
                           <button type="button" class="cta-secondary-v2" data-bs-toggle="modal" data-bs-target="#contactModal{{ $freelancer->id }}" data-freelancer-id="{{ $freelancer->id }}">
                   Envoyer un message

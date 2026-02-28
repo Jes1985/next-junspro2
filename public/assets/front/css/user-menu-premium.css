@@ -17,47 +17,56 @@
 
 /* Bouton utilisateur */
 .header-area .more-option .item .user-menu-btn {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%) !important;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3), 0 2px 4px rgba(0, 0, 0, 0.08);
   position: relative;
 }
 
+/* Masquer la flèche Bootstrap */
+.header-area .more-option .item .user-menu-btn::after {
+  display: none !important;
+}
+
 .header-area .more-option .item .user-menu-btn:hover {
-  background: linear-gradient(135deg, #5B52F0 0%, #8B5CF6 100%);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.22);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #5B52F0 0%, #8B5CF6 100%) !important;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4), 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .header-area .more-option .item .user-menu-btn:focus,
 .header-area .more-option .item .user-menu-btn:active,
 .header-area .more-option .item .user-menu-btn.show {
-  outline: 2px solid rgba(79, 70, 229, 0.3);
+  outline: 2px solid rgba(124, 58, 237, 0.4) !important;
   outline-offset: 2px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.22);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-area .more-option .item .user-menu-btn svg {
-  width: 24px;
-  height: 24px;
-  stroke: #FFFFFF;
-  stroke-width: 2;
+  width: 22px;
+  height: 22px;
+  stroke: white !important;
+  stroke-width: 1.5;
+  fill: none !important;
+  flex-shrink: 0;
 }
 
 .header-area .more-option .item .user-menu-btn img {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   object-fit: cover;
   border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Menu déroulant premium */

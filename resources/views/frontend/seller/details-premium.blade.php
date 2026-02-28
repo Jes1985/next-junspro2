@@ -77,7 +77,7 @@
               <div class="freelancer-profile-image-wrapper">
                 <img class="freelancer-profile-image" 
                      src="{{ asset('assets/img/project-showcase.jpg') }}" 
-                     alt="Projets réalisés">
+                     alt="Rituels réalisés">
               </div>
             @endif
           </div>
@@ -111,7 +111,7 @@
               <div class="freelancer-profile-stat-item">
                 <span class="stat-icon">📁</span>
                 <span class="stat-value">{{ $orderCount }}</span>
-                <span class="stat-label">{{ __('projets livrés') }}</span>
+                <span class="stat-label">{{ __('Rituels livrés') }}</span>
               </div>
               <div class="freelancer-profile-stat-item">
                 <span class="stat-icon">💶</span>
@@ -128,7 +128,7 @@
             <!-- Boutons CTA -->
             <div class="freelancer-profile-cta-buttons">
               <a href="#contact-form" class="freelancer-profile-cta-primary">
-                {{ __('Lancer un projet') }} / {{ __('Demander un devis') }}
+                {{ __('Lancer un Rituel') }} / {{ __('Demander un devis') }}
               </a>
               <div class="freelancer-profile-cta-secondary-group">
                 <a href="#contact-form" class="freelancer-profile-cta-secondary">
@@ -146,7 +146,7 @@
             <!-- Bloc Confiance -->
             <div class="freelancer-profile-trust-box">
               <div class="trust-item">
-                <strong>{{ __('Super populaire') }}</strong> : {{ rand(10, 50) }} {{ __('nouveaux contacts et') }} {{ rand(5, 30) }} {{ __('projets démarrés ces 30 derniers jours') }}
+                <strong>{{ __('Super populaire') }}</strong> : {{ rand(10, 50) }} {{ __('nouveaux contacts et') }} {{ rand(5, 30) }} {{ __('Rituels démarrés ces 30 derniers jours') }}
               </div>
               <div class="trust-item">
                 <strong>{{ __('Temps de réponse moyen') }}</strong> : ~{{ rand(1, 6) }}h
@@ -171,7 +171,7 @@
             <line x1="12" y1="16" x2="12" y2="12"></line>
             <line x1="12" y1="8" x2="12.01" y2="8"></line>
           </svg>
-          <p>{{ __('Sélectionnez l\'horaire de votre appel découverte ou de votre première séance de travail. Les heures sont affichées dans votre fuseau horaire.') }}</p>
+          <p>{{ __('Sélectionnez l\'horaire de votre appel découverte ou de votre premier Rituel. Les heures sont affichées dans votre fuseau horaire.') }}</p>
         </div>
 
         <div class="freelancer-profile-agenda-layout">
@@ -228,7 +228,7 @@
         <div class="freelancer-profile-agenda-cta-sticky">
           <div class="agenda-cta-box">
             <h4>{{ __('Prêt à démarrer ?') }}</h4>
-            <a href="#contact-form" class="agenda-cta-btn">{{ __('Lancer un projet') }}</a>
+            <a href="#contact-form" class="agenda-cta-btn">{{ __('Lancer un Rituel') }}</a>
             <a href="#contact-form" class="agenda-cta-btn-secondary">{{ __('Envoyer un message') }}</a>
           </div>
         </div>
@@ -287,11 +287,11 @@
   </section>
 
   <!-- ============================================
-       MES OFFRES & PACKS DE PROJETS
+       MES OFFRES & PACKS DE RITUELS
        ============================================ -->
   <section class="freelancer-profile-packs">
     <div class="freelancer-profile-container">
-      <h2 class="freelancer-profile-section-title">{{ __('Mes offres & packs de projets') }}</h2>
+      <h2 class="freelancer-profile-section-title">{{ __('Mes offres & packs de Rituels') }}</h2>
       <div class="freelancer-profile-packs-grid">
         @if (isset($all_services) && count($all_services) > 0)
           @foreach ($all_services->take(4) as $service)
@@ -331,7 +331,7 @@
               </div>
               <a href="{{ route('service_details', ['slug' => $service->slug, 'id' => $service->id]) }}" 
                  class="pack-card-cta">
-                {{ __('Démarrer ce projet') }}
+                {{ __('Démarrer ce Rituel') }}
               </a>
             </div>
           @endforeach
@@ -353,7 +353,7 @@
           <div class="process-step-icon">1️⃣</div>
           <h3 class="process-step-title">{{ __('Appel découverte & brief') }}</h3>
           <p class="process-step-description">
-            {{ __('Nous échangeons sur vos besoins, vos objectifs et votre vision du projet.') }}
+            {{ __('Nous échangeons sur vos besoins, vos objectifs et votre vision du Rituel.') }}
           </p>
         </div>
         <div class="process-step">
@@ -367,14 +367,14 @@
           <div class="process-step-icon">3️⃣</div>
           <h3 class="process-step-title">{{ __('Production & retours') }}</h3>
           <p class="process-step-description">
-            {{ __('Je réalise le projet étape par étape avec vos retours à chaque phase.') }}
+            {{ __('Je réalise le Rituel étape par étape avec vos retours à chaque phase.') }}
           </p>
         </div>
         <div class="process-step">
           <div class="process-step-icon">4️⃣</div>
           <h3 class="process-step-title">{{ __('Livraison finale & suivi / optimisation') }}</h3>
           <p class="process-step-description">
-            {{ __('Je livre le projet finalisé et assure un suivi pour optimiser les résultats.') }}
+            {{ __('Je livre le Rituel finalisé et assure un suivi pour optimiser les résultats.') }}
           </p>
         </div>
       </div>
@@ -454,7 +454,7 @@
             <div class="specialization-content">
               <p><strong>{{ __('Types de missions') }}</strong> : Landing pages, tunnels de vente, pages de capture</p>
               <p><strong>{{ __('Exemples de résultats') }}</strong> : +300% de conversions, tunnel optimisé</p>
-              <p><strong>{{ __('Fourchette de prix') }}</strong> : 500€ - 3000€ / projet</p>
+              <p><strong>{{ __('Fourchette de prix') }}</strong> : 500€ - 3000€ / Rituel</p>
             </div>
           </div>
           <div class="specialization-item">
@@ -480,7 +480,7 @@
             <div class="specialization-content">
               <p><strong>{{ __('Types de missions') }}</strong> : Logo, charte graphique, identité visuelle</p>
               <p><strong>{{ __('Exemples de résultats') }}</strong> : Identité cohérente, repositionnement réussi</p>
-              <p><strong>{{ __('Fourchette de prix') }}</strong> : 800€ - 5000€ / projet</p>
+              <p><strong>{{ __('Fourchette de prix') }}</strong> : 800€ - 5000€ / Rituel</p>
             </div>
           </div>
         </div>

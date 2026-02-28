@@ -19,7 +19,7 @@
               <div class="card-body">
                 <h4 class="card-title mb-4">
                   <i class="fas fa-exclamation-triangle text-warning me-2"></i>
-                  {{ __('Votre projet est important. Voyons si on peut adapter votre abonnement.') }}
+                  {{ __('Votre Rituel est important. Voyons si on peut adapter votre abonnement.') }}
                 </h4>
                 <p class="text-muted mb-4">
                   {{ __('Avant d\'annuler, nous vous proposons plusieurs alternatives :') }}
@@ -101,7 +101,7 @@
                     <div class="form-check mb-2">
                       <input class="form-check-input" type="radio" name="reason" id="reason_project" value="projet_termine">
                       <label class="form-check-label" for="reason_project">
-                        {{ __('Projet terminé') }}
+                        {{ __('Rituel terminé') }}
                       </label>
                     </div>
                     <div class="form-check mb-2">

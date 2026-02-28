@@ -18,10 +18,10 @@
   // Prix
   $lowestPrice = \App\Models\ClientService\Service::where([['seller_id', $seller->sellerId], ['service_status', 1]])
     ->min('package_lowest_price');
-  $priceDisplay = $lowestPrice ? 'À partir de ' . number_format($lowestPrice, 0, ',', ' ') . ' € / projet' : 'Sur devis';
+  $priceDisplay = $lowestPrice ? 'À partir de ' . number_format($lowestPrice, 0, ',', ' ') . ' € / Rituel' : 'Sur devis';
   
   // Pitch
-  $pitch = $sellerInfo && $sellerInfo->details ? mb_substr(strip_tags($sellerInfo->details), 0, 120) . '...' : 'Freelance expert pour vos projets clés en main.';
+  $pitch = $sellerInfo && $sellerInfo->details ? mb_substr(strip_tags($sellerInfo->details), 0, 120) . '...' : 'Freelance expert pour vos Rituels clés en main.';
 @endphp
 
 <div class="freelancer-card-wrapper" data-seller-id="{{ $seller->sellerId }}">
@@ -82,7 +82,7 @@
           <span class="freelancer-stat-item">
             <span class="stat-icon">📁</span>
             <span class="stat-value">{{ $orderCount }}</span>
-            <span class="stat-label">{{ __('projets livrés') }}</span>
+            <span class="stat-label">{{ __('Rituels livrés') }}</span>
           </span>
           <span class="freelancer-stat-item">
             <span class="stat-icon">🔁</span>
@@ -113,7 +113,7 @@
         <div class="freelancer-cta">
           <a href="{{ route('frontend.seller.details', ['username' => $seller->username]) }}" 
              class="freelancer-cta-primary" target="_self">
-            {{ __('Lancer un projet avec') }} {{ $sellerInfo && $sellerInfo->name ? explode(' ', $sellerInfo->name)[0] : $seller->username }}
+            {{ __('Lancer un Rituel avec') }} {{ $sellerInfo && $sellerInfo->name ? explode(' ', $sellerInfo->name)[0] : $seller->username }}
           </a>
           <a href="#" class="freelancer-cta-secondary" data-seller-id="{{ $seller->sellerId }}">
             {{ __('Envoyer un message') }}
@@ -122,7 +122,7 @@
 
         <div class="freelancer-micro-text">
           <span class="micro-text-item">
-            {{ __('Super populaire') }} : {{ rand(5, 50) }} {{ __('projets démarrés ces 30 derniers jours') }}
+            {{ __('Super populaire') }} : {{ rand(5, 50) }} {{ __('Rituels démarrés ces 30 derniers jours') }}
           </span>
           <span class="micro-text-item">
             {{ __('Temps moyen de réponse') }} : ~{{ rand(1, 6) }}h

@@ -714,7 +714,7 @@ FICHIERS MODIFIÉS:
             
             <div style="margin-top: 1.5rem;">
               <label for="about_you" class="mission-form-label">
-                En quelques lignes, qui êtes-vous — au-delà du projet ? (optionnel)
+                En quelques lignes, qui êtes-vous — au-delà du Rituel ? (optionnel)
               </label>
               <textarea id="about_you" 
                         name="about_you" 
@@ -958,7 +958,7 @@ FICHIERS MODIFIÉS:
             
             <div style="margin-bottom: 1.5rem;">
               <label for="description_mission" class="mission-form-label">
-                Décrivez votre projet <span style="color: #dc2626;">*</span>
+                Décrivez votre Rituel <span style="color: #dc2626;">*</span>
               </label>
               <textarea id="js-description" 
                         name="description_mission" 
@@ -1787,7 +1787,7 @@ Logement: ${logementLabel}${logementOther ? '\nLogement (autre): ' + logementOth
           <select id="details_goal" name="details[goal]" class="mission-form-select">
             <option value="">Sélectionnez votre objectif</option>
             <option value="examen">Examen</option>
-            <option value="projet">Projet</option>
+            <option value="projet">Rituel</option>
             <option value="remise-a-niveau">Remise à niveau</option>
             <option value="confiance">Confiance</option>
             <option value="autre">Autre</option>
@@ -1879,7 +1879,7 @@ Logement: ${logementLabel}${logementOther ? '\nLogement (autre): ' + logementOth
           </select>
         </div>
         <div style="margin-bottom: 1.5rem;">
-          <label class="mission-form-label">Types de cours</label>
+          <label class="mission-form-label">Types de Rituels</label>
           <div class="mission-form-checkbox-group">
             <div class="mission-form-checkbox-item">
               <input type="checkbox" id="class_fitness" name="details[class_types][]" value="fitness">
@@ -2010,7 +2010,7 @@ Logement: ${logementLabel}${logementOther ? '\nLogement (autre): ' + logementOth
             </div>
             <div class="mission-form-checkbox-item">
               <input type="checkbox" id="protect_projet" name="details[protect][]" value="projet">
-              <label for="protect_projet">Projet</label>
+              <label for="protect_projet">Rituel</label>
             </div>
             <div class="mission-form-checkbox-item">
               <input type="checkbox" id="protect_autre" name="details[protect][]" value="autre">

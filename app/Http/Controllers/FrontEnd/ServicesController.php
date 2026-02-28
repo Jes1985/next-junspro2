@@ -208,7 +208,7 @@ class ServicesController extends Controller
             [
                 'title' => 'Présence',
                 'baseline' => 'Prendre soin des équipes, avec des formats adaptés.',
-                'text' => 'Séances, ateliers, conférences : une expérience simple, claire, efficace.',
+                'text' => 'Rituels, ateliers, conférences : une expérience simple, claire, efficace.',
                 'cta' => 'Réserver un rituel d\'essai',
                 'url' => route('services.corporate')
             ]
@@ -926,7 +926,7 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
         ];
         // Micro-descriptions des domaines Ritual Motion (dropdown Domaine — titre + sous-texte)
         $queryResult['categoryDescriptions'] = [
-            'cardio-training' => 'Endurance, énergie et intensité maîtrisée pour progresser séance après séance.',
+            'cardio-training' => 'Endurance, énergie et intensité maîtrisée pour progresser Rituel après Rituel.',
             'renforcement-musculaire' => 'Force, tonus et posture : un travail précis, efficace et évolutif.',
             'bien-etre' => 'Mobilité, respiration et équilibre : retrouver un corps léger et aligné.',
             'danse' => 'Rythme, expression et fluidité : bouger avec grâce et confiance.',
@@ -1562,7 +1562,7 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
             'corporate' => [
                 'title' => 'Bien-être en entreprise',
                 'url' => route('services.corporate'),
-                'categories' => ['Séances', 'Conférences', 'Ateliers']
+                'categories' => ['Rituels', 'Conférences', 'Ateliers']
             ],
             'homeswap' => [
                 'title' => 'Échanges de logement',
@@ -1668,14 +1668,14 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
                 'Coaching sportif' => [
                     'title' => 'Coaching sportif',
                     'subtitle' => 'Votre coach personnel, à domicile.',
-                    'micro' => 'Séances personnalisées, programmes sur mesure, suivi régulier. Atteignez vos objectifs.',
+                    'micro' => 'Rituels personnalisés, programmes sur mesure, suivi régulier. Atteignez vos objectifs.',
                     'cta' => ['text' => 'Réserver un coach', 'url' => '#results', 'variant' => 'primary']
                 ],
                 'Bien-être' => [
                     'title' => 'Bien-être',
                     'subtitle' => 'Prenez soin de votre équilibre.',
                     'micro' => 'Yoga, méditation, sophrologie, réflexologie. Des pratiques pour votre bien-être quotidien.',
-                    'cta' => ['text' => 'Réserver une séance', 'url' => '#results', 'variant' => 'primary']
+                    'cta' => ['text' => 'Réserver un Rituel', 'url' => '#results', 'variant' => 'primary']
                 ],
                 'Amma assis' => [
                     'title' => 'Amma assis',
@@ -1687,7 +1687,7 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
                     'title' => 'Do-In',
                     'subtitle' => 'Auto-massage et énergie vitale.',
                     'micro' => 'Techniques d\'auto-massage japonaises pour stimuler votre énergie et votre vitalité.',
-                    'cta' => ['text' => 'Réserver une séance', 'url' => '#results', 'variant' => 'primary']
+                    'cta' => ['text' => 'Réserver un Rituel', 'url' => '#results', 'variant' => 'primary']
                 ],
                 'Accompagnement familial' => [
                     'title' => 'Accompagnement familial',
@@ -1698,7 +1698,7 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
             ],
             'lessons' => [
                 'Langues' => [
-                    'title' => 'Cours de langues',
+                    'title' => 'Rituels de langues',
                     'subtitle' => 'Parlez couramment, naturellement.',
                     'micro' => 'Anglais, espagnol, allemand, italien... Apprenez avec des professeurs natifs.',
                     'cta' => ['text' => 'Trouver un professeur', 'url' => '#results', 'variant' => 'primary']
@@ -1716,9 +1716,9 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
                     'cta' => ['text' => 'Voir les formations', 'url' => '#results', 'variant' => 'primary']
                 ],
                 'Musique' => [
-                    'title' => 'Cours de musique',
+                    'title' => 'Rituels de musique',
                     'subtitle' => 'Apprenez la musique avec passion.',
-                    'micro' => 'Piano, guitare, violon, chant... Des cours adaptés à votre niveau.',
+                    'micro' => 'Piano, guitare, violon, chant... Des Rituels adaptés à votre niveau.',
                     'cta' => ['text' => 'Trouver un professeur', 'url' => '#results', 'variant' => 'primary']
                 ],
                 'Coaching' => [

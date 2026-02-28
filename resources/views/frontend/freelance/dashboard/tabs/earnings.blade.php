@@ -7,6 +7,11 @@
   <div class="dashboard-container">
     <!-- ===== ZONE PRINCIPALE (70%) ===== -->
     <main class="main-content">
+      <!-- Bloc Tableau de bord Freelance -->
+      @include('frontend.freelance.dashboard.partials.dashboard-header-section', [
+        'freelancerProfile' => $freelancerProfile ?? null
+      ])
+
       <!-- Header de page -->
       <div class="page-header">
         <h1>Revenus</h1>
@@ -25,10 +30,10 @@
           </h2>
         </div>
 
-        <div class="empty-state-premium" style="margin-top: 2rem;">
-          <p class="empty-state-premium-text">Vos revenus apparaîtront ici une fois que vous aurez finalisé des prestations.</p>
-          <a href="{{ route('freelance.dashboard', ['tab' => 'settings']) }}" class="empty-state-premium-cta" style="margin-top: 1rem;">Configurer les versements</a>
-          <p class="empty-state-tip" style="margin-top: 0.75rem;">💡 Configurez vos versements avant votre première mission pour être payé sans délai.</p>
+        <div class="empty-state-premium" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #f8fafc 100%); border: 2.5px solid rgba(59, 130, 246, 0.25); box-shadow: 0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); border-radius: 32px; margin-top: 2rem; padding: 4rem 3rem;">
+          <p class="empty-state-premium-text" style="font-size: 1.25rem; font-weight: 500; color: #334155; margin-bottom: 2rem; line-height: 1.8;">Vos revenus apparaîtront ici une fois que vous aurez finalisé des prestations.</p>
+          <a href="{{ route('freelance.dashboard', ['tab' => 'settings']) }}" class="empty-state-premium-cta" style="display: inline-block; background: linear-gradient(135deg, #3B82F6, #60A5FA); color: white; padding: 1.25rem 3rem; font-size: 1.1rem; font-weight: 700; border-radius: 32px; text-decoration: none; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3); border: none; cursor: pointer; margin-top: 1rem; letter-spacing: -0.02em;" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 20px 48px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 12px 32px rgba(59, 130, 246, 0.3)';">Configurer les versements</a>
+          <p class="empty-state-tip" style="margin-top: 1.5rem; font-size: 1rem; color: #64748B; font-weight: 500; line-height: 1.6;">💡 Configurez vos versements avant votre première mission pour être payé sans délai.</p>
         </div>
       </div>
     </main>
@@ -130,6 +135,87 @@
     flex-direction: column;
   }
   
+  /* ===== HERO HEADER - IDENTIQUE À OVERVIEW ===== */
+  .earnings-page-wrapper-light .dashboard-overview-hero {
+    position: relative !important; margin: 0 !important; margin-bottom: 3rem !important;
+    padding: 0 !important; border: none !important; background: transparent !important;
+    width: 100% !important; max-width: 100% !important; overflow: visible !important;
+  }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-glow {
+    position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(30, 64, 175, 0.1) 35%, transparent 80%);
+    border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-content {
+    position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center; padding: 3rem 0; width: 100%; box-sizing: border-box;
+  }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-text { display: flex; flex-direction: column; gap: 1.5rem; padding: 0; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-title {
+    font-size: 2.5rem; font-weight: 800; line-height: 1.2; color: #111827; margin: 0; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-subtitle { font-size: 1.125rem; line-height: 1.6; color: #6b7280; margin: 0; font-weight: 400; max-width: 550px; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .btn-hero {
+    padding: 1rem 1.75rem; font-size: 1rem; font-weight: 600; border-radius: 14px; border: none;
+    cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-family: inherit;
+  }
+  .earnings-page-wrapper-light .dashboard-overview-hero .btn-hero-primary { background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); color: white; box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25); }
+  .earnings-page-wrapper-light .dashboard-overview-hero .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(124, 58, 237, 0.35); color: white; text-decoration: none; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary { background: white; color: #1e40af; border: 2px solid #1e40af; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1); }
+  .earnings-page-wrapper-light .dashboard-overview-hero .btn-hero-secondary:hover { background: #f0f4ff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30, 64, 175, 0.15); color: #1e40af; text-decoration: none; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .btn-text { display: inline; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .btn-icon { font-size: 1.2rem; display: inline-block; transition: transform 0.3s ease; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .btn-hero:hover .btn-icon { transform: translateX(3px); }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-hint { font-size: 0.9rem; color: #6b7280; margin: 0; margin-top: 0.5rem; font-weight: 500; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-visual { display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-visual-card {
+    position: relative; width: 100%; max-width: 350px; padding: 3rem 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #f8fafc 100%); 
+    border: 2.5px solid rgba(59, 130, 246, 0.25);
+    border-radius: 32px; text-align: center; 
+    box-shadow: 0 32px 80px rgba(59, 130, 246, 0.2), 0 12px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8); 
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-visual-card:hover {
+    transform: translateY(-14px) scale(1.02);
+    box-shadow: 0 40px 100px rgba(59, 130, 246, 0.3), 0 16px 48px rgba(59, 130, 246, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(59, 130, 246, 0.4);
+  }
+  .earnings-page-wrapper-light .dashboard-overview-hero .hero-visual-card::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+    border-radius: 50%; transform: translate(100px, -100px);
+  }
+  .earnings-page-wrapper-light .dashboard-overview-hero .visual-badge {
+    display: inline-block; padding: 0.5rem 1rem; background: linear-gradient(135deg, #ddd6fe 0%, #e9d5ff 100%);
+    color: #6d28d9; font-size: 0.85rem; font-weight: 600; border-radius: 20px; margin-bottom: 1.5rem; position: relative; z-index: 1;
+  }
+  .earnings-page-wrapper-light .dashboard-overview-hero .visual-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; position: relative; z-index: 1; }
+  .earnings-page-wrapper-light .dashboard-overview-hero .visual-text { font-size: 1.25rem; font-weight: 700; color: #111827; line-height: 1.5; margin: 0; position: relative; z-index: 1; }
+  @media (max-width: 1024px) {
+    .earnings-page-wrapper-light .dashboard-overview-hero .hero-content { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 0; }
+    .earnings-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 2rem; }
+    .earnings-page-wrapper-light .dashboard-overview-hero .hero-visual-card { max-width: 280px; }
+  }
+  @media (max-width: 768px) {
+    .earnings-page-wrapper-light .dashboard-overview-hero .hero-content { padding: 2rem 0; }
+    .earnings-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 1.75rem; }
+    .earnings-page-wrapper-light .dashboard-overview-hero .hero-ctas { flex-direction: column; }
+    .earnings-page-wrapper-light .dashboard-overview-hero .btn-hero { width: 100%; justify-content: center; }
+    .earnings-page-wrapper-light .dashboard-overview-hero .hero-visual-card { max-width: 250px; padding: 2rem 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .earnings-page-wrapper-light .dashboard-overview-hero .hero-title { font-size: 1.5rem; }
+    .earnings-page-wrapper-light .dashboard-overview-hero .btn-hero { padding: 0.875rem 1.5rem; font-size: 0.95rem; }
+    .earnings-page-wrapper-light .dashboard-overview-hero .visual-icon { font-size: 2.5rem; }
+  }
+
   /* ===== HEADER PREMIUM - CENTRÉ (Style identique à Demandes) ===== */
   .earnings-page-wrapper-light .page-header {
     margin-top: 0 !important;
@@ -144,27 +230,28 @@
     padding-right: 0 !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 2.5px solid rgba(59, 130, 246, 0.2);
     text-align: center !important; /* Centrage du contenu */
   }
   
   .earnings-page-wrapper-light .page-header::after {
     content: '';
     position: absolute;
-    bottom: -1px;
+    bottom: -2.5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 50%, #8B5CF6 100%);
     border-radius: 2px;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
   }
   
   .earnings-page-wrapper-light .page-header h1 {
     font-size: 3rem !important; /* MÊME TAILLE QUE DEMANDES */
-    font-weight: 800;
+    font-weight: 900;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    background: linear-gradient(135deg, #1e40af 0%, #3B82F6 50%, #8B5CF6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -182,7 +269,7 @@
     max-width: 100%;
     width: 100%;
     line-height: 1.75;
-    font-weight: 400;
+    font-weight: 500;
     word-wrap: break-word;
     margin-top: 0.5rem;
     text-align: center !important; /* Centrage du sous-texte */
@@ -199,9 +286,10 @@
   
   .earnings-page-wrapper-light .section-header-inline h2 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 900;
     color: var(--text-primary);
     margin-bottom: 1rem;
+    letter-spacing: -0.03em;
   }
   
   /* ===== SIDEBAR (30%) ===== */

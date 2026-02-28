@@ -2,7 +2,7 @@
   <div class="referral-premium-why-container">
     <h2 class="referral-section-title">{{ __('Pourquoi Junspro est premium') }}</h2>
     <p class="referral-section-subtitle">
-      {{ __('Nos frais financent un cadre de vie sain, sécurisant et organisé — pour éviter la procrastination et faire avancer les projets.') }}
+      {{ __('Nos frais financent un cadre de vie sain, sécurisant et organisé — pour éviter la procrastination et faire avancer les Rituels.') }}
     </p>
 
     <div class="referral-premium-subtitle">
@@ -12,7 +12,7 @@
     <div class="referral-premium-cards">
       <div class="referral-premium-card">
         <h3 class="referral-premium-card-title">
-          {{ __('Projets hors ligne : 50 min Rituel + 10 min Rapport') }}
+          {{ __('Rituels hors ligne : 50 min Rituel + 10 min Rapport') }}
         </h3>
         <p class="referral-premium-card-text">
           {{ __('Objectifs clairs, focus, exécution, puis un rapport qui fixe les prochaines actions.') }}
@@ -33,7 +33,7 @@
           {{ __('Présentiel : 50 min Session + 10 min Rapport') }}
         </h3>
         <p class="referral-premium-card-text">
-          {{ __('Un suivi concret pour ne jamais "perdre le fil" entre deux séances.') }}
+          {{ __('Un suivi concret pour ne jamais "perdre le fil" entre deux Rituels.') }}
         </p>
       </div>
     </div>

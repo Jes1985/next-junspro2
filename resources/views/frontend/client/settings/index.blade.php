@@ -493,6 +493,30 @@
             </a>
           </li>
         </ul>
+
+        <div class="settings-sidebar-title" style="margin-top: 1.5rem;">{{ __('Activité') }}</div>
+        <ul class="settings-menu">
+          <li class="settings-menu-item">
+            <a href="{{ route('user.service_orders') }}" class="{{ request()->routeIs('user.service_orders') || request()->routeIs('user.service_order.details') ? 'active' : '' }}">
+              {{ __('Commandes de services') }}
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.service_wishlist') }}" class="{{ request()->routeIs('user.service_wishlist') ? 'active' : '' }}">
+              {{ __('Liste de souhaits') }}
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.support_tickets') }}" class="{{ request()->routeIs('user.support_tickets') || request()->routeIs('user.support_tickets.create') || request()->routeIs('user.support_ticket.conversation') ? 'active' : '' }}">
+              {{ __('Tickets de support') }}
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.followings') }}" class="{{ request()->routeIs('user.followings') ? 'active' : '' }}">
+              {{ __('Abonnements') }}
+            </a>
+          </li>
+        </ul>
       </aside>
 
       <!-- Contenu principal droite -->

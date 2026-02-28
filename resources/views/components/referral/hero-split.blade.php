@@ -61,7 +61,7 @@
           {{ __('Invitez un proche à rejoindre l\'écosystème Junspro, recevez :amount€', ['amount' => $config['reward_amount']]) }}
         </h1>
         <p class="ref-hero__text">
-          {{ __('Chez Junspro, on ne réserve pas "juste une prestation". On met en place un cadre d\'exécution : discipline, suivi, sécurité — pour des projets qui avancent vraiment.') }}
+          {{ __('Chez Junspro, on ne réserve pas "juste une prestation". On met en place un cadre d\'exécution : discipline, suivi, sécurité — pour des Rituels qui avancent vraiment.') }}
           <br><br>
           {{ __('Invitez vos proches : ils bénéficient de :benefit_label sur leur première réservation éligible, et vous recevez :amount€ en crédit Junspro dès que la première prestation est confirmée.', [
             'benefit_label' => $config['benefit_label'],
@@ -91,7 +91,7 @@
       @if($heroImageExists)
         <img 
           src="{{ $heroImagePath }}" 
-          alt="{{ __('Deux personnes en séance de coaching / collaboration, ambiance chaleureuse.') }}"
+          alt="{{ __('Deux personnes en Rituel de coaching / collaboration, ambiance chaleureuse.') }}"
           class="ref-hero__image"
           loading="lazy"
           decoding="async"

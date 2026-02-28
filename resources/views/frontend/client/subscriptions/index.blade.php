@@ -2,21 +2,31 @@
 
 @section('style')
   <link rel="stylesheet" href="{{ asset('assets/css/summernote-content.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/components/topup-modal.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/components/change-plan-modal.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/luxury-theme.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/dashboard-luxury-revamp.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <style>
     :root {
       --junspro-purple: #7C3AED;
       --junspro-blue: #1e40af;
-      --junspro-gradient: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
-      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      --card-shadow-hover: 0 8px 30px rgba(30, 64, 175, 0.15);
+      --junspro-gradient: linear-gradient(135deg, #7c3aed 0%, #1e40af 100%);
+      --junspro-gradient-alt: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.12);
+      --shadow-md: 0 8px 24px rgba(124, 58, 237, 0.15);
+      --shadow-lg: 0 16px 48px rgba(124, 58, 237, 0.20);
+      --shadow-xl: 0 24px 64px rgba(124, 58, 237, 0.25);
+      --card-shadow: var(--shadow-md);
+      --card-shadow-hover: var(--shadow-lg);
     }
 
     .client-dashboard-container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
-      padding-top: 3rem;
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
+      padding: 3rem 2rem;
+      padding-top: 4rem;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f3ff 100%);
       min-height: calc(100vh - 200px);
     }
 
@@ -25,22 +35,24 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .projects-header-title h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin: 0 0 0.5rem 0;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #1a202c;
+      margin: 0 0 0.75rem 0;
+      letter-spacing: -0.01em;
     }
 
     .projects-header-title p {
       color: #6b7280;
-      font-size: 1rem;
+      font-size: 1.05rem;
       margin: 0;
+      font-weight: 400;
     }
 
     .projects-header-actions {
@@ -49,23 +61,23 @@
     }
 
     .btn-junspro-primary {
-      background: linear-gradient(135deg, #7C3AED 0%, #1e40af 100%);
+      background: var(--junspro-gradient);
       color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
+      padding: 1rem 2rem;
+      border-radius: 14px;
       border: none;
-      font-weight: 500;
+      font-weight: 700;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      gap: 0.6rem;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
     }
 
     .btn-junspro-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(124, 58, 237, 0.4);
       color: white;
     }
 
@@ -90,64 +102,83 @@
     /* Bandeau synthèse */
     .stats-overview {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
     }
 
     .stat-card {
       background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
+      border-radius: 20px;
+      padding: 2rem;
       box-shadow: var(--card-shadow);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      border: 1px solid rgba(124, 58, 237, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), transparent);
     }
 
     .stat-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
       box-shadow: var(--card-shadow-hover);
+      border-color: rgba(124, 58, 237, 0.15);
     }
 
     .stat-card-title {
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       color: #6b7280;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.08em;
     }
 
     .stat-card-value {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 2.35rem;
+      font-weight: 900;
       color: var(--junspro-purple);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
     }
 
     .stat-card-subtitle {
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       color: #9ca3af;
+      font-weight: 400;
     }
 
     /* Section projets actifs */
     .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 0.5rem;
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #1a202c;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
     }
 
     .section-subtitle {
       color: #6b7280;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+      font-weight: 400;
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
     }
 
     @media (max-width: 768px) {
@@ -158,67 +189,87 @@
 
     .project-card {
       background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
+      border-radius: 20px;
+      padding: 2rem;
       box-shadow: var(--card-shadow);
-      transition: all 0.2s ease;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      border: 1px solid rgba(124, 58, 237, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), transparent);
     }
 
     .project-card:hover {
       box-shadow: var(--card-shadow-hover);
+      transform: translateY(-6px);
+      border-color: rgba(124, 58, 237, 0.15);
     }
 
     .project-card-header {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #e5e7eb;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.08);
     }
 
     .project-freelancer-avatar {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       background: var(--junspro-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-weight: 600;
-      font-size: 1.125rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
     }
 
     .project-freelancer-info h3 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #1f2937;
-      margin: 0 0 0.25rem 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin: 0 0 0.35rem 0;
+      letter-spacing: -0.005em;
     }
 
     .project-category {
       display: inline-block;
-      background: #f3f4f6;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
       color: #6b7280;
-      padding: 0.25rem 0.75rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 500;
+      padding: 0.35rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(124, 58, 237, 0.12);
     }
 
     .project-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 1rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1a202c;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
     }
 
     .project-hours-block {
-      background: #f9fafb;
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #f5f3ff 0%, #fafafa 100%);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      border: 1.5px solid rgba(124, 58, 237, 0.1);
     }
 
     .project-hours-row {
@@ -243,24 +294,27 @@
 
     .project-progress-bar {
       width: 100%;
-      height: 8px;
-      background: #e5e7eb;
-      border-radius: 4px;
+      height: 10px;
+      background: rgba(124, 58, 237, 0.1);
+      border-radius: 6px;
       overflow: hidden;
-      margin-top: 0.75rem;
+      margin-top: 1rem;
     }
 
     .project-progress-fill {
       height: 100%;
       background: var(--junspro-gradient);
-      transition: width 0.3s ease;
+      transition: width 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      border-radius: 6px;
+      box-shadow: 0 0 12px rgba(124, 58, 237, 0.4);
     }
 
     .project-sessions-block {
-      margin-bottom: 1rem;
-      padding: 1rem;
-      background: #f9fafb;
-      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      padding: 1.25rem;
+      background: linear-gradient(135deg, #f5f3ff 0%, #fafafa 100%);
+      border-radius: 14px;
+      border: 1.5px solid rgba(124, 58, 237, 0.1);
     }
 
     .project-sessions-row {
@@ -276,28 +330,28 @@
 
     .project-actions {
       display: flex;
-      gap: 0.75rem;
+      gap: 1rem;
       flex-wrap: wrap;
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
     }
 
     .btn-project-action {
       flex: 1;
-      min-width: 120px;
-      padding: 0.625rem 1rem;
-      border-radius: 8px;
-      border: 1px solid #e5e7eb;
+      min-width: 130px;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      border: 2px solid rgba(124, 58, 237, 0.2);
       background: white;
       color: #6b7280;
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: none;
       text-align: center;
-      transition: all 0.2s ease;
-      font-size: 0.875rem;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      font-size: 0.9rem;
     }
 
     .btn-project-action:hover {
-      background: #f3f4f6;
+      background: linear-gradient(135deg, #f5f3ff 0%, #fafafa 100%);
       border-color: var(--junspro-purple);
       color: var(--junspro-purple);
     }
@@ -306,11 +360,12 @@
       background: var(--junspro-gradient);
       color: white;
       border: none;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
     }
 
     .btn-project-action-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      box-shadow: 0 6px 18px rgba(124, 58, 237, 0.4);
       color: white;
     }
 
@@ -443,8 +498,8 @@
     <!-- Header -->
     <div class="projects-header">
       <div class="projects-header-title">
-        <h1>{{ __('Mes projets & heures') }}</h1>
-        <p>{{ __('Suivez vos projets, vos heures consommées et vos prochaines sessions avec vos freelances.') }}</p>
+        <h1>{{ __('Mes Rituels & heures') }}</h1>
+        <p>{{ __('Suivez vos Rituels, vos heures consommées et vos prochains Rituels avec vos freelances.') }}</p>
       </div>
       <div class="projects-header-actions">
         <a href="{{ route('explore') }}" class="btn-junspro-primary">
@@ -457,9 +512,9 @@
     <!-- Bandeau synthèse -->
     <div class="stats-overview">
       <div class="stat-card" onclick="document.getElementById('active-projects').scrollIntoView({behavior: 'smooth'})">
-        <div class="stat-card-title">{{ __('Projets en cours') }}</div>
+        <div class="stat-card-title">{{ __('Rituels en cours') }}</div>
         <div class="stat-card-value">{{ $stats['active_projects_count'] }}</div>
-        <div class="stat-card-subtitle">{{ __('projets actifs') }}</div>
+        <div class="stat-card-subtitle">{{ __('Rituels actifs') }}</div>
       </div>
       
       <div class="stat-card">
@@ -469,7 +524,7 @@
             </div>
 
       <div class="stat-card">
-        <div class="stat-card-title">{{ __('Prochaine session planifiée') }}</div>
+        <div class="stat-card-title">{{ __('Prochain Rituel planifié') }}</div>
         @if($stats['next_session'])
           @php
             $nextSession = $stats['next_session']['session'];
@@ -488,14 +543,14 @@
           <div class="stat-card-subtitle">{{ __('avec') }} {{ $freelancer->name ?? 'N/A' }}</div>
         @else
           <div class="stat-card-value" style="font-size: 1.25rem;">—</div>
-          <div class="stat-card-subtitle">{{ __('Aucune session planifiée') }}</div>
+          <div class="stat-card-subtitle">{{ __('Aucun Rituel planifié') }}</div>
                             @endif
       </div>
     </div>
 
     <!-- Section Projets actifs -->
     <section id="active-projects">
-      <h2 class="section-title">{{ __('Projets actifs') }}</h2>
+      <h2 class="section-title">{{ __('Rituels actifs') }}</h2>
       <p class="section-subtitle">{{ __('Vos collaborations en cours avec les freelances Junspro.') }}</p>
 
       @if($activeSubscriptions->count() > 0)
@@ -527,7 +582,7 @@
               </div>
 
               <div class="project-title">
-                {{ __('Projet') }} #{{ $subscription->id }}
+                {{ __('Rituel') }} #{{ $subscription->id }}
               </div>
 
               <!-- Bloc Heures -->
@@ -557,7 +612,7 @@
               <div class="project-sessions-block">
                 @if($subscription->next_session)
                   <div class="project-sessions-row">
-                    <span class="project-hours-label">{{ __('Prochaine session') }}</span>
+                    <span class="project-hours-label">{{ __('Prochain Rituel') }}</span>
                     <span class="project-hours-value">
                       {{ \Carbon\Carbon::parse($subscription->next_session->start_at)->format('d/m, H:i') }}
                     </span>
@@ -581,7 +636,7 @@
               @if($daysSinceLastSession !== null)
                 <div class="discipline-badge {{ $isRegular ? 'good' : 'warning' }}">
                   <i class="fas {{ $isRegular ? 'fa-check-circle' : 'fa-exclamation-circle' }}"></i>
-                  {{ $isRegular ? __('Rythme de travail régulier') : __('Sessions espacées – risque de retard') }}
+                  {{ $isRegular ? __('Rythme de travail régulier') : __('Rituels espacés – risque de retard') }}
                 </div>
               @endif
 
@@ -605,7 +660,7 @@
           <div class="empty-state-icon">
             <i class="far fa-folder-open"></i>
           </div>
-          <h3>{{ __("Vous n'avez pas encore de projet en cours") }}</h3>
+          <h3>{{ __("Vous n'avez pas encore de Rituel en cours") }}</h3>
           <p>{{ __('Trouvez un freelance pour lancer votre première collaboration.') }}</p>
           <a href="{{ route('explore') }}" class="btn-junspro-primary">
             <i class="fas fa-search"></i>
@@ -627,7 +682,7 @@
           </div>
           <div>
             <div class="stat-card-value" style="font-size: 1.5rem;">{{ $stats['hours_planned_next_7_days'] }}</div>
-            <div class="stat-card-title">{{ __('Sessions prévues sur les 7 prochains jours') }}</div>
+            <div class="stat-card-title">{{ __('Rituels prévus sur les 7 prochains jours') }}</div>
           </div>
         </div>
       </div>
@@ -636,8 +691,8 @@
     <!-- Section Projets terminés -->
     @if($archivedSubscriptions->count() > 0)
       <section class="archived-projects">
-        <h2 class="section-title">{{ __('Projets terminés & archivés') }}</h2>
-        <p class="section-subtitle">{{ __('Vos projets précédents avec leurs freelances.') }}</p>
+        <h2 class="section-title">{{ __('Rituels terminés & archivés') }}</h2>
+        <p class="section-subtitle">{{ __('Vos Rituels précédents avec leurs freelances.') }}</p>
 
         @foreach($archivedSubscriptions as $subscription)
           @php
@@ -650,7 +705,7 @@
           
           <div class="archived-project-item">
             <div class="archived-project-info">
-              <h4>{{ __('Projet') }} #{{ $subscription->id }}</h4>
+              <h4>{{ __('Rituel') }} #{{ $subscription->id }}</h4>
               <div class="archived-project-meta">
                 <span><i class="fas fa-user"></i> {{ $freelancerName }}</span>
                 <span><i class="fas fa-clock"></i> {{ number_format($subscription->total_hours_worked, 1) }} h</span>
@@ -672,7 +727,7 @@
 
     <!-- Lien blog -->
     <div class="blog-link-section">
-      <h3>{{ __('Envie de mieux piloter vos projets ?') }}</h3>
+      <h3>{{ __('Envie de mieux piloter vos Rituels ?') }}</h3>
       <a href="{{ route('blog') }}">{{ __('Lire les conseils Junspro sur le blog') }}</a>
     </div>
   </div>

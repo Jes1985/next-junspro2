@@ -393,12 +393,17 @@
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.password') }}" class="{{ request()->routeIs('user.settings.password') ? 'active' : '' }}">
-              {{ __('Mot de passe') }}
+              Modifiez le mot de passe
             </a>
           </li>
           <li class="settings-menu-item">
             <a href="{{ route('user.settings.email.edit') }}" class="{{ request()->routeIs('user.settings.email.*') ? 'active' : '' }}">
-              {{ __('Adresse e-mail') }}
+              Modifiez votre adresse email
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.edit_profile') }}" class="{{ request()->routeIs('user.edit_profile') ? 'active' : '' }}">
+              Modifiez votre profil
             </a>
           </li>
           <li class="settings-menu-item">
@@ -451,6 +456,26 @@
             </a>
           </li>
           <li class="settings-menu-item">
+            <a href="{{ route('user.service_orders') }}" class="{{ request()->routeIs('user.service_orders') || request()->routeIs('user.service_order.details') ? 'active' : '' }}">
+              Commandes de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.service_wishlist') }}" class="{{ request()->routeIs('user.service_wishlist') ? 'active' : '' }}">
+              Favoris de service
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.support_tickets') }}" class="{{ request()->routeIs('user.support_tickets') || request()->routeIs('user.support_tickets.create') || request()->routeIs('user.support_ticket.conversation') ? 'active' : '' }}">
+              Tickets de support
+            </a>
+          </li>
+          <li class="settings-menu-item">
+            <a href="{{ route('user.followings') }}" class="{{ request()->routeIs('user.followings') ? 'active' : '' }}">
+              Mes favoris
+            </a>
+          </li>
+          <li class="settings-menu-item">
             @php
               try {
                 $deleteAccountUrl = route('user.settings.delete_account');
@@ -470,7 +495,7 @@
         <!-- En-tête -->
         <div class="settings-header">
           <h1>{{ __('Agenda & fuseau horaire') }}</h1>
-          <p>{{ __('Choisissez comment Junspro affiche les horaires de vos sessions : fuseau horaire, format d\'heure et vue par défaut. Cela vous évite les décalages et les malentendus avec les freelances.') }}</p>
+          <p>{{ __('Choisissez comment Junspro affiche les horaires de vos Rituels : fuseau horaire, format d\'heure et vue par défaut. Cela vous évite les décalages et les malentendus avec les freelances.') }}</p>
         </div>
 
         @if (session('status') === 'agenda-updated' || session('success'))
@@ -504,7 +529,7 @@
               @endforeach
             </select>
             <p class="form-hint">
-              {{ __('Tous les horaires de vos sessions (00h–23h) et de vos rapports seront affichés selon ce fuseau horaire.') }}
+              {{ __('Tous les horaires de vos Rituels (00h–23h) et de vos rapports seront affichés selon ce fuseau horaire.') }}
             </p>
           </div>
 
@@ -569,7 +594,7 @@
               </option>
             </select>
             <p class="form-hint">
-              {{ __('La vue semaine est idéale pour suivre les sessions à venir et garder un bon rythme avec votre freelance.') }}
+              {{ __('La vue semaine est idéale pour suivre les Rituels à venir et garder un bon rythme avec votre freelance.') }}
             </p>
           </div>
 
@@ -578,13 +603,13 @@
             <h2 class="info-title">{{ __('Comment Junspro utilise ces réglages ?') }}</h2>
             <ul class="info-list">
               <li>
-                {{ __('Quand vous réservez une session, les créneaux affichés (00h–23h) sont automatiquement ajustés à votre fuseau horaire.') }}
+                {{ __('Quand vous réservez un Rituel, les créneaux affichés (00h–23h) sont automatiquement ajustés à votre fuseau horaire.') }}
               </li>
               <li>
                 {{ __('Le freelance voit l\'horaire dans son propre fuseau, mais Junspro synchronise les deux pour éviter toute confusion.') }}
               </li>
               <li>
-                {{ __('Les rapports envoyés par le freelance sont horodatés avec ce réglage, ce qui facilite le suivi de l\'avancement de vos projets.') }}
+                {{ __('Les rapports envoyés par le freelance sont horodatés avec ce réglage, ce qui facilite le suivi de l\'avancement de vos Rituels.') }}
               </li>
             </ul>
           </div>

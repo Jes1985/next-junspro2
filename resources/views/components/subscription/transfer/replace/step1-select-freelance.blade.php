@@ -73,8 +73,8 @@
             <div class="transfer-freelance-info">
               <div class="transfer-freelance-name" x-text="freelance.name"></div>
               <div class="transfer-freelance-details">
-                <span x-show="freelance.trial_done">{{ __('Cours d\'essai effectué') }} • </span>
-                <span x-text="formatPrice(freelance.price_per_session)"></span> {{ __('par cours') }}
+                <span x-show="freelance.trial_done">{{ __('Rituel d\'essai effectué') }} • </span>
+                <span x-text="formatPrice(freelance.price_per_session)"></span> {{ __('par Rituel') }}
               </div>
             </div>
             <div class="transfer-freelance-arrow">

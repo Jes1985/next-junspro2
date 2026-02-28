@@ -301,7 +301,7 @@
     <div class="junspro-cta-container">
       <div class="junspro-cta-card">
         <h2 class="junspro-cta-title">Prêt à passer à l'action ?</h2>
-        <p class="junspro-cta-subtitle">Déposez votre mission ou trouvez le freelance idéal pour votre projet.</p>
+        <p class="junspro-cta-subtitle">Déposez votre mission ou trouvez le freelance idéal pour votre Rituel.</p>
         <div class="junspro-cta-buttons">
           <a href="{{ route('mission.form') }}" class="junspro-cta-btn-primary">
             <i class="fas fa-paper-plane"></i>

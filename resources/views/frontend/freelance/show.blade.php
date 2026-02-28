@@ -2512,7 +2512,7 @@
           <!-- Statistiques -->
           <div class="profile-stats-grid">
             <div class="profile-stat-card">
-              <div class="profile-stat-label">{{ __('Projets livrés') }}</div>
+              <div class="profile-stat-label">{{ __('Rituels livrés') }}</div>
               <div class="profile-stat-value">{{ $subscriptionsCount ?? 0 }}</div>
             </div>
             <div class="profile-stat-card">
@@ -2620,7 +2620,7 @@
                   <div class="flex-grow-1">
               <h3 style="font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 12px;">{{ __('Style de travail') }}</h3>
               <p style="font-size: 16px; line-height: 1.8; color: #4B5563; margin-bottom: 8px;">
-                      {{ __('Il utilise des plans de projet personnalisés adaptés aux besoins et aux objectifs de chaque client, favorisant un environnement encourageant pour la collaboration et l\'atteinte des résultats.') }}
+                      {{ __('Il utilise des plans de Rituel personnalisés adaptés aux besoins et aux objectifs de chaque client, favorisant un environnement encourageant pour la collaboration et l\'atteinte des résultats.') }}
                     </p>
               <small style="font-size: 13px; color: #9CA3AF; font-style: italic;">
                 <i class="fas fa-sparkles me-1"></i>{{ __('Résumé généré par l\'IA à partir des données du profil') }}
@@ -2646,22 +2646,22 @@
               </div>
             </div>
 
-      <!-- Section 2 : Séance d'essai & abonnement Junspro -->
+      <!-- Section 2 : Rituel d'essai & abonnement Junspro -->
       <div class="freelance-content-section">
         <h2 class="freelance-section-title">
           <i class="fas fa-calendar-check"></i>
-          {{ __('Séance d\'essai & abonnement Junspro') }}
+          {{ __('Rituel d\'essai & abonnement Junspro') }}
         </h2>
         
-        <!-- Séance d'essai -->
+        <!-- Rituel d'essai -->
         <div class="mb-4 pb-4" style="border-bottom: 1px solid #E5E7EB;">
-          <h3 style="font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 12px;">{{ __('Séance d\'essai (1h)') }}</h3>
+          <h3 style="font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 12px;">{{ __('Rituel d\'essai (1h)') }}</h3>
           <p style="font-size: 15px; line-height: 1.7; color: #6B7280; margin-bottom: 20px;">
-            {{ __('50 minutes de travail concentré + 10 minutes de rapport pédagogique : ce qui a été fait, pourquoi, et les prochaines étapes pour votre projet.') }}
+            {{ __('50 minutes de travail concentré + 10 minutes de rapport pédagogique : ce qui a été fait, pourquoi, et les prochaines étapes pour votre Rituel.') }}
           </p>
           @auth('web')
             <a href="{{ route('freelance.booking', $freelancer->id) }}" class="btn w-100" style="background: var(--junspro-gradient); color: white; border-radius: 12px; padding: 14px 24px; font-weight: 600; text-decoration: none; display: block; text-align: center; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);">
-              <i class="fas fa-play-circle me-2"></i>{{ __('Réserver une séance d\'essai') }}
+              <i class="fas fa-play-circle me-2"></i>{{ __('Réserver un Rituel d\'essai') }}
             </a>
           @else
             <a href="{{ route('user.login') }}" class="btn w-100" style="background: var(--junspro-gradient); color: white; border-radius: 12px; padding: 14px 24px; font-weight: 600; text-decoration: none; display: block; text-align: center; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);">
@@ -2772,11 +2772,11 @@
               </p>
           </div>
 
-      <!-- Section 6 : Projets récents livrés -->
+      <!-- Section 6 : Rituels récents livrés -->
       <div class="freelance-content-section">
         <h2 class="freelance-section-title">
           <i class="fas fa-folder-open"></i>
-          {{ __('Projets récents livrés') }}
+          {{ __('Rituels récents livrés') }}
         </h2>
         @if(isset($recentProjects) && $recentProjects->isNotEmpty())
           <div class="d-flex flex-column gap-3">
@@ -2786,9 +2786,9 @@
                   <div class="flex-grow-1">
                     <h6 class="mb-1" style="color: #111827; font-weight: 600; font-size: 16px;">
                       @if($project->subscription && $project->subscription->client && $project->subscription->client->user)
-                        {{ __('Projet pour') }} {{ $project->subscription->client->user->name }}
+                        {{ __('Rituel pour') }} {{ $project->subscription->client->user->name }}
                   @else
-                        {{ __('Projet') }} #{{ $project->id }}
+                        {{ __('Rituel') }} #{{ $project->id }}
                   @endif
                           </h6>
                     <small class="text-muted" style="font-size: 14px;">
