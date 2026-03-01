@@ -2647,13 +2647,23 @@
             </div>
 
       <!-- Section 2 : Rituel d'essai & abonnement Junspro -->
-      <div class="freelance-content-section">
+      @php $isOwnProfile = Auth::guard('web')->check() && Auth::guard('web')->id() === $user->id; @endphp
+      <div class="freelance-content-section" id="subscription">
         <h2 class="freelance-section-title">
           <i class="fas fa-calendar-check"></i>
           {{ __('Rituel d\'essai & abonnement Junspro') }}
         </h2>
-        
-        <!-- Rituel d'essai -->
+
+        @if($isOwnProfile)
+          {{-- Vue propriétaire : aperçu de son propre profil --}}
+          <div style="background: #EEF2FF; border: 1px solid #C7D2FE; border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; gap: 16px;">
+            <i class="fas fa-eye" style="color: #4F46E5; font-size: 24px; flex-shrink: 0;"></i>
+            <div>
+              <p style="font-size: 15px; font-weight: 600; color: #3730A3; margin: 0 0 4px;">Aperçu de votre profil public</p>
+              <p style="font-size: 14px; color: #6B7280; margin: 0;">Vos clients voient ici les options pour réserver un Rituel d'essai ou s'abonner à vos services.</p>
+            </div>
+          </div>
+        @else
         <div class="mb-4 pb-4" style="border-bottom: 1px solid #E5E7EB;">
           <h3 style="font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 12px;">{{ __('Rituel d\'essai (1h)') }}</h3>
           <p style="font-size: 15px; line-height: 1.7; color: #6B7280; margin-bottom: 20px;">
@@ -2680,7 +2690,7 @@
             {{ __('Choisissez votre formule hebdomadaire pour un accompagnement régulier.') }}
           </p>
           @auth('web')
-            <a href="#subscription" class="btn w-100" style="background: white; border: 2px solid var(--junspro-primary); color: var(--junspro-primary); border-radius: 12px; padding: 14px 24px; font-weight: 600; text-decoration: none; display: block; text-align: center;">
+            <a href="{{ route('freelance.booking', $freelancer->id) }}" class="btn w-100" style="background: white; border: 2px solid var(--junspro-primary); color: var(--junspro-primary); border-radius: 12px; padding: 14px 24px; font-weight: 600; text-decoration: none; display: block; text-align: center;">
               <i class="fas fa-arrow-right me-2"></i>{{ __('Voir les formules') }}
             </a>
           @else
@@ -2689,6 +2699,7 @@
             </a>
           @endauth
             </div>
+        @endif
           </div>
 
 
@@ -2723,11 +2734,11 @@
             </div>
           @endif
 
-      <!-- Section 5 : Qualité des prestations -->
-      <div class="freelance-content-section">
+      <!-- Section 5 : Certifications & Qualité -->
+      <div class="freelance-content-section" id="certifications">
         <h2 class="freelance-section-title">
-          <i class="fas fa-star"></i>
-          {{ __('Qualité des prestations') }}
+          <i class="fas fa-medal"></i>
+          {{ __('Certifications & qualité') }}
         </h2>
         <div style="text-align: center; margin-bottom: 32px;">
           <div style="font-size: 48px; font-weight: 700; color: var(--junspro-primary); margin-bottom: 8px;">{{ number_format($averageRating ?? 4.5, 1) }} / 5.0</div>

@@ -681,7 +681,7 @@
               <div class="freelancer-profile-summary-text">
                 {{ $user->name }} {{ __('détient des certifications qui attestent de ses compétences.') }}
               </div>
-              <a href="#certifications" style="color: var(--junspro-primary); font-size: 14px; font-weight: 500;">
+              <a href="#certifications" onclick="event.preventDefault(); var el=document.getElementById('certifications'); if(el){el.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(function(){ document.querySelectorAll('.freelancer-profile-cv-tab').forEach(function(t){t.classList.remove('active');}); document.querySelectorAll('.freelancer-profile-cv-tab-content').forEach(function(c){c.classList.remove('active');}); var certBtn=document.querySelector('[data-tab=\'certifications\']'); var certContent=document.getElementById('cv-certifications'); if(certBtn)certBtn.classList.add('active'); if(certContent)certContent.classList.add('active'); },400); }" style="color: var(--junspro-primary); font-size: 14px; font-weight: 500;">
                 {{ __('En savoir plus') }}
               </a>
             </div>
@@ -836,7 +836,7 @@
           @endif
 
           <!-- CV (Expérience & Certifications) -->
-          <div class="freelancer-profile-section-premium">
+          <div class="freelancer-profile-section-premium" id="certifications">
             <h2 class="freelancer-profile-section-title">
               <i class="fas fa-file-alt"></i>
               {{ __('CV') }}
