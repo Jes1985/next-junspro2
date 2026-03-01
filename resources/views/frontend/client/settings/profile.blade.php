@@ -99,6 +99,8 @@
     .social-icon { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: white; }
     .social-icon.linkedin { background: #0077b5; }
     .social-icon.google   { background: #ea4335; }
+    .social-icon.instagram { background: radial-gradient(circle at 30% 110%, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+    .social-icon.tiktok   { background: #010101; }
     .social-connection-text strong { display: block; font-weight: 700; color: #1a202c; margin-bottom: .15rem; }
     .social-connection-text span { font-size: .85rem; color: #6b7280; }
     .social-connection-action {
@@ -434,6 +436,26 @@
               @else
                 <button type="button" class="social-connection-action" onclick="alert('La connexion Google sera disponible prochainement.')">Connecter</button>
               @endif
+            </div>
+            <div class="social-connection-item">
+              <div class="social-connection-info">
+                <div class="social-icon instagram" style="font-size:.85rem;font-weight:800;"><i class="fab fa-instagram"></i></div>
+                <div class="social-connection-text">
+                  <strong>Instagram</strong>
+                  <span>Le compte Instagram n'est pas connecté</span>
+                </div>
+              </div>
+              <button type="button" class="social-connection-action" onclick="alert('La connexion Instagram sera disponible prochainement.')">Connecter</button>
+            </div>
+            <div class="social-connection-item">
+              <div class="social-connection-info">
+                <div class="social-icon tiktok" style="font-size:.85rem;font-weight:800;"><i class="fab fa-tiktok"></i></div>
+                <div class="social-connection-text">
+                  <strong>TikTok</strong>
+                  <span>Le compte TikTok n'est pas connecté</span>
+                </div>
+              </div>
+              <button type="button" class="social-connection-action" onclick="alert('La connexion TikTok sera disponible prochainement.')">Connecter</button>
             </div>
           </div>
 
