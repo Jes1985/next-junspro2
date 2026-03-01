@@ -346,14 +346,14 @@
           <div class="form-section">
             <h3 class="form-section-title">Localisation</h3>
             @php
-              $__clientCountryCodes = ['FR'=>'France','GP'=>'Guadeloupe','MQ'=>'Martinique','GF'=>'Guyane','RE'=>'La Réunion','NC'=>'Nouvelle-Calédonie','PF'=>'Polynésie française','BE'=>'Belgique','CH'=>'Suisse','ES'=>'Espagne','DE'=>'Allemagne','IT'=>'Italie','PT'=>'Portugal','NL'=>'Pays-Bas','GB'=>'Royaume-Uni','CA'=>'Canada','US'=>'États-Unis','MT'=>'Malte','MC'=>'Monaco','LU'=>'Luxembourg','MA'=>'Maroc','TN'=>'Tunisie','SN'=>'Sénégal','CI'=>"Côte d\'Ivoire",'IE'=>'Irlande','HR'=>'Croatie'];
+              $__clientCountryCodes = ['FR'=>'France','GP'=>'Guadeloupe','MQ'=>'Martinique','GF'=>'Guyane','RE'=>'La Réunion','NC'=>'Nouvelle-Calédonie','PF'=>'Polynésie française','BE'=>'Belgique','CH'=>'Suisse','ES'=>'Espagne','DE'=>'Allemagne','IT'=>'Italie','PT'=>'Portugal','NL'=>'Pays-Bas','GB'=>'Royaume-Uni','CA'=>'Canada','US'=>'États-Unis','MT'=>'Malte','MC'=>'Monaco','LU'=>'Luxembourg','MA'=>'Maroc','TN'=>'Tunisie','SN'=>'Sénégal','CI'=>"Côte d'Ivoire",'IE'=>'Irlande','HR'=>'Croatie'];
               $__savedCountry = old('country', $user->country ?? '');
               $__savedCity    = old('city',    $user->city    ?? '');
             @endphp
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label"><i class="fas fa-map-marker-alt me-1" style="color:#7c3aed;"></i>Pays</label>
-                <select name="country" id="client_location_country" class="form-control filter-select @error('country') has-error @enderror">
+                <select name="country" id="client_location_country" class="filter-select @error('country') has-error @enderror">
                   <option value="">Sélectionner un pays</option>
                   @foreach($__clientCountryCodes as $__code => $__name)
                     <option value="{{ $__code }}" {{ $__savedCountry === $__code ? 'selected' : '' }}>{{ $__name }}</option>
@@ -363,7 +363,7 @@
               </div>
               <div class="form-group">
                 <label class="form-label"><i class="fas fa-city me-1" style="color:#7c3aed;"></i>Ville</label>
-                <select name="city" id="client_location_city" class="form-control filter-select @error('city') has-error @enderror" disabled>
+                <select name="city" id="client_location_city" class="filter-select @error('city') has-error @enderror">
                   <option value="">Sélectionner une ville</option>
                 </select>
                 <input type="hidden" id="client_location_city_saved" value="{{ $__savedCity }}">
