@@ -109,7 +109,7 @@
       <span>Tableau de bord</span>
     </a>
 
-    <a href="{{ route('user.settings.index') }}#profil" class="prem-nav-item {{ request()->routeIs('user.settings.index') ? 'active' : '' }}">
+    <a href="{{ route('user.settings.profile') }}" class="prem-nav-item {{ request()->routeIs('user.settings.profile') ? 'active' : '' }}">
       <span class="prem-nav-icon-wrap">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#7c3aed" stroke-width="2">
           <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>

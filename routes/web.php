@@ -398,7 +398,10 @@ Route::prefix('/user')->middleware(['auth:web', 'account.status', 'change.lang']
   Route::get('/projects-sessions', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'index'])->name('user.projects_sessions.index');
   Route::get('/subscriptions', [\App\Http\Controllers\FrontEnd\ClientSubscriptionController::class, 'index'])->name('user.subscriptions.index');
   Route::get('/settings', 'FrontEnd\UserController@editProfile')->name('user.settings.index');
-  
+
+  // Settings - Profil personnel
+  Route::get('/settings/profile', 'FrontEnd\UserController@editProfileSettings')->name('user.settings.profile');
+
   // Settings - Mot de passe (nouvelle page)
   Route::get('/settings/password', 'FrontEnd\UserController@editPassword')->name('user.settings.password');
   Route::post('/settings/password', 'FrontEnd\UserController@updatePasswordSettings')->name('user.settings.password.update')->withoutMiddleware('change.lang')->middleware('Demo');

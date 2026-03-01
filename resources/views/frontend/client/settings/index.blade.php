@@ -376,7 +376,7 @@
         </div>
         <div class="tile-title">Profil personnel</div>
         <div class="tile-desc">Photo, prenom, nom, ville, pays, fuseau horaire.<br><span style="font-size:.92em;color:#a1a1aa;">Ce que vous presentez sur la plateforme.</span></div>
-        <a href="#profil" class="tile-btn">Modifier</a>
+        <a href="{{ route('user.settings.profile') }}" class="tile-btn">Modifier</a>
       </div>
 
       <!-- 2. Securite -->

@@ -806,6 +806,15 @@ class UserController extends Controller
     return view('frontend.client.settings.index');
   }
 
+  public function editProfileSettings()
+  {
+    $user      = Auth::guard('web')->user();
+    $avatarUrl = $user->image ? asset('assets/img/users/' . $user->image) : null;
+    $initials  = strtoupper(substr($user->first_name ?? $user->username ?? 'U', 0, 1) . substr($user->last_name ?? '', 0, 1));
+    if (trim($initials) === '') $initials = strtoupper(substr($user->username ?? 'U', 0, 2));
+    return view('frontend.client.settings.profile', compact('user', 'avatarUrl', 'initials'));
+  }
+
   public function updateProfile(UpdateProfileRequest $request)
   {
 
