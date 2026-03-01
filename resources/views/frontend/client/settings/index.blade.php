@@ -819,6 +819,7 @@
     });
   </script>
 @endsection
+@section('_dead_css')
       text-transform: uppercase;
       letter-spacing: 0.05em;
       border-bottom: 1px solid #e5e7eb;
@@ -1254,6 +1255,7 @@
       color: #6d28d9;
       text-decoration: none !important;
     }
+@endsection
 {{-- Section obsolète ignorée par le layout --}}
 @section('_deprecated_unused')
   <div class="settings-container">
