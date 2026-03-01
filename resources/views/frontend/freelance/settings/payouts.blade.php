@@ -1,9 +1,9 @@
-@extends('frontend.freelance.layouts.app')
+﻿@extends('frontend.freelance.layouts.app')
 
 @section('content')
 <style>
 /* =====================================================================
-   PAYOUT SETTINGS — International Banking, Ultra-Premium
+   PAYOUT SETTINGS â€” International Banking, Ultra-Premium
    ===================================================================== */
 .payout-wrap { max-width: 1120px; margin: 0 auto; padding: 2.5rem 1.5rem; }
 .payout-header { margin-bottom: 2.5rem; }
@@ -13,7 +13,7 @@
 .flash-ok  { background:#d1fae5; border:1px solid #10b981; color:#065f46; padding:1rem 1.25rem; border-radius:12px; margin-bottom:2rem; font-weight:500; }
 .flash-err { background:#fee2e2; border:1px solid #ef4444; color:#991b1b; padding:1rem 1.25rem; border-radius:12px; margin-bottom:2rem; font-weight:500; }
 
-/* ── Saved banner ── */
+/* â”€â”€ Saved banner â”€â”€ */
 .saved-banner {
   display:flex; align-items:center; gap:.85rem;
   background:linear-gradient(135deg,#f0fdf4,#dcfce7);
@@ -24,7 +24,7 @@
 .saved-txt strong { display:block; color:#065f46; font-weight:700; font-size:.9rem; }
 .saved-txt span   { color:#047857; font-size:.8rem; font-family:monospace; }
 
-/* ── STEP 1 — country selector ── */
+/* â”€â”€ STEP 1 â€” country selector â”€â”€ */
 .step-block { background:#fff; border-radius:20px; padding:2rem; box-shadow:0 4px 30px rgba(0,0,0,.07); border:1px solid #f3f4f6; margin-bottom:2rem; }
 .step-label { font-size:.75rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#0369a1; margin-bottom:.75rem; }
 .step-title { font-size:1.1rem; font-weight:700; color:#111827; margin:0 0 1.25rem; }
@@ -79,11 +79,11 @@
 .country-chip-sys  { font-size:.72rem; color:#3b82f6; font-weight:600; letter-spacing:.5px; text-transform:uppercase; }
 .country-chip-change { margin-left:auto; font-size:.8rem; color:#0369a1; cursor:pointer; font-weight:600; text-decoration:underline; }
 
-/* ── STEP 2 — form ── */
+/* â”€â”€ STEP 2 â€” form â”€â”€ */
 .payout-cols { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:start; }
 @media(max-width:820px){ .payout-cols { grid-template-columns:1fr; } }
 
-/* ── BANK CARD PREVIEW ── */
+/* â”€â”€ BANK CARD PREVIEW â”€â”€ */
 .bank-card-scene { perspective:900px; width:100%; max-width:400px; margin:0 auto 1.25rem; }
 .bank-card {
   position:relative; width:100%; padding-top:63%;
@@ -125,7 +125,7 @@
 .bank-badges { display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; margin-top:.5rem; }
 .bank-badge { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:.3rem .7rem; font-size:.68rem; font-weight:700; color:#374151; box-shadow:0 1px 4px rgba(0,0,0,.07); }
 
-/* ── FORM ── */
+/* â”€â”€ FORM â”€â”€ */
 .pf-card { background:#fff; border-radius:20px; padding:2.25rem; box-shadow:0 4px 30px rgba(0,0,0,.07); border:1px solid #f3f4f6; }
 .pf-title { font-size:1.1rem; font-weight:700; color:#111827; margin:0 0 1.75rem; padding-bottom:1rem; border-bottom:1px solid #f3f4f6; }
 .pf-group { margin-bottom:1.4rem; }
@@ -161,12 +161,12 @@
 }
 .pf-submit-btn:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(3,105,161,.4); }
 
-/* ── Info box ── */
+/* â”€â”€ Info box â”€â”€ */
 .payout-info { margin-top:2.5rem; padding:1.5rem 1.75rem; background:linear-gradient(135deg,#eff6ff,#e0f2fe); border-left:4px solid #0369a1; border-radius:14px; }
 .payout-info h3 { font-weight:700; margin:0 0 .6rem; color:#1e40af; font-size:.95rem; }
 .payout-info ul { color:#1e3a8a; margin:0; padding-left:1.25rem; line-height:2; font-size:.865rem; }
 
-/* ── Placeholder state ── */
+/* â”€â”€ Placeholder state â”€â”€ */
 .step2-placeholder {
   background:linear-gradient(135deg,#f8fafc,#f1f5f9);
   border:2px dashed #cbd5e1; border-radius:20px;
@@ -180,7 +180,7 @@
 
   <div class="payout-header">
     <h1>Versements</h1>
-    <p>Renseignez vos coordonnées bancaires pour recevoir vos paiements, quel que soit votre pays.</p>
+    <p>Renseignez vos coordonnÃ©es bancaires pour recevoir vos paiements, quel que soit votre pays.</p>
   </div>
 
   @if(session('success'))
@@ -197,32 +197,32 @@
     <div class="saved-banner">
       <div class="saved-ic"><i class="fas fa-check"></i></div>
       <div class="saved-txt">
-        <strong>Coordonnées bancaires enregistrées</strong>
+        <strong>CoordonnÃ©es bancaires enregistrÃ©es</strong>
         <span>
           @if($freelancerProfile->bank_country)
-            Pays : {{ $freelancerProfile->bank_country }} &nbsp;·&nbsp;
+            Pays : {{ $freelancerProfile->bank_country }} &nbsp;Â·&nbsp;
           @endif
           @if($freelancerProfile->bank_iban)
-            Réf. : {{ substr($freelancerProfile->bank_iban,0,8) }}••••{{ substr($freelancerProfile->bank_iban,-4) }}
+            RÃ©f. : {{ substr($freelancerProfile->bank_iban,0,8) }}â€¢â€¢â€¢â€¢{{ substr($freelancerProfile->bank_iban,-4) }}
           @endif
-          &nbsp;·&nbsp; {{ $freelancerProfile->bank_account_holder }}
+          &nbsp;Â·&nbsp; {{ $freelancerProfile->bank_account_holder }}
         </span>
       </div>
     </div>
   @endif
 
-  {{-- ═══════════════════════════════════════
-       STEP 1 — Choisir son pays
-  ═══════════════════════════════════════ --}}
+  {{-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       STEP 1 â€” Choisir son pays
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• --}}
   <div class="step-block">
-    <div class="step-label">Étape 1</div>
+    <div class="step-label">Ã‰tape 1</div>
     <div class="step-title">Dans quel pays se trouve votre compte bancaire ?</div>
 
     <div class="country-search-wrap" id="countrySearchWrap">
       <span class="country-search-icon"><i class="fas fa-search"></i></span>
       <input type="text" class="country-search-input" id="countrySearchInput"
-             placeholder="Rechercher un pays…" autocomplete="off" />
-      <span class="country-search-clear" id="countrySearchClear">✕</span>
+             placeholder="Rechercher un paysâ€¦" autocomplete="off" />
+      <span class="country-search-clear" id="countrySearchClear">âœ•</span>
       <div class="country-dropdown" id="countryDropdown"></div>
     </div>
 
@@ -236,19 +236,19 @@
     </div>
   </div>
 
-  {{-- ═══════════════════════════════════════
-       STEP 2 — Formulaire (masqué jusqu'au choix pays)
-  ═══════════════════════════════════════ --}}
+  {{-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       STEP 2 â€” Formulaire (masquÃ© jusqu'au choix pays)
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• --}}
   <div id="step2Area">
     <div class="step2-placeholder" id="step2Placeholder">
       <i class="fas fa-globe"></i>
-      <p>Sélectionnez votre pays pour afficher le formulaire bancaire adapté</p>
+      <p>SÃ©lectionnez votre pays pour afficher le formulaire bancaire adaptÃ©</p>
     </div>
 
     <div id="step2Form" style="display:none;">
       <div class="step-block" style="margin-bottom:2rem;">
-        <div class="step-label">Étape 2</div>
-        <div class="step-title" id="formTitle">Coordonnées bancaires</div>
+        <div class="step-label">Ã‰tape 2</div>
+        <div class="step-title" id="formTitle">CoordonnÃ©es bancaires</div>
       </div>
 
       <div class="payout-cols">
@@ -259,17 +259,17 @@
             <div class="bank-card" id="bankCard">
               <div class="bank-card-inner">
                 <div class="bk-top">
-                  <div class="bk-icon" id="bkIcon">🏦</div>
+                  <div class="bk-icon" id="bkIcon">ðŸ¦</div>
                   <span class="bk-country-flag" id="bkFlag"></span>
                   <span class="bk-system-badge" id="bkSysBadge">BANK</span>
                 </div>
                 <div class="bk-mid">
                   <div class="bk-label" id="bkNumberLabel">IBAN</div>
-                  <div class="bk-number" id="bkNumber">•••• •••• •••• •••• •••• ••••</div>
+                  <div class="bk-number" id="bkNumber">â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢</div>
                   <div class="bk-routing-row" id="bkRoutingRow" style="display:none;">
                     <div class="bk-routing-block">
                       <div class="bk-label" id="bkRoutingLabel">ROUTING</div>
-                      <div class="bk-routing-val" id="bkRoutingVal">•••••••••</div>
+                      <div class="bk-routing-val" id="bkRoutingVal">â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢</div>
                     </div>
                   </div>
                 </div>
@@ -288,7 +288,7 @@
 
         {{-- Form --}}
         <div class="pf-card">
-          <div class="pf-title" id="pfTitle"><i class="fas fa-university"></i>&nbsp; Détails bancaires</div>
+          <div class="pf-title" id="pfTitle"><i class="fas fa-university"></i>&nbsp; DÃ©tails bancaires</div>
           <form method="POST" action="{{ route('freelance.settings.payouts.store') }}" id="payoutForm">
             @csrf
             <input type="hidden" name="bank_country" id="hBankCountry" value="{{ old('bank_country', $freelancerProfile->bank_country ?? '') }}">
@@ -303,10 +303,10 @@
                        value="{{ old('bank_account_holder', $freelancerProfile->bank_account_holder ?? ($user->first_name.' '.$user->last_name)) }}"
                        placeholder="{{ $user->first_name }} {{ $user->last_name }}" />
               </div>
-              <div class="pf-hint">Exactement comme sur votre relevé bancaire.</div>
+              <div class="pf-hint">Exactement comme sur votre relevÃ© bancaire.</div>
             </div>
 
-            {{-- ── IBAN countries ── --}}
+            {{-- â”€â”€ IBAN countries â”€â”€ --}}
             <div class="bank-section" id="sec-iban">
               <div class="pf-group">
                 <label class="pf-label" for="fi_iban"><i class="fas fa-hashtag"></i>&nbsp; IBAN</label>
@@ -316,11 +316,11 @@
                          placeholder="FR76 3000 6000 0112 3456 7890 189" maxlength="42" autocomplete="off" />
                   <div class="pf-badge" id="fi_ibanBadge"></div>
                 </div>
-                <div class="pf-hint" id="fi_ibanHint">Format : groupes de 4 caractères séparés par des espaces.</div>
+                <div class="pf-hint" id="fi_ibanHint">Format : groupes de 4 caractÃ¨res sÃ©parÃ©s par des espaces.</div>
               </div>
             </div>
 
-            {{-- ── USA — ACH ── --}}
+            {{-- â”€â”€ USA â€” ACH â”€â”€ --}}
             <div class="bank-section" id="sec-ach">
               <div class="pf-row2">
                 <div class="pf-group">
@@ -328,19 +328,19 @@
                   <input type="text" id="fi_routing_ach" name="bank_routing" class="pf-input"
                          value="{{ old('bank_routing', $freelancerProfile->bank_routing ?? '') }}"
                          placeholder="021000021" maxlength="9" />
-                  <div class="pf-hint">9 chiffres (bas du chèque)</div>
+                  <div class="pf-hint">9 chiffres (bas du chÃ¨que)</div>
                 </div>
                 <div class="pf-group">
                   <label class="pf-label" for="fi_account_ach"><i class="fas fa-credit-card"></i>&nbsp; Account #</label>
                   <input type="text" id="fi_account_ach" name="bank_iban" class="pf-input"
                          value="{{ old('bank_iban', $freelancerProfile->bank_iban ?? '') }}"
                          placeholder="123456789012" maxlength="17" />
-                  <div class="pf-hint">4–17 chiffres</div>
+                  <div class="pf-hint">4â€“17 chiffres</div>
                 </div>
               </div>
             </div>
 
-            {{-- ── Canada — EFT ── --}}
+            {{-- â”€â”€ Canada â€” EFT â”€â”€ --}}
             <div class="bank-section" id="sec-eft">
               <div class="pf-row2">
                 <div class="pf-group">
@@ -350,7 +350,7 @@
                          placeholder="00011" maxlength="8" />
                 </div>
                 <div class="pf-group">
-                  <label class="pf-label" for="fi_account_eft"><i class="fas fa-credit-card"></i>&nbsp; Numéro compte</label>
+                  <label class="pf-label" for="fi_account_eft"><i class="fas fa-credit-card"></i>&nbsp; NumÃ©ro compte</label>
                   <input type="text" id="fi_account_eft" name="bank_iban" class="pf-input"
                          value="{{ old('bank_iban', $freelancerProfile->bank_iban ?? '') }}"
                          placeholder="1234567" maxlength="12" />
@@ -364,7 +364,7 @@
               </div>
             </div>
 
-            {{-- ── Australia/NZ — BSB ── --}}
+            {{-- â”€â”€ Australia/NZ â€” BSB â”€â”€ --}}
             <div class="bank-section" id="sec-bsb">
               <div class="pf-row2">
                 <div class="pf-group">
@@ -383,46 +383,46 @@
               </div>
             </div>
 
-            {{-- ── India — IFSC ── --}}
+            {{-- â”€â”€ India â€” IFSC â”€â”€ --}}
             <div class="bank-section" id="sec-ifsc">
               <div class="pf-group">
                 <label class="pf-label" for="fi_ifsc"><i class="fas fa-code"></i>&nbsp; Code IFSC</label>
                 <input type="text" id="fi_ifsc" name="bank_routing" class="pf-input"
                        value="{{ old('bank_routing', $freelancerProfile->bank_routing ?? '') }}"
                        placeholder="SBIN0000001" maxlength="11" style="text-transform:uppercase;" />
-                <div class="pf-hint">11 caractères : 4 lettres + 0 + 6 alphanumériques</div>
+                <div class="pf-hint">11 caractÃ¨res : 4 lettres + 0 + 6 alphanumÃ©riques</div>
               </div>
               <div class="pf-group">
-                <label class="pf-label" for="fi_account_ifsc"><i class="fas fa-credit-card"></i>&nbsp; Numéro de compte</label>
+                <label class="pf-label" for="fi_account_ifsc"><i class="fas fa-credit-card"></i>&nbsp; NumÃ©ro de compte</label>
                 <input type="text" id="fi_account_ifsc" name="bank_iban" class="pf-input"
                        value="{{ old('bank_iban', $freelancerProfile->bank_iban ?? '') }}"
                        placeholder="00000123456789012" maxlength="18" />
               </div>
             </div>
 
-            {{-- ── Mexico — CLABE ── --}}
+            {{-- â”€â”€ Mexico â€” CLABE â”€â”€ --}}
             <div class="bank-section" id="sec-clabe">
               <div class="pf-group">
                 <label class="pf-label" for="fi_clabe"><i class="fas fa-hashtag"></i>&nbsp; CLABE interbancaire</label>
                 <input type="text" id="fi_clabe" name="bank_iban" class="pf-input"
                        value="{{ old('bank_iban', $freelancerProfile->bank_iban ?? '') }}"
                        placeholder="032180000118359719" maxlength="18" />
-                <div class="pf-hint">18 chiffres — CLABE interbancaria</div>
+                <div class="pf-hint">18 chiffres â€” CLABE interbancaria</div>
               </div>
             </div>
 
-            {{-- ── Brazil — PIX ── --}}
+            {{-- â”€â”€ Brazil â€” PIX â”€â”€ --}}
             <div class="bank-section" id="sec-pix">
               <div class="pf-group">
-                <label class="pf-label" for="fi_pix"><i class="fas fa-bolt"></i>&nbsp; Clé PIX</label>
+                <label class="pf-label" for="fi_pix"><i class="fas fa-bolt"></i>&nbsp; ClÃ© PIX</label>
                 <input type="text" id="fi_pix" name="bank_iban" class="pf-input pf-text"
                        value="{{ old('bank_iban', $freelancerProfile->bank_iban ?? '') }}"
-                       placeholder="CPF, CNPJ, e-mail, téléphone ou clé aléatoire" maxlength="80" />
-                <div class="pf-hint">Peut être un CPF/CNPJ, e-mail, numéro de téléphone (+55…) ou une clé aléatoire.</div>
+                       placeholder="CPF, CNPJ, e-mail, tÃ©lÃ©phone ou clÃ© alÃ©atoire" maxlength="80" />
+                <div class="pf-hint">Peut Ãªtre un CPF/CNPJ, e-mail, numÃ©ro de tÃ©lÃ©phone (+55â€¦) ou une clÃ© alÃ©atoire.</div>
               </div>
             </div>
 
-            {{-- ── UK — Sort Code ── --}}
+            {{-- â”€â”€ UK â€” Sort Code â”€â”€ --}}
             <div class="bank-section" id="sec-sortcode">
               <div class="pf-row2">
                 <div class="pf-group">
@@ -442,16 +442,16 @@
               </div>
             </div>
 
-            {{-- ── Generic  ── --}}
+            {{-- â”€â”€ Generic  â”€â”€ --}}
             <div class="bank-section" id="sec-generic">
               <div class="pf-group">
                 <label class="pf-label" for="fi_bank_name"><i class="fas fa-university"></i>&nbsp; Nom de la banque</label>
                 <input type="text" id="fi_bank_name" name="bank_routing" class="pf-input pf-text"
                        value="{{ old('bank_routing', $freelancerProfile->bank_routing ?? '') }}"
-                       placeholder="Ex : Citibank, ICBC…" maxlength="60" />
+                       placeholder="Ex : Citibank, ICBCâ€¦" maxlength="60" />
               </div>
               <div class="pf-group">
-                <label class="pf-label" for="fi_account_gen"><i class="fas fa-credit-card"></i>&nbsp; Numéro de compte</label>
+                <label class="pf-label" for="fi_account_gen"><i class="fas fa-credit-card"></i>&nbsp; NumÃ©ro de compte</label>
                 <input type="text" id="fi_account_gen" name="bank_iban" class="pf-input"
                        value="{{ old('bank_iban', $freelancerProfile->bank_iban ?? '') }}"
                        placeholder="0000000000000000" maxlength="34" />
@@ -461,7 +461,7 @@
             <div id="pfErrors"></div>
 
             <button type="submit" class="pf-submit-btn" id="pfSubmitBtn">
-              <i class="fas fa-shield-alt"></i>&nbsp; Enregistrer les coordonnées
+              <i class="fas fa-shield-alt"></i>&nbsp; Enregistrer les coordonnÃ©es
             </button>
           </form>
         </div>
@@ -470,11 +470,11 @@
   </div>{{-- /#step2Area --}}
 
   <div class="payout-info">
-    <h3>🔒 Sécurité & informations</h3>
+    <h3>ðŸ”’ SÃ©curitÃ© & informations</h3>
     <ul>
-      <li>Vos données bancaires sont chiffrées (AES-256) et jamais partagées avec des tiers</li>
-      <li>Les versements sont effectués une fois par mois, après validation de vos missions</li>
-      <li>Junspro prend en charge les virements SEPA, ACH, SWIFT et les systèmes locaux</li>
+      <li>Vos donnÃ©es bancaires sont chiffrÃ©es (AES-256) et jamais partagÃ©es avec des tiers</li>
+      <li>Les versements sont effectuÃ©s une fois par mois, aprÃ¨s validation de vos missions</li>
+      <li>Junspro prend en charge les virements SEPA, ACH, SWIFT et les systÃ¨mes locaux</li>
       <li>En cas de doute, contactez le support : <strong>support@junspro.com</strong></li>
     </ul>
   </div>
@@ -484,111 +484,111 @@
 <script>
 (function () {
 
-  /* ══════════════════════════════════════════════════════
-     1. DONNÉES — Pays + système bancaire
-  ══════════════════════════════════════════════════════ */
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     1. DONNÃ‰ES â€” Pays + systÃ¨me bancaire
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   var COUNTRIES = [
-    // ─── EUROPE / SEPA ──────────────────────────────────
-    {c:'FR',f:'🇫🇷',n:'France',              s:'IBAN (SEPA)',    t:'iban'},
-    {c:'DE',f:'🇩🇪',n:'Allemagne',            s:'IBAN (SEPA)',    t:'iban'},
-    {c:'ES',f:'🇪🇸',n:'Espagne',              s:'IBAN (SEPA)',    t:'iban'},
-    {c:'IT',f:'🇮🇹',n:'Italie',               s:'IBAN (SEPA)',    t:'iban'},
-    {c:'BE',f:'🇧🇪',n:'Belgique',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'NL',f:'🇳🇱',n:'Pays-Bas',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'PT',f:'🇵🇹',n:'Portugal',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'CH',f:'🇨🇭',n:'Suisse',               s:'IBAN (SEPA)',    t:'iban'},
-    {c:'AT',f:'🇦🇹',n:'Autriche',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'LU',f:'🇱🇺',n:'Luxembourg',           s:'IBAN (SEPA)',    t:'iban'},
-    {c:'IE',f:'🇮🇪',n:'Irlande',              s:'IBAN (SEPA)',    t:'iban'},
-    {c:'PL',f:'🇵🇱',n:'Pologne',              s:'IBAN (SEPA)',    t:'iban'},
-    {c:'SE',f:'🇸🇪',n:'Suède',                s:'IBAN (SEPA)',    t:'iban'},
-    {c:'DK',f:'🇩🇰',n:'Danemark',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'NO',f:'🇳🇴',n:'Norvège',              s:'IBAN (SEPA)',    t:'iban'},
-    {c:'FI',f:'🇫🇮',n:'Finlande',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'CZ',f:'🇨🇿',n:'Tchéquie',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'HU',f:'🇭🇺',n:'Hongrie',              s:'IBAN (SEPA)',    t:'iban'},
-    {c:'RO',f:'🇷🇴',n:'Roumanie',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'SK',f:'🇸🇰',n:'Slovaquie',            s:'IBAN (SEPA)',    t:'iban'},
-    {c:'HR',f:'🇭🇷',n:'Croatie',              s:'IBAN (SEPA)',    t:'iban'},
-    {c:'SI',f:'🇸🇮',n:'Slovénie',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'BG',f:'🇧🇬',n:'Bulgarie',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'GR',f:'🇬🇷',n:'Grèce',                s:'IBAN (SEPA)',    t:'iban'},
-    {c:'LT',f:'🇱🇹',n:'Lituanie',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'LV',f:'🇱🇻',n:'Lettonie',             s:'IBAN (SEPA)',    t:'iban'},
-    {c:'EE',f:'🇪🇪',n:'Estonie',              s:'IBAN (SEPA)',    t:'iban'},
-    {c:'CY',f:'🇨🇾',n:'Chypre',               s:'IBAN (SEPA)',    t:'iban'},
-    {c:'MT',f:'🇲🇹',n:'Malte',                s:'IBAN (SEPA)',    t:'iban'},
-    // ─── UK ────────────────────────────────────────────
-    {c:'GB',f:'🇬🇧',n:'Royaume-Uni',          s:'Sort Code / BACS',t:'sortcode'},
-    // ─── MOYEN-ORIENT / IBAN ───────────────────────────
-    {c:'AE',f:'🇦🇪',n:'Émirats arabes unis',  s:'IBAN',           t:'iban'},
-    {c:'SA',f:'🇸🇦',n:'Arabie saoudite',       s:'IBAN',           t:'iban'},
-    {c:'QA',f:'🇶🇦',n:'Qatar',                 s:'IBAN',           t:'iban'},
-    {c:'BH',f:'🇧🇭',n:'Bahreïn',              s:'IBAN',           t:'iban'},
-    {c:'KW',f:'🇰🇼',n:'Koweït',               s:'IBAN',           t:'iban'},
-    {c:'JO',f:'🇯🇴',n:'Jordanie',             s:'IBAN',           t:'iban'},
-    {c:'IL',f:'🇮🇱',n:'Israël',               s:'IBAN',           t:'iban'},
-    {c:'TR',f:'🇹🇷',n:'Turquie',              s:'IBAN',           t:'iban'},
-    {c:'LB',f:'🇱🇧',n:'Liban',                s:'IBAN',           t:'iban'},
-    // ─── AFRIQUE / IBAN ────────────────────────────────
-    {c:'MA',f:'🇲🇦',n:'Maroc',                s:'IBAN',           t:'iban'},
-    {c:'TN',f:'🇹🇳',n:'Tunisie',              s:'IBAN',           t:'iban'},
-    {c:'DZ',f:'🇩🇿',n:'Algérie',              s:'IBAN',           t:'iban'},
-    {c:'MU',f:'🇲🇺',n:'Île Maurice',          s:'IBAN',           t:'iban'},
-    {c:'CM',f:'🇨🇲',n:'Cameroun',             s:'IBAN',           t:'iban'},
-    {c:'SN',f:'🇸🇳',n:'Sénégal',              s:'IBAN',           t:'iban'},
-    {c:'CI',f:'🇨🇮',n:"Côte d'Ivoire",        s:'IBAN',           t:'iban'},
-    {c:'GA',f:'🇬🇦',n:'Gabon',                s:'IBAN',           t:'iban'},
-    // ─── AMÉRIQUES ─────────────────────────────────────
-    {c:'US',f:'🇺🇸',n:'États-Unis',           s:'ABA / ACH',      t:'ach'},
-    {c:'CA',f:'🇨🇦',n:'Canada',               s:'EFT',            t:'eft'},
-    {c:'MX',f:'🇲🇽',n:'Mexique',              s:'CLABE',          t:'clabe'},
-    {c:'BR',f:'🇧🇷',n:'Brésil',               s:'PIX',            t:'pix'},
-    {c:'AR',f:'🇦🇷',n:'Argentine',            s:'CBU / CVU',      t:'generic'},
-    {c:'CO',f:'🇨🇴',n:'Colombie',             s:'Numéro compte',  t:'generic'},
-    {c:'CL',f:'🇨🇱',n:'Chili',                s:'Numéro compte',  t:'generic'},
-    // ─── ASIE ──────────────────────────────────────────
-    {c:'IN',f:'🇮🇳',n:'Inde',                 s:'IFSC / NEFT',    t:'ifsc'},
-    {c:'CN',f:'🇨🇳',n:'Chine',                s:'Numéro compte',  t:'generic'},
-    {c:'JP',f:'🇯🇵',n:'Japon',                s:'Zengin',         t:'generic'},
-    {c:'AU',f:'🇦🇺',n:'Australie',            s:'BSB',            t:'bsb'},
-    {c:'NZ',f:'🇳🇿',n:'Nouvelle-Zélande',     s:'BSB',            t:'bsb'},
-    {c:'SG',f:'🇸🇬',n:'Singapour',            s:'PayNow / FAST',  t:'generic'},
-    {c:'HK',f:'🇭🇰',n:'Hong Kong',            s:'FPS',            t:'generic'},
-    {c:'KR',f:'🇰🇷',n:'Corée du Sud',         s:'Numéro compte',  t:'generic'},
-    {c:'TH',f:'🇹🇭',n:'Thaïlande',            s:'PromptPay',      t:'generic'},
-    {c:'MY',f:'🇲🇾',n:'Malaisie',             s:'Numéro compte',  t:'generic'},
-    {c:'ID',f:'🇮🇩',n:'Indonésie',            s:'Numéro compte',  t:'generic'},
-    {c:'PH',f:'🇵🇭',n:'Philippines',          s:'InstaPay',       t:'generic'},
-    {c:'PK',f:'🇵🇰',n:'Pakistan',             s:'IBAN',           t:'iban'},
-    {c:'BD',f:'🇧🇩',n:'Bangladesh',           s:'Numéro compte',  t:'generic'},
-    {c:'VN',f:'🇻🇳',n:'Viêt Nam',             s:'Numéro compte',  t:'generic'},
+    // â”€â”€â”€ EUROPE / SEPA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    {c:'FR',f:'ðŸ‡«ðŸ‡·',n:'France',              s:'IBAN (SEPA)',    t:'iban'},
+    {c:'DE',f:'ðŸ‡©ðŸ‡ª',n:'Allemagne',            s:'IBAN (SEPA)',    t:'iban'},
+    {c:'ES',f:'ðŸ‡ªðŸ‡¸',n:'Espagne',              s:'IBAN (SEPA)',    t:'iban'},
+    {c:'IT',f:'ðŸ‡®ðŸ‡¹',n:'Italie',               s:'IBAN (SEPA)',    t:'iban'},
+    {c:'BE',f:'ðŸ‡§ðŸ‡ª',n:'Belgique',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'NL',f:'ðŸ‡³ðŸ‡±',n:'Pays-Bas',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'PT',f:'ðŸ‡µðŸ‡¹',n:'Portugal',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'CH',f:'ðŸ‡¨ðŸ‡­',n:'Suisse',               s:'IBAN (SEPA)',    t:'iban'},
+    {c:'AT',f:'ðŸ‡¦ðŸ‡¹',n:'Autriche',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'LU',f:'ðŸ‡±ðŸ‡º',n:'Luxembourg',           s:'IBAN (SEPA)',    t:'iban'},
+    {c:'IE',f:'ðŸ‡®ðŸ‡ª',n:'Irlande',              s:'IBAN (SEPA)',    t:'iban'},
+    {c:'PL',f:'ðŸ‡µðŸ‡±',n:'Pologne',              s:'IBAN (SEPA)',    t:'iban'},
+    {c:'SE',f:'ðŸ‡¸ðŸ‡ª',n:'SuÃ¨de',                s:'IBAN (SEPA)',    t:'iban'},
+    {c:'DK',f:'ðŸ‡©ðŸ‡°',n:'Danemark',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'NO',f:'ðŸ‡³ðŸ‡´',n:'NorvÃ¨ge',              s:'IBAN (SEPA)',    t:'iban'},
+    {c:'FI',f:'ðŸ‡«ðŸ‡®',n:'Finlande',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'CZ',f:'ðŸ‡¨ðŸ‡¿',n:'TchÃ©quie',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'HU',f:'ðŸ‡­ðŸ‡º',n:'Hongrie',              s:'IBAN (SEPA)',    t:'iban'},
+    {c:'RO',f:'ðŸ‡·ðŸ‡´',n:'Roumanie',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'SK',f:'ðŸ‡¸ðŸ‡°',n:'Slovaquie',            s:'IBAN (SEPA)',    t:'iban'},
+    {c:'HR',f:'ðŸ‡­ðŸ‡·',n:'Croatie',              s:'IBAN (SEPA)',    t:'iban'},
+    {c:'SI',f:'ðŸ‡¸ðŸ‡®',n:'SlovÃ©nie',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'BG',f:'ðŸ‡§ðŸ‡¬',n:'Bulgarie',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'GR',f:'ðŸ‡¬ðŸ‡·',n:'GrÃ¨ce',                s:'IBAN (SEPA)',    t:'iban'},
+    {c:'LT',f:'ðŸ‡±ðŸ‡¹',n:'Lituanie',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'LV',f:'ðŸ‡±ðŸ‡»',n:'Lettonie',             s:'IBAN (SEPA)',    t:'iban'},
+    {c:'EE',f:'ðŸ‡ªðŸ‡ª',n:'Estonie',              s:'IBAN (SEPA)',    t:'iban'},
+    {c:'CY',f:'ðŸ‡¨ðŸ‡¾',n:'Chypre',               s:'IBAN (SEPA)',    t:'iban'},
+    {c:'MT',f:'ðŸ‡²ðŸ‡¹',n:'Malte',                s:'IBAN (SEPA)',    t:'iban'},
+    // â”€â”€â”€ UK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    {c:'GB',f:'ðŸ‡¬ðŸ‡§',n:'Royaume-Uni',          s:'Sort Code / BACS',t:'sortcode'},
+    // â”€â”€â”€ MOYEN-ORIENT / IBAN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    {c:'AE',f:'ðŸ‡¦ðŸ‡ª',n:'Ã‰mirats arabes unis',  s:'IBAN',           t:'iban'},
+    {c:'SA',f:'ðŸ‡¸ðŸ‡¦',n:'Arabie saoudite',       s:'IBAN',           t:'iban'},
+    {c:'QA',f:'ðŸ‡¶ðŸ‡¦',n:'Qatar',                 s:'IBAN',           t:'iban'},
+    {c:'BH',f:'ðŸ‡§ðŸ‡­',n:'BahreÃ¯n',              s:'IBAN',           t:'iban'},
+    {c:'KW',f:'ðŸ‡°ðŸ‡¼',n:'KoweÃ¯t',               s:'IBAN',           t:'iban'},
+    {c:'JO',f:'ðŸ‡¯ðŸ‡´',n:'Jordanie',             s:'IBAN',           t:'iban'},
+    {c:'IL',f:'ðŸ‡®ðŸ‡±',n:'IsraÃ«l',               s:'IBAN',           t:'iban'},
+    {c:'TR',f:'ðŸ‡¹ðŸ‡·',n:'Turquie',              s:'IBAN',           t:'iban'},
+    {c:'LB',f:'ðŸ‡±ðŸ‡§',n:'Liban',                s:'IBAN',           t:'iban'},
+    // â”€â”€â”€ AFRIQUE / IBAN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    {c:'MA',f:'ðŸ‡²ðŸ‡¦',n:'Maroc',                s:'IBAN',           t:'iban'},
+    {c:'TN',f:'ðŸ‡¹ðŸ‡³',n:'Tunisie',              s:'IBAN',           t:'iban'},
+    {c:'DZ',f:'ðŸ‡©ðŸ‡¿',n:'AlgÃ©rie',              s:'IBAN',           t:'iban'},
+    {c:'MU',f:'ðŸ‡²ðŸ‡º',n:'ÃŽle Maurice',          s:'IBAN',           t:'iban'},
+    {c:'CM',f:'ðŸ‡¨ðŸ‡²',n:'Cameroun',             s:'IBAN',           t:'iban'},
+    {c:'SN',f:'ðŸ‡¸ðŸ‡³',n:'SÃ©nÃ©gal',              s:'IBAN',           t:'iban'},
+    {c:'CI',f:'ðŸ‡¨ðŸ‡®',n:"CÃ´te d'Ivoire",        s:'IBAN',           t:'iban'},
+    {c:'GA',f:'ðŸ‡¬ðŸ‡¦',n:'Gabon',                s:'IBAN',           t:'iban'},
+    // â”€â”€â”€ AMÃ‰RIQUES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    {c:'US',f:'ðŸ‡ºðŸ‡¸',n:'Ã‰tats-Unis',           s:'ABA / ACH',      t:'ach'},
+    {c:'CA',f:'ðŸ‡¨ðŸ‡¦',n:'Canada',               s:'EFT',            t:'eft'},
+    {c:'MX',f:'ðŸ‡²ðŸ‡½',n:'Mexique',              s:'CLABE',          t:'clabe'},
+    {c:'BR',f:'ðŸ‡§ðŸ‡·',n:'BrÃ©sil',               s:'PIX',            t:'pix'},
+    {c:'AR',f:'ðŸ‡¦ðŸ‡·',n:'Argentine',            s:'CBU / CVU',      t:'generic'},
+    {c:'CO',f:'ðŸ‡¨ðŸ‡´',n:'Colombie',             s:'NumÃ©ro compte',  t:'generic'},
+    {c:'CL',f:'ðŸ‡¨ðŸ‡±',n:'Chili',                s:'NumÃ©ro compte',  t:'generic'},
+    // â”€â”€â”€ ASIE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    {c:'IN',f:'ðŸ‡®ðŸ‡³',n:'Inde',                 s:'IFSC / NEFT',    t:'ifsc'},
+    {c:'CN',f:'ðŸ‡¨ðŸ‡³',n:'Chine',                s:'NumÃ©ro compte',  t:'generic'},
+    {c:'JP',f:'ðŸ‡¯ðŸ‡µ',n:'Japon',                s:'Zengin',         t:'generic'},
+    {c:'AU',f:'ðŸ‡¦ðŸ‡º',n:'Australie',            s:'BSB',            t:'bsb'},
+    {c:'NZ',f:'ðŸ‡³ðŸ‡¿',n:'Nouvelle-ZÃ©lande',     s:'BSB',            t:'bsb'},
+    {c:'SG',f:'ðŸ‡¸ðŸ‡¬',n:'Singapour',            s:'PayNow / FAST',  t:'generic'},
+    {c:'HK',f:'ðŸ‡­ðŸ‡°',n:'Hong Kong',            s:'FPS',            t:'generic'},
+    {c:'KR',f:'ðŸ‡°ðŸ‡·',n:'CorÃ©e du Sud',         s:'NumÃ©ro compte',  t:'generic'},
+    {c:'TH',f:'ðŸ‡¹ðŸ‡­',n:'ThaÃ¯lande',            s:'PromptPay',      t:'generic'},
+    {c:'MY',f:'ðŸ‡²ðŸ‡¾',n:'Malaisie',             s:'NumÃ©ro compte',  t:'generic'},
+    {c:'ID',f:'ðŸ‡®ðŸ‡©',n:'IndonÃ©sie',            s:'NumÃ©ro compte',  t:'generic'},
+    {c:'PH',f:'ðŸ‡µðŸ‡­',n:'Philippines',          s:'InstaPay',       t:'generic'},
+    {c:'PK',f:'ðŸ‡µðŸ‡°',n:'Pakistan',             s:'IBAN',           t:'iban'},
+    {c:'BD',f:'ðŸ‡§ðŸ‡©',n:'Bangladesh',           s:'NumÃ©ro compte',  t:'generic'},
+    {c:'VN',f:'ðŸ‡»ðŸ‡³',n:'ViÃªt Nam',             s:'NumÃ©ro compte',  t:'generic'},
   ];
 
-  /* ── Thèmes visuels par type ── */
+  /* â”€â”€ ThÃ¨mes visuels par type â”€â”€ */
   var THEMES = {
-    iban:     {bg:'linear-gradient(135deg,#0f172a,#0369a1,#0e4d7a)', shadow:'rgba(3,105,161,.5)',  accent:'#0369a1', badges:['SEPA','SWIFT','SHA256'], stamp:'VIREMENT', icon:'🏦'},
-    ach:      {bg:'linear-gradient(135deg,#064e3b,#065f46,#047857)', shadow:'rgba(4,120,87,.5)',   accent:'#047857', badges:['ACH','WIRE','256-AES'], stamp:'CHECKING',  icon:'🏦'},
-    eft:      {bg:'linear-gradient(135deg,#1e3a8a,#1d4ed8,#2563eb)', shadow:'rgba(37,99,235,.5)', accent:'#1d4ed8', badges:['EFT','Interac','SSL'], stamp:'EFT', icon:'🏦'},
-    bsb:      {bg:'linear-gradient(135deg,#4c1d95,#6d28d9,#7c3aed)', shadow:'rgba(109,40,217,.5)',accent:'#7c3aed', badges:['BSB','NPP','SWIFT'], stamp:'TRANSFER', icon:'🏦'},
-    ifsc:     {bg:'linear-gradient(135deg,#7c2d12,#c2410c,#ea580c)', shadow:'rgba(194,65,12,.5)', accent:'#ea580c', badges:['NEFT','IMPS','RTGS'], stamp:'TRANSFER', icon:'🏦'},
-    clabe:    {bg:'linear-gradient(135deg,#134e4a,#0d9488,#14b8a6)', shadow:'rgba(13,148,136,.5)',accent:'#0d9488', badges:['CLABE','SPEI','MXN'], stamp:'SPEI', icon:'🏦'},
-    pix:      {bg:'linear-gradient(135deg,#1a2e05,#365314,#4d7c0f)', shadow:'rgba(77,124,15,.5)', accent:'#65a30d', badges:['PIX','BRL','24/7'], stamp:'PIX', icon:'🏦'},
-    sortcode: {bg:'linear-gradient(135deg,#1e1b4b,#3730a3,#4338ca)', shadow:'rgba(67,56,202,.5)', accent:'#4338ca', badges:['BACS','FPS','GBP'], stamp:'BACS', icon:'🏦'},
-    generic:  {bg:'linear-gradient(135deg,#1f2937,#374151,#4b5563)', shadow:'rgba(55,65,81,.5)',  accent:'#6b7280', badges:['SWIFT','SEPA','SSL'], stamp:'TRANSFER', icon:'🏦'},
+    iban:     {bg:'linear-gradient(135deg,#0f172a,#0369a1,#0e4d7a)', shadow:'rgba(3,105,161,.5)',  accent:'#0369a1', badges:['SEPA','SWIFT','SHA256'], stamp:'VIREMENT', icon:'ðŸ¦'},
+    ach:      {bg:'linear-gradient(135deg,#064e3b,#065f46,#047857)', shadow:'rgba(4,120,87,.5)',   accent:'#047857', badges:['ACH','WIRE','256-AES'], stamp:'CHECKING',  icon:'ðŸ¦'},
+    eft:      {bg:'linear-gradient(135deg,#1e3a8a,#1d4ed8,#2563eb)', shadow:'rgba(37,99,235,.5)', accent:'#1d4ed8', badges:['EFT','Interac','SSL'], stamp:'EFT', icon:'ðŸ¦'},
+    bsb:      {bg:'linear-gradient(135deg,#4c1d95,#6d28d9,#7c3aed)', shadow:'rgba(109,40,217,.5)',accent:'#7c3aed', badges:['BSB','NPP','SWIFT'], stamp:'TRANSFER', icon:'ðŸ¦'},
+    ifsc:     {bg:'linear-gradient(135deg,#7c2d12,#c2410c,#ea580c)', shadow:'rgba(194,65,12,.5)', accent:'#ea580c', badges:['NEFT','IMPS','RTGS'], stamp:'TRANSFER', icon:'ðŸ¦'},
+    clabe:    {bg:'linear-gradient(135deg,#134e4a,#0d9488,#14b8a6)', shadow:'rgba(13,148,136,.5)',accent:'#0d9488', badges:['CLABE','SPEI','MXN'], stamp:'SPEI', icon:'ðŸ¦'},
+    pix:      {bg:'linear-gradient(135deg,#1a2e05,#365314,#4d7c0f)', shadow:'rgba(77,124,15,.5)', accent:'#65a30d', badges:['PIX','BRL','24/7'], stamp:'PIX', icon:'ðŸ¦'},
+    sortcode: {bg:'linear-gradient(135deg,#1e1b4b,#3730a3,#4338ca)', shadow:'rgba(67,56,202,.5)', accent:'#4338ca', badges:['BACS','FPS','GBP'], stamp:'BACS', icon:'ðŸ¦'},
+    generic:  {bg:'linear-gradient(135deg,#1f2937,#374151,#4b5563)', shadow:'rgba(55,65,81,.5)',  accent:'#6b7280', badges:['SWIFT','SEPA','SSL'], stamp:'TRANSFER', icon:'ðŸ¦'},
   };
 
   var IBAN_LENGTHS = {FR:27,DE:22,BE:16,NL:18,ES:24,IT:27,PT:25,LU:20,CH:21,AT:20,IE:22,PL:28,CZ:24,HU:28,RO:24,DK:18,SE:24,FI:18,NO:15,GR:27,SK:24,HR:21,BG:22,SI:19,LT:20,LV:21,EE:20,CY:28,MT:31,GB:22,AE:23,SA:24,QA:29,BH:22,KW:30,JO:30,IL:23,TR:26,LB:28,MA:28,TN:24,DZ:26,MU:30,CM:27,SN:28,CI:28,GA:27,PK:24};
 
-  /* ══════════════════════════════════════════════════════
-     2. ÉTAT
-  ══════════════════════════════════════════════════════ */
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     2. Ã‰TAT
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   var currentCountry = null;
   var currentType    = null;
 
-  /* ══════════════════════════════════════════════════════
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      3. ELEMENTS DOM
-  ══════════════════════════════════════════════════════ */
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   var searchInput   = document.getElementById('countrySearchInput');
   var dropdown      = document.getElementById('countryDropdown');
   var clearBtn      = document.getElementById('countrySearchClear');
@@ -616,12 +616,12 @@
   var hBankType     = document.getElementById('hBankType');
   var holderInput   = document.getElementById('bank_account_holder');
 
-  /* ══════════════════════════════════════════════════════
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      4. RECHERCHE PAYS
-  ══════════════════════════════════════════════════════ */
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   function renderDropdown(list) {
     if (!list.length) {
-      dropdown.innerHTML = '<div class="country-opt-none">Aucun pays trouvé</div>';
+      dropdown.innerHTML = '<div class="country-opt-none">Aucun pays trouvÃ©</div>';
     } else {
       dropdown.innerHTML = list.map(function(c){
         return '<div class="country-opt" data-code="'+c.c+'">' +
@@ -678,9 +678,9 @@
     currentCountry = null; currentType = null;
   });
 
-  /* ══════════════════════════════════════════════════════
-     5. SÉLECTION PAYS → afficher form adapté
-  ══════════════════════════════════════════════════════ */
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     5. SÃ‰LECTION PAYS â†’ afficher form adaptÃ©
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   function selectCountry(obj) {
     currentCountry = obj;
     currentType    = obj.t;
@@ -718,7 +718,7 @@
       bsb:      {num:'ACCOUNT #',  routing:'BSB CODE',  stamp:'TRANSFER'},
       ifsc:     {num:'ACCOUNT #',  routing:'IFSC CODE', stamp:'NEFT/RTGS'},
       clabe:    {num:'CLABE',      routing:null,        stamp:'SPEI'},
-      pix:      {num:'CLÉ PIX',    routing:null,        stamp:'PIX'},
+      pix:      {num:'CLÃ‰ PIX',    routing:null,        stamp:'PIX'},
       sortcode: {num:'ACCOUNT #',  routing:'SORT CODE', stamp:'BACS / FPS'},
       generic:  {num:'ACCOUNT #',  routing:'BANQUE',    stamp:'TRANSFER'},
     };
@@ -731,22 +731,22 @@
     if (lbl.routing) {
       bkRoutingRow.style.display = '';
       bkRoutingLabel.textContent = lbl.routing;
-      bkRoutingVal.textContent   = '•••••••••';
+      bkRoutingVal.textContent   = 'â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢';
     } else {
       bkRoutingRow.style.display = 'none';
     }
 
     /* Reset card displays */
-    bkNumber.textContent = '•••• •••• •••• •••• •••• ••••';
+    bkNumber.textContent = 'â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢';
     bkHolder.textContent = (holderInput.value || 'VOTRE NOM').toUpperCase();
 
     /* Wire up live preview for this type */
     wireLivePreview(obj.t, obj.c);
   }
 
-  /* ══════════════════════════════════════════════════════
-     6. THÈME CARTE
-  ══════════════════════════════════════════════════════ */
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     6. THÃˆME CARTE
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   function applyTheme(type, flag) {
     var th = THEMES[type] || THEMES.generic;
     bankCard.style.background = th.bg;
@@ -756,12 +756,12 @@
     bankBadges.innerHTML = th.badges.map(function(b){
       return '<span class="bank-badge">'+b+'</span>';
     }).join('');
-    document.getElementById('pfTitle').innerHTML = '<i class="fas fa-university" style="color:'+th.accent+'"></i>&nbsp; Détails bancaires — '+flag;
+    document.getElementById('pfTitle').innerHTML = '<i class="fas fa-university" style="color:'+th.accent+'"></i>&nbsp; DÃ©tails bancaires â€” '+flag;
   }
 
-  /* ══════════════════════════════════════════════════════
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      7. LIVE PREVIEW par type
-  ══════════════════════════════════════════════════════ */
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   function formatIBAN(raw) {
     return raw.toUpperCase().replace(/[^A-Z0-9]/g,'').match(/.{1,4}/g)
       ? raw.toUpperCase().replace(/[^A-Z0-9]/g,'').match(/.{1,4}/g).join(' ')
@@ -786,14 +786,14 @@
       var maxLen = IBAN_LENGTHS[cc] || 27;
       var hintEl = document.getElementById('fi_ibanHint');
       var badgeEl = document.getElementById('fi_ibanBadge');
-      if (hintEl) hintEl.textContent = cc + ' — IBAN attendu : ' + maxLen + ' caractères';
+      if (hintEl) hintEl.textContent = cc + ' â€” IBAN attendu : ' + maxLen + ' caractÃ¨res';
 
       wireInput(ibanInput, function(v){
         var fmt = formatIBAN(v);
         ibanInput.value = fmt;
         var clean = fmt.replace(/\s/g,'');
-        var padded = clean.padEnd(maxLen,'•');
-        var groups = padded.match(/.{1,4}/g)||['••••'];
+        var padded = clean.padEnd(maxLen,'â€¢');
+        var groups = padded.match(/.{1,4}/g)||['â€¢â€¢â€¢â€¢'];
         bkNumber.textContent = groups.join(' ');
         if (cc && /^[A-Z]{2}$/.test(cc)) {
           badgeEl.textContent = cc; badgeEl.classList.add('vis');
@@ -802,18 +802,18 @@
 
     } else if (type === 'ach') {
       wireInput(document.getElementById('fi_routing_ach'), function(v){
-        bkRoutingVal.textContent = v.replace(/\D/g,'').padEnd(9,'•');
+        bkRoutingVal.textContent = v.replace(/\D/g,'').padEnd(9,'â€¢');
       });
       wireInput(document.getElementById('fi_account_ach'), function(v){
-        bkNumber.textContent = v.replace(/\D/g,'').padEnd(12,'•');
+        bkNumber.textContent = v.replace(/\D/g,'').padEnd(12,'â€¢');
       });
 
     } else if (type === 'eft') {
       wireInput(document.getElementById('fi_transit'), function(v){
-        bkRoutingVal.textContent = v.replace(/\D/g,'').padEnd(8,'•');
+        bkRoutingVal.textContent = v.replace(/\D/g,'').padEnd(8,'â€¢');
       });
       wireInput(document.getElementById('fi_account_eft'), function(v){
-        bkNumber.textContent = v.replace(/\D/g,'').padEnd(7,'•');
+        bkNumber.textContent = v.replace(/\D/g,'').padEnd(7,'â€¢');
       });
 
     } else if (type === 'bsb') {
@@ -821,29 +821,29 @@
         var raw=v.replace(/\D/g,'');
         if(raw.length>3) raw=raw.slice(0,3)+'-'+raw.slice(3,6);
         document.getElementById('fi_bsb').value=raw;
-        bkRoutingVal.textContent = raw.replace('-','').padEnd(6,'•');
+        bkRoutingVal.textContent = raw.replace('-','').padEnd(6,'â€¢');
       });
       wireInput(document.getElementById('fi_account_bsb'), function(v){
-        bkNumber.textContent = v.replace(/\D/g,'').padEnd(9,'•');
+        bkNumber.textContent = v.replace(/\D/g,'').padEnd(9,'â€¢');
       });
 
     } else if (type === 'ifsc') {
       wireInput(document.getElementById('fi_ifsc'), function(v){
         document.getElementById('fi_ifsc').value = v.toUpperCase();
-        bkRoutingVal.textContent = v.toUpperCase().padEnd(11,'•');
+        bkRoutingVal.textContent = v.toUpperCase().padEnd(11,'â€¢');
       });
       wireInput(document.getElementById('fi_account_ifsc'), function(v){
-        bkNumber.textContent = v.replace(/\D/g,'').padEnd(16,'•');
+        bkNumber.textContent = v.replace(/\D/g,'').padEnd(16,'â€¢');
       });
 
     } else if (type === 'clabe') {
       wireInput(document.getElementById('fi_clabe'), function(v){
-        bkNumber.textContent = v.replace(/\D/g,'').padEnd(18,'•');
+        bkNumber.textContent = v.replace(/\D/g,'').padEnd(18,'â€¢');
       });
 
     } else if (type === 'pix') {
       wireInput(document.getElementById('fi_pix'), function(v){
-        bkNumber.textContent = v || '••••••••••••••••••••';
+        bkNumber.textContent = v || 'â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢';
       });
 
     } else if (type === 'sortcode') {
@@ -852,22 +852,22 @@
         if(raw.length>4) raw=raw.slice(0,2)+'-'+raw.slice(2,4)+'-'+raw.slice(4,6);
         else if(raw.length>2) raw=raw.slice(0,2)+'-'+raw.slice(2,4);
         document.getElementById('fi_sortcode').value=raw;
-        bkRoutingVal.textContent = raw.replace(/-/g,'').padEnd(6,'•');
+        bkRoutingVal.textContent = raw.replace(/-/g,'').padEnd(6,'â€¢');
       });
       wireInput(document.getElementById('fi_account_sc'), function(v){
-        bkNumber.textContent = v.replace(/\D/g,'').padEnd(8,'•');
+        bkNumber.textContent = v.replace(/\D/g,'').padEnd(8,'â€¢');
       });
 
     } else {
       wireInput(document.getElementById('fi_account_gen'), function(v){
-        bkNumber.textContent = v.padEnd(16,'•');
+        bkNumber.textContent = v.padEnd(16,'â€¢');
       });
     }
   }
 
-  /* ══════════════════════════════════════════════════════
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      8. VALIDATION & SUBMIT
-  ══════════════════════════════════════════════════════ */
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   document.getElementById('payoutForm').addEventListener('submit', function(e){
     e.preventDefault();
     pfErrors.innerHTML = '';
@@ -875,34 +875,34 @@
     var holder = holderInput.value.trim();
     var errs   = [];
 
-    if (!currentCountry) { errs.push('Veuillez sélectionner votre pays bancaire.'); }
+    if (!currentCountry) { errs.push('Veuillez sÃ©lectionner votre pays bancaire.'); }
     if (!holder)          { errs.push('Le nom du titulaire est requis.'); }
 
     if (currentType === 'iban') {
       var v = document.getElementById('fi_iban').value.replace(/\s/g,'');
       var expected = IBAN_LENGTHS[currentCountry.c] || 15;
-      if (v.length < expected) errs.push('IBAN incomplet ('+v.length+'/'+expected+' caractères).');
+      if (v.length < expected) errs.push('IBAN incomplet ('+v.length+'/'+expected+' caractÃ¨res).');
     } else if (currentType === 'ach') {
       if (!document.getElementById('fi_routing_ach').value.match(/^\d{9}$/)) errs.push('ABA Routing Number : 9 chiffres requis.');
-      if (document.getElementById('fi_account_ach').value.replace(/\D/g,'').length < 4) errs.push('Numéro de compte trop court.');
+      if (document.getElementById('fi_account_ach').value.replace(/\D/g,'').length < 4) errs.push('NumÃ©ro de compte trop court.');
     } else if (currentType === 'clabe') {
       if (!document.getElementById('fi_clabe').value.match(/^\d{18}$/)) errs.push('CLABE : 18 chiffres requis.');
     }
 
     if (errs.length) {
       pfErrors.innerHTML = '<div style="background:#fef2f2;color:#991b1b;border:1px solid #fca5a5;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem;font-size:.875rem;">' +
-        errs.map(function(e){ return '• '+e; }).join('<br>') + '</div>';
+        errs.map(function(e){ return 'â€¢ '+e; }).join('<br>') + '</div>';
       return;
     }
 
     pfSubmitBtn.disabled = true;
-    pfSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp; Sécurisation en cours…';
+    pfSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp; SÃ©curisation en coursâ€¦';
     this.submit();
   });
 
-  /* ══════════════════════════════════════════════════════
-     9. INIT — pré-sélectionner si pays déjà en base
-  ══════════════════════════════════════════════════════ */
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     9. INIT â€” prÃ©-sÃ©lectionner si pays dÃ©jÃ  en base
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   var savedCountry = '{{ $freelancerProfile->bank_country ?? "" }}';
   if (savedCountry) {
     var obj = COUNTRIES.find(function(x){ return x.c === savedCountry; });
@@ -918,544 +918,3 @@
 })();
 </script>
 @endsection
-
-/* ── Header ── */
-.payout-header { margin-bottom: 2.5rem; }
-.payout-header h1 {
-  font-size: 1.9rem; font-weight: 800; color: #111827;
-  margin: 0 0 .35rem;
-  letter-spacing: -.5px;
-}
-.payout-header p { color: #6b7280; font-size: 1rem; margin: 0; }
-
-/* ── Flash messages ── */
-.flash-success {
-  background: #d1fae5; border: 1px solid #10b981; color: #065f46;
-  padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 2rem;
-  font-weight: 500;
-}
-.flash-error {
-  background: #fee2e2; border: 1px solid #ef4444; color: #991b1b;
-  padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 2rem;
-  font-weight: 500;
-}
-
-/* ── Already-saved banner ── */
-.saved-banner {
-  display: flex; align-items: center; gap: .85rem;
-  background: linear-gradient(135deg,#f0fdf4,#dcfce7);
-  border: 1px solid #86efac; border-radius: 14px;
-  padding: 1rem 1.25rem; margin-bottom: 2rem;
-}
-.saved-banner-icon {
-  width: 40px; height: 40px; background: #10b981; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; color: #fff; font-size: 1.1rem;
-}
-.saved-banner-text strong { display: block; color: #065f46; font-weight: 700; font-size: .95rem; }
-.saved-banner-text span   { color: #047857; font-size: .82rem; font-family: monospace; }
-
-/* ── 2-column layout ── */
-.payout-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-@media(max-width:820px){ .payout-cols { grid-template-columns: 1fr; } }
-
-/* ===================== IBAN CARD PREVIEW ===================== */
-.iban-card-scene {
-  perspective: 900px;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto 1.5rem;
-}
-.iban-card {
-  position: relative;
-  width: 100%;
-  padding-top: 63%;          /* ratio 1.586:1 standard carte */
-  border-radius: 20px;
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 35%, #0e4d7a 65%, #0369a1 100%);
-  box-shadow:
-    0 25px 60px rgba(3,105,161,.55),
-    0 8px 20px rgba(0,0,0,.4),
-    inset 0 1px 0 rgba(255,255,255,.15);
-  overflow: hidden;
-  transition: transform .4s cubic-bezier(.23,1,.32,1);
-}
-.iban-card:hover { transform: rotateY(-4deg) rotateX(3deg) scale(1.02); }
-
-/* holographic shimmer */
-.iban-card::before {
-  content: '';
-  position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(
-    105deg,
-    transparent 35%,
-    rgba(255,255,255,.08) 50%,
-    transparent 65%
-  );
-  background-size: 200% 100%;
-  animation: ibanShimmer 4s ease-in-out infinite;
-}
-@keyframes ibanShimmer {
-  0%,100% { background-position: 200% 0; }
-  50%      { background-position: -200% 0; }
-}
-
-.iban-card-inner {
-  position: absolute; inset: 0; padding: 7% 8%;
-  display: flex; flex-direction: column; justify-content: space-between;
-  z-index: 2;
-  color: #fff;
-}
-
-/* Bank icon top-left */
-.iban-card-bank-row {
-  display: flex; align-items: center; justify-content: space-between;
-}
-.iban-card-bank-icon {
-  width: 48px; height: 32px;
-  background: rgba(255,255,255,.15);
-  border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,.2);
-}
-.iban-card-sepa-badge {
-  font-size: .65rem; font-weight: 700; letter-spacing: 1.5px;
-  opacity: .75; text-transform: uppercase;
-}
-
-/* Country code */
-.iban-card-country {
-  font-size: .7rem; font-weight: 700;
-  letter-spacing: 2px; opacity: .65;
-  text-transform: uppercase;
-}
-
-/* IBAN number */
-.iban-card-number {
-  font-family: 'Courier New', monospace;
-  font-size: clamp(.8rem, 2.2vw, 1.1rem);
-  letter-spacing: .12em;
-  font-weight: 600;
-  line-height: 1.5;
-  text-shadow: 0 1px 4px rgba(0,0,0,.4);
-  min-height: 2.5em;
-  word-break: break-all;
-}
-
-/* Bottom row — holder + IBAN label */
-.iban-card-bottom {
-  display: flex; align-items: flex-end; justify-content: space-between;
-}
-.iban-card-holder-block {}
-.iban-card-holder-label {
-  font-size: .6rem; letter-spacing: 1.5px; opacity: .55;
-  text-transform: uppercase; margin-bottom: .2rem;
-}
-.iban-card-holder-name {
-  font-size: .92rem; font-weight: 700; letter-spacing: .05em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 3px rgba(0,0,0,.4);
-}
-.iban-card-iban-label {
-  font-size: .65rem; font-weight: 800; letter-spacing: 2px;
-  opacity: .55; text-transform: uppercase;
-}
-
-/* Accepted badges below card */
-.iban-accepted {
-  display: flex; gap: .75rem; align-items: center; justify-content: center;
-  flex-wrap: wrap; margin-top: .75rem;
-}
-.iban-badge {
-  background: white; border: 1px solid #e5e7eb; border-radius: 8px;
-  padding: .35rem .75rem; font-size: .7rem; font-weight: 700;
-  color: #374151; letter-spacing: .5px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
-}
-
-/* ===================== PREMIUM FORM ===================== */
-.payout-form-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 2.25rem;
-  box-shadow: 0 4px 30px rgba(0,0,0,.07), 0 1px 8px rgba(0,0,0,.04);
-  border: 1px solid #f3f4f6;
-}
-.payout-form-title {
-  font-size: 1.15rem; font-weight: 700; color: #111827;
-  margin: 0 0 1.75rem; padding-bottom: 1rem;
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.pf-group { margin-bottom: 1.5rem; }
-.pf-label {
-  display: flex; align-items: center; gap: .4rem;
-  font-size: .82rem; font-weight: 700; color: #374151;
-  letter-spacing: .3px; text-transform: uppercase;
-  margin-bottom: .55rem;
-}
-.pf-label-icon { color: #0369a1; }
-
-.pf-input-wrap { position: relative; }
-.pf-input {
-  width: 100%; padding: .85rem 1.1rem;
-  border: 2px solid #e5e7eb; border-radius: 14px;
-  font-size: 1rem; color: #111827;
-  background: #fafafa;
-  font-family: 'Courier New', monospace;
-  letter-spacing: .06em;
-  transition: border-color .2s, background .2s, box-shadow .2s;
-  outline: none;
-  box-sizing: border-box;
-}
-.pf-input:focus {
-  border-color: #0369a1;
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(3,105,161,.12);
-}
-.pf-input.pf-text { font-family: inherit; letter-spacing: normal; }
-.pf-hint {
-  color: #9ca3af; font-size: .78rem; margin-top: .4rem;
-  padding-left: .25rem;
-}
-.pf-error { color: #ef4444; font-size: .8rem; margin-top: .4rem; }
-
-/* Flag badge inside IBAN input */
-.pf-flag-badge {
-  position: absolute; right: .9rem; top: 50%; transform: translateY(-50%);
-  background: #eff6ff; border: 1px solid #bfdbfe;
-  border-radius: 6px; padding: .2rem .55rem;
-  font-size: .72rem; font-weight: 800; color: #1d4ed8;
-  letter-spacing: 1px; pointer-events: none;
-  display: none;
-}
-.pf-flag-badge.visible { display: block; }
-
-/* Submit row */
-.pf-submit-row {
-  display: flex; gap: 1rem; align-items: center;
-  margin-top: 2rem;
-}
-.pf-submit-btn {
-  flex: 1;
-  background: linear-gradient(135deg, #0369a1 0%, #0e4d7a 100%);
-  color: #fff; border: none; border-radius: 14px;
-  padding: .9rem 1.5rem; font-size: 1rem; font-weight: 700;
-  cursor: pointer; letter-spacing: .2px;
-  box-shadow: 0 8px 25px rgba(3,105,161,.3);
-  transition: transform .2s, box-shadow .2s;
-}
-.pf-submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(3,105,161,.4);
-}
-.pf-cancel-link {
-  color: #6b7280; text-decoration: none; font-weight: 500;
-  padding: .9rem 1.25rem; border-radius: 12px;
-  transition: background .2s; font-size: .9rem;
-}
-.pf-cancel-link:hover { background: #f3f4f6; color: #374151; }
-
-/* ── Info box ── */
-.payout-infobox {
-  margin-top: 2.5rem;
-  padding: 1.5rem 1.75rem;
-  background: linear-gradient(135deg, #eff6ff, #e0f2fe);
-  border-left: 4px solid #0369a1;
-  border-radius: 14px;
-}
-.payout-infobox h3 {
-  font-weight: 700; margin: 0 0 .6rem; color: #1e40af; font-size: .95rem;
-}
-.payout-infobox ul {
-  color: #1e3a8a; margin: 0; padding-left: 1.25rem; line-height: 2;
-  font-size: .875rem;
-}
-</style>
-
-<div class="payout-wrap">
-
-  <div class="payout-header">
-    <h1>Versements</h1>
-    <p>Renseignez votre IBAN pour recevoir vos paiements en toute sécurité.</p>
-  </div>
-
-  @if(session('success'))
-    <div class="flash-success">{{ session('success') }}</div>
-  @endif
-  @if(session('error'))
-    <div class="flash-error">{{ session('error') }}</div>
-  @endif
-
-  @if($freelancerProfile && $freelancerProfile->bank_iban)
-    <div class="saved-banner">
-      <div class="saved-banner-icon"><i class="fas fa-check"></i></div>
-      <div class="saved-banner-text">
-        <strong>Coordonnées bancaires enregistrées</strong>
-        <span>
-          IBAN : {{ strtoupper(substr($freelancerProfile->bank_iban, 0, 4)) }}&nbsp;
-          {{ substr($freelancerProfile->bank_iban, 4, 4) }}&nbsp;
-          ••••&nbsp;••••&nbsp;••••&nbsp;{{ substr(preg_replace('/\s/','',$freelancerProfile->bank_iban), -4) }}
-          &nbsp;·&nbsp; Titulaire : {{ $freelancerProfile->bank_account_holder }}
-        </span>
-      </div>
-    </div>
-  @endif
-
-  <div class="payout-cols">
-
-    {{-- ─────────────── IBAN CARD PREVIEW ─────────────── --}}
-    <div>
-      <div class="iban-card-scene">
-        <div class="iban-card">
-          <div class="iban-card-inner">
-            <div class="iban-card-bank-row">
-              <div class="iban-card-bank-icon">🏦</div>
-              <span class="iban-card-sepa-badge">SEPA</span>
-            </div>
-
-            <div>
-              <div class="iban-card-country" id="ibanCountryDisplay">— IBAN</div>
-              <div class="iban-card-number" id="ibanNumberDisplay">•••• •••• •••• •••• •••• •••• •••</div>
-            </div>
-
-            <div class="iban-card-bottom">
-              <div class="iban-card-holder-block">
-                <div class="iban-card-holder-label">Titulaire</div>
-                <div class="iban-card-holder-name" id="ibanHolderDisplay">VOTRE NOM</div>
-              </div>
-              <div class="iban-card-iban-label">IBAN</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="iban-accepted">
-        <span class="iban-badge">🇪🇺 SEPA</span>
-        <span class="iban-badge">🔒 SSL</span>
-        <span class="iban-badge">🛡 PCI-DSS</span>
-        <span class="iban-badge">🏦 Virement</span>
-      </div>
-    </div>
-
-    {{-- ─────────────── FORM ─────────────── --}}
-    <div class="payout-form-card">
-      <div class="payout-form-title">
-        <i class="fas fa-university" style="color:#0369a1;margin-right:.4rem;"></i>
-        Coordonnées bancaires
-      </div>
-
-      <form method="POST" action="{{ route('user.update_profile') }}" id="payout-form">
-        @csrf
-
-        {{-- IBAN --}}
-        <div class="pf-group">
-          <label class="pf-label" for="bank_iban">
-            <span class="pf-label-icon"><i class="fas fa-hashtag"></i></span>
-            IBAN
-          </label>
-          <div class="pf-input-wrap">
-            <input
-              type="text"
-              id="bank_iban"
-              name="bank_iban"
-              class="pf-input @error('bank_iban') pf-input-error @enderror"
-              value="{{ old('bank_iban', $freelancerProfile->bank_iban ?? '') }}"
-              placeholder="FR76 3000 6000 0112 3456 7890 189"
-              maxlength="42"
-              autocomplete="off"
-              spellcheck="false"
-            >
-            <div class="pf-flag-badge" id="ibanFlagBadge"></div>
-          </div>
-          <div class="pf-hint">Saisissez votre IBAN sans espaces ou avec espaces — il sera formaté automatiquement.</div>
-          @error('bank_iban')
-            <div class="pf-error">{{ $message }}</div>
-          @enderror
-        </div>
-
-        {{-- Titulaire --}}
-        <div class="pf-group">
-          <label class="pf-label" for="bank_account_holder">
-            <span class="pf-label-icon"><i class="fas fa-user"></i></span>
-            Titulaire du compte
-          </label>
-          <div class="pf-input-wrap">
-            <input
-              type="text"
-              id="bank_account_holder"
-              name="bank_account_holder"
-              class="pf-input pf-text @error('bank_account_holder') pf-input-error @enderror"
-              value="{{ old('bank_account_holder', $freelancerProfile->bank_account_holder ?? ($user->first_name . ' ' . $user->last_name)) }}"
-              placeholder="{{ $user->first_name }} {{ $user->last_name }}"
-            >
-          </div>
-          <div class="pf-hint">Le nom doit correspondre exactement à celui de votre compte bancaire.</div>
-          @error('bank_account_holder')
-            <div class="pf-error">{{ $message }}</div>
-          @enderror
-        </div>
-
-        <div id="payout-errors"></div>
-
-        <div class="pf-submit-row">
-          <button type="submit" class="pf-submit-btn" id="payout-submit-btn">
-            <i class="fas fa-shield-alt"></i>&nbsp; Enregistrer les coordonnées
-          </button>
-          <a href="{{ route('freelance.dashboard', ['tab' => 'settings']) }}" class="pf-cancel-link">
-            Annuler
-          </a>
-        </div>
-
-      </form>
-    </div>
-  </div>
-
-  {{-- Info box --}}
-  <div class="payout-infobox">
-    <h3>💳 À savoir</h3>
-    <ul>
-      <li>Ces coordonnées sont nécessaires pour recevoir vos paiements</li>
-      <li>Les versements sont effectués une fois par mois</li>
-      <li>Vos informations bancaires sont sécurisées et chiffrées (AES-256)</li>
-      <li>Seul l'IBAN vous est demandé — aucun RIB papier n'est nécessaire</li>
-    </ul>
-  </div>
-
-</div>
-
-<script>
-(function () {
-
-  var ibanInput   = document.getElementById('bank_iban');
-  var holderInput = document.getElementById('bank_account_holder');
-  var ibanDisplay = document.getElementById('ibanNumberDisplay');
-  var holderDisp  = document.getElementById('ibanHolderDisplay');
-  var countryDisp = document.getElementById('ibanCountryDisplay');
-  var flagBadge   = document.getElementById('ibanFlagBadge');
-  var form        = document.getElementById('payout-form');
-  var submitBtn   = document.getElementById('payout-submit-btn');
-  var errorsEl    = document.getElementById('payout-errors');
-
-  if (!ibanInput) return;
-
-  /* Longueurs IBAN par pays (ISO 13616) */
-  var ibanLengths = {
-    FR:27, DE:22, BE:16, NL:18, ES:24, IT:27, PT:25, LU:20, CH:21,
-    AT:20, GB:22, IE:22, PL:28, CZ:24, HU:28, RO:24, DK:18, SE:24,
-    FI:18, NO:15, GR:27, SK:24, HR:21, BG:22, SI:19, LT:20, LV:21,
-    EE:20, CY:28, MT:31
-  };
-
-  var countryNames = {
-    FR:'France', DE:'Allemagne', BE:'Belgique', NL:'Pays-Bas',
-    ES:'Espagne', IT:'Italie', PT:'Portugal', LU:'Luxembourg',
-    CH:'Suisse', AT:'Autriche', GB:'Royaume-Uni', IE:'Irlande',
-    PL:'Pologne', CZ:'Tchéquie', HU:'Hongrie', RO:'Roumanie',
-    DK:'Danemark', SE:'Suède', FI:'Finlande', NO:'Norvège',
-    GR:'Grèce', SK:'Slovaquie', HR:'Croatie', BG:'Bulgarie',
-    SI:'Slovénie', LT:'Lituanie', LV:'Lettonie', EE:'Estonie',
-    CY:'Chypre', MT:'Malte'
-  };
-
-  /* ── Formatage IBAN ── */
-  function formatIBAN(raw) {
-    var clean = raw.toUpperCase().replace(/[^A-Z0-9]/g, '');
-    var groups = clean.match(/.{1,4}/g) || [];
-    return groups.join(' ');
-  }
-
-  /* ── Détection pays ── */
-  function getCountryCode(raw) {
-    var clean = raw.replace(/\s/g,'').toUpperCase();
-    if (clean.length < 2) return null;
-    return clean.substring(0, 2);
-  }
-
-  /* ── Live IBAN preview ── */
-  function updateIBANDisplay(raw) {
-    var clean  = raw.replace(/\s/g,'').toUpperCase();
-    var cc     = getCountryCode(clean);
-    var maxLen = (cc && ibanLengths[cc]) ? ibanLengths[cc] : 27;
-
-    /* Affichage pays */
-    if (cc && countryNames[cc]) {
-      countryDisp.textContent = cc + ' — ' + countryNames[cc];
-    } else {
-      countryDisp.textContent = cc ? (cc + ' — IBAN') : '— IBAN';
-    }
-
-    /* Badge pays input */
-    if (cc && /^[A-Z]{2}$/.test(cc)) {
-      flagBadge.textContent = cc;
-      flagBadge.classList.add('visible');
-    } else {
-      flagBadge.classList.remove('visible');
-    }
-
-    /* Padding avec •• */
-    var padded = clean.padEnd(maxLen, '•');
-    var groups = padded.match(/.{1,4}/g) || ['••••'];
-    ibanDisplay.textContent = groups.join(' ');
-  }
-
-  /* ── Events ── */
-  ibanInput.addEventListener('input', function () {
-    var formatted = formatIBAN(this.value);
-    this.value = formatted;
-    updateIBANDisplay(formatted);
-  });
-
-  holderInput.addEventListener('input', function () {
-    holderDisp.textContent = this.value.toUpperCase() || 'VOTRE NOM';
-  });
-
-  /* ── Init avec les valeurs PHP déjà remplies ── */
-  if (ibanInput.value) {
-    ibanInput.value = formatIBAN(ibanInput.value);
-    updateIBANDisplay(ibanInput.value);
-  }
-  if (holderInput.value) {
-    holderDisp.textContent = holderInput.value.toUpperCase();
-  }
-
-  /* ── Validation & submit ── */
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    errorsEl.innerHTML = '';
-
-    var rawIBAN = ibanInput.value.replace(/\s/g,'').toUpperCase();
-    var holder  = holderInput.value.trim();
-    var cc      = rawIBAN.length >= 2 ? rawIBAN.substring(0,2) : '';
-    var expected = ibanLengths[cc] || 15;
-    var errors  = [];
-
-    if (rawIBAN.length < expected) {
-      errors.push('IBAN incomplet — longueur attendue pour la ' + (countryNames[cc]||'zone') + ' : ' + expected + ' caractères (actuellement ' + rawIBAN.length + ')');
-    }
-    if (!/^[A-Z]{2}[0-9]{2}/.test(rawIBAN)) {
-      errors.push('Format IBAN invalide (doit commencer par un code pays puis 2 chiffres de contrôle)');
-    }
-    if (!holder) errors.push('Le nom du titulaire est requis');
-
-    if (errors.length > 0) {
-      errorsEl.innerHTML = '<div style="background:#fef2f2;color:#991b1b;border:1px solid #fca5a5;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem;font-size:.875rem;">' +
-        errors.map(function(e){ return '• ' + e; }).join('<br>') + '</div>';
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp; Sécurisation en cours…';
-    form.submit();
-  });
-
-})();
-</script>
-@endsection
-
