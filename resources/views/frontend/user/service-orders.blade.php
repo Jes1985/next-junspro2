@@ -195,7 +195,7 @@
 
 @section('content')
 @php
-  $heroFirstName = Auth::guard('web')->user() ? explode(' ', trim(Auth::guard('web')->user()->name))[0] : 'vous';
+  $heroFirstName = Auth::guard('web')->user()?->first_name ?? Auth::guard('web')->user()?->username ?? 'vous';
 @endphp
 <div class="container" style="padding-top: 2rem; padding-bottom: 0;">
   @include('frontend.client.partials.dashboard-nav')

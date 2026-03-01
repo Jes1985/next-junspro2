@@ -856,7 +856,7 @@
   </div>
 
   <!-- Hero violet -->
-  @php $heroFirstName = Auth::guard('web')->user() ? explode(' ', trim(Auth::guard('web')->user()->name))[0] : 'vous'; @endphp
+  @php $heroFirstName = Auth::guard('web')->user()?->first_name ?? Auth::guard('web')->user()?->username ?? 'vous'; @endphp
   <div style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;">
     <div class="messages-dashboard-hero">
       <div>

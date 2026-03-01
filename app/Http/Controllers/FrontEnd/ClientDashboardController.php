@@ -128,4 +128,84 @@ class ClientDashboardController extends Controller
             ])->with('error', __('Certaines données du dashboard sont indisponibles pour le moment.'));
         }
     }
+
+    /**
+     * Page Agenda client — calendrier des sessions bookées semaine par semaine
+     */
+    public function agenda(Request $request)
+    {
+        try {
+            $user = Auth::guard('web')->user();
+
+            if (!$user) {
+                return redirect()->route('user.login');
+            }
+
+            $clientProfile = $user->clientProfile;
+            if (!$clientProfile) {
+                $clientProfile = \App\Models\ClientProfile::firstOrCreate(['user_id' => $user->id]);
+            }
+
+            // Semaine courante (navigation via ?week=+1 / ?week=-1)
+            $weekOffset = (int) $request->get('week', 0);
+            $weekStart  = Carbon::now()->startOfWeek(Carbon::MONDAY)->addWeeks($weekOffset);
+            $weekEnd    = $weekStart->copy()->endOfWeek(Carbon::SUNDAY);
+
+            // Sessions de la semaine (bookées + à venir + en cours)
+            $sessions = collect();
+            if (Schema::hasTable('work_sessions') && Schema::hasTable('subscriptions')) {
+                $sessions = WorkSession::whereHas('subscription', function ($q) use ($clientProfile) {
+                        $q->where('client_id', $clientProfile->id);
+                    })
+                    ->whereBetween('start_at', [$weekStart, $weekEnd])
+                    ->where('status', '!=', 'cancelled')
+                    ->with(['subscription.freelancer.user'])
+                    ->orderBy('start_at', 'asc')
+                    ->get();
+            }
+
+            // Abonnements actifs (pour CTA "Programmer")
+            $subscriptions = collect();
+            if (Schema::hasTable('subscriptions')) {
+                $subscriptions = Subscription::where('client_id', $clientProfile->id)
+                    ->whereIn('status', ['active', 'paused'])
+                    ->with(['freelancer.user'])
+                    ->orderByDesc('created_at')
+                    ->get();
+            }
+
+            // Prochaine session toutes semaines confondues
+            $nextSession = null;
+            if (Schema::hasTable('work_sessions')) {
+                $nextSession = WorkSession::whereHas('subscription', function ($q) use ($clientProfile) {
+                        $q->where('client_id', $clientProfile->id);
+                    })
+                    ->where('start_at', '>', now())
+                    ->where('status', '!=', 'cancelled')
+                    ->with(['subscription.freelancer.user'])
+                    ->orderBy('start_at', 'asc')
+                    ->first();
+            }
+
+            return view('frontend.client.agenda.index', [
+                'weekStart'     => $weekStart,
+                'weekEnd'       => $weekEnd,
+                'weekOffset'    => $weekOffset,
+                'sessions'      => $sessions,
+                'subscriptions' => $subscriptions,
+                'nextSession'   => $nextSession,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Erreur ClientDashboardController@agenda: ' . $e->getMessage());
+
+            return view('frontend.client.agenda.index', [
+                'weekStart'     => Carbon::now()->startOfWeek(Carbon::MONDAY),
+                'weekEnd'       => Carbon::now()->endOfWeek(Carbon::SUNDAY),
+                'weekOffset'    => 0,
+                'sessions'      => collect(),
+                'subscriptions' => collect(),
+                'nextSession'   => null,
+            ])->with('error', __('Certaines données sont temporairement indisponibles.'));
+        }
+    }
 }

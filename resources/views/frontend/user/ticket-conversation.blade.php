@@ -21,7 +21,7 @@
 @endsection
 
 @section('content')
-@php $heroFirstName = Auth::guard('web')->user() ? explode(' ', trim(Auth::guard('web')->user()->name))[0] : 'vous'; @endphp
+@php $heroFirstName = Auth::guard('web')->user()?->first_name ?? Auth::guard('web')->user()?->username ?? 'vous'; @endphp
 <div style="max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem 0;">
   @include('frontend.client.partials.dashboard-nav')
   <div class="page-hero-banner">

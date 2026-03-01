@@ -521,6 +521,7 @@ Route::prefix('/user')->middleware(['auth:web', 'account.status', 'change.lang']
 
   // Junspro V2 - Dashboard client
   Route::get('/account/dashboard', [\App\Http\Controllers\FrontEnd\ClientDashboardController::class, 'index'])->name('client.dashboard.index');
+  Route::get('/account/agenda', [\App\Http\Controllers\FrontEnd\ClientDashboardController::class, 'agenda'])->name('client.agenda.index');
   
   // Junspro V2 - Dashboards abonnements
   Route::prefix('/account/subscriptions')->group(function () {

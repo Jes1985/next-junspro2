@@ -570,7 +570,7 @@
 @section('content')
   <div class="client-dashboard-container">
     @include('frontend.client.partials.dashboard-nav')
-    @php $heroFirstName = Auth::guard('web')->user() ? explode(' ', trim(Auth::guard('web')->user()->name))[0] : 'vous'; @endphp
+    @php $heroFirstName = Auth::guard('web')->user()?->first_name ?? Auth::guard('web')->user()?->username ?? 'vous'; @endphp
     <div class="page-hero-banner">
       <div class="hero-text-content">
         <h1 class="page-hero-title">Bonjour {{ $heroFirstName }} !</h1>
