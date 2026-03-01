@@ -1,797 +1,604 @@
 @extends('frontend.layout')
 
 @section('style')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<style>
-  :root {
-    --purple: #7C3AED;
-    --blue:   #1e40af;
-    --grad:   linear-gradient(135deg, #7c3aed 0%, #1e40af 100%);
-    --shadow: 0 8px 24px rgba(124,58,237,0.15);
-  }
-
-  /* ── Layout ── */
-  .agenda-page {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 3rem 2rem 4rem;
-    min-height: calc(100vh - 200px);
-    background: linear-gradient(135deg,#f9f5ff 0%,#f0f4ff 50%,#faf8ff 100%);
-  }
-
-  /* ── Hero ── */
-  .agenda-hero {
-    background: var(--grad);
-    border-radius: 24px;
-    padding: 2.5rem 2.5rem 2rem;
-    color: white;
-    margin-bottom: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .agenda-hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .agenda-hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: -40px;
-    width: 220px; height: 220px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .agenda-hero-eyebrow {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0.7;
-    margin-bottom: 0.4rem;
-  }
-  .agenda-hero h1 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 800;
-    margin: 0 0 0.5rem;
-    letter-spacing: -0.5px;
-  }
-  .agenda-hero p {
-    opacity: 0.8;
-    font-size: 15px;
-    margin: 0;
-  }
-  .agenda-hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 13px;
-    font-weight: 600;
-    margin-top: 1rem;
-    backdrop-filter: blur(4px);
-  }
-
-  /* ── Nav semaine ── */
-  .week-nav {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: white;
-    border-radius: 16px;
-    padding: 1rem 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    flex-wrap: wrap;
-  }
-  .week-nav-label {
-    flex: 1;
-    font-size: 16px;
-    font-weight: 700;
-    color: #111827;
-    text-align: center;
-  }
-  .week-nav-label span {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    color: #9CA3AF;
-    margin-top: 2px;
-  }
-  .week-nav-btn {
-    width: 42px;
-    height: 42px;
-    border: 2px solid #E5E7EB;
-    border-radius: 12px;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: #4B5563;
-    font-size: 16px;
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-  .week-nav-btn:hover {
-    border-color: var(--purple);
-    background: #F5F3FF;
-    color: var(--purple);
-    text-decoration: none;
-  }
-  .week-nav-btn--today {
-    background: var(--grad);
-    border-color: transparent;
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    width: auto;
-    padding: 0 14px;
-    letter-spacing: 0.5px;
-  }
-  .week-nav-btn--today:hover {
-    background: var(--grad);
-    color: white;
-    opacity: 0.9;
-  }
-
-  /* ── Grille calendrier ── */
-  .calendar-grid {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-    margin-bottom: 2rem;
-  }
-  .calendar-header-row {
-    display: grid;
-    grid-template-columns: 70px repeat(7, 1fr);
-    border-bottom: 2px solid #F3F4F6;
-  }
-  .cal-header-cell {
-    padding: 14px 8px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-  }
-  .cal-header-cell:first-child { border-right: 1px solid #F3F4F6; }
-  .cal-day-name {
-    font-size: 11px;
-    font-weight: 700;
-    color: #9CA3AF;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .cal-day-num {
-    font-size: 20px;
-    font-weight: 800;
-    color: #1F2937;
-    line-height: 1;
-  }
-  .cal-header-cell--today .cal-day-name { color: var(--purple); }
-  .cal-header-cell--today .cal-day-num {
-    background: var(--grad);
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 17px;
-    box-shadow: 0 4px 12px rgba(124,58,237,0.35);
-  }
-
-  /* Ligne des sessions */
-  .calendar-body-row {
-    display: grid;
-    grid-template-columns: 70px repeat(7, 1fr);
-    min-height: 120px;
-    border-top: 1px solid #F9FAFB;
-  }
-  .cal-time-slot {
-    padding: 12px 8px;
-    border-right: 1px solid #F3F4F6;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 14px;
-  }
-  .cal-time-label {
-    font-size: 10px;
-    font-weight: 600;
-    color: #D1D5DB;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .cal-day-col {
-    padding: 8px 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    border-right: 1px solid #F9FAFB;
-    min-height: 120px;
-  }
-  .cal-day-col--today { background: #FAFAFF; }
-  .cal-day-col:last-child { border-right: none; }
-
-  /* Session card */
-  .session-card {
-    background: linear-gradient(135deg, #F5F3FF 0%, #EEF2FF 100%);
-    border: 1.5px solid #DDD6FE;
-    border-left: 4px solid var(--purple);
-    border-radius: 10px;
-    padding: 8px 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    display: block;
-    color: inherit;
-  }
-  .session-card:hover {
-    border-color: var(--purple);
-    box-shadow: 0 4px 16px rgba(124,58,237,0.2);
-    transform: translateY(-2px);
-    text-decoration: none;
-    color: inherit;
-  }
-  .session-time {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--purple);
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .session-fl-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .session-fl-avatar {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-  .session-fl-initials {
-    background: var(--grad);
-    color: white;
-    font-size: 10px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .session-fl-name {
-    font-size: 12px;
-    font-weight: 600;
-    color: #1F2937;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .session-status-badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 7px;
-    border-radius: 6px;
-    margin-top: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-  }
-  .badge--confirmed { background: #DCFCE7; color: #166534; }
-  .badge--pending   { background: #FEF9C3; color: #854D0E; }
-  .badge--live      { background: #EFF6FF; color: #1D4ED8; }
-
-  /* Empty state colonne */
-  .cal-empty-day {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    min-height: 100px;
-    color: #E5E7EB;
-    font-size: 20px;
-  }
-
-  /* ── Empty state global ── */
-  .agenda-empty {
-    background: white;
-    border-radius: 20px;
-    padding: 4rem 2rem;
-    text-align: center;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-    margin-bottom: 2rem;
-  }
-  .agenda-empty-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg,#F5F3FF,#EEF2FF);
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    margin: 0 auto 1.5rem;
-    color: var(--purple);
-    box-shadow: 0 8px 24px rgba(124,58,237,0.12);
-  }
-  .agenda-empty h3 {
-    font-size: 20px;
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 0.5rem;
-  }
-  .agenda-empty p {
-    color: #6B7280;
-    font-size: 15px;
-    margin-bottom: 1.5rem;
-    max-width: 380px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* ── Section abonnements actifs ── */
-  .active-subs-section {
-    margin-top: 2.5rem;
-  }
-  .active-subs-section h2 {
-    font-size: 18px;
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .active-subs-section h2 .icon-badge {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg,#F5F3FF,#EEF2FF);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--purple);
-    font-size: 15px;
-  }
-  .subs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-  }
-  .sub-card {
-    background: white;
-    border-radius: 18px;
-    border: 1px solid #E5E7EB;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .sub-card:hover {
-    border-color: var(--purple);
-    box-shadow: 0 8px 24px rgba(124,58,237,0.14);
-    transform: translateY(-3px);
-    text-decoration: none;
-    color: inherit;
-  }
-  .sub-avatar {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-  .sub-initials {
-    background: var(--grad);
-    color: white;
-    font-size: 18px;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .sub-info { flex: 1; min-width: 0; }
-  .sub-name {
-    font-size: 15px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 3px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .sub-meta {
-    font-size: 13px;
-    color: #6B7280;
-  }
-  .sub-meta strong { color: var(--purple); }
-  .sub-cta {
-    background: var(--grad);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 0 4px 12px rgba(124,58,237,0.3);
-  }
-  .sub-cta:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 6px 18px rgba(124,58,237,0.4);
-  }
-
-  /* ── Prochaine session banner ── */
-  .next-session-banner {
-    background: white;
-    border: 2px solid #E0E7FF;
-    border-radius: 18px;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 16px rgba(99,102,241,0.1);
-    flex-wrap: wrap;
-  }
-  .nsb-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #10B981;
-    flex-shrink: 0;
-    box-shadow: 0 0 0 4px rgba(16,185,129,0.2);
-    animation: pulse-green 2s infinite;
-  }
-  @keyframes pulse-green {
-    0%,100% { box-shadow: 0 0 0 4px rgba(16,185,129,0.2); }
-    50%      { box-shadow: 0 0 0 8px rgba(16,185,129,0.08); }
-  }
-  .nsb-content { flex: 1; }
-  .nsb-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #10B981;
-    margin-bottom: 2px;
-  }
-  .nsb-date {
-    font-size: 16px;
-    font-weight: 800;
-    color: #111827;
-  }
-  .nsb-fl { font-size: 13px; color: #6B7280; margin-top: 2px; }
-  .nsb-btn {
-    background: #10B981;
-    color: white;
-    border-radius: 10px;
-    padding: 9px 18px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(16,185,129,0.3);
-  }
-  .nsb-btn:hover { opacity: 0.9; color: white; text-decoration: none; }
-
-  /* ── Btn principal ── */
-  .btn-agenda-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--grad);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(124,58,237,0.3);
-  }
-  .btn-agenda-primary:hover {
-    opacity: 0.9;
-    text-decoration: none;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(124,58,237,0.4);
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 900px) {
-    .calendar-header-row,
-    .calendar-body-row { grid-template-columns: 50px repeat(7, 1fr); }
-    .cal-day-num { font-size: 15px; }
-    .session-fl-name,
-    .session-time { font-size: 10px; }
-  }
-  @media (max-width: 640px) {
-    .agenda-page { padding: 1.5rem 1rem 3rem; }
-    .agenda-hero { padding: 1.5rem; }
-    .week-nav { gap: 0.5rem; padding: 0.8rem 1rem; }
-    .subs-grid { grid-template-columns: 1fr; }
-    .calendar-header-row,
-    .calendar-body-row { grid-template-columns: 40px repeat(7, 1fr); }
-    .cal-day-name { font-size: 9px; }
-    .cal-day-num  { font-size: 13px; }
-    .session-time,
-    .session-fl-name,
-    .session-status-badge { display: none; }
-    .session-card { padding: 5px; border-left-width: 3px; }
-    .session-fl-avatar,
-    .session-fl-initials { width: 20px; height: 20px; font-size: 8px; }
-  }
-</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/fr.js"></script>
 @endsection
 
 @section('content')
 
 @php
-  $user = Auth::guard('web')->user();
-  $heroName = $user ? ($user->first_name ?? explode(' ', $user->name ?? 'vous')[0]) : 'vous';
-
-  $frDays   = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
-  $frMonths = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
-
-  // Grouper les sessions par date
-  $sessionsByDate = $sessions->groupBy(fn($s) => \Carbon\Carbon::parse($s->start_at)->format('Y-m-d'));
-
-  // Jours de la semaine
-  $weekDays = [];
-  for ($d = 0; $d < 7; $d++) {
-    $day = $weekStart->copy()->addDays($d);
-    $weekDays[] = [
-      'date'     => $day,
-      'label'    => $frDays[$d],
-      'sessions' => $sessionsByDate->get($day->format('Y-m-d'), collect()),
-      'isToday'  => $day->isToday(),
+  /* ── Données injectées en JS ── */
+  $sessionsByDate = [];
+  foreach ($sessions as $sess) {
+    $fl       = optional(optional(optional($sess->subscription)->freelancer)->user);
+    $flId     = optional($sess->subscription->freelancer ?? null)->id ?? null;
+    $flName   = trim(($fl->first_name ?? '') . ' ' . ($fl->last_name ?? ''));
+    if (empty(trim($flName))) $flName = $fl->name ?? 'Freelance';
+    $dateKey  = \Carbon\Carbon::parse($sess->start_at)->format('Y-m-d');
+    $sessionsByDate[$dateKey][] = [
+      'id'             => $sess->id,
+      'date'           => $dateKey,
+      'start_time'     => \Carbon\Carbon::parse($sess->start_at)->format('H:i'),
+      'end_time'       => $sess->end_at ? \Carbon\Carbon::parse($sess->end_at)->format('H:i') : \Carbon\Carbon::parse($sess->start_at)->addMinutes($sess->duration_minutes ?? 60)->format('H:i'),
+      'freelancer_name'=> $flName,
+      'freelancer_id'  => $flId,
+      'subscription_id'=> $sess->subscription_id,
+      'status'         => $sess->status ?? 'confirmed',
     ];
   }
 
-  // Libellé semaine
-  $startLabel = $weekStart->day . ' ' . $frMonths[$weekStart->month - 1];
-  $endLabel   = $weekEnd->day . ' ' . $frMonths[$weekEnd->month - 1] . ' ' . $weekEnd->year;
-  $weekLabel  = $startLabel . ' – ' . $endLabel;
+  /* ── Abonnements actifs pour le CTA ── */
+  $activeSubs = $subscriptions->map(function($sub) {
+    $fl     = optional(optional($sub->freelancer)->user);
+    $flId   = optional($sub->freelancer)->id;
+    $flName = trim(($fl->first_name ?? '') . ' ' . ($fl->last_name ?? ''));
+    if (empty(trim($flName))) $flName = $fl->name ?? 'Freelance';
+    return [
+      'sub_id'        => $sub->id,
+      'freelancer_id' => $flId,
+      'name'          => $flName,
+      'image'         => $fl->image ?? null,
+      'status'        => $sub->status,
+      'hours_left'    => number_format($sub->calculated_hours_remaining ?? $sub->hours_remaining ?? 0, 1),
+    ];
+  })->values()->toArray();
 @endphp
 
-<div class="agenda-page">
+{{-- Data JS injectée (comme le freelance calendar injecte ses créneaux) --}}
+<script>
+  window.clientAgendaSessions = @json($sessionsByDate);
+  window.clientActiveSubs     = @json($activeSubs);
+</script>
 
-  {{-- ── Nav client ── --}}
-  @include('frontend.client.partials.dashboard-nav')
+<div class="calendar-page-wrapper-light">
+  <div class="dashboard-container">
+    <main class="main-content">
 
-  {{-- ── Hero ── --}}
-  <div class="agenda-hero">
-    <div class="agenda-hero-eyebrow">Mon calendrier</div>
-    <h1>Bonjour {{ ucfirst($heroName) }}, voici votre Agenda</h1>
-    <p>Consultez vos sessions bookées et programmez de nouveaux Rituels.</p>
-    @if($nextSession)
-      @php
-        $ns    = $nextSession;
-        $nsFL  = optional(optional(optional($ns->subscription)->freelancer)->user);
-        $nsName = trim(($nsFL->first_name ?? '') . ' ' . ($nsFL->last_name ?? ''));
-        if(empty(trim($nsName))) $nsName = $nsFL->name ?? 'Votre freelance';
-        $nsDate = \Carbon\Carbon::parse($ns->start_at)->translatedFormat('l d M · H:i');
-      @endphp
-      <div class="agenda-hero-badge">
-        <i class="fas fa-circle" style="font-size:8px; color:#6EE7B7;"></i>
-        Prochain Rituel : {{ $nsDate }} avec {{ $nsName }}
+      {{-- ── Nav client ── --}}
+      @include('frontend.client.partials.dashboard-nav')
+
+      {{-- ── Page header (identique à la vue freelance) ── --}}
+      <div class="page-header">
+        <h1>Mon Agenda</h1>
+        <p class="page-subtitle">
+          Consultez vos Rituels programmés et réservez de nouveaux créneaux avec vos freelances.
+        </p>
       </div>
-    @endif
-  </div>
 
-  {{-- ── Alerte erreur ── --}}
-  @if(session('error'))
-    <div class="alert alert-warning" style="border-radius:12px; margin-bottom:1rem;">
-      <i class="fas fa-exclamation-triangle"></i> {{ session('error') }}
-    </div>
-  @endif
+      {{-- ── Contenu principal ── --}}
+      <div class="calendar-content" data-calendar-root>
 
-  {{-- ── Nav semaine ── --}}
-  <div class="week-nav">
-    <a href="{{ route('client.agenda.index', ['week' => $weekOffset - 1]) }}" class="week-nav-btn" title="Semaine précédente">
-      <i class="fas fa-chevron-left"></i>
-    </a>
-
-    @if($weekOffset !== 0)
-      <a href="{{ route('client.agenda.index') }}" class="week-nav-btn week-nav-btn--today">
-        Aujourd'hui
-      </a>
-    @endif
-
-    <div class="week-nav-label">
-      {{ $weekLabel }}
-      <span>{{ $sessions->count() }} session{{ $sessions->count() !== 1 ? 's' : '' }} cette semaine</span>
-    </div>
-
-    <a href="{{ route('client.agenda.index', ['week' => $weekOffset + 1]) }}" class="week-nav-btn" title="Semaine suivante">
-      <i class="fas fa-chevron-right"></i>
-    </a>
-  </div>
-
-  {{-- ── Grille calendrier ── --}}
-  @if($sessions->count() > 0)
-  <div class="calendar-grid">
-
-    {{-- En-tête jours --}}
-    <div class="calendar-header-row">
-      <div class="cal-header-cell" style="border-right:1px solid #F3F4F6;">
-        <div class="cal-day-name" style="font-size:9px; color:#D1D5DB;">SEM.</div>
-        <div class="cal-day-num" style="font-size:12px; color:#D1D5DB; font-weight:600;">
-          {{ $weekStart->weekOfYear }}
-        </div>
-      </div>
-      @foreach($weekDays as $wd)
-        <div class="cal-header-cell {{ $wd['isToday'] ? 'cal-header-cell--today' : '' }}">
-          <div class="cal-day-name">{{ $wd['label'] }}</div>
-          @if($wd['isToday'])
-            <div class="cal-day-num"><span>{{ $wd['date']->format('d') }}</span></div>
-          @else
-            <div class="cal-day-num">{{ $wd['date']->format('d') }}</div>
-          @endif
-        </div>
-      @endforeach
-    </div>
-
-    {{-- Corps sessions --}}
-    <div class="calendar-body-row">
-      <div class="cal-time-slot">
-        <span class="cal-time-label">Sessions</span>
-      </div>
-      @foreach($weekDays as $wd)
-        <div class="cal-day-col {{ $wd['isToday'] ? 'cal-day-col--today' : '' }}">
-          @if($wd['sessions']->count() > 0)
-            @foreach($wd['sessions'] as $sess)
-              @php
-                $sFL   = optional(optional(optional($sess->subscription)->freelancer)->user);
-                $sName = trim(($sFL->first_name ?? '') . ' ' . ($sFL->last_name ?? ''));
-                if(empty(trim($sName))) $sName = $sFL->name ?? 'Freelance';
-                $sTime = \Carbon\Carbon::parse($sess->start_at)->format('H:i');
-                $sDur  = $sess->duration_minutes ?? 60;
-                $sStatus = $sess->status ?? 'confirmed';
-                $sBadge  = match($sStatus) {
-                  'completed' => ['badge--confirmed', 'Fait'],
-                  'pending'   => ['badge--pending',   'À conf.'],
-                  default     => ['badge--live',      'Confirmé'],
-                };
-                $sLink = route('client.subscriptions.show', optional($sess->subscription)->id ?? '#');
-              @endphp
-              <a href="{{ $sLink }}" class="session-card">
-                <div class="session-time">
-                  <i class="fas fa-clock" style="font-size:9px;"></i>
-                  {{ $sTime }} · {{ $sDur }}min
-                </div>
-                <div class="session-fl-row">
-                  @if($sFL->image ?? false)
-                    <img src="{{ asset('assets/img/users/'.$sFL->image) }}"
-                         alt="{{ $sName }}"
-                         class="session-fl-avatar"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="session-fl-avatar session-fl-initials" style="display:none; border-radius:50%;">{{ strtoupper(substr($sName,0,1)) }}</div>
-                  @else
-                    <div class="session-fl-avatar session-fl-initials" style="border-radius:50%;">{{ strtoupper(substr($sName,0,1)) }}</div>
-                  @endif
-                  <div class="session-fl-name">{{ $sName }}</div>
-                </div>
-                <span class="session-status-badge {{ $sBadge[0] }}">{{ $sBadge[1] }}</span>
-              </a>
-            @endforeach
-          @else
-            <div class="cal-empty-day">
-              <i class="far fa-calendar"></i>
+        {{-- Section Sessions (= "Disponibilités" côté freelance) --}}
+        <div class="availability-section">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Rituels programmés</h2>
+              <p class="section-description">
+                Vos sessions à venir semaine par semaine. Cliquez sur une session pour la reprogrammer.
+              </p>
             </div>
-          @endif
-        </div>
-      @endforeach
-    </div>
-  </div>
-
-  @else
-  {{-- ── Empty state ── --}}
-  <div class="agenda-empty">
-    <div class="agenda-empty-icon">
-      <i class="fas fa-calendar-week"></i>
-    </div>
-    <h3>Aucun Rituel prévu cette semaine</h3>
-    <p>Vous n'avez pas de session bookée du {{ $startLabel }} au {{ $endLabel }}.<br>Programmez un Rituel avec votre freelance !</p>
-    @if($subscriptions->count() > 0)
-      <a href="{{ route('client.subscriptions.first') }}" class="btn-agenda-primary">
-        <i class="fas fa-calendar-plus"></i> Programmer un Rituel
-      </a>
-    @else
-      <a href="{{ route('explore') }}" class="btn-agenda-primary">
-        <i class="fas fa-search"></i> Trouver un freelance
-      </a>
-    @endif
-  </div>
-  @endif
-
-  {{-- ── Section abonnements actifs ── --}}
-  @if($subscriptions->count() > 0)
-  <div class="active-subs-section">
-    <h2>
-      <div class="icon-badge"><i class="fas fa-fire"></i></div>
-      Vos Rituels actifs
-    </h2>
-    <div class="subs-grid">
-      @foreach($subscriptions as $sub)
-        @php
-          $flUser = optional(optional($sub->freelancer)->user);
-          $flName = trim(($flUser->first_name ?? '') . ' ' . ($flUser->last_name ?? ''));
-          if(empty(trim($flName))) $flName = $flUser->name ?? 'Freelance';
-          $hoursLeft = number_format($sub->calculated_hours_remaining ?? $sub->hours_remaining ?? 0, 1);
-          $isActive  = $sub->status === 'active';
-        @endphp
-        <div class="sub-card">
-          @if($flUser->image ?? false)
-            <img src="{{ asset('assets/img/users/'.$flUser->image) }}"
-                 alt="{{ $flName }}"
-                 class="sub-avatar"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-            <div class="sub-avatar sub-initials" style="display:none; border-radius:50%;">{{ strtoupper(substr($flName,0,1)) }}</div>
-          @else
-            <div class="sub-avatar sub-initials" style="border-radius:50%;">{{ strtoupper(substr($flName,0,1)) }}</div>
-          @endif
-
-          <div class="sub-info">
-            <div class="sub-name">{{ $flName }}</div>
-            <div class="sub-meta">
-              <strong>{{ $hoursLeft }}h</strong> restante{{ $hoursLeft != 1 ? 's' : '' }} ·
-              <span style="color:{{ $isActive ? '#10B981' : '#F59E0B' }}; font-weight:600;">
-                {{ $isActive ? 'Actif' : 'En pause' }}
-              </span>
+            <div class="section-actions">
+              <button type="button" class="timezone-chip" data-week-timezone aria-label="Fuseau horaire">Fuseau chargé : —</button>
             </div>
           </div>
 
-          <a href="{{ route('client.subscriptions.show', $sub->id) }}" class="sub-cta">
-            <i class="fas fa-calendar-plus"></i> Programmer
-          </a>
+          <div class="week-controls">
+            <button type="button" class="btn-ghost" data-week-nav="prev" aria-label="Semaine précédente">⟵</button>
+            <div class="week-label">
+              <div class="week-range" data-week-range>Semaine en cours</div>
+              <div class="week-sub" data-week-sub>Synchronisé en temps réel</div>
+            </div>
+            <button type="button" class="btn-ghost" data-week-nav="next" aria-label="Semaine suivante">⟶</button>
+          </div>
+
+          <div class="calendar-grid" data-calendar-grid></div>
+
+          <div class="calendar-empty" data-empty-state>
+            <div class="empty-illustration">✨</div>
+            <div class="empty-title">Aucun Rituel cette semaine</div>
+            <div class="empty-sub">Programmez votre prochain Rituel avec l'un de vos freelances.</div>
+            <button type="button" class="btn-primary" data-open-booking>Programmer un Rituel</button>
+          </div>
+
+          <div class="calendar-loader" data-calendar-loader style="display: none;">Chargement...</div>
+
+          <div class="calendar-cta">
+            <button class="btn-primary" type="button" data-open-booking>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+              Programmer un Rituel
+            </button>
+          </div>
         </div>
-      @endforeach
+
+        {{-- Section Rituels actifs (= "Visio" côté freelance) --}}
+        <div class="visio-section">
+          <div class="visio-header">
+            <div class="visio-icon">🔥</div>
+            <div>
+              <h2 class="visio-title">Rituels actifs</h2>
+              <p class="visio-description">
+                Vos abonnements en cours. Cliquez sur un freelance pour programmer vos prochains créneaux directement dans son agenda.
+              </p>
+            </div>
+          </div>
+
+          @if($subscriptions->count() > 0)
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:1.5rem;">
+              @foreach($subscriptions as $sub)
+                @php
+                  $fl     = optional(optional($sub->freelancer)->user);
+                  $flId   = optional($sub->freelancer)->id;
+                  $flName = trim(($fl->first_name ?? '') . ' ' . ($fl->last_name ?? ''));
+                  if (empty(trim($flName))) $flName = $fl->name ?? 'Freelance';
+                  $hrs    = number_format($sub->calculated_hours_remaining ?? $sub->hours_remaining ?? 0, 1);
+                  $isAct  = $sub->status === 'active';
+                @endphp
+                <a href="{{ $flId ? route('freelance.booking', $flId) : route('client.subscriptions.show', $sub->id) }}"
+                   style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:white;border:1.5px solid #E5E7EB;border-radius:16px;text-decoration:none;color:inherit;transition:all 0.2s;"
+                   onmouseover="this.style.borderColor='#3B82F6';this.style.boxShadow='0 8px 24px rgba(59,130,246,0.15)';this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.borderColor='#E5E7EB';this.style.boxShadow='none';this.style.transform='translateY(0)';">
+                  @if($fl->image ?? false)
+                    <img src="{{ asset('assets/img/users/'.$fl->image) }}" alt="{{ $flName }}"
+                         style="width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0;"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <div style="display:none;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:white;font-size:18px;font-weight:700;align-items:center;justify-content:center;flex-shrink:0;">{{ strtoupper(substr($flName,0,1)) }}</div>
+                  @else
+                    <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:white;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ strtoupper(substr($flName,0,1)) }}</div>
+                  @endif
+                  <div style="flex:1;min-width:0;">
+                    <div style="font-size:15px;font-weight:700;color:#111827;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ $flName }}</div>
+                    <div style="font-size:13px;color:#6B7280;margin-top:2px;">
+                      <strong style="color:{{ $isAct ? '#3B82F6' : '#F59E0B' }};">{{ $hrs }}h</strong> restante{{ $hrs != 1 ? 's' : '' }} ·
+                      <span style="color:{{ $isAct ? '#10B981' : '#F59E0B' }};font-weight:600;">{{ $isAct ? 'Actif' : 'En pause' }}</span>
+                    </div>
+                  </div>
+                  <div style="background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:white;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;box-shadow:0 4px 12px rgba(59,130,246,0.3);">
+                    <i class="fas fa-calendar-plus" style="margin-right:4px;"></i> Programmer
+                  </div>
+                </a>
+              @endforeach
+            </div>
+          @else
+            <div style="margin-top:1.5rem;padding:1.5rem;text-align:center;background:#F8FAFC;border-radius:16px;border:1px dashed #E2E8F0;">
+              <p style="color:#64748B;margin:0 0 1rem;">Vous n'avez pas encore d'abonnement actif.</p>
+              <a href="{{ route('explore') }}" class="btn-primary" style="text-decoration:none;">Trouver un freelance</a>
+            </div>
+          @endif
+        </div>
+
+        {{-- Toast stack --}}
+        <div class="toast-stack" data-toast-stack></div>
+
+      </div>{{-- /calendar-content --}}
+    </main>
+  </div>
+</div>
+
+{{-- Modale "Programmer un Rituel" (= modale "Ajouter un créneau" côté freelance) --}}
+<div id="booking-modal" style="display:none;position:fixed;inset:0;background:rgba(15,23,42,0.45);align-items:center;justify-content:center;padding:1rem;z-index:1200;">
+  <div style="background:white;border-radius:20px;padding:1.5rem;width:min(480px,100%);box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+      <div>
+        <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94A3B8;">Rituels</div>
+        <h3 style="margin:0;font-size:1.4rem;color:#1E293B;">Choisir un Rituel</h3>
+      </div>
+      <button type="button" id="booking-modal-close" style="background:transparent;border:none;font-size:1.2rem;cursor:pointer;color:#94A3B8;">✕</button>
+    </div>
+    <div id="booking-modal-list" style="display:flex;flex-direction:column;gap:10px;"></div>
+    <div id="booking-modal-empty" style="display:none;padding:1.5rem;text-align:center;">
+      <p style="color:#64748B;margin:0 0 1rem;">Aucun abonnement actif.</p>
+      <a href="{{ route('explore') }}" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:white;border-radius:12px;padding:12px 24px;font-weight:700;text-decoration:none;">Trouver un freelance</a>
     </div>
   </div>
-  @endif
-
 </div>
+
+<style>
+  /* ===== RESET ET VARIABLES (= calendar-page-wrapper-light freelance) ===== */
+  .calendar-page-wrapper-light {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+    --text-tertiary: #94A3B8;
+    --primary: #3B82F6;
+    --primary-light: #60A5FA;
+    --accent: #8B5CF6;
+    --border: #E2E8F0;
+    --border-light: #F1F5F9;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05);
+    --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px;
+    --radius-xl: 20px; --radius-2xl: 24px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+    color: var(--text-primary);
+    line-height: 1.5;
+    position: relative;
+    width: 100%;
+    overflow-x: clip;
+    padding: 0 10px !important;
+    box-sizing: border-box;
+  }
+  .calendar-page-wrapper-light * { box-sizing: border-box; }
+  .calendar-page-wrapper-light .dashboard-container {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent;
+  }
+  .calendar-page-wrapper-light .main-content {
+    padding: 2rem 0 !important;
+    background: transparent;
+    max-width: 100% !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== HEADER (identique freelance) ===== */
+  .calendar-page-wrapper-light .page-header {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 2.5px solid rgba(59,130,246,0.2);
+    text-align: center;
+    position: relative;
+  }
+  .calendar-page-wrapper-light .page-header::after {
+    content: ''; position: absolute; bottom: -2.5px; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 4px;
+    background: linear-gradient(90deg,#3B82F6 0%,#60A5FA 50%,#8B5CF6 100%);
+    border-radius: 2px; box-shadow: 0 8px 20px rgba(59,130,246,0.3);
+  }
+  .calendar-page-wrapper-light .page-header h1 {
+    font-size: 3rem !important;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg,#1e40af 0%,#3B82F6 50%,#8B5CF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.03em;
+  }
+  .calendar-page-wrapper-light .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1.75;
+    font-weight: 500;
+  }
+
+  /* ===== LAYOUT CONTENU ===== */
+  .calendar-page-wrapper-light .calendar-content {
+    width: 100% !important;
+    display: flex; flex-direction: column; gap: 2rem;
+    padding: 0 !important; margin: 0 !important;
+  }
+
+  /* ===== SECTION DISPONIBILITÉS ULTRA PREMIUM (= sessions client) ===== */
+  .calendar-page-wrapper-light .availability-section {
+    background: linear-gradient(135deg,#ffffff 0%,#f0f9ff 50%,#f8fafc 100%);
+    border: 2.5px solid rgba(59,130,246,0.25);
+    box-shadow: 0 32px 80px rgba(59,130,246,0.2), 0 12px 32px rgba(59,130,246,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+    border-radius: 32px; padding: 2.5rem;
+    width: 100% !important; transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .calendar-page-wrapper-light .availability-section:hover {
+    box-shadow: 0 40px 100px rgba(59,130,246,0.3), 0 16px 48px rgba(59,130,246,0.18);
+    border-color: rgba(59,130,246,0.4);
+  }
+  .calendar-page-wrapper-light .section-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .calendar-page-wrapper-light .section-title {
+    font-size: 1.5rem; font-weight: 900; color: var(--text-primary);
+    margin-bottom: 0.5rem; letter-spacing: -0.03em;
+  }
+  .calendar-page-wrapper-light .section-description {
+    color: var(--text-secondary); margin-bottom: 0; line-height: 1.6; font-size: 1rem; font-weight: 500;
+  }
+  .calendar-page-wrapper-light .section-actions { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .calendar-page-wrapper-light .timezone-chip {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.5rem 0.75rem; border-radius: var(--radius-md);
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    color: var(--text-secondary); font-size: 0.9rem; cursor: default;
+  }
+
+  /* ===== BOUTONS ===== */
+  .calendar-page-wrapper-light .btn-primary {
+    background: linear-gradient(135deg,#3B82F6 0%,#60A5FA 100%);
+    color: white; border: none; padding: 1rem 2rem; border-radius: 32px;
+    font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.75rem;
+    transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); font-size: 1rem; text-decoration: none;
+    box-shadow: 0 12px 32px rgba(59,130,246,0.3); letter-spacing: -0.02em;
+  }
+  .calendar-page-wrapper-light .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 20px 48px rgba(59,130,246,0.4); color: white; text-decoration: none; }
+  .calendar-page-wrapper-light .btn-ghost {
+    background: transparent; color: var(--text-primary); border: 1px solid var(--border);
+    padding: 0.65rem 0.9rem; border-radius: var(--radius-md); font-weight: 600; cursor: pointer;
+    transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; text-decoration: none;
+  }
+  .calendar-page-wrapper-light .btn-ghost:hover { color: var(--primary); border-color: var(--primary-light); box-shadow: var(--shadow-sm); }
+
+  /* ===== WEEK CONTROLS ===== */
+  .calendar-page-wrapper-light .week-controls {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.85rem 1rem; border: 1px solid var(--border);
+    border-radius: var(--radius-lg); background: var(--bg-primary); box-shadow: var(--shadow-sm);
+  }
+  .calendar-page-wrapper-light .week-label { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; text-align: center; }
+  .calendar-page-wrapper-light .week-range { font-weight: 700; color: var(--text-primary); }
+  .calendar-page-wrapper-light .week-sub { font-size: 0.9rem; color: var(--text-tertiary); }
+
+  /* ===== GRILLE CALENDRIER (identique freelance) ===== */
+  .calendar-page-wrapper-light .calendar-grid {
+    display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.75rem; margin: 1.5rem 0 1rem; width: 100% !important;
+    background: radial-gradient(circle at 10% 10%,rgba(59,130,246,0.08),transparent 28%), radial-gradient(circle at 90% 15%,rgba(139,92,246,0.1),transparent 32%);
+    padding: 0.5rem; border-radius: var(--radius-lg);
+  }
+  .calendar-page-wrapper-light .calendar-day {
+    background: linear-gradient(160deg,rgba(255,255,255,0.92) 0%,rgba(247,250,255,0.96) 100%);
+    border: 1px solid rgba(59,130,246,0.18); border-radius: var(--radius-lg);
+    padding: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem;
+    box-shadow: 0 18px 45px rgba(17,24,39,0.08); min-height: 180px; position: relative;
+  }
+  .calendar-page-wrapper-light .calendar-day.today { border: 1px solid var(--primary); box-shadow: 0 20px 50px rgba(59,130,246,0.18); }
+  .calendar-page-wrapper-light .calendar-day::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 75% 20%,rgba(59,130,246,0.12),transparent 40%); pointer-events: none;
+  }
+  .calendar-page-wrapper-light .day-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .calendar-page-wrapper-light .day-name { font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; font-size: 0.85rem; }
+  .calendar-page-wrapper-light .day-number { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); }
+  .calendar-page-wrapper-light .slots-stack {
+    display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.35rem;
+    flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding-right: 0.25rem;
+  }
+  .calendar-page-wrapper-light .slots-stack::-webkit-scrollbar { width: 6px; }
+  .calendar-page-wrapper-light .slots-stack::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.3); border-radius: 3px; }
+
+  /* Pill session (adaptation du slot-pill freelance) */
+  .calendar-page-wrapper-light .slot-pill {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+    padding: 0.65rem 0.8rem; border-radius: var(--radius-md); border: 1.5px solid var(--border);
+    background: var(--bg-secondary); cursor: pointer; transition: all 0.2s ease;
+    flex-shrink: 0; min-height: 40px; text-decoration: none; color: inherit;
+  }
+  .calendar-page-wrapper-light .slot-pill:hover {
+    transform: translateY(-2px); box-shadow: 0 8px 16px rgba(59,130,246,0.15);
+    border-color: var(--primary-light); background: rgba(255,255,255,0.8); text-decoration: none; color: inherit;
+  }
+  .calendar-page-wrapper-light .slot-pill .slot-time { font-weight: 700; color: var(--text-primary); font-size: 0.92rem; flex: 0 0 auto; }
+  .calendar-page-wrapper-light .slot-pill .slot-meta { font-size: 0.82rem; color: var(--text-tertiary); font-weight: 600; text-align: right; flex: 0 0 auto; }
+  .calendar-page-wrapper-light .slot-pill.status-confirmed { border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.1); }
+  .calendar-page-wrapper-light .slot-pill.status-confirmed:hover { border-color: rgba(16,185,129,0.6); box-shadow: 0 8px 16px rgba(16,185,129,0.2); }
+  .calendar-page-wrapper-light .slot-pill.status-pending   { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.1); }
+  .calendar-page-wrapper-light .slot-pill.status-completed { border-color: rgba(148,163,184,0.5); background: rgba(148,163,184,0.12); color:#475569; }
+  .calendar-page-wrapper-light .slot-empty {
+    color: var(--text-tertiary); font-size: 0.9rem;
+    border: 1px dashed var(--border); border-radius: var(--radius-md);
+    padding: 0.65rem 0.75rem; background: var(--bg-secondary);
+  }
+
+  /* Empty state */
+  .calendar-page-wrapper-light .calendar-empty {
+    text-align: center; border: 1px dashed var(--border); border-radius: var(--radius-lg);
+    padding: 1.5rem; background: var(--bg-primary); box-shadow: var(--shadow-sm);
+  }
+  .calendar-page-wrapper-light .calendar-empty .empty-illustration { font-size: 2rem; margin-bottom: 0.5rem; }
+  .calendar-page-wrapper-light .calendar-empty .empty-title { font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
+  .calendar-page-wrapper-light .calendar-empty .empty-sub  { color: var(--text-secondary); margin-bottom: 1rem; }
+  .calendar-page-wrapper-light .calendar-cta { text-align: center; margin-top: 1.5rem; }
+
+  /* ===== SECTION VISIO (Rituels actifs) - identique freelance ===== */
+  .calendar-page-wrapper-light .visio-section {
+    background: linear-gradient(135deg,#ffffff 0%,#fef3f2 50%,#f8fafc 100%);
+    border: 2.5px solid rgba(30,64,175,0.25);
+    box-shadow: 0 32px 80px rgba(30,64,175,0.2), 0 12px 32px rgba(30,64,175,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+    border-radius: 32px; padding: 2.5rem; width: 100% !important;
+    transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .calendar-page-wrapper-light .visio-section:hover {
+    box-shadow: 0 40px 100px rgba(30,64,175,0.3);
+    border-color: rgba(30,64,175,0.4);
+  }
+  .calendar-page-wrapper-light .visio-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+  .calendar-page-wrapper-light .visio-icon {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg,rgba(30,64,175,0.15) 0%,rgba(30,64,175,0.08) 100%);
+    border-radius: 24px; display: flex; align-items: center; justify-content: center;
+    color: #1e40af; font-size: 2rem; flex-shrink: 0; box-shadow: 0 12px 32px rgba(30,64,175,0.2);
+  }
+  .calendar-page-wrapper-light .visio-title { font-size: 1.35rem; font-weight: 900; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.03em; }
+  .calendar-page-wrapper-light .visio-description { color: var(--text-secondary); line-height: 1.8; margin-bottom: 0; font-size: 1rem; font-weight: 500; }
+
+  /* ===== TOASTS ===== */
+  .toast-stack { position: fixed; top: 1rem; right: 1rem; display: flex; flex-direction: column; gap: 0.75rem; z-index: 1300; }
+  .toast { background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0.75rem 1rem; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 0.5rem; min-width: 260px; }
+  .toast.success { border-color: rgba(16,185,129,0.4); }
+  .toast.error   { border-color: rgba(239,68,68,0.4); }
+  .toast .toast-title { font-weight: 700; font-size: 0.95rem; }
+  .toast .toast-text  { font-size: 0.9rem; color: var(--text-secondary); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1200px) { .calendar-page-wrapper-light .calendar-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 1024px) {
+    .calendar-page-wrapper-light .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+    .calendar-page-wrapper-light .section-header { flex-direction: column; align-items: flex-start; }
+    .calendar-page-wrapper-light .visio-header { flex-direction: column; align-items: flex-start; }
+    .calendar-page-wrapper-light .page-header h1 { font-size: 2rem !important; }
+  }
+  @media (max-width: 480px) {
+    .calendar-page-wrapper-light .calendar-grid { grid-template-columns: 1fr; }
+    .calendar-page-wrapper-light .page-header h1 { font-size: 1.5rem !important; }
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.querySelector('[data-calendar-root]');
+  if (!root) return;
+
+  const grid        = root.querySelector('[data-calendar-grid]');
+  const weekRangeEl = root.querySelector('[data-week-range]');
+  const weekSubEl   = root.querySelector('[data-week-sub]');
+  const timezoneChip = root.querySelector('[data-week-timezone]');
+  const emptyState  = root.querySelector('[data-empty-state]');
+  const ctaSection  = root.querySelector('.calendar-cta');
+  const toastStack  = root.querySelector('[data-toast-stack]');
+
+  // Données PHP injectées (comme loadWeek() côté freelance)
+  const allSessions = window.clientAgendaSessions || {};
+  const activeSubs  = window.clientActiveSubs     || [];
+
+  const state = {
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Paris',
+    weekStart: startOfWeek(new Date()),
+  };
+
+  const dayLabels = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+
+  /* ── Helpers date (identiques à la version freelance) ── */
+  function startOfWeek(date) {
+    const d = new Date(date);
+    const day = d.getDay();
+    const diff = day === 0 ? -6 : 1 - day;
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + diff);
+    return d;
+  }
+  function addDays(date, days) { const d = new Date(date); d.setDate(d.getDate() + days); return d; }
+  function formatDateKey(date) {
+    return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+  }
+  function formatRangeLabel(start, end) {
+    const opts = { day: '2-digit', month: 'short' };
+    return `${start.toLocaleDateString('fr-FR', opts)} – ${end.toLocaleDateString('fr-FR', opts)}`;
+  }
+  function isToday(date) {
+    const t = new Date();
+    return date.getFullYear() === t.getFullYear() && date.getMonth() === t.getMonth() && date.getDate() === t.getDate();
+  }
+
+  /* ── Rendu semaine (= renderWeek() côté freelance) ── */
+  function renderWeek() {
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    const weekEnd = addDays(state.weekStart, 6);
+    if (weekRangeEl) weekRangeEl.textContent = formatRangeLabel(state.weekStart, weekEnd);
+    if (timezoneChip) timezoneChip.textContent = `Fuseau chargé : ${state.timezone}`;
+
+    let totalSessions = 0;
+
+    for (let i = 0; i < 7; i++) {
+      const dayDate = addDays(state.weekStart, i);
+      const dateKey = formatDateKey(dayDate);
+      const sessions = allSessions[dateKey] || [];
+      totalSessions += sessions.length;
+
+      const card = document.createElement('div');
+      card.className = 'calendar-day' + (isToday(dayDate) ? ' today' : '');
+
+      const head = document.createElement('div');
+      head.className = 'day-head';
+      head.innerHTML = `<div><div class="day-name">${dayLabels[dayDate.getDay()]}</div><div class="day-number">${dayDate.getDate()}</div></div>`;
+      card.appendChild(head);
+
+      const stack = document.createElement('div');
+      stack.className = 'slots-stack';
+
+      if (sessions.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'slot-empty';
+        empty.textContent = 'Aucun Rituel';
+        stack.appendChild(empty);
+      } else {
+        sessions.forEach(sess => {
+          const pill = document.createElement('a');
+          pill.className = `slot-pill status-${sess.status || 'confirmed'}`;
+          // Lien vers la page booking du freelance (= page planning que le client connaît)
+          pill.href = sess.freelancer_id
+            ? `/freelance/${sess.freelancer_id}/booking`
+            : (sess.subscription_id ? `/user/account/subscriptions/${sess.subscription_id}` : '#');
+          pill.innerHTML = `
+            <div class="slot-time">${sess.start_time} – ${sess.end_time}</div>
+            <div class="slot-meta">${sess.freelancer_name || ''}</div>
+          `;
+          stack.appendChild(pill);
+        });
+      }
+
+      card.appendChild(stack);
+      grid.appendChild(card);
+    }
+
+    if (weekSubEl)   weekSubEl.textContent   = `${totalSessions} Rituel${totalSessions > 1 ? 's' : ''}`;
+    if (emptyState)  emptyState.style.display = totalSessions === 0 ? 'block' : 'none';
+    if (ctaSection)  ctaSection.style.display  = totalSessions === 0 ? 'none'  : 'block';
+  }
+
+  /* ── Modale "Programmer" (= modale "Ajouter créneau" côté freelance) ── */
+  const bookingModal     = document.getElementById('booking-modal');
+  const bookingModalList = document.getElementById('booking-modal-list');
+  const bookingModalEmpty= document.getElementById('booking-modal-empty');
+  const bookingModalClose= document.getElementById('booking-modal-close');
+
+  function openBookingModal() {
+    if (!bookingModal) return;
+    bookingModalList.innerHTML = '';
+
+    if (activeSubs.length === 0) {
+      bookingModalEmpty.style.display = 'block';
+      bookingModalList.style.display  = 'none';
+    } else {
+      bookingModalEmpty.style.display = 'none';
+      bookingModalList.style.display  = 'flex';
+      activeSubs.forEach(sub => {
+        const el = document.createElement('a');
+        el.href  = sub.freelancer_id ? `/freelance/${sub.freelancer_id}/booking` : '#';
+        el.style.cssText = 'display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:14px;text-decoration:none;color:inherit;transition:all 0.2s;';
+        el.onmouseover = () => { el.style.borderColor='#3B82F6'; el.style.background='#EFF6FF'; };
+        el.onmouseout  = () => { el.style.borderColor='#E2E8F0'; el.style.background='#F8FAFC'; };
+        const initials = (sub.name || 'F')[0].toUpperCase();
+        el.innerHTML = `
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:white;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${initials}</div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:700;color:#1E293B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${sub.name}</div>
+            <div style="font-size:12px;color:#64748B;">${sub.hours_left}h restante(s)</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:white;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:700;white-space:nowrap;flex-shrink:0;">Programmer →</div>
+        `;
+        bookingModalList.appendChild(el);
+      });
+    }
+    bookingModal.style.display = 'flex';
+  }
+  function closeBookingModal() { if (bookingModal) bookingModal.style.display = 'none'; }
+
+  /* ── Bindings (= bindEvents() côté freelance) ── */
+  root.querySelectorAll('[data-open-booking]').forEach(btn => btn.addEventListener('click', openBookingModal));
+  if (bookingModalClose) bookingModalClose.addEventListener('click', closeBookingModal);
+  if (bookingModal) bookingModal.addEventListener('click', e => { if (e.target === bookingModal) closeBookingModal(); });
+
+  const prev = root.querySelector('[data-week-nav="prev"]');
+  const next = root.querySelector('[data-week-nav="next"]');
+  if (prev) prev.addEventListener('click', () => { state.weekStart = addDays(state.weekStart, -7); renderWeek(); });
+  if (next) next.addEventListener('click', () => { state.weekStart = addDays(state.weekStart, 7);  renderWeek(); });
+
+  /* ── Init ── */
+  renderWeek();
+})();
+</script>
 
 @endsection
