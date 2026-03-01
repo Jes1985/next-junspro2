@@ -32,6 +32,11 @@
     font-size: 16px;
     color: #6B7280;
   }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
 </style>
 @endsection
 
@@ -281,6 +286,104 @@
   </div>
 </div>
 </div>
+
+{{-- ══════════════════════════════════════════
+     POPUP DE CONFIRMATION ULTRA LUXE
+     ══════════════════════════════════════════ --}}
+
+{{-- Modale de confirmation --}}
+<div id="luxury-confirm-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:1rem;">
+  {{-- Backdrop blur --}}
+  <div id="luxury-confirm-backdrop" style="position:absolute;inset:0;background:rgba(10,8,30,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:opacity 0.3s ease;"></div>
+
+  {{-- Card --}}
+  <div id="luxury-confirm-card" style="position:relative;width:min(520px,100%);transform:translateY(20px) scale(0.97);opacity:0;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);">
+    {{-- Glow border --}}
+    <div style="position:absolute;inset:-1px;border-radius:28px;background:linear-gradient(135deg,rgba(139,92,246,0.6) 0%,rgba(59,130,246,0.5) 35%,rgba(236,72,153,0.5) 70%,rgba(139,92,246,0.6) 100%);padding:1.5px;">
+      <div style="height:100%;border-radius:27px;background:linear-gradient(160deg,#0f0c29 0%,#1a1140 50%,#0d1117 100%);"></div>
+    </div>
+
+    {{-- Inner content --}}
+    <div style="position:relative;border-radius:28px;padding:2.5rem;overflow:hidden;">
+      {{-- Radial glow decoration --}}
+      <div style="position:absolute;top:-80px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(139,92,246,0.25) 0%,transparent 65%);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-80px;left:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(59,130,246,0.2) 0%,transparent 65%);pointer-events:none;"></div>
+
+      {{-- Header --}}
+      <div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#8B5CF6,#3B82F6);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(139,92,246,0.4);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2">
+            <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8B5CF6;margin-bottom:.3rem;">Confirmation requise</div>
+          <h2 id="luxury-confirm-title" style="margin:0;font-size:1.5rem;font-weight:900;color:white;letter-spacing:-.03em;line-height:1.2;">Programmer vos Rituels</h2>
+        </div>
+      </div>
+
+      {{-- Slot pills --}}
+      <div id="luxury-confirm-slots" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.75rem;"></div>
+
+      {{-- Info bar --}}
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:.85rem 1rem;margin-bottom:1.75rem;display:flex;align-items:center;gap:.65rem;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#10B981;flex-shrink:0;box-shadow:0 0 8px #10B981;"></div>
+        <p id="luxury-confirm-subtitle" style="margin:0;font-size:.875rem;color:rgba(255,255,255,0.65);line-height:1.5;"></p>
+      </div>
+
+      {{-- Boutons --}}
+      <div style="display:flex;gap:.75rem;">
+        <button type="button" id="luxury-confirm-cancel"
+          style="flex:1;padding:1rem;border-radius:14px;border:1.5px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s ease;letter-spacing:-.01em;"
+          onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';"
+          onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.7)';"
+        >Annuler</button>
+        <button type="button" id="luxury-confirm-ok"
+          style="flex:2;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#8B5CF6 0%,#3B82F6 60%,#EC4899 100%);color:white;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);letter-spacing:-.01em;box-shadow:0 8px 28px rgba(139,92,246,0.45);"
+          onmouseover="this.style.transform='translateY(-2px) scale(1.02)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.55)';"
+          onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 8px 28px rgba(139,92,246,0.45)';"
+        >
+          <span id="luxury-confirm-ok-text">Confirmer la programmation</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{-- Toast de succès / erreur --}}
+<div id="luxury-toast" style="display:none;position:fixed;top:1.5rem;right:1.5rem;width:min(400px,calc(100vw - 3rem));z-index:10000;transform:translateX(120%);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+  <div style="background:linear-gradient(135deg,#0f0c29,#1a1140);border-radius:20px;padding:1.25rem 1.5rem;box-shadow:0 24px 60px rgba(0,0,0,0.5);position:relative;overflow:hidden;">
+    <div id="luxury-toast-glow" style="position:absolute;inset:0;pointer-events:none;"></div>
+    <div id="luxury-toast-border" style="position:absolute;inset:0;border-radius:20px;pointer-events:none;"></div>
+    <div style="position:relative;display:flex;align-items:flex-start;gap:.875rem;">
+      <div id="luxury-toast-icon" style="width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"></div>
+      <div style="flex:1;min-width:0;">
+        <div id="luxury-toast-title" style="font-weight:800;font-size:.95rem;color:white;margin-bottom:.2rem;"></div>
+        <div id="luxury-toast-text" style="font-size:.85rem;color:rgba(255,255,255,0.65);line-height:1.5;"></div>
+      </div>
+      <button onclick="hideLuxuryToast()" style="background:transparent;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:1.1rem;padding:.2rem;line-height:1;flex-shrink:0;" onmouseover="this.style.color='white';" onmouseout="this.style.color='rgba(255,255,255,0.4)';">✕</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Popup luxe - animations */
+  #luxury-confirm-modal.open { display: flex !important; }
+  #luxury-confirm-modal.open #luxury-confirm-card {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  .slot-pill-luxe {
+    display: inline-flex; align-items: center; gap: .45rem;
+    padding: .5rem .9rem; border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    color: white; font-size: .85rem; font-weight: 700;
+    letter-spacing: -.01em;
+  }
+  .slot-pill-luxe svg { opacity: .7; }
+  #luxury-toast.show { transform: translateX(0) !important; display: block !important; }
+</style>
 
 @endsection
 

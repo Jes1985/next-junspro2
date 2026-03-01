@@ -155,7 +155,7 @@
     minute = minute || 0;
     
     if (window.selectedSlots.length >= window.maxCourses) {
-      alert('{{ __("Vous ne pouvez programmer que :max Rituels maximum", ["max" => 5]) }}');
+      showLuxuryToast('info', 'Limite atteinte', 'Vous pouvez programmer au maximum 5 Rituels à la fois.');
       return;
     }
     
@@ -360,65 +360,119 @@
     }
   });
   
-  // Fonction pour gérer le clic sur le bouton Programmer
-  window.handleScheduleClick = function() {
-    if (window.selectedSlots.length === 0) {
-      alert('{{ __("Veuillez sélectionner au moins un créneau") }}');
-      return;
+  /* ══════════════════════════════════════════
+     SYSTÈME DE POPUP LUXE
+     ══════════════════════════════════════════ */
+
+  // Afficher le toast luxe
+  window.showLuxuryToast = function(type, title, text, duration) {
+    const toast     = document.getElementById('luxury-toast');
+    const toastIcon = document.getElementById('luxury-toast-icon');
+    const toastGlow = document.getElementById('luxury-toast-glow');
+    const toastBord = document.getElementById('luxury-toast-border');
+    const toastTitle= document.getElementById('luxury-toast-title');
+    const toastText = document.getElementById('luxury-toast-text');
+    if (!toast) return;
+
+    if (type === 'success') {
+      toastIcon.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>`;
+      toastIcon.style.background = 'rgba(16,185,129,0.15)';
+      toastGlow.style.background = 'radial-gradient(circle at 0% 0%, rgba(16,185,129,0.12), transparent 60%)';
+      toastBord.style.boxShadow  = 'inset 0 0 0 1.5px rgba(16,185,129,0.25)';
+    } else if (type === 'error') {
+      toastIcon.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>`;
+      toastIcon.style.background = 'rgba(239,68,68,0.15)';
+      toastGlow.style.background = 'radial-gradient(circle at 0% 0%, rgba(239,68,68,0.12), transparent 60%)';
+      toastBord.style.boxShadow  = 'inset 0 0 0 1.5px rgba(239,68,68,0.25)';
+    } else {
+      toastIcon.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>`;
+      toastIcon.style.background = 'rgba(59,130,246,0.15)';
+      toastGlow.style.background = 'radial-gradient(circle at 0% 0%, rgba(59,130,246,0.12), transparent 60%)';
+      toastBord.style.boxShadow  = 'inset 0 0 0 1.5px rgba(59,130,246,0.25)';
     }
-    
-    const slotsText = window.selectedSlots.map(slot => {
-      const dayNames = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-      const hourStr = String(slot.hour).padStart(2, '0') + ':' + String(slot.minute || 0).padStart(2, '0');
-      return `${dayNames[slot.day]}. ${hourStr}`;
-    }).join(', ');
-    
-    const rituelText = window.selectedSlots.length <= 1 ? '{{ __("Rituel") }}' : '{{ __("Rituels") }}';
-    if (!confirm(`{{ __('Confirmer la programmation de') }} ${window.selectedSlots.length} ${rituelText} ?\n\n${slotsText}`)) {
-      return;
+    toastTitle.textContent = title;
+    toastText.innerHTML    = text;
+    toast.style.display = 'block';
+    // Force reflow
+    toast.offsetHeight;
+    toast.classList.add('show');
+
+    if (window._toastTimer) clearTimeout(window._toastTimer);
+    if (duration !== 0) {
+      window._toastTimer = setTimeout(() => hideLuxuryToast(), duration || 5000);
     }
-    
-    // Vérifier que des créneaux sont sélectionnés
-    if (!window.selectedSlots || !Array.isArray(window.selectedSlots) || window.selectedSlots.length === 0) {
-      alert('{{ __("Veuillez sélectionner au moins un créneau.") }}');
-      return;
+  };
+
+  window.hideLuxuryToast = function() {
+    const toast = document.getElementById('luxury-toast');
+    if (!toast) return;
+    toast.classList.remove('show');
+    setTimeout(() => { toast.style.display = 'none'; }, 400);
+  };
+
+  // Afficher la modale de confirmation luxe
+  window.showLuxuryConfirm = function(slots, onConfirm) {
+    const modal    = document.getElementById('luxury-confirm-modal');
+    const card     = document.getElementById('luxury-confirm-card');
+    const slotsCtn = document.getElementById('luxury-confirm-slots');
+    const subtitle = document.getElementById('luxury-confirm-subtitle');
+    const okBtn    = document.getElementById('luxury-confirm-ok');
+    const cancelBtn= document.getElementById('luxury-confirm-cancel');
+    if (!modal) { onConfirm(); return; }
+
+    const dayNames = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+    slotsCtn.innerHTML = '';
+    slots.forEach(slot => {
+      const hStr = String(slot.hour).padStart(2,'0') + ':' + String(slot.minute||0).padStart(2,'0');
+      const pill = document.createElement('span');
+      pill.className = 'slot-pill-luxe';
+      pill.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${dayNames[slot.day]}. ${hStr}`;
+      slotsCtn.appendChild(pill);
+    });
+
+    const n = slots.length;
+    subtitle.textContent = `Vous êtes sur le point de programmer ${n} Rituel${n > 1 ? 's' : ''} avec ce freelance. Cette action est modifiable jusqu'à 12h avant chaque session.`;
+
+    // Ouvrir la modale
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => {
+      modal.classList.add('open');
+    });
+
+    // Nettoyer les listeners précédents
+    const newOk     = okBtn.cloneNode(true);
+    const newCancel = cancelBtn.cloneNode(true);
+    okBtn.parentNode.replaceChild(newOk, okBtn);
+    cancelBtn.parentNode.replaceChild(newCancel, cancelBtn);
+
+    function close() {
+      modal.classList.remove('open');
+      const c = document.getElementById('luxury-confirm-card');
+      if (c) { c.style.transform = 'translateY(20px) scale(0.97)'; c.style.opacity = '0'; }
+      setTimeout(() => { modal.style.display = 'none'; if(c){c.style.transform='';c.style.opacity='';} }, 350);
     }
-    
-    // Désactiver le bouton pendant le traitement
+
+    document.getElementById('luxury-confirm-ok').addEventListener('click', () => {
+      close();
+      onConfirm();
+    });
+    document.getElementById('luxury-confirm-cancel').addEventListener('click', close);
+    document.getElementById('luxury-confirm-backdrop').addEventListener('click', close, { once: true });
+  };
+
+  /* Fonction principale de réservation */
+  window._doBookSlots = function() {
     const scheduleBtn = document.getElementById('schedule-btn');
     if (scheduleBtn) {
       scheduleBtn.disabled = true;
-      scheduleBtn.textContent = '{{ __("Programmation en cours...") }}';
+      scheduleBtn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:.5rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>Programmation en cours...</span>';
       scheduleBtn.style.cursor = 'wait';
     }
-    
-    // Préparer les données pour l'API
-    const slotsData = window.selectedSlots.map(slot => ({
-      day: slot.day,
-      hour: slot.hour,
-      minute: slot.minute || 0
-    }));
-    
-    // Vérifier que les données sont valides
-    const invalidSlots = slotsData.filter(slot => 
-      slot.day === undefined || slot.hour === undefined || slot.minute === undefined
-    );
-    if (invalidSlots.length > 0) {
-      console.error('Slots invalides:', invalidSlots);
-      alert('{{ __("Certains créneaux sélectionnés sont invalides. Veuillez réessayer.") }}');
-      if (scheduleBtn) {
-        scheduleBtn.disabled = false;
-        scheduleBtn.textContent = '{{ __("Programmer") }}';
-        scheduleBtn.style.cursor = 'pointer';
-      }
-      return;
-    }
-    
-    // Récupérer l'ID du freelance depuis l'URL
-    const urlParts = window.location.pathname.split('/');
-    const freelancerId = urlParts[urlParts.length - 2]; // /freelance/{id}/booking
-    
-    // Appel API pour programmer les cours
+
+    const slotsData = window.selectedSlots.map(slot => ({ day: slot.day, hour: slot.hour, minute: slot.minute || 0 }));
+    const urlParts  = window.location.pathname.split('/');
+    const freelancerId = urlParts[urlParts.indexOf('freelance') + 1];
+
     fetch(`/freelance/${freelancerId}/book-slots`, {
       method: 'POST',
       headers: {
@@ -430,35 +484,28 @@
         slots: slotsData,
         duration: window.courseDuration || 50,
         booking_type: window.bookingType || 'onetime',
-        week_offset: window.currentWeek || 0 // Envoyer l'offset de semaine actuel
+        week_offset: window.currentWeek || 0
       })
     })
     .then(async response => {
-      // Vérifier si la réponse est OK
       if (!response.ok) {
-        // Essayer de parser le JSON même en cas d'erreur
-        try {
-          const errorData = await response.json();
-          throw new Error(errorData.message || `Erreur HTTP ${response.status}`);
-        } catch (e) {
-          // Si ce n'est pas du JSON, utiliser le message d'erreur HTTP
-          throw new Error(`Erreur HTTP ${response.status}: ${response.statusText}`);
-        }
+        let msg = `Erreur HTTP ${response.status}`;
+        try { const d = await response.json(); msg = d.message || msg; } catch(e) {}
+        throw new Error(msg);
       }
       return response.json();
     })
     .then(data => {
       if (data.success) {
-        // Afficher un message de succès
-        alert(data.message + (data.errors && data.errors.length > 0 ? '\n\n' + data.errors.join('\n') : ''));
-        
-        // Rediriger vers le dashboard ou recharger la page
-        window.location.href = '{{ route("user.dashboard") }}';
+        showLuxuryToast('success', 'Rituels programmés ! 🎉',
+          (data.message || 'Vos créneaux ont bien été enregistrés.') +
+          (data.errors && data.errors.length ? '<br><span style="opacity:.7;">' + data.errors.join('<br>') + '</span>' : ''),
+          0
+        );
+        // Redirection après 2.5s
+        setTimeout(() => { window.location.href = '{{ route("user.dashboard") }}'; }, 2500);
       } else {
-        // Afficher l'erreur
-        alert(data.message || '{{ __("Une erreur est survenue") }}');
-        
-        // Réactiver le bouton
+        showLuxuryToast('error', 'Erreur de programmation', data.message || 'Une erreur est survenue.');
         if (scheduleBtn) {
           scheduleBtn.disabled = false;
           scheduleBtn.textContent = '{{ __("Programmer") }}';
@@ -467,17 +514,23 @@
       }
     })
     .catch(error => {
-      console.error('Erreur détaillée:', error);
-      const errorMessage = error.message || '{{ __("Une erreur est survenue lors de la réservation. Veuillez réessayer.") }}';
-      alert(errorMessage);
-      
-      // Réactiver le bouton
+      console.error('Erreur bookSlots:', error);
+      showLuxuryToast('error', 'Oups, une erreur s\'est produite', error.message || 'Veuillez réessayer.');
       if (scheduleBtn) {
         scheduleBtn.disabled = false;
         scheduleBtn.textContent = '{{ __("Programmer") }}';
         scheduleBtn.style.cursor = 'pointer';
       }
     });
+  };
+
+  // Fonction principale : ouvre la popup luxe puis soumet
+  window.handleScheduleClick = function() {
+    if (!window.selectedSlots || window.selectedSlots.length === 0) {
+      showLuxuryToast('info', 'Aucun créneau sélectionné', 'Cliquez sur un ou plusieurs créneaux dans le calendrier.');
+      return;
+    }
+    showLuxuryConfirm(window.selectedSlots, window._doBookSlots);
   };
   
   // Fonction pour toggle le dropdown de durée
