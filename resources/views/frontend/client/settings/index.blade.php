@@ -404,12 +404,66 @@
         max-width: 100%;
       }
     }
+
+    /* === Hero banner === */
+    .page-hero-banner {
+      background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #a855f7 100%);
+      border-radius: 40px;
+      padding: 3rem 4rem;
+      margin-bottom: 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255,255,255,0.2);
+    }
+    .page-hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -5%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-hero-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -20%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-hero-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: white;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      position: relative;
+      z-index: 2;
+    }
+    .page-hero-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 0;
+      font-weight: 300;
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
   </style>
 @endsection
 
 @section('content')
   <div class="settings-container">
     @include('frontend.client.partials.dashboard-nav')
+    @php $heroFirstName = Auth::guard('web')->user() ? explode(' ', trim(Auth::guard('web')->user()->name))[0] : 'vous'; @endphp
+    <div class="page-hero-banner">
+      <h1 class="page-hero-title">Bonjour {{ $heroFirstName }} !</h1>
+      <p class="page-hero-subtitle">Bienvenue dans votre espace</p>
+    </div>
 
     <div class="settings-wrapper">
       <!-- Menu vertical gauche -->
