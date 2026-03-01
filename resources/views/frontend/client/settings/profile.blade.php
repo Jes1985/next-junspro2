@@ -468,37 +468,63 @@
 
   <script>
   /* ---- Pays / Ville (cascade) ---- */
-  (function() {
-    var citiesByCountry = {'FR':['Paris','Lyon','Marseille','Bordeaux','Nantes','Lille','Strasbourg','Rennes','Montpellier','Toulouse','Nice','Grenoble','Dijon','Rouen','Versailles','Orléans','Reims','Metz','Caen','Clermont-Ferrand'],'GP':['Pointe-à-Pitre','Basse-Terre','Saint-François'],'MQ':['Fort-de-France','Le Lamentin','Sainte-Anne'],'GF':['Cayenne','Kourou','Saint-Laurent-du-Maroni'],'RE':['Saint-Denis','Saint-Pierre','Saint-Gilles-les-Bains'],'NC':['Nouméa','Dumbéa','Mont-Dore'],'PF':['Papeete','Faa\'a','Moorea'],'BE':['Bruxelles','Anvers','Liège','Gand','Bruges','Namur'],'CH':['Zurich','Genève','Bâle','Lausanne','Berne','Lugano'],'ES':['Barcelone','Palma de Majorque','Valence','Séville','Madrid','Ibiza','Tenerife'],'DE':['Berlin','Munich','Hambourg','Francfort','Cologne','Stuttgart','Düsseldorf'],'IT':['Rome','Milan','Turin','Palerme','Toscane','Florence','Naples','Venise','Bologne'],'PT':['Lisbonne','Porto','Faro','Coimbra','Braga','Funchal'],'NL':['Amsterdam','Rotterdam','La Haye','Utrecht','Eindhoven'],'GB':['Londres','Manchester','Birmingham','Brighton','Édimbourg','Glasgow','Bristol'],'CA':['Montréal','Toronto','Vancouver','Calgary','Ottawa','Québec'],'US':['New York','Los Angeles','Chicago','San Francisco','Miami','Houston','Boston','Seattle'],'MT':['Valletta','Sliema','Saint Julien','Msida','Gzira'],'MC':['Monte-Carlo','La Condamine','Fontvieille'],'LU':['Luxembourg-Ville','Kirchberg','Esch-sur-Alzette'],'MA':['Casablanca','Rabat','Tanger','Marrakech','Agadir','Fès','Meknès'],'TN':['Tunis','Sfax','Sousse','Bizerte','Nabeul'],'SN':['Dakar','Diamniadio','Thiès','Saint-Louis'],'CI':['Abidjan','Yamoussoukro','San Pedro','Bouaké'],'IE':['Dublin','Cork','Galway'],'HR':['Split','Dubrovnik','Zagreb']};
+  document.addEventListener('DOMContentLoaded', function() {
+    var citiesByCountry = {'FR':['Paris','Lyon','Marseille','Bordeaux','Nantes','Lille','Strasbourg','Rennes','Montpellier','Toulouse','Nice','Grenoble','Dijon','Rouen','Versailles','Orléans','Reims','Metz','Caen','Clermont-Ferrand'],'GP':['Pointe-à-Pitre','Basse-Terre','Saint-François'],'MQ':['Fort-de-France','Le Lamentin','Sainte-Anne'],'GF':['Cayenne','Kourou','Saint-Laurent-du-Maroni'],'RE':['Saint-Denis','Saint-Pierre','Saint-Gilles-les-Bains'],'NC':['Nouméa','Dumbéa','Mont-Dore'],'PF':["Papeete","Faa'a",'Moorea'],'BE':['Bruxelles','Anvers','Liège','Gand','Bruges','Namur'],'CH':['Zurich','Genève','Bâle','Lausanne','Berne','Lugano'],'ES':['Barcelone','Palma de Majorque','Valence','Séville','Madrid','Ibiza','Tenerife'],'DE':['Berlin','Munich','Hambourg','Francfort','Cologne','Stuttgart','Düsseldorf'],'IT':['Rome','Milan','Turin','Palerme','Toscane','Florence','Naples','Venise','Bologne'],'PT':['Lisbonne','Porto','Faro','Coimbra','Braga','Funchal'],'NL':['Amsterdam','Rotterdam','La Haye','Utrecht','Eindhoven'],'GB':['Londres','Manchester','Birmingham','Brighton','Édimbourg','Glasgow','Bristol'],'CA':['Montréal','Toronto','Vancouver','Calgary','Ottawa','Québec'],'US':['New York','Los Angeles','Chicago','San Francisco','Miami','Houston','Boston','Seattle'],'MT':['Valletta','Sliema','Saint Julien','Msida','Gzira'],'MC':['Monte-Carlo','La Condamine','Fontvieille'],'LU':['Luxembourg-Ville','Kirchberg','Esch-sur-Alzette'],'MA':['Casablanca','Rabat','Tanger','Marrakech','Agadir','Fès','Meknès'],'TN':['Tunis','Sfax','Sousse','Bizerte','Nabeul'],'SN':['Dakar','Diamniadio','Thiès','Saint-Louis'],'CI':['Abidjan','Yamoussoukro','San Pedro','Bouaké'],'IE':['Dublin','Cork','Galway'],'HR':['Split','Dubrovnik','Zagreb']};
 
     var countrySelect = document.getElementById('client_location_country');
     var citySelect    = document.getElementById('client_location_city');
-    var savedCity     = document.getElementById('client_location_city_saved');
+    var savedCityEl   = document.getElementById('client_location_city_saved');
     if (!countrySelect || !citySelect) return;
 
-    function updateCities() {
-      var code = countrySelect.value;
+    function updateCities(keepSaved) {
+      var code   = countrySelect.value;
       var cities = citiesByCountry[code] || [];
-      var prev = (savedCity && savedCity.value) ? savedCity.value : citySelect.value;
+      /* valeur à (re)sélectionner : soit le hidden input PHP, soit la valeur déjà choisie */
+      var prev   = (keepSaved !== false && savedCityEl && savedCityEl.value)
+                     ? savedCityEl.value
+                     : citySelect.value;
+
       citySelect.innerHTML = '<option value="">Sélectionner une ville</option>';
-      if (cities.length) {
-        cities.forEach(function(c) {
-          var opt = document.createElement('option');
-          opt.value = c; opt.textContent = c;
-          if (c === prev) opt.selected = true;
-          citySelect.appendChild(opt);
-        });
-        citySelect.disabled = false;
-      } else {
-        citySelect.disabled = true;
+
+      var matched = false;
+      var norm = function(s){ return s ? s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim() : ''; };
+
+      cities.forEach(function(c) {
+        var opt = document.createElement('option');
+        opt.value = c; opt.textContent = c;
+        if (norm(c) === norm(prev)) { opt.selected = true; matched = true; }
+        citySelect.appendChild(opt);
+      });
+
+      /* Ville enregistrée hors-liste (ou sans pays) → l'ajouter comme option personnalisée */
+      if (!matched && prev) {
+        var custom = document.createElement('option');
+        custom.value = prev; custom.textContent = prev; custom.selected = true;
+        citySelect.insertBefore(custom, citySelect.options[1]);
       }
-      if (savedCity) { savedCity.value = ''; } // consommé
+
+      /* Toujours activé : l'utilisateur doit pouvoir choisir même sans pays */
+      citySelect.disabled = false;
+
+      if (savedCityEl) savedCityEl.value = ''; /* consommé une fois */
     }
 
-    countrySelect.addEventListener('change', updateCities);
-    /* Init au chargement */
-    if (countrySelect.value) updateCities();
-  })();
+    countrySelect.addEventListener('change', function() { updateCities(false); });
+
+    /* Init au chargement — toujours, même si aucun pays n'est sélectionné */
+    /* Si country est vide mais qu'une ville est sauvegardée, tenter l'auto-détection du pays */
+    if (!countrySelect.value && savedCityEl && savedCityEl.value) {
+      var normCity = savedCityEl.value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+      Object.keys(citiesByCountry).forEach(function(code) {
+        citiesByCountry[code].forEach(function(c) {
+          if (c.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim() === normCity) {
+            countrySelect.value = code;
+          }
+        });
+      });
+    }
+    updateCities(true);
+  });
   </script>
 
   <script>
