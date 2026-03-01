@@ -97,7 +97,7 @@
     .social-connection-item:last-child { border-bottom: none; }
     .social-connection-info { display: flex; align-items: center; gap: 1rem; }
     .social-icon { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: white; }
-    .social-icon.facebook { background: #1877f2; }
+    .social-icon.linkedin { background: #0077b5; }
     .social-icon.google   { background: #ea4335; }
     .social-connection-text strong { display: block; font-weight: 700; color: #1a202c; margin-bottom: .15rem; }
     .social-connection-text span { font-size: .85rem; color: #6b7280; }
@@ -407,10 +407,10 @@
             <h3 class="form-section-title">Connexions sociales</h3>
             <div class="social-connection-item">
               <div class="social-connection-info">
-                <div class="social-icon facebook">f</div>
+                <div class="social-icon linkedin" style="font-size:.75rem;font-weight:800;letter-spacing:-.5px;">in</div>
                 <div class="social-connection-text">
-                  <strong>Facebook</strong>
-                  <span>Le compte Facebook n'est pas connecté</span>
+                  <strong>LinkedIn</strong>
+                  <span>Le compte LinkedIn n'est pas connecté</span>
                 </div>
               </div>
               <button type="button" class="social-connection-action">Connecter</button>
