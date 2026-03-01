@@ -293,8 +293,8 @@
 
 {{-- Modale de confirmation --}}
 <div id="luxury-confirm-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:1rem;">
-  {{-- Backdrop blur --}}
-  <div id="luxury-confirm-backdrop" style="position:absolute;inset:0;background:rgba(10,8,30,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:opacity 0.3s ease;"></div>
+  {{-- Backdrop --}}
+  <div id="luxury-confirm-backdrop" style="position:absolute;inset:0;background:rgba(10,8,30,0.6);transition:opacity 0.3s ease;"></div>
 
   {{-- Card --}}
   <div id="luxury-confirm-card" style="position:relative;width:min(520px,100%);transform:translateY(20px) scale(0.97);opacity:0;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);">
@@ -369,6 +369,10 @@
 <style>
   /* Popup luxe - animations */
   #luxury-confirm-modal.open { display: flex !important; }
+  #luxury-confirm-modal.open #luxury-confirm-backdrop {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
   #luxury-confirm-modal.open #luxury-confirm-card {
     transform: translateY(0) scale(1);
     opacity: 1;
