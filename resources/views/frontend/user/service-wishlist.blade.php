@@ -176,6 +176,7 @@
   $heroFirstName = Auth::guard('web')->user() ? explode(' ', trim(Auth::guard('web')->user()->name))[0] : 'vous';
 @endphp
 <div class="container" style="padding-top: 2rem; padding-bottom: 0;">
+  @include('frontend.client.partials.dashboard-nav')
   <div class="dashboard-hero">
     <div class="dashboard-hero-content">
       <h1 class="dashboard-hero-title">Bonjour {{ $heroFirstName }} !</h1>
@@ -183,7 +184,6 @@
     </div>
   </div>
 </div>
-@include('frontend.client.partials.dashboard-nav')
 
   <!--====== Start Service Wishlist Section ======-->
   <section class="user-dashboard pt-100 pb-60">
