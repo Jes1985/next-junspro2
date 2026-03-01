@@ -194,6 +194,7 @@ class ClientDashboardController extends Controller
                 'sessions'      => $sessions,
                 'subscriptions' => $subscriptions,
                 'nextSession'   => $nextSession,
+                'userTimezone'  => $user->timezone ?? 'Europe/Paris',
             ]);
         } catch (\Exception $e) {
             Log::error('Erreur ClientDashboardController@agenda: ' . $e->getMessage());

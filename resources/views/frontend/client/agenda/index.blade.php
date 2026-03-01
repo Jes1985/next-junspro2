@@ -46,10 +46,11 @@
   })->values()->toArray();
 @endphp
 
-{{-- Data JS injectée (comme le freelance calendar injecte ses créneaux) --}}
+{{-- Data JS injectée --}}
 <script>
   window.clientAgendaSessions = @json($sessionsByDate);
   window.clientActiveSubs     = @json($activeSubs);
+  window.clientTimezone       = @json($userTimezone);
 </script>
 
 <div class="calendar-page-wrapper-light">
@@ -80,7 +81,7 @@
               </p>
             </div>
             <div class="section-actions">
-              <button type="button" class="timezone-chip" data-week-timezone aria-label="Fuseau horaire">Fuseau chargé : —</button>
+              <a href="{{ route('user.settings.agenda') }}" class="timezone-chip" data-week-timezone aria-label="Modifier le fuseau horaire" title="Cliquez pour modifier votre fuseau horaire">Fuseau : —</a>
             </div>
           </div>
 
@@ -310,7 +311,12 @@
     display: inline-flex; align-items: center; gap: 0.35rem;
     padding: 0.5rem 0.75rem; border-radius: var(--radius-md);
     background: var(--bg-secondary); border: 1px solid var(--border);
-    color: var(--text-secondary); font-size: 0.9rem; cursor: default;
+    color: var(--text-secondary); font-size: 0.9rem; cursor: pointer;
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .calendar-page-wrapper-light .timezone-chip:hover {
+    background: #EFF6FF; border-color: var(--primary-light);
+    color: var(--primary); text-decoration: none;
   }
 
   /* ===== BOUTONS ===== */
@@ -462,7 +468,7 @@
   const activeSubs  = window.clientActiveSubs     || [];
 
   const state = {
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Paris',
+    timezone: window.clientTimezone || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Paris',
     weekStart: startOfWeek(new Date()),
   };
 
@@ -497,7 +503,7 @@
 
     const weekEnd = addDays(state.weekStart, 6);
     if (weekRangeEl) weekRangeEl.textContent = formatRangeLabel(state.weekStart, weekEnd);
-    if (timezoneChip) timezoneChip.textContent = `Fuseau chargé : ${state.timezone}`;
+    if (timezoneChip) timezoneChip.textContent = `⏱ ${state.timezone}`;
 
     let totalSessions = 0;
 
