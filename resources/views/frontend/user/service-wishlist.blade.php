@@ -183,6 +183,7 @@
     </div>
   </div>
 </div>
+@include('frontend.client.partials.dashboard-nav')
 
   <!--====== Start Service Wishlist Section ======-->
   <section class="user-dashboard pt-100 pb-60">
