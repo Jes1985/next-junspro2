@@ -808,11 +808,12 @@ class UserController extends Controller
 
   public function editProfileSettings()
   {
-    $user      = Auth::guard('web')->user();
-    $avatarUrl = $user->image ? asset('assets/img/users/' . $user->image) : null;
-    $initials  = strtoupper(substr($user->first_name ?? $user->username ?? 'U', 0, 1) . substr($user->last_name ?? '', 0, 1));
+    $user         = Auth::guard('web')->user();
+    $clientProfile = $user->clientProfile;
+    $avatarUrl    = $user->image ? asset('assets/img/users/' . $user->image) : null;
+    $initials     = strtoupper(substr($user->first_name ?? $user->username ?? 'U', 0, 1) . substr($user->last_name ?? '', 0, 1));
     if (trim($initials) === '') $initials = strtoupper(substr($user->username ?? 'U', 0, 2));
-    return view('frontend.client.settings.profile', compact('user', 'avatarUrl', 'initials'));
+    return view('frontend.client.settings.profile', compact('user', 'clientProfile', 'avatarUrl', 'initials'));
   }
 
   public function updateProfile(UpdateProfileRequest $request)
@@ -918,6 +919,20 @@ class UserController extends Controller
     }
 
     $request->session()->flash('success', 'Your profile has been updated successfully.');
+
+    // Langues (client)
+    if ($authUser->clientProfile && ($request->has('native_language') || $request->has('other_languages'))) {
+      $clientLangData = [];
+      if ($request->has('native_language') && \Illuminate\Support\Facades\Schema::hasColumn('client_profiles', 'native_language')) {
+        $clientLangData['native_language'] = $request->input('native_language') ?: null;
+      }
+      if ($request->has('other_languages') && \Illuminate\Support\Facades\Schema::hasColumn('client_profiles', 'spoken_languages')) {
+        $clientLangData['spoken_languages'] = $request->input('other_languages') ?: null;
+      }
+      if (!empty($clientLangData)) {
+        $authUser->clientProfile->update($clientLangData);
+      }
+    }
 
     if ($request->filled('_redirect')) {
       return redirect()->to($request->input('_redirect'));

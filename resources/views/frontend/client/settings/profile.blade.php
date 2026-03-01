@@ -161,6 +161,35 @@
       .profile-photo-section { flex-direction: column; align-items: center; text-align: center; }
       .settings-content { padding: 1.5rem; }
     }
+
+    /* ---- Langues ---- */
+    .filter-label { display: flex; align-items: center; font-size: .95rem; font-weight: 600; color: #374151; margin-bottom: .75rem; }
+    .filter-select { width: 100%; padding: .875rem 1.25rem; border: 2px solid rgba(196,181,253,.3); border-radius: 12px; font-size: .95rem; background: #fff; color: #1a202c; cursor: pointer; transition: all .3s ease; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237c3aed' d='M6 9L1 4h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 3rem; }
+    .filter-select:focus { outline: none; border-color: #7c3aed; box-shadow: 0 0 0 4px rgba(124,58,237,.1); }
+    .besoin-langues-row { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 1rem 1.5rem; }
+    .besoin-mother-tongue-wrap { min-width: 180px; max-width: 220px; flex-shrink: 0; }
+    .besoin-mother-tongue-wrap .filter-select { width: 100%; }
+    .besoin-other-langs-wrap { position: relative; flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; }
+    .besoin-other-langs-label { font-size: .8rem; color: #6b7280; margin: 0; flex-shrink: 0; }
+    .besoin-lang-chips { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; min-height: 2rem; padding: .1rem 0; min-width: 0; }
+    .besoin-lang-chip { display: inline-flex; align-items: center; gap: .35rem; padding: .25rem .5rem; border-radius: 10px; background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.2); font-size: .8rem; color: #1f2937; }
+    .besoin-lang-chip-remove { background: none; border: none; padding: 0; margin: 0; cursor: pointer; color: #9ca3af; font-size: .9em; line-height: 1; }
+    .besoin-lang-chip-remove:hover { color: #ef4444; }
+    .besoin-add-lang-btn { display: inline-flex; align-items: center; padding: .25rem .5rem; flex-shrink: 0; background: none; border: none; color: #6b7280; font-size: .85rem; font-weight: 500; cursor: pointer; transition: color .2s; margin-left: 0.5rem; }
+    .besoin-add-lang-btn:hover { color: #7c3aed; }
+    .cecrl-popover { display: none; position: absolute; z-index: 100; top: 100%; left: 0; margin-top: .35rem; min-width: 320px; max-width: 420px; max-height: 280px; overflow-y: auto; background: #fff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.06); border: 1px solid rgba(0,0,0,.08); }
+    .cecrl-popover[hidden] { display: none !important; }
+    .cecrl-popover-inner { padding: .75rem 1rem; }
+    .cecrl-table-head { display: flex; padding: 0 0 .5rem; margin-bottom: .5rem; border-bottom: 1px solid #eee; font-size: .75rem; font-weight: 600; color: #6b7280; text-transform: uppercase; }
+    .cecrl-th-lang { width: 100px; flex-shrink: 0; }
+    .cecrl-th-level { flex: 1; }
+    .cecrl-row { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; font-size: .85rem; }
+    .cecrl-lang { width: 100px; flex-shrink: 0; color: #374151; }
+    .cecrl-pills { display: flex; flex-wrap: wrap; gap: .25rem; }
+    .cecrl-pill { padding: .2rem .45rem; border-radius: 8px; border: 1px solid #e5e7eb; background: #fafafa; color: #6b7280; font-size: .75rem; font-weight: 500; cursor: pointer; transition: background .2s,border-color .2s,color .2s; }
+    .cecrl-pill:hover { background: #f3f4f6; border-color: #d1d5db; color: #374151; }
+    .cecrl-pill.is-selected { background: rgba(124,58,237,.12); border-color: rgba(124,58,237,.4); color: #6d28d9; }
+    @media(max-width:640px) { .besoin-langues-row { flex-direction: column; } }
   </style>
 @endsection
 
@@ -262,6 +291,53 @@
                        class="form-control @error('phone_number') has-error @enderror"
                        value="{{ old('phone_number', $user->phone_number) }}">
                 @error('phone_number')<div class="form-error">{{ $message }}</div>@enderror
+              </div>
+            </div>
+
+            {{-- ---- Langue maternelle + autres langues ---- --}}
+            @php
+              $__besoin_languages = ['fr'=>'Français','en'=>'Anglais','es'=>'Espagnol','de'=>'Allemand','it'=>'Italien','pt'=>'Portugais','nl'=>'Néerlandais','ru'=>'Russe','zh'=>'Chinois','ar'=>'Arabe','ja'=>'Japonais','pl'=>'Polonais','el'=>'Grec','tr'=>'Turc','sv'=>'Suédois','ko'=>'Coréen','hi'=>'Hindi'];
+              $__cecrl_levels     = ['A1','A2','B1','B2','C1','C2'];
+              $__savedNative      = old('native_language', $clientProfile?->native_language ?? '');
+              $__savedOthers      = old('other_languages', $clientProfile?->spoken_languages ?? '');
+            @endphp
+            <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid #f1f5f9;">
+              <label class="filter-label"><i class="fas fa-language me-2"></i>Ma langue maternelle</label>
+              <div class="besoin-langues-row">
+                <div class="besoin-mother-tongue-wrap">
+                  <select name="native_language" id="client_mother_tongue" class="filter-select">
+                    <option value="">Langue maternelle</option>
+                    @foreach($__besoin_languages as $__code => $__label)
+                      <option value="{{ $__code }}" {{ $__savedNative === $__code ? 'selected' : '' }}>{{ $__label }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="besoin-other-langs-wrap" id="client_other_langs_wrap">
+                  <span class="besoin-other-langs-label">Autres langues parlées</span>
+                  <div class="besoin-lang-chips" id="client_lang_chips"></div>
+                  <button type="button" class="besoin-add-lang-btn" id="client_add_lang_btn" aria-haspopup="true" aria-expanded="false">+ Ajouter</button>
+                  <input type="hidden" name="other_languages" id="client_other_languages_input" value="{{ $__savedOthers }}">
+                  <div class="cecrl-popover" id="client_cecrl_popover" role="dialog" aria-label="Niveaux CECRL" hidden>
+                    <div class="cecrl-popover-inner">
+                      <div class="cecrl-table">
+                        <div class="cecrl-table-head">
+                          <span class="cecrl-th-lang">Langue</span>
+                          <span class="cecrl-th-level">Niveau</span>
+                        </div>
+                        @foreach($__besoin_languages as $__code => $__label)
+                        <div class="cecrl-row" data-lang="{{ $__code }}" data-lang-label="{{ $__label }}">
+                          <span class="cecrl-lang">{{ $__label }}</span>
+                          <div class="cecrl-pills">
+                            @foreach($__cecrl_levels as $__l)
+                            <button type="button" class="cecrl-pill" data-level="{{ $__l }}" title="{{ $__l }}">{{ $__l }}</button>
+                            @endforeach
+                          </div>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -379,5 +455,106 @@
       };
       reader.readAsDataURL(file);
     });
+  </script>
+
+  <script>
+  (function() {
+    /* ---- Langues client (CECRL) ---- */
+    var PREFIX = 'client_';
+    var hiddenInput = document.getElementById(PREFIX + 'other_languages_input');
+    var chipsEl    = document.getElementById(PREFIX + 'lang_chips');
+    var addBtn     = document.getElementById(PREFIX + 'add_lang_btn');
+    var popover    = document.getElementById(PREFIX + 'cecrl_popover');
+
+    if (!hiddenInput || !chipsEl || !addBtn || !popover) return;
+
+    /* Parse JSON-ish stored value  e.g. [{"lang":"en","level":"B2"}, …] */
+    function parseOtherLangs(raw) {
+      if (!raw) return [];
+      try { var p = JSON.parse(raw); if (Array.isArray(p)) return p; } catch(e) {}
+      /* legacy comma-separated fallback */
+      return raw.split(',').filter(Boolean).map(function(s){ return {lang:s.trim(),level:''}; });
+    }
+
+    var selectedLangs = parseOtherLangs(hiddenInput.value);
+
+    function syncHidden() {
+      hiddenInput.value = JSON.stringify(selectedLangs);
+    }
+
+    function renderChips() {
+      chipsEl.innerHTML = '';
+      selectedLangs.forEach(function(item) {
+        var rows = popover.querySelectorAll('.cecrl-row[data-lang="' + item.lang + '"]');
+        var label = rows.length ? rows[0].getAttribute('data-lang-label') : item.lang;
+        var chip = document.createElement('span');
+        chip.className = 'besoin-lang-chip';
+        chip.innerHTML = (label + (item.level ? ' <em style="opacity:.7;">' + item.level + '</em>' : '')) +
+          '<button type="button" class="besoin-lang-chip-remove" aria-label="Supprimer ' + label + '" data-lang="' + item.lang + '">&times;</button>';
+        chipsEl.appendChild(chip);
+      });
+    }
+
+    function updatePillsSelected() {
+      popover.querySelectorAll('.cecrl-row').forEach(function(row) {
+        var lang  = row.getAttribute('data-lang');
+        var found = selectedLangs.find(function(i){ return i.lang === lang; });
+        row.querySelectorAll('.cecrl-pill').forEach(function(pill) {
+          pill.classList.toggle('is-selected', !!(found && found.level === pill.getAttribute('data-level')));
+        });
+      });
+    }
+
+    function openPopover() {
+      updatePillsSelected();
+      popover.removeAttribute('hidden');
+      popover.style.display = 'block';
+      addBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closePopover() {
+      popover.setAttribute('hidden', '');
+      popover.style.display = '';
+      addBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    addBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      popover.hasAttribute('hidden') ? openPopover() : closePopover();
+    });
+
+    popover.addEventListener('click', function(e) {
+      var pill = e.target.closest('.cecrl-pill');
+      if (!pill) return;
+      var row   = pill.closest('.cecrl-row');
+      var lang  = row.getAttribute('data-lang');
+      var level = pill.getAttribute('data-level');
+      var idx   = selectedLangs.findIndex(function(i){ return i.lang === lang; });
+      if (idx >= 0) {
+        if (selectedLangs[idx].level === level) { selectedLangs.splice(idx, 1); }
+        else { selectedLangs[idx].level = level; }
+      } else {
+        selectedLangs.push({lang: lang, level: level});
+      }
+      syncHidden(); renderChips(); updatePillsSelected();
+    });
+
+    chipsEl.addEventListener('click', function(e) {
+      var btn = e.target.closest('.besoin-lang-chip-remove');
+      if (!btn) return;
+      var lang = btn.getAttribute('data-lang');
+      selectedLangs = selectedLangs.filter(function(i){ return i.lang !== lang; });
+      syncHidden(); renderChips(); updatePillsSelected();
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!popover.hasAttribute('hidden') && !popover.contains(e.target) && e.target !== addBtn) {
+        closePopover();
+      }
+    });
+
+    /* Init  */
+    renderChips();
+  })();
   </script>
 @endsection

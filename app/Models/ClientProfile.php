@@ -15,6 +15,8 @@ class ClientProfile extends Model
         'user_id',
         'company_name',
         'total_spent',
+        'native_language',
+        'spoken_languages',
     ];
 
     protected $casts = [
