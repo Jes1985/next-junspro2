@@ -1,6 +1,10 @@
 <script>
   // Variables globales
-  window.currentWeek = 0;
+  // Si on est jeudi(4), vendredi(5), samedi(6) ou dimanche(0), la plupart de la semaine est passée → aller à la semaine suivante
+  (function() {
+    const d = new Date().getDay(); // 0=Dim, 1=Lun, ..., 6=Sam
+    window.currentWeek = (d === 0 || d >= 4) ? 1 : 0;
+  })();
   window.bookingType = 'onetime';
   window.selectedSlots = [];
   window.maxCourses = 5;
@@ -72,15 +76,30 @@
       const isBooked = window.bookedSlotsByDate[dateKey] && 
                       window.bookedSlotsByDate[dateKey][hour] && 
                       window.bookedSlotsByDate[dateKey][hour][minute];
+
+      // Vérifier si le créneau est dans le passé
+      const slotDatetime = new Date(date);
+      slotDatetime.setHours(hour, minute, 0, 0);
+      const isPast = slotDatetime <= new Date();
       
-      if (isBooked) {
+      if (isBooked || isPast) {
         button.disabled = true;
-        button.style.background = '#F3F4F6';
+        button.style.background = isPast ? '#F9FAFB' : '#F3F4F6';
         button.style.borderColor = '#E5E7EB';
-        button.style.color = '#9CA3AF';
+        button.style.color = '#D1D5DB';
         button.style.cursor = 'not-allowed';
-        button.classList.add('booked');
-        button.title = '{{ __("Créneau déjà réservé") }}';
+        button.style.opacity = isPast ? '0.4' : '1';
+        button.style.boxShadow = 'none';
+        button.style.textDecoration = isPast ? 'line-through' : 'none';
+        button.classList.add(isBooked ? 'booked' : 'past');
+        button.classList.remove(isBooked ? 'past' : 'booked');
+        button.title = isPast ? 'Créneau passé' : '{{ __("Créneau déjà réservé") }}';
+        // Désélectionner si ce créneau était sélectionné
+        const slotKey = `${day}-${hour}-${minute}`;
+        if (button.classList.contains('selected')) {
+          window.removeSelectedSlot(slotKey);
+          button.classList.remove('selected');
+        }
       } else {
         button.disabled = false;
         if (!button.classList.contains('selected')) {
@@ -111,6 +130,9 @@
           button.style.cursor = 'pointer';
         }
         button.classList.remove('booked');
+        button.classList.remove('past');
+        button.style.opacity = '1';
+        button.style.textDecoration = 'none';
         button.title = '';
       }
     });
@@ -296,7 +318,7 @@
       
       console.log('Clic sur créneau:', { day, hour, minute, slotKey });
       
-      if (slotButton.classList.contains('booked') || slotButton.disabled) {
+      if (slotButton.classList.contains('booked') || slotButton.classList.contains('past') || slotButton.disabled) {
         console.log('Créneau réservé ou désactivé');
         return;
       }
