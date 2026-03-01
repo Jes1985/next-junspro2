@@ -802,19 +802,8 @@ class UserController extends Controller
 
   public function editProfile()
   {
-    // Nouvelle vue pour le dashboard client avec menu latéral
-    $user = Auth::guard('web')->user();
-    
-    // Si l'utilisateur a un profil client, utiliser la nouvelle vue
-    if ($user->clientProfile) {
-      return view('frontend.client.settings.index');
-    }
-
-    // Sinon, utiliser l'ancienne vue (pour les autres types d'utilisateurs)
-    $misc = new MiscellaneousController();
-    $queryResult['breadcrumb'] = $misc->getBreadcrumb();
-    $queryResult['authUser'] = $user;
-    return view('frontend.user.edit-profile', $queryResult);
+    // Hub paramètres client premium (tuiles)
+    return view('frontend.client.settings.index');
   }
 
   public function updateProfile(UpdateProfileRequest $request)
