@@ -499,13 +499,16 @@
       if (data.success) {
         showLuxuryToast('success', 'Rituels programmés ! 🎉',
           (data.message || 'Vos créneaux ont bien été enregistrés.') +
-          (data.errors && data.errors.length ? '<br><span style="opacity:.7;">' + data.errors.join('<br>') + '</span>' : ''),
+          (data.errors && data.errors.length ? '<br><ul style="margin:.4rem 0 0 1rem;padding:0;opacity:.75;">' + data.errors.map(e => `<li>${e}</li>`).join('') + '</ul>' : ''),
           0
         );
         // Redirection après 2.5s
         setTimeout(() => { window.location.href = '{{ route("user.dashboard") }}'; }, 2500);
       } else {
-        showLuxuryToast('error', 'Erreur de programmation', data.message || 'Une erreur est survenue.');
+        const errList = (data.errors && data.errors.length)
+          ? '<ul style="margin:.4rem 0 0 1rem;padding:0;opacity:.8;font-size:.82rem;">' + data.errors.map(e => `<li style="margin-bottom:.25rem;">${e}</li>`).join('') + '</ul>'
+          : '';
+        showLuxuryToast('error', data.message || 'Erreur de programmation', errList, 0);
         if (scheduleBtn) {
           scheduleBtn.disabled = false;
           scheduleBtn.textContent = '{{ __("Programmer") }}';

@@ -507,7 +507,8 @@ class FreelancerController extends Controller
             if (empty($workSessions)) {
                 return response()->json([
                     'success' => false,
-                    'message' => __('Aucun créneau n\'a pu être réservé.') . (!empty($errors) ? ' ' . implode(' ', $errors) : ''),
+                    'message' => __('Aucun créneau n\'a pu être réservé.'),
+                    'errors'  => $errors,
                 ], 400);
             }
 
