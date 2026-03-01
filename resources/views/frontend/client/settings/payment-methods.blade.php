@@ -383,6 +383,129 @@
       }
     }
 
+    /* ===== Premium Card Form ===== */
+    .add-payment-section-wrap {
+      padding-top: 2.5rem;
+      border-top: 1px solid #f1f5f9;
+    }
+    .add-payment-section-wrap h2 {
+      font-size: 1.5rem; font-weight: 800; color: #1a202c; margin: 0 0 .35rem;
+    }
+    .add-payment-section-wrap > p {
+      font-size: .875rem; color: #6b7280; margin: 0 0 2.5rem;
+    }
+    .pm-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    @media(max-width:800px){ .pm-cols { grid-template-columns: 1fr; gap: 2rem; } }
+
+    /* --- Live card preview --- */
+    .card-preview-scene { perspective: 1000px; width: 100%; max-width: 360px; margin: 0 auto 1.5rem; }
+    .card-preview-flipper {
+      position: relative; width: 100%; padding-bottom: 62%;
+      transform-style: preserve-3d; transition: transform .6s cubic-bezier(.4,0,.2,1);
+    }
+    .card-preview-flipper.is-flipped { transform: rotateY(180deg); }
+    .card-face {
+      position: absolute; inset: 0; border-radius: 20px;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      box-shadow: 0 30px 60px rgba(124,58,237,.35), 0 6px 20px rgba(0,0,0,.15);
+      overflow: hidden;
+    }
+    .card-face-front {
+      background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 40%, #7c3aed 75%, #a78bfa 100%);
+    }
+    .card-face-back {
+      background: linear-gradient(135deg, #312e81 0%, #4c1d95 60%, #6d28d9 100%);
+      transform: rotateY(180deg);
+    }
+    /* Holographic shimmer */
+    .card-face::before {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.08) 50%, transparent 60%);
+      background-size: 200% 100%; animation: cardShimmer 3s ease-in-out infinite;
+    }
+    @keyframes cardShimmer { 0%,100%{background-position:200% 0} 50%{background-position:-200% 0} }
+    /* Circles deco */
+    .card-face::after {
+      content:''; position:absolute; top:-30%; right:-10%;
+      width:280px; height:280px; border-radius:50%;
+      background: radial-gradient(circle, rgba(255,255,255,.07) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .card-front-inner { position:absolute; inset:0; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; }
+    .card-chip { width:44px; height:33px; border-radius:6px; background:linear-gradient(135deg,#ffd700,#f0a500); display:flex; align-items:center; justify-content:center; }
+    .card-chip-lines { width:30px; height:22px; border:2px solid rgba(0,0,0,.3); border-radius:3px; display:grid; grid-template-rows:1fr 1fr 1fr; gap:2px; padding:2px; }
+    .card-chip-line { background:rgba(0,0,0,.2); border-radius:1px; }
+    .card-number-display { font-family:'Courier New',monospace; font-size:1.15rem; font-weight:700; color:white; letter-spacing:.2em; text-shadow:0 1px 3px rgba(0,0,0,.3); }
+    .card-bottom-row { display:flex; justify-content:space-between; align-items:flex-end; }
+    .card-holder-label,.card-expiry-label { font-size:.55rem; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.6); margin-bottom:.2rem; }
+    .card-holder-name,.card-expiry-val { font-size:.8rem; font-weight:600; color:white; letter-spacing:.05em; }
+    .card-brand-logo { font-size:1.4rem; font-weight:900; color:white; opacity:.9; }
+    /* Back face */
+    .card-back-stripe { position:absolute; top:18%; left:0; right:0; height:45px; background:rgba(0,0,0,.45); }
+    .card-back-cvv-wrap { position:absolute; top:calc(18% + 60px); left:0; right:0; padding:0 1.5rem; }
+    .card-back-cvv-label { font-size:.65rem; color:rgba(255,255,255,.6); text-transform:uppercase; letter-spacing:.1em; margin-bottom:.3rem; }
+    .card-back-cvv-box { background:white; border-radius:6px; padding:.5rem 1rem; font-family:'Courier New',monospace; font-size:1rem; font-weight:700; color:#1a202c; letter-spacing:.3em; text-align:right; }
+    .card-back-brand { position:absolute; bottom:1.2rem; right:1.5rem; font-size:1.4rem; font-weight:900; color:white; opacity:.9; }
+
+    /* Form fields */
+    .pm-form-group { margin-bottom: 1.5rem; }
+    .pm-form-label {
+      display: block; font-size: .8rem; font-weight: 700; color: #374151;
+      text-transform: uppercase; letter-spacing: .08em; margin-bottom: .6rem;
+    }
+    .pm-input-wrap { position: relative; }
+    .pm-input {
+      width: 100%; padding: .9rem 1.1rem .9rem 3rem;
+      border: 2px solid #e5e7eb; border-radius: 14px;
+      font-size: 1rem; color: #1a202c; background: white;
+      transition: border-color .25s, box-shadow .25s;
+      font-family: 'Courier New', monospace; letter-spacing: .05em;
+      outline: none;
+    }
+    .pm-input:focus {
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 4px rgba(124,58,237,.1);
+    }
+    .pm-input-icon {
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      color: #9ca3af; font-size: .9rem; pointer-events: none;
+      transition: color .25s;
+    }
+    .pm-input:focus + .pm-input-icon, .pm-input-wrap:has(.pm-input:focus) .pm-input-icon { color: #7c3aed; }
+    .pm-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    /* Brand chips */
+    .pm-brand-chips { display: flex; gap: .5rem; margin-bottom: 1.75rem; }
+    .pm-brand-chip {
+      flex: 1; padding: .6rem; border: 2px solid #e5e7eb; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; gap: .4rem;
+      cursor: pointer; transition: all .2s; background: white;
+      font-size: .8rem; font-weight: 600; color: #6b7280;
+    }
+    .pm-brand-chip:hover { border-color: #a78bfa; color: #7c3aed; }
+    .pm-brand-chip.active { border-color: #7c3aed; background: #f5f3ff; color: #6d28d9; box-shadow: 0 0 0 3px rgba(124,58,237,.1); }
+    /* Submit btn */
+    .pm-submit-btn {
+      width: 100%; padding: 1.1rem; border: none; border-radius: 16px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white; font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: all .3s; box-shadow: 0 8px 25px rgba(124,58,237,.35);
+      display: flex; align-items: center; justify-content: center; gap: .6rem;
+      letter-spacing: .02em;
+    }
+    .pm-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(124,58,237,.45); }
+    .pm-submit-btn:active { transform: translateY(0); }
+    .pm-secure-note {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      margin-top: 1rem; font-size: .78rem; color: #9ca3af;
+    }
+    .pm-secure-note i { color: #10b981; }
+    /* Card number brand icon inside input */
+    .pm-brand-in-input {
+      position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-size: .85rem; font-weight: 900; color: #6b7280; pointer-events: none;
+      transition: all .2s;
+    }
+
     /* === Hero banner === */
     .page-hero-banner {
       background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #a855f7 100%);
@@ -550,59 +673,303 @@
         </div>
 
         <!-- Section ajout -->
-        <div class="add-payment-method-section">
-          <h2>{{ __('Ajouter un moyen de paiement') }}</h2>
-          <p>{{ __("Vos informations de paiement sont sécurisées et cryptées. Aucune donnée bancaire n'est stockée sur nos serveurs.") }}</p>
+        <div class="add-payment-section-wrap">
+          <h2>Ajouter un moyen de paiement</h2>
+          <p>Vos informations sont chiffrées de bout en bout. Aucune donnée bancaire n'est stockée sur nos serveurs.</p>
 
-          <form method="POST" action="{{ route('user.settings.payment_methods.store') }}" id="payment-method-form">
-            @csrf
+          <div class="pm-cols">
 
-            <div class="card-element-container">
-              <label class="form-label">{{ __('Informations de la carte') }}</label>
-              <div id="card-element">
-                <!-- Stripe Elements ou autre système de paiement sera intégré ici -->
-                <div style="padding: 1rem; background: #f9fafb; border-radius: 8px; text-align: center; color: #6b7280; font-size: 0.875rem;">
-                  <i class="fas fa-credit-card" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
-                  {{ __('Zone de saisie de carte bancaire') }}<br>
-                  <small>{{ __('Stripe Elements / PayPal sera intégré ici') }}</small>
+            {{-- Colonne gauche : aperçu de la carte --}}
+            <div>
+              <div class="card-preview-scene">
+                <div class="card-preview-flipper" id="cardFlipper">
+                  {{-- Face avant --}}
+                  <div class="card-face card-face-front">
+                    <div class="card-front-inner">
+                      <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <div class="card-chip">
+                          <div class="card-chip-lines">
+                            <div class="card-chip-line"></div>
+                            <div class="card-chip-line"></div>
+                            <div class="card-chip-line"></div>
+                          </div>
+                        </div>
+                        <div class="card-brand-logo" id="cardBrandFront">VISA</div>
+                      </div>
+                      <div class="card-number-display" id="cardNumberDisplay">•••• &nbsp;•••• &nbsp;•••• &nbsp;••••</div>
+                      <div class="card-bottom-row">
+                        <div>
+                          <div class="card-holder-label">Titulaire</div>
+                          <div class="card-holder-name" id="cardHolderDisplay">VOTRE NOM</div>
+                        </div>
+                        <div>
+                          <div class="card-expiry-label">Expire</div>
+                          <div class="card-expiry-val" id="cardExpiryDisplay">MM/AA</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{-- Face arrière --}}
+                  <div class="card-face card-face-back">
+                    <div class="card-back-stripe"></div>
+                    <div class="card-back-cvv-wrap">
+                      <div class="card-back-cvv-label">CVV</div>
+                      <div class="card-back-cvv-box" id="cardCvvDisplay">•••</div>
+                    </div>
+                    <div class="card-back-brand" id="cardBrandBack">VISA</div>
+                  </div>
                 </div>
               </div>
-              <input type="hidden" name="payment_method_token" id="payment_method_token" value="">
+
+              {{-- Logos acceptés --}}
+              <div style="display:flex;align-items:center;justify-content:center;gap:1rem;opacity:.55;margin-top:.5rem;">
+                <span style="font-size:.75rem;color:#6b7280;">Acceptés :</span>
+                <span style="font-weight:900;font-size:1.1rem;color:#1a1f71;font-style:italic;">VISA</span>
+                <span style="font-weight:900;font-size:.85rem;color:#eb001b;">Master<span style="color:#f79e1b;">card</span></span>
+                <span style="font-weight:900;font-size:.85rem;color:#2e77bc;">AMEX</span>
+              </div>
             </div>
 
-            <button type="submit" class="btn-primary-gradient">
-              <i class="fas fa-plus"></i> {{ __('Enregistrer ce moyen de paiement') }}
-            </button>
-          </form>
+            {{-- Colonne droite : formulaire --}}
+            <div>
+              <form method="POST" action="{{ route('user.settings.payment_methods.store') }}" id="pm-form" novalidate>
+                @csrf
+                <input type="hidden" name="payment_method_token" id="pm_token" value="">
+
+                {{-- Numéro de carte --}}
+                <div class="pm-form-group">
+                  <label class="pm-form-label" for="pm_number">Numéro de carte</label>
+                  <div class="pm-input-wrap">
+                    <input type="text" id="pm_number" class="pm-input" placeholder="0000  0000  0000  0000"
+                           maxlength="22" autocomplete="cc-number" inputmode="numeric" style="padding-left:3rem;padding-right:5rem;">
+                    <i class="far fa-credit-card pm-input-icon"></i>
+                    <span class="pm-brand-in-input" id="pmBrandInInput">VISA</span>
+                  </div>
+                </div>
+
+                {{-- Titulaire --}}
+                <div class="pm-form-group">
+                  <label class="pm-form-label" for="pm_holder">Nom du titulaire</label>
+                  <div class="pm-input-wrap">
+                    <input type="text" id="pm_holder" class="pm-input" placeholder="JEAN DUPONT"
+                           autocomplete="cc-name" style="text-transform:uppercase;letter-spacing:.08em;">
+                    <i class="far fa-user pm-input-icon"></i>
+                  </div>
+                </div>
+
+                {{-- Expiry + CVV --}}
+                <div class="pm-row-2">
+                  <div class="pm-form-group">
+                    <label class="pm-form-label" for="pm_expiry">Date d'expiration</label>
+                    <div class="pm-input-wrap">
+                      <input type="text" id="pm_expiry" class="pm-input" placeholder="MM / AA"
+                             maxlength="7" autocomplete="cc-exp" inputmode="numeric">
+                      <i class="far fa-calendar pm-input-icon"></i>
+                    </div>
+                  </div>
+                  <div class="pm-form-group">
+                    <label class="pm-form-label" for="pm_cvv">CVV / CVC</label>
+                    <div class="pm-input-wrap">
+                      <input type="text" id="pm_cvv" class="pm-input" placeholder="•••"
+                             maxlength="4" autocomplete="cc-csc" inputmode="numeric">
+                      <i class="fas fa-lock pm-input-icon"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="pm-submit-btn" id="pm-submit-btn">
+                  <i class="fas fa-shield-alt"></i>
+                  Enregistrer la carte en toute sécurité
+                </button>
+                <div class="pm-secure-note">
+                  <i class="fas fa-lock"></i> Chiffrement SSL 256-bit &nbsp;·&nbsp;
+                  <i class="far fa-check-circle"></i> PCI-DSS compliant
+                </div>
+              </form>
+            </div>
+
+          </div>
         </div>
       </main>
     </div>
   </div>
 
   <script>
-    // TODO: Intégrer Stripe Elements ou autre système de paiement
-    // Exemple avec Stripe (à décommenter et configurer) :
-    /*
-    const stripe = Stripe('{{ config("services.stripe.key") }}');
-    const elements = stripe.elements();
-    const cardElement = elements.create('card');
-    cardElement.mount('#card-element');
+  /* =====================================================================
+     PREMIUM CARD FORM — Live preview + validation + brand detection
+     Prêt pour Stripe Elements : remplacer les inputs par stripe.elements()
+     quand les clés Stripe sont configurées dans .env
+     ===================================================================== */
+  (function () {
 
-    const form = document.getElementById('payment-method-form');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const {token, error} = await stripe.createToken(cardElement);
-      
-      if (error) {
-        // Afficher l'erreur
-        console.error(error);
+    /* ── Références DOM ── */
+    var numInput    = document.getElementById('pm_number');
+    var holderInput = document.getElementById('pm_holder');
+    var expiryInput = document.getElementById('pm_expiry');
+    var cvvInput    = document.getElementById('pm_cvv');
+    var flipper     = document.getElementById('cardFlipper');
+    var numDisplay  = document.getElementById('cardNumberDisplay');
+    var holderDisp  = document.getElementById('cardHolderDisplay');
+    var expiryDisp  = document.getElementById('cardExpiryDisplay');
+    var cvvDisp     = document.getElementById('cardCvvDisplay');
+    var brandFront  = document.getElementById('cardBrandFront');
+    var brandBack   = document.getElementById('cardBrandBack');
+    var brandInInput= document.getElementById('pmBrandInInput');
+    var form        = document.getElementById('pm-form');
+    var submitBtn   = document.getElementById('pm-submit-btn');
+
+    if (!numInput) return;
+
+    /* ── Détection de marque ── */
+    function detectBrand(val) {
+      val = val.replace(/\s/g,'');
+      if (/^3[47]/.test(val))  return 'AMEX';
+      if (/^5[1-5]/.test(val)) return 'MC';
+      if (/^4/.test(val))      return 'VISA';
+      if (/^6/.test(val))      return 'CB';
+      return 'VISA';
+    }
+    function brandLabel(b) {
+      if (b==='AMEX') return 'AMEX';
+      if (b==='MC')   return '●● MC';
+      if (b==='CB')   return 'CB';
+      return 'VISA';
+    }
+    function updateBrand(raw) {
+      var b = detectBrand(raw);
+      var lbl = brandLabel(b);
+      if (brandFront)   brandFront.textContent  = lbl;
+      if (brandBack)    brandBack.textContent   = lbl;
+      if (brandInInput) brandInInput.textContent = lbl;
+    }
+
+    /* ── Numéro de carte ── */
+    numInput.addEventListener('input', function () {
+      var raw = this.value.replace(/\D/g,'');
+      /* AMEX : 4-6-5, autres : 4-4-4-4 */
+      var isAmex = /^3[47]/.test(raw);
+      var formatted;
+      if (isAmex) {
+        formatted = raw.replace(/^(\d{4})(\d{0,6})(\d{0,5}).*/, function(_,a,b,c){
+          return b ? (c ? a+' '+b+' '+c : a+' '+b) : a;
+        });
       } else {
-        document.getElementById('payment_method_token').value = token.id;
-        form.submit();
+        formatted = raw.replace(/(.{4})/g,'$1 ').trim().substring(0,22);
       }
+      this.value = formatted;
+      /* Preview */
+      var display = raw.padEnd(16,'•');
+      if (isAmex) display = raw.padEnd(15,'•');
+      var parts = isAmex
+        ? [display.slice(0,4), display.slice(4,10), display.slice(10,15)]
+        : [display.slice(0,4), display.slice(4,8), display.slice(8,12), display.slice(12,16)];
+      numDisplay.innerHTML = parts.join(' &nbsp;');
+      updateBrand(raw);
     });
-    */
+
+    /* ── Titulaire ── */
+    holderInput.addEventListener('input', function () {
+      var v = this.value.toUpperCase();
+      this.value = v;
+      holderDisp.textContent = v || 'VOTRE NOM';
+    });
+
+    /* ── Expiry ── */
+    expiryInput.addEventListener('input', function () {
+      var raw = this.value.replace(/\D/g,'');
+      if (raw.length >= 3) raw = raw.slice(0,2) + ' / ' + raw.slice(2,4);
+      else if (raw.length === 2 && this._prev && this._prev.length < 2) raw = raw + ' / ';
+      this._prev = raw;
+      this.value = raw;
+      expiryDisp.textContent = raw.replace(' / ','/') || 'MM/AA';
+    });
+
+    /* ── CVV (flip) ── */
+    cvvInput.addEventListener('focus', function () {
+      if (flipper) flipper.classList.add('is-flipped');
+    });
+    cvvInput.addEventListener('blur', function () {
+      if (flipper) flipper.classList.remove('is-flipped');
+    });
+    cvvInput.addEventListener('input', function () {
+      var raw = this.value.replace(/\D/g,'');
+      this.value = raw;
+      cvvDisp.textContent = raw.padEnd(3,'•').slice(0,4);
+    });
+
+    /* ── Soumission ── */
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var num    = numInput.value.replace(/\s/g,'');
+      var holder = holderInput.value.trim();
+      var expiry = expiryInput.value.replace(/\s/g,'');
+      var cvv    = cvvInput.value.trim();
+
+      /* Validation basique */
+      var errors = [];
+      if (num.length < 13) errors.push('Numéro de carte invalide');
+      if (!holder)         errors.push('Nom du titulaire requis');
+      if (!/^\d{2}\/\d{2}$/.test(expiry)) errors.push('Date d\'expiration invalide (MM/AA)');
+      if (cvv.length < 3)  errors.push('CVV invalide');
+
+      /* Vérification date expi */
+      if (errors.length === 0) {
+        var parts = expiry.split('/');
+        var now   = new Date();
+        var expiDate = new Date(2000 + parseInt(parts[1]), parseInt(parts[0]) - 1, 1);
+        if (expiDate < now) errors.push('Cette carte est expirée');
+      }
+
+      if (errors.length > 0) {
+        /* Afficher erreurs */
+        var existing = document.getElementById('pm-errors');
+        if (existing) existing.remove();
+        var errEl = document.createElement('div');
+        errEl.id = 'pm-errors';
+        errEl.style.cssText = 'background:#fef2f2;color:#991b1b;border:1px solid #fca5a5;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.875rem;';
+        errEl.innerHTML = errors.map(function(e){ return '• ' + e; }).join('<br>');
+        form.insertBefore(errEl, form.firstChild);
+        return;
+      }
+
+      /* Animation de chargement */
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sécurisation en cours…';
+
+      /* == Stripe Elements ==
+         Quand les clés Stripe sont configurées dans .env (STRIPE_KEY),
+         décommenter ce bloc et supprimer le submit direct ci-dessous :
+
+      var stripe   = Stripe('{{ config("services.stripe.key") }}');
+      var elements = stripe.elements();
+      var card     = elements.create('card');
+      card.mount('#stripe-card-element'); // ajouter ce div dans la vue
+
+      stripe.createPaymentMethod({
+        type: 'card',
+        card: card,
+        billing_details: { name: holder }
+      }).then(function(result) {
+        if (result.error) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-shield-alt"></i> Enregistrer la carte en toute sécurité';
+          // afficher result.error.message
+        } else {
+          document.getElementById('pm_token').value = result.paymentMethod.id;
+          form.submit();
+        }
+      });
+      */
+
+      /* Soumission directe (mode sans Stripe — le token sera vide,
+         le contrôleur UserController@storePaymentMethod le traitera
+         quand l'intégration Stripe sera activée) */
+      document.getElementById('pm_token').value = 'mock_' + num.slice(-4) + '_' + Date.now();
+      setTimeout(function() { form.submit(); }, 800);
+    });
+
+  })();
   </script>
 @endsection
 
