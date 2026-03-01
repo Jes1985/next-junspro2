@@ -780,7 +780,9 @@
       margin: 1.5rem 0 2rem;
       color: white;
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      gap: 2rem;
       box-shadow: 0 32px 80px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255,255,255,0.2);
       position: relative;
       overflow: hidden;
@@ -822,6 +824,28 @@
       position: relative;
       z-index: 2;
     }
+    .hero-search-btn {
+      background: white;
+      color: #7c3aed;
+      border-radius: 50px;
+      padding: 0.85rem 1.8rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none !important;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero-search-btn:hover {
+      background: #f5f3ff;
+      color: #6d28d9;
+      text-decoration: none !important;
+    }
   </style>
 @endsection
 
@@ -839,6 +863,9 @@
         <h1 class="messages-dashboard-hero-title">Bonjour {{ $heroFirstName }} !</h1>
         <p class="messages-dashboard-hero-subtitle">Bienvenue dans votre espace</p>
       </div>
+      <a href="/services" class="hero-search-btn">
+        <i class="fas fa-search"></i> Trouver un freelance
+      </a>
     </div>
   </div>
 
