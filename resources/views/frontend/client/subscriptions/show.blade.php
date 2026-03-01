@@ -678,9 +678,7 @@
   <section class="user-dashboard pt-100 pb-60">
     <div class="container">
       <div class="row">
-        @includeIf('frontend.user.side-navbar')
-
-        <div class="col-lg-9">
+        <div class="col-lg-12">
           <div class="user-profile-details mb-30">
             <div class="title mb-30">
               <h4>{{ __('Rituel avec') }} {{ $subscription->freelancer->user->name ?? 'N/A' }}</h4>
