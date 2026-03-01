@@ -488,12 +488,12 @@
       })
     })
     .then(async response => {
-      if (!response.ok) {
-        let msg = `Erreur HTTP ${response.status}`;
-        try { const d = await response.json(); msg = d.message || msg; } catch(e) {}
-        throw new Error(msg);
-      }
-      return response.json();
+      // On parse TOUJOURS le JSON, quel que soit le statut HTTP.
+      // Le bloc .then(data=>) gère succès et erreur via data.success.
+      let data;
+      try { data = await response.json(); } catch(e) { data = { success: false, message: `Erreur HTTP ${response.status}`, errors: [] }; }
+      if (!response.ok && data.success === undefined) data.success = false;
+      return data;
     })
     .then(data => {
       if (data.success) {
