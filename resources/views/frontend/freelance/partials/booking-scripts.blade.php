@@ -469,9 +469,7 @@
 
     function close() {
       modal.classList.remove('open');
-      const c = document.getElementById('luxury-confirm-card');
-      if (c) { c.style.transform = 'translateY(20px) scale(0.97)'; c.style.opacity = '0'; }
-      setTimeout(() => { modal.style.display = 'none'; if(c){c.style.transform='';c.style.opacity='';} }, 350);
+      setTimeout(() => { modal.style.display = 'none'; }, 350);
     }
 
     document.getElementById('luxury-confirm-ok').addEventListener('click', () => {

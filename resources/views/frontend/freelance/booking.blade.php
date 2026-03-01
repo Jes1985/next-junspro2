@@ -297,7 +297,7 @@
   <div id="luxury-confirm-backdrop" style="position:absolute;inset:0;background:rgba(10,8,30,0.6);transition:opacity 0.3s ease;"></div>
 
   {{-- Card --}}
-  <div id="luxury-confirm-card" style="position:relative;width:min(520px,100%);transform:translateY(20px) scale(0.97);opacity:0;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);">
+  <div id="luxury-confirm-card" style="position:relative;width:min(520px,100%);">
     {{-- Glow border --}}
     <div style="position:absolute;inset:-1px;border-radius:28px;background:linear-gradient(135deg,rgba(139,92,246,0.6) 0%,rgba(59,130,246,0.5) 35%,rgba(236,72,153,0.5) 70%,rgba(139,92,246,0.6) 100%);padding:1.5px;">
       <div style="height:100%;border-radius:27px;background:linear-gradient(160deg,#0f0c29 0%,#1a1140 50%,#0d1117 100%);"></div>
@@ -368,6 +368,11 @@
 
 <style>
   /* Popup luxe - animations */
+  #luxury-confirm-card {
+    transform: translateY(20px) scale(0.97);
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
   #luxury-confirm-modal.open { display: flex !important; }
   #luxury-confirm-modal.open #luxury-confirm-backdrop {
     backdrop-filter: blur(14px);
