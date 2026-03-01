@@ -345,20 +345,29 @@
           <!-- Localisation -->
           <div class="form-section">
             <h3 class="form-section-title">Localisation</h3>
+            @php
+              $__clientCountryCodes = ['FR'=>'France','GP'=>'Guadeloupe','MQ'=>'Martinique','GF'=>'Guyane','RE'=>'La Réunion','NC'=>'Nouvelle-Calédonie','PF'=>'Polynésie française','BE'=>'Belgique','CH'=>'Suisse','ES'=>'Espagne','DE'=>'Allemagne','IT'=>'Italie','PT'=>'Portugal','NL'=>'Pays-Bas','GB'=>'Royaume-Uni','CA'=>'Canada','US'=>'États-Unis','MT'=>'Malte','MC'=>'Monaco','LU'=>'Luxembourg','MA'=>'Maroc','TN'=>'Tunisie','SN'=>'Sénégal','CI'=>"Côte d\'Ivoire",'IE'=>'Irlande','HR'=>'Croatie'];
+              $__savedCountry = old('country', $user->country ?? '');
+              $__savedCity    = old('city',    $user->city    ?? '');
+            @endphp
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Ville</label>
-                <input type="text" name="city"
-                       class="form-control @error('city') has-error @enderror"
-                       value="{{ old('city', $user->city) }}">
-                @error('city')<div class="form-error">{{ $message }}</div>@enderror
+                <label class="form-label"><i class="fas fa-map-marker-alt me-1" style="color:#7c3aed;"></i>Pays</label>
+                <select name="country" id="client_location_country" class="form-control filter-select @error('country') has-error @enderror">
+                  <option value="">Sélectionner un pays</option>
+                  @foreach($__clientCountryCodes as $__code => $__name)
+                    <option value="{{ $__code }}" {{ $__savedCountry === $__code ? 'selected' : '' }}>{{ $__name }}</option>
+                  @endforeach
+                </select>
+                @error('country')<div class="form-error">{{ $message }}</div>@enderror
               </div>
               <div class="form-group">
-                <label class="form-label">Pays</label>
-                <input type="text" name="country"
-                       class="form-control @error('country') has-error @enderror"
-                       value="{{ old('country', $user->country) }}">
-                @error('country')<div class="form-error">{{ $message }}</div>@enderror
+                <label class="form-label"><i class="fas fa-city me-1" style="color:#7c3aed;"></i>Ville</label>
+                <select name="city" id="client_location_city" class="form-control filter-select @error('city') has-error @enderror" disabled>
+                  <option value="">Sélectionner une ville</option>
+                </select>
+                <input type="hidden" id="client_location_city_saved" value="{{ $__savedCity }}">
+                @error('city')<div class="form-error">{{ $message }}</div>@enderror
               </div>
             </div>
             <div class="form-group">
@@ -455,6 +464,41 @@
       };
       reader.readAsDataURL(file);
     });
+  </script>
+
+  <script>
+  /* ---- Pays / Ville (cascade) ---- */
+  (function() {
+    var citiesByCountry = {'FR':['Paris','Lyon','Marseille','Bordeaux','Nantes','Lille','Strasbourg','Rennes','Montpellier','Toulouse','Nice','Grenoble','Dijon','Rouen','Versailles','Orléans','Reims','Metz','Caen','Clermont-Ferrand'],'GP':['Pointe-à-Pitre','Basse-Terre','Saint-François'],'MQ':['Fort-de-France','Le Lamentin','Sainte-Anne'],'GF':['Cayenne','Kourou','Saint-Laurent-du-Maroni'],'RE':['Saint-Denis','Saint-Pierre','Saint-Gilles-les-Bains'],'NC':['Nouméa','Dumbéa','Mont-Dore'],'PF':['Papeete','Faa\'a','Moorea'],'BE':['Bruxelles','Anvers','Liège','Gand','Bruges','Namur'],'CH':['Zurich','Genève','Bâle','Lausanne','Berne','Lugano'],'ES':['Barcelone','Palma de Majorque','Valence','Séville','Madrid','Ibiza','Tenerife'],'DE':['Berlin','Munich','Hambourg','Francfort','Cologne','Stuttgart','Düsseldorf'],'IT':['Rome','Milan','Turin','Palerme','Toscane','Florence','Naples','Venise','Bologne'],'PT':['Lisbonne','Porto','Faro','Coimbra','Braga','Funchal'],'NL':['Amsterdam','Rotterdam','La Haye','Utrecht','Eindhoven'],'GB':['Londres','Manchester','Birmingham','Brighton','Édimbourg','Glasgow','Bristol'],'CA':['Montréal','Toronto','Vancouver','Calgary','Ottawa','Québec'],'US':['New York','Los Angeles','Chicago','San Francisco','Miami','Houston','Boston','Seattle'],'MT':['Valletta','Sliema','Saint Julien','Msida','Gzira'],'MC':['Monte-Carlo','La Condamine','Fontvieille'],'LU':['Luxembourg-Ville','Kirchberg','Esch-sur-Alzette'],'MA':['Casablanca','Rabat','Tanger','Marrakech','Agadir','Fès','Meknès'],'TN':['Tunis','Sfax','Sousse','Bizerte','Nabeul'],'SN':['Dakar','Diamniadio','Thiès','Saint-Louis'],'CI':['Abidjan','Yamoussoukro','San Pedro','Bouaké'],'IE':['Dublin','Cork','Galway'],'HR':['Split','Dubrovnik','Zagreb']};
+
+    var countrySelect = document.getElementById('client_location_country');
+    var citySelect    = document.getElementById('client_location_city');
+    var savedCity     = document.getElementById('client_location_city_saved');
+    if (!countrySelect || !citySelect) return;
+
+    function updateCities() {
+      var code = countrySelect.value;
+      var cities = citiesByCountry[code] || [];
+      var prev = (savedCity && savedCity.value) ? savedCity.value : citySelect.value;
+      citySelect.innerHTML = '<option value="">Sélectionner une ville</option>';
+      if (cities.length) {
+        cities.forEach(function(c) {
+          var opt = document.createElement('option');
+          opt.value = c; opt.textContent = c;
+          if (c === prev) opt.selected = true;
+          citySelect.appendChild(opt);
+        });
+        citySelect.disabled = false;
+      } else {
+        citySelect.disabled = true;
+      }
+      if (savedCity) { savedCity.value = ''; } // consommé
+    }
+
+    countrySelect.addEventListener('change', updateCities);
+    /* Init au chargement */
+    if (countrySelect.value) updateCities();
+  })();
   </script>
 
   <script>
