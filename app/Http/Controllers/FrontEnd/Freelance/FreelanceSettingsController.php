@@ -95,6 +95,52 @@ class FreelanceSettingsController extends Controller
     }
 
     /**
+     * Sauvegarder les coordonnées bancaires (international)
+     */
+    public function storePayouts(Request $request)
+    {
+        $user = Auth::guard('web')->user();
+        $freelancerProfile = FreelancerProfile::where('user_id', $user->id)->first();
+
+        if (!$freelancerProfile) {
+            return redirect()->back()->with('error', 'Profil freelance introuvable.');
+        }
+
+        $request->validate([
+            'bank_country'         => 'required|string|size:2',
+            'bank_account_holder'  => 'required|string|min:2|max:255',
+            'bank_iban'            => 'nullable|string|max:100',
+            'bank_routing'         => 'nullable|string|max:60',
+            'bank_type'            => 'nullable|string|max:20',
+        ]);
+
+        $data = [
+            'bank_country'        => strtoupper($request->input('bank_country')),
+            'bank_account_holder' => $request->input('bank_account_holder'),
+            'bank_type'           => $request->input('bank_type'),
+        ];
+
+        // IBAN : stocker sans espaces, majuscules
+        if ($request->filled('bank_iban')) {
+            $data['bank_iban'] = strtoupper(str_replace(' ', '', $request->input('bank_iban')));
+        }
+
+        // Routing number / Sort code / BSB / IFSC…
+        if ($request->filled('bank_routing')) {
+            $data['bank_routing'] = strtoupper(str_replace([' ', '-'], '', $request->input('bank_routing')));
+        }
+
+        if (\Illuminate\Support\Facades\Schema::hasColumn('freelancer_profiles', 'bank_country')) {
+            $freelancerProfile->update($data);
+        } else {
+            // Colonne absente (migration non lancée) : sauver uniquement les champs existants
+            $freelancerProfile->update(array_intersect_key($data, array_flip(['bank_iban', 'bank_account_holder'])));
+        }
+
+        return redirect()->back()->with('success', 'Vos coordonnées bancaires ont été enregistrées avec succès.');
+    }
+
+    /**
      * Notifications
      */
     public function notifications()

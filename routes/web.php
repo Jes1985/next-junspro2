@@ -133,6 +133,7 @@ Route::post('/pricing/subscribe', [\App\Http\Controllers\FrontEnd\PricingControl
     Route::get('/security', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'security'])->name('security');
     Route::get('/email', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'email'])->name('email');
     Route::get('/payouts', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'payouts'])->name('payouts');
+    Route::post('/payouts', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'storePayouts'])->name('payouts.store');
     Route::get('/notifications', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'notifications'])->name('notifications');
     Route::get('/video', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'video'])->name('video');
     Route::post('/video', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceSettingsController::class, 'updateVideo'])->name('video.update');

@@ -52,6 +52,9 @@ class FreelancerProfile extends Model
         'identity_document',
         'bank_iban',
         'bank_account_holder',
+        'bank_country',
+        'bank_routing',
+        'bank_type',
         // HomeSwap scoring fields (anciens)
         'homeswap_property_type',
         'homeswap_bedrooms',
