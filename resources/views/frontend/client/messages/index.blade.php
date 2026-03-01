@@ -771,6 +771,57 @@
         max-width: 85%;
       }
     }
+
+    /* === Dashboard Hero === */
+    .messages-dashboard-hero {
+      background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #a855f7 100%);
+      border-radius: 40px;
+      padding: 3rem 4rem;
+      margin: 1.5rem 0 2rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 32px 80px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .messages-dashboard-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -5%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .messages-dashboard-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .messages-dashboard-hero-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: white;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      position: relative;
+      z-index: 2;
+    }
+    .messages-dashboard-hero-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 0;
+      font-weight: 300;
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
   </style>
 @endsection
 
@@ -778,6 +829,17 @@
   <!-- Navigation principale (onglets) -->
   <div style="max-width: 1400px; margin: 0 auto; padding: 3rem 1.5rem 0;">
     @include('frontend.client.partials.dashboard-nav')
+  </div>
+
+  <!-- Hero violet -->
+  @php $heroFirstName = Auth::guard('web')->user() ? explode(' ', trim(Auth::guard('web')->user()->name))[0] : 'vous'; @endphp
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;">
+    <div class="messages-dashboard-hero">
+      <div>
+        <h1 class="messages-dashboard-hero-title">Bonjour {{ $heroFirstName }} !</h1>
+        <p class="messages-dashboard-hero-subtitle">Bienvenue dans votre espace</p>
+      </div>
+    </div>
   </div>
 
   <div class="messages-container">
