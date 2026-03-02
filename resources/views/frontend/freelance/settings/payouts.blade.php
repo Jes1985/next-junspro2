@@ -618,7 +618,7 @@
 
   searchInput.addEventListener('focus', function(){
     if (this.value.trim()) { dropdown.classList.add('open'); }
-    else { renderDropdown(COUNTRIES); }
+    else { renderDropdown(COUNTRIES); dropdown.classList.add('open'); }
   });
 
   document.addEventListener('click', function(e){
@@ -636,10 +636,12 @@
   chipChange.addEventListener('click', function(){
     selectedChip.classList.remove('vis');
     searchInput.value = '';
-    searchInput.focus();
     placeholder.style.display = '';
     step2Form.style.display    = 'none';
     currentCountry = null; currentType = null;
+    renderDropdown(COUNTRIES);
+    dropdown.classList.add('open');
+    searchInput.focus();
   });
 
   /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
