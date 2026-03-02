@@ -622,7 +622,9 @@
   });
 
   document.addEventListener('click', function(e){
-    if (!document.getElementById('countrySearchWrap').contains(e.target)) {
+    var wrap = document.getElementById('countrySearchWrap');
+    var chip = document.getElementById('selectedChip');
+    if (!wrap.contains(e.target) && !chip.contains(e.target)) {
       dropdown.classList.remove('open');
     }
   });
