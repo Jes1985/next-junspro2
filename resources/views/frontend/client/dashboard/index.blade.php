@@ -19,7 +19,7 @@
 
     /* Layout principal (style Preply - fond blanc) */
     .client-dashboard-container {
-      max-width: 1280px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 3rem 2rem;
       padding-top: 4rem;
@@ -41,162 +41,347 @@
       z-index: -1;
     }
 
-    /* Hero bandeau d'accueil (style Preply) */
+    /* ===================================================
+       HERO CLIENT — ULTRA-LUX v2
+       =================================================== */
     .dashboard-hero {
-      background: var(--junspro-gradient-alt) !important;
-      border-radius: 40px !important;
-      padding: 4rem !important;
-      margin-bottom: 4rem;
+      position: relative;
+      background: linear-gradient(135deg, #3b0764 0%, #4c1d95 40%, #7c3aed 75%, #a855f7 100%);
+      border-radius: 36px;
+      padding: 3rem 3.5rem;
+      margin-bottom: 3rem;
       color: white;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 3rem;
+      gap: 2.5rem;
       flex-wrap: wrap;
-      box-shadow: 0 32px 80px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255,255,255,0.2) !important;
-      position: relative;
       overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+      box-shadow:
+        0 40px 100px rgba(76,29,149,.45),
+        0 0 0 1px rgba(255,255,255,.08) inset;
+      animation: hero-bg-shift 12s ease-in-out infinite alternate;
     }
-
+    @keyframes hero-bg-shift {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    /* ── Orbes décoratifs ── */
     .dashboard-hero::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      left: -5%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
+      content:'';
+      position:absolute;
+      top:-80px; left:-60px;
+      width:380px; height:380px;
+      background: radial-gradient(circle, rgba(255,255,255,.09) 0%, transparent 65%);
+      border-radius:50%;
+      pointer-events:none;
     }
-
     .dashboard-hero::after {
-      content: '';
-      position: absolute;
-      bottom: -20%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
+      content:'';
+      position:absolute;
+      bottom:-120px; right:-80px;
+      width:520px; height:520px;
+      background: radial-gradient(circle, rgba(168,85,247,.18) 0%, transparent 65%);
+      border-radius:50%;
+      pointer-events:none;
     }
-
-    .dashboard-hero-content {
-      flex: 1;
-      min-width: 300px;
-      z-index: 2;
+    /* ── Grille de points décoratifs ── */
+    .hero-dots-deco {
+      position:absolute;
+      top:18px; right:260px;
+      display:grid;
+      grid-template-columns: repeat(5,8px);
+      gap:7px;
+      opacity:.18;
+      pointer-events:none;
+      z-index:1;
     }
-
+    .hero-dots-deco span {
+      width:4px; height:4px;
+      background:#fff;
+      border-radius:50%;
+      display:block;
+    }
+    /* ── Zone gauche ── */
+    .hero-left {
+      flex:1;
+      min-width:240px;
+      position:relative;
+      z-index:2;
+    }
+    .hero-eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:999px;
+      padding:.28rem .9rem;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.85);
+      margin-bottom:1rem;
+    }
+    .hero-eyebrow-dot {
+      width:6px; height:6px;
+      background:#a78bfa;
+      border-radius:50%;
+    }
     .dashboard-hero-title {
-      font-size: 3.5rem !important;
-      font-weight: 900 !important;
-      margin-bottom: 1.5rem;
-      color: white;
-      line-height: 1.05;
-      letter-spacing: -0.03em !important;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      font-size:2.8rem;
+      font-weight:900;
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#fff;
+      margin:0 0 .6rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,.2);
     }
-
     .dashboard-hero-subtitle {
-      font-size: 1.25rem !important;
-      opacity: 0.95 !important;
-      margin-bottom: 0;
-      font-weight: 300 !important;
-      letter-spacing: 0.01em;
+      font-size:1.05rem;
+      font-weight:400;
+      color:rgba(255,255,255,.72);
+      margin:0 0 1.8rem;
+      letter-spacing:.01em;
+      line-height:1.5;
+    }
+    .hero-cta-row {
+      display:flex;
+      gap:.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    /* Bouton primaire (blanc) */
+    .hero-btn-main {
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      background:#fff;
+      color:#6d28d9;
+      border:none;
+      border-radius:14px;
+      padding:.7rem 1.6rem;
+      font-size:.9rem;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 8px 24px rgba(0,0,0,.2);
+      transition:all .25s cubic-bezier(.34,1.56,.64,1);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-btn-main::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%);
+      transform:translateX(-100%);
+      transition:transform .45s ease;
+    }
+    .hero-btn-main:hover {
+      transform:translateY(-3px);
+      box-shadow:0 16px 36px rgba(0,0,0,.28);
+      color:#5b21b6;
+      text-decoration:none;
+    }
+    .hero-btn-main:hover::after { transform:translateX(100%); }
+    /* Bouton secondaire (verre) */
+    .hero-btn-ghost {
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      border:1.5px solid rgba(255,255,255,.28);
+      border-radius:14px;
+      padding:.68rem 1.4rem;
+      font-size:.88rem;
+      font-weight:700;
+      text-decoration:none;
+      backdrop-filter:blur(10px);
+      transition:all .22s ease;
+    }
+    .hero-btn-ghost:hover {
+      background:rgba(255,255,255,.22);
+      border-color:rgba(255,255,255,.5);
+      color:#fff;
+      transform:translateY(-2px);
+      text-decoration:none;
     }
 
-    .dashboard-hero-actions {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      align-items: center;
-      z-index: 2;
+    /* ── Widget countdown (carte droite) ── */
+    .hero-ritual-card {
+      flex-shrink:0;
+      width:300px;
+      background:rgba(255,255,255,.1);
+      backdrop-filter:blur(24px);
+      -webkit-backdrop-filter:blur(24px);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:24px;
+      padding:1.5rem 1.6rem 1.4rem;
+      position:relative;
+      z-index:2;
+      box-shadow:0 8px 32px rgba(0,0,0,.15), 0 0 0 1px rgba(255,255,255,.06) inset;
     }
-
-    .btn-hero-primary {
-      background: white !important;
-      color: #7c3aed !important;
-      border: none !important;
-      padding: 1.2rem 2.5rem !important;
-      border-radius: 18px !important;
-      font-weight: 800 !important;
-      font-size: 1.1rem !important;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
-      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1) !important;
-      position: relative;
-      overflow: hidden;
+    /* Shine subtil sur la card */
+    .hero-ritual-card::before {
+      content:'';
+      position:absolute;
+      top:0; left:10%; right:10%;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
+      pointer-events:none;
     }
-
-    .btn-hero-primary:hover {
-      transform: translateY(-6px) !important;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3) !important;
+    .ritual-status-pill {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:999px;
+      padding:4px 12px;
+      font-size:.7rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.9);
+      margin-bottom:.9rem;
     }
-
-    .btn-hero-secondary {
-      background: rgba(255,255,255,0.18) !important;
-      border: 2px solid rgba(255,255,255,0.4) !important;
-      color: white !important;
-      font-weight: 800 !important;
-      font-size: 1.1rem !important;
-      padding: 1rem 2.25rem !important;
-      border-radius: 18px !important;
-      backdrop-filter: blur(12px) !important;
-      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    .ritual-status-dot {
+      width:7px; height:7px;
+      border-radius:50%;
+      background:#4ade80;
+      animation: ritual-pulse 1.8s ease-in-out infinite;
     }
-
-    .btn-hero-secondary:hover {
-      background: rgba(255,255,255,0.28) !important;
-      border-color: rgba(255,255,255,0.6) !important;
-      transform: translateY(-4px) !important;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.2) !important;
+    @keyframes ritual-pulse {
+      0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}
+      50%{box-shadow:0 0 0 6px rgba(74,222,128,0)}
     }
-      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      position: relative;
-      z-index: 1;
+    .ritual-countdown-blocks {
+      display:flex;
+      align-items:center;
+      gap:5px;
+      margin-bottom:.75rem;
     }
-
-    .btn-hero-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-      color: var(--junspro-purple);
-      text-decoration: none;
+    .ritual-cd-block {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      background:rgba(255,255,255,.13);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:12px;
+      padding:9px 13px 7px;
+      min-width:58px;
+      transition:background .3s;
     }
-
-    .btn-hero-primary:active {
-      transform: translateY(-2px);
+    .ritual-cd-block span {
+      font-size:1.85rem;
+      font-weight:900;
+      color:#fff;
+      line-height:1;
+      letter-spacing:-.03em;
+      font-variant-numeric:tabular-nums;
+      display:block;
     }
-
-    .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.15);
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.35);
-      padding: 1rem 2.25rem;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      backdrop-filter: blur(10px);
-      position: relative;
-      z-index: 1;
+    .ritual-cd-block label {
+      font-size:.58rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.55);
+      margin-top:3px;
+      cursor:default;
+      display:block;
     }
-
-    .btn-hero-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
-      border-color: rgba(255, 255, 255, 0.55);
-      color: white;
-      text-decoration: none;
-      transform: translateY(-2px);
+    .ritual-cd-sep {
+      font-size:1.4rem;
+      font-weight:900;
+      color:rgba(255,255,255,.35);
+      margin-bottom:12px;
+      animation:sep-blink 1s step-end infinite;
+    }
+    @keyframes sep-blink{0%,100%{opacity:1}50%{opacity:.15}}
+    .ritual-progress-wrap {
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      margin-bottom:.75rem;
+    }
+    .ritual-progress-bar {
+      height:3px;
+      background:rgba(255,255,255,.15);
+      border-radius:99px;
+      overflow:hidden;
+    }
+    .ritual-progress-fill {
+      height:100%;
+      background:linear-gradient(90deg,rgba(255,255,255,.4),white);
+      border-radius:99px;
+      transition:width 1s linear;
+      width:0%;
+    }
+    .ritual-progress-label {
+      font-size:.7rem;
+      color:rgba(255,255,255,.5);
+    }
+    .ritual-notif-btn {
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      background:rgba(255,255,255,.1);
+      border:1.5px solid rgba(255,255,255,.25);
+      border-radius:12px;
+      color:rgba(255,255,255,.9);
+      font-size:.8rem;
+      font-weight:700;
+      padding:8px 14px;
+      cursor:pointer;
+      transition:all .22s cubic-bezier(.34,1.56,.64,1);
+      backdrop-filter:blur(8px);
+      margin-top:.25rem;
+    }
+    .ritual-notif-btn:hover {
+      background:rgba(255,255,255,.2);
+      border-color:rgba(255,255,255,.45);
+      transform:translateY(-1px);
+    }
+    .ritual-notif-btn.granted {
+      background:rgba(74,222,128,.18);
+      border-color:rgba(74,222,128,.4);
+      color:#bbf7d0;
+      pointer-events:none;
+    }
+    .ritual-notif-btn .btn-bell { font-size:.95rem; }
+    .ritual-notif-btn.ringing .btn-bell { animation:bell-ring .5s cubic-bezier(.36,.07,.19,.97) 3; }
+    @keyframes bell-ring{0%,100%{transform:rotate(0)}20%{transform:rotate(15deg)}40%{transform:rotate(-13deg)}60%{transform:rotate(10deg)}80%{transform:rotate(-8deg)}}
+    .ritual-cd-block.urgent { background:rgba(251,191,36,.22); border-color:rgba(251,191,36,.4); }
+    .ritual-cd-block.critical { background:rgba(248,113,113,.22); border-color:rgba(248,113,113,.4); animation:cd-flash 1s ease-in-out infinite; }
+    @keyframes cd-flash{0%,100%{opacity:1}50%{opacity:.6}}
+    .ritual-live-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(74,222,128,.2);
+      border:1.5px solid rgba(74,222,128,.45);
+      border-radius:50px;
+      padding:7px 16px;
+      font-size:.85rem;
+      font-weight:700;
+      color:#bbf7d0;
+      width:fit-content;
+    }
+    .hero-no-session {
+      font-size:.85rem;
+      color:rgba(255,255,255,.65);
+      font-style:italic;
+      margin:.4rem 0 .8rem;
+    }
+    @media(max-width:768px){
+      .dashboard-hero { padding:2rem 1.5rem; flex-direction:column; }
+      .hero-ritual-card { width:100%; max-width:360px; }
+      .dashboard-hero-title { font-size:2.1rem; }
     }
 
     /* Carte Prochain Rituel (grande carte style Preply) */
@@ -1176,6 +1361,7 @@
     /* Responsive */
     @media (max-width: 768px) {
       .client-dashboard-container {
+        max-width: 100%;
         padding: 1rem;
       }
 
@@ -1335,8 +1521,15 @@
       $user = Auth::guard('web')->user();
       $firstName = $user->first_name ?? $user->username ?? 'Client';
       $nextRitual = $nextSession ?? null;
-      
-      // Données mock pour les résumés IA (si pas de données réelles)
+    @endphp
+
+    {{-- ── Données JS pour le countdown et l'alarme ── --}}
+    <script>
+      window.nextRitualStartAt    = @json($nextRitual ? \Carbon\Carbon::parse($nextRitual->start_at)->toIso8601String() : null);
+      window.nextRitualFreelancer = @json(optional(optional(optional($nextRitual?->subscription)->freelancer)->user)->first_name ?? optional(optional(optional($nextRitual?->subscription)->freelancer)->user)->name ?? null);
+    </script>
+
+    @php
       $aiReports = $lastReports->take(3)->map(function($report) {
         return [
           'id' => $report->id,
@@ -1355,32 +1548,83 @@
       }
     @endphp
 
-    <!-- 1) Hero (style Preply exact) -->
+    <!-- 1) Hero ultra-lux -->
     <div class="dashboard-hero">
-      <div class="dashboard-hero-content">
-        <h1 class="dashboard-hero-title">Bonjour {{ $firstName }} !</h1>
-        @if($nextRitual)
-          <p class="dashboard-hero-subtitle">Votre Rituel va bientôt commencer</p>
-        @else
-          <p class="dashboard-hero-subtitle">Aucun Rituel prévu pour le moment.</p>
-        @endif
+      {{-- Grille de points décoratifs --}}
+      <div class="hero-dots-deco">
+        @for($i=0;$i<25;$i++)<span></span>@endfor
       </div>
-      @if(isset($referralStats))
-        @include('components.referral.referral-cta', [
-          'variant' => 'card',
-          'stats' => $referralStats
-        ])
-      @endif
-      <div class="dashboard-hero-actions">
+
+      {{-- Gauche : salutation + CTAs --}}
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Espace client
+        </div>
+        <h1 class="dashboard-hero-title">Bonjour {{ $firstName }}&nbsp;!</h1>
+        <p class="dashboard-hero-subtitle">
+          @if($nextRitual)
+            Votre prochain Rituel commence bientôt.<br>Tout est prêt.
+          @else
+            Trouvez votre freelance idéal<br>et démarrez votre premier Rituel.
+          @endif
+        </p>
+        <div class="hero-cta-row">
+          @if($nextRitual)
+            <a href="{{ route('client.subscriptions.show', $nextRitual->subscription_id) }}" class="hero-btn-main">
+              <i class="far fa-calendar"></i>
+              Voir le Rituel
+            </a>
+            <a href="{{ route('explore') }}" class="hero-btn-ghost">
+              Explorer les profils
+            </a>
+          @else
+            <a href="{{ route('explore') }}" class="hero-btn-main">
+              <i class="fas fa-search"></i>
+              Trouver un freelance
+            </a>
+          @endif
+        </div>
+      </div>
+
+      {{-- Droite : widget countdown glassmorphism --}}
+      <div class="hero-ritual-card" id="ritual-countdown-widget">
         @if($nextRitual)
-          <a href="{{ route('client.subscriptions.show', $nextRitual->subscription_id) }}" class="btn-hero-primary">
-            <i class="far fa-calendar"></i>
-            Voir le rituel
-          </a>
+          <div class="ritual-status-pill">
+            <span class="ritual-status-dot"></span>
+            <span id="ritual-status-label">Programmé</span>
+          </div>
+          <div class="ritual-countdown-blocks" id="ritual-cd-blocks">
+            <div class="ritual-cd-block" id="cd-block-d"><span id="cd-days">--</span><label>jours</label></div>
+            <div class="ritual-cd-sep">:</div>
+            <div class="ritual-cd-block" id="cd-block-h"><span id="cd-hours">--</span><label>heures</label></div>
+            <div class="ritual-cd-sep">:</div>
+            <div class="ritual-cd-block" id="cd-block-m"><span id="cd-mins">--</span><label>min</label></div>
+            <div class="ritual-cd-sep">:</div>
+            <div class="ritual-cd-block" id="cd-block-s"><span id="cd-secs">--</span><label>sec</label></div>
+          </div>
+          <div class="ritual-progress-wrap">
+            <div class="ritual-progress-bar"><div class="ritual-progress-fill" id="ritual-progress-fill"></div></div>
+            <span class="ritual-progress-label" id="ritual-progress-label"></span>
+          </div>
+          @php
+            $freelancerFirstName = optional(optional(optional($nextRitual->subscription)->freelancer)->user)->first_name;
+          @endphp
+          @if($freelancerFirstName)
+            <div style="font-size:.72rem;color:rgba(255,255,255,.6);margin:.4rem 0 .6rem;">Avec : {{ $freelancerFirstName }}</div>
+          @endif
+          <button class="ritual-notif-btn" id="ritual-notif-btn">
+            <i class="fas fa-bell btn-bell"></i>
+            <span id="ritual-notif-label">Me rappeler 15 min avant</span>
+          </button>
         @else
-          <a href="{{ route('explore') }}" class="btn-hero-primary">
-            <i class="fas fa-search"></i>
-            Trouver un freelance
+          <div class="ritual-status-pill" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12);">
+            <span class="ritual-status-dot" style="background:#94a3b8;animation:none;"></span>
+            <span>Aucun Rituel</span>
+          </div>
+          <p class="hero-no-session">Aucun Rituel planifié prochainement.</p>
+          <a href="{{ route('explore') }}" class="hero-btn-ghost" style="font-size:.8rem;justify-content:center;">
+            Planifier un Rituel →
           </a>
         @endif
       </div>
@@ -1967,6 +2211,154 @@
         detail: payload
       }));
     }
+  </script>
+
+  {{-- ── Rituel Alarm : countdown premium + notification 15 min avant ── --}}
+  <script>
+  (function () {
+    const startAtRaw = window.nextRitualStartAt;
+    const freelancer = window.nextRitualFreelancer || 'votre freelance';
+
+    const elDays     = document.getElementById('cd-days');
+    const elHours    = document.getElementById('cd-hours');
+    const elMins     = document.getElementById('cd-mins');
+    const elSecs     = document.getElementById('cd-secs');
+    const elFill     = document.getElementById('ritual-progress-fill');
+    const elProgLbl  = document.getElementById('ritual-progress-label');
+    const elStatus   = document.getElementById('ritual-status-label');
+    const elWidget   = document.getElementById('ritual-countdown-widget');
+    const elCdBlocks = document.getElementById('ritual-cd-blocks');
+    const elNotifBtn = document.getElementById('ritual-notif-btn');
+    const elNotifLbl = document.getElementById('ritual-notif-label');
+    const blockD     = document.getElementById('cd-block-d');
+    const blockH     = document.getElementById('cd-block-h');
+    const blockM     = document.getElementById('cd-block-m');
+    const blockS     = document.getElementById('cd-block-s');
+
+    if (!startAtRaw || !elWidget) return;
+
+    const startMs   = new Date(startAtRaw).getTime();
+    /* Durée totale de référence (24h max pour la barre) */
+    const totalRef  = Math.min(startMs - Date.now(), 7 * 24 * 3600 * 1000);
+    const refBase   = Date.now();
+
+    /* ── Formater avec zéro ── */
+    const z = (n) => String(n).padStart(2, '0');
+
+    /* ── Masquer le bloc "jours" si < 1 jour ── */
+    function hideDaysIfNeeded(days) {
+      if (blockD) blockD.style.display = days > 0 ? '' : 'none';
+      /* masquer aussi le séparateur juste après blockD */
+      const seps = elCdBlocks ? elCdBlocks.querySelectorAll('.ritual-cd-sep') : [];
+      if (seps[0]) seps[0].style.display = days > 0 ? '' : 'none';
+    }
+
+    /* ── Update chaque seconde ── */
+    function tick() {
+      const now  = Date.now();
+      const diff = startMs - now;
+
+      if (diff <= 0) {
+        /* EN COURS */
+        if (elCdBlocks) elCdBlocks.style.display = 'none';
+        const live = document.createElement('div');
+        live.className = 'ritual-live-badge';
+        live.innerHTML = '<i class="fas fa-circle" style="color:#4ade80;font-size:0.6rem;"></i> Rituel en cours maintenant !';
+        elWidget.insertBefore(live, elCdBlocks);
+        if (elStatus) elStatus.textContent = 'En cours';
+        if (elFill)   elFill.style.width = '100%';
+        if (elProgLbl) elProgLbl.textContent = '';
+        clearInterval(timer);
+        return;
+      }
+
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000)  / 60000);
+      const secs  = Math.floor((diff % 60000)    / 1000);
+      const totalMins = Math.floor(diff / 60000);
+
+      /* Affichage */
+      hideDaysIfNeeded(days);
+      if (elDays)  elDays.textContent  = z(days);
+      if (elHours) elHours.textContent = z(hours);
+      if (elMins)  elMins.textContent  = z(mins);
+      if (elSecs)  elSecs.textContent  = z(secs);
+
+      /* Barre de progression */
+      if (elFill && totalRef > 0) {
+        const elapsed = now - refBase;
+        const pct = Math.min(100, (elapsed / totalRef) * 100);
+        elFill.style.width = pct + '%';
+      }
+      if (elProgLbl) {
+        const hh = z(new Date(startMs).getHours());
+        const mm = z(new Date(startMs).getMinutes());
+        elProgLbl.textContent = `Démarre à ${hh}:${mm}`;
+      }
+
+      /* Couleur urgence */
+      const urgent   = totalMins < 60 && totalMins >= 15;
+      const critical = totalMins < 15;
+      [blockD, blockH, blockM, blockS].forEach(b => {
+        if (!b) return;
+        b.classList.toggle('urgent',   urgent && !critical);
+        b.classList.toggle('critical', critical);
+      });
+      if (elStatus) {
+        elStatus.textContent = critical ? '⚠ Imminent' : urgent ? 'Bientôt' : 'Programmé';
+      }
+    }
+
+    tick();
+    const timer = setInterval(tick, 1000);
+
+    /* ── Notification / Service Worker ── */
+    if (!elNotifBtn) return;
+
+    function setGranted() {
+      elNotifBtn.classList.add('granted');
+      elNotifBtn.classList.add('ringing');
+      if (elNotifLbl) elNotifLbl.textContent = 'Rappel activé ✓';
+      setTimeout(() => elNotifBtn.classList.remove('ringing'), 2000);
+    }
+
+    function scheduleViaSW() {
+      if (!('serviceWorker' in navigator)) { fallbackNotif(); return; }
+      navigator.serviceWorker
+        .register('/sw-ritual.js', { scope: '/' })
+        .then(reg => {
+          const sw = reg.active || reg.installing || reg.waiting;
+          const send = (r) => r.postMessage({ type: 'SCHEDULE_RITUAL_ALARM', startAt: startAtRaw, freelancerName: freelancer });
+          if (reg.active) { send(reg.active); }
+          else if (reg.installing) { reg.installing.addEventListener('statechange', e => { if (e.target.state === 'activated') send(e.target); }); }
+          setGranted();
+        })
+        .catch(() => fallbackNotif());
+    }
+
+    function fallbackNotif() {
+      const delay = (startMs - 15 * 60000) - Date.now();
+      if (delay > 0) setTimeout(() => new Notification('🔔 Rituel dans 15 min', { body: `Session avec ${freelancer} bientôt !`, icon: '/assets/img/logo.png' }), delay);
+      setGranted();
+    }
+
+    function requestAndSchedule() {
+      if (Notification.permission === 'granted') { scheduleViaSW(); return; }
+      Notification.requestPermission().then(p => { if (p === 'granted') scheduleViaSW(); });
+    }
+
+    /* État initial du bouton */
+    if (Notification.permission === 'granted') {
+      scheduleViaSW();
+      setGranted();
+    } else {
+      elNotifBtn.addEventListener('click', function handler() {
+        elNotifBtn.removeEventListener('click', handler);
+        requestAndSchedule();
+      });
+    }
+  })();
   </script>
 
 @endsection

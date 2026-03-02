@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\FrontEnd\Freelance;
 
 use App\Http\Controllers\Controller;
+use App\Models\AvailabilitySlot;
 use App\Models\FreelancerProfile;
+use App\Models\WorkSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -87,10 +89,36 @@ class FreelanceDashboardController extends Controller
             }
         }
 
+        // Prochaine WorkSession confirmée (réservée par un client)
+        $nextWorkSession = WorkSession::whereHas('subscription', function ($q) use ($freelancerProfile) {
+            $q->where('freelancer_id', $freelancerProfile->id);
+        })
+        ->where('start_at', '>', now())
+        ->whereNotIn('status', ['cancelled', 'rejected', 'completed'])
+        ->orderBy('start_at')
+        ->with(['subscription.client.user'])
+        ->first();
+
+        // Fallback : prochain créneau disponible (AvailabilitySlot) si pas de WorkSession
+        $nextAvailabilitySlot = null;
+        if (!$nextWorkSession) {
+            $nextAvailabilitySlot = AvailabilitySlot::where('user_id', $user->id)
+                ->where('status', 'available')
+                ->where('start_at', '>', now())
+                ->orderBy('start_at')
+                ->first();
+        }
+
+        // Le type détermine l'affichage dans le widget hero
+        $nextSession     = $nextWorkSession ?? $nextAvailabilitySlot;
+        $nextSessionType = $nextWorkSession ? 'worksession' : ($nextAvailabilitySlot ? 'availability' : null);
+
         return view('frontend.freelance.dashboard.index', [
-            'user' => $user,
+            'user'            => $user,
             'freelancerProfile' => $freelancerProfile,
-            'activeTab' => $activeTab,
+            'activeTab'       => $activeTab,
+            'nextSession'     => $nextSession,
+            'nextSessionType' => $nextSessionType,
         ]);
     }
 }

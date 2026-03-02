@@ -60,6 +60,24 @@
       {{-- ── Nav client ── --}}
       @include('frontend.client.partials.dashboard-nav')
 
+      {{-- ── Hero bannière (capture 1) ── --}}
+      @php
+        $agendaUser = auth()->user();
+        $agendaFirstName = $agendaUser->first_name ?? $agendaUser->name ?? 'vous';
+      @endphp
+      <div class="agenda-hero">
+        <div class="agenda-hero-content">
+          <h1 class="agenda-hero-title">Bonjour {{ $agendaFirstName }}&nbsp;!</h1>
+          <p class="agenda-hero-subtitle">Bienvenue dans votre espace</p>
+        </div>
+        <div class="agenda-hero-actions">
+          <a href="{{ route('explore') }}" class="agenda-hero-btn">
+            <i class="fas fa-search"></i>
+            Trouver un freelance
+          </a>
+        </div>
+      </div>
+
       {{-- ── Page header (identique à la vue freelance) ── --}}
       <div class="page-header">
         <h1>Mon Agenda</h1>
@@ -198,6 +216,94 @@
 </div>
 
 <style>
+  /* ===== HERO BANNIÈRE AGENDA ===== */
+  .agenda-hero {
+    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #a855f7 100%);
+    border-radius: 40px;
+    padding: 3rem 4rem;
+    margin: 1.5rem 0 2rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    box-shadow: 0 32px 80px rgba(124, 58, 237, 0.3), inset 0 1px 1px rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .agenda-hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .agenda-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .agenda-hero-content { flex: 1; min-width: 220px; position: relative; z-index: 2; }
+  .agenda-hero-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 0 0 0.5rem;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 2;
+  }
+  .agenda-hero-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin: 0;
+    font-weight: 300;
+    color: white;
+    position: relative;
+    z-index: 2;
+  }
+  .agenda-hero-actions { position: relative; z-index: 2; flex-shrink: 0; }
+  .agenda-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    color: #7c3aed;
+    border-radius: 50px;
+    padding: 0.85rem 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
+  }
+  .agenda-hero-btn:hover {
+    background: #f5f3ff;
+    color: #6d28d9;
+    text-decoration: none !important;
+  }
+  @media (max-width: 600px) {
+    .agenda-hero { padding: 2rem 1.5rem; }
+    .agenda-hero-title { font-size: 1.8rem; }
+    .agenda-hero-actions { width: 100%; }
+    .agenda-hero-btn { width: 100%; justify-content: center; }
+  }
+
   /* ===== RESET ET VARIABLES (= calendar-page-wrapper-light freelance) ===== */
   .calendar-page-wrapper-light {
     --bg-primary: #FFFFFF;
@@ -225,7 +331,7 @@
     position: relative;
     width: 100%;
     overflow-x: clip;
-    padding: 0 10px !important;
+    padding: 0;
     box-sizing: border-box;
   }
   .calendar-page-wrapper-light * { box-sizing: border-box; }
@@ -237,10 +343,12 @@
     background: transparent;
   }
   .calendar-page-wrapper-light .main-content {
-    padding: 2rem 0 !important;
+    padding: 3rem 1.5rem !important;
     background: transparent;
-    max-width: 100% !important;
+    max-width: 1400px !important;
     width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     display: flex;
     flex-direction: column;
   }

@@ -1156,42 +1156,17 @@
 @section('content')
   <div class="freelance-dashboard-wrapper">
     <div class="freelance-dashboard-container">
-      {{-- Module Pause Souffle Inline - avant le header Tableau de bord --}}
-      <div style="margin: 1.5rem 0;">
-        @include('frontend.components.pause-souffle.inline-premium')
-      </div>
+      {{-- Navigation onglets (carte blanche au-dessus du hero) --}}
+      @include('frontend.freelance.partials.navbar')
 
-      @if($activeTab !== 'overview' && $activeTab !== 'requests' && $activeTab !== 'jobs' && $activeTab !== 'calendar' && $activeTab !== 'services' && $activeTab !== 'rituals' && $activeTab !== 'settings' && $activeTab !== 'profile' && $activeTab !== 'earnings' && $activeTab !== 'messages')
-        <!-- Header de page (masqué sur l'onglet Aperçu, Demandes, Prestations et Agenda) -->
-        <div class="dashboard-header">
-          <h1>Tableau de bord Freelance</h1>
-          <p class="dashboard-header-subtitle">
-            Un espace clair pour avancer sans relances : vos clients voient l'avancement, vous gardez le rythme.
-          </p>
-          <div class="dashboard-header-ctas">
-            <a href="{{ route('freelance.services.create') }}" class="btn-premium btn-premium-primary">
-              Créer un service
-            </a>
-            @if(isset($freelancerProfile) && $freelancerProfile && $freelancerProfile->id)
-              <a href="{{ route('freelance.show', ['id' => $freelancerProfile->id]) }}" target="_blank" class="btn-premium btn-premium-secondary">
-                Voir mon profil public
-              </a>
-            @else
-              <a href="#" class="btn-premium btn-premium-secondary" onclick="alert('Vous devez compléter votre profil freelance pour voir votre profil public.'); return false;">
-                Voir mon profil public
-              </a>
-            @endif
-          </div>
-          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #6b7280;">💡 Plus vos informations sont complètes, plus vous remontez dans les résultats.</p>
-        </div>
-      @endif
-
-      <!-- Contenu de l'onglet actif -->
+      <!-- Contenu de l'onglet actif (hero inclus en tête de chaque onglet) -->
       <div class="dashboard-tab-content" data-active-tab="{{ $activeTab }}">
         @include('frontend.freelance.dashboard.tabs.' . $activeTab, [
           'activeTab' => $activeTab,
           'freelancerProfile' => $freelancerProfile,
-          'user' => $user
+          'user' => $user,
+          'nextSession' => $nextSession ?? null,
+          'nextSessionType' => $nextSessionType ?? null,
         ])
       </div>
     </div>

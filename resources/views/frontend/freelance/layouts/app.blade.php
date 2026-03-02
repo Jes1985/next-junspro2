@@ -317,9 +317,6 @@
     @endif
     <!-- Header-area end -->
     
-    {{-- Navigation Freelance (remplace la navigation client) --}}
-    @includeIf('frontend.freelance.partials.navbar')
-    
     @yield('content')
   </div>
 

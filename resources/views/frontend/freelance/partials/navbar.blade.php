@@ -5,8 +5,7 @@
 
 @if(request()->routeIs('freelance.*'))
 <nav class="freelance-dashboard-nav">
-  <div class="container-fluid px-xl-5">
-    <div class="freelance-nav-wrapper">
+  <div class="freelance-nav-wrapper">
       <a href="{{ route('freelance.dashboard', ['tab' => 'overview']) }}" 
          class="freelance-nav-item {{ request('tab') === 'overview' || (!request('tab') && request()->routeIs('freelance.dashboard')) ? 'active' : '' }}" 
          data-tab="overview">Aperçu</a>
@@ -37,7 +36,6 @@
       <a href="{{ route('freelance.dashboard', ['tab' => 'rituals']) }}" 
          class="freelance-nav-item {{ request('tab') === 'rituals' ? 'active' : '' }}" 
          data-tab="rituals">Rituels</a>
-    </div>
   </div>
 </nav>
 @endif
@@ -45,35 +43,24 @@
 <style>
   .freelance-dashboard-nav {
     background: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 0;
-    margin: 0;
-    position: sticky;
-    top: 0;
-    z-index: 99;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-
-  .freelance-nav-wrapper {
+    border-radius: 16px;
+    padding: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     gap: 0.5rem;
     overflow-x: auto;
-    padding: 1rem 0;
+    position: relative;
+    z-index: 1;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
 
-  .freelance-nav-wrapper::-webkit-scrollbar {
-    height: 4px;
-  }
+  .freelance-dashboard-nav::-webkit-scrollbar { height: 0; }
 
-  .freelance-nav-wrapper::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-  }
-
-  .freelance-nav-wrapper::-webkit-scrollbar-thumb {
-    background: rgba(124, 58, 237, 0.3);
-    border-radius: 2px;
+  .freelance-nav-wrapper {
+    display: contents; /* les enfants directs sont les liens */
   }
 
   .freelance-nav-item {
@@ -87,17 +74,21 @@
     white-space: nowrap;
     cursor: pointer;
     display: inline-block;
+    position: relative;
+    z-index: 1;
   }
 
   .freelance-nav-item:hover {
     color: var(--junspro-purple, #7C3AED);
     background: #f3f4f6;
+    text-decoration: none;
   }
 
   .freelance-nav-item.active {
     color: #fff !important;
-    background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%) !important;
+    background: linear-gradient(135deg, #7C3AED 0%, #1e40af 100%) !important;
     box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3) !important;
+    text-decoration: none;
   }
 
   @media (max-width: 768px) {
