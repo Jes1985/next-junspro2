@@ -618,7 +618,7 @@
 
   searchInput.addEventListener('focus', function(){
     if (this.value.trim()) { dropdown.classList.add('open'); }
-    else { renderDropdown(COUNTRIES.slice(0,20)); }
+    else { renderDropdown(COUNTRIES); }
   });
 
   document.addEventListener('click', function(e){
