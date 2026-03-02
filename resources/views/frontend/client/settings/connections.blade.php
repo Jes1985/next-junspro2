@@ -29,62 +29,6 @@
       margin-top: 2rem;
     }
 
-    /* Menu vertical gauche */
-    .settings-sidebar {
-      background: white;
-      border-radius: 20px;
-      box-shadow: var(--card-shadow);
-      padding: 1.5rem 0;
-      height: fit-content;
-      position: sticky;
-      top: 2rem;
-    }
-
-    .settings-sidebar-title {
-      padding: 0 1.5rem 1rem 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid #e5e7eb;
-      margin-bottom: 0.5rem;
-    }
-
-    .settings-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .settings-menu-item {
-      margin: 0;
-    }
-
-    .settings-menu-item a {
-      display: block;
-      padding: 0.875rem 1.5rem;
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      border-left: 3px solid transparent;
-      position: relative;
-    }
-
-    .settings-menu-item a:hover {
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
-      color: var(--junspro-purple);
-    }
-
-    .settings-menu-item a.active {
-      background: #f3f4f6;
-      color: var(--junspro-purple);
-      font-weight: 600;
-      border-left-color: var(--junspro-purple);
-    }
-
     /* Contenu principal droite */
     .settings-content {
       background: white;
@@ -139,12 +83,17 @@
     }
 
     .notification-section-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #1a202c;
-      margin: 0 0 1.5rem 0;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid #e5e7eb;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #4c1d95;
+      margin: 0 0 1rem 0;
+      padding: .6rem 1rem;
+      background: linear-gradient(135deg,#f5f3ff,#ede9fe);
+      border-radius: 12px;
+      border-left: 4px solid #7c3aed;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
     }
 
     /* Connection items */
@@ -290,18 +239,17 @@
 
     /* Info box */
     .info-box {
-      margin-top: 3rem;
-      padding: 2rem;
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
-      border-radius: 16px;
-      border-left: 4px solid var(--junspro-purple);
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg,#f0f9ff,#e0f2fe);
+      border-radius: 18px;
+      border: 1.5px solid #bae6fd;
     }
-
     .info-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1a202c;
-      margin: 0 0 1rem 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0369a1;
+      margin: 0 0 .8rem 0;
     }
 
     .info-text {
@@ -455,7 +403,7 @@
 
         <!-- Section : Connexion par e-mail / mot de passe -->
         <div class="notification-section">
-          <h2 class="notification-section-title">{{ __('Connexion par e-mail') }}</h2>
+          <h2 class="notification-section-title"><i class="fas fa-envelope" style="color:#7c3aed;"></i>{{ __('Connexion par e-mail') }}</h2>
 
           <div class="connection-item">
             <div class="connection-main">
@@ -482,7 +430,7 @@
 
         <!-- Section : Connexions via services externes -->
         <div class="notification-section">
-          <h2 class="notification-section-title">{{ __('Connexions via d\'autres services') }}</h2>
+          <h2 class="notification-section-title"><i class="fas fa-plug" style="color:#7c3aed;"></i>{{ __('Connexions via d\'autres services') }}</h2>
 
           <!-- Google -->
           <div class="connection-item">

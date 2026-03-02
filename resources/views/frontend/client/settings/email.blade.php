@@ -29,62 +29,6 @@
       margin-top: 2rem;
     }
 
-    /* Menu vertical gauche */
-    .settings-sidebar {
-      background: white;
-      border-radius: 20px;
-      box-shadow: var(--card-shadow);
-      padding: 1.5rem 0;
-      height: fit-content;
-      position: sticky;
-      top: 2rem;
-    }
-
-    .settings-sidebar-title {
-      padding: 0 1.5rem 1rem 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid #e5e7eb;
-      margin-bottom: 0.5rem;
-    }
-
-    .settings-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .settings-menu-item {
-      margin: 0;
-    }
-
-    .settings-menu-item a {
-      display: block;
-      padding: 0.875rem 1.5rem;
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      border-left: 3px solid transparent;
-      position: relative;
-    }
-
-    .settings-menu-item a:hover {
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
-      color: var(--junspro-purple);
-    }
-
-    .settings-menu-item a.active {
-      background: #f3f4f6;
-      color: var(--junspro-purple);
-      font-weight: 600;
-      border-left-color: var(--junspro-purple);
-    }
-
     /* Contenu principal droite */
     .settings-content {
       background: white;
@@ -226,6 +170,64 @@
     .form-control.has-error {
       border-color: #ef4444;
     }
+
+    /* ---- Icon-prefix inputs ---- */
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-prefix {
+      position: absolute;
+      left: 1rem;
+      color: #9ca3af;
+      font-size: .9rem;
+      pointer-events: none;
+      transition: color .2s;
+      z-index: 1;
+    }
+    .input-wrap .form-control {
+      padding-left: 2.6rem;
+      padding-right: 1rem;
+    }
+    .input-wrap .form-control.has-suffix {
+      padding-right: 2.8rem;
+    }
+    .input-suffix {
+      position: absolute;
+      right: .75rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9ca3af;
+      font-size: .9rem;
+      padding: .25rem;
+      line-height: 1;
+      transition: color .2s;
+    }
+    .input-suffix:hover { color: var(--junspro-purple); }
+    .input-wrap:focus-within .input-prefix { color: var(--junspro-purple); }
+    /* Email status premium */
+    .email-status-section {
+      margin-bottom: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%);
+      border-radius: 16px;
+      border: 1.5px solid #ddd6fe;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .email-status-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg,#7c3aed,#4c1d95);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .email-status-meta { flex: 1; }
+    .email-status-label { font-size: .78rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .2rem; }
+    .email-status-value { font-size: 1rem; font-weight: 700; color: #1a202c; }
 
     .form-error {
       margin-top: 0.5rem;
@@ -444,16 +446,15 @@
 
         <!-- État de l'email actuel -->
         <div class="email-status-section">
-          <div class="email-status-label">{{ __('E-mail actuel :') }}</div>
-          <div class="email-status-value">{{ $user->email_address }}</div>
+          <div class="email-status-icon"><i class="fas fa-envelope"></i></div>
+          <div class="email-status-meta">
+            <div class="email-status-label">E-mail actuel</div>
+            <div class="email-status-value">{{ $user->email_address }}</div>
+          </div>
           @if($isEmailVerified)
-            <span class="email-status-badge verified">
-              ● {{ __('Vérifié') }}
-            </span>
+            <span class="email-status-badge verified" style="background:#f0fdf4;color:#166534;border:1.5px solid #86efac;padding:.35rem .9rem;border-radius:50px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle"></i> Vérifié</span>
           @else
-            <span class="email-status-badge pending">
-              ● {{ __('Vérification en attente') }}
-            </span>
+            <span class="email-status-badge pending" style="background:#fff7ed;color:#9a3412;border:1.5px solid #fdba74;padding:.35rem .9rem;border-radius:50px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:.4rem;"><i class="fas fa-clock"></i> En attente</span>
           @endif
         </div>
 
@@ -462,62 +463,97 @@
 
           <!-- Mot de passe actuel -->
           <div class="form-group">
-            <label for="current_password" class="form-label">{{ __('Mot de passe actuel') }}</label>
-            <input
-              id="current_password"
-              type="password"
-              name="current_password"
-              class="form-control @error('current_password') has-error @enderror"
-              autocomplete="current-password"
-              required
-            >
+            <label for="current_password" class="form-label"><i class="fas fa-lock" style="color:#7c3aed;margin-right:.4rem;"></i>{{ __('Mot de passe actuel') }}</label>
+            <div class="input-wrap">
+              <span class="input-prefix"><i class="fas fa-lock"></i></span>
+              <input
+                id="current_password"
+                type="password"
+                name="current_password"
+                class="form-control has-suffix @error('current_password') has-error @enderror"
+                autocomplete="current-password"
+                placeholder="Votre mot de passe actuel"
+                required
+              >
+              <button type="button" class="input-suffix" onclick="toggleEmailPwd('current_password',this)" tabindex="-1">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
             @error('current_password')
-              <div class="form-error">{{ $message }}</div>
+              <div class="form-error"><i class="fas fa-exclamation-circle" style="margin-right:.3rem;"></i>{{ $message }}</div>
             @enderror
           </div>
 
           <!-- Nouvelle adresse e-mail -->
           <div class="form-group">
-            <label for="email_address" class="form-label">{{ __('Nouvelle adresse e-mail') }}</label>
-            <input
-              id="email_address"
-              type="email"
-              name="email_address"
-              class="form-control @error('email_address') has-error @enderror"
-              autocomplete="email"
-              value="{{ old('email_address') }}"
-              required
-            >
+            <label for="email_address" class="form-label"><i class="fas fa-envelope" style="color:#7c3aed;margin-right:.4rem;"></i>{{ __('Nouvelle adresse e-mail') }}</label>
+            <div class="input-wrap">
+              <span class="input-prefix"><i class="fas fa-envelope"></i></span>
+              <input
+                id="email_address"
+                type="email"
+                name="email_address"
+                class="form-control @error('email_address') has-error @enderror"
+                autocomplete="email"
+                placeholder="nouvelle@adresse.com"
+                value="{{ old('email_address') }}"
+                required
+              >
+            </div>
             @error('email_address')
-              <div class="form-error">{{ $message }}</div>
+              <div class="form-error"><i class="fas fa-exclamation-circle" style="margin-right:.3rem;"></i>{{ $message }}</div>
             @enderror
           </div>
 
           <!-- Confirmation de la nouvelle adresse e-mail -->
           <div class="form-group">
-            <label for="email_confirmation" class="form-label">{{ __('Confirmer la nouvelle adresse e-mail') }}</label>
-            <input
-              id="email_confirmation"
-              type="email"
-              name="email_confirmation"
-              class="form-control @error('email_confirmation') has-error @enderror"
-              autocomplete="email"
-              value="{{ old('email_confirmation') }}"
-              required
-            >
+            <label for="email_confirmation" class="form-label"><i class="fas fa-envelope-open-text" style="color:#7c3aed;margin-right:.4rem;"></i>{{ __('Confirmer la nouvelle adresse e-mail') }}</label>
+            <div class="input-wrap">
+              <span class="input-prefix"><i class="fas fa-envelope-open-text"></i></span>
+              <input
+                id="email_confirmation"
+                type="email"
+                name="email_confirmation"
+                class="form-control @error('email_confirmation') has-error @enderror"
+                autocomplete="email"
+                placeholder="Confirmez votre nouvelle adresse"
+                value="{{ old('email_confirmation') }}"
+                required
+                oninput="checkEmailMatch()"
+              >
+            </div>
+            <div id="emailMatchMsg" style="display:none;font-size:.85rem;margin-top:.5rem;"></div>
             @error('email_confirmation')
-              <div class="form-error">{{ $message }}</div>
+              <div class="form-error"><i class="fas fa-exclamation-circle" style="margin-right:.3rem;"></i>{{ $message }}</div>
             @enderror
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="btn-primary-gradient">
-              <i class="fas fa-envelope"></i> {{ __('Mettre à jour mon e-mail') }}
+            <button type="submit" class="btn-primary-gradient" style="border-radius:50px;padding:1rem 2.5rem;letter-spacing:.02em;">
+              <i class="fas fa-paper-plane" style="margin-right:.5rem;"></i>{{ __('Mettre à jour mon e-mail') }}
             </button>
           </div>
         </form>
       </main>
     </div>
   </div>
+
+  <script>
+  function toggleEmailPwd(id, btn) {
+    var inp = document.getElementById(id);
+    var icon = btn.querySelector('i');
+    if (inp.type === 'password') { inp.type = 'text'; icon.classList.replace('fa-eye','fa-eye-slash'); }
+    else { inp.type = 'password'; icon.classList.replace('fa-eye-slash','fa-eye'); }
+  }
+  function checkEmailMatch() {
+    var a = document.getElementById('email_address').value;
+    var b = document.getElementById('email_confirmation').value;
+    var msg = document.getElementById('emailMatchMsg');
+    if (!b) { msg.style.display = 'none'; return; }
+    msg.style.display = 'flex'; msg.style.alignItems = 'center'; msg.style.gap = '.35rem';
+    if (a === b) { msg.style.color = '#10b981'; msg.innerHTML = '<i class="fas fa-check-circle"></i> Les adresses correspondent'; }
+    else { msg.style.color = '#ef4444'; msg.innerHTML = '<i class="fas fa-times-circle"></i> Les adresses ne correspondent pas'; }
+  }
+  </script>
 @endsection
 

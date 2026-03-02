@@ -29,62 +29,6 @@
       margin-top: 2rem;
     }
 
-    /* Menu vertical gauche */
-    .settings-sidebar {
-      background: white;
-      border-radius: 20px;
-      box-shadow: var(--card-shadow);
-      padding: 1.5rem 0;
-      height: fit-content;
-      position: sticky;
-      top: 2rem;
-    }
-
-    .settings-sidebar-title {
-      padding: 0 1.5rem 1rem 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid #e5e7eb;
-      margin-bottom: 0.5rem;
-    }
-
-    .settings-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .settings-menu-item {
-      margin: 0;
-    }
-
-    .settings-menu-item a {
-      display: block;
-      padding: 0.875rem 1.5rem;
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      border-left: 3px solid transparent;
-      position: relative;
-    }
-
-    .settings-menu-item a:hover {
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
-      color: var(--junspro-purple);
-    }
-
-    .settings-menu-item a.active {
-      background: #f3f4f6;
-      color: var(--junspro-purple);
-      font-weight: 600;
-      border-left-color: var(--junspro-purple);
-    }
-
     /* Contenu principal droite */
     .settings-content {
       background: white;
@@ -170,13 +114,23 @@
       margin-top: 0.5rem;
     }
 
-    /* Switch Toggle */
+    /* Switch Toggle — ultra premium */
     .switch-group {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
-      border-radius: 12px;
-      border: 2px solid #e5e7eb;
-      margin-bottom: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      background: white;
+      border-radius: 18px;
+      border: 1.5px solid #e5e7eb;
+      margin-bottom: 1rem;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .switch-group:has(input:checked) {
+      border-color: #c4b5fd;
+      box-shadow: 0 0 0 4px rgba(124,58,237,.07), 0 4px 16px rgba(124,58,237,.1);
+      background: linear-gradient(135deg,#faf7ff,#f3eeff);
+    }
+    .switch-group:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 4px 20px rgba(124,58,237,.1);
     }
 
     .switch-label {
@@ -196,7 +150,7 @@
       height: 28px;
       background: #d1d5db;
       border-radius: 14px;
-      transition: all 0.3s ease;
+      transition: background .3s cubic-bezier(.34,1.56,.64,1);
       flex-shrink: 0;
       margin-top: 0.125rem;
     }
@@ -204,14 +158,14 @@
     .switch::before {
       content: '';
       position: absolute;
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: white;
-      top: 2px;
-      left: 2px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      top: 3px;
+      left: 3px;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
     }
 
     .switch-label input[type="checkbox"]:checked + .switch {
@@ -227,17 +181,17 @@
     }
 
     .switch-title {
-      font-size: 1rem;
+      font-size: .97rem;
       font-weight: 600;
       color: #1a202c;
       margin: 0 0 0.25rem 0;
     }
 
     .switch-description {
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       color: #6b7280;
       margin: 0;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     /* Section grouping */
@@ -246,12 +200,32 @@
     }
 
     .notification-section-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #1a202c;
-      margin: 0 0 1.5rem 0;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid #e5e7eb;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #4c1d95;
+      margin: 0 0 1rem 0;
+      padding: .6rem 1rem;
+      background: linear-gradient(135deg,#f5f3ff,#ede9fe);
+      border-radius: 12px;
+      border-left: 4px solid #7c3aed;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    /* Info box */
+    .info-box {
+      background: linear-gradient(135deg,#f0f9ff,#e0f2fe);
+      border: 1.5px solid #bae6fd;
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+    }
+    .info-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0369a1;
+      margin: 0 0 .6rem 0;
     }
 
     /* Actions */
@@ -406,7 +380,7 @@
 
           <!-- Section : Projets & sessions -->
           <div class="notification-section">
-            <h2 class="notification-section-title">{{ __('Rituels') }}</h2>
+            <h2 class="notification-section-title"><i class="fas fa-calendar-check" style="color:#7c3aed;"></i>{{ __('Rituels') }}</h2>
 
             <!-- Sessions planifiées / modifiées / annulées -->
             <div class="switch-group">
@@ -445,7 +419,7 @@
 
           <!-- Section : Messages -->
           <div class="notification-section">
-            <h2 class="notification-section-title">{{ __('Messages') }}</h2>
+            <h2 class="notification-section-title"><i class="fas fa-comment-dots" style="color:#7c3aed;"></i>{{ __('Messages') }}</h2>
 
             <!-- Nouveaux messages des freelances -->
             <div class="switch-group">
@@ -467,7 +441,7 @@
 
           <!-- Section : Facturation -->
           <div class="notification-section">
-            <h2 class="notification-section-title">{{ __('Facturation & abonnements') }}</h2>
+            <h2 class="notification-section-title"><i class="fas fa-receipt" style="color:#7c3aed;"></i>{{ __('Facturation & abonnements') }}</h2>
 
             <!-- Factures et paiements -->
             <div class="switch-group">
@@ -489,7 +463,7 @@
 
           <!-- Section : Actualités Junspro -->
           <div class="notification-section">
-            <h2 class="notification-section-title">{{ __('Actualités Junspro') }}</h2>
+            <h2 class="notification-section-title"><i class="fas fa-bullhorn" style="color:#7c3aed;"></i>{{ __('Actualités Junspro') }}</h2>
 
             <!-- News / nouveautés produits -->
             <div class="switch-group">
@@ -519,7 +493,7 @@
 
           <!-- Actions -->
           <div class="form-actions">
-            <button type="submit" class="btn-primary-gradient">
+            <button type="submit" class="btn-primary-gradient" style="border-radius:50px;padding:1rem 2.5rem;letter-spacing:.02em;">
               <i class="fas fa-save"></i> {{ __('Enregistrer mes préférences') }}
             </button>
           </div>

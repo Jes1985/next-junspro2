@@ -358,8 +358,8 @@
 
     <!-- Header de page -->
     <div class="page-header" style="margin-top:2rem;">
-      <h1>Parametres</h1>
-      <p class="page-subtitle">Gerez votre compte client, vos paiements et vos preferences.</p>
+      <h1>Paramètres</h1>
+      <p class="page-subtitle">Gérez votre compte client, vos paiements et vos préférences.</p>
     </div>
 
     <!-- ===== GRILLE DE TUILES ===== -->
@@ -375,7 +375,7 @@
           </svg>
         </div>
         <div class="tile-title">Profil personnel</div>
-        <div class="tile-desc">Photo, prenom, nom, ville, pays, fuseau horaire.<br><span style="font-size:.92em;color:#a1a1aa;">Ce que vous presentez sur la plateforme.</span></div>
+        <div class="tile-desc">Photo, prénom, nom, ville, pays, fuseau horaire.<br><span style="font-size:.92em;color:#a1a1aa;">Ce que vous présentez sur la plateforme.</span></div>
         <a href="{{ route('user.settings.profile') }}" class="tile-btn">Modifier</a>
       </div>
 
@@ -388,7 +388,7 @@
             <rect x="10" y="6" width="4" height="4" rx="2" fill="#7c3aed"/>
           </svg>
         </div>
-        <div class="tile-title">Securite</div>
+        <div class="tile-title">Sécurité</div>
         <div class="tile-desc">Mot de passe, connexion, protection du compte.</div>
         <a href="{{ route('user.settings.password') }}" class="tile-btn">Ouvrir</a>
       </div>
@@ -416,7 +416,7 @@
           </svg>
         </div>
         <div class="tile-title">Modes de paiement</div>
-        <div class="tile-desc">Cartes bancaires, CB enregistrees sur Stripe.<br><span style="font-size:.92em;color:#a1a1aa;">Necessaire pour reserver vos rituels.</span></div>
+        <div class="tile-desc">Cartes bancaires, CB enregistrées sur Stripe.<br><span style="font-size:.92em;color:#a1a1aa;">Nécessaire pour réserver vos rituels.</span></div>
         <a href="{{ route('user.settings.payment_methods.index') }}" class="tile-btn">Gerer</a>
         <span class="tile-badge new">Client</span>
       </div>
@@ -429,7 +429,7 @@
           </svg>
         </div>
         <div class="tile-title">Abonnement Junspro</div>
-        <div class="tile-desc">Plan actuel, renouvellement, pause ou resiliation.<br><span style="font-size:.92em;color:#a1a1aa;">Gerez votre acces a la plateforme.</span></div>
+        <div class="tile-desc">Plan actuel, renouvellement, pause ou résiliation.<br><span style="font-size:.92em;color:#a1a1aa;">Gérez votre accès à la plateforme.</span></div>
         <a href="{{ route('user.settings.subscription') }}" class="tile-btn">Voir mon plan</a>
       </div>
 
@@ -458,7 +458,7 @@
           </svg>
         </div>
         <div class="tile-title">Agenda &amp; fuseau horaire</div>
-        <div class="tile-desc">Calendrier de rituels, fuseau horaire affiche.<br><span style="font-size:.92em;color:#a1a1aa;">Indispensable pour vos seances.</span></div>
+        <div class="tile-desc">Calendrier de rituels, fuseau horaire affiché.<br><span style="font-size:.92em;color:#a1a1aa;">Indispensable pour vos séances.</span></div>
         <a href="{{ route('user.settings.agenda') }}" class="tile-btn">Configurer</a>
       </div>
 
@@ -471,7 +471,7 @@
           </svg>
         </div>
         <div class="tile-title">Confirmation automatique</div>
-        <div class="tile-desc">Acceptation automatique des rituels programmes.<br><span style="font-size:.92em;color:#a1a1aa;">Simplifiez vos reservations.</span></div>
+        <div class="tile-desc">Acceptation automatique des rituels programmés.<br><span style="font-size:.92em;color:#a1a1aa;">Simplifiez vos réservations.</span></div>
         <a href="{{ route('user.settings.auto_confirmation') }}" class="tile-btn">Parametrer</a>
         <span class="tile-badge new">Nouveau</span>
       </div>
@@ -507,7 +507,7 @@
           </svg>
         </div>
         <div class="tile-title">Connexions &amp; autorisations</div>
-        <div class="tile-desc">Gerer vos connexions sociales (Google, Facebook) et acces OAuth.</div>
+        <div class="tile-desc">Gérer vos connexions sociales (Google, Facebook) et accès OAuth.</div>
         <a href="{{ $connectionsUrl }}" class="tile-btn">Gerer</a>
       </div>
 
@@ -524,7 +524,7 @@
           </svg>
         </div>
         <div class="tile-title">Supprimer le compte</div>
-        <div class="tile-desc">Desactiver ou supprimer votre compte client.<br><span style="font-size:.92em;color:#ef4444;">Action irreversible — toutes vos donnees seront effacees.</span></div>
+        <div class="tile-desc">Désactiver ou supprimer votre compte client.<br><span style="font-size:.92em;color:#ef4444;">Action irréversible — toutes vos données seront effacées.</span></div>
         <a href="{{ $deleteAccountUrl }}" class="tile-btn">Ouvrir</a>
         <span class="tile-badge">Danger</span>
       </div>

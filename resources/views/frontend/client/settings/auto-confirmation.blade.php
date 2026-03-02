@@ -29,62 +29,6 @@
       margin-top: 2rem;
     }
 
-    /* Menu vertical gauche */
-    .settings-sidebar {
-      background: white;
-      border-radius: 20px;
-      box-shadow: var(--card-shadow);
-      padding: 1.5rem 0;
-      height: fit-content;
-      position: sticky;
-      top: 2rem;
-    }
-
-    .settings-sidebar-title {
-      padding: 0 1.5rem 1rem 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid #e5e7eb;
-      margin-bottom: 0.5rem;
-    }
-
-    .settings-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .settings-menu-item {
-      margin: 0;
-    }
-
-    .settings-menu-item a {
-      display: block;
-      padding: 0.875rem 1.5rem;
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      border-left: 3px solid transparent;
-      position: relative;
-    }
-
-    .settings-menu-item a:hover {
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
-      color: var(--junspro-purple);
-    }
-
-    .settings-menu-item a.active {
-      background: #f3f4f6;
-      color: var(--junspro-purple);
-      font-weight: 600;
-      border-left-color: var(--junspro-purple);
-    }
-
     /* Contenu principal droite */
     .settings-content {
       background: white;
@@ -198,12 +142,22 @@
       margin-top: 0.5rem;
     }
 
-    /* Switch Toggle */
+    /* Switch Toggle — ultra premium */
     .switch-group {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
-      border-radius: 12px;
-      border: 2px solid #e5e7eb;
+      padding: 1.25rem 1.5rem;
+      background: white;
+      border-radius: 18px;
+      border: 1.5px solid #e5e7eb;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .switch-group:has(input:checked) {
+      border-color: #c4b5fd;
+      box-shadow: 0 0 0 4px rgba(124,58,237,.07), 0 4px 16px rgba(124,58,237,.1);
+      background: linear-gradient(135deg,#faf7ff,#f3eeff);
+    }
+    .switch-group:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 4px 20px rgba(124,58,237,.1);
     }
 
     .switch-label {
@@ -223,21 +177,21 @@
       height: 28px;
       background: #d1d5db;
       border-radius: 14px;
-      transition: all 0.3s ease;
+      transition: background .3s cubic-bezier(.34,1.56,.64,1);
       flex-shrink: 0;
     }
 
     .switch::before {
       content: '';
       position: absolute;
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: white;
-      top: 2px;
-      left: 2px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      top: 3px;
+      left: 3px;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
     }
 
     .switch-label input[type="checkbox"]:checked + .switch {
@@ -257,18 +211,17 @@
 
     /* Info box */
     .info-box {
-      margin-top: 3rem;
-      padding: 2rem;
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
-      border-radius: 16px;
-      border-left: 4px solid var(--junspro-purple);
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg,#f0f9ff,#e0f2fe);
+      border-radius: 18px;
+      border: 1.5px solid #bae6fd;
     }
-
     .info-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1a202c;
-      margin: 0 0 1.25rem 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0369a1;
+      margin: 0 0 1rem 0;
     }
 
     .info-list {
@@ -308,26 +261,23 @@
     }
 
     .btn-primary-gradient {
-      padding: 1rem 2rem;
+      padding: 1rem 2.5rem;
       background: linear-gradient(135deg, var(--junspro-purple) 0%, var(--junspro-blue) 100%);
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 50px;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      letter-spacing: .02em;
+      transition: all .3s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 4px 16px rgba(124,58,237,.35);
     }
-
     .btn-primary-gradient:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(124,58,237,.45);
     }
-
-    .btn-primary-gradient i {
-      margin-right: 0.5rem;
-    }
+    .btn-primary-gradient i { margin-right: .5rem; }
 
     /* Responsive */
     @media (max-width: 968px) {

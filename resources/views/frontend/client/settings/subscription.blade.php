@@ -736,62 +736,6 @@
       margin-top: 2rem;
     }
 
-    /* Menu vertical gauche */
-    .settings-sidebar {
-      background: white;
-      border-radius: 20px;
-      box-shadow: var(--card-shadow);
-      padding: 1.5rem 0;
-      height: fit-content;
-      position: sticky;
-      top: 2rem;
-    }
-
-    .settings-sidebar-title {
-      padding: 0 1.5rem 1rem 1.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid #e5e7eb;
-      margin-bottom: 0.5rem;
-    }
-
-    .settings-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .settings-menu-item {
-      margin: 0;
-    }
-
-    .settings-menu-item a {
-      display: block;
-      padding: 0.875rem 1.5rem;
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      border-left: 3px solid transparent;
-      position: relative;
-    }
-
-    .settings-menu-item a:hover {
-      background: #f9fafb;
-      color: var(--junspro-purple);
-    }
-
-    .settings-menu-item a.active {
-      background: #f3f4f6;
-      color: var(--junspro-purple);
-      font-weight: 600;
-      border-left-color: var(--junspro-purple);
-    }
-
     /* Contenu principal droite */
     .settings-content {
       background: white;
