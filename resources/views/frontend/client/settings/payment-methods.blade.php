@@ -506,6 +506,61 @@
       transition: all .2s;
     }
 
+    /* === Sélecteur pays (Step 1) === */
+    .payout-step { margin-bottom: 2rem; }
+    .step-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #7c3aed; margin-bottom: .25rem; }
+    .step-title  { font-size: 1.1rem; font-weight: 700; color: #1a202c; margin-bottom: 1.25rem; }
+
+    .country-search-wrap {
+      position: relative; max-width: 480px;
+      display: flex; align-items: center;
+      background: white; border: 2px solid #e5e7eb; border-radius: 14px;
+      padding: .75rem 1rem; gap: .6rem;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .country-search-wrap:focus-within {
+      border-color: #7c3aed; box-shadow: 0 0 0 4px rgba(124,58,237,.1);
+    }
+    .country-search-icon { color: #9ca3af; font-size: .95rem; flex-shrink: 0; }
+    .country-search-input {
+      flex: 1; border: none; outline: none; font-size: .95rem;
+      color: #1a202c; background: transparent;
+    }
+    .country-search-input::placeholder { color: #9ca3af; }
+    .country-search-clear {
+      color: #9ca3af; cursor: pointer; font-size: 1.1rem; display: none;
+    }
+    .country-search-clear.vis { display: block; }
+    .country-dropdown {
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 200;
+      background: #fff; border: 1.5px solid #e5e7eb; border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.15); max-height: 320px; overflow-y: auto;
+      display: none;
+    }
+    .country-dropdown.open { display: block; }
+    .country-opt {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; cursor: pointer; transition: background .15s;
+      border-bottom: 1px solid #f9fafb;
+    }
+    .country-opt:last-child { border-bottom: none; }
+    .country-opt:hover { background: #f5f3ff; }
+    .country-opt-flag { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+    .country-opt-name { font-size: .9rem; font-weight: 600; color: #111827; }
+    .country-opt-system { font-size: .7rem; color: #6b7280; font-weight: 500; letter-spacing: .3px; }
+    .country-opt-none { padding: 1.5rem; text-align: center; color: #9ca3af; font-size: .875rem; }
+
+    .country-selected-chip {
+      display: none; align-items: center; gap: .75rem;
+      background: #f5f3ff; border: 1.5px solid #c4b5fd;
+      border-radius: 12px; padding: .6rem 1rem; margin-top: .75rem; max-width: 480px;
+    }
+    .country-selected-chip.vis { display: flex; }
+    .country-chip-flag { font-size: 1.5rem; }
+    .country-chip-name { font-size: .92rem; font-weight: 700; color: #5b21b6; }
+    .country-chip-sys  { font-size: .72rem; color: #7c3aed; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
+    .country-chip-change { margin-left: auto; font-size: .8rem; color: #7c3aed; cursor: pointer; font-weight: 600; text-decoration: underline; }
+
     /* === Hero banner === */
     .page-hero-banner {
       background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #a855f7 100%);
@@ -677,6 +732,34 @@
           <h2>Ajouter un moyen de paiement</h2>
           <p>Vos informations sont chiffrées de bout en bout. Aucune donnée bancaire n'est stockée sur nos serveurs.</p>
 
+          {{-- ── ÉTAPE 1 : Sélection du pays ── --}}
+          <div class="payout-step" id="step1Area">
+            <div class="step-label">Étape 1</div>
+            <div class="step-title">Dans quel pays se trouve votre carte bancaire ?</div>
+            <div class="country-search-wrap" id="countrySearchWrap">
+              <span class="country-search-icon"><i class="fas fa-search"></i></span>
+              <input type="text" class="country-search-input" id="countrySearchInput"
+                     placeholder="Rechercher un pays…" autocomplete="off" />
+              <span class="country-search-clear" id="countrySearchClear">✕</span>
+              <div class="country-dropdown" id="countryDropdown"></div>
+            </div>
+            <div class="country-selected-chip" id="selectedChip">
+              <span class="country-chip-flag" id="chipFlag"></span>
+              <div>
+                <div class="country-chip-name" id="chipName"></div>
+                <div class="country-chip-sys"  id="chipSys"></div>
+              </div>
+              <span class="country-chip-change" id="chipChange">Modifier</span>
+            </div>
+          </div>
+
+          {{-- ── ÉTAPE 2 : Formulaire carte (masqué jusqu'au choix pays) ── --}}
+          <div id="step2Area" style="display:none;">
+            <div class="payout-step" style="margin-bottom:1.5rem;">
+              <div class="step-label">Étape 2</div>
+              <div class="step-title">Informations de votre carte bancaire</div>
+            </div>
+
           <div class="pm-cols">
 
             {{-- Colonne gauche : aperçu de la carte --}}
@@ -735,6 +818,7 @@
               <form method="POST" action="{{ route('user.settings.payment_methods.store') }}" id="pm-form" novalidate>
                 @csrf
                 <input type="hidden" name="payment_method_token" id="pm_token" value="">
+                <input type="hidden" name="billing_country" id="hBillingCountry" value="">
 
                 {{-- Numéro de carte --}}
                 <div class="pm-form-group">
@@ -788,13 +872,135 @@
               </form>
             </div>
 
-          </div>
-        </div>
+          </div>{{-- /pm-cols --}}
+          </div>{{-- /step2Area --}}
+        </div>{{-- /add-payment-section-wrap --}}
       </main>
     </div>
   </div>
 
   <script>
+  /* ── Sélecteur pays (Step 1) ── */
+  (function() {
+    function flagEmoji(cc) {
+      var o = 127397;
+      return String.fromCodePoint(cc.charCodeAt(0)+o) + String.fromCodePoint(cc.charCodeAt(1)+o);
+    }
+
+    var COUNTRIES = [
+      {c:'FR',n:'France',              s:'Carte bancaire'},
+      {c:'GP',n:'Guadeloupe',          s:'Carte bancaire'},
+      {c:'MQ',n:'Martinique',          s:'Carte bancaire'},
+      {c:'GF',n:'Guyane',              s:'Carte bancaire'},
+      {c:'RE',n:'La Réunion',          s:'Carte bancaire'},
+      {c:'NC',n:'Nouvelle-Calédonie',  s:'Carte bancaire'},
+      {c:'PF',n:'Polynésie française', s:'Carte bancaire'},
+      {c:'BE',n:'Belgique',            s:'Carte bancaire'},
+      {c:'CH',n:'Suisse',              s:'Carte bancaire'},
+      {c:'DE',n:'Allemagne',           s:'Carte bancaire'},
+      {c:'ES',n:'Espagne',             s:'Carte bancaire'},
+      {c:'HR',n:'Croatie',             s:'Carte bancaire'},
+      {c:'IE',n:'Irlande',             s:'Carte bancaire'},
+      {c:'IT',n:'Italie',              s:'Carte bancaire'},
+      {c:'LU',n:'Luxembourg',          s:'Carte bancaire'},
+      {c:'MC',n:'Monaco',              s:'Carte bancaire'},
+      {c:'MT',n:'Malte',               s:'Carte bancaire'},
+      {c:'NL',n:'Pays-Bas',            s:'Carte bancaire'},
+      {c:'PT',n:'Portugal',            s:'Carte bancaire'},
+      {c:'GB',n:'Royaume-Uni',         s:'Debit / Credit card'},
+      {c:'CA',n:'Canada',              s:'Credit card'},
+      {c:'US',n:'États-Unis',          s:'Credit card'},
+      {c:'CI',n:"Côte d'Ivoire",       s:'Carte bancaire'},
+      {c:'MA',n:'Maroc',               s:'Carte bancaire'},
+      {c:'SN',n:'Sénégal',             s:'Carte bancaire'},
+      {c:'TN',n:'Tunisie',             s:'Carte bancaire'},
+    ];
+
+    var searchInput = document.getElementById('countrySearchInput');
+    var clearBtn    = document.getElementById('countrySearchClear');
+    var dropdown    = document.getElementById('countryDropdown');
+    var selectedChip= document.getElementById('selectedChip');
+    var chipFlag    = document.getElementById('chipFlag');
+    var chipName    = document.getElementById('chipName');
+    var chipSys     = document.getElementById('chipSys');
+    var chipChange  = document.getElementById('chipChange');
+    var step2Area   = document.getElementById('step2Area');
+    var hCountry    = document.getElementById('hBillingCountry');
+
+    if (!searchInput) return;
+
+    function renderDropdown(list) {
+      if (!list.length) {
+        dropdown.innerHTML = '<div class="country-opt-none">Aucun pays trouvé</div>';
+      } else {
+        dropdown.innerHTML = list.map(function(c){
+          return '<div class="country-opt" data-code="'+c.c+'">' +
+            '<span class="country-opt-flag">'+flagEmoji(c.c)+'</span>' +
+            '<div><div class="country-opt-name">'+c.n+'</div>' +
+            '<div class="country-opt-system">'+c.s+'</div></div></div>';
+        }).join('');
+        dropdown.querySelectorAll('.country-opt').forEach(function(el){
+          el.addEventListener('click', function(){
+            var code = this.getAttribute('data-code');
+            var obj  = COUNTRIES.find(function(x){ return x.c === code; });
+            if (obj) selectCountry(obj);
+          });
+        });
+      }
+      dropdown.classList.add('open');
+    }
+
+    function selectCountry(obj) {
+      chipFlag.textContent = flagEmoji(obj.c);
+      chipName.textContent = obj.n;
+      chipSys.textContent  = obj.s;
+      selectedChip.classList.add('vis');
+      searchInput.value = '';
+      clearBtn.classList.remove('vis');
+      dropdown.classList.remove('open');
+      hCountry.value = obj.c;
+      step2Area.style.display = '';
+    }
+
+    searchInput.addEventListener('input', function(){
+      var q = this.value.trim().toLowerCase();
+      clearBtn.classList.toggle('vis', q.length > 0);
+      if (!q) { dropdown.classList.remove('open'); return; }
+      var filtered = COUNTRIES.filter(function(c){
+        return c.n.toLowerCase().includes(q) || c.c.toLowerCase().includes(q);
+      });
+      renderDropdown(filtered);
+    });
+
+    searchInput.addEventListener('focus', function(){
+      renderDropdown(COUNTRIES);
+      dropdown.classList.add('open');
+    });
+
+    clearBtn.addEventListener('click', function(){
+      searchInput.value = '';
+      clearBtn.classList.remove('vis');
+      dropdown.classList.remove('open');
+    });
+
+    chipChange.addEventListener('click', function(){
+      selectedChip.classList.remove('vis');
+      step2Area.style.display = 'none';
+      hCountry.value = '';
+      renderDropdown(COUNTRIES);
+      dropdown.classList.add('open');
+      searchInput.focus();
+    });
+
+    document.addEventListener('click', function(e){
+      var wrap = document.getElementById('countrySearchWrap');
+      var chip = document.getElementById('selectedChip');
+      if (!wrap.contains(e.target) && !chip.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  })();
+
   /* =====================================================================
      PREMIUM CARD FORM — Live preview + validation + brand detection
      Prêt pour Stripe Elements : remplacer les inputs par stripe.elements()
