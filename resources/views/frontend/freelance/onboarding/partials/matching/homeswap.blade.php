@@ -1,17 +1,17 @@
 @php
   $tripPurposes = [
-    ['vacances', 'Vacances'],
-    ['travail-distance', 'Travail à distance'],
-    ['echange-linguistique', 'Échange linguistique'],
-    ['famille', 'Famille'],
-    ['etudes', 'Études'],
-    ['repos-pause-souffle', 'Repos / Pause Souffle'],
-    ['autre', 'Autre'],
+    ['vacances', '🏖️ Vacances'],
+    ['travail-distance', '💻 Travail à distance'],
+    ['echange-linguistique', '🗣️ Échange linguistique'],
+    ['famille', '👨‍👩‍👧 Famille'],
+    ['etudes', '📚 Études'],
+    ['repos-pause-souffle', '😌 Repos / Pause Souffle'],
+    ['autre', '💡 Autre'],
   ];
   $exchangeTypes = [
-    ['simultane', 'Échange simultané'],
-    ['non-simultane', 'Échange non simultané'],
-    ['points', 'Échange à points'],
+    ['simultane', '🔄 Échange simultané'],
+    ['non-simultane', '⏳ Échange non simultané'],
+    ['points', '🎯 Échange à points'],
   ];
   $accommodationTypes = [
     ['chambre', 'Chambre'],
@@ -22,16 +22,18 @@
     ['autre', 'Autre'],
   ];
   $equipmentList = [
-    ['wifi', 'WiFi'], ['bureau', 'Bureau'], ['cuisine-equipee', 'Cuisine équipée'], ['lave-linge', 'Lave-linge'],
-    ['lave-vaisselle', 'Lave-vaisselle'], ['seche-linge', 'Sèche-linge'], ['climatisation', 'Climatisation'], ['chauffage', 'Chauffage'],
-    ['lit-bebe', 'Lit bébé'], ['television', 'Télévision'], ['parking', 'Parking'], ['ascenseur', 'Ascenseur'],
+    ['wifi', '📶 WiFi'], ['bureau', '🖥️ Bureau'], ['cuisine-equipee', '🍳 Cuisine équipée'], ['lave-linge', '🫧 Lave-linge'],
+    ['lave-vaisselle', '🍽️ Lave-vaisselle'], ['seche-linge', '💨 Sèche-linge'], ['climatisation', '❄️ Climatisation'], ['chauffage', '🔥 Chauffage'],
+    ['lit-bebe', '👶 Lit bébé'], ['television', '📺 TV / Home cinéma'], ['parking', '🅿️ Parking'], ['ascenseur', '🛗 Ascenseur'],
+    ['securite-badge', '🔐 Sécurité / Badge'], ['accessibilite-pmr', '♿ Accessibilité PMR'],
   ];
   $exteriorList = [
-    ['balcon', 'Balcon'], ['terrasse', 'Terrasse'], ['cour', 'Cour'], ['jardin', 'Jardin'],
+    ['balcon', '🌿 Balcon'], ['terrasse', '☀️ Terrasse'], ['cour', '🏡 Cour'], ['jardin', '🌻 Jardin'],
   ];
   $rulesList = [
-    ['non-fumeurs', 'Non-fumeurs'], ['animaux-non-acceptes', 'Animaux non acceptés'], ['enfants-acceptes', 'Enfants acceptés'],
-    ['logement-calme', 'Logement calme'], ['teletravail', 'Adapté au télétravail'], ['respect-voisinage', 'Respect du voisinage requis'],
+    ['non-fumeurs', '🚭 Non-fumeur'], ['animaux-non-acceptes', '🐾 Animaux non acceptés'], ['enfants-acceptes', '👨‍👩‍👧 Enfants acceptés'],
+    ['logement-calme', '😌 Logement calme'], ['teletravail', '🖥️ Adapté au télétravail'], ['respect-voisinage', '🤝 Respect du voisinage'],
+    ['pas-de-fetes', '🎉 Pas de fêtes'], ['eco-responsable', '♻️ Éco-responsable'],
   ];
   $selectedTrip = (array)($m['trip_purpose'] ?? []);
   $selectedExchange = (array)($m['exchange_type'] ?? []);
@@ -64,11 +66,11 @@
         <div class="homeswap-checkbox-row">
           <label class="homeswap-checkbox">
             <input type="checkbox" name="date_flexible" value="1" {{ $dateFlexible ? 'checked' : '' }}>
-            <span>Dates flexibles</span>
+            <span>📅 Dates flexibles</span>
           </label>
           <label class="homeswap-checkbox">
             <input type="checkbox" name="date_fixed" value="1" {{ $dateFixed ? 'checked' : '' }}>
-            <span>Dates fixes</span>
+            <span>🗓️ Dates fixes</span>
           </label>
         </div>
       </div>
@@ -191,12 +193,10 @@
           </div>
           <div>
             <div class="homeswap-subtitle">Règles & préférences</div>
-            <div class="homeswap-checkbox-grid">
+            <div class="hs-rule-grid">
               @foreach($rulesList as [$value, $label])
-                <label class="homeswap-checkbox">
-                  <input type="checkbox" name="rules[]" value="{{ $value }}" {{ in_array($value, $selectedRules, true) ? 'checked' : '' }}>
-                  <span>{{ $label }}</span>
-                </label>
+                <input type="checkbox" name="rules[]" value="{{ $value }}" id="hsr_{{ $value }}" class="hs-rule-input" {{ in_array($value, $selectedRules, true) ? 'checked' : '' }}>
+                <label for="hsr_{{ $value }}" class="hs-rule-label">{{ $label }}</label>
               @endforeach
             </div>
           </div>
@@ -221,11 +221,43 @@
   .homeswap-subtitle { font-weight: 600; color: #374151; margin-bottom: 6px; }
   .homeswap-input { width: 100%; border: 1px solid #E5E7EB; border-radius: 8px; padding: 10px; font-size: 14px; }
   .homeswap-select { width: 100%; border: 1px solid #E5E7EB; border-radius: 8px; padding: 9px 10px; font-size: 14px; background: #FFF; }
-  .homeswap-checkbox-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
-  .homeswap-checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px 12px; }
-  .homeswap-checkbox { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #374151; }
-  .homeswap-checkbox input { width: 16px; height: 16px; }
   .homeswap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; align-items: start; }
+  /* ─── Pill rose — TOUTES les cases + dates flexibles/fixes ─── */
+  .homeswap-checkbox-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .homeswap-checkbox-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .homeswap-checkbox {
+    display: inline-flex; align-items: center; gap: 0;
+    padding: 0; border: none; background: none;
+  }
+  .homeswap-checkbox input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0; }
+  .homeswap-checkbox span {
+    display: inline-flex; align-items: center;
+    padding: 6px 13px;
+    border: 1.5px solid #f3e8f0;
+    background: #fdf9fc;
+    color: #374151;
+    border-radius: 10px;
+    font-size: .84rem;
+    cursor: pointer;
+    transition: all .18s ease;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .homeswap-checkbox span:hover { border-color: rgba(236,72,153,.45); background: rgba(236,72,153,.05); color: #EC4899; }
+  .homeswap-checkbox input[type="checkbox"]:checked + span,
+  .homeswap-checkbox:has(input:checked) span {
+    border-color: #EC4899;
+    background: rgba(236,72,153,.09);
+    color: #EC4899;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(236,72,153,.18);
+  }
+  /* ─── Règles pill style ─── */
+  .hs-rule-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .hs-rule-input { display: none; }
+  .hs-rule-label { display: inline-flex; align-items: center; gap: 5px; padding: 6px 13px; border: 1.5px solid #f3e8f0; background: #fdf9fc; color: #374151; border-radius: 10px; font-size: .84rem; cursor: pointer; transition: all .18s ease; white-space: nowrap; }
+  .hs-rule-label:hover { border-color: rgba(236,72,153,.45); background: rgba(236,72,153,.05); color: #EC4899; }
+  .hs-rule-input:checked + .hs-rule-label { border-color: #EC4899; background: rgba(236,72,153,.09); color: #EC4899; font-weight: 700; box-shadow: 0 2px 8px rgba(236,72,153,.18); }
 </style>
 
 <script>

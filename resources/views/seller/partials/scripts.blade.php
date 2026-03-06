@@ -30,8 +30,8 @@
 {{-- bootstrap date-picker --}}
 <script type="text/javascript" src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
 
-{{-- tinymce js --}}
-<script type="text/javascript" src="{{ asset('assets/js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+{{-- tinymce js — defer: ne bloque pas le rendu --}}
+<script defer src="{{ asset('assets/js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 
 {{-- js color --}}
 <script type="text/javascript" src="{{ asset('assets/js/jscolor.min.js') }}"></script>

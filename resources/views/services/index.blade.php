@@ -5,7 +5,7 @@
 @endsection
 
 @section('metaDescription')
-  Découvrez les 6 univers Junspro : Projets et Consulting, Cours, Rituals Services, Ritual Motion, Présence et Échanges de logement.
+  Découvrez les 6 univers Junspro : Projets et Consulting, Cours, Rituals Services, Ritual Motion, Présence et NEXUS — échangez autrement, partout dans le monde.
 @endsection
 
 @section('style')
@@ -175,7 +175,7 @@
     box-shadow: 0 6px 16px rgba(234, 88, 12, 0.2) !important;
   }
 
-  /* Styles spécifiques pour l'univers "Échanges de logement" - Dégradé rose bleu royal */
+  /* Styles spécifiques pour l'univers "NEXUS" - Dégradé rose bleu royal */
   .services-universe-bubble[data-index="4"] {
     background: linear-gradient(
       135deg,

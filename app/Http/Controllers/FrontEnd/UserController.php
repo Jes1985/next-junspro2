@@ -280,8 +280,10 @@ class UserController extends Controller
       // Récupérer le rôle depuis la requête (si présent)
       $selectedRole = $request->input('role', null);
 
-      // Stocker le rôle actif en session pour les redirections ultérieures (ex: bouton "Tableau de bord")
-      if ($selectedRole === 'freelance' && $authUser->freelancerProfile) {
+      // Stocker le rôle actif en session pour les redirections ultérieures
+      if ($selectedRole === 'nexus') {
+        $request->session()->put('active_role', 'nexus');
+      } elseif ($selectedRole === 'freelance' && $authUser->freelancerProfile) {
         $request->session()->put('active_role', 'freelance');
       } elseif ($authUser->clientProfile) {
         $request->session()->put('active_role', 'client');
@@ -293,8 +295,10 @@ class UserController extends Controller
       if ($request->session()->has('redirectTo')) {
         $redirectURL = $request->session()->get('redirectTo');
       } else {
-        // Respecter le rôle sélectionné sur la page de connexion (role=freelance ou role=client)
-        if ($selectedRole === 'freelance' && $authUser->freelancerProfile) {
+        // Respecter le rôle sélectionné sur la page de connexion
+        if ($selectedRole === 'nexus') {
+          $redirectURL = route('nexus.dashboard');
+        } elseif ($selectedRole === 'freelance' && $authUser->freelancerProfile) {
           $redirectURL = route('freelance.dashboard');
         } elseif ($selectedRole === 'client' && $authUser->clientProfile) {
           $redirectURL = route('client.dashboard.index');
@@ -472,14 +476,58 @@ class UserController extends Controller
         return redirect()->route('freelance.onboarding.step1')
           ->with('info', __('Vous êtes déjà connecté. Redirection vers la création de votre profil freelance.'));
       }
+      if ($role === 'nexus') {
+        return redirect()->route('nexus.dashboard')
+          ->with('info', __('Vous êtes déjà connecté.'));
+      }
       return redirect()->route('user.dashboard')
         ->with('info', __('Vous êtes déjà connecté.'));
     }
 
     $websiteTitle = Basic::query()->pluck('website_title')->first();
-    
-    // Récupérer le rôle (client par défaut)
+
+    // ─── Gestion multi-rôles : même email sur plusieurs comptes ───────────────
+    // Si l'email existe déjà, on connecte l'utilisateur existant au lieu de créer un doublon.
     $role = $request->input('role', 'client');
+    $existingUser = User::where('email_address', $request->email_address)->first();
+
+    if ($existingUser) {
+      // Vérifier que le mot de passe correspond
+      if (!Hash::check($request->password, $existingUser->password)) {
+        return redirect()->back()
+          ->withInput($request->except('password', 'password_confirmation'))
+          ->withErrors(['email_address' => 'Cette adresse e-mail est déjà utilisée. Si c\'est votre compte, vérifiez votre mot de passe.']);
+      }
+
+      // Vérification statut du compte
+      if ($existingUser->status == 0) {
+        return redirect()->back()->withErrors(['email_address' => 'Ce compte a été désactivé.']);
+      }
+
+      // Attacher le nouveau rôle si besoin
+      if ($role === 'freelance' && !$existingUser->freelancerProfile) {
+        \App\Models\FreelancerProfile::firstOrCreate(
+          ['user_id' => $existingUser->id],
+          ['hourly_rate' => 0, 'reliability_score' => 100, 'wellness_plan' => 'none', 'is_verified' => false]
+        );
+      }
+
+      // Connecter l'utilisateur existant
+      Auth::guard('web')->login($existingUser);
+      $request->session()->put('active_role', $role);
+
+      if ($role === 'nexus') {
+        return redirect()->route('nexus.dashboard')
+          ->with('success', 'Votre compte NEXUS est activé. Bienvenue, ' . $existingUser->username . ' !');
+      }
+      if ($role === 'freelance') {
+        return redirect()->route('freelance.onboarding.step1')
+          ->with('success', 'Profil freelance ajouté à votre compte. Continuez la configuration.');
+      }
+      return redirect()->route('client.dashboard.index')
+        ->with('success', 'Connecté avec succès sur votre compte client.');
+    }
+    // ─────────────────────────────────────────────────────────────────────────
 
     $user = new User();
     $user->username = $request->username;
@@ -587,6 +635,11 @@ class UserController extends Controller
     }
 
     // Pour les clients : comportement standard (attendre vérification email)
+    if ($role === 'nexus') {
+      return redirect()->back()
+        ->with('success', 'Votre compte NEXUS a été créé ! Vérifiez votre e-mail pour activer votre accès à l\'espace NEXUS.');
+    }
+
     return redirect()->back();
   }
 
@@ -682,7 +735,13 @@ class UserController extends Controller
       }
 
       // Créer le profil selon le rôle
-      if ($role === 'freelance') {
+      if ($role === 'nexus') {
+        // NEXUS : utilise le compte user standard, pas de profil séparé nécessaire
+        // Créer un ClientProfile de base si aucun n'existe
+        if (class_exists(\App\Models\ClientProfile::class)) {
+          \App\Models\ClientProfile::firstOrCreate(['user_id' => $user->id]);
+        }
+      } elseif ($role === 'freelance') {
         if (class_exists(\App\Models\FreelancerProfile::class)) {
           $freelancerProfile = \App\Models\FreelancerProfile::firstOrCreate(
             ['user_id' => $user->id],
@@ -727,6 +786,13 @@ class UserController extends Controller
 
       // after email verification, authenticate this user
       Auth::guard('web')->login($user);
+      $request->session()->put('active_role', $role);
+
+      // Redirection selon le rôle
+      if ($role === 'nexus') {
+        return redirect()->route('nexus.dashboard')
+          ->with('success', 'Bienvenue dans votre espace NEXUS ! Habitez le monde. Échangez autrement.');
+      }
 
       // Si c'est un freelance, rediriger vers l'onboarding
       if ($role === 'freelance') {

@@ -246,6 +246,49 @@ html, body {
   color: #FFFFFF;
 }
 
+/* ── NEXUS : 3ème onglet rose→bleu ──────────────────────── */
+.auth-role-btn.nexus-btn {
+  font-size: 14px;
+  letter-spacing: .01em;
+}
+.auth-role-btn.nexus-active,
+.auth-role-btn.nexus-btn.active {
+  background: linear-gradient(135deg, #be185d 0%, #EC4899 45%, #2563EB 100%);
+  color: #fff;
+  box-shadow: none;
+}
+.auth-role-btn.nexus-active:hover,
+.auth-role-btn.nexus-btn.active:hover {
+  background: linear-gradient(135deg, #9d174d 0%, #db2777 45%, #1d4ed8 100%);
+  color: #fff;
+}
+.nexus-icon {
+  font-size: .8em;
+  opacity: .85;
+  margin-right: 2px;
+}
+
+/* Bouton submit NEXUS */
+.auth-submit-btn.nexus-submit {
+  background: linear-gradient(135deg, #be185d 0%, #EC4899 45%, #2563EB 100%);
+  box-shadow: 0 4px 14px rgba(236,72,153,.4);
+}
+.auth-submit-btn.nexus-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #9d174d 0%, #db2777 45%, #1d4ed8 100%);
+  box-shadow: 0 6px 20px rgba(236,72,153,.5);
+  transform: translateY(-2px);
+}
+
+/* Sous-titre NEXUS en italique */
+.nexus-subtitle {
+  font-style: italic;
+  background: linear-gradient(135deg, #be185d, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600 !important;
+}
+
 /* ============================================
    HEADER
    ============================================ */

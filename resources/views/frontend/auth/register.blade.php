@@ -63,7 +63,8 @@
 </head>
 <body style="margin: 0; padding: 0;">
   @php
-    $role = request()->get('role', 'client'); // 'client' ou 'freelance'
+    $role = request()->get('role', 'client'); // 'client', 'freelance' ou 'nexus'
+    if (!in_array($role, ['client', 'freelance', 'nexus'])) { $role = 'client'; }
     // Debug: vérifier que le rôle est bien récupéré
     // dd($role); // Décommenter pour debug si nécessaire
   @endphp

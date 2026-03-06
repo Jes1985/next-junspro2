@@ -3,39 +3,30 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class SignupRequest extends FormRequest
 {
-  /**
-   * Determine if the user is authorized to make this request.
-   *
-   * @return bool
-   */
   public function authorize()
   {
     return true;
   }
 
-  /**
-   * Get the validation rules that apply to the request.
-   *
-   * @return array
-   */
   public function rules()
   {
+    // Si l'email existe déjà (même compte multi-rôles), on ne bløque plus sur unique
+    // La logique de fusion est gérée dans signupSubmit()
+    $existingUser = User::where('email_address', $this->email_address)->first();
+
     return [
-      'username' => 'required|unique:users|max:255',
-      'email_address' => 'required|email:rfc,dns|unique:users|max:255',
-      'password' => 'required|confirmed',
-      'password_confirmation' => 'required'
+      'username'             => $existingUser ? 'required|max:255' : 'required|unique:users|max:255',
+      'email_address'        => 'required|email:rfc|max:255',
+      'password'             => 'required|confirmed',
+      'password_confirmation' => 'required',
     ];
   }
 
-  /**
-   * Get the validation messages that apply to the request.
-   *
-   * @return array
-   */
   public function messages()
   {
     return [

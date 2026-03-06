@@ -475,7 +475,7 @@
               var citySelect = document.getElementById('projectsFilterCity');
               var cityWrapper = document.getElementById('projectsCityWrapper');
               if (!countrySelect || !citySelect) return;
-              var citiesByCountry = {'FR':['Paris','Lyon','Marseille','Bordeaux','Nantes','Lille','Strasbourg','Rennes','Montpellier','Toulouse','Nice'],'BE':['Bruxelles','Anvers','Liège'],'CH':['Zurich','Genève','Bâle'],'ES':['Barcelone','Palma de Majorque','Valence','Séville','Madrid','Ibiza','Tenerife'],'DE':['Berlin','Munich','Hambourg'],'IT':['Rome','Milan','Turin','Palerme','Toscane','Florence','Naples'],'PT':['Lisbonne','Porto','Faro','Coimbra'],'NL':['Amsterdam','Rotterdam','La Haye'],'GB':['Londres','Manchester','Birmingham','Brighton','Édimbourg'],'CA':['Montréal','Toronto','Vancouver'],'US':['New York','Los Angeles','Chicago','San Francisco','Miami'],'MT':['Valetta','Sliema','Saint Julien','Msida','Gzira','Ta\'Xbiex','Pieta'],'MC':['Monte-Carlo','La Condamine','Fontvieille'],'LU':['Luxembourg-Ville','Kirchberg','Esch-sur-Alzette'],'MA':['Casablanca','Rabat','Tanger'],'TN':['Tunis','Sfax','Sousse'],'SN':['Dakar','Diamniadio','Thiès'],'CI':['Abidjan','Yamoussoukro','San Pedro'],'IE':['Dublin'],'HR':['Split','Dubrovnik'],'GP':['Pointe-à-Pitre','Basse-Terre','Saint-François'],'MQ':['Fort-de-France','Le Lamentin','Sainte-Anne'],'GF':['Cayenne','Kourou','Saint-Laurent-du-Maroni'],'RE':['Saint-Denis','Saint-Pierre','Saint-Gilles-les-Bains'],'NC':['Nouméa','Dumbéa','Mont-Dore'],'PF':['Papeete','Faa\'a','Moorea']};
+              var citiesByCountry = {'FR':['Paris','Lyon','Marseille','Bordeaux','Nantes','Lille','Strasbourg','Rennes','Montpellier','Toulouse','Nice'],'BE':['Bruxelles','Anvers','Liège'],'CH':['Zurich','Genève','Bâle'],'ES':['Barcelone','Palma de Majorque','Valence','Séville','Madrid','Ibiza','Tenerife'],'DE':['Berlin','Munich','Hambourg'],'IT':['Rome','Milan','Turin','Palerme','Toscane','Florence','Naples'],'PT':['Lisbonne','Porto','Faro','Coimbra'],'NL':['Amsterdam','Rotterdam','La Haye'],'GB':['Londres','Manchester','Birmingham','Brighton','Édimbourg'],'CA':['Montréal','Toronto','Vancouver'],'US':['New York','Los Angeles','Chicago','San Francisco','Miami'],'MT':['Valetta','Sliema','Saint Julien','Msida','Gzira','Ta\'Xbiex','Pieta'],'MC':['Monte-Carlo','La Condamine','Fontvieille'],'LU':['Luxembourg-Ville','Kirchberg','Esch-sur-Alzette'],'MA':['Casablanca','Rabat','Tanger'],'TN':['Tunis','Sfax','Sousse'],'SN':['Dakar','Diamniadio','Thiès'],'CI':['Abidjan','Yamoussoukro','San Pedro'],'IE':['Dublin'],'HR':['Split','Dubrovnik'],'BR':['São Paulo','Rio de Janeiro','Brasília'],'JP':['Tokyo','Osaka','Kyoto'],'AE':['Dubaï','Abu Dhabi','Charjah'],'QA':['Doha','Al-Rayyan','Al-Wakra'],'SA':['Riyad','Djeddah','La Mecque'],'SG':['Singapour','Sentosa','Jurong'],'AU':['Sydney','Melbourne','Brisbane'],'MX':['Mexico','Guadalajara','Cancún'],'CN':['Pékin','Shanghai','Canton'],'KR':['Séoul','Busan','Incheon'],'IN':['Mumbai','Delhi','Bangalore'],'GR':['Athènes','Thessalonique','Santorin'],'TH':['Bangkok','Chiang Mai','Phuket'],'MU':['Port-Louis','Grand Baie','Flic en Flac'],'SC':['Victoria','Beau Vallon','Anse Boileau'],'SE':['Stockholm','Göteborg','Malmö'],'DK':['Copenhague','Aarhus','Odense'],'NO':['Oslo','Bergen','Stavanger'],'AT':['Vienne','Salzbourg','Graz'],'CY':['Nicosie','Limassol','Paphos'],'ID':['Bali','Jakarta','Yogyakarta'],'MY':['Kuala Lumpur','Penang','Johor Bahru'],'PH':['Manille','Cebu','Davao'],'GP':['Pointe-à-Pitre','Basse-Terre','Saint-François'],'MQ':['Fort-de-France','Le Lamentin','Sainte-Anne'],'RE':['Saint-Denis','Saint-Pierre','Saint-Gilles-les-Bains']};
               function updateCityAssistantProj() {
                 if (!citySelect || !cityWrapper) return;
                 var ex = cityWrapper.querySelector('.location-city-assistant');
@@ -689,10 +689,7 @@
             <option value="FR" {{ request('country') == 'FR' ? 'selected' : '' }}>{{ __('France') }}</option>
             <option value="GP" {{ request('country') == 'GP' ? 'selected' : '' }}>{{ __('Guadeloupe') }}</option>
             <option value="MQ" {{ request('country') == 'MQ' ? 'selected' : '' }}>{{ __('Martinique') }}</option>
-            <option value="GF" {{ request('country') == 'GF' ? 'selected' : '' }}>{{ __('Guyane') }}</option>
             <option value="RE" {{ request('country') == 'RE' ? 'selected' : '' }}>{{ __('La Réunion') }}</option>
-            <option value="NC" {{ request('country') == 'NC' ? 'selected' : '' }}>{{ __('Nouvelle-Calédonie') }}</option>
-            <option value="PF" {{ request('country') == 'PF' ? 'selected' : '' }}>{{ __('Polynésie française') }}</option>
             <option value="BE" {{ request('country') == 'BE' ? 'selected' : '' }}>{{ __('Belgique') }}</option>
             <option value="CH" {{ request('country') == 'CH' ? 'selected' : '' }}>{{ __('Suisse') }}</option>
             <option value="ES" {{ request('country') == 'ES' ? 'selected' : '' }}>{{ __('Espagne') }}</option>
@@ -712,6 +709,29 @@
             <option value="CI" {{ request('country') == 'CI' ? 'selected' : '' }}>{{ __('Côte d\'Ivoire') }}</option>
             <option value="IE" {{ request('country') == 'IE' ? 'selected' : '' }}>{{ __('Irlande') }}</option>
             <option value="HR" {{ request('country') == 'HR' ? 'selected' : '' }}>{{ __('Croatie') }}</option>
+            <option value="BR" {{ request('country') == 'BR' ? 'selected' : '' }}>{{ __('Brésil') }}</option>
+            <option value="JP" {{ request('country') == 'JP' ? 'selected' : '' }}>{{ __('Japon') }}</option>
+            <option value="AE" {{ request('country') == 'AE' ? 'selected' : '' }}>{{ __('Émirats Arabes Unis') }}</option>
+            <option value="QA" {{ request('country') == 'QA' ? 'selected' : '' }}>{{ __('Qatar') }}</option>
+            <option value="SA" {{ request('country') == 'SA' ? 'selected' : '' }}>{{ __('Arabie Saoudite') }}</option>
+            <option value="SG" {{ request('country') == 'SG' ? 'selected' : '' }}>{{ __('Singapour') }}</option>
+            <option value="AU" {{ request('country') == 'AU' ? 'selected' : '' }}>{{ __('Australie') }}</option>
+            <option value="MX" {{ request('country') == 'MX' ? 'selected' : '' }}>{{ __('Mexique') }}</option>
+            <option value="CN" {{ request('country') == 'CN' ? 'selected' : '' }}>{{ __('Chine') }}</option>
+            <option value="KR" {{ request('country') == 'KR' ? 'selected' : '' }}>{{ __('Corée du Sud') }}</option>
+            <option value="IN" {{ request('country') == 'IN' ? 'selected' : '' }}>{{ __('Inde') }}</option>
+            <option value="GR" {{ request('country') == 'GR' ? 'selected' : '' }}>{{ __('Grèce') }}</option>
+            <option value="TH" {{ request('country') == 'TH' ? 'selected' : '' }}>{{ __('Thaïlande') }}</option>
+            <option value="MU" {{ request('country') == 'MU' ? 'selected' : '' }}>{{ __('Île Maurice') }}</option>
+            <option value="SC" {{ request('country') == 'SC' ? 'selected' : '' }}>{{ __('Seychelles') }}</option>
+            <option value="SE" {{ request('country') == 'SE' ? 'selected' : '' }}>{{ __('Suède') }}</option>
+            <option value="DK" {{ request('country') == 'DK' ? 'selected' : '' }}>{{ __('Danemark') }}</option>
+            <option value="NO" {{ request('country') == 'NO' ? 'selected' : '' }}>{{ __('Norvège') }}</option>
+            <option value="AT" {{ request('country') == 'AT' ? 'selected' : '' }}>{{ __('Autriche') }}</option>
+            <option value="CY" {{ request('country') == 'CY' ? 'selected' : '' }}>{{ __('Chypre') }}</option>
+            <option value="ID" {{ request('country') == 'ID' ? 'selected' : '' }}>{{ __('Indonésie') }}</option>
+            <option value="MY" {{ request('country') == 'MY' ? 'selected' : '' }}>{{ __('Malaisie') }}</option>
+            <option value="PH" {{ request('country') == 'PH' ? 'selected' : '' }}>{{ __('Philippines') }}</option>
           </select>
         </div>
         <div class="filter-input-group filter-location-hero" id="{{ $locationCityWrapperId }}" data-filter="city-wrapper" data-filter-label="Filtre Ville (Pays → Ville)" data-hero-filter="{{ $isProjects ? 'projects' : ($isLessons ? 'lessons' : ($isCorporate ? 'corporate' : ($isAtHome ? 'at-home' : ($isWellnesslive ? 'wellnesslive' : ($heroFilterScope ?? 'hub'))))) }}">
@@ -932,10 +952,7 @@
             'FR': ['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Nantes', 'Lille', 'Strasbourg', 'Rennes', 'Montpellier', 'Toulouse', 'Nice'],
             'GP': ['Pointe-à-Pitre', 'Les Abymes', 'Baie-Mahault', 'Le Gosier', 'Sainte-Anne'],
             'MQ': ['Fort-de-France', 'Le Lamentin', 'Sainte-Marie', 'Schoelcher', 'Ducos'],
-            'GF': ['Cayenne', 'Kourou', 'Saint-Laurent-du-Maroni', 'Matoury', 'Remire-Montjoly'],
-            'RE': ['Saint-Denis', 'Saint-Paul', 'Saint-Pierre', 'Le Tampon', 'Saint-André', 'Saint-Louis', 'Le Port'],
-            'NC': ['Nouméa', 'Mont-Dore', 'Dumbéa', 'Païta', 'Le Mont-Dore'],
-            'PF': ['Papeete', 'Pirae', 'Mahina', 'Punaauia', 'Arue'],
+            'RE': ['Saint-Denis', 'Saint-Paul', 'Saint-Pierre', 'Le Tampon', 'Saint-André'],
             'BE': ['Bruxelles', 'Anvers', 'Liège'],
             'CH': ['Zurich', 'Genève', 'Bâle'],
             'ES': ['Madrid', 'Barcelone', 'Valence', 'Séville', 'Ibiza'],
@@ -954,7 +971,30 @@
             'SN': ['Dakar', 'Thiès', 'Saint-Louis', 'Rufisque', 'Mbour'],
             'CI': ['Abidjan', 'Yamoussoukro', 'Bouaké', 'San-Pédro'],
             'IE': ['Dublin', 'Cork', 'Galway', 'Limerick', 'Waterford'],
-            'HR': ['Zagreb', 'Split', 'Dubrovnik', 'Rijeka', 'Zadar']
+            'HR': ['Zagreb', 'Split', 'Dubrovnik', 'Rijeka', 'Zadar'],
+            'BR': ['São Paulo', 'Rio de Janeiro', 'Brasília'],
+            'JP': ['Tokyo', 'Osaka', 'Kyoto'],
+            'AE': ['Dubaï', 'Abu Dhabi', 'Charjah'],
+            'QA': ['Doha', 'Al-Rayyan', 'Al-Wakra'],
+            'SA': ['Riyad', 'Djeddah', 'La Mecque'],
+            'SG': ['Singapour', 'Sentosa', 'Jurong'],
+            'AU': ['Sydney', 'Melbourne', 'Brisbane'],
+            'MX': ['Mexico', 'Guadalajara', 'Cancún'],
+            'CN': ['Pékin', 'Shanghai', 'Canton'],
+            'KR': ['Séoul', 'Busan', 'Incheon'],
+            'IN': ['Mumbai', 'Delhi', 'Bangalore'],
+            'GR': ['Athènes', 'Thessalonique', 'Santorin'],
+            'TH': ['Bangkok', 'Chiang Mai', 'Phuket'],
+            'MU': ['Port-Louis', 'Grand Baie', 'Flic en Flac'],
+            'SC': ['Victoria', 'Beau Vallon', 'Anse Boileau'],
+            'SE': ['Stockholm', 'Göteborg', 'Malmö'],
+            'DK': ['Copenhague', 'Aarhus', 'Odense'],
+            'NO': ['Oslo', 'Bergen', 'Stavanger'],
+            'AT': ['Vienne', 'Salzbourg', 'Graz'],
+            'CY': ['Nicosie', 'Limassol', 'Paphos'],
+            'ID': ['Bali', 'Jakarta', 'Yogyakarta'],
+            'MY': ['Kuala Lumpur', 'Penang', 'Johor Bahru'],
+            'PH': ['Manille', 'Cebu', 'Davao']
           };
           var cityBadges = {
             'Paris': ['Business', 'Langue'], 'Lyon': ['Business', 'Famille'], 'Marseille': ['Famille', 'Langue'], 'Bordeaux': ['Workation', 'Repos'],
@@ -977,7 +1017,36 @@
             'Tunis': ['Business', 'Langue'], 'Sfax': ['Business', 'Famille'], 'Sousse': ['Repos', 'Famille'], 'Nabeul': ['Repos', 'Famille'], 'Bizerte': ['Business', 'Famille'],
             'Dakar': ['Business', 'Langue'], 'Thiès': ['Famille', 'Repos'], 'Saint-Louis': ['Culture', 'Repos'], 'Rufisque': ['Business', 'Famille'], 'Mbour': ['Repos', 'Famille'],
             'Abidjan': ['Business', 'Langue'], 'Yamoussoukro': ['Famille', 'Repos'], 'Bouaké': ['Business', 'Famille'], 'San-Pédro': ['Repos', 'Famille'],
-            'Split': ['Repos', 'Famille'], 'Dubrovnik': ['Repos', 'Culture'], 'Zagreb': ['Business', 'Langue'], 'Rijeka': ['Repos', 'Langue'], 'Zadar': ['Repos', 'Famille']
+            'Split': ['Repos', 'Famille'], 'Dubrovnik': ['Repos', 'Culture'], 'Zagreb': ['Business', 'Langue'], 'Rijeka': ['Repos', 'Langue'], 'Zadar': ['Repos', 'Famille'],
+            'São Paulo': ['Business', 'Workation'], 'Rio de Janeiro': ['Repos', 'Famille'], 'Brasília': ['Business', 'Langue'],
+            'Tokyo': ['Business', 'Langue'], 'Osaka': ['Business', 'Repos'], 'Kyoto': ['Culture', 'Repos'],
+            'Dubaï': ['Business', 'Repos'], 'Abu Dhabi': ['Business', 'Workation'], 'Charjah': ['Famille', 'Repos'],
+            'Doha': ['Business', 'Langue'], 'Al-Rayyan': ['Business', 'Famille'], 'Al-Wakra': ['Repos', 'Famille'],
+            'Riyad': ['Business'], 'Djeddah': ['Business', 'Famille'], 'La Mecque': ['Culture'],
+            'Singapour': ['Business', 'Workation'], 'Sentosa': ['Repos'], 'Jurong': ['Business'],
+            'Sydney': ['Business', 'Workation'], 'Melbourne': ['Business', 'Famille'], 'Brisbane': ['Workation', 'Repos'],
+            'Mexico': ['Business', 'Langue'], 'Guadalajara': ['Business', 'Famille'], 'Cancún': ['Repos'],
+            'Pékin': ['Business', 'Langue'], 'Shanghai': ['Business', 'Workation'], 'Canton': ['Business'],
+            'Séoul': ['Business', 'Langue'], 'Busan': ['Repos', 'Famille'], 'Incheon': ['Business'],
+            'Mumbai': ['Business'], 'Delhi': ['Business', 'Famille'], 'Bangalore': ['Business', 'Workation'],
+            'Athènes': ['Culture', 'Famille'], 'Thessalonique': ['Repos', 'Culture'], 'Santorin': ['Repos'],
+            'Bangkok': ['Business', 'Workation'], 'Chiang Mai': ['Workation', 'Repos'], 'Phuket': ['Repos'],
+            'Port-Louis': ['Business', 'Repos'], 'Grand Baie': ['Repos', 'Famille'], 'Flic en Flac': ['Repos'],
+            'Victoria': ['Repos', 'Business'], 'Beau Vallon': ['Repos'], 'Anse Boileau': ['Repos', 'Famille'],
+            'Stockholm': ['Business', 'Langue'], 'Göteborg': ['Business', 'Famille'], 'Malmö': ['Workation', 'Famille'],
+            'Copenhague': ['Business', 'Langue'], 'Aarhus': ['Workation', 'Culture'], 'Odense': ['Famille', 'Repos'],
+            'Oslo': ['Business', 'Workation'], 'Bergen': ['Repos', 'Culture'], 'Stavanger': ['Business', 'Workation'],
+            'Vienne': ['Culture', 'Business'], 'Salzbourg': ['Culture', 'Repos'], 'Graz': ['Workation', 'Famille'],
+            'Nicosie': ['Business', 'Repos'], 'Limassol': ['Repos', 'Business'], 'Paphos': ['Repos'],
+            'Bali': ['Repos', 'Workation'], 'Jakarta': ['Business', 'Famille'], 'Yogyakarta': ['Culture', 'Repos'],
+            'Kuala Lumpur': ['Business', 'Famille'], 'Penang': ['Culture', 'Repos'], 'Johor Bahru': ['Business', 'Famille'],
+            'Manille': ['Business', 'Famille'], 'Cebu': ['Repos', 'Famille'], 'Davao': ['Repos', 'Famille'],
+            'Pointe-à-Pitre': ['Famille', 'Repos'], 'Les Abymes': ['Famille', 'Business'], 'Baie-Mahault': ['Business', 'Famille'], 'Le Gosier': ['Repos', 'Famille'], 'Sainte-Anne': ['Repos'],
+            'Fort-de-France': ['Business', 'Famille'], 'Le Lamentin': ['Famille', 'Business'], 'Sainte-Marie': ['Famille', 'Repos'], 'Schoelcher': ['Business', 'Famille'], 'Ducos': ['Famille', 'Business'],
+            'Saint-Denis': ['Business', 'Famille'], 'Saint-Paul': ['Famille', 'Repos'], 'Saint-Pierre': ['Repos', 'Famille'], 'Le Tampon': ['Famille', 'Repos'], 'Saint-André': ['Famille', 'Repos'],
+            'Valetta': ['Culture', 'Business'], 'Sliema': ['Business', 'Famille'], 'Saint Julien': ['Business', 'Repos'], 'Msida': ['Business', 'Famille'], 'Gzira': ['Famille', 'Workation'], "Ta'Xbiex": ['Business', 'Famille'], 'Pieta': ['Famille', 'Business'],
+            'Differdange': ['Famille', 'Business'],
+            'Cork': ['Business', 'Langue'], 'Galway': ['Langue', 'Famille'], 'Limerick': ['Business', 'Famille'], 'Waterford': ['Culture', 'Famille']
           };
           var highDemandCitiesLaunch = ['Paris', 'Lyon', 'Barcelone', 'Lisbonne', 'Montréal', 'Madrid', 'Nice', 'Bordeaux'];
           var allowedObjectives = ['Workation', 'Famille', 'Langue', 'Business', 'Repos', 'Culture'];
@@ -2066,7 +2135,7 @@
             @php
               $selectedUniverses = request('universe', []);
               if (!is_array($selectedUniverses)) { $selectedUniverses = $selectedUniverses ? [$selectedUniverses] : []; }
-              $universes = ['projects' => __('Projets et Consulting'), 'lessons' => __('Cours'), 'at-home' => __('Services at Home'), 'wellnesslive' => __('Ritual Motion'), 'corporate' => __('Bien-être en entreprise'), 'homeswap' => __('Échanges de logement')];
+              $universes = ['projects' => __('Projets et Consulting'), 'lessons' => __('Cours'), 'at-home' => __('Services at Home'), 'wellnesslive' => __('Ritual Motion'), 'corporate' => __('Bien-être en entreprise'), 'homeswap' => __('NEXUS')];
             @endphp
             @foreach($universes as $key => $label)
               <label class="filter-checkbox-label">
@@ -4574,10 +4643,7 @@
       'FR': ['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Nantes', 'Lille', 'Strasbourg', 'Rennes', 'Montpellier', 'Toulouse', 'Nice'],
       'GP': ['Pointe-à-Pitre', 'Les Abymes', 'Baie-Mahault', 'Le Gosier', 'Sainte-Anne'],
       'MQ': ['Fort-de-France', 'Le Lamentin', 'Sainte-Marie', 'Schoelcher', 'Ducos'],
-      'GF': ['Cayenne', 'Kourou', 'Saint-Laurent-du-Maroni', 'Matoury', 'Remire-Montjoly'],
-      'RE': ['Saint-Denis', 'Saint-Paul', 'Saint-Pierre', 'Le Tampon', 'Saint-André', 'Saint-Louis', 'Le Port'],
-      'NC': ['Nouméa', 'Mont-Dore', 'Dumbéa', 'Païta', 'Le Mont-Dore'],
-      'PF': ['Papeete', 'Pirae', 'Mahina', 'Punaauia', 'Arue'],
+      'RE': ['Saint-Denis', 'Saint-Paul', 'Saint-Pierre', 'Le Tampon', 'Saint-André'],
       'BE': ['Bruxelles', 'Anvers', 'Liège'],
       'CH': ['Zurich', 'Genève', 'Bâle'],
       'ES': ['Madrid', 'Barcelone', 'Valence', 'Séville', 'Ibiza'],
@@ -4596,7 +4662,30 @@
       'SN': ['Dakar', 'Thiès', 'Saint-Louis', 'Rufisque', 'Mbour'],
       'CI': ['Abidjan', 'Yamoussoukro', 'Bouaké', 'San-Pédro'],
       'IE': ['Dublin', 'Cork', 'Galway', 'Limerick', 'Waterford'],
-      'HR': ['Zagreb', 'Split', 'Dubrovnik', 'Rijeka', 'Zadar']
+      'HR': ['Zagreb', 'Split', 'Dubrovnik', 'Rijeka', 'Zadar'],
+      'BR': ['São Paulo', 'Rio de Janeiro', 'Brasília'],
+      'JP': ['Tokyo', 'Osaka', 'Kyoto'],
+      'AE': ['Dubaï', 'Abu Dhabi', 'Charjah'],
+      'QA': ['Doha', 'Al-Rayyan', 'Al-Wakra'],
+      'SA': ['Riyad', 'Djeddah', 'La Mecque'],
+      'SG': ['Singapour', 'Sentosa', 'Jurong'],
+      'AU': ['Sydney', 'Melbourne', 'Brisbane'],
+      'MX': ['Mexico', 'Guadalajara', 'Cancún'],
+      'CN': ['Pékin', 'Shanghai', 'Canton'],
+      'KR': ['Séoul', 'Busan', 'Incheon'],
+      'IN': ['Mumbai', 'Delhi', 'Bangalore'],
+      'GR': ['Athènes', 'Thessalonique', 'Santorin'],
+      'TH': ['Bangkok', 'Chiang Mai', 'Phuket'],
+      'MU': ['Port-Louis', 'Grand Baie', 'Flic en Flac'],
+      'SC': ['Victoria', 'Beau Vallon', 'Anse Boileau'],
+      'SE': ['Stockholm', 'Göteborg', 'Malmö'],
+      'DK': ['Copenhague', 'Aarhus', 'Odense'],
+      'NO': ['Oslo', 'Bergen', 'Stavanger'],
+      'AT': ['Vienne', 'Salzbourg', 'Graz'],
+      'CY': ['Nicosie', 'Limassol', 'Paphos'],
+      'ID': ['Bali', 'Jakarta', 'Yogyakarta'],
+      'MY': ['Kuala Lumpur', 'Penang', 'Johor Bahru'],
+      'PH': ['Manille', 'Cebu', 'Davao']
     };
     
     // Gestion des onglets

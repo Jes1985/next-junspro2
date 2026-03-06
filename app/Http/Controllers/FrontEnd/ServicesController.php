@@ -199,10 +199,10 @@ class ServicesController extends Controller
                 'url' => route('services.wellnesslive')
             ],
             [
-                'title' => 'Échanges de logement',
-                'baseline' => 'Voyager autrement, en toute confiance.',
-                'text' => 'Court, moyen ou long : trouvez le bon échange, dans la bonne ville, au bon moment.',
-                'cta' => 'Réserver un rituel d\'essai',
+                'title' => 'NEXUS',
+                'baseline' => 'Habitez le monde. Échangez autrement.',
+                'text' => 'Logement, infrastructure, campus — échangez dans plus de 30 pays, en toute confiance.',
+                'cta' => 'Explorer NEXUS',
                 'url' => route('services.homeswap')
             ],
             [
@@ -1565,7 +1565,7 @@ $queryResult['filters'] = $request->only(['search', 'price_min', 'price_max', 'c
                 'categories' => ['Rituels', 'Conférences', 'Ateliers']
             ],
             'homeswap' => [
-                'title' => 'Échanges de logement',
+                'title' => 'NEXUS',
                 'url' => route('services.homeswap'),
                 'categories' => [
                     'Chambre', 'Appartement', 'Maison', 'Penthouse',

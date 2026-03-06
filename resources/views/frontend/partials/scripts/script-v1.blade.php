@@ -41,8 +41,8 @@
 <script type="text/javascript" src="{{ asset('assets/front/js/vendors/datatables.min.js') }}"></script>
 <!-- SVG Loader JS -->
 <script type="text/javascript" src="{{ asset('assets/front/js/vendors/svg-loader.min.js') }}"></script>
-{{-- tinymce js --}}
-<script type="text/javascript" src="{{ asset('assets/js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+{{-- tinymce js — defer: ne bloque pas le rendu --}}
+<script defer src="{{ asset('assets/js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/toastr.min.js') }}"></script>

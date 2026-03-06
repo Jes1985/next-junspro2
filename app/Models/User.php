@@ -93,6 +93,8 @@ class User extends Authenticatable
     'email_messages' => 'boolean',
     'email_billing' => 'boolean',
     'email_news' => 'boolean',
+    'nexus_onboarding' => 'array',
+    'nexus_offer' => 'array',
   ];
 
   public function productReview(): HasMany

@@ -25,7 +25,7 @@
       @endif
     </div>
 
-    {{-- Sélecteur de rôle (Style Preply) --}}
+    {{-- Sélecteur de rôle --}}
     <div class="auth-role-selector">
       <button 
         class="auth-role-btn {{ $role === 'client' ? 'active' : '' }}" 
@@ -43,6 +43,14 @@
       >
         Je suis un freelance
       </button>
+      <button 
+        class="auth-role-btn nexus-btn {{ $role === 'nexus' ? 'active nexus-active' : '' }}" 
+        onclick="switchRole('nexus')"
+        data-role="nexus"
+        type="button"
+      >
+        <span class="nexus-icon">✦</span> Compte NEXUS
+      </button>
     </div>
 
     {{-- En-tête --}}
@@ -51,15 +59,23 @@
         @if($mode === 'login')
           Connexion
         @else
-          @if($role === 'freelance')
+          @if($role === 'nexus')
+            Rejoindre NEXUS
+          @elseif($role === 'freelance')
             Commencez votre parcours freelance
           @else
             Créer un compte
           @endif
         @endif
       </h1>
-      <p class="auth-subtitle">
-        @if($role === 'client')
+      <p class="auth-subtitle {{ $role === 'nexus' ? 'nexus-subtitle' : '' }}">
+        @if($role === 'nexus')
+          @if($mode === 'login')
+            Habitez le monde. Échangez autrement.
+          @else
+            Rejoignez NEXUS et échangez dans plus de 30 pays, en toute confiance.
+          @endif
+        @elseif($role === 'client')
           @if($mode === 'login')
             Accédez à vos services et vos abonnements en un clic.
           @else
@@ -184,7 +200,7 @@
           @enderror
         </div>
 
-        <button type="submit" class="auth-submit-btn" id="authSubmitBtn">
+        <button type="submit" class="auth-submit-btn {{ $role === 'nexus' ? 'nexus-submit' : '' }}" id="authSubmitBtn">
           <span class="auth-submit-text">Se connecter</span>
           <span class="auth-submit-loader" style="display: none;">
             <svg class="auth-spinner" width="20" height="20" viewBox="0 0 24 24">
@@ -265,9 +281,11 @@
           @enderror
         </div>
 
-        <button type="submit" class="auth-submit-btn" id="authSubmitBtn">
+        <button type="submit" class="auth-submit-btn {{ $role === 'nexus' ? 'nexus-submit' : '' }}" id="authSubmitBtn">
           <span class="auth-submit-text">
-            @if($role === 'freelance')
+            @if($role === 'nexus')
+              Rejoindre NEXUS
+            @elseif($role === 'freelance')
               Continuer
             @else
               Créer mon compte

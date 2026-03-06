@@ -36,6 +36,38 @@
     --junspro-gray-800: #1F2937;
     --junspro-gray-900: #111827;
   }
+  /* ─ Pill rose — filtres checkboxes (seller premium) ─ */
+  .filter-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .filter-checkbox-item {
+    display: inline-flex; align-items: center; gap: 0;
+    padding: 0; cursor: pointer; user-select: none;
+  }
+  .filter-checkbox-item span {
+    display: inline-flex; align-items: center;
+    padding: 6px 13px;
+    border: 1.5px solid #f3e8f0;
+    background: #fdf9fc;
+    color: #374151;
+    border-radius: 10px;
+    font-size: .84rem;
+    cursor: pointer;
+    transition: all .18s ease;
+    white-space: nowrap;
+  }
+  .filter-checkbox-item span:hover { border-color: rgba(236,72,153,.45); background: rgba(236,72,153,.05); color: #EC4899; }
+  .filter-checkbox-item input[type="checkbox"],
+  .filter-checkbox-item input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0; }
+  .filter-checkbox-item:has(input:checked) span {
+    border-color: #EC4899;
+    background: rgba(236,72,153,.09);
+    color: #EC4899;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(236,72,153,.18);
+  }
 </style>
 @endsection
 
@@ -172,15 +204,15 @@
                     <div class="filter-checkboxes">
                       <label class="filter-checkbox-item">
                         <input type="checkbox" name="start_delay[]" value="immediate" {{ in_array('immediate', (array)request()->input('start_delay', [])) ? 'checked' : '' }}>
-                        <span>{{ __('Immédiat (cette semaine)') }}</span>
+                        <span>⚡ {{ __('Immédiat (cette semaine)') }}</span>
                       </label>
                       <label class="filter-checkbox-item">
                         <input type="checkbox" name="start_delay[]" value="15days" {{ in_array('15days', (array)request()->input('start_delay', [])) ? 'checked' : '' }}>
-                        <span>{{ __('Sous 15 jours') }}</span>
+                        <span>📅 {{ __('Sous 15 jours') }}</span>
                       </label>
                       <label class="filter-checkbox-item">
                         <input type="checkbox" name="start_delay[]" value="1-3months" {{ in_array('1-3months', (array)request()->input('start_delay', [])) ? 'checked' : '' }}>
-                        <span>{{ __('Sous 1-3 mois') }}</span>
+                        <span>📆 {{ __('Sous 1-3 mois') }}</span>
                       </label>
                     </div>
                   </div>
@@ -200,7 +232,7 @@
                   <div class="filter-checkboxes mt-2">
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="remote_only" value="1" {{ request()->input('remote_only') == '1' ? 'checked' : '' }}>
-                      <span>{{ __('Remote uniquement') }}</span>
+                      <span>🌐 {{ __('Remote uniquement') }}</span>
                     </label>
                   </div>
                 </div>
@@ -213,19 +245,19 @@
                   <div class="filter-checkboxes">
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="languages[]" value="fr" {{ in_array('fr', (array)request()->input('languages', [])) ? 'checked' : '' }}>
-                      <span>Français</span>
+                      <span>🇫🇷 Français</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="languages[]" value="en" {{ in_array('en', (array)request()->input('languages', [])) ? 'checked' : '' }}>
-                      <span>English</span>
+                      <span>🇬🇧 English</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="languages[]" value="es" {{ in_array('es', (array)request()->input('languages', [])) ? 'checked' : '' }}>
-                      <span>Español</span>
+                      <span>🇪🇸 Español</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="languages[]" value="de" {{ in_array('de', (array)request()->input('languages', [])) ? 'checked' : '' }}>
-                      <span>Deutsch</span>
+                      <span>🇩🇪 Deutsch</span>
                     </label>
                   </div>
                 </div>
@@ -238,15 +270,15 @@
                   <div class="filter-checkboxes">
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="freelance_type[]" value="verified" {{ in_array('verified', (array)request()->input('freelance_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Freelances vérifiés / premium') }}</span>
+                      <span>✅ {{ __('Freelances vérifiés / premium') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="freelance_type[]" value="top" {{ in_array('top', (array)request()->input('freelance_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Top Junspro') }}</span>
+                      <span>🏆 {{ __('Top Junspro') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="freelance_type[]" value="new" {{ in_array('new', (array)request()->input('freelance_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Nouveaux talents') }}</span>
+                      <span>🌱 {{ __('Nouveaux talents') }}</span>
                     </label>
                   </div>
                 </div>
@@ -284,35 +316,35 @@
                   <div class="filter-checkboxes">
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="project_type[]" value="landing-page" {{ in_array('landing-page', (array)request()->input('project_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Landing page') }}</span>
+                      <span>🖥️ {{ __('Landing page') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="project_type[]" value="site-vitrine" {{ in_array('site-vitrine', (array)request()->input('project_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Site vitrine') }}</span>
+                      <span>🏠 {{ __('Site vitrine') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="project_type[]" value="tunnel-vente" {{ in_array('tunnel-vente', (array)request()->input('project_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Tunnel de vente') }}</span>
+                      <span>🔀 {{ __('Tunnel de vente') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="project_type[]" value="brand-kit" {{ in_array('brand-kit', (array)request()->input('project_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Brand kit') }}</span>
+                      <span>🎨 {{ __('Brand kit') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="project_type[]" value="emailing" {{ in_array('emailing', (array)request()->input('project_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Emailing') }}</span>
+                      <span>📧 {{ __('Emailing') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="project_type[]" value="ads" {{ in_array('ads', (array)request()->input('project_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Ads') }}</span>
+                      <span>📢 {{ __('Ads') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="project_type[]" value="automatisation" {{ in_array('automatisation', (array)request()->input('project_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Automatisation') }}</span>
+                      <span>🤖 {{ __('Automatisation') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="project_type[]" value="coaching-strategique" {{ in_array('coaching-strategique', (array)request()->input('project_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Coaching stratégique') }}</span>
+                      <span>🎯 {{ __('Coaching stratégique') }}</span>
                     </label>
                   </div>
                 </div>
@@ -325,23 +357,23 @@
                   <div class="filter-checkboxes">
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="sector[]" value="infopreneurs-coachs" {{ in_array('infopreneurs-coachs', (array)request()->input('sector', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Infopreneurs & coachs') }}</span>
+                      <span>📚 {{ __('Infopreneurs & coachs') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="sector[]" value="ecommerce" {{ in_array('ecommerce', (array)request()->input('sector', [])) ? 'checked' : '' }}>
-                      <span>{{ __('E-commerce') }}</span>
+                      <span>🛒 {{ __('E-commerce') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="sector[]" value="services-locaux" {{ in_array('services-locaux', (array)request()->input('sector', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Services locaux') }}</span>
+                      <span>🏪 {{ __('Services locaux') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="sector[]" value="associations-ong" {{ in_array('associations-ong', (array)request()->input('sector', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Associations / ONG') }}</span>
+                      <span>🤝 {{ __('Associations / ONG') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="sector[]" value="autres" {{ in_array('autres', (array)request()->input('sector', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Autres') }}</span>
+                      <span>💡 {{ __('Autres') }}</span>
                     </label>
                   </div>
                 </div>
@@ -354,15 +386,15 @@
                   <div class="filter-checkboxes">
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="mission_type[]" value="one-shot" {{ in_array('one-shot', (array)request()->input('mission_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Rituel unique (one-shot)') }}</span>
+                      <span>🎯 {{ __('Rituel unique (one-shot)') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="mission_type[]" value="long-term" {{ in_array('long-term', (array)request()->input('mission_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Accompagnement long terme') }}</span>
+                      <span>🔄 {{ __('Accompagnement long terme') }}</span>
                     </label>
                     <label class="filter-checkbox-item">
                       <input type="checkbox" name="mission_type[]" value="maintenance" {{ in_array('maintenance', (array)request()->input('mission_type', [])) ? 'checked' : '' }}>
-                      <span>{{ __('Maintenance / optimisation continue') }}</span>
+                      <span>🔧 {{ __('Maintenance / optimisation continue') }}</span>
                     </label>
                   </div>
                 </div>

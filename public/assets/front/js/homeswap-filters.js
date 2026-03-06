@@ -79,31 +79,57 @@
     var startInput = document.getElementById('homeswapStartDate');
     var endInput = document.getElementById('homeswapEndDate');
     var dateIcon = document.getElementById('homeswapDateIcon');
-    if (datesDisplay && startInput && endInput && typeof window.flatpickr !== 'undefined') {
+    // Si le système multi-périodes est actif (step2 onboarding), on ne démarre PAS
+    // le flatpickr simple — c'est initNxMultiPeriod qui gère tout le calendrier.
+    var hasMultiPeriod = !!document.getElementById('nxAddPeriodBtn');
+    if (!hasMultiPeriod && datesDisplay && startInput && endInput && typeof window.flatpickr !== 'undefined') {
       try {
+        // Restaure les dates initiales depuis les hidden inputs ISO (Y-m-d)
+        var initDates = [];
+        if (startInput.value) initDates.push(startInput.value);
+        if (endInput.value)   initDates.push(endInput.value);
+
         var fp = window.flatpickr(datesDisplay, {
-          mode: 'range',
-          dateFormat: 'd/m/Y',
-          locale: 'fr',
-          allowInput: false,
-          onChange: function(selectedDates, dateStr, instance) {
+          mode:              'range',
+          dateFormat:        'Y-m-d',   // format interne ISO
+          locale:            (window.flatpickr.l10ns && window.flatpickr.l10ns.fr) ? window.flatpickr.l10ns.fr : 'fr',
+          allowInput:        false,
+          monthSelectorType: 'static',
+          defaultDate:       initDates.length > 0 ? initDates : null,
+          onChange: function (selectedDates, dateStr, instance) {
             if (selectedDates.length === 2) {
               var start = selectedDates[0];
-              var end = selectedDates[1];
+              var end   = selectedDates[1];
               if (end < start) { instance.setDate([start, start]); return; }
               startInput.value = start.toISOString().split('T')[0];
-              endInput.value = end.toISOString().split('T')[0];
+              endInput.value   = end.toISOString().split('T')[0];
               datesDisplay.value = 'Du ' + start.toLocaleDateString('fr-FR') + ' / Au ' + end.toLocaleDateString('fr-FR');
+              startInput.dispatchEvent(new Event('change', { bubbles: true }));
+              endInput.dispatchEvent(new Event('change', { bubbles: true }));
             } else if (selectedDates.length === 1) {
               startInput.value = selectedDates[0].toISOString().split('T')[0];
-              endInput.value = '';
+              endInput.value   = '';
               datesDisplay.value = 'Du ' + selectedDates[0].toLocaleDateString('fr-FR') + ' / Au …';
+              startInput.dispatchEvent(new Event('change', { bubbles: true }));
             }
           }
         });
+        // Restaure l'affichage immédiatement après l'init (onReady non fiable en range mode)
+        if (initDates.length === 2) {
+          try {
+            var d1 = new Date(initDates[0] + 'T12:00:00');
+            var d2 = new Date(initDates[1] + 'T12:00:00');
+            datesDisplay.value = 'Du ' + d1.toLocaleDateString('fr-FR') + ' / Au ' + d2.toLocaleDateString('fr-FR');
+          } catch(e) {}
+        } else if (initDates.length === 1) {
+          try {
+            var d1 = new Date(initDates[0] + 'T12:00:00');
+            datesDisplay.value = 'Du ' + d1.toLocaleDateString('fr-FR') + ' / Au …';
+          } catch(e) {}
+        }
         if (dateIcon && fp) {
           dateIcon.style.cursor = 'pointer';
-          dateIcon.addEventListener('click', function() { fp.open(); });
+          dateIcon.addEventListener('click', function () { fp.open(); });
         }
         window.homeswapFlatpickrInstance = fp;
       } catch (err) { console.warn('Flatpickr homeswap:', err); }
@@ -233,7 +259,108 @@
       'Mont-Dore': ['Repos', 'Famille'],
       'Papeete': ['Repos', 'Famille'],
       'Faa\'a': ['Repos', 'Famille'],
-      'Moorea': ['Repos', 'Famille']
+      'Moorea': ['Repos', 'Famille'],
+      // BRÉSIL
+      'São Paulo': ['Business', 'Workation'],
+      'Rio de Janeiro': ['Repos', 'Famille'],
+      'Brasília': ['Business', 'Langue'],
+      // JAPON
+      'Tokyo': ['Business', 'Langue'],
+      'Osaka': ['Business', 'Repos'],
+      'Kyoto': ['Culture', 'Repos'],
+      // ÉMIRATS
+      'Dubaï': ['Business', 'Repos'],
+      'Abu Dhabi': ['Business', 'Workation'],
+      'Charjah': ['Famille', 'Repos'],
+      // QATAR
+      'Doha': ['Business', 'Langue'],
+      'Al-Rayyan': ['Business', 'Famille'],
+      'Al-Wakra': ['Repos', 'Famille'],
+      // ARABIE SAOUDITE
+      'Riyad': ['Business'],
+      'Djeddah': ['Business', 'Famille'],
+      'La Mecque': ['Culture'],
+      // SINGAPOUR
+      'Singapour': ['Business', 'Workation'],
+      'Sentosa': ['Repos'],
+      'Jurong': ['Business'],
+      // AUSTRALIE
+      'Sydney': ['Business', 'Workation'],
+      'Melbourne': ['Business', 'Famille'],
+      'Brisbane': ['Workation', 'Repos'],
+      // MEXIQUE
+      'Mexico': ['Business', 'Langue'],
+      'Guadalajara': ['Business', 'Famille'],
+      'Cancún': ['Repos'],
+      // CHINE
+      'Pékin': ['Business', 'Langue'],
+      'Shanghai': ['Business', 'Workation'],
+      'Canton': ['Business'],
+      // CORÉE DU SUD
+      'Séoul': ['Business', 'Langue'],
+      'Busan': ['Repos', 'Famille'],
+      'Incheon': ['Business'],
+      // INDE
+      'Mumbai': ['Business'],
+      'Delhi': ['Business', 'Famille'],
+      'Bangalore': ['Business', 'Workation'],
+      // GRÈCE
+      'Athènes': ['Culture', 'Famille'],
+      'Thessalonique': ['Repos', 'Culture'],
+      'Santorin': ['Repos'],
+      // THAÏLANDE
+      'Bangkok': ['Business', 'Workation'],
+      'Chiang Mai': ['Workation', 'Repos'],
+      'Phuket': ['Repos'],
+      // ÎLE MAURICE
+      'Port-Louis': ['Business', 'Repos'],
+      'Grand Baie': ['Repos', 'Famille'],
+      'Flic en Flac': ['Repos'],
+      // SEYCHELLES
+      'Victoria': ['Repos', 'Business'],
+      'Beau Vallon': ['Repos'],
+      'Anse Boileau': ['Repos', 'Famille'],
+      // SUÈDE
+      'Stockholm': ['Business', 'Langue'],
+      'Göteborg': ['Business', 'Famille'],
+      'Malmö': ['Workation', 'Famille'],
+      // DANEMARK
+      'Copenhague': ['Business', 'Langue'],
+      'Aarhus': ['Workation', 'Culture'],
+      'Odense': ['Famille', 'Repos'],
+      // NORVÈGE
+      'Oslo': ['Business', 'Workation'],
+      'Bergen': ['Repos', 'Culture'],
+      'Stavanger': ['Business', 'Workation'],
+      // AUTRICHE
+      'Vienne': ['Culture', 'Business'],
+      'Salzbourg': ['Culture', 'Repos'],
+      'Graz': ['Workation', 'Famille'],
+      // CHYPRE
+      'Nicosie': ['Business', 'Repos'],
+      'Limassol': ['Repos', 'Business'],
+      'Paphos': ['Repos'],
+      // INDONÉSIE
+      'Bali': ['Repos', 'Workation'],
+      'Jakarta': ['Business', 'Famille'],
+      'Yogyakarta': ['Culture', 'Repos'],
+      // MALAISIE
+      'Kuala Lumpur': ['Business', 'Famille'],
+      'Penang': ['Culture', 'Repos'],
+      'Johor Bahru': ['Business', 'Famille'],
+      // PHILIPPINES
+      'Manille': ['Business', 'Famille'],
+      'Cebu': ['Repos', 'Famille'],
+      'Davao': ['Repos', 'Famille'],
+      // CROATIE (compléments)
+      'Zagreb': ['Business', 'Langue'],
+      'Rijeka': ['Repos', 'Langue'],
+      'Zadar': ['Repos', 'Famille'],
+      // IRLANDE (compléments)
+      'Cork': ['Business', 'Langue'],
+      'Galway': ['Langue', 'Famille'],
+      'Limerick': ['Business', 'Famille'],
+      'Waterford': ['Culture', 'Famille']
     };
 
     // Liste fermée des objectifs affichés (max 2 par ville, aucun emoji)
@@ -398,12 +525,32 @@
       'CI': ['Abidjan', 'Yamoussoukro', 'San Pedro'],
       'IE': ['Dublin'],
       'HR': ['Split', 'Dubrovnik'],
+      'BR': ['São Paulo', 'Rio de Janeiro', 'Brasília'],
+      'JP': ['Tokyo', 'Osaka', 'Kyoto'],
+      'AE': ['Dubaï', 'Abu Dhabi', 'Charjah'],
+      'QA': ['Doha', 'Al-Rayyan', 'Al-Wakra'],
+      'SA': ['Riyad', 'Djeddah', 'La Mecque'],
+      'SG': ['Singapour', 'Sentosa', 'Jurong'],
+      'AU': ['Sydney', 'Melbourne', 'Brisbane'],
+      'MX': ['Mexico', 'Guadalajara', 'Cancún'],
+      'CN': ['Pékin', 'Shanghai', 'Canton'],
+      'KR': ['Séoul', 'Busan', 'Incheon'],
+      'IN': ['Mumbai', 'Delhi', 'Bangalore'],
+      'GR': ['Athènes', 'Thessalonique', 'Santorin'],
+      'TH': ['Bangkok', 'Chiang Mai', 'Phuket'],
+      'MU': ['Port-Louis', 'Grand Baie', 'Flic en Flac'],
+      'SC': ['Victoria', 'Beau Vallon', 'Anse Boileau'],
+      'SE': ['Stockholm', 'Göteborg', 'Malmö'],
+      'DK': ['Copenhague', 'Aarhus', 'Odense'],
+      'NO': ['Oslo', 'Bergen', 'Stavanger'],
+      'AT': ['Vienne', 'Salzbourg', 'Graz'],
+      'CY': ['Nicosie', 'Limassol', 'Paphos'],
+      'ID': ['Bali', 'Jakarta', 'Yogyakarta'],
+      'MY': ['Kuala Lumpur', 'Penang', 'Johor Bahru'],
+      'PH': ['Manille', 'Cebu', 'Davao'],
       'GP': ['Pointe-à-Pitre', 'Basse-Terre', 'Saint-François'],
       'MQ': ['Fort-de-France', 'Le Lamentin', 'Sainte-Anne'],
-      'GF': ['Cayenne', 'Kourou', 'Saint-Laurent-du-Maroni'],
-      'RE': ['Saint-Denis', 'Saint-Pierre', 'Saint-Gilles-les-Bains'],
-      'NC': ['Nouméa', 'Dumbéa', 'Mont-Dore'],
-      'PF': ['Papeete', 'Faa\'a', 'Moorea']
+      'RE': ['Saint-Denis', 'Saint-Pierre', 'Saint-Gilles-les-Bains']
     };
     var countrySelect = document.getElementById('homeswapFilterCountry');
     var citySelect = document.getElementById('homeswapFilterCity');
@@ -412,6 +559,8 @@
     function updateHomeswapCities() {
       if (!countrySelect || !citySelect) return;
       var country = countrySelect.value;
+      // Mémorise la ville déjà sélectionnée (pré-rendue serveur ou data-attr) AVANT de vider
+      var previousCity = citySelect.value || form.getAttribute('data-selected-city') || '';
       citySelect.innerHTML = '<option value="">Sélectionner une ville ou zone</option>';
       if (country && citiesByCountry[country]) {
         var cities = citiesByCountry[country].slice();
@@ -457,10 +606,15 @@
           citySelect.appendChild(opt);
         }
         
-        var selectedCity = form.getAttribute('data-selected-city');
+        // Priorité 1 : valeur mémorisée avant le vidage (pré-rendu serveur ou data-attr)
+        var selectedCity = previousCity || form.getAttribute('data-selected-city') || '';
         if (selectedCity && cities.indexOf(selectedCity) !== -1) {
           citySelect.value = selectedCity;
           form.removeAttribute('data-selected-city');
+          // Différé : s'assure que nexus-autosave.js a fini son init (DOMContentLoaded order)
+          setTimeout(function () {
+            citySelect.dispatchEvent(new Event('change', { bubbles: true }));
+          }, 0);
         }
         
         // Afficher l'assistant post-sélection si une ville est sélectionnée
@@ -566,8 +720,13 @@
       cityWrapper.appendChild(assistant);
       
       // Ajuster le padding du select pour laisser de la place aux icônes
+      // Calcul dynamique : 2.5rem (flèche native) + chaque icône ~26px + gaps
       if (citySelect.parentElement) {
-        citySelect.style.paddingRight = '4.5rem';
+        var nIcons = displayBadgesForAssistant.length + (isVeryPopular ? 1 : 0);
+        var hasInfoBtn = (displayBadgesForAssistant.length > 0 || isVeryPopular || seoText) ? 1 : 0;
+        var totalItems = nIcons + hasInfoBtn;
+        var neededPx = 40 + totalItems * 26 + Math.max(0, totalItems - 1) * 6;
+        citySelect.style.paddingRight = Math.max(64, neededPx) + 'px';
       }
     }
 
@@ -696,10 +855,7 @@
       });
     }
 
-    if (countrySelect && citySelect) {
-      countrySelect.addEventListener('change', updateHomeswapCities);
-      updateHomeswapCities();
-    }
+    // (bloc dupliqué supprimé — updateHomeswapCities() déjà appelé ci-dessus)
 
     var tripPurposeAutre = document.getElementById('homeswapTripPurposeAutre');
     var tripPurposeOther = document.getElementById('homeswapTripPurposeOther');

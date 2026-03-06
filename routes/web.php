@@ -118,6 +118,31 @@ Route::post('/pricing/subscribe', [\App\Http\Controllers\FrontEnd\PricingControl
   // Dashboard Freelance One-Page Premium (DOIT être AVANT /freelance/{id} pour éviter le conflit)
   Route::get('/freelance/dashboard', [\App\Http\Controllers\FrontEnd\Freelance\FreelanceDashboardController::class, 'index'])->name('freelance.dashboard')->middleware('auth:web');
 
+  // Dashboard NEXUS — Espace échanges premium
+  Route::get('/nexus/dashboard', [\App\Http\Controllers\FrontEnd\NexusDashboardController::class, 'index'])->name('nexus.dashboard')->middleware('auth:web');
+  Route::post('/nexus/preferences', [\App\Http\Controllers\FrontEnd\NexusDashboardController::class, 'savePreferences'])->name('nexus.preferences.save')->middleware('auth:web');
+  Route::get('/nexus/offer', [\App\Http\Controllers\FrontEnd\NexusDashboardController::class, 'saveOffer'])->name('nexus.offer.save')->middleware('auth:web');
+
+  // Onboarding NEXUS — Profil échanges premium (6 étapes)
+  Route::middleware(['auth:web'])->prefix('/nexus/onboarding')->name('nexus.onboarding.')->group(function () {
+    Route::get('/step-1',  [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step1'])->name('step1');
+    Route::post('/step-1', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step1Store'])->name('step1.store');
+    // Autosave silencieux — appelé en AJAX à chaque modification de champ
+    Route::post('/autosave', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'autosave'])->name('autosave');
+    Route::get('/step-2',  [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step2'])->name('step2');
+    Route::post('/step-2', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step2Store'])->name('step2.store');
+    Route::get('/step-3',  [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step3'])->name('step3');
+    Route::post('/step-3', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step3Store'])->name('step3.store');
+    // Redirections de compatibilité (anciens liens step4/5/6)
+    Route::get('/step-4',  [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step4'])->name('step4');
+    Route::post('/step-4', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step4Store'])->name('step4.store');
+    Route::get('/step-5',  [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step5'])->name('step5');
+    Route::post('/step-5', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step5Store'])->name('step5.store');
+    Route::get('/step-6',  [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step6'])->name('step6');
+    Route::post('/step-6', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'step6Store'])->name('step6.store');
+    Route::get('/complete', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'complete'])->name('complete');
+  });
+
   // Disponibilités calendrier freelance (onglet Agenda)
   Route::middleware(['auth:web'])->prefix('/freelance/calendar')->name('freelance.calendar.')->group(function () {
     Route::get('/slots', [\App\Http\Controllers\FrontEnd\Freelance\AvailabilityController::class, 'index'])->name('slots.index');

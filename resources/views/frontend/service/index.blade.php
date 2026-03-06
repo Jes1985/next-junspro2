@@ -321,7 +321,7 @@
                            name="delivery_mode" 
                            value="standard"
                            @checked(request()->input('delivery_mode') == 'standard' || empty(request()->input('delivery_mode')))>
-                    <span>{{ __('Standard') }} <small class="text-muted">({{ __('Livraison hebdomadaire') }})</small></span>
+                    <span>📦 {{ __('Standard') }} <small class="text-muted">({{ __('Livraison hebdomadaire') }})</small></span>
                   </label>
                   <label class="filter-checkbox-item">
                     <input type="radio" 
@@ -329,7 +329,7 @@
                            name="delivery_mode" 
                            value="express_72h"
                            @checked(request()->input('delivery_mode') == 'express_72h')>
-                    <span>{{ __('Express 72h') }} <small class="text-muted">(+10%)</small></span>
+                    <span>⚡ {{ __('Express 72h') }} <small class="text-muted">(+10%)</small></span>
                   </label>
                   <label class="filter-checkbox-item">
                     <input type="radio" 
@@ -337,7 +337,7 @@
                            name="delivery_mode" 
                            value="express_48h"
                            @checked(request()->input('delivery_mode') == 'express_48h')>
-                    <span>{{ __('Express 48h') }} <small class="text-muted">(+20%)</small></span>
+                    <span>⚡⚡ {{ __('Express 48h') }} <small class="text-muted">(+20%)</small></span>
                   </label>
                   <label class="filter-checkbox-item">
                     <input type="radio" 
@@ -345,7 +345,7 @@
                            name="delivery_mode" 
                            value="express_24h"
                            @checked(request()->input('delivery_mode') == 'express_24h')>
-                    <span>{{ __('Express 24h') }} <small class="text-muted">(+30%)</small></span>
+                    <span>🚀 {{ __('Express 24h') }} <small class="text-muted">(+30%)</small></span>
                   </label>
                 </div>
               </div>
@@ -965,68 +965,64 @@
     }
 
 
-    /* Filtres checkboxes */
+    /* ─ Pill rose — filtres checkboxes (service index) ─ */
     .filter-checkboxes {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 8px;
-      max-height: 300px;
-      overflow-y: auto;
-      overflow-x: hidden;
       margin-top: 0;
     }
 
     .filter-checkboxes.collapsed {
-      max-height: 200px;
+      max-height: none;
     }
 
-    .filter-checkboxes::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    .filter-checkboxes::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .filter-checkboxes::-webkit-scrollbar-thumb {
-      background: var(--premium-border);
-      border-radius: 2px;
-    }
-
-    .filter-checkboxes::-webkit-scrollbar-thumb:hover {
-      background: var(--premium-text-light);
-    }
+    .filter-checkboxes::-webkit-scrollbar { display: none; }
 
     .filter-checkbox-item {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 10px;
-      transition: opacity 0.2s ease;
+      gap: 0;
+      padding: 0;
+      border-radius: 0;
       cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 14px;
-      color: var(--premium-text-medium);
       user-select: none;
     }
 
-    .filter-checkbox-item:hover {
-      background: rgba(79, 70, 229, 0.05);
+    .filter-checkbox-item span {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 13px;
+      border: 1.5px solid #f3e8f0;
+      background: #fdf9fc;
+      color: #374151;
+      border-radius: 10px;
+      font-size: .84rem;
+      cursor: pointer;
+      transition: all .18s ease;
+      white-space: nowrap;
     }
 
+    .filter-checkbox-item span:hover { border-color: rgba(236,72,153,.45); background: rgba(236,72,153,.05); color: #EC4899; }
+
     .filter-checkbox {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      accent-color: var(--premium-primary);
-      flex-shrink: 0;
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      width: 0;
+      height: 0;
     }
 
     .filter-checkbox-item:has(.filter-checkbox:checked) {
-      background: rgba(79, 70, 229, 0.08);
-      color: var(--premium-primary);
-      font-weight: 500;
+      background: none;
+    }
+
+    .filter-checkbox-item:has(.filter-checkbox:checked) span {
+      border-color: #EC4899;
+      background: rgba(236,72,153,.09);
+      color: #EC4899;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(236,72,153,.18);
     }
 
     .filter-select {
@@ -1074,23 +1070,22 @@
       accent-color: var(--premium-primary);
     }
 
-    /* Style pour les radio buttons dans filter-checkbox-item */
+    /* Radios dans filter-checkbox-item : masqués, pill checked rose */
     .filter-checkbox-item .filter-radio {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      accent-color: var(--premium-primary);
+      position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0;
     }
 
-    .filter-checkbox-item:has(.filter-radio:checked) {
-      background: rgba(79, 70, 229, 0.08);
-      color: var(--premium-primary);
-      font-weight: 500;
+    .filter-checkbox-item:has(.filter-radio:checked) span {
+      border-color: #EC4899;
+      background: rgba(236,72,153,.09);
+      color: #EC4899;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(236,72,153,.18);
     }
 
     .filter-option:has(.filter-radio:checked) {
-      background: rgba(79, 70, 229, 0.08);
-      color: var(--premium-primary);
+      background: rgba(236,72,153,.05);
+      color: #EC4899;
       font-weight: 500;
     }
 

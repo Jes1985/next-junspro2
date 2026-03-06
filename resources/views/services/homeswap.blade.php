@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 
 @section('pageHeading')
-  Échanges de logement | {{ $websiteInfo->website_title }}
+  NEXUS | {{ $websiteInfo->website_title }}
 @endsection
 
 @section('metaDescription')
@@ -112,18 +112,25 @@
   }
 
   .homeswap-hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--preply-text);
-    margin-bottom: 16px;
-    line-height: 1.2;
+    font-size: 3.75rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: linear-gradient(120deg, #1e293b 0%, #EC4899 45%, #2563EB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 14px;
+    line-height: 1.1;
   }
 
   .homeswap-hero-subtitle {
-    font-size: 1.5rem;
-    color: var(--preply-text-light);
+    font-size: 1.2rem;
+    color: #64748b;
     margin-bottom: 32px;
     font-weight: 400;
+    letter-spacing: 0.04em;
+    font-style: italic;
   }
 
   .homeswap-hero-badges {
@@ -1213,11 +1220,12 @@
 
   @media (max-width: 768px) {
     .homeswap-hero-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
+      letter-spacing: 0.12em;
     }
 
     .homeswap-hero-subtitle {
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
 
     .homeswap-hero-badges {
@@ -1795,55 +1803,32 @@
     flex-wrap: wrap;
   }
 
-  /* Checkboxes */
-  .homeswap-checkboxes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-  }
-
+  /* ─ Pill rose — tous les checkboxes filtres HomeSwap (page listing) ─ */
+  .homeswap-checkboxes-grid { display: flex; flex-wrap: wrap; gap: 8px; }
   .homeswap-checkbox-label {
-    display: flex;
-    align-items: center;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 13px;
+    border: 1.5px solid #f3e8f0;
+    background: #fdf9fc;
+    color: #374151;
+    border-radius: 10px;
+    font-size: .84rem;
     cursor: pointer;
+    transition: all .18s ease;
+    white-space: nowrap;
     user-select: none;
   }
-
-  .homeswap-checkbox-input {
-    display: none;
+  .homeswap-checkbox-label:hover { border-color: rgba(236,72,153,.45); background: rgba(236,72,153,.05); color: #EC4899; }
+  .homeswap-checkbox-input { position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0; }
+  .homeswap-checkbox-custom { display: none !important; }
+  .homeswap-checkbox-label:has(.homeswap-checkbox-input:checked) {
+    border-color: #EC4899;
+    background: rgba(236,72,153,.09);
+    color: #EC4899;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(236,72,153,.18);
   }
-
-  .homeswap-checkbox-custom {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--preply-border);
-    border-radius: 4px;
-    margin-right: 10px;
-    position: relative;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-  }
-
-  .homeswap-checkbox-input:checked + .homeswap-checkbox-custom {
-    background: var(--preply-primary);
-    border-color: var(--preply-primary);
-  }
-
-  .homeswap-checkbox-input:checked + .homeswap-checkbox-custom::after {
-    content: '✓';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-  }
-
-  .homeswap-checkbox-text {
-    font-size: 0.9375rem;
-    color: var(--preply-text);
-  }
+  .homeswap-checkbox-text { font-size: .84rem; }
 
   /* Caractéristiques du logement */
   .homeswap-characteristics-grid {
@@ -1996,6 +1981,116 @@
   }
   .homeswap-filters-advanced-panel.is-open {
     display: block !important;
+  }
+
+  /* ── Bloc Ma langue maternelle (barre principale homeswap) ─────────────── */
+  .homeswap-filters-form .filter-group.besoin-langues {
+    padding: 0.85rem 0 0.75rem;
+    border-top: 1px solid rgba(236, 72, 153, 0.1);
+    margin-top: 0.25rem;
+  }
+  .homeswap-filters-form .filter-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.55rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .homeswap-filters-form .filter-label i { color: #EC4899; }
+  .homeswap-filters-form .filter-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    background: #fff;
+    color: #374151;
+    appearance: auto;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .homeswap-filters-form .filter-select:focus {
+    outline: none;
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+  }
+  /* Layout ligne langue */
+  .homeswap-filters-form .besoin-langues-row {
+    display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 1rem 1.5rem;
+  }
+  .homeswap-filters-form .besoin-mother-tongue-wrap {
+    min-width: 180px; max-width: 220px; flex-shrink: 0;
+  }
+  .homeswap-filters-form .besoin-mother-tongue-wrap .filter-select { width: 100%; }
+  .homeswap-filters-form .besoin-other-langs-wrap {
+    position: relative; flex: 1; min-width: 0;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem;
+  }
+  .homeswap-filters-form .besoin-other-langs-label {
+    font-size: 0.8rem; color: #6b7280; margin: 0; flex-shrink: 0;
+  }
+  .homeswap-filters-form .besoin-lang-chips {
+    display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem;
+    min-height: 2rem; padding: 0.1rem 0; min-width: 0;
+  }
+  .homeswap-filters-form .besoin-lang-chip {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.25rem 0.55rem; border-radius: 10px;
+    background: rgba(236, 72, 153, 0.07); border: 1px solid rgba(236, 72, 153, 0.22);
+    font-size: 0.8rem; color: #1f2937;
+  }
+  .homeswap-filters-form .besoin-lang-chip-remove {
+    background: none; border: none; padding: 0; margin: 0;
+    cursor: pointer; color: #9ca3af; font-size: 0.9em; line-height: 1;
+  }
+  .homeswap-filters-form .besoin-lang-chip-remove:hover { color: #ef4444; }
+  .homeswap-filters-form .besoin-add-lang-btn {
+    display: inline-flex; align-items: center; padding: 0.3rem 0.7rem; flex-shrink: 0;
+    background: rgba(236, 72, 153, 0.06); border: 1px solid rgba(236, 72, 153, 0.2);
+    border-radius: 8px; color: #EC4899; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s; gap: 0.3rem;
+  }
+  .homeswap-filters-form .besoin-add-lang-btn:hover {
+    background: rgba(236, 72, 153, 0.12); border-color: rgba(236, 72, 153, 0.4);
+  }
+  /* Popover CECRL */
+  .homeswap-filters-form .cecrl-popover {
+    display: none; position: absolute; z-index: 200; top: 100%; left: 0; margin-top: 0.35rem;
+    min-width: 320px; max-width: 420px; max-height: 280px; overflow-y: auto;
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .homeswap-filters-form .cecrl-popover:not([hidden]) { display: block; }
+  .homeswap-filters-form .cecrl-popover[hidden] { display: none !important; }
+  .homeswap-filters-form .cecrl-popover-inner { padding: 0.75rem 1rem; }
+  .homeswap-filters-form .cecrl-table-head {
+    display: flex; padding: 0 0 0.5rem; margin-bottom: 0.5rem;
+    border-bottom: 1px solid #eee; font-size: 0.75rem; font-weight: 600;
+    color: #6b7280; text-transform: uppercase;
+  }
+  .homeswap-filters-form .cecrl-th-lang { width: 100px; flex-shrink: 0; }
+  .homeswap-filters-form .cecrl-th-level { flex: 1; }
+  .homeswap-filters-form .cecrl-row {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0; font-size: 0.85rem;
+  }
+  .homeswap-filters-form .cecrl-lang { width: 100px; flex-shrink: 0; color: #374151; }
+  .homeswap-filters-form .cecrl-pills { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+  .homeswap-filters-form .cecrl-pill {
+    padding: 0.2rem 0.45rem; border-radius: 8px; border: 1px solid #e5e7eb;
+    background: #fafafa; color: #6b7280; font-size: 0.75rem; font-weight: 500;
+    cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .homeswap-filters-form .cecrl-pill:hover { background: #fce7f3; border-color: #f9a8d4; color: #be185d; }
+  .homeswap-filters-form .cecrl-pill.is-selected {
+    background: rgba(236, 72, 153, 0.1); border-color: rgba(236, 72, 153, 0.4); color: #EC4899;
+  }
+  @media (max-width: 768px) {
+    .homeswap-filters-form .besoin-langues-row { flex-direction: column; }
+    .homeswap-filters-form .besoin-mother-tongue-wrap { max-width: 100%; }
+    .homeswap-filters-form .besoin-other-langs-wrap { min-width: 100%; }
   }
 
   /* Responsive */
@@ -2237,6 +2332,201 @@
   
   .domain-dropdown-menu {
     z-index: 10000 !important;
+  }
+
+  /* ============================================
+     NEXUS — Ligne Domaine + Spécialisation
+     ============================================ */
+  .homeswap-domain-spec-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 24px 0;
+    flex-wrap: wrap;
+  }
+
+  .filter-domain-nexus {
+    flex: 0 0 auto;
+  }
+
+  .filter-specialization-nexus {
+    flex: 1 1 220px;
+    min-width: 180px;
+    max-width: 320px;
+  }
+
+  @media (max-width: 640px) {
+    .homeswap-domain-spec-row { padding: 12px 12px 0; gap: 12px; }
+    .filter-specialization-nexus { max-width: 100%; flex: 1 1 100%; }
+  }
+
+  /* Étiquette au-dessus des pills */
+  .mode-intervention-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9CA3AF;
+    margin-bottom: 6px;
+  }
+
+  /* Conteneur pills (identique home) */
+  .mode-intervention-segmented {
+    display: flex;
+    gap: 0.375rem;
+    background: #f3f4f6;
+    border-radius: 12px;
+    padding: 4px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .mode-intervention-pill {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border: none;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .mode-intervention-pill:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .mode-intervention-pill.is-active {
+    background: linear-gradient(135deg, #EC4899 0%, #A855F7 55%, #3B82F6 100%);
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(236, 72, 153, 0.28);
+  }
+
+  .mode-intervention-pill-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+
+  .mode-intervention-pill-text {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #374151;
+    transition: color 0.18s ease;
+  }
+
+  .mode-intervention-pill.is-active .mode-intervention-pill-text {
+    color: #fff;
+  }
+
+  @media (max-width: 580px) {
+    .mode-intervention-segmented { flex-wrap: wrap; }
+    .mode-intervention-pill { flex: 1 1 calc(50% - 0.375rem); }
+  }
+
+  /* ============================================
+     NEXUS — Pricing Cards (section abonnement)
+     ============================================ */
+  .nexus-premium-eyebrow {
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(236,72,153,.1) 0%, rgba(168,85,247,.1) 100%);
+    color: #A855F7;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    margin-bottom: 14px;
+  }
+
+  .nexus-pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 28px 0 32px;
+  }
+
+  @media (max-width: 540px) {
+    .nexus-pricing-grid { grid-template-columns: 1fr; }
+  }
+
+  .nexus-pricing-card {
+    border: 1.5px solid #E5E7EB;
+    border-radius: 18px;
+    padding: 26px 22px 22px;
+    text-align: center;
+    background: #fff;
+    transition: box-shadow 0.22s ease, border-color 0.22s ease;
+    position: relative;
+  }
+
+  .nexus-pricing-card--popular {
+    border-color: #EC4899;
+    box-shadow: 0 4px 24px rgba(236, 72, 153, 0.14);
+  }
+
+  .nexus-pricing-card--annual {
+    border-color: #A855F7;
+    box-shadow: 0 4px 24px rgba(168, 85, 247, 0.12);
+  }
+
+  .nexus-pricing-badge-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 3px 12px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #EC4899, #A855F7);
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  .nexus-pricing-badge-pill--offer {
+    background: linear-gradient(90deg, #A855F7, #3B82F6);
+  }
+
+  .nexus-pricing-cycle {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .nexus-pricing-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .nexus-pricing-amount {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #1F2937;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .nexus-pricing-freq {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #9CA3AF;
+    padding-bottom: 5px;
+  }
+
+  .nexus-pricing-note {
+    font-size: 0.8125rem;
+    color: #9CA3AF;
+    font-style: italic;
   }
 
   /* Loading state */
@@ -4731,8 +5021,8 @@
   <section class="homeswap-hero-premium">
     <div class="homeswap-hero-container">
       <div class="homeswap-hero-content">
-        <h1 class="homeswap-hero-title">Échanges de logement</h1>
-        <p class="homeswap-hero-subtitle">Vivez comme les locaux, sans payer le logement</p>
+        <h1 class="homeswap-hero-title">NEXUS</h1>
+        <p class="homeswap-hero-subtitle">Habitez le monde. Échangez autrement.</p>
         
         <div class="homeswap-hero-badges">
           <div class="homeswap-hero-badge">
@@ -4756,8 +5046,8 @@
           </div>
 
         <div class="homeswap-hero-cta">
-          <a href="#results" class="homeswap-hero-btn-primary">Voir les logements</a>
-          <a href="#abonnement" class="homeswap-hero-btn-secondary">Débloquer HomeSwap (99€/an)</a>
+          <a href="#results" class="homeswap-hero-btn-primary">Voir les espaces</a>
+          <a href="#abonnement" class="homeswap-hero-btn-secondary">Rejoindre NEXUS →</a>
           </div>
 
         <p class="homeswap-hero-disclaimer">
@@ -4817,8 +5107,8 @@
                 </div>
         <div class="homeswap-how-step">
           <div class="homeswap-how-step-number">2</div>
-          <h3 class="homeswap-how-step-title">Débloquer l'accès</h3>
-          <p class="homeswap-how-step-description">Abonnement 99€/an pour débloquer messages, visio et organisation d'échange.</p>
+          <h3 class="homeswap-how-step-title">Rejoindre NEXUS</h3>
+          <p class="homeswap-how-step-description">99€ / 4 semaines ou 999€/an (2 mois offerts) pour débloquer messages, visio et échanges inter-domaines.</p>
                   </div>
         <div class="homeswap-how-step">
           <div class="homeswap-how-step-number">3</div>
@@ -5035,8 +5325,30 @@
     <div class="homeswap-premium-container">
       <div class="homeswap-premium-card">
         <div class="homeswap-premium-header">
-          <h2 class="homeswap-premium-title">Accès HomeSwap — 99€ / an</h2>
-          <p class="homeswap-premium-subtitle">Débloquez l'accès complet à la plateforme d'échange</p>
+          <div class="nexus-premium-eyebrow">✦ Abonnement unique — Tous domaines</div>
+          <h2 class="homeswap-premium-title">Rejoindre NEXUS</h2>
+          <p class="homeswap-premium-subtitle">Entrez dans le réseau mondial d'échanges d'espaces d'exception</p>
+        </div>
+        {{-- Grille tarifaire --}}
+        <div class="nexus-pricing-grid">
+          <div class="nexus-pricing-card nexus-pricing-card--popular">
+            <div class="nexus-pricing-badge-pill">⭐ Le plus populaire</div>
+            <div class="nexus-pricing-cycle">Cycle 4 semaines</div>
+            <div class="nexus-pricing-row">
+              <span class="nexus-pricing-amount">99€</span>
+              <span class="nexus-pricing-freq">/ 4 sem.</span>
+            </div>
+            <div class="nexus-pricing-note">Sans engagement · renouvelable</div>
+          </div>
+          <div class="nexus-pricing-card nexus-pricing-card--annual">
+            <div class="nexus-pricing-badge-pill nexus-pricing-badge-pill--offer">🎁 2 mois offerts</div>
+            <div class="nexus-pricing-cycle">Accès annuel</div>
+            <div class="nexus-pricing-row">
+              <span class="nexus-pricing-amount">999€</span>
+              <span class="nexus-pricing-freq">/ an</span>
+            </div>
+            <div class="nexus-pricing-note">= 10 × 99€ · économisez 189€</div>
+          </div>
         </div>
         <div class="homeswap-premium-features">
           <div class="homeswap-premium-feature">

@@ -188,7 +188,7 @@ class HomeController extends Controller
         'url' => route('services.wellnesslive')
       ],
       [
-        'title' => 'Échanges de logement',
+        'title' => 'NEXUS',
         'url' => route('services.homeswap')
       ],
       [
@@ -334,10 +334,10 @@ class HomeController extends Controller
         'borderColor' => 'rgba(251, 191, 36, 0.3)',
         'hoverBorderColor' => 'rgba(132, 204, 22, 0.4)'
       ],
-      // Échanges de logement (Rose/Bleu)
+      // NEXUS (Rose/Bleu)
       [
         'name' => 'Malte - Sliema',
-        'universe' => 'Échanges de logement',
+        'universe' => 'NEXUS',
         'universeIndex' => 4,
         'url' => route('services.homeswap', ['search' => 'Malte Sliema']),
         'icon' => 'home',
@@ -347,7 +347,7 @@ class HomeController extends Controller
       ],
       [
         'name' => 'France - Lyon',
-        'universe' => 'Échanges de logement',
+        'universe' => 'NEXUS',
         'universeIndex' => 4,
         'url' => route('services.homeswap', ['search' => 'Lyon']),
         'icon' => 'home',
