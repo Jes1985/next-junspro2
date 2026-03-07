@@ -385,6 +385,27 @@ Route::prefix('/parrainage')->middleware(['change.lang'])->group(function () {
   Route::get('/conditions', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'conditions'])->name('referral.conditions');
 });
 
+// ── Programme Apporteurs d'Affaires ─────────────────────────
+// Page publique (landing ultra-luxe, présentation des 3 paliers)
+Route::prefix('/apporteurs')->middleware(['change.lang'])->group(function () {
+  Route::get('/', [\App\Http\Controllers\FrontEnd\AffiliateController::class, 'landing'])->name('affiliate.landing');
+});
+
+// Dashboard et actions privés (auth requise)
+Route::prefix('/mon-espace/affiliation')->middleware(['auth:web', 'change.lang'])->group(function () {
+  Route::get('/',          [\App\Http\Controllers\FrontEnd\AffiliateController::class, 'dashboard'])->name('affiliate.dashboard');
+  Route::post('/rejoindre',[\App\Http\Controllers\FrontEnd\AffiliateController::class, 'register'])->name('affiliate.register');
+});
+
+// Route de tracking /a/{code} (publique, sans auth)
+Route::get('/a/{code}', [\App\Http\Controllers\FrontEnd\AffiliateController::class, 'track'])->name('affiliate.track')->middleware('change.lang');
+
+// API apporteurs (auth requise)
+Route::prefix('/api/affiliate')->middleware(['auth:web', 'change.lang'])->group(function () {
+  Route::post('/copy-link',      [\App\Http\Controllers\FrontEnd\AffiliateController::class, 'copyLink'])->name('affiliate.api.copy-link');
+  Route::post('/bank-info',      [\App\Http\Controllers\FrontEnd\AffiliateController::class, 'updateBankInfo'])->name('affiliate.api.bank-info');
+});
+
 // Routes Présence - Pause Souffle
 Route::prefix('/presence')->middleware(['change.lang'])->group(function () {
   Route::get('/pause-souffle', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'index'])->name('presence.pause-souffle');

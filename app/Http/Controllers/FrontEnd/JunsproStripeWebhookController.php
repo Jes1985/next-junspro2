@@ -7,7 +7,9 @@ use App\Models\AuditLog;
 use App\Models\NotificationLog;
 use App\Models\PauseSouffleIntake;
 use App\Models\Subscription;
+use App\Models\Affiliate;
 use App\Models\PaymentGateway\OnlineGateway;
+use App\Services\Junspro\AffiliateService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Stripe\Stripe;
@@ -75,6 +77,10 @@ class JunsproStripeWebhookController extends Controller
                 $this->handleSubscriptionCreated($event->data->object);
                 break;
 
+            case 'charge.refunded':
+                $this->handleChargeRefunded($event->data->object);
+                break;
+
             default:
                 Log::info('Unhandled Stripe webhook event', ['type' => $event->type]);
         }
@@ -132,6 +138,15 @@ class JunsproStripeWebhookController extends Controller
             'subscription_id' => $subscription->id,
             'invoice_id' => $invoice->id,
         ]);
+
+        // ─── Attribution commission affilié ────────────────────────────────
+        $this->recordAffiliateCommission(
+            $subscription->client->user ?? null,
+            $invoice->payment_intent ?? null,
+            $invoice->amount_paid / 100,
+            'subscription',
+            $subscription->id
+        );
     }
 
     /**
@@ -238,6 +253,15 @@ class JunsproStripeWebhookController extends Controller
                 'session_id' => $session->id,
                 'plan_key' => $intake->plan_key,
             ]);
+
+            // ─── Attribution commission affilié ──────────────────────────
+            $this->recordAffiliateCommission(
+                $intake->user ?? null,
+                $session->payment_intent ?? null,
+                ($session->amount_total ?? 0) / 100,
+                'other',
+                null
+            );
         }
         
         // Gérer abonnement Pause Souffle (subscription)
@@ -448,6 +472,78 @@ class JunsproStripeWebhookController extends Controller
             'subscription_id' => $stripeSubscription->id,
             'metadata' => $stripeSubscription->metadata ?? [],
         ]);
+    }
+
+    /**
+     * Gérer charge.refunded → annuler la commission affilié associée
+     */
+    protected function handleChargeRefunded($charge)
+    {
+        $paymentIntent = $charge->payment_intent ?? null;
+        if (!$paymentIntent) return;
+
+        try {
+            $affiliateService = app(AffiliateService::class);
+            $affiliateService->cancelConversion($paymentIntent);
+            Log::info('[Affiliate] Commission annulée suite remboursement', ['pi' => $paymentIntent]);
+        } catch (\Exception $e) {
+            Log::error('[Affiliate] Erreur annulation commission remboursement', ['error' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * Attribution automatique de commission affilié si le user a été apporté par un affilié
+     */
+    protected function recordAffiliateCommission(
+        ?\App\Models\User $user,
+        ?string $stripePaymentIntent,
+        float $amount,
+        string $sourceType,
+        ?int $sourceId = null
+    ): void {
+        if (!$user || !$stripePaymentIntent || $amount <= 0) return;
+
+        $affiliateCode = $user->referred_by_affiliate_code;
+        if (!$affiliateCode) return;
+
+        try {
+            $affiliate = Affiliate::where('status', 'active')
+                ->where(function ($q) use ($affiliateCode) {
+                    $q->where('affiliate_code', $affiliateCode)
+                      ->orWhere('custom_slug', $affiliateCode);
+                })
+                ->first();
+
+            if (!$affiliate) {
+                Log::info('[Affiliate] Code affilié introuvable ou inactif', ['code' => $affiliateCode]);
+                return;
+            }
+
+            // Ne pas auto-commissionner si l'affilié paie lui-même
+            if ($affiliate->user_id === $user->id) return;
+
+            $affiliateService = app(AffiliateService::class);
+            $affiliateService->recordConversion(
+                $affiliate,
+                $user,
+                $amount,              // transactionAmount
+                $sourceType,          // sourceType
+                $sourceId,            // sourceId
+                $stripePaymentIntent  // stripePaymentIntent
+            );
+
+            Log::info('[Affiliate] Commission enregistrée', [
+                'affiliate_id' => $affiliate->id,
+                'user_id'      => $user->id,
+                'amount'       => $amount,
+                'source'       => $sourceType,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('[Affiliate] Erreur enregistrement commission', [
+                'error'   => $e->getMessage(),
+                'user_id' => $user->id ?? null,
+            ]);
+        }
     }
 
     /**

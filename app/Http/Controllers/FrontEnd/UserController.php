@@ -575,6 +575,12 @@ class UserController extends Controller
     if ($referralCode) {
       Session::put('pending_referral_code_' . $user->id, $referralCode);
     }
+
+    // Enregistrer le code affilié depuis le cookie (sera stocké sur l'user après vérification)
+    $affiliateCode = $request->cookie('affiliate_code') ?? Session::get('affiliate_code');
+    if ($affiliateCode) {
+      Session::put('pending_affiliate_code_' . $user->id, $affiliateCode);
+    }
     
     // Créer le profil selon le rôle après vérification email
     // (sera fait dans signupVerify)
@@ -731,6 +737,25 @@ class UserController extends Controller
         } catch (\Exception $e) {
           // Log l'erreur mais ne bloque pas l'inscription
           \Log::warning('Erreur lors de l\'enregistrement du parrainage: ' . $e->getMessage());
+        }
+      }
+
+      // Stocker le code affilié sur l'user (permet attribution au webhook Stripe)
+      $affiliateCode = Session::get('pending_affiliate_code_' . $user->id)
+          ?? $request->cookie('affiliate_code');
+      Session::forget('pending_affiliate_code_' . $user->id);
+      if ($affiliateCode) {
+        try {
+          $affiliateExists = \App\Models\Affiliate::where('affiliate_code', $affiliateCode)
+              ->orWhere('custom_slug', $affiliateCode)
+              ->whereIn('status', ['active'])
+              ->exists();
+          if ($affiliateExists) {
+            $user->referred_by_affiliate_code = $affiliateCode;
+            $user->save();
+          }
+        } catch (\Exception $e) {
+          \Log::warning('[Affiliate] Erreur liaison code affilié à inscription: ' . $e->getMessage());
         }
       }
 
