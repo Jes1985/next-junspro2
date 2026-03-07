@@ -405,7 +405,7 @@ class NexusOnboardingController extends Controller
 
         // Autres filtres homeswap éventuellement autosauvegardés
         foreach (['specialization', 'trip_purpose', 'date_text', 'other_languages', 'mother_tongue',
-                  'property_amenities', 'nexus_domain'] as $filterKey) {
+                  'property_amenities', 'nexus_domain', 'residence_type', 'contact_preference'] as $filterKey) {
             if (!isset($step2Data[$filterKey]) && isset($saved[$filterKey])) {
                 $step2Data[$filterKey] = $saved[$filterKey];
             }
@@ -609,6 +609,13 @@ class NexusOnboardingController extends Controller
 
         // Photos conservées + nouvelles (existantes en premier, nouvelles ensuite)
         return array_values(array_merge($keep, $newFiles));
+    }
+
+    // ─── Become Member (page publique) ─────────────────────────────────────────
+
+    public function becomeMember()
+    {
+        return view('nexus.become-member');
     }
 
     // ─── Complete ──────────────────────────────────────────────────────────────

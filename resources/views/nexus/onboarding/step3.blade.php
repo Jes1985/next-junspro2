@@ -436,10 +436,42 @@
           </h3>
           <a href="{{ route('nexus.onboarding.step2') }}" class="nxr-edit-btn">✎ Modifier</a>
         </div>
-        @if(!empty($saved['property_type']))
+        @php
+          $nxrCC = ['FR'=>'France','GP'=>'Guadeloupe','MQ'=>'Martinique','RE'=>'La Réunion','BE'=>'Belgique','CH'=>'Suisse','ES'=>'Espagne','DE'=>'Allemagne','IT'=>'Italie','PT'=>'Portugal','NL'=>'Pays-Bas','GB'=>'Royaume-Uni','CA'=>'Canada','US'=>'États-Unis','MT'=>'Malte','MC'=>'Monaco','LU'=>'Luxembourg','MA'=>'Maroc','TN'=>'Tunisie','SN'=>'Sénégal',"CI"=>"Côte d'Ivoire",'IE'=>'Irlande','HR'=>'Croatie','BR'=>'Brésil','JP'=>'Japon','AE'=>'Émirats','QA'=>'Qatar','SA'=>'Arabie Saoudite','SG'=>'Singapour','AU'=>'Australie','MX'=>'Mexique','CN'=>'Chine','KR'=>'Corée du Sud','IN'=>'Inde','GR'=>'Grèce','TH'=>'Thaïlande','MU'=>'Île Maurice','SC'=>'Seychelles','SE'=>'Suède','DK'=>'Danemark','NO'=>'Norvège','AT'=>'Autriche','CY'=>'Chypre','ID'=>'Indonésie','MY'=>'Malaisie','PH'=>'Philippines'];
+          $nxrCountryLabel = $nxrCC[$saved['country'] ?? ''] ?? ($saved['country'] ?? '');
+          $nxrResLabel = ['principale' => '🏠 Principale', 'secondaire' => '🏡 Secondaire'];
+        @endphp
+        @if(!empty($saved['country']))
           <div class="nxr-row">
-            <span class="nxr-row-label">Type</span>
-            <span class="nxr-row-val emphasis">{{ $saved['property_type'] }}</span>
+            <span class="nxr-row-label">Pays</span>
+            <span class="nxr-row-val">📍 {{ $nxrCountryLabel }}</span>
+          </div>
+        @endif
+        @if(!empty($saved['city']))
+          <div class="nxr-row">
+            <span class="nxr-row-label">Ville</span>
+            <span class="nxr-row-val">🏙 {{ $saved['city'] }}</span>
+          </div>
+        @endif
+        @if(!empty($saved['property_type']))
+          @php
+            $nxrPT = ['logement'=>['🏠','Logement'],'bureau'=>['🏢','Espace Pro'],'pedagogique'=>['📚','Espace Pédagogique'],'wellness'=>['🧘','Espace Bien-Être'],'evenement'=>['🎪','Salle d\'Événement'],'autre'=>['✨','Autre']];
+            $nxrPTData = $nxrPT[$saved['property_type']] ?? ['✨', ucfirst($saved['property_type'])];
+          @endphp
+          <div class="nxr-row">
+            <span class="nxr-row-label">Type de bien</span>
+            <span class="nxr-row-val">{{ $nxrPTData[0] }} {{ $nxrPTData[1] }}</span>
+          </div>
+        @endif
+        @php
+          $nxrIsLogement = !empty($saved['property_type'])
+              ? $saved['property_type'] === 'logement'
+              : ($saved['nexus_domain'] ?? '') === 'logement';
+        @endphp
+        @if(!empty($saved['residence_type']) && $nxrIsLogement)
+          <div class="nxr-row">
+            <span class="nxr-row-label">Type de résidence</span>
+            <span class="nxr-row-val">{{ $nxrResLabel[$saved['residence_type']] ?? ucfirst($saved['residence_type']) }}</span>
           </div>
         @endif
         @if(!empty($saved['property_title']))

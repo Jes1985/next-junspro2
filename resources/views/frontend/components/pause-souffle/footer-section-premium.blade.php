@@ -12,5 +12,6 @@
       <span class="footer-micro-desc">{{ __('Baromètre en temps réel & méthode') }}</span>
     </li>
     <li><a href="{{ route('freelance.onboarding.start') }}">{{ __('Devenir un freelance') }}</a></li>
+    <li><a href="{{ route('nexus.become-member') }}">{{ __('Devenir Membre NEXUS') }}</a></li>
   </ul>
 </div>

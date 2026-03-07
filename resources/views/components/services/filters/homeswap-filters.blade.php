@@ -111,70 +111,8 @@
     </button>
   </div>
 
-  {{-- Ligne 1b : Ma langue maternelle + Autres langues parlées --}}
-  @php
-    $hs_languages = ['fr' => 'Français', 'en' => 'Anglais', 'es' => 'Espagnol', 'de' => 'Allemand', 'it' => 'Italien', 'pt' => 'Portugais', 'nl' => 'Néerlandais', 'ru' => 'Russe', 'zh' => 'Chinois', 'ar' => 'Arabe', 'ja' => 'Japonais', 'pl' => 'Polonais', 'el' => 'Grec', 'tr' => 'Turc', 'sv' => 'Suédois', 'ko' => 'Coréen', 'hi' => 'Hindi'];
-    $hs_cecrl = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-  @endphp
-  <div class="filter-group besoin-langues filter-group--full homeswap-langues-row">
-    <label class="filter-label"><i class="fas fa-language me-2"></i>Ma langue maternelle</label>
-    <div class="besoin-langues-row">
-      <div class="besoin-mother-tongue-wrap">
-        <select name="mother_tongue" id="besoin_mother_tongue_homeswap" class="filter-select">
-          <option value="">{{ __('Langue maternelle') }}</option>
-          @foreach($hs_languages as $code => $label)
-            <option value="{{ $code }}" {{ request('mother_tongue') === $code ? 'selected' : '' }}>{{ $label }}</option>
-          @endforeach
-        </select>
-      </div>
-      <div class="besoin-other-langs-wrap" id="besoin_other_langs_wrap_homeswap">
-        <span class="besoin-other-langs-label">Autres langues parlées</span>
-        <div class="besoin-lang-chips" id="besoin_lang_chips_homeswap"></div>
-        <button type="button" class="besoin-add-lang-btn" id="besoin_add_lang_btn_homeswap" aria-haspopup="true" aria-expanded="false">+ Ajouter</button>
-        <input type="hidden" name="other_languages" id="other_languages_input_homeswap" value="{{ is_string(request('other_languages')) ? request('other_languages') : '' }}">
-        <div class="cecrl-popover" id="cecrl_popover_homeswap" role="dialog" aria-label="Niveaux CECRL" hidden>
-          <div class="cecrl-popover-inner">
-            <div class="cecrl-table">
-              <div class="cecrl-table-head">
-                <span class="cecrl-th-lang">Langue</span>
-                <span class="cecrl-th-level">Niveau</span>
-              </div>
-              @foreach($hs_languages as $code => $label)
-              <div class="cecrl-row" data-lang="{{ $code }}" data-lang-label="{{ $label }}">
-                <span class="cecrl-lang">{{ $label }}</span>
-                <div class="cecrl-pills">
-                  @foreach($hs_cecrl as $l)
-                  <button type="button" class="cecrl-pill" data-level="{{ $l }}" title="{{ $l }}">{{ $l }}</button>
-                  @endforeach
-                </div>
-              </div>
-              @endforeach
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {{-- Contact préféré --}}
-  <div class="filter-group filter-group--full" style="margin-top:10px">
-    <div style="font-size:.74rem;font-weight:700;letter-spacing:.05em;color:#6b7280;text-transform:uppercase;margin-bottom:8px;">Contact préféré</div>
-    <div class="hw-freq-grid">
-      <label class="hw-freq-card">
-        <input type="radio" name="contact_preference" value="message" class="hw-freq-input" {{ request('contact_preference', 'message') === 'message' ? 'checked' : '' }}>
-        <span class="hw-freq-icon">💬</span>
-        <span class="hw-freq-text"><span class="hw-freq-label">Message</span></span>
-      </label>
-      <label class="hw-freq-card">
-        <input type="radio" name="contact_preference" value="visio" class="hw-freq-input" {{ request('contact_preference') === 'visio' ? 'checked' : '' }}>
-        <span class="hw-freq-icon">📹</span>
-        <span class="hw-freq-text"><span class="hw-freq-label">Visio</span></span>
-      </label>
-    </div>
-  </div>
-
   {{-- Ligne 2 : Domaine NEXUS + Spécialisation (même structure que En Ligne / Présentiel / Hybride) --}}
-  <div class="filter-row-main homeswap-domain-spec-row">
+  <div class="filter-row-main homeswap-domain-spec-row" style="margin-top:16px;gap:24px">
     <div class="filter-input-group filter-domain-nexus">
       <span class="mode-intervention-label">Domaine</span>
       <div class="mode-intervention-segmented" role="group" id="nexusDomainSegmented" aria-label="Domaine">
@@ -244,6 +182,85 @@
     </div>
   </div>
 
+  {{-- Type de Résidence — visible uniquement si Domaine = Logement --}}
+  <div id="nexusResidenceBlock" class="filter-group filter-group--full" style="margin-top:10px;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .3s ease;">
+    <div style="font-size:.74rem;font-weight:700;letter-spacing:.05em;color:#6b7280;text-transform:uppercase;margin-bottom:8px;">Type de Résidence</div>
+    <div class="hw-freq-grid">
+      <label class="hw-freq-card">
+        <input type="radio" name="residence_type" value="principale" class="hw-freq-input" {{ request('residence_type', 'principale') === 'principale' ? 'checked' : '' }}>
+        <span class="hw-freq-icon">🏠</span>
+        <span class="hw-freq-text"><span class="hw-freq-label">Principale</span></span>
+      </label>
+      <label class="hw-freq-card">
+        <input type="radio" name="residence_type" value="secondaire" class="hw-freq-input" {{ request('residence_type') === 'secondaire' ? 'checked' : '' }}>
+        <span class="hw-freq-icon">🏡</span>
+        <span class="hw-freq-text"><span class="hw-freq-label">Secondaire</span></span>
+      </label>
+    </div>
+  </div>
+
+  {{-- Ligne 1b : Ma langue maternelle + Autres langues parlées --}}
+  @php
+    $hs_languages = ['fr' => 'Français', 'en' => 'Anglais', 'es' => 'Espagnol', 'de' => 'Allemand', 'it' => 'Italien', 'pt' => 'Portugais', 'nl' => 'Néerlandais', 'ru' => 'Russe', 'zh' => 'Chinois', 'ar' => 'Arabe', 'ja' => 'Japonais', 'pl' => 'Polonais', 'el' => 'Grec', 'tr' => 'Turc', 'sv' => 'Suédois', 'ko' => 'Coréen', 'hi' => 'Hindi'];
+    $hs_cecrl = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+  @endphp
+  <div class="filter-group besoin-langues filter-group--full homeswap-langues-row" style="margin-top:22px">
+    <div style="font-size:.74rem;font-weight:700;letter-spacing:.05em;color:#6b7280;text-transform:uppercase;margin-bottom:8px;">Ma langue maternelle</div>
+    <div class="besoin-langues-row">
+      <div class="besoin-mother-tongue-wrap">
+        <select name="mother_tongue" id="besoin_mother_tongue_homeswap" class="filter-select">
+          <option value="">{{ __('Langue maternelle') }}</option>
+          @foreach($hs_languages as $code => $label)
+            <option value="{{ $code }}" {{ request('mother_tongue') === $code ? 'selected' : '' }}>{{ $label }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="besoin-other-langs-wrap" id="besoin_other_langs_wrap_homeswap">
+        <span class="besoin-other-langs-label">Autres langues parlées</span>
+        <div class="besoin-lang-chips" id="besoin_lang_chips_homeswap"></div>
+        <button type="button" class="besoin-add-lang-btn" id="besoin_add_lang_btn_homeswap" aria-haspopup="true" aria-expanded="false">+ Ajouter</button>
+        <input type="hidden" name="other_languages" id="other_languages_input_homeswap" value="{{ is_string(request('other_languages')) ? request('other_languages') : '' }}">
+        <div class="cecrl-popover" id="cecrl_popover_homeswap" role="dialog" aria-label="Niveaux CECRL" hidden>
+          <div class="cecrl-popover-inner">
+            <div class="cecrl-table">
+              <div class="cecrl-table-head">
+                <span class="cecrl-th-lang">Langue</span>
+                <span class="cecrl-th-level">Niveau</span>
+              </div>
+              @foreach($hs_languages as $code => $label)
+              <div class="cecrl-row" data-lang="{{ $code }}" data-lang-label="{{ $label }}">
+                <span class="cecrl-lang">{{ $label }}</span>
+                <div class="cecrl-pills">
+                  @foreach($hs_cecrl as $l)
+                  <button type="button" class="cecrl-pill" data-level="{{ $l }}" title="{{ $l }}">{{ $l }}</button>
+                  @endforeach
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Contact préféré --}}
+  <div class="filter-group filter-group--full" style="margin-top:22px">
+    <div style="font-size:.74rem;font-weight:700;letter-spacing:.05em;color:#6b7280;text-transform:uppercase;margin-bottom:8px;">Contact préféré</div>
+    <div class="hw-freq-grid">
+      <label class="hw-freq-card">
+        <input type="radio" name="contact_preference" value="message" class="hw-freq-input" {{ request('contact_preference', 'message') === 'message' ? 'checked' : '' }}>
+        <span class="hw-freq-icon">💬</span>
+        <span class="hw-freq-text"><span class="hw-freq-label">Message</span></span>
+      </label>
+      <label class="hw-freq-card">
+        <input type="radio" name="contact_preference" value="visio" class="hw-freq-input" {{ request('contact_preference') === 'visio' ? 'checked' : '' }}>
+        <span class="hw-freq-icon">📹</span>
+        <span class="hw-freq-text"><span class="hw-freq-label">Visio</span></span>
+      </label>
+    </div>
+  </div>
+
   {{-- JS : synchronisation domain pills ↔ spécialisation --}}
   <script>
   (function() {
@@ -252,6 +269,21 @@
       var pillLabels = document.querySelectorAll('#nexusDomainSegmented .mode-intervention-pill');
       var radios = document.querySelectorAll('#nexusDomainSegmented .nexus-domain-radio');
       var specs = document.querySelectorAll('.nexus-spec-select');
+      var residenceBlock = document.getElementById('nexusResidenceBlock');
+      // Initialiser max-height pour que la transition CSS fonctionne dès le premier appel
+      if (residenceBlock) { residenceBlock.style.maxHeight = residenceBlock.scrollHeight + 'px'; residenceBlock.style.opacity = '1'; }
+      function showResidence(show) {
+        if (!residenceBlock) return;
+        if (show) {
+          residenceBlock.style.maxHeight = residenceBlock.scrollHeight + 'px';
+          residenceBlock.style.opacity = '1';
+          residenceBlock.style.pointerEvents = '';
+        } else {
+          residenceBlock.style.maxHeight = '0';
+          residenceBlock.style.opacity = '0';
+          residenceBlock.style.pointerEvents = 'none';
+        }
+      }
       function applyDomain(domain) {
         activeDomain = domain;
         pillLabels.forEach(function(l) { l.classList.toggle('is-active', l.getAttribute('data-domain') === domain); });
@@ -264,13 +296,32 @@
         document.querySelectorAll('[data-domain-block]').forEach(function(block) {
           block.style.display = block.getAttribute('data-domain-block') === domain ? '' : 'none';
         });
+        // Afficher/masquer Type de Résidence selon le domaine
+        showResidence(domain === 'logement');
         var r = document.querySelector('#nexusDomainSegmented input[value="' + domain + '"]');
         if (r) r.checked = true;
+        // Synchroniser le "Type de bien" (property_type) avec le domaine actif
+        var domainToPt = { 'logement': 'logement', 'infrastructure-pro': 'bureau', 'enseignement': 'pedagogique' };
+        var ptTarget = document.getElementById('pt_' + (domainToPt[domain] || ''));
+        if (ptTarget) ptTarget.checked = true;
       }
       applyDomain(activeDomain);
       pillLabels.forEach(function(label) {
         label.addEventListener('click', function() {
           applyDomain(label.getAttribute('data-domain'));
+        });
+      });
+      // Synchronisation inverse : clic sur "Type de bien" → met à jour le domaine
+      var ptToDomain = { 'logement': 'logement', 'bureau': 'infrastructure-pro', 'pedagogique': 'enseignement' };
+      document.querySelectorAll('.nx-radio-input[name="property_type"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          var mapped = ptToDomain[this.value];
+          if (mapped) {
+            applyDomain(mapped);
+          } else {
+            // wellness, evenement, autre : masquer résidence sans changer le domaine actif
+            showResidence(false);
+          }
         });
       });
     });

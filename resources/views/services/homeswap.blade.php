@@ -5048,7 +5048,10 @@
         <div class="homeswap-hero-cta">
           <a href="#results" class="homeswap-hero-btn-primary">Voir les espaces</a>
           <a href="#abonnement" class="homeswap-hero-btn-secondary">Rejoindre NEXUS →</a>
-          </div>
+          <a href="{{ route('nexus.onboarding.step1') }}" class="homeswap-hero-btn-secondary" style="background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);backdrop-filter:blur(6px)">
+            ＋ Ajouter ou publier votre espace
+          </a>
+        </div>
 
         <p class="homeswap-hero-disclaimer">
           Vous pouvez explorer librement. L'abonnement est requis pour contacter et organiser un échange.

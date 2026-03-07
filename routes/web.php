@@ -168,6 +168,7 @@ Route::post('/pricing/subscribe', [\App\Http\Controllers\FrontEnd\PricingControl
   
   Route::get('/freelance/{id}', [\App\Http\Controllers\FrontEnd\FreelancerController::class, 'show'])->where('id', '[0-9]+')->name('freelance.show');
   Route::get('/devenir-freelance', [\App\Http\Controllers\FrontEnd\Freelance\OnboardingController::class, 'start'])->name('freelance.onboarding.start');
+  Route::get('/devenir-membre-nexus', [\App\Http\Controllers\FrontEnd\NexusOnboardingController::class, 'becomeMember'])->name('nexus.become-member');
   
   // Routes onboarding freelance (protégées par auth)
   Route::middleware(['auth:web'])->prefix('/freelance/onboarding')->name('freelance.onboarding.')->group(function () {

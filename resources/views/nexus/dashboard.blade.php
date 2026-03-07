@@ -1623,10 +1623,10 @@ body { background: var(--nx-bg) !important; }
             <div class="nx-panel-body">
               <div class="nx-empty" style="padding:1.75rem 1rem;box-shadow:none;border:none;">
                 <div class="nx-empty-icon"><i class="fas fa-plus-circle"></i></div>
-                <h3>Publiez votre logement</h3>
+                <h3>Publiez votre espace</h3>
                 <p>Proposez votre bien à la communauté NEXUS pour recevoir des demandes d'échange.</p>
-                <a href="{{ route('services.homeswap') }}" class="nx-empty-cta">
-                  <i class="fas fa-plus"></i> Ajouter un logement
+                <a href="{{ route('nexus.onboarding.step1') }}" class="nx-empty-cta">
+                  <i class="fas fa-plus"></i> Ajouter votre espace
                 </a>
               </div>
             </div>
