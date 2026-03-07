@@ -42,6 +42,13 @@ class Kernel extends ConsoleKernel
       ->sundays()
       ->at('02:00')
       ->name('junspro-freelancer-score');
+
+    // CRON quotidienne - Validation commissions affiliées (J+7)
+    $schedule->job(\App\Jobs\ValidateAffiliateConversions::class)
+      ->daily()
+      ->at('03:00')
+      ->name('affiliate-validate-conversions')
+      ->withoutOverlapping();
   }
 
   /**
