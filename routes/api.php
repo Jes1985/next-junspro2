@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Webhooks\StripeConnectWebhookController;
+use App\Http\Controllers\API\AIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,8 @@ Route::get('/me/subscription', function (Request $request) {
         ], 200);
     }
 })->middleware([])->withoutMiddleware(['throttle', 'api']);
+
+// ── Routes IA (chatbot + résumés) ─────────────────────────────
+Route::post('/ai/chat',              [AIController::class, 'chat'])->middleware('throttle:30,1');
+Route::post('/ai/client-summary',    [AIController::class, 'clientSummary'])->middleware(['auth:web', 'throttle:10,1']);
+Route::post('/ai/freelance-summary', [AIController::class, 'freelanceSummary'])->middleware(['auth:web', 'throttle:10,1']);

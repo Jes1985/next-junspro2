@@ -208,6 +208,107 @@ class StripeService
             throw $e;
         }
     }
+
+    /**
+     * Créer une session Stripe Checkout pour la formation certifiante Praticien Pause Souffle
+     * Montant fixe : 1 490 € (paiement unique)
+     */
+    public function createFormationCheckoutSession(int $userId, string $userEmail): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'     => 'eur',
+                    'unit_amount'  => 149000,
+                    'product_data' => [
+                        'name'        => 'Formation certifiante Praticien Pause Souffle',
+                        'description' => '6 modules en ligne + Week-end immersif 3 jours + Attestation Junspro',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'    => 'formation_praticien',
+                'user_id' => $userId,
+            ],
+        ]);
+
+        Log::info('[StripeService] Session checkout formation créée', [
+            'session_id' => $session->id,
+            'user_id'    => $userId,
+        ]);
+
+        return $session;
+    }
+
+    /**
+     * Créer une session Stripe Checkout pour la formation en 3 mensualités de 510 €
+     * Mode subscription : Stripe enverra invoice.payment_succeeded × 3, puis l'abonnement est annulé
+     */
+    public function createFormationInstallmentCheckoutSession(int $userId, string $userEmail): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'     => 'eur',
+                    'unit_amount'  => 51000,
+                    'recurring'    => ['interval' => 'month', 'interval_count' => 1],
+                    'product_data' => [
+                        'name'        => 'Formation Praticien Pause Souffle — 3× mensualités',
+                        'description' => '3 mensualités de 510 € · Accès complet dès le 1er paiement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'             => 'formation_praticien_installment',
+                'user_id'          => $userId,
+                'max_installments' => 3,
+            ],
+            'subscription_data' => [
+                'metadata' => [
+                    'type'             => 'formation_praticien_installment',
+                    'user_id'          => $userId,
+                    'max_installments' => 3,
+                ],
+            ],
+        ]);
+
+        Log::info('[StripeService] Session checkout formation installment créée', [
+            'session_id' => $session->id,
+            'user_id'    => $userId,
+        ]);
+
+        return $session;
+    }
 }
-
-

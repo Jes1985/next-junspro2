@@ -137,6 +137,12 @@
           </svg>
           <span>Contacter l'équipe Junspro</span>
         </button>
+        <button class="junspro-chat-action-btn" data-action="chat-ia" type="button" style="background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(201,168,76,.08));border-color:rgba(124,58,237,.3)">
+          <svg class="junspro-chat-action-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2zm0-8h-2V7h2z" fill="currentColor"/>
+          </svg>
+          <span>Poser une question à Juns IA ✨</span>
+        </button>
       </div>
       <p class="junspro-chat-hint">Choisissez une option pour commencer.</p>
     `;
@@ -144,6 +150,110 @@
     main.innerHTML = homeHTML;
     updateFocusableElements();
   }
+
+  // ── Chat IA conversationnel ─────────────────────────────────────
+  let aiMessages = []; // historique de la conversation
+
+  function showAIChat() {
+    const main = document.getElementById('junsproChatMain');
+    if (!main) return;
+
+    aiMessages = [];
+
+    const html = `
+      <div class="junspro-ai-chat" id="junsproAIChat">
+        <div class="junspro-ai-messages" id="junsproAIMessages">
+          <div class="junspro-ai-msg junspro-ai-msg--bot">
+            <span>Bonjour ! Je suis <strong>Juns</strong>, l'assistant IA de Junspro ✨<br>Posez-moi n'importe quelle question sur la plateforme, la formation Pause Souffle, les Rituels ou les commissions.</span>
+          </div>
+        </div>
+        <div class="junspro-ai-input-row">
+          <input type="text" id="junsproAIInput" placeholder="Votre question..." maxlength="500" autocomplete="off" />
+          <button type="button" id="junsproAISend" aria-label="Envoyer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <button class="junspro-ai-back" type="button" id="junsproAIBack">← Retour</button>
+      </div>
+    `;
+
+    main.innerHTML = html;
+    updateFocusableElements();
+
+    const input  = document.getElementById('junsproAIInput');
+    const sendBtn = document.getElementById('junsproAISend');
+    const backBtn = document.getElementById('junsproAIBack');
+
+    if (input) input.focus();
+
+    if (sendBtn) sendBtn.addEventListener('click', sendAIMessage);
+    if (input)   input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAIMessage(); }
+    });
+    if (backBtn) backBtn.addEventListener('click', function() {
+      aiMessages = [];
+      showHomeView();
+    });
+  }
+
+  function sendAIMessage() {
+    const input    = document.getElementById('junsproAIInput');
+    const messages = document.getElementById('junsproAIMessages');
+    if (!input || !messages) return;
+
+    const text = input.value.trim();
+    if (!text) return;
+
+    // Afficher le message utilisateur
+    const userDiv = document.createElement('div');
+    userDiv.className = 'junspro-ai-msg junspro-ai-msg--user';
+    userDiv.innerHTML = `<span>${escapeHtml(text)}</span>`;
+    messages.appendChild(userDiv);
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+
+    // Ajouter à l'historique
+    aiMessages.push({ role: 'user', content: text });
+
+    // Indicateur de frappe
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'junspro-ai-msg junspro-ai-msg--bot junspro-ai-typing';
+    typingDiv.innerHTML = '<span class="junspro-ai-dots"><span></span><span></span><span></span></span>';
+    messages.appendChild(typingDiv);
+    messages.scrollTop = messages.scrollHeight;
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+    fetch('/api/ai/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': csrfToken,
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({ messages: aiMessages }),
+    })
+    .then(r => r.json())
+    .then(data => {
+      typingDiv.remove();
+      const reply = data.reply || "Désolé, je n'ai pas pu obtenir de réponse. Réessaie !";
+      aiMessages.push({ role: 'assistant', content: reply });
+      const botDiv = document.createElement('div');
+      botDiv.className = 'junspro-ai-msg junspro-ai-msg--bot';
+      botDiv.innerHTML = `<span>${escapeHtml(reply)}</span>`;
+      messages.appendChild(botDiv);
+      messages.scrollTop = messages.scrollHeight;
+    })
+    .catch(() => {
+      typingDiv.remove();
+      const errDiv = document.createElement('div');
+      errDiv.className = 'junspro-ai-msg junspro-ai-msg--bot';
+      errDiv.innerHTML = '<span>Une erreur est survenue. Vérifie ta connexion et réessaie.</span>';
+      messages.appendChild(errDiv);
+      messages.scrollTop = messages.scrollHeight;
+    });
+  }
+  // ───────────────────────────────────────────────────────────────
 
   // Afficher le formulaire de contact
   function showContactForm() {
@@ -486,6 +596,9 @@
         break;
       case 'contact-team':
         showContactForm();
+        break;
+      case 'chat-ia':
+        showAIChat();
         break;
       default:
         console.warn('Action non reconnue:', action);

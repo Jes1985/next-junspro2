@@ -838,6 +838,37 @@
     </div>
   </section>
 
+  <!-- SECTION PRATICIEN — Vous souhaitez animer ce Rituel ? -->
+  <section style="padding: 80px 20px; background: #0D0D1A; text-align: center;">
+    <div style="max-width: 680px; margin: 0 auto;">
+      <div style="display:inline-block; padding: 5px 16px; border: 1px solid rgba(212,168,83,0.4); border-radius: 40px; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:#D4A853; margin-bottom:1.5rem;">
+        Service phare de l'Univers Présence
+      </div>
+      <h2 style="font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight:300; color:#fff; margin-bottom:1rem; line-height:1.3; letter-spacing:-0.01em;">
+        Vous souhaitez <em style="font-style:italic; color:#D4A853;">animer</em> ce Rituel ?
+      </h2>
+      <p style="font-size: 1rem; color: rgba(255,255,255,0.55); line-height:1.8; margin-bottom:2rem;">
+        Devenez Praticien Pause Souffle certifié Junspro.<br>
+        Une formation certifiante pour d'abord vous transformer,<br>
+        puis accompagner les autres avec authenticité.
+      </p>
+      <a href="{{ route('presence.formation-praticien') }}"
+         style="display:inline-flex; align-items:center; gap:8px; padding:1rem 2.5rem; background:linear-gradient(135deg,#D4A853,#B8893A); color:#fff; border-radius:50px; font-size:1rem; font-weight:500; text-decoration:none; transition:all .3s; box-shadow:0 8px 24px rgba(212,168,83,.3);"
+         onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 32px rgba(212,168,83,.45)'"
+         onmouseout="this.style.transform=''; this.style.boxShadow='0 8px 24px rgba(212,168,83,.3)'">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+        Découvrir la formation Praticien
+      </a>
+      <a href="{{ route('presence.retraite') }}"
+         style="display:inline-flex; align-items:center; gap:8px; padding:.75rem 2rem; border: 1px solid rgba(212,168,83,.45); color:#D4A853; border-radius:50px; font-size:.9rem; font-weight:500; text-decoration:none; transition:all .3s; margin-top:.75rem;"
+         onmouseover="this.style.background='rgba(212,168,83,.1)'"
+         onmouseout="this.style.background='transparent'">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        La Retraite · 7 jours en Méditerranée
+      </a>
+    </div>
+  </section>
+
   <!-- SECTION 6 — CONCLUSION & CTA -->
   <section class="pause-souffle-conclusion">
     <div class="pause-souffle-conclusion-content">

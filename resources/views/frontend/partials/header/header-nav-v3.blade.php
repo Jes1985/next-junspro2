@@ -226,6 +226,28 @@
                     </a>
                   </li>
                   <li>
+                    <a class="dropdown-item" href="{{ route('affiliate.dashboard') }}">
+                      <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                      </svg>
+                      <span>{{ __('Apporteur d\'Affaires') }}</span>
+                    </a>
+                  </li>
+                  @php $hasFormation = auth()->check() && \App\Models\FormationEnrollment::where('user_id', auth()->id())->whereIn('status', ['active','completed'])->exists(); @endphp
+                  @if($hasFormation)
+                  <li>
+                    <a class="dropdown-item" href="{{ route('formation.dashboard') }}">
+                      <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      <span>{{ __('Mon Espace Praticien') }}</span>
+                    </a>
+                  </li>
+                  @endif
+                  <li>
                     <a class="dropdown-item" href="{{ route('user.logout') }}">
                       <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>

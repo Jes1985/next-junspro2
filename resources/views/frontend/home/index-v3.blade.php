@@ -3044,6 +3044,43 @@
     </section>
   @endif
 
+  {{-- ─── Formation Praticien Pause Souffle – Bannière CTA ─────────── --}}
+  <section style="background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #1a0533 100%); padding: 80px 0; margin: 0;">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-8" data-aos="fade-right">
+          <div style="display: inline-block; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); color: #d4af37; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.5rem;">Formation certifiante</div>
+          <h2 style="color: #ffffff; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; line-height: 1.25; margin-bottom: 1.2rem;">
+            Devenez <span style="color: #d4af37;">Praticien Pause Souffle</span> certifié
+          </h2>
+          <p style="color: rgba(255,255,255,0.75); font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.8rem; max-width: 600px;">
+            Un programme structuré en 6 modules pour maîtriser le Rituel Pause Souffle et l'intégrer à votre activité professionnelle. Obtenez votre attestation et rejoignez la communauté des praticiens certifiés Junspro.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <span style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem;"><i class="fas fa-check-circle" style="color: #d4af37; margin-right: 6px;"></i>6 modules progressifs</span>
+            <span style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem;"><i class="fas fa-check-circle" style="color: #d4af37; margin-right: 6px;"></i>Attestation officielle</span>
+            <span style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem;"><i class="fas fa-check-circle" style="color: #d4af37; margin-right: 6px;"></i>Accès à vie</span>
+            <span style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem;"><i class="fas fa-check-circle" style="color: #d4af37; margin-right: 6px;"></i>Paiement en 3 ×</span>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center" data-aos="fade-left">
+          <div style="background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 20px; padding: 2rem 1.5rem; display: inline-block; max-width: 280px; width: 100%;">
+            <div style="color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 0.5rem;">Accès complet à partir de</div>
+            <div style="color: #d4af37; font-size: 3rem; font-weight: 800; line-height: 1; margin-bottom: 0.25rem;">1 490 €</div>
+            <div style="color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-bottom: 1.5rem;">ou 3 × 510 €</div>
+            <a href="{{ route('presence.formation-praticien') }}" style="display: block; background: linear-gradient(135deg, #d4af37 0%, #f0c040 100%); color: #1a0533; font-weight: 700; font-size: 1rem; padding: 14px 24px; border-radius: 12px; text-decoration: none; text-align: center; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+              Découvrir la formation <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+            <a href="{{ route('presence.retraite') }}" style="display: block; margin-top: .75rem; border: 1px solid rgba(212,175,55,0.4); color: #d4af37; font-weight: 600; font-size: .875rem; padding: 10px 20px; border-radius: 12px; text-decoration: none; text-align: center; transition: background .2s;" onmouseover="this.style.background='rgba(212,175,55,0.1)'" onmouseout="this.style.background='transparent'">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:5px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              La Retraite · Méditerranée
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Blog Section Premium avec Slider Horizontal -->
   @if ($secInfo->blog_section_status == 1)
     <section class="blog-section-premium">

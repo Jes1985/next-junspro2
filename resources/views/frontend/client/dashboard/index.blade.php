@@ -1635,6 +1635,45 @@
       @include('frontend.components.pause-souffle.inline-premium')
     </div>
 
+    {{-- ✨ Widget résumé IA --}}
+    <div id="ai-summary-widget" style="margin:0 0 1.5rem;background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(76,29,149,.08));border:1px solid rgba(124,58,237,.2);border-radius:16px;padding:1.25rem 1.5rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <span style="font-size:1.25rem;">✨</span>
+          <div>
+            <div style="font-weight:600;font-size:.9rem;color:#fff;">Juns IA · Votre résumé du moment</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.45);">Généré en temps réel</div>
+          </div>
+        </div>
+        <button onclick="loadAISummary()" id="ai-summary-refresh" style="background:rgba(124,58,237,.25);border:1px solid rgba(124,58,237,.35);color:#c4b5fd;border-radius:8px;padding:.35rem .75rem;font-size:.75rem;cursor:pointer;transition:all .2s;">Actualiser</button>
+      </div>
+      <div id="ai-summary-text" style="margin-top:.9rem;font-size:.875rem;color:rgba(255,255,255,.8);line-height:1.7;min-height:2.5rem;">
+        <span style="color:rgba(255,255,255,.35);">Chargement en cours…</span>
+      </div>
+    </div>
+
+    <script>
+    (function() {
+      function loadAISummary() {
+        const el = document.getElementById('ai-summary-text');
+        const btn = document.getElementById('ai-summary-refresh');
+        if (!el) return;
+        el.innerHTML = '<span style="color:rgba(255,255,255,.35);">Analyse en cours…</span>';
+        if (btn) btn.disabled = true;
+        fetch('/api/ai/client-summary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '' },
+        })
+        .then(r => r.json())
+        .then(d => { el.textContent = d.summary || 'Tout se passe bien aujourd\'hui !'; })
+        .catch(() => { el.innerHTML = '<span style="color:rgba(255,255,255,.4);">Non disponible pour le moment.</span>'; })
+        .finally(() => { if (btn) btn.disabled = false; });
+      }
+      window.loadAISummary = loadAISummary;
+      document.addEventListener('DOMContentLoaded', function() { setTimeout(loadAISummary, 800); });
+    })();
+    </script>
+
     <!-- 2) Section "Prochainement" (Timeline style Preply) -->
     <div class="upcoming-section">
       <div class="section-header">

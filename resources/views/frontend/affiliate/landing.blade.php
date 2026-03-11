@@ -387,6 +387,37 @@
     </div>
   </section>
 
+  {{-- ─── CROSS-SELL : Formation Praticien Pause Souffle ─── --}}
+  <section style="background: #f8f5ff; padding: 70px 0; border-top: 1px solid #e9e0ff;">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-2 text-center" data-aos="fade-right">
+          <div style="width: 90px; height: 90px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #1a0533, #7c3aed); display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-wind" style="font-size: 2rem; color: #d4af37;"></i>
+          </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-up">
+          <p style="color: #7c3aed; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Formation certifiante</p>
+          <h3 style="color: #1a1a2e; font-size: 1.55rem; font-weight: 800; margin-bottom: 0.75rem; line-height: 1.3;">Vous accompagnez des professionnels ?<br>Devenez Praticien Pause Souffle certifié.</h3>
+          <p style="color: #555; font-size: 1rem; line-height: 1.75; margin: 0;">
+            Intégrez le Rituel Pause Souffle à votre offre professionnelle. Certifiez-vous en 6 modules, obtenez votre attestation Junspro et proposez une expérience reconnue à vos clients.
+          </p>
+        </div>
+        <div class="col-lg-3 text-center" data-aos="fade-left">
+          <a href="{{ route('presence.formation-praticien') }}" style="display: inline-block; background: linear-gradient(135deg, #1a0533 0%, #7c3aed 100%); color: #fff; font-weight: 700; font-size: 1rem; padding: 15px 30px; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 20px rgba(124,58,237,0.3); transition: opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+            Voir la formation <i class="fas fa-arrow-right ms-1"></i>
+          </a>
+          <p style="color: #999; font-size: 0.8rem; margin-top: 0.8rem; margin-bottom: 0;">Formation · 1 490 € · <strong style="color: #7c3aed;">Commission 30% → 447 €</strong></p>
+          <a href="{{ route('presence.retraite') }}" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 1rem; color: #D4A853; font-size: 0.875rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(212,168,83,0.35); padding: 8px 18px; border-radius: 50px; transition: background 0.2s;" onmouseover="this.style.background='rgba(212,168,83,0.08)'" onmouseout="this.style.background='transparent'">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            La Retraite · 7 jours en Méditerranée
+          </a>
+          <p style="color: #999; font-size: 0.75rem; margin-top: 0.5rem; margin-bottom: 0;">Retraite · 4 800–5 500 € · <strong style="color: #D4A853;">Commission 10% → 480–550 €</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   {{-- ─── CTA FINAL ───────────────────────────────────────────── --}}
   <section class="aff-cta-banner">
     <div class="aff-cta-banner__content">

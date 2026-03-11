@@ -69,4 +69,12 @@ return [
         'redirect' => env('FACEBOOK_CALLBACK_URL', url('/login/facebook/callback')),
     ],
 
+    'openai' => [
+        'api_key' => env('OPENAI_API_KEY'),
+    ],
+
+    'elevenlabs' => [
+        'api_key' => env('ELEVENLABS_API_KEY'),
+    ],
+
 ];

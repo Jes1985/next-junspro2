@@ -409,16 +409,36 @@ Route::prefix('/api/affiliate')->middleware(['auth:web', 'change.lang'])->group(
 // Routes Présence - Pause Souffle
 Route::prefix('/presence')->middleware(['change.lang'])->group(function () {
   Route::get('/pause-souffle', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'index'])->name('presence.pause-souffle');
+  Route::get('/devenir-praticien', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationPraticien'])->name('presence.formation-praticien');
+  Route::get('/la-retraite', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraite'])->name('presence.retraite');
+  Route::get('/la-retraite/livret', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'livretRetraite'])->name('presence.retraite.livret');
+  Route::post('/la-retraite/waitlist', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraiteWaitlist'])->name('presence.retraite.waitlist');
   Route::post('/pause-souffle/submit', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'submit'])->name('presence.pause-souffle.submit');
   Route::get('/pause-souffle/stripe/success', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'stripeSuccess'])->name('pause-souffle.stripe.success');
   Route::get('/pause-souffle/stripe/cancel', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'stripeCancel'])->name('pause-souffle.stripe.cancel');
   Route::get('/pause-souffle/choose-cycle', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'chooseCycle'])->name('pause-souffle.choose-cycle')->middleware('auth:web');
   Route::post('/pause-souffle/activate-cycle', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'activateCycle'])->name('pause-souffle.activate-cycle')->middleware('auth:web');
   Route::get('/pause-souffle/cycle-confirmation', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'cycleConfirmation'])->name('pause-souffle.cycle-confirmation')->middleware('auth:web');
+  // Formation certifiante Praticien Pause Souffle
+  Route::post('/formation/checkout', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationCheckout'])->name('presence.formation.checkout')->middleware('auth:web');
+  Route::post('/formation/checkout-installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationCheckoutInstallment'])->name('presence.formation.checkout.installment')->middleware('auth:web');
+  Route::get('/formation/success', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationSuccess'])->name('presence.formation.success');
+  Route::get('/formation/cancel', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationCancel'])->name('presence.formation.cancel');
 });
 
 // Route de tracking /r/{code} (publique, sans auth)
 Route::get('/r/{code}', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'track'])->name('referral.track')->middleware('change.lang');
+
+// Espace praticien Formation Pause Souffle
+Route::prefix('/mon-espace/formation')->middleware(['auth:web', 'change.lang'])->group(function () {
+  Route::get('/',                                       [\App\Http\Controllers\FrontEnd\FormationController::class, 'dashboard'])->name('formation.dashboard');
+  Route::get('/attestation',                            [\App\Http\Controllers\FrontEnd\FormationController::class, 'showAttestation'])->name('formation.attestation');
+  Route::get('/module/{slug}',                          [\App\Http\Controllers\FrontEnd\FormationController::class, 'showModule'])->name('formation.module.show');
+  Route::post('/module/{moduleId}/start',               [\App\Http\Controllers\FrontEnd\FormationController::class, 'startModule'])->name('formation.module.start');
+  Route::post('/module/{moduleId}/complete',            [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeModule'])->name('formation.module.complete');
+  Route::post('/module/{slug}/activity/{idx}',          [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeActivity'])->name('formation.activity.complete');
+  Route::post('/module/{slug}/activity/{idx}/notes',    [\App\Http\Controllers\FrontEnd\FormationController::class, 'saveActivityNotes'])->name('formation.activity.notes');
+});
 
 // API routes pour parrainage (auth required)
 Route::prefix('/api/referral')->middleware(['auth:web', 'change.lang'])->group(function () {

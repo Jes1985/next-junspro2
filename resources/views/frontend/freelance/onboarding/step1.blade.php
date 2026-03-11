@@ -1729,6 +1729,30 @@
             </div>
           </div>
 
+          {{-- ── ALERTE ATTESTATION PAUSE SOUFFLE ────────────── --}}
+          <div id="pauseSouffleAttestationAlert" style="display:none; margin-bottom:2rem;">
+            <div style="padding:1.25rem 1.5rem; background:#FFF7ED; border:1px solid #FED7AA; border-radius:14px; display:flex; gap:1rem; align-items:flex-start;">
+              <svg style="flex-shrink:0; margin-top:2px; color:#D97706;" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <div>
+                <p style="font-weight:600; color:#92400E; margin:0 0 0.25rem; font-size:0.9375rem;">
+                  Attestation Junspro obligatoire pour Pause Souffle
+                </p>
+                <p style="color:#B45309; font-size:0.875rem; margin:0 0 0.75rem; line-height:1.5;">
+                  Vous avez sélectionné l'univers <strong>Présence</strong> avec le service <strong>Pause Souffle</strong>.
+                  Ce Rituel est un concept exclusif Junspro — la pratique sur la plateforme nécessite une
+                  <strong>attestation de formation certifiante délivrée par Junspro</strong>.
+                </p>
+                <a href="{{ route('presence.formation-praticien') }}" target="_blank"
+                   style="display:inline-flex; align-items:center; gap:6px; padding:0.5rem 1.25rem; background:linear-gradient(135deg,#D4A853,#B8893A); color:#fff; border-radius:40px; font-size:0.8125rem; font-weight:500; text-decoration:none;">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+                  Voir la formation Praticien
+                </a>
+              </div>
+            </div>
+          </div>
 
           <!-- Actions -->
           <div class="onboarding-actions">
@@ -1745,6 +1769,58 @@
   </div>
 
   <script>
+    // ── Alerte Pause Souffle : afficher si univers Présence + domaine pause-souffle sélectionnés ──
+    (function () {
+      const alert = document.getElementById('pauseSouffleAttestationAlert');
+      if (!alert) return;
+
+      function hasPauseSouffle() {
+        // Les inputs hidden générés par l'interface scope ont des name="universes[]" et "domains[]"
+        const universeInputs = document.querySelectorAll('input[name="universes[]"]');
+        const domainInputs   = document.querySelectorAll('input[name="domains[presence][]"], input[name="domains[]"]');
+        const scopeUniverses = document.getElementById('scopeUniversesMirror');
+        const scopeDomains   = document.getElementById('scopeDomainsMirror');
+
+        let hasPresence = false;
+        let hasPause    = false;
+
+        // Vérifier les mirrors JSON
+        if (scopeUniverses && scopeUniverses.value) {
+          try {
+            const u = JSON.parse(scopeUniverses.value);
+            if (Array.isArray(u)) hasPresence = u.includes('presence');
+          } catch(e) {}
+        }
+        if (scopeDomains && scopeDomains.value) {
+          try {
+            const d = JSON.parse(scopeDomains.value);
+            if (Array.isArray(d)) hasPause = d.includes('pause-souffle');
+          } catch(e) {}
+        }
+
+        // Fallback : inputs[value=presence] cochés
+        universeInputs.forEach(inp => { if (inp.value === 'presence') hasPresence = true; });
+        domainInputs.forEach(inp => { if (inp.value === 'pause-souffle') hasPause = true; });
+
+        return hasPresence && hasPause;
+      }
+
+      function refresh() {
+        alert.style.display = hasPauseSouffle() ? 'block' : 'none';
+      }
+
+      // Observer les changements de sélection (chips ajoutées/supprimées) via MutationObserver
+      const scopeRoot = document.getElementById('onboardingScopePremium');
+      if (scopeRoot) {
+        new MutationObserver(refresh).observe(scopeRoot, { subtree: true, childList: true, attributes: true, attributeFilter: ['value'] });
+      }
+
+      // Écouter aussi les inputs cachés
+      document.addEventListener('change', refresh);
+      document.addEventListener('click', () => setTimeout(refresh, 150));
+      refresh();
+    })();
+
     // Compat no-op handlers for shared filters inline onclick hooks.
     if (typeof window.toggleAvailabilityPanel !== 'function') window.toggleAvailabilityPanel = function() {};
     if (typeof window.clearAvailabilitySelection !== 'function') window.clearAvailabilitySelection = function() {};

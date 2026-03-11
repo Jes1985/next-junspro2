@@ -681,6 +681,20 @@
               <div class="freelancer-profile-summary-text">
                 {{ $user->name }} {{ __('détient des certifications qui attestent de ses compétences.') }}
               </div>
+              @php
+                $isPraticienPremium = \App\Models\FormationEnrollment::where('user_id', $user->id)
+                    ->where('status', 'completed')
+                    ->whereNotNull('attestation_issued_at')
+                    ->exists();
+              @endphp
+              @if($isPraticienPremium)
+                <div style="margin-top: 10px;">
+                  <span style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg,#1a0e00,#2a1800); border: 1px solid #c9a84c; color: #c9a84c; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px;">
+                    <span style="font-size: 14px;">∞+</span>
+                    Praticien Pause Souffle certifié
+                  </span>
+                </div>
+              @endif
               <a href="#certifications" onclick="event.preventDefault(); var el=document.getElementById('certifications'); if(el){el.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(function(){ document.querySelectorAll('.freelancer-profile-cv-tab').forEach(function(t){t.classList.remove('active');}); document.querySelectorAll('.freelancer-profile-cv-tab-content').forEach(function(c){c.classList.remove('active');}); var certBtn=document.querySelector('[data-tab=\'certifications\']'); var certContent=document.getElementById('cv-certifications'); if(certBtn)certBtn.classList.add('active'); if(certContent)certContent.classList.add('active'); },400); }" style="color: var(--junspro-primary); font-size: 14px; font-weight: 500;">
                 {{ __('En savoir plus') }}
               </a>

@@ -99,6 +99,13 @@ class JunsproStripeWebhookController extends Controller
             return;
         }
 
+        // ── Mensualités formation praticien (3× 510 €) ───────────────────
+        $subMeta = $invoice->subscription_details->metadata ?? [];
+        if (($subMeta['type'] ?? null) === 'formation_praticien_installment') {
+            $this->handleFormationInstallmentPayment($invoice, $stripeSubscriptionId, $subMeta);
+            return;
+        }
+
         $subscription = Subscription::where('stripe_subscription_id', $stripeSubscriptionId)->first();
 
         if (!$subscription) {
@@ -268,6 +275,143 @@ class JunsproStripeWebhookController extends Controller
         if ($type === 'pause_souffle_subscription') {
             $this->handlePauseSouffleSubscription($session);
         }
+
+        // Gérer paiement formation certifiante Praticien Pause Souffle
+        if ($type === 'formation_praticien') {
+            $this->handleFormationPraticienPayment($session);
+        }
+    }
+
+    /**
+     * Gérer chaque mensualité de la formation (3× 510 €)
+     * → enrolle l'utilisateur dès la 1ère mensualité, annule l'abonnement après la 3ème
+     */
+    protected function handleFormationInstallmentPayment($invoice, string $stripeSubscriptionId, array $subMeta): void
+    {
+        $userId = $subMeta['user_id'] ?? null;
+        $maxInstallments = (int) ($subMeta['max_installments'] ?? 3);
+
+        if (!$userId) {
+            Log::warning('[Formation Installment] user_id manquant', ['sub_id' => $stripeSubscriptionId]);
+            return;
+        }
+
+        $user = \App\Models\User::find($userId);
+        if (!$user) {
+            Log::warning('[Formation Installment] Utilisateur non trouvé', ['user_id' => $userId]);
+            return;
+        }
+
+        $amountPaid = ($invoice->amount_paid ?? 51000) / 100;
+
+        try {
+            $formationService = app(\App\Services\Junspro\FormationService::class);
+            $existing = \App\Models\FormationEnrollment::where('user_id', $user->id)->first();
+
+            if (!$existing || $existing->status === 'pending') {
+                // 1ère mensualité : créer/activer l'enrollment et envoyer l'email de confirmation
+                $enrollment = $formationService->enroll($user, $amountPaid, $invoice->payment_intent ?? null);
+                \Illuminate\Support\Facades\Mail::to($user->email_address ?? $user->email)
+                    ->send(new \App\Mail\FormationEnrollmentConfirmed($enrollment, $amountPaid, 'installment'));
+                Log::info('[Formation Installment] Enrollment activé - mensualité 1', ['user_id' => $user->id]);
+            } else {
+                // 2ème ou 3ème mensualité : juste un log
+                Log::info('[Formation Installment] Mensualité supplémentaire reçue', [
+                    'user_id' => $user->id,
+                    'enrollment_id' => $existing->id,
+                    'amount' => $amountPaid,
+                ]);
+            }
+
+            // Compter le nombre total de paiements reçus sur cet abonnement
+            $installmentsDone = \App\Models\AffiliateConversion::where('referred_user_id', $user->id)
+                ->where('stripe_payment_intent', 'LIKE', '%' . $stripeSubscriptionId . '%')
+                ->count();
+
+            // Annuler l'abonnement Stripe après le dernier paiement
+            $totalPaid = \App\Models\FormationEnrollment::where('user_id', $user->id)->value('amount_paid') + $amountPaid;
+            if ($totalPaid >= ($maxInstallments * 51000 / 100) * 0.95) {
+                \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+                \Stripe\Subscription::update($stripeSubscriptionId, ['cancel_at_period_end' => true]);
+                Log::info('[Formation Installment] Abonnement marqué cancel_at_period_end', ['sub_id' => $stripeSubscriptionId]);
+            }
+
+            // Commission affilié sur cette mensualité
+            $this->recordAffiliateCommission(
+                $user,
+                $invoice->payment_intent ?? null,
+                $amountPaid,
+                'other',
+                null
+            );
+
+        } catch (\Exception $e) {
+            Log::error('[Formation Installment] Erreur traitement', [
+                'user_id' => $userId,
+                'error'   => $e->getMessage(),
+            ]);
+        }
+    }
+
+    /**
+     * Gérer le paiement de la formation certifiante Praticien Pause Souffle
+     */
+    protected function handleFormationPraticienPayment($session): void
+    {
+        $userId = $session->metadata['user_id'] ?? null;
+
+        if (!$userId) {
+            Log::warning('[Formation] user_id manquant dans metadata', ['session_id' => $session->id]);
+            return;
+        }
+
+        $user = \App\Models\User::find($userId);
+        if (!$user) {
+            Log::warning('[Formation] Utilisateur non trouvé', ['user_id' => $userId]);
+            return;
+        }
+
+        try {
+            $formationService = app(\App\Services\Junspro\FormationService::class);
+            $enrollment = $formationService->enroll(
+                $user,
+                ($session->amount_total ?? 149000) / 100,
+                $session->payment_intent ?? null
+            );
+
+            Log::info('[Formation] Enrollment créé après paiement', [
+                'user_id'       => $user->id,
+                'enrollment_id' => $enrollment->id,
+                'amount'        => ($session->amount_total ?? 149000) / 100,
+            ]);
+
+            // Email de confirmation
+            try {
+                \Illuminate\Support\Facades\Mail::to($user->email_address ?? $user->email)
+                    ->send(new \App\Mail\FormationEnrollmentConfirmed(
+                        $enrollment,
+                        ($session->amount_total ?? 149000) / 100,
+                        'full'
+                    ));
+            } catch (\Exception $mailEx) {
+                Log::error('[Formation] Erreur envoi email confirmation', ['error' => $mailEx->getMessage()]);
+            }
+
+            // Attribution commission affilié si le praticien a été parrainé
+            $this->recordAffiliateCommission(
+                $user,
+                $session->payment_intent ?? null,
+                ($session->amount_total ?? 149000) / 100,
+                'other',
+                null
+            );
+
+        } catch (\Exception $e) {
+            Log::error('[Formation] Erreur traitement paiement', [
+                'user_id' => $userId,
+                'error'   => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -390,6 +534,15 @@ class JunsproStripeWebhookController extends Controller
             // Lier la subscription à l'intake
             $intake->update(['subscription_id' => $subscription->id]);
 
+            // Commission affilié sur l'abonnement principal
+            $this->recordAffiliateCommission(
+                $user,
+                $stripeSubscriptionId,
+                $priceBase,
+                'other',
+                null
+            );
+
             // Créer les top-ups si add-on > 0
             if ($addonQty > 0) {
                 $unitPrice = $priceBase / max(1, $totalRituals); // Prix unitaire approximatif
@@ -402,6 +555,15 @@ class JunsproStripeWebhookController extends Controller
                     'status' => 'paid', // Payé via l'abonnement Stripe
                     'paid_at' => now(),
                 ]);
+
+                // Commission affilié sur l'add-on topup
+                $this->recordAffiliateCommission(
+                    $user,
+                    $stripeSubscriptionId . '_addon',
+                    $unitPrice * $addonQty,
+                    'other',
+                    null
+                );
 
                 // Mettre à jour hours_remaining pour inclure l'add-on
                 $subscription->hours_remaining = $totalRituals;
@@ -458,6 +620,15 @@ class JunsproStripeWebhookController extends Controller
             'intake_id' => $intake->id,
             'payment_intent_id' => $paymentIntent->id,
         ]);
+
+        // Attribution commission affilié (backup payment_intent)
+        $this->recordAffiliateCommission(
+            $intake->user ?? null,
+            $paymentIntent->id,
+            ($paymentIntent->amount ?? 0) / 100,
+            'other',
+            null
+        );
     }
 
     /**
@@ -506,6 +677,18 @@ class JunsproStripeWebhookController extends Controller
         $affiliateCode = $user->referred_by_affiliate_code;
         if (!$affiliateCode) return;
 
+        // ── Idempotence : éviter la double-commission sur le même paiement ──
+        $alreadyRecorded = \App\Models\AffiliateConversion::where('stripe_payment_intent', $stripePaymentIntent)
+            ->whereNotIn('status', ['cancelled'])
+            ->exists();
+        if ($alreadyRecorded) {
+            Log::info('[Affiliate] Commission déjà enregistrée pour ce paiement, ignoré', [
+                'stripe_payment_intent' => $stripePaymentIntent,
+                'user_id'               => $user->id,
+            ]);
+            return;
+        }
+
         try {
             $affiliate = Affiliate::where('status', 'active')
                 ->where(function ($q) use ($affiliateCode) {
@@ -523,13 +706,22 @@ class JunsproStripeWebhookController extends Controller
             if ($affiliate->user_id === $user->id) return;
 
             $affiliateService = app(AffiliateService::class);
+
+            // Numéro de mensualité réel : combien de conversions non-annulées
+            // existent déjà pour ce couple affiliate + filleul
+            $commissionMonth = \App\Models\AffiliateConversion::where('affiliate_id', $affiliate->id)
+                ->where('referred_user_id', $user->id)
+                ->whereNotIn('status', ['cancelled'])
+                ->count() + 1;
+
             $affiliateService->recordConversion(
                 $affiliate,
                 $user,
                 $amount,              // transactionAmount
                 $sourceType,          // sourceType
                 $sourceId,            // sourceId
-                $stripePaymentIntent  // stripePaymentIntent
+                $stripePaymentIntent, // stripePaymentIntent
+                $commissionMonth      // numéro de mensualité (plafond TIER_DURATION)
             );
 
             Log::info('[Affiliate] Commission enregistrée', [

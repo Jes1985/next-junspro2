@@ -8,6 +8,8 @@ use App\Models\PauseSouffleIntake;
 use App\Models\ClientProfile;
 use App\Services\StripeService;
 use App\Services\Junspro\SubscriptionService;
+use App\Services\Junspro\FormationService;
+use App\Models\FormationEnrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -21,15 +23,18 @@ class PauseSouffleController extends Controller
     protected $miscController;
     protected $stripeService;
     protected $subscriptionService;
+    protected $formationService;
 
     public function __construct(
         MiscellaneousController $miscController,
         StripeService $stripeService,
-        SubscriptionService $subscriptionService
+        SubscriptionService $subscriptionService,
+        FormationService $formationService
     ) {
         $this->miscController = $miscController;
         $this->stripeService = $stripeService;
         $this->subscriptionService = $subscriptionService;
+        $this->formationService = $formationService;
     }
 
     /**
@@ -45,6 +50,168 @@ class PauseSouffleController extends Controller
         ];
 
         return view('frontend.presence.pause-souffle', $queryResult);
+    }
+
+    /**
+     * Page landing de la formation certifiante "Praticien Pause Souffle"
+     */
+    public function formationPraticien()
+    {
+        $misc = $this->miscController;
+        $language = $misc->getLanguage();
+        $queryResult = [
+            'breadcrumb' => $misc->getBreadcrumb(),
+            'language' => $language,
+        ];
+
+        return view('frontend.presence.formation-praticien', $queryResult);
+    }
+
+    /**
+     * Page de présentation de la Retraite Pause Souffle (FR + EN)
+     */
+    public function retraite()
+    {
+        $misc = $this->miscController;
+        $language = $misc->getLanguage();
+
+        return view('frontend.presence.retraite', [
+            'breadcrumb' => $misc->getBreadcrumb(),
+            'language'   => $language,
+        ]);
+    }
+
+    /**
+     * Livret de retraite — page imprimable (PDF-friendly)
+     */
+    public function livretRetraite()
+    {
+        $misc = $this->miscController;
+        $language = $misc->getLanguage();
+
+        return view('frontend.presence.livret-retraite', [
+            'breadcrumb' => $misc->getBreadcrumb(),
+            'language'   => $language,
+        ]);
+    }
+
+    /**
+     * Inscription liste d'attente retraite
+     * Route : POST /presence/la-retraite/waitlist
+     */
+    public function retraiteWaitlist(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $data = $request->validate([
+            'first_name' => 'required|string|max:80',
+            'email'      => 'required|email|max:200',
+            'edition'    => 'required|string|max:60',
+        ]);
+
+        Log::info('Retraite waitlist entry', $data);
+
+        $adminEmail = config('mail.from.address', 'contact@junspro.com');
+        Mail::raw(
+            "Nouvelle inscription liste d'attente retraite\n\n"
+            . "Prénom : {$data['first_name']}\n"
+            . "Email : {$data['email']}\n"
+            . "Édition souhaitée : {$data['edition']}\n",
+            fn($msg) => $msg->to($adminEmail)->subject("[Retraite] Nouvelle inscription liste d'attente")
+        );
+
+        return response()->json(['success' => true]);
+    }
+
+    /**
+     * Créer la session Stripe Checkout pour le paiement de la formation (1 490 €)
+     * Route : POST /presence/formation/checkout  [auth:web]
+     */
+    public function formationCheckout(Request $request)
+    {
+        $user = Auth::user();
+
+        // Vérifier si l'utilisateur est déjà inscrit et actif
+        $existing = FormationEnrollment::where('user_id', $user->id)
+            ->whereIn('status', ['active', 'completed'])
+            ->first();
+
+        if ($existing) {
+            return redirect()->route('formation.dashboard')
+                ->with('info', 'Vous êtes déjà inscrit à la formation.');
+        }
+
+        try {
+            $session = $this->stripeService->createFormationCheckoutSession(
+                $user->id,
+                $user->email_address ?? $user->email ?? ''
+            );
+
+            return redirect($session->url);
+
+        } catch (\Exception $e) {
+            Log::error('Erreur création checkout formation', [
+                'user_id' => $user->id,
+                'error'   => $e->getMessage(),
+            ]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement. Veuillez réessayer.');
+        }
+    }
+
+    /**
+     * Page de succès après paiement formation
+     * Route : GET /presence/formation/success
+     */
+    public function formationSuccess(Request $request)
+    {
+        $misc = $this->miscController;
+        $language = $misc->getLanguage();
+        return view('frontend.presence.formation-success', [
+            'breadcrumb' => $misc->getBreadcrumb(),
+            'language'   => $language,
+        ]);
+    }
+
+    /**
+     * Redirection si paiement formation annulé
+     * Route : GET /presence/formation/cancel
+     */
+    public function formationCancel(Request $request)
+    {
+        return redirect()->route('presence.formation-praticien')
+            ->with('info', 'Paiement annulé. Vous pouvez réessayer quand vous souhaitez.');
+    }
+
+    /**
+     * Créer la session Stripe en 3 mensualités de 510 €
+     * Route : POST /presence/formation/checkout-installment  [auth:web]
+     */
+    public function formationCheckoutInstallment(Request $request)
+    {
+        $user = Auth::user();
+
+        $existing = FormationEnrollment::where('user_id', $user->id)
+            ->whereIn('status', ['active', 'completed'])
+            ->first();
+
+        if ($existing) {
+            return redirect()->route('formation.dashboard')
+                ->with('info', 'Vous êtes déjà inscrit à la formation.');
+        }
+
+        try {
+            $session = $this->stripeService->createFormationInstallmentCheckoutSession(
+                $user->id,
+                $user->email_address ?? $user->email ?? ''
+            );
+
+            return redirect($session->url);
+
+        } catch (\Exception $e) {
+            Log::error('Erreur création checkout formation installment', [
+                'user_id' => $user->id,
+                'error'   => $e->getMessage(),
+            ]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement. Veuillez réessayer.');
+        }
     }
 
     /**

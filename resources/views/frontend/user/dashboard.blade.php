@@ -158,4 +158,43 @@
     </div>
   </section>
   <!--====== End Dashboard Section ======-->
+
+  {{-- ✨ Widget résumé IA Freelance --}}
+  <div style="max-width:1200px;margin:0 auto 3rem;padding:0 1.5rem;">
+    <div id="ai-fl-summary-widget" style="background:linear-gradient(135deg,rgba(124,58,237,.10),rgba(76,29,149,.06));border:1px solid rgba(124,58,237,.18);border-radius:14px;padding:1.1rem 1.4rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+        <div style="display:flex;align-items:center;gap:.55rem;">
+          <span style="font-size:1.1rem;">✨</span>
+          <div>
+            <span style="font-weight:600;font-size:.875rem;color:#6d28d9;">Conseil Juns IA du jour</span>
+          </div>
+        </div>
+        <button onclick="loadFreelanceSummary()" id="ai-fl-refresh" style="background:rgba(109,40,217,.12);border:1px solid rgba(109,40,217,.25);color:#6d28d9;border-radius:7px;padding:.3rem .65rem;font-size:.72rem;cursor:pointer;transition:all .2s;">Actualiser</button>
+      </div>
+      <p id="ai-fl-summary-text" style="margin:.75rem 0 0;font-size:.85rem;color:#4c1d95;line-height:1.65;"><span style="color:#9ca3af;">Chargement…</span></p>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    function loadFreelanceSummary() {
+      const el = document.getElementById('ai-fl-summary-text');
+      const btn = document.getElementById('ai-fl-refresh');
+      if (!el) return;
+      el.innerHTML = '<span style="color:#9ca3af;">Analyse en cours…</span>';
+      if (btn) btn.disabled = true;
+      fetch('/api/ai/freelance-summary', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '' },
+      })
+      .then(r => r.json())
+      .then(d => { el.textContent = d.summary || 'Continuez sur votre lancée !'; })
+      .catch(() => { el.innerHTML = '<span style="color:#9ca3af;">Non disponible pour le moment.</span>'; })
+      .finally(() => { if (btn) btn.disabled = false; });
+    }
+    window.loadFreelanceSummary = loadFreelanceSummary;
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(loadFreelanceSummary, 800); });
+  })();
+  </script>
+
 @endsection

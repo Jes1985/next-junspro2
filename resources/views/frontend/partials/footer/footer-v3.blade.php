@@ -38,6 +38,9 @@
               <li><a href="{{ route('conditions_generales_vente') }}">{{ __('Conditions générales de vente') }}</a></li>
               <li><a href="{{ route('referral.index') }}">{{ __('Parrainage') }}</a></li>
               <li><a href="{{ route('referral.conditions') }}">{{ __('Conditions du parrainage') }}</a></li>
+              <li><a href="{{ route('affiliate.landing') }}">{{ __('Programme Apporteurs d\'Affaires') }}</a></li>
+              <li><a href="{{ route('presence.formation-praticien') }}">{{ __('Formation Praticien Pause Souffle') }}</a></li>
+              <li><a href="{{ route('presence.retraite') }}">{{ __('La Retraite Pause Souffle') }}</a></li>
             </ul>
           </div>
         </div>
