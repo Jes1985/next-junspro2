@@ -99,7 +99,7 @@ class JunsproStripeWebhookController extends Controller
             return;
         }
 
-        // ── Mensualités formation praticien (3× 510 €) ───────────────────
+        // ── Mensualités formation praticien (3× 1 164 €) ─────────────────
         $subMeta = $invoice->subscription_details->metadata ?? [];
         if (($subMeta['type'] ?? null) === 'formation_praticien_installment') {
             $this->handleFormationInstallmentPayment($invoice, $stripeSubscriptionId, $subMeta);
@@ -276,6 +276,11 @@ class JunsproStripeWebhookController extends Controller
             $this->handlePauseSouffleSubscription($session);
         }
 
+        // Gérer abonnement Mentorat (subscription cycles 4 semaines)
+        if ($type === 'mentorship_subscription') {
+            $this->handleMentorshipSubscription($session);
+        }
+
         // Gérer paiement formation certifiante Praticien Pause Souffle
         if ($type === 'formation_praticien') {
             $this->handleFormationPraticienPayment($session);
@@ -283,7 +288,73 @@ class JunsproStripeWebhookController extends Controller
     }
 
     /**
-     * Gérer chaque mensualité de la formation (3× 510 €)
+     * Activer / renouveler un abonnement mentorat après paiement Stripe réussi.
+     */
+    protected function handleMentorshipSubscription($session): void
+    {
+        $metadata = $session->metadata ?? [];
+        $mentorshipSubId     = $metadata['mentorship_sub_id'] ?? null;
+        $planKey             = $metadata['plan_key'] ?? null;
+        $stripeSubscriptionId = $session->subscription ?? null;
+
+        if (! $mentorshipSubId || ! $planKey) {
+            Log::warning('Mentorship subscription webhook: metadata manquante', [
+                'session_id' => $session->id,
+                'metadata'   => $metadata,
+            ]);
+            return;
+        }
+
+        $sub = \App\Models\MentorshipSubscription::find($mentorshipSubId);
+        if (! $sub) {
+            Log::warning('Mentorship subscription not found', ['id' => $mentorshipSubId]);
+            return;
+        }
+
+        // Idempotence
+        if ($sub->status === 'active' && $sub->stripe_subscription_id === $stripeSubscriptionId) {
+            return;
+        }
+
+        // Calculer le cycle courant (4 semaines)
+        $cycleStart = now()->startOfDay();
+        $cycleEnd   = $cycleStart->copy()->addWeeks(4)->subDay();
+        $nextBilling = $cycleStart->copy()->addWeeks(4);
+
+        // Récupérer le montant payé depuis Stripe
+        $priceBase = 0;
+        $stripePrice = config("mentorship.stripe_prices.{$planKey}");
+        if ($stripePrice) {
+            try {
+                \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+                $price    = \Stripe\Price::retrieve($stripePrice);
+                $priceBase = $price->unit_amount / 100;
+            } catch (\Exception $e) {
+                Log::warning('Mentorship: impossible de récupérer le prix Stripe', ['error' => $e->getMessage()]);
+                $priceBase = config("mentorship.plan_prices.{$planKey}", 0);
+            }
+        }
+
+        $sub->update([
+            'status'                  => 'active',
+            'stripe_subscription_id'  => $stripeSubscriptionId,
+            'current_cycle_start'     => $cycleStart->toDateString(),
+            'current_cycle_end'       => $cycleEnd->toDateString(),
+            'next_billing_at'         => $nextBilling,
+            'price_paid'              => $priceBase,
+            'paid_at'                 => now(),
+        ]);
+
+        Log::info('Mentorship subscription activée', [
+            'sub_id'         => $sub->id,
+            'plan_key'       => $planKey,
+            'user_id'        => $sub->user_id,
+            'cycle_end'      => $cycleEnd->toDateString(),
+        ]);
+    }
+
+    /**
+     * Gérer chaque mensualité de la formation (3× 1 164 €)
      * → enrolle l'utilisateur dès la 1ère mensualité, annule l'abonnement après la 3ème
      */
     protected function handleFormationInstallmentPayment($invoice, string $stripeSubscriptionId, array $subMeta): void
@@ -302,7 +373,7 @@ class JunsproStripeWebhookController extends Controller
             return;
         }
 
-        $amountPaid = ($invoice->amount_paid ?? 51000) / 100;
+        $amountPaid = ($invoice->amount_paid ?? 116400) / 100;
 
         try {
             $formationService = app(\App\Services\Junspro\FormationService::class);
@@ -330,20 +401,36 @@ class JunsproStripeWebhookController extends Controller
 
             // Annuler l'abonnement Stripe après le dernier paiement
             $totalPaid = \App\Models\FormationEnrollment::where('user_id', $user->id)->value('amount_paid') + $amountPaid;
-            if ($totalPaid >= ($maxInstallments * 51000 / 100) * 0.95) {
+            if ($totalPaid >= ($maxInstallments * 116400 / 100) * 0.95) {
                 \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
                 \Stripe\Subscription::update($stripeSubscriptionId, ['cancel_at_period_end' => true]);
                 Log::info('[Formation Installment] Abonnement marqué cancel_at_period_end', ['sub_id' => $stripeSubscriptionId]);
             }
 
-            // Commission affilié sur cette mensualité
-            $this->recordAffiliateCommission(
-                $user,
-                $invoice->payment_intent ?? null,
-                $amountPaid,
-                'other',
-                null
-            );
+            // Commission ambassadeur PS sur cette mensualité (Formation Freelance PS)
+            $psCode = $subMeta['ps_ambassador_code'] ?? null;
+            if ($psCode) {
+                $psService   = app(\App\Services\PsAmbassadeurService::class);
+                $ambassadeur = $psService->resolveCode($psCode);
+                if ($ambassadeur) {
+                    $psService->recordConversion(
+                        $ambassadeur,
+                        $user,
+                        $amountPaid,
+                        'pause_freelance',
+                        $invoice->payment_intent ?? null
+                    );
+                }
+            } else {
+                // Fallback : commission JunsPro générique si le user a été apporté via /a/{code}
+                $this->recordAffiliateCommission(
+                    $user,
+                    $invoice->payment_intent ?? null,
+                    $amountPaid,
+                    'other',
+                    null
+                );
+            }
 
         } catch (\Exception $e) {
             Log::error('[Formation Installment] Erreur traitement', [
@@ -375,14 +462,14 @@ class JunsproStripeWebhookController extends Controller
             $formationService = app(\App\Services\Junspro\FormationService::class);
             $enrollment = $formationService->enroll(
                 $user,
-                ($session->amount_total ?? 149000) / 100,
+                ($session->amount_total ?? 349000) / 100,
                 $session->payment_intent ?? null
             );
 
             Log::info('[Formation] Enrollment créé après paiement', [
                 'user_id'       => $user->id,
                 'enrollment_id' => $enrollment->id,
-                'amount'        => ($session->amount_total ?? 149000) / 100,
+                'amount'        => ($session->amount_total ?? 349000) / 100,
             ]);
 
             // Email de confirmation
@@ -390,21 +477,38 @@ class JunsproStripeWebhookController extends Controller
                 \Illuminate\Support\Facades\Mail::to($user->email_address ?? $user->email)
                     ->send(new \App\Mail\FormationEnrollmentConfirmed(
                         $enrollment,
-                        ($session->amount_total ?? 149000) / 100,
+                        ($session->amount_total ?? 349000) / 100,
                         'full'
                     ));
             } catch (\Exception $mailEx) {
                 Log::error('[Formation] Erreur envoi email confirmation', ['error' => $mailEx->getMessage()]);
             }
 
-            // Attribution commission affilié si le praticien a été parrainé
-            $this->recordAffiliateCommission(
-                $user,
-                $session->payment_intent ?? null,
-                ($session->amount_total ?? 149000) / 100,
-                'other',
-                null
-            );
+            // Attribution commission ambassadeur PS ou affilié JunsPro selon le canal d'acquisition
+            $psCode = $session->metadata['ps_ambassador_code'] ?? null;
+            $psProductType = $session->metadata['product_type'] ?? 'pause_freelance';
+            if ($psCode) {
+                $psService  = app(\App\Services\PsAmbassadeurService::class);
+                $ambassadeur = $psService->resolveCode($psCode);
+                if ($ambassadeur) {
+                    $psService->recordConversion(
+                        $ambassadeur,
+                        $user,
+                        ($session->amount_total ?? 349000) / 100,
+                        $psProductType,
+                        $session->payment_intent ?? null
+                    );
+                }
+            } else {
+                // Fallback : commission JunsPro générique si le user a été apporté via /a/{code}
+                $this->recordAffiliateCommission(
+                    $user,
+                    $session->payment_intent ?? null,
+                    ($session->amount_total ?? 349000) / 100,
+                    'other',
+                    null
+                );
+            }
 
         } catch (\Exception $e) {
             Log::error('[Formation] Erreur traitement paiement', [
@@ -755,6 +859,3 @@ class JunsproStripeWebhookController extends Controller
         // Notification::send($user, new SubscriptionNotification($type, $data));
     }
 }
-
-
-

@@ -2317,7 +2317,7 @@
                 </p>
               @endif
 
-              {{-- Badge Praticien Pause Souffle --}}
+              {{-- Badge Freelance Pause Souffle --}}
               @php
                 $isPraticien = \App\Models\FormationEnrollment::where('user_id', $user->id)
                     ->where('status', 'completed')
@@ -2328,7 +2328,7 @@
                 <div style="margin-top: 12px;">
                   <span style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg,#1a0e00,#2a1800); border: 1px solid #c9a84c; color: #c9a84c; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px;">
                     <span style="font-size: 14px;">∞+</span>
-                    Praticien Pause Souffle certifié
+                    Freelance Pause Souffle certifié
                   </span>
                 </div>
               @endif

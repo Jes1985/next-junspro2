@@ -14,12 +14,13 @@ class AffiliateService
     // ─── Délai de validation anti-fraude ──────────────────────
     const VALIDATION_DELAY_DAYS = 7;
 
-    // ─── Taux par palier ──────────────────────────────────────
+    // ─── Taux JunsPro par palier ──────────────────────────
     const TIER_RATES = [
         'ambassador' => 5.00,
         'elite'      => 7.00,
         'club'       => 10.00,
     ];
+
 
     // ─── Seuils d'upgrade automatique ─────────────────────────
     const TIER_THRESHOLDS = [
@@ -106,7 +107,9 @@ class AffiliateService
         $maxMonths = self::TIER_DURATION[$affiliate->tier] ?? 6;
         if ($commissionMonth > $maxMonths) return null;
 
-        $rate   = $affiliate->commission_rate;
+        // Taux selon le palier JunsPro de l'apporteur
+        $rate = $affiliate->commission_rate;
+
         $amount = round($transactionAmount * $rate / 100, 2);
 
         $conversion = AffiliateConversion::create([

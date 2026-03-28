@@ -211,9 +211,9 @@ class StripeService
 
     /**
      * Créer une session Stripe Checkout pour la formation certifiante Praticien Pause Souffle
-     * Montant fixe : 1 490 € (paiement unique)
+     * Montant fixe : 3 490 € (paiement unique)
      */
-    public function createFormationCheckoutSession(int $userId, string $userEmail): Session
+    public function createFormationCheckoutSession(int $userId, string $userEmail, string $productType = 'pause_freelance', ?string $psAmbassadorCode = null): Session
     {
         $stripeSecret = config('services.stripe.secret');
         if (!$stripeSecret) {
@@ -225,15 +225,23 @@ class StripeService
         $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
         $cancelUrl  = route('presence.formation.cancel');
 
+        $productName = $productType === 'pause_parcours'
+            ? 'Le Parcours Pause Souffle — Retour à Soi'
+            : 'Formation Freelance Pause Souffle — Certification';
+
+        $productDesc = $productType === 'pause_parcours'
+            ? '6 modules en ligne · 8 semaines · Attestation Retour à Soi'
+            : '6 modules en ligne + Week-end immersif 3 jours + Attestation Junspro';
+
         $session = Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
                 'price_data' => [
                     'currency'     => 'eur',
-                    'unit_amount'  => 149000,
+                    'unit_amount'  => 349000,
                     'product_data' => [
-                        'name'        => 'Formation certifiante Praticien Pause Souffle',
-                        'description' => '6 modules en ligne + Week-end immersif 3 jours + Attestation Junspro',
+                        'name'        => $productName,
+                        'description' => $productDesc,
                     ],
                 ],
                 'quantity' => 1,
@@ -243,8 +251,10 @@ class StripeService
             'cancel_url'     => $cancelUrl,
             'customer_email' => $userEmail,
             'metadata' => [
-                'type'    => 'formation_praticien',
-                'user_id' => $userId,
+                'type'               => 'formation_praticien',
+                'product_type'       => $productType,
+                'user_id'            => $userId,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
             ],
         ]);
 
@@ -257,10 +267,10 @@ class StripeService
     }
 
     /**
-     * Créer une session Stripe Checkout pour la formation en 3 mensualités de 510 €
+     * Créer une session Stripe Checkout pour la formation en 3 mensualités de 1 164 €
      * Mode subscription : Stripe enverra invoice.payment_succeeded × 3, puis l'abonnement est annulé
      */
-    public function createFormationInstallmentCheckoutSession(int $userId, string $userEmail): Session
+    public function createFormationInstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
     {
         $stripeSecret = config('services.stripe.secret');
         if (!$stripeSecret) {
@@ -277,11 +287,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'     => 'eur',
-                    'unit_amount'  => 51000,
+                    'unit_amount'  => 116400,
                     'recurring'    => ['interval' => 'month', 'interval_count' => 1],
                     'product_data' => [
                         'name'        => 'Formation Praticien Pause Souffle — 3× mensualités',
-                        'description' => '3 mensualités de 510 € · Accès complet dès le 1er paiement',
+                        'description' => '3 mensualités de 1 164 € · Accès complet dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -291,15 +301,17 @@ class StripeService
             'cancel_url'     => $cancelUrl,
             'customer_email' => $userEmail,
             'metadata' => [
-                'type'             => 'formation_praticien_installment',
-                'user_id'          => $userId,
-                'max_installments' => 3,
+                'type'               => 'formation_praticien_installment',
+                'user_id'            => $userId,
+                'max_installments'   => 3,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
             ],
             'subscription_data' => [
                 'metadata' => [
-                    'type'             => 'formation_praticien_installment',
-                    'user_id'          => $userId,
-                    'max_installments' => 3,
+                    'type'               => 'formation_praticien_installment',
+                    'user_id'            => $userId,
+                    'max_installments'   => 3,
+                    'ps_ambassador_code' => $psAmbassadorCode ?? '',
                 ],
             ],
         ]);
@@ -308,6 +320,307 @@ class StripeService
             'session_id' => $session->id,
             'user_id'    => $userId,
         ]);
+
+        return $session;
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // PAUSE SOUFFLE — PARCOURS (2 Formations + Pack Intégral)
+    // ─────────────────────────────────────────────────────────
+
+    /**
+     * Parcours 1 "Se Retrouver" — 3 490 € (paiement unique)
+     * Modules 01-11 · Certification Niveau 1 · Praticien Pause Souffle · Éveil
+     */
+    public function createFormationNiveau1CheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 349000,
+                    'product_data' => [
+                        'name'        => 'Pause Souffle · Parcours 1 — Se Retrouver',
+                        'description' => '11 modules en ligne · Certification Niveau 1 · Praticien Pause Souffle · Éveil',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_parcours_1',
+                'user_id'            => $userId,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Formation Niveau 1 créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Parcours 1 "Se Retrouver" — 3× mensualités de 1 164 €
+     */
+    public function createFormationNiveau1InstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 116700,
+                    'recurring'   => ['interval' => 'month', 'interval_count' => 1],
+                    'product_data' => [
+                        'name'        => 'Pause Souffle · Parcours 1 — 3× mensualités',
+                        'description' => '3 mensualités de 1 167 € · Accès dès le 1er paiement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_parcours_1_installment',
+                'user_id'            => $userId,
+                'max_installments'   => 3,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+            'subscription_data' => [
+                'metadata' => [
+                    'type'               => 'formation_parcours_1_installment',
+                    'user_id'            => $userId,
+                    'max_installments'   => 3,
+                    'ps_ambassador_code' => $psAmbassadorCode ?? '',
+                ],
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Formation Niveau 1 mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Parcours 2 "S'Ouvrir" — 3 490 € (paiement unique)
+     * Modules 12-24 · Certification Niveau 2 · Praticien Pause Souffle · Maître
+     */
+    public function createFormationNiveau2CheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 349000,
+                    'product_data' => [
+                        'name'        => 'Pause Souffle · Parcours 2 — S\'Ouvrir',
+                        'description' => '13 modules en ligne · Certification Niveau 2 · Praticien Pause Souffle · Maître',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_parcours_2',
+                'user_id'            => $userId,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Formation Niveau 2 créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Parcours 2 "S'Ouvrir" — 3× mensualités de 1 164 €
+     */
+    public function createFormationNiveau2InstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 116700,
+                    'recurring'   => ['interval' => 'month', 'interval_count' => 1],
+                    'product_data' => [
+                        'name'        => 'Pause Souffle · Parcours 2 — 3× mensualités',
+                        'description' => '3 mensualités de 1 167 € · Accès dès le 1er paiement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_parcours_2_installment',
+                'user_id'            => $userId,
+                'max_installments'   => 3,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+            'subscription_data' => [
+                'metadata' => [
+                    'type'               => 'formation_parcours_2_installment',
+                    'user_id'            => $userId,
+                    'max_installments'   => 3,
+                    'ps_ambassador_code' => $psAmbassadorCode ?? '',
+                ],
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Formation Niveau 2 mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Pack Intégral (Parcours 1 + Parcours 2) — 5 990 € (paiement unique)
+     * Accès immédiat aux 22 modules · Certifications Niveaux 1 & 2
+     */
+    public function createFormationPackIntegralCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 599000,
+                    'product_data' => [
+                        'name'        => 'Pause Souffle · Pack Intégral — Se Retrouver & S\'Ouvrir',
+                        'description' => '22 modules en ligne · Certifications Niveau 1 & 2 · L\'une vous révèle. L\'autre vous épanouit.',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_pack_integral',
+                'user_id'            => $userId,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Pack Intégral créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Pack Intégral — 3× mensualités de 1 997 €
+     */
+    public function createFormationPackIntegralInstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 199700,
+                    'recurring'   => ['interval' => 'month', 'interval_count' => 1],
+                    'product_data' => [
+                        'name'        => 'Pause Souffle · Pack Intégral — 3× mensualités',
+                        'description' => '3 mensualités de 1 997 € · Accès aux 22 modules dès le 1er paiement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_pack_integral_installment',
+                'user_id'            => $userId,
+                'max_installments'   => 3,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+            'subscription_data' => [
+                'metadata' => [
+                    'type'               => 'formation_pack_integral_installment',
+                    'user_id'            => $userId,
+                    'max_installments'   => 3,
+                    'ps_ambassador_code' => $psAmbassadorCode ?? '',
+                ],
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Pack Intégral mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
 
         return $session;
     }

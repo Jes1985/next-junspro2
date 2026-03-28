@@ -2468,9 +2468,9 @@
             <span class="hero-title-line-2">{{ __('Des rituels pour vos résultats.') }}</span>
           </h1>
           <p class="hero-subtitle mb-5">
-            Déposez une mission. Nous vous orientons vers le bon univers et les bons profils.<br>
+            {{ __("Déposez une mission. Nous vous orientons vers le bon univers et les bons profils.") }}<br>
             <a href="#nos-univers" class="hero-subtitle-link" style="color: #7c3aed; text-decoration: none; font-weight: 600; transition: color 0.3s ease;">
-              Explorer nos univers →
+              {{ __("Explorer nos univers →") }}
             </a>
           </p>
           
@@ -2484,18 +2484,18 @@
                   class="segmentation-btn active" 
                   data-user-type="entreprise"
                 >
-                  Je suis Entreprise
+                  {{ __("Je suis Entreprise") }}
               </button>
                 <button 
                   type="button" 
                   class="segmentation-btn" 
                   data-user-type="particulier"
                 >
-                  Particulier
+                  {{ __("Particulier") }}
                 </button>
               </div>
               <a href="{{ route('freelance.onboarding.start') }}" class="segmentation-link-freelance">
-                Freelance
+                {{ __("Freelance") }}
               </a>
               </div>
             
@@ -2504,20 +2504,20 @@
               <!-- Entreprise -->
               <div id="cta-entreprise" class="cta-group">
                 <a href="{{ route('mission.form') }}" class="btn-cta-primary">
-                  Déposer une mission
+                  {{ __("Déposer une mission") }}
                 </a>
                 <a href="{{ route('services') }}" class="btn-cta-secondary">
-                  Trouver un freelance
+                  {{ __("Trouver un freelance") }}
                 </a>
                 <a href="{{ route('freelance.onboarding.start') }}" class="btn-cta-link">
-                  Créer mon profil freelance
+                  {{ __("Créer mon profil freelance") }}
                 </a>
               </div>
               
               <!-- Particulier -->
               <div id="cta-particulier" class="cta-group" style="display: none;">
                 <a href="{{ route('services') }}" class="btn-cta-primary">
-                  Réserver un rituel
+                  {{ __("Réserver un rituel") }}
                 </a>
               </div>
             </div>
@@ -2628,7 +2628,7 @@
           </div>
 
             <div class="hero-search-tags" data-aos="fade-up" data-aos-delay="300">
-            Bêta privée —qualité > quantité. Vos premières missions sont traitées en priorité.
+            {{ __("Bêta privée — qualité > quantité. Vos premières missions sont traitées en priorité.") }}
                   </div>
             </div>
 
@@ -2707,7 +2707,7 @@
                     <h3 class="rituel-universe-title">{{ $universe['title'] }}</h3>
                 </div>
                   <a href="{{ $universe['url'] }}" class="rituel-universe-cta">
-                    Réserver un Rituel d'essai
+                    {{ __("Réserver un Rituel d'essai") }}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -2742,7 +2742,7 @@
               <p style="margin-bottom: 1.5rem; padding-left: 1.5rem; border-left: 3px solid #7c3aed;">
                 <strong>Un Rituel, c'est 1h = 50 minutes de focus + 10 minutes de feedback / rapport.</strong><br>
                 Ce n'est pas "du temps vendu". C'est une méthode : un cadre qui transforme l'élan en résultats.
-                <button id="visionToggleBtn" onclick="toggleVisionContent()" style="background: none; border: none; color: #7c3aed; font-weight: 600; cursor: pointer; text-decoration: underline; margin-left: 0.5rem; font-size: 1.1rem;">Voir plus</button>
+                <button id="visionToggleBtn" onclick="toggleVisionContent()" data-more="{{ __('Voir plus') }}" data-less="{{ __('Voir moins') }}" style="background: none; border: none; color: #7c3aed; font-weight: 600; cursor: pointer; text-decoration: underline; margin-left: 0.5rem; font-size: 1.1rem;">{{ __('Voir plus') }}</button>
               </p>
               
               <div id="visionMoreContent" style="display: none; margin-bottom: 1.5rem; animation: fadeIn 0.3s ease-in;">
@@ -2772,7 +2772,7 @@
                 
                 <div style="text-align: center; margin-top: 3rem;">
                   <p style="font-size: 1.2rem; font-weight: 500; color: #1a202c; margin-bottom: 1.5rem;">
-                    Êtes-vous prêt à entrer dans l'expérience ?
+                    {{ __("Êtes-vous prêt à entrer dans l'expérience ?") }}
                   </p>
                   <a href="{{ route('explore') }}" class="btn-vision-rituel">
                     {{ __('Réserver un Rituel d\'essai') }}
@@ -2788,10 +2788,10 @@
                 
                 if (content.style.display === 'none') {
                   content.style.display = 'block';
-                  button.textContent = 'Voir moins';
+                  button.textContent = button.dataset.less;
                 } else {
                   content.style.display = 'none';
-                  button.textContent = 'Voir plus';
+                  button.textContent = button.dataset.more;
                 }
               }
             </script>
@@ -2819,7 +2819,7 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-12 text-center">
-          <h2 class="section-title-modern mb-3" data-aos="fade-up">Comment ça marche</h2>
+          <h2 class="section-title-modern mb-3" data-aos="fade-up">{{ __("Comment ça marche") }}</h2>
         </div>
       </div>
       <div class="row g-4 align-items-center" style="flex-wrap: nowrap;">
@@ -2829,8 +2829,8 @@
             <div class="mb-3" style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
               1
             </div>
-            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">Choisissez votre univers</h5>
-            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Explorez nos 6 univers et trouvez celui qui correspond à vos besoins</p>
+            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">{{ __("Choisissez votre univers") }}</h5>
+            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">{{ __("Explorez nos 6 univers et trouvez celui qui correspond à vos besoins") }}</p>
           </div>
         </div>
         <!-- Flèche 1 -->
@@ -2843,8 +2843,8 @@
             <div class="mb-3" style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
               2
             </div>
-            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">Réservez en quelques clics</h5>
-            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Sélectionnez votre service, choisissez un créneau et validez</p>
+            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">{{ __("Réservez en quelques clics") }}</h5>
+            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">{{ __("Sélectionnez votre service, choisissez un créneau et validez") }}</p>
           </div>
         </div>
         <!-- Flèche 2 -->
@@ -2857,8 +2857,8 @@
             <div class="mb-3" style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
               3
             </div>
-            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">Profitez de l'expérience</h5>
-            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Suivez votre progression et bénéficiez d'un accompagnement personnalisé</p>
+            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">{{ __("Profitez de l'expérience") }}</h5>
+            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">{{ __("Suivez votre progression et bénéficiez d'un accompagnement personnalisé") }}</p>
           </div>
         </div>
       </div>
@@ -3008,7 +3008,7 @@
                             @endif
                           </div>
                           @if($user->is_verified_freelancer ?? $freelancer->is_verified ?? false)
-                            <span class="freelancer-card-badge-verified"><i class="fas fa-check-circle"></i> Vérifié</span>
+                            <span class="freelancer-card-badge-verified"><i class="fas fa-check-circle"></i> {{ __("Vérifié") }}</span>
                           @endif
                           <div class="freelancer-card-cta">{{ __('Voir le profil') }}</div>
                         </div>
@@ -3044,40 +3044,87 @@
     </section>
   @endif
 
-  {{-- ─── Formation Praticien Pause Souffle – Bannière CTA ─────────── --}}
+  {{-- ─── Parcours Pause Souffle – 4 Niveaux ────────────────────────── --}}
   <section style="background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #1a0533 100%); padding: 80px 0; margin: 0;">
     <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-8" data-aos="fade-right">
-          <div style="display: inline-block; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); color: #d4af37; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.5rem;">Formation certifiante</div>
-          <h2 style="color: #ffffff; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; line-height: 1.25; margin-bottom: 1.2rem;">
-            Devenez <span style="color: #d4af37;">Praticien Pause Souffle</span> certifié
-          </h2>
-          <p style="color: rgba(255,255,255,0.75); font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.8rem; max-width: 600px;">
-            Un programme structuré en 6 modules pour maîtriser le Rituel Pause Souffle et l'intégrer à votre activité professionnelle. Obtenez votre attestation et rejoignez la communauté des praticiens certifiés Junspro.
-          </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
-            <span style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem;"><i class="fas fa-check-circle" style="color: #d4af37; margin-right: 6px;"></i>6 modules progressifs</span>
-            <span style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem;"><i class="fas fa-check-circle" style="color: #d4af37; margin-right: 6px;"></i>Attestation officielle</span>
-            <span style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem;"><i class="fas fa-check-circle" style="color: #d4af37; margin-right: 6px;"></i>Accès à vie</span>
-            <span style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem;"><i class="fas fa-check-circle" style="color: #d4af37; margin-right: 6px;"></i>Paiement en 3 ×</span>
-          </div>
-        </div>
-        <div class="col-lg-4 text-center" data-aos="fade-left">
-          <div style="background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 20px; padding: 2rem 1.5rem; display: inline-block; max-width: 280px; width: 100%;">
-            <div style="color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 0.5rem;">Accès complet à partir de</div>
-            <div style="color: #d4af37; font-size: 3rem; font-weight: 800; line-height: 1; margin-bottom: 0.25rem;">1 490 €</div>
-            <div style="color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-bottom: 1.5rem;">ou 3 × 510 €</div>
-            <a href="{{ route('presence.formation-praticien') }}" style="display: block; background: linear-gradient(135deg, #d4af37 0%, #f0c040 100%); color: #1a0533; font-weight: 700; font-size: 1rem; padding: 14px 24px; border-radius: 12px; text-decoration: none; text-align: center; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
-              Découvrir la formation <i class="fas fa-arrow-right ms-1"></i>
-            </a>
-            <a href="{{ route('presence.retraite') }}" style="display: block; margin-top: .75rem; border: 1px solid rgba(212,175,55,0.4); color: #d4af37; font-weight: 600; font-size: .875rem; padding: 10px 20px; border-radius: 12px; text-decoration: none; text-align: center; transition: background .2s;" onmouseover="this.style.background='rgba(212,175,55,0.1)'" onmouseout="this.style.background='transparent'">
-              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:5px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              La Retraite · Méditerranée
-            </a>
-          </div>
-        </div>
+
+      {{-- Header --}}
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div style="display: inline-block; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); color: #d4af37; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.25rem;">{{ __("Un parcours en quatre temps") }}</div>
+        <h2 style="color: #fff; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; line-height: 1.25; margin-bottom: 0.75rem;">
+          {{ __("Votre parcours") }} <span style="color: #d4af37;">Pause Souffle</span>
+        </h2>
+        <p style="color: rgba(255,255,255,0.6); font-size: 1rem; max-width: 560px; margin: 0 auto;">
+          {{ __("Chaque niveau a sa propre destination.") }} <em style="color: rgba(255,255,255,0.8);">{{ __("Vous choisissez jusqu'où vous allez.") }}</em>
+        </p>
       </div>
+
+      {{-- Étapes du parcours --}}
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+
+        {{-- Niveau 1 — Le Parcours (pour soi, déjà en ligne) --}}
+        <div data-aos="fade-up" data-aos-delay="0" style="border: 1px solid rgba(212,175,55,0.3); border-radius: 18px; padding: 1.75rem 1.5rem; background: rgba(255,255,255,0.03); position: relative; overflow: hidden;">
+          <div style="position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, #d4af37, #f0c040);"></div>
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d4af37; margin-bottom: 0.6rem;">{{ __("Étape 1 · Pour soi · Ouvert à tous") }}</div>
+          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ __("Le Parcours") }}</h3>
+          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem;">{{ __("6 modules en ligne — 8 semaines à votre rythme. Un chemin de retour à soi, profond et personnel. Pas une formation professionnelle — une transformation pour vous.") }}</p>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <span style="display: inline-block; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: #d4af37; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;">✦ {{ __("Attestation Retour à Soi") }}</span>
+            <a href="{{ route('presence.parcours') }}" style="display: inline-block; color: rgba(255,255,255,0.45); font-size: 0.75rem; text-decoration: none; padding: 4px 0; transition: color 0.2s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">{{ __("Découvrir le Parcours →") }}</a>
+          </div>
+        </div>
+
+        {{-- Retraite 7 jours (option après Niveau 1) --}}
+        <div data-aos="fade-up" data-aos-delay="100" style="border: 1px solid rgba(132,204,22,0.2); border-radius: 18px; padding: 1.75rem 1.5rem; background: rgba(255,255,255,0.02); position: relative; overflow: hidden;">
+          <div style="position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, #84cc16, #d4af37);"></div>
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #84cc16; margin-bottom: 0.6rem;">{{ __("Après le Parcours · En option") }}</div>
+          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ __("La Retraite 7 jours") }}</h3>
+          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem;">{{ __("Immersion en Méditerranée. Ouverte à tous ceux qui ont complété le Parcours — avec ou sans suite vers la Formation Freelance.") }}</p>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <span style="display: inline-block; background: rgba(132,204,22,0.08); border: 1px solid rgba(132,204,22,0.25); color: #84cc16; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;">✦ {{ __("Édition Fondatrice · Méditerranée") }}</span>
+            <a href="{{ route('presence.retraite') }}" style="display: inline-block; color: rgba(255,255,255,0.4); font-size: 0.75rem; text-decoration: none; padding: 4px 0; transition: color 0.2s;" onmouseover="this.style.color='#84cc16'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">{{ __("Découvrir la Retraite →") }}</a>
+          </div>
+        </div>
+
+        {{-- Niveau 2 — Formation Freelance Pause Souffle --}}
+        <div data-aos="fade-up" data-aos-delay="200" style="border: 1px solid rgba(124,58,237,0.4); border-radius: 18px; padding: 1.75rem 1.5rem; background: rgba(124,58,237,0.06); position: relative; overflow: hidden;">
+          <div style="position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, #7c3aed, #d4af37);"></div>
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #a78bfa; margin-bottom: 0.6rem;">{{ __("Niveau 2 · Après le Parcours") }}</div>
+          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ __("La Formation Freelance") }}</h3>
+          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem;">{{ __("Maîtriser et animer les Rituels. Travailler en cabinet, à domicile, en entreprise. Contenu du programme en cours de réalisation.") }}</p>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <span style="display: inline-block; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: #d4af37; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;">✦ {{ __("Certification Freelance Pause Souffle · 3 490 €") }}</span>
+            <a href="{{ route('presence.formation-praticien') }}" style="display: inline-block; color: rgba(255,255,255,0.4); font-size: 0.75rem; text-decoration: none; padding: 4px 0; transition: color 0.2s;" onmouseover="this.style.color='#a78bfa'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">{{ __("Découvrir la formation →") }}</a>
+          </div>
+        </div>
+
+        {{-- Niveau 3 — Formation Formateur / Tuteur --}}
+        <div data-aos="fade-up" data-aos-delay="300" style="border: 1px solid rgba(37,99,235,0.3); border-radius: 18px; padding: 1.75rem 1.5rem; background: rgba(255,255,255,0.02); position: relative; overflow: hidden;">
+          <div style="position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, #2563eb, #84cc16);"></div>
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #60a5fa; margin-bottom: 0.6rem;">{{ __("Niveau 3 · Sur sélection") }}</div>
+          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ __("La Formation Formateur") }}</h3>
+          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem;">{{ __("Former et accompagner d'autres freelances Pause Souffle. Construire un réseau local. Sur candidature après 6 mois d'activité certifiée.") }}</p>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <span style="display: inline-block; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.3); color: #60a5fa; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;">✦ {{ __("Habilitation Formateur / Tuteur · 3 500 €") }}</span>
+            <span style="display: inline-block; color: rgba(255,255,255,0.3); font-size: 0.75rem; font-style: italic; padding: 4px 0;">{{ __("Accessible après 6 mois certifié Freelance") }}</span>
+          </div>
+        </div>
+
+      </div>
+
+      {{-- CTA central --}}
+      <div class="text-center" data-aos="fade-up">
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1.25rem;">
+          {{ __("Commencez où vous êtes. Avancez à votre rythme.") }}
+        </p>
+        <a href="{{ route('presence.parcours') }}" style="display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #f0c040 100%); color: #1a0533; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 12px; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+          {{ __("Commencer par Le Parcours") }} <i class="fas fa-arrow-right ms-1"></i>
+        </a>
+        <a href="{{ route('presence.formation-praticien') }}" style="display: inline-block; margin-left: 1rem; color: rgba(255,255,255,0.5); font-size: 0.875rem; text-decoration: none; padding: 4px 0; transition: color 0.2s;" onmouseover="this.style.color='#a78bfa'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+          {{ __("Voir la Formation Freelance →") }}
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -3088,14 +3135,14 @@
         <!-- Header de section -->
         <div class="blog-header-premium">
           <div class="blog-header-content">
-            <h2 class="blog-title-premium">Votre source d'inspiration</h2>
+            <h2 class="blog-title-premium">{{ __("Votre source d'inspiration") }}</h2>
             <p class="blog-subtitle-premium">
-              Guides, conseils et retours d'expérience pour échanger en confiance et choisir votre univers.
+              {{ __("Guides, conseils et retours d'expérience pour échanger en confiance et choisir votre univers.") }}
             </p>
           </div>
           <div class="blog-header-actions">
             <a href="{{ route('blog') }}" class="btn-blog-primary">
-              Voir plus d'articles
+              {{ __("Voir plus d'articles") }}
             </a>
             @php
               try {
@@ -3106,7 +3153,7 @@
             @endphp
             @if($servicesRoute)
               <a href="{{ $servicesRoute }}" class="btn-blog-secondary">
-                Explorer les services
+                {{ __("Explorer les services") }}
               </a>
             @endif
           </div>
@@ -3153,7 +3200,7 @@
                               $wordCount = str_word_count(strip_tags($post->content));
                               $readingTime = max(1, round($wordCount / 200));
                             @endphp
-                            {{ $readingTime }}mn à lire
+                            {{ $readingTime }}{{ __("mn à lire") }}
                           </span>
                         </div>
                       </div>
@@ -3169,9 +3216,9 @@
         @else
           <!-- Fallback si aucun article -->
           <div class="blog-empty-state">
-            <p class="blog-empty-text">Aucun article disponible pour le moment.</p>
+            <p class="blog-empty-text">{{ __("Aucun article disponible pour le moment.") }}</p>
             <a href="{{ route('blog') }}" class="btn-blog-primary">
-              Voir plus d'articles
+              {{ __("Voir plus d'articles") }}
             </a>
           </div>
         @endif

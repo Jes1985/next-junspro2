@@ -667,12 +667,82 @@
   .rt-day { gap: 1.2rem; }
   .rt-pourqui { padding: 2rem 1.5rem; }
   .rt-act-grid { grid-template-columns: 1fr; }
+
+  .rt-lang-toggle { bottom: 5rem; right: 1.25rem; }
+}
+
+/* ── LANG TOGGLE ──────────────────────────────────────────────── */
+.rt-lang-toggle {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(13,13,26,.92);
+  border: 1px solid rgba(212,168,83,.35);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(212,168,83,.08);
+  overflow: hidden;
+  padding: 3px;
+}
+.rt-lang-toggle__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: .52rem 1.15rem;
+  border-radius: 999px;
+  font-family: 'Montserrat', Georgia, sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background .22s, color .22s, box-shadow .22s;
+  color: rgba(255,255,255,.38);
+  background: transparent;
+}
+.rt-lang-toggle__btn--active {
+  background: linear-gradient(135deg, var(--rt-gold), #c49340);
+  color: #06060f;
+  box-shadow: 0 2px 12px rgba(212,168,83,.4);
+}
+.rt-lang-toggle__btn--active:hover { opacity: .9; }
+.rt-lang-toggle__btn:not(.rt-lang-toggle__btn--active):hover {
+  color: var(--rt-gold-l);
+}
+.rt-lang-toggle__sep {
+  width: 1px;
+  height: 16px;
+  background: rgba(212,168,83,.22);
+  flex-shrink: 0;
 }
 </style>
 @endsection
 
 @section('content')
 <div class="rt-page">
+
+  {{-- ── LANGUE TOGGLE FLOTTANT ─────────────────────────────── --}}
+  <div class="rt-lang-toggle" role="navigation" aria-label="Language switcher">
+    <a href="{{ url()->current() }}?lang=fr"
+       class="rt-lang-toggle__btn {{ !$en ? 'rt-lang-toggle__btn--active' : '' }}"
+       title="Version française">
+      FR
+    </a>
+    <span class="rt-lang-toggle__sep"></span>
+    <a href="{{ url()->current() }}?lang=en"
+       class="rt-lang-toggle__btn {{ $en ? 'rt-lang-toggle__btn--active' : '' }}"
+       title="English version">
+      EN
+    </a>
+  </div>
 
   {{-- ═══════════════════════════════════════════════════════ --}}
   {{-- HERO                                                    --}}
@@ -1535,7 +1605,7 @@
           <span class="rt-inclus-item__icon">🎓</span>
           <div>
             <p class="rt-inclus-item__title">{{ $en ? 'Attestation ceremony' : 'Cérémonie d\'attestation' }}</p>
-            <p class="rt-inclus-item__body">{{ $en ? 'Official physical attestation Pause Souffle Practitioner — remitted during the gala dinner, in front of the group.' : 'Attestation physique officielle Praticien Pause Souffle — remise lors du dîner de gala, devant le groupe.' }}</p>
+            <p class="rt-inclus-item__body">{{ $en ? 'Official physical attestation Pause Souffle Freelance — remitted during the gala dinner, in front of the group.' : 'Attestation physique officielle Freelance Pause Souffle — remise lors du dîner de gala, devant le groupe.' }}</p>
           </div>
         </div>
         <div class="rt-inclus-item">

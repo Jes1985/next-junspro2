@@ -56,6 +56,9 @@ return [
 
   'asset_url' => env('ASSET_URL', null),
 
+  // ID utilisateur créateur — accès privilégié sans verrou sur les modules
+  'creator_user_id' => (int) env('CREATOR_USER_ID', 0),
+
   /*
   |--------------------------------------------------------------------------
   | Application Timezone

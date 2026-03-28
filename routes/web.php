@@ -29,6 +29,16 @@ Route::post('/push-notification/store-endpoint', 'FrontEnd\PushNotificationContr
 Route::get('/subcheck', 'CronJobController@expired')->name('cron.expired');
 Route::get('/check-payment', 'CronJobController@check_payment')->name('cron.check_payment');
 
+// Raccourci /login → déconnecte si déjà connecté, puis affiche le formulaire de connexion
+Route::get('/login', function () {
+    if (auth('web')->check()) {
+        auth('web')->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+    }
+    return redirect()->route('user.login');
+})->name('login');
+
 Route::get('myfatoorah/callback', 'MyFatoorahController@callback')->name('myfatoorah_callback');
 
 Route::get('myfatoorah/cancel', 'MyFatoorahController@cancel')->name('myfatoorah_cancel');
@@ -397,8 +407,11 @@ Route::prefix('/mon-espace/affiliation')->middleware(['auth:web', 'change.lang']
   Route::post('/rejoindre',[\App\Http\Controllers\FrontEnd\AffiliateController::class, 'register'])->name('affiliate.register');
 });
 
-// Route de tracking /a/{code} (publique, sans auth)
+// Route de tracking /a/{code} (publique, sans auth — JunsPro générique)
 Route::get('/a/{code}', [\App\Http\Controllers\FrontEnd\AffiliateController::class, 'track'])->name('affiliate.track')->middleware('change.lang');
+
+// Route de tracking /ps/{code} (publique — Pause Souffle Ambassadeur, cookie 90j dédié)
+Route::get('/ps/{code}', [\App\Http\Controllers\FrontEnd\PsAmbassadeurController::class, 'track'])->name('ps.track')->middleware('change.lang');
 
 // API apporteurs (auth requise)
 Route::prefix('/api/affiliate')->middleware(['auth:web', 'change.lang'])->group(function () {
@@ -409,7 +422,19 @@ Route::prefix('/api/affiliate')->middleware(['auth:web', 'change.lang'])->group(
 // Routes Présence - Pause Souffle
 Route::prefix('/presence')->middleware(['change.lang'])->group(function () {
   Route::get('/pause-souffle', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'index'])->name('presence.pause-souffle');
+  Route::get('/ambassadeurs', [\App\Http\Controllers\FrontEnd\PsAmbassadeurController::class, 'landing'])->name('presence.ambassadeurs');
+  Route::post('/ambassadeurs/register', [\App\Http\Controllers\FrontEnd\PsAmbassadeurController::class, 'register'])->middleware('auth:web')->name('ps.register');
+  Route::get('/ambassadeurs/ressources', [\App\Http\Controllers\FrontEnd\PsAmbassadeurController::class, 'ressources'])->name('ps.ressources');
+  Route::post('/ambassadeurs/invitations', [\App\Http\Controllers\FrontEnd\PsAmbassadeurController::class, 'sendInvitations'])->middleware('auth:web')->name('ps.invitations.send');
+  Route::get('/le-parcours', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcours'])->name('presence.parcours');
   Route::get('/devenir-praticien', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationPraticien'])->name('presence.formation-praticien');
+  // Compatibilite anciens liens
+  Route::get('/parcours', function () {
+    return redirect()->route('presence.parcours', [], 301);
+  });
+  Route::get('/formation-praticien', function () {
+    return redirect()->route('presence.formation-praticien', [], 301);
+  });
   Route::get('/la-retraite', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraite'])->name('presence.retraite');
   Route::get('/la-retraite/livret', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'livretRetraite'])->name('presence.retraite.livret');
   Route::post('/la-retraite/waitlist', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraiteWaitlist'])->name('presence.retraite.waitlist');
@@ -424,20 +449,65 @@ Route::prefix('/presence')->middleware(['change.lang'])->group(function () {
   Route::post('/formation/checkout-installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationCheckoutInstallment'])->name('presence.formation.checkout.installment')->middleware('auth:web');
   Route::get('/formation/success', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationSuccess'])->name('presence.formation.success');
   Route::get('/formation/cancel', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationCancel'])->name('presence.formation.cancel');
+  // Parcours Pause Souffle — 3 produits (Niveau 1 / Niveau 2 / Pack Intégral)
+  Route::post('/parcours/checkout/niveau-1', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau1'])->name('parcours.checkout.niveau1')->middleware('auth:web');
+  Route::post('/parcours/checkout/niveau-1/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau1Installment'])->name('parcours.checkout.niveau1.installment')->middleware('auth:web');
+  Route::post('/parcours/checkout/niveau-2', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau2'])->name('parcours.checkout.niveau2')->middleware('auth:web');
+  Route::post('/parcours/checkout/niveau-2/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau2Installment'])->name('parcours.checkout.niveau2.installment')->middleware('auth:web');
+  Route::post('/parcours/checkout/pack-integral', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutPackIntegral'])->name('parcours.checkout.pack-integral')->middleware('auth:web');
+  Route::post('/parcours/checkout/pack-integral/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutPackIntegralInstallment'])->name('parcours.checkout.pack-integral.installment')->middleware('auth:web');
+
 });
+
+// Raccourci public : /ambassadeurs → /presence/ambassadeurs
+Route::get('/ambassadeurs', function () {
+    return redirect()->route('presence.ambassadeurs', [], 301);
+})->middleware('change.lang')->name('ambassadeurs.redirect');
 
 // Route de tracking /r/{code} (publique, sans auth)
 Route::get('/r/{code}', [\App\Http\Controllers\FrontEnd\ReferralController::class, 'track'])->name('referral.track')->middleware('change.lang');
 
-// Espace praticien Formation Pause Souffle
+// Espace Parcours Pause Souffle
+Route::prefix('/mon-espace/parcours')->middleware(['auth:web', 'change.lang'])->group(function () {
+  Route::get('/',                                       [\App\Http\Controllers\FrontEnd\FormationController::class, 'dashboardParcours'])->name('parcours.dashboard');
+  Route::get('/upgrade',                                [\App\Http\Controllers\FrontEnd\FormationController::class, 'parcoursUpgrade'])->name('parcours.upgrade');
+  Route::get('/module/{slug}',                          [\App\Http\Controllers\FrontEnd\FormationController::class, 'showParcoursModule'])->name('parcours.module.show');
+  Route::post('/module/{moduleId}/start',               [\App\Http\Controllers\FrontEnd\FormationController::class, 'startModule'])->name('parcours.module.start');
+  Route::post('/module/{moduleId}/complete',            [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeModule'])->name('parcours.module.complete');
+  Route::post('/module/{slug}/activity/{idx}',          [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeActivity'])->name('parcours.activity.complete');
+  Route::post('/module/{slug}/activity/{idx}/notes',    [\App\Http\Controllers\FrontEnd\FormationController::class, 'saveActivityNotes'])->name('parcours.activity.notes');
+  Route::get('/module/{slug}/pdf',                      [\App\Http\Controllers\FrontEnd\FormationController::class, 'downloadPdf'])->name('parcours.module.pdf');
+});
+
+// Espace Formation Pause Souffle
 Route::prefix('/mon-espace/formation')->middleware(['auth:web', 'change.lang'])->group(function () {
-  Route::get('/',                                       [\App\Http\Controllers\FrontEnd\FormationController::class, 'dashboard'])->name('formation.dashboard');
-  Route::get('/attestation',                            [\App\Http\Controllers\FrontEnd\FormationController::class, 'showAttestation'])->name('formation.attestation');
-  Route::get('/module/{slug}',                          [\App\Http\Controllers\FrontEnd\FormationController::class, 'showModule'])->name('formation.module.show');
+  Route::get('/',                                       [\App\Http\Controllers\FrontEnd\FormationController::class, 'dashboardPraticien'])->name('formation.dashboard');
+  Route::get('/attestation',                            [\App\Http\Controllers\FrontEnd\FormationController::class, 'showPraticienAttestation'])->name('formation.attestation');
+  Route::get('/visio-programme',                        [\App\Http\Controllers\FrontEnd\FormationController::class, 'showVisio'])->name('formation.visio');
+  Route::get('/visio', function () {
+    return redirect()->route('formation.visio', [], 301);
+  });
+  Route::get('/ma-pause-souffle',                       [\App\Http\Controllers\FrontEnd\FormationController::class, 'showMaPauseSouffle'])->name('formation.ma-pause-souffle');
+  Route::get('/module/{slug}',                          [\App\Http\Controllers\FrontEnd\FormationController::class, 'showPraticienModule'])->name('formation.module.show');
   Route::post('/module/{moduleId}/start',               [\App\Http\Controllers\FrontEnd\FormationController::class, 'startModule'])->name('formation.module.start');
   Route::post('/module/{moduleId}/complete',            [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeModule'])->name('formation.module.complete');
   Route::post('/module/{slug}/activity/{idx}',          [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeActivity'])->name('formation.activity.complete');
   Route::post('/module/{slug}/activity/{idx}/notes',    [\App\Http\Controllers\FrontEnd\FormationController::class, 'saveActivityNotes'])->name('formation.activity.notes');
+  Route::get('/module/{slug}/pdf',                      [\App\Http\Controllers\FrontEnd\FormationController::class, 'downloadPdf'])->name('formation.module.pdf');
+});
+
+// Compatibilite anciennes URLs /mon-espace/praticien/*
+Route::prefix('/mon-espace/praticien')->middleware(['auth:web', 'change.lang'])->group(function () {
+  Route::get('/',                                       function () { return redirect()->route('formation.dashboard', [], 301); })->name('praticien.dashboard');
+  Route::get('/attestation',                            function () { return redirect()->route('formation.attestation', [], 301); })->name('praticien.attestation');
+  Route::get('/visio-programme',                        function () { return redirect()->route('formation.visio', [], 301); })->name('praticien.visio');
+  Route::get('/ma-pause-souffle',                       function () { return redirect()->route('formation.ma-pause-souffle', [], 301); })->name('praticien.ma-pause-souffle');
+  Route::get('/module/{slug}',                          function ($slug) { return redirect()->route('formation.module.show', ['slug' => $slug], 301); })->name('praticien.module.show');
+  Route::post('/module/{moduleId}/start',               [\App\Http\Controllers\FrontEnd\FormationController::class, 'startModule'])->name('praticien.module.start');
+  Route::post('/module/{moduleId}/complete',            [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeModule'])->name('praticien.module.complete');
+  Route::post('/module/{slug}/activity/{idx}',          [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeActivity'])->name('praticien.activity.complete');
+  Route::post('/module/{slug}/activity/{idx}/notes',    [\App\Http\Controllers\FrontEnd\FormationController::class, 'saveActivityNotes'])->name('praticien.activity.notes');
+  Route::get('/module/{slug}/pdf',                      function ($slug) { return redirect()->route('formation.module.pdf', ['slug' => $slug], 301); })->name('praticien.module.pdf');
 });
 
 // API routes pour parrainage (auth required)
@@ -453,6 +523,45 @@ Route::prefix('/api/scheduler')->middleware(['auth:web'])->group(function () {
   Route::post('/projects/confirm', [\App\Http\Controllers\FrontEnd\SchedulerController::class, 'projectsConfirm'])->name('scheduler.api.projects.confirm');
   Route::get('/homeswap/context', [\App\Http\Controllers\FrontEnd\SchedulerController::class, 'homeswapContext'])->name('scheduler.api.homeswap.context');
   Route::post('/homeswap/request', [\App\Http\Controllers\FrontEnd\SchedulerController::class, 'homeswapRequest'])->name('scheduler.api.homeswap.request');
+});
+
+// Page abonnement Mentorat (publique pour visiteurs, protégée pour souscrire)
+Route::prefix('/mentorat')->middleware(['change.lang'])->group(function () {
+  Route::get('/devenir-mentor', [\App\Http\Controllers\FrontEnd\MentorOnboardingController::class, 'show'])->name('mentor.onboarding.show');
+  Route::post('/devenir-mentor', [\App\Http\Controllers\FrontEnd\MentorOnboardingController::class, 'submit'])->middleware('auth:web')->name('mentor.onboarding.submit');
+  Route::get('/devenir-mentor/confirmation', [\App\Http\Controllers\FrontEnd\MentorOnboardingController::class, 'confirmation'])->middleware('auth:web')->name('mentor.onboarding.confirmation');
+
+  Route::get('/devenir-stagiaire', function () {
+    return view('frontend.mentorship.become-intern');
+  })->name('mentorship.become-intern');
+
+  Route::get('/devenir-freelance-junior', function () {
+    return view('frontend.mentorship.become-freelance-junior');
+  })->name('mentorship.become-junior');
+
+  Route::get('/apporter-un-projet', [\App\Http\Controllers\FrontEnd\DealBringerController::class, 'show'])->name('mentorship.deal-bringer');
+  Route::post('/apporter-un-projet', [\App\Http\Controllers\FrontEnd\DealBringerController::class, 'submit'])->middleware('auth:web')->name('mentorship.deal-bringer.submit');
+
+  Route::get('/abonnement', [\App\Http\Controllers\FrontEnd\MentorshipSubscriptionController::class, 'index'])->name('mentorship.subscription.index');
+  Route::get('/abonnement/confirmation', [\App\Http\Controllers\FrontEnd\MentorshipSubscriptionController::class, 'success'])->middleware('auth:web')->name('mentorship.subscription.success');
+  Route::get('/abonnement/annule', [\App\Http\Controllers\FrontEnd\MentorshipSubscriptionController::class, 'cancel'])->name('mentorship.subscription.cancel');
+  Route::post('/abonnement/souscrire', [\App\Http\Controllers\FrontEnd\MentorshipSubscriptionController::class, 'subscribe'])->middleware('auth:web')->name('mentorship.subscription.subscribe');
+  Route::post('/abonnement/annuler', [\App\Http\Controllers\FrontEnd\MentorshipSubscriptionController::class, 'cancelSubscription'])->middleware('auth:web')->name('mentorship.subscription.cancel_active');
+});
+
+// Dashboards Mentorat (mentor et stagiaire)
+Route::prefix('/mon-espace/mentorat')->middleware(['auth:web', 'change.lang'])->group(function () {
+  Route::get('/mentor', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'mentor'])->name('mentorship.dashboard.mentor');
+  Route::get('/stagiaire', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'trainee'])->name('mentorship.dashboard.trainee');
+
+  Route::post('/mentor/pods', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'storePod'])->name('mentorship.mentor.pods.store');
+  Route::post('/mentor/missions', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'storeMission'])->name('mentorship.mentor.missions.store');
+  Route::post('/mentor/pods/{pod}/accept/{trainee}', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'acceptMembership'])->name('mentorship.mentor.memberships.accept');
+  Route::post('/mentor/submissions/{submission}/review', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'reviewSubmission'])->name('mentorship.mentor.submissions.review');
+  Route::post('/mentor/checkins', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'storeCheckin'])->name('mentorship.mentor.checkins.store');
+
+  Route::post('/stagiaire/pods/{pod}/apply', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'applyToPod'])->name('mentorship.trainee.pods.apply');
+  Route::post('/stagiaire/milestones/{milestone}/submit', [\App\Http\Controllers\FrontEnd\MentorshipDashboardController::class, 'submitMilestone'])->name('mentorship.trainee.milestones.submit');
 });
 
 Route::prefix('/user')->middleware(['auth:web', 'account.status', 'change.lang'])->group(function () {

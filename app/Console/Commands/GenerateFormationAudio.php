@@ -18,6 +18,432 @@ class GenerateFormationAudio extends Command
     private array $scripts = [
 
         // ─────────────────────────────────────────────────────────
+        // MODULE 0 — "Comprendre le corps" (anatomie) — cible : 8–10 min
+        // ─────────────────────────────────────────────────────────
+        '00-comprendre-le-corps' => <<<'SCRIPT'
+Bienvenue dans ce module d'ouverture.
+[pause 6s]
+
+Avant de commencer... installez-vous confortablement.
+[pause 3s]
+Assis... allongé... debout... peu importe.
+[pause 4s]
+Laissez votre corps trouver son appui naturel.
+[pause 8s]
+
+Ce module ne commence pas par des termes latins.
+[pause 4s]
+Il ne commence pas par des schémas anatomiques.
+[pause 4s]
+Il commence par trois images.
+[pause 5s]
+Simples... évidentes... que chacun comprend immédiatement.
+[pause 8s]
+
+Car pour comprendre le corps profondément...
+[pause 4s]
+il faut d'abord le voir autrement.
+[pause 10s]
+
+Première image.
+[pause 5s]
+
+La maison vivante.
+[pause 6s]
+
+Imaginez que votre corps est une maison vivante.
+[pause 5s]
+Pas une maison ordinaire...
+[pause 3s]
+Une maison qui pense... qui respire... qui s'adapte à chaque instant.
+[pause 8s]
+
+Toute maison repose sur une charpente.
+[pause 4s]
+Sans elle... les murs s'effondrent.
+[pause 3s]
+Dans votre corps... c'est le squelette.
+[pause 5s]
+Il donne la structure... la forme... l'architecture.
+[pause 3s]
+La colonne vertébrale est la poutre centrale.
+[pause 4s]
+Autour d'elle... tout s'organise.
+[pause 8s]
+
+Une maison a aussi des charnières.
+[pause 4s]
+Des pivots... qui permettent d'ouvrir... de fermer... de plier.
+[pause 3s]
+Dans votre corps... ce sont les articulations.
+[pause 5s]
+Le genou... le coude... l'épaule... la hanche.
+[pause 4s]
+Ce sont elles qui permettent le mouvement.
+[pause 8s]
+
+Une maison moderne a des mécanismes.
+[pause 4s]
+Des portes qui s'ouvrent... des volets qui se ferment...
+[pause 3s]
+Tout ce qui met la maison en mouvement.
+[pause 4s]
+Dans votre corps... ce sont les muscles.
+[pause 5s]
+Ils tirent sur les os... activent les articulations... créent chaque geste.
+[pause 8s]
+
+Une maison saine a de l'air qui circule.
+[pause 4s]
+Pas du vent... de l'air.
+[pause 3s]
+Des fenêtres que l'on ouvre le matin...
+[pause 3s]
+Une atmosphère qui se renouvelle.
+[pause 4s]
+Quand l'air circule... la maison est légère... vivante.
+[pause 3s]
+Quand l'air est bloqué... l'atmosphère devient lourde.
+[pause 5s]
+Dans votre corps... c'est la respiration.
+[pause 4s]
+La Pause Souffle est l'acte d'ouvrir les fenêtres de votre maison... consciemment.
+[pause 10s]
+
+Et enfin... une maison sans électricité est aveugle.
+[pause 4s]
+L'électricité relie chaque pièce... allume les lumières... fait fonctionner chaque appareil.
+[pause 4s]
+Dans votre corps... c'est le système nerveux.
+[pause 5s]
+Il relie le cerveau à chaque muscle... chaque organe... chaque millimètre de peau.
+[pause 10s]
+
+Votre maison vivante est là... maintenant... sous vous.
+[pause 5s]
+Elle vous tient.
+[pause 12s]
+
+Deuxième image.
+[pause 5s]
+
+L'arbre vivant.
+[pause 6s]
+
+Si la maison vous a parlé de structure...
+[pause 4s]
+l'arbre vous parle de vie.
+[pause 8s]
+
+Imaginez que votre corps est un arbre.
+[pause 5s]
+Un arbre en pleine vie... qui pousse... qui respire... qui nourrit.
+[pause 8s]
+
+Tout arbre s'organise autour de son tronc.
+[pause 4s]
+Vertical... central... lien entre la terre et le ciel.
+[pause 4s]
+Dans votre corps... c'est la colonne vertébrale.
+[pause 5s]
+Autour d'elle... tout rayonne.
+[pause 8s]
+
+Les bras sont les branches.
+[pause 4s]
+Ils s'étendent... s'élèvent... s'ouvrent vers le monde.
+[pause 5s]
+Les jambes sont les racines.
+[pause 4s]
+Elles ancrent... stabilisent... absorbent.
+[pause 4s]
+Sentez vos pieds... en ce moment... c'est votre ancrage.
+[pause 10s]
+
+Les muscles sont l'écorce vivante.
+[pause 4s]
+Ils enveloppent les os... protègent les organes...
+[pause 3s]
+donnent au corps sa forme visible.
+[pause 4s]
+Et comme l'écorce... ils gardent la mémoire des tensions accumulées.
+[pause 8s]
+
+Le sang est la sève.
+[pause 4s]
+Il circule partout... en permanence... du centre jusqu'aux extrémités.
+[pause 4s]
+Il apporte l'oxygène... les nutriments... l'énergie.
+[pause 3s]
+Il emporte ce dont le corps n'a plus besoin.
+[pause 8s]
+
+Les poumons sont les feuilles.
+[pause 4s]
+À chaque inspiration... ils captent l'oxygène du monde.
+[pause 4s]
+À chaque expiration... ils libèrent ce qui n'est plus utile.
+[pause 5s]
+Chaque souffle est un échange... entre vous... et le monde.
+[pause 10s]
+
+Et les nerfs... sont le réseau invisible.
+[pause 4s]
+Sous la surface... ils transmettent... informent... coordonnent.
+[pause 4s]
+Sensation... mouvement... réaction... tout passe par eux.
+[pause 12s]
+
+Troisième image.
+[pause 5s]
+
+L'orchestre vivant.
+[pause 6s]
+
+Si la maison vous a parlé de structure...
+[pause 3s]
+et l'arbre de vie...
+[pause 3s]
+l'orchestre vous parle d'intelligence.
+[pause 8s]
+
+Imaginez que votre corps est un orchestre vivant.
+[pause 5s]
+Dans un orchestre... chaque instrument joue sa partie.
+[pause 4s]
+Tout doit être coordonné.
+[pause 3s]
+Sinon... la musique devient du bruit.
+[pause 8s]
+
+Le cerveau est le chef d'orchestre.
+[pause 4s]
+Il dirige... coordonne... donne le tempo.
+[pause 3s]
+En permanence... il reçoit des milliers de signaux... et prend des décisions.
+[pause 8s]
+
+Les nerfs sont les partitions.
+[pause 4s]
+Ils transmettent les instructions aux muscles.
+[pause 3s]
+Contracte... relâche... bouge... arrête.
+[pause 4s]
+Et en sens inverse... ils remontent les sensations vers le cerveau.
+[pause 8s]
+
+Les muscles sont les instruments.
+[pause 4s]
+Certains sont puissants... comme les cuivres.
+[pause 3s]
+D'autres sont précis... comme les violons.
+[pause 3s]
+D'autres encore sont stabilisateurs... silencieux... comme les basses.
+[pause 5s]
+Un mouvement fluide... c'est quand tous jouent ensemble... au bon moment.
+[pause 8s]
+
+Le squelette est la scène.
+[pause 4s]
+Les musiciens ont besoin d'une structure solide pour jouer.
+[pause 4s]
+Sans elle... rien n'est possible.
+[pause 8s]
+
+Et la respiration...
+[pause 4s]
+est le rythme.
+[pause 5s]
+Quand elle est lente et profonde...
+[pause 3s]
+l'orchestre joue en douceur... tout le corps se dépose.
+[pause 4s]
+Quand elle est rapide et courte...
+[pause 3s]
+tout s'accélère... la tension monte.
+[pause 5s]
+Ce que vous faites avec votre souffle...
+[pause 3s]
+vous le faites avec votre corps entier.
+[pause 10s]
+
+Maintenant... prenons un moment.
+[pause 5s]
+Trois images... une seule vérité.
+[pause 6s]
+
+La maison... vous dit ce que le corps est.
+[pause 5s]
+L'arbre... vous dit ce qui le rend vivant.
+[pause 5s]
+L'orchestre... vous dit ce qui le rend intelligent.
+[pause 10s]
+
+Votre corps est tout cela à la fois.
+[pause 5s]
+Il n'est pas une machine à réparer.
+[pause 4s]
+C'est un être à habiter.
+[pause 10s]
+
+Maintenant... je vais vous emmener en voyage.
+[pause 5s]
+Un voyage dans les territoires de votre corps.
+[pause 6s]
+Des pieds... jusqu'à la tête.
+[pause 4s]
+Lentement... sans chercher quoi que ce soit.
+[pause 5s]
+Juste s'y poser.
+[pause 10s]
+
+Sentez vos pieds.
+[pause 4s]
+Vingt-six os dans chaque pied... disposés comme une voûte.
+[pause 4s]
+Reposent sur eux... le tibia... la fibula... le genou.
+[pause 5s]
+La plus grande charnière du corps.
+[pause 6s]
+
+Remontez vers les cuisses.
+[pause 4s]
+Le fémur... l'os le plus long de votre corps.
+[pause 4s]
+Enveloppé par les quadriceps devant... les ischio-jambiers derrière.
+[pause 5s]
+Des câbles puissants... qui vous permettent de marcher... de courir... de tenir.
+[pause 8s]
+
+Le bassin... le centre de gravité.
+[pause 4s]
+L'ilion... l'ischion... le pubis.
+[pause 4s]
+Le psoas... ancré là... reliant la colonne aux cuisses.
+[pause 5s]
+C'est le muscle que la Pause Souffle relâche le plus profondément.
+[pause 8s]
+
+L'abdomen... le ventre.
+[pause 4s]
+Quatre couches de muscles en spirale... comme un corset naturel.
+[pause 4s]
+Et en dessous... les organes qui transforment... qui nourrissent... qui éliminent.
+[pause 6s]
+
+Le thorax... la cage.
+[pause 4s]
+Sternum... douze paires de côtes... vertèbres thoraciques.
+[pause 4s]
+Et au centre de tout... le diaphragme.
+[pause 4s]
+Le seul muscle à la fois volontaire et automatique.
+[pause 4s]
+Le pont entre ce que vous contrôlez... et ce que le corps fait tout seul.
+[pause 5s]
+Poussez doucement votre ventre vers l'extérieur en inspirant...
+[pause 3s]
+C'est lui.
+[pause 8s]
+
+Les épaules... les bras... jusqu'aux mains.
+[pause 4s]
+Vingt-sept os dans chaque main.
+[pause 4s]
+Ces mains qui touchent... qui créent... qui soignent.
+[pause 6s]
+
+Le dos.
+[pause 4s]
+Le trapèze... le grand dorsal... les rhomboïdes.
+[pause 4s]
+Et tout au fond... les multifides... vertèbre par vertèbre.
+[pause 4s]
+Les gardiens silencieux de votre colonne.
+[pause 8s]
+
+Le cou... sept vertèbres cervicales.
+[pause 4s]
+Le nerf vague y passe...
+[pause 3s]
+le fil qui relie le cerveau au cœur... aux poumons... au ventre.
+[pause 5s]
+Chaque respiration lente le calme.
+[pause 8s]
+
+Et la tête.
+[pause 4s]
+Vingt-deux os qui forment le crâne et le visage.
+[pause 4s]
+Le cerveau à l'intérieur... trois livres de matière vivante...
+[pause 4s]
+qui contient plus de connexions que d'étoiles dans la galaxie.
+[pause 8s]
+
+Votre corps est une ville vivante.
+[pause 5s]
+Avec ses quartiers... ses routes... ses services essentiels.
+[pause 5s]
+Le système nerveux transmet à cent vingt mètres par seconde.
+[pause 4s]
+Le cœur bat cent mille fois par jour sans jamais s'arrêter.
+[pause 4s]
+Les poumons échangent vingt mille litres d'air chaque jour.
+[pause 4s]
+Le système immunitaire surveille... filtre... protège... en silence.
+[pause 5s]
+Et les fascias... tissus continus qui relient tout...
+[pause 4s]
+forment une combinaison invisible à l'intérieur de votre corps.
+[pause 4s]
+Sans aucune interruption... de la tête aux pieds.
+[pause 10s]
+
+Quand vous inspirez profondément...
+[pause 4s]
+cinq systèmes répondent en même temps.
+[pause 4s]
+Respiratoire... cardiovasculaire... nerveux... endocrinien... fascial.
+[pause 5s]
+Cinq systèmes. Cinq secondes. Un seul souffle.
+[pause 10s]
+
+Nous allons pratiquer ensemble.
+[pause 3s]
+La Pause Souffle... cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes de rétention... bouche légèrement ouverte.
+[pause 2s]
+Cinq secondes pour expirer... lèvres doucement resserrées.
+[pause 5s]
+
+C'est votre outil central.
+[pause 3s]
+L'acte d'ouvrir les fenêtres de votre maison.
+[pause 3s]
+De faire circuler la sève dans votre arbre.
+[pause 3s]
+De reprendre la baguette de votre orchestre.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Restez là un moment.
+[pause 6s]
+Sentez ce qui vient d'avoir lieu.
+[pause 8s]
+
+Bienvenue dans la connaissance vivante du corps.
+[pause 5s]
+À très bientôt.
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
         // MODULE 1 — "Je me rencontre" — cible : 7–8 min
         // Les cycles de respiration sont générés séparément via ffmpeg
         // [BREATHING_CYCLES] = marqueur remplacé par silence+voix ffmpeg
@@ -1101,7 +1527,7 @@ SCRIPT,
         // ─────────────────────────────────────────────────────────
         // MODULE 6 — "Je pratique le rituel" — cible : 16–18 min
         // ─────────────────────────────────────────────────────────
-        '06-je-pratique-le-rituel' => <<<'SCRIPT'
+        '07-je-transmets-le-rituel' => <<<'SCRIPT'
 Bienvenue.
 [pause 6s]
 
@@ -1395,10 +1821,5713 @@ Merci.
 [pause 8s]
 Vraiment.
 SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 1 — Module 03 — J'accepte ce que je ne peux pas changer
+        // ─────────────────────────────────────────────────────────
+        '03-j-accepte-mes-limites' => <<<'SCRIPT'
+Installez-vous confortablement.
+[pause 5s]
+Dos droit... mais pas rigide.
+[pause 4s]
+Pieds posés au sol.
+[pause 4s]
+Mains sur les genoux... paumes vers le haut.
+[pause 8s]
+
+Avant de commencer...
+[pause 3s]
+Posez une intention pour ce module.
+[pause 5s]
+Qu'est-ce que vous venez toucher ici... aujourd'hui ?
+[pause 10s]
+
+Fermez les yeux.
+[pause 8s]
+
+Laissez votre corps s'alourdir naturellement.
+[pause 5s]
+Les épaules... les bras.
+[pause 5s]
+Le ventre... la poitrine.
+[pause 5s]
+Tout peut se déposer.
+[pause 10s]
+
+Il y a quelque chose que vous portez depuis longtemps.
+[pause 6s]
+Quelque chose que vous avez essayé de changer... encore... et encore.
+[pause 5s]
+Et qui n'a pas changé.
+[pause 8s]
+
+Ce module ne vous demande pas d'être fort.
+[pause 5s]
+Il vous demande quelque chose de plus difficile.
+[pause 5s]
+Il vous demande de lâcher.
+[pause 12s]
+
+Épictète était esclave.
+[pause 6s]
+Il n'avait aucun pouvoir sur sa condition extérieure.
+[pause 5s]
+Aucun.
+[pause 5s]
+Et pourtant... il a formulé une vérité qui traverse deux mille ans d'histoire.
+[pause 8s]
+
+Il y a ce qui dépend de nous.
+[pause 5s]
+Et ce qui ne dépend pas de nous.
+[pause 8s]
+Cette distinction... aussi simple qu'elle paraît...
+[pause 5s]
+est l'une des clés les plus puissantes que la philosophie ait jamais produites.
+[pause 10s]
+
+Posez cette question dans votre corps... maintenant.
+[pause 6s]
+Qu'est-ce que vous portez... que vous ne pouvez pas changer ?
+[pause 8s]
+Pas dans votre tête.
+[pause 4s]
+Dans votre corps.
+[pause 4s]
+Où est-ce que vous le sentez ?
+[pause 4s]
+Dans la gorge ?
+[pause 3s]
+Dans la poitrine ?
+[pause 3s]
+Dans les épaules ?
+[pause 8s]
+
+Restez avec cette sensation.
+[pause 5s]
+Ne la combattez pas.
+[pause 5s]
+Ne cherchez pas à la résoudre.
+[pause 5s]
+Observez-la simplement... comme on observe un nuage dans le ciel.
+[pause 12s]
+
+La thérapie ACT — Acceptance and Commitment Therapy —
+[pause 4s]
+a démontré dans plus de trois cents études ce qu'Épictète savait par l'expérience.
+[pause 6s]
+La résistance à ce qu'on ne peut pas changer... amplifie la souffrance.
+[pause 5s]
+Ce n'est pas la réalité qui brise les gens.
+[pause 5s]
+C'est la lutte contre la réalité.
+[pause 10s]
+
+Viktor Frankl... dans les camps... a découvert la même vérité par le fond.
+[pause 6s]
+Entre le stimulus et la réponse... il y a un espace.
+[pause 5s]
+Dans cet espace... réside notre liberté.
+[pause 5s]
+Notre dignité.
+[pause 5s]
+Notre pouvoir ultime.
+[pause 12s]
+
+C'est par le corps que nous allons traverser ça.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et observez ce qui se passe.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si une résistance monte pendant les cycles... laissez-la simplement être.
+[pause 3s]
+C'est ainsi.
+[pause 4s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Pensez à quelque chose que vous ne pouvez pas changer.
+[pause 5s]
+Une situation... une personne... un fait du passé... une limite physique.
+[pause 8s]
+Sentez la résistance que votre corps génère face à cette réalité.
+[pause 6s]
+La tension.
+[pause 4s]
+L'urgence de faire quelque chose.
+[pause 8s]
+
+Et maintenant... dites intérieurement... simplement...
+[pause 5s]
+C'est ainsi.
+[pause 8s]
+Pas résigné.
+[pause 5s]
+Pas vaincu.
+[pause 5s]
+Juste... lucide.
+[pause 5s]
+C'est ainsi.
+[pause 15s]
+
+Qu'est-ce que vous portez... que vous ne pouvez pas changer... mais que vous continuez à porter comme si vous le pouviez ?
+[pause 18s]
+
+Qu'est-ce qui serait libéré en vous si vous vous permettiez de dire vraiment... C'est ainsi ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Les exercices vous attendent.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 1 — Module 04 — Je reconnais ce qui me draine
+        // ─────────────────────────────────────────────────────────
+        '04-je-reconnais-ce-qui-me-draine' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Dos droit... mais pas rigide.
+[pause 4s]
+Pieds posés au sol.
+[pause 5s]
+Fermez les yeux si c'est naturel.
+[pause 8s]
+
+Avant de commencer...
+[pause 3s]
+Observez honnêtement comment vous arrivez ici.
+[pause 5s]
+Fatigué... ou présent ?
+[pause 5s]
+Agité... ou calme ?
+[pause 5s]
+Il n'y a pas de bonne réponse.
+[pause 5s]
+Juste une observation honnête.
+[pause 10s]
+
+Laissez les épaules descendre.
+[pause 5s]
+Le ventre se relâcher.
+[pause 5s]
+Tout peut se déposer pour un moment.
+[pause 10s]
+
+La plupart des gens qui se sentent épuisés croient qu'ils manquent de temps.
+[pause 6s]
+Ils ont tort.
+[pause 5s]
+Ils manquent d'énergie.
+[pause 5s]
+Et ce n'est pas le même problème.
+[pause 10s]
+
+Jim Loehr et Tony Schwartz ont passé vingt ans à studier les athlètes de haut niveau.
+[pause 6s]
+Et ce qu'ils ont découvert ne concernait pas le sport.
+[pause 5s]
+Ça concernait tout le monde.
+[pause 6s]
+La performance humaine n'est pas limitée par le temps... ni par la volonté.
+[pause 5s]
+Elle est limitée par l'énergie.
+[pause 5s]
+Et l'énergie a quatre réservoirs.
+[pause 8s]
+
+Le réservoir physique.
+[pause 4s]
+Le sommeil... le mouvement... la nutrition... la respiration.
+[pause 8s]
+Le réservoir émotionnel.
+[pause 4s]
+Les relations... les émotions non digérées... le deuil non fait.
+[pause 8s]
+Le réservoir mental.
+[pause 4s]
+La charge cognitive... les décisions non prises... les pensées en boucle.
+[pause 8s]
+Et le réservoir de sens.
+[pause 4s]
+La question de pourquoi... ce que je fais a de la valeur.
+[pause 10s]
+
+Chacun de ces réservoirs peut être percé.
+[pause 6s]
+Et souvent... il l'est.
+[pause 5s]
+Par des drains que vous n'avez jamais cartographiés.
+[pause 10s]
+
+Je vous invite maintenant à un scan.
+[pause 6s]
+Prenez votre vie comme elle est aujourd'hui... pas comme vous voudriez qu'elle soit.
+[pause 6s]
+Et posez-vous cette question.
+[pause 5s]
+Qu'est-ce qui me vide ?
+[pause 8s]
+
+Les personnes dans votre vie.
+[pause 5s]
+Y en a-t-il qui vous laissent épuisé... après chaque interaction ?
+[pause 6s]
+Remarquez la sensation dans votre corps en pensant à elles.
+[pause 8s]
+
+Les environnements.
+[pause 5s]
+Y a-t-il des lieux... des situations... qui consomment votre énergie sans vous en redonner ?
+[pause 8s]
+
+Le numérique.
+[pause 5s]
+Combien d'heures par jour votre attention est-elle fragmentée... dispersée... volée ?
+[pause 8s]
+
+Les pensées.
+[pause 5s]
+La rumination... les scénarios catastrophes... les conversations imaginaires.
+[pause 5s]
+Ce travail invisible que le cerveau fait sans vous en demander la permission.
+[pause 8s]
+
+Et les engagements.
+[pause 5s]
+Ce à quoi vous avez dit oui... et qui vous coûte plus que vous ne le reconnaissez.
+[pause 10s]
+
+Restez un moment avec ce qui est apparu.
+[pause 8s]
+Sans vous juger.
+[pause 5s]
+Sans résoudre.
+[pause 5s]
+Juste voir.
+[pause 12s]
+
+Emily et Amelia Nagoski ont documenté quelque chose d'essentiel.
+[pause 6s]
+Le cycle du stress.
+[pause 5s]
+Quand une menace est perçue... le corps déclenche une réponse biologique complète.
+[pause 5s]
+Cortisol... adrénaline... tension musculaire.
+[pause 5s]
+Prêt à combattre ou à fuir.
+[pause 8s]
+Le problème n'est pas le stress.
+[pause 5s]
+C'est que nous ne complétons jamais le cycle.
+[pause 5s]
+Nous gérons la situation... mais nous ne libérons pas le corps.
+[pause 5s]
+Et le stress non complété s'accumule.
+[pause 5s]
+Il devient charge allostatique.
+[pause 5s]
+Il se transforme en fatigue chronique... en épuisement... en maladie.
+[pause 10s]
+
+Ce module vous donne les outils pour cartographier... mesurer... et décontaminer.
+[pause 5s]
+Pas théoriquement.
+[pause 5s]
+Concrètement.
+[pause 5s]
+Domaine par domaine.
+[pause 5s]
+Drain par drain.
+[pause 10s]
+
+C'est par le corps que nous allons traverser ça.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et observez ce qui se passe.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Pendant les cycles... remarquez si la fatigue change de forme.
+[pause 3s]
+Où est-ce que vous la sentez ?
+[pause 4s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Lequel de vos quatre réservoirs est le plus percé en ce moment ?
+[pause 18s]
+
+Quelle personne... quel environnement... quelle habitude vous vide le plus ?
+[pause 18s]
+
+Quelle est UNE chose que vous pourriez décontaminer cette semaine ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Les exercices vous attendent.
+[pause 5s]
+Ce que vous allez mesurer dans les prochains jours...
+[pause 5s]
+va changer votre rapport à votre propre énergie.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 1 — Module 06 — J'incarne ma Vision
+        // ─────────────────────────────────────────────────────────
+        '06-je-visualise-ma-vie' => <<<'SCRIPT'
+Installez-vous confortablement.
+[pause 5s]
+Fermez les yeux.
+[pause 5s]
+Posez les mains sur vos cuisses.
+[pause 5s]
+Sentez le poids de votre corps.
+[pause 8s]
+
+Avant de commencer...
+[pause 3s]
+Posez une intention.
+[pause 5s]
+Peut-être simplement... aujourd'hui je laisse venir ce qui est vrai.
+[pause 10s]
+
+Laissez les épaules descendre.
+[pause 5s]
+Le visage se relâcher.
+[pause 5s]
+Presque comme si vous vous installeriez pour regarder quelque chose d'important.
+[pause 10s]
+
+Ce module travaille dans l'espace le plus intime qui soit.
+[pause 6s]
+Celui de votre vision.
+[pause 5s]
+De ce que vous voulez vraiment.
+[pause 5s]
+Pas ce que les autres espèrent pour vous.
+[pause 5s]
+Pas ce que la société valorise par défaut.
+[pause 6s]
+Ce que vous... ressentez comme juste depuis votre intérieur le plus profond.
+[pause 12s]
+
+Une vision n'est pas un objectif.
+[pause 6s]
+Un objectif est une destination sur une carte.
+[pause 5s]
+Une vision est le sentiment d'être vivant dans sa propre vie.
+[pause 6s]
+Elle précède les mots.
+[pause 5s]
+Elle précède les plans.
+[pause 5s]
+Elle est une boussole intérieure.
+[pause 10s]
+
+Je vous invite à un voyage.
+[pause 6s]
+Imaginez que cinq ans se sont écoulés.
+[pause 5s]
+Cinq ans de présence... de choix conscients... de courage.
+[pause 8s]
+
+Où êtes-vous ?
+[pause 5s]
+Pas l'adresse exacte.
+[pause 4s]
+La texture de l'endroit.
+[pause 4s]
+L'atmophère.
+[pause 4s]
+Ce que vous voyez autour de vous le matin quand vous vous réveillez.
+[pause 10s]
+
+Avec qui êtes-vous ?
+[pause 5s]
+Quelles relations ont de la profondeur dans cette vie ?
+[pause 5s]
+Qui est présent ?
+[pause 5s]
+Qui a disparu ?
+[pause 10s]
+
+Que faites-vous de vos journées ?
+[pause 5s]
+Pas un planning.
+[pause 4s]
+Une sensation.
+[pause 4s]
+Est-ce que vous vous levez avec de l'élan ?
+[pause 5s]
+Est-ce que ce que vous faites a du sens... pour vous... et pour quelqu'un d'autre ?
+[pause 10s]
+
+Quel est votre état intérieur habituel dans cette vie-là ?
+[pause 6s]
+Pas parfaite.
+[pause 5s]
+Mais alignée.
+[pause 10s]
+
+Restez dans cette image un moment.
+[pause 8s]
+Laissez-la prendre de la substance.
+[pause 5s]
+Des couleurs.
+[pause 5s]
+Des sons.
+[pause 5s]
+Des odeurs.
+[pause 5s]
+L'air de cette vie sur votre peau.
+[pause 15s]
+
+Cette image n'est pas un fantasme.
+[pause 6s]
+C'est une information.
+[pause 5s]
+Votre système nerveux vient de vous montrer quelque chose que votre intellect garde souvent en réserve.
+[pause 8s]
+
+La clarté... le courage... la discipline.
+[pause 5s]
+Ce sont les trois piliers qui relient où vous êtes maintenant... à cette image.
+[pause 5s]
+Pas les talents.
+[pause 5s]
+Pas les circonstances.
+[pause 5s]
+Pas la chance.
+[pause 6s]
+La clarté.
+[pause 4s]
+Le courage.
+[pause 4s]
+La discipline.
+[pause 12s]
+
+C'est par le corps que nous allons ancrer cette vision.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et laissez l'image de cette vie prendre de la substance.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui n'appartient pas à cette vision.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Qu'est-ce que votre vision vous demande de commencer... vraiment commencer ?
+[pause 18s]
+
+Qu'est-ce qu'elle vous demande d'arrêter ?
+[pause 18s]
+
+Si vous viviez selon cette vision demain matin... qu'est-ce qui serait différent dans votre journée ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Cinq phrases concrètes.
+[pause 8s]
+
+Les exercices vont transformer cette vision en intention concrète.
+[pause 5s]
+Prenez-les au sérieux.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 1 — Module 07 — Je prends soin de moi en premier
+        // ─────────────────────────────────────────────────────────
+        '07-je-prends-soin-de-moi' => <<<'SCRIPT'
+Posez tout.
+[pause 5s]
+Ce que vous portez pour les autres.
+[pause 4s]
+Ce que vous finissez avant de vous occuper de vous.
+[pause 4s]
+Ce qui attend votre attention... dès que vous aurez un moment.
+[pause 6s]
+Posez tout... juste pour maintenant.
+[pause 10s]
+
+Fermez les yeux.
+[pause 8s]
+
+Sentez le poids de votre corps.
+[pause 5s]
+Les épaules... les bras... les mains.
+[pause 6s]
+Le ventre.
+[pause 5s]
+Laissez votre corps s'alourdir... comme s'il posait lui aussi un fardeau.
+[pause 10s]
+
+Ce module vous demande de faire quelque chose d'inhabituel.
+[pause 6s]
+Vous mettre en premier.
+[pause 6s]
+Non pas par égoïsme.
+[pause 5s]
+Mais parce que vous ne pouvez donner que ce que vous avez.
+[pause 10s]
+
+L'image du masque à oxygène dans l'avion n'est pas une métaphore agréable.
+[pause 6s]
+C'est une vérité biologique.
+[pause 5s]
+Si vous perdez conscience... vous ne pouvez rien pour personne.
+[pause 6s]
+Si vous êtes chroniquement épuisé... vous donnez aux autres une version appauvrie de vous-même.
+[pause 5s]
+Et vous le savez.
+[pause 10s]
+
+Posez cette question honnêtement.
+[pause 6s]
+Est-ce que je prends vraiment soin de moi ?
+[pause 8s]
+Pas en idée.
+[pause 4s]
+Concrètement.
+[pause 5s]
+Est-ce que je dors suffisamment ?
+[pause 5s]
+Est-ce que je mange pour nourrir mon corps... ou pour combler un vide ?
+[pause 5s]
+Est-ce que je bouge... ou est-ce que je résiste au mouvement ?
+[pause 5s]
+Est-ce que j'ai des moments de vrai repos... pas juste d'inactivité surveillée ?
+[pause 10s]
+
+Et cette question plus profonde.
+[pause 6s]
+Est-ce que je me permets de recevoir ?
+[pause 5s]
+Pas seulement de donner.
+[pause 5s]
+De recevoir de l'aide.
+[pause 4s]
+De recevoir du plaisir.
+[pause 4s]
+De recevoir du repos... sans le justifier.
+[pause 10s]
+
+Restez avec ce qui vient.
+[pause 8s]
+Sans vous juger.
+[pause 5s]
+Juste voir.
+[pause 12s]
+
+Prendre soin de soi en premier... c'est un acte de responsabilité.
+[pause 6s]
+Vis-à-vis de vous-même... oui.
+[pause 5s]
+Mais aussi vis-à-vis de tous ceux qui comptent sur vous.
+[pause 5s]
+Parce qu'une personne ressourcée... apporte quelque chose de réel.
+[pause 5s]
+Une personne épuisée... apporte son épuisement.
+[pause 12s]
+
+C'est par le corps que nous allons ancrer ça.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et inspirez vraiment pour vous.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce que vous portez pour les autres.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Est-ce que vous prenez vraiment soin de vous... concrètement ?
+[pause 18s]
+
+Qu'est-ce que vous pourriez vous donner cette semaine... que vous remettez depuis trop longtemps ?
+[pause 18s]
+
+Qu'est-ce qui vous empêche de vous mettre en premier ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Les exercices de ce module sont une invitation concrète.
+[pause 5s]
+Prenez-les pour vous.
+[pause 5s]
+Vraiment pour vous.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 1 — Module 08 — Gratitude et intention
+        // ─────────────────────────────────────────────────────────
+        '08-gratitude-et-intention' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Dos droit... pieds au sol.
+[pause 5s]
+Fermez les yeux.
+[pause 8s]
+
+Sentez le poids de vos mains sur vos cuisses.
+[pause 5s]
+La chaleur dans vos paumes.
+[pause 5s]
+Le mouvement discret de votre respiration.
+[pause 8s]
+
+Avant de commencer...
+[pause 3s]
+Pensez à un moment de la journée d'aujourd'hui ou d'hier...
+[pause 5s]
+qui a été bon.
+[pause 5s]
+Même petit.
+[pause 10s]
+
+Ce module travaille sur deux moments clés de chaque journée.
+[pause 5s]
+Le soir... et le matin.
+[pause 5s]
+La façon dont vous fermez une journée.
+[pause 4s]
+Et la façon dont vous en ouvrez une autre.
+[pause 10s]
+
+Ces deux moments... répétés consciemment...
+[pause 5s]
+transforment la texture de votre vie en moins de trois semaines.
+[pause 5s]
+Pas comme une promesse.
+[pause 5s]
+Comme une mesure.
+[pause 10s]
+
+Robert Emmons... de l'Université de Californie...
+[pause 5s]
+a passé vingt ans à étudier scientifiquement la gratitude.
+[pause 5s]
+Pas la gratitude comme sentiment passif.
+[pause 5s]
+La gratitude comme pratique active.
+[pause 8s]
+
+Sa découverte principale est simple et radicale.
+[pause 6s]
+Les gens qui pratiquent la gratitude régulièrement...
+[pause 5s]
+dorment mieux.
+[pause 4s]
+Ont des relations plus solides.
+[pause 4s]
+Sont plus résistants aux événements difficiles.
+[pause 4s]
+Et rapportent un niveau de satisfaction de vie significativement plus élevé.
+[pause 8s]
+
+Mais voici ce qu'on comprend souvent mal.
+[pause 6s]
+La gratitude effficace n'est pas générale.
+[pause 5s]
+Elle est spécifique.
+[pause 5s]
+Pas... je suis reconnaissant pour ma vie.
+[pause 5s]
+Mais... aujourd'hui à 14h30... quand cette personne m'a dit cette phrase...
+[pause 4s]
+j'ai ressenti quelque chose de vrai.
+[pause 8s]
+
+La spécificité crée la profondeur.
+[pause 5s]
+La profondeur crée l'ancrage neurologique.
+[pause 5s]
+L'ancrage neurologique crée la transformation durable.
+[pause 10s]
+
+Et l'intention du matin...
+[pause 5s]
+n'est pas une liste de tâches.
+[pause 5s]
+C'est une question.
+[pause 5s]
+Comment est-ce que je veux me comporter aujourd'hui ?
+[pause 5s]
+Pas ce que je vais faire.
+[pause 5s]
+Qui je veux être.
+[pause 10s]
+
+Cette distinction est fondamentale.
+[pause 6s]
+Parce que nous contrôlons très peu de ce qui se passe.
+[pause 5s]
+Mais nous pouvons toujours choisir notre façon d'y répondre.
+[pause 5s]
+Et ce choix... fait en conscience le matin...
+[pause 5s]
+oriente la journée entière.
+[pause 12s]
+
+C'est par le corps que nous allons ancrer ça.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... laissez venir une image concrète pour laquelle vous êtes reconnaissant.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez ce sentiment se déposer en vous.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Pensez à un moment précis et concret d'aujourd'hui... pour lequel vous êtes reconnaissant.
+[pause 5s]
+Pas une idée générale.
+[pause 4s]
+Un moment. Une personne. Un détail vrai.
+[pause 15s]
+
+Comment voulez-vous vous comporter demain ?
+[pause 5s]
+Pas ce que vous allez faire.
+[pause 4s]
+Qui vous voulez être.
+[pause 15s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Le rituel du soir et du matin vous attend dans les exercices.
+[pause 5s]
+Vingt et un jours minimum.
+[pause 5s]
+Pas comme une discipline.
+[pause 5s]
+Comme une expérience sur vous-même.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Module 09 — Définir mes priorités
+        // ─────────────────────────────────────────────────────────
+        '09-mes-priorites-dabord' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Dos droit.
+[pause 4s]
+Pieds au sol.
+[pause 4s]
+Mains posées.
+[pause 6s]
+Respirez normalement un moment avant de commencer.
+[pause 8s]
+
+Ce module pose une question qui dérange.
+[pause 6s]
+Si vous ne construisez pas vos rêves...
+[pause 5s]
+quelqu'un vous embauchera pour construire les siens.
+[pause 8s]
+Tony Gaskins.
+[pause 5s]
+Une phrase courte.
+[pause 4s]
+Une vérité longue.
+[pause 10s]
+
+Eisenhower avait un outil.
+[pause 5s]
+Une matrice en quatre quadrants.
+[pause 5s]
+Urgent et important.
+[pause 4s]
+Important mais non urgent.
+[pause 4s]
+Urgent mais non important.
+[pause 4s]
+Ni urgent ni important.
+[pause 8s]
+
+La plupart des gens passent leur vie dans le premier quadrant.
+[pause 5s]
+L'urgence.
+[pause 5s]
+Toujours en réaction.
+[pause 4s]
+Toujours en mode pompier.
+[pause 4s]
+Toujours à répondre à ce que les autres définissent comme urgent.
+[pause 8s]
+
+Le second quadrant est le plus précieux.
+[pause 6s]
+Ce qui est important... mais pas urgent.
+[pause 5s]
+La santé.
+[pause 4s]
+Les relations profondes.
+[pause 4s]
+La formation.
+[pause 4s]
+Le projet de vie.
+[pause 4s]
+La prévention.
+[pause 5s]
+Tout ce qui construit quelque chose de durable.
+[pause 8s]
+
+Et parce que ce n'est pas urgent...
+[pause 5s]
+c'est exactement ce qui est constamment sacrifié.
+[pause 5s]
+Au profit de ce qui crie le plus fort.
+[pause 10s]
+
+Posez cette question maintenant.
+[pause 6s]
+Dans les sept derniers jours...
+[pause 5s]
+combien d'heures avez-vous passé dans le quadrant 2 ?
+[pause 5s]
+Sur ce qui construit votre vie... plutôt que sur ce qui la gère ?
+[pause 10s]
+
+Restez avec ce chiffre.
+[pause 8s]
+Sans vous juger.
+[pause 5s]
+Juste voir.
+[pause 10s]
+
+Votre temps reflète vos priorités réelles.
+[pause 6s]
+Pas celles que vous déclarez.
+[pause 5s]
+Pas celles que vous pensez avoir.
+[pause 5s]
+Celles que vous démontrez... heure après heure.
+[pause 10s]
+
+Ce module vous donne les outils pour réaligner les deux.
+[pause 5s]
+Pour que ce que vous faites de vos journées...
+[pause 5s]
+ressemble à ce que vous voulez vraiment.
+[pause 10s]
+
+C'est par le corps que nous allons clarifier ce qui compte vraiment.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et regardez honnêtement comment vous utilisez votre temps.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Dans les sept derniers jours... qu'avez-vous mis dans le quadrant 2... l'important non urgent ?
+[pause 18s]
+
+Qu'est-ce que vous reportez depuis longtemps... et qui est pourtant l'une de vos vraies priorités ?
+[pause 18s]
+
+Quel est le premier acte du quadrant 2 que vous pouvez poser dans les prochains jours ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Ce n'est pas le temps qui manque.
+[pause 5s]
+C'est la clarté sur ce qui mérite votre temps.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Module 12 — Je maîtrise mon temps
+        // ─────────────────────────────────────────────────────────
+        '12-maitriser-son-temps' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Vous avez le même nombre d'heures que Darwin.
+[pause 5s]
+Que Mozart.
+[pause 5s]
+Que Marie Curie.
+[pause 5s]
+Vingt-quatre heures.
+[pause 5s]
+Pas une de plus.
+[pause 10s]
+
+Alors pourquoi certains construisent des œuvres remarquables...
+[pause 5s]
+quand d'autres finissent la journée épuisés sans avoir avancé sur ce qui compte ?
+[pause 8s]
+
+La réponse n'est pas la motivation.
+[pause 5s]
+Ce n'est pas le talent.
+[pause 5s]
+C'est l'architecture.
+[pause 10s]
+
+Cal Newport a étudié les génies de l'histoire.
+[pause 5s]
+Darwin travaillait quatre heures par jour.
+[pause 5s]
+Vraiment.
+[pause 5s]
+Des blocs de concentration totale... sans distraction... sans réunions.
+[pause 5s]
+Et le reste en marches... en observations... en récupération.
+[pause 8s]
+
+Newport appelle ça le Deep Work.
+[pause 5s]
+Le travail profond.
+[pause 5s]
+La capacité à se concentrer sans distraction sur une tâche cognitivement exigeante.
+[pause 6s]
+Cette capacité est devenue rare.
+[pause 5s]
+Et elle est devenue précieuse.
+[pause 10s]
+
+Parkinson a observé quelque chose d'étrange.
+[pause 6s]
+Le travail se dilate pour occuper tout le temps disponible.
+[pause 5s]
+Si vous avez trois heures pour une tâche... elle prend trois heures.
+[pause 5s]
+Si vous en avez six... elle prend six heures.
+[pause 5s]
+Même résultat.
+[pause 5s]
+Le double de temps.
+[pause 8s]
+
+La conclusion contre-intuitive...
+[pause 5s]
+c'est qu'avoir plus de temps ne produit pas un meilleur résultat.
+[pause 5s]
+Il produit de la procrastination.
+[pause 5s]
+Du perfectionnisme.
+[pause 5s]
+Du travail superficiel.
+[pause 10s]
+
+Posez cette question maintenant.
+[pause 6s]
+Combien d'heures de vraie concentration profonde fais-je par semaine ?
+[pause 5s]
+Pas de présence devant l'ordinateur.
+[pause 5s]
+De concentration réelle.
+[pause 5s]
+Sans téléphone.
+[pause 4s]
+Sans notifications.
+[pause 4s]
+Sans distractions.
+[pause 8s]
+
+La plupart des gens découvrent que c'est moins d'une heure par jour.
+[pause 6s]
+Même en travaillant dix heures.
+[pause 10s]
+
+Ce module vous donne les outils pour changer ça.
+[pause 5s]
+Pas en travaillant plus longtemps.
+[pause 5s]
+En travaillant mieux.
+[pause 5s]
+En concentrant votre énergie là où elle produit quelque chose.
+[pause 10s]
+
+C'est par le corps que nous allons ancrer la valeur de votre attention.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... ressentez ce que vaut vraiment votre attention.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il dans votre quotidien des blocs de temps protégés... sans interruption... pour ce qui compte vraiment ?
+[pause 18s]
+
+Quelle interruption acceptez-vous par habitude... qui vous vole votre temps de concentration ?
+[pause 18s]
+
+Quelle serait la première plage de travail profond que vous pouvez organiser cette semaine ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Le temps ne manque pas.
+[pause 5s]
+L'attention... si.
+[pause 5s]
+Et elle s'entraîne.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Module 13 — Je gère mes finances
+        // ─────────────────────────────────────────────────────────
+        '13-gerer-ses-finances' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Ce module touche quelque chose que peu d'espaces abordent vraiment.
+[pause 5s]
+L'argent.
+[pause 5s]
+Non pas comme un problème mathématique.
+[pause 5s]
+Mais comme un problème psychologique.
+[pause 10s]
+
+La plupart des gens qui n'arrivent pas à épargner...
+[pause 5s]
+ne manquent pas de revenu.
+[pause 5s]
+Ils portent des croyances héritées...
+[pause 5s]
+qui sabotent chaque décision financière...
+[pause 5s]
+souvent sans le savoir.
+[pause 10s]
+
+Brad Klontz a passé des années à étudier la psychologie financière.
+[pause 5s]
+Sa découverte...
+[pause 4s]
+quatre scripts inconscients hérités de la famille et de la culture...
+[pause 5s]
+pilotent la quasi-totalité de nos comportements avec l'argent.
+[pause 8s]
+
+Le Money Avoidance.
+[pause 4s]
+L'argent est mauvais... les riches sont corrompus... je ne mérite pas d'en avoir.
+[pause 8s]
+
+Le Money Worship.
+[pause 4s]
+Plus d'argent... plus de bonheur.
+[pause 4s]
+Le problème se résoudra quand j'en aurai davantage.
+[pause 8s]
+
+Le Money Status.
+[pause 4s]
+Ma valeur égale ce que je dépense... ce que je possède.
+[pause 8s]
+
+Et le Money Vigilance.
+[pause 4s]
+L'argent peut disparaître.
+[pause 4s]
+Il faut tout garder.
+[pause 4s]
+Anxiété chronique... méfiance de tout.
+[pause 10s]
+
+Lequel résonne le plus en vous ?
+[pause 5s]
+D'où venez-vous... avec l'argent ?
+[pause 5s]
+Qu'est-ce qu'on vous a appris... explicitement ou silencieusement... sur ce sujet ?
+[pause 10s]
+
+Restez avec ces questions.
+[pause 8s]
+Sans résoudre.
+[pause 5s]
+Juste tenir.
+[pause 12s]
+
+Ce module ne vous apprend pas à faire des économies.
+[pause 5s]
+Il vous apprend à comprendre votre relation à l'argent.
+[pause 5s]
+À automatiser la sécurité.
+[pause 5s]
+Et à libérer l'espace mental que les finances occupaient.
+[pause 5s]
+Pour construire autre chose.
+[pause 10s]
+
+C'est par le corps que nous allons explorer notre rapport à l'argent.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... laissez remonter votre relation à l'argent.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quel script émotionnel portez-vous autour de l'argent... hérité de votre famille ou de votre histoire ?
+[pause 18s]
+
+Y a-t-il une dépense dans votre vie actuelle qui ne correspond pas à vos vraies valeurs ?
+[pause 18s]
+
+Quelle serait la prochaine étape concrète pour prendre davantage de contrôle sur votre situation financière ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+L'argent n'est pas la fin.
+[pause 5s]
+C'est un outil.
+[pause 5s]
+Et comme tout outil... il obéit à celui qui sait s'en servir.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Module 10 — Un intérieur propre et rangé
+        // ─────────────────────────────────────────────────────────
+        '10-interieur-propre-et-range' => <<<'SCRIPT'
+Fermez les yeux.
+[pause 5s]
+Pensez à l'état de votre espace de vie ce matin.
+[pause 6s]
+Pas un jugement.
+[pause 4s]
+Juste une observation.
+[pause 5s]
+Ce que vous voyez quand vous entrez.
+[pause 5s]
+Ce que vous sentez.
+[pause 5s]
+La texture de cet espace sur votre état intérieur.
+[pause 10s]
+
+L'espace extérieur reflète l'espace intérieur.
+[pause 6s]
+Ce n'est pas une métaphore.
+[pause 5s]
+C'est une donnée neurologique.
+[pause 5s]
+Notre cerveau perçoit en permanence l'environnement autour de lui.
+[pause 5s]
+Et il réagit.
+[pause 5s]
+Un espace encombré génère une charge cognitive de fond.
+[pause 5s]
+Permanente.
+[pause 5s]
+Invisible.
+[pause 5s]
+Mais réelle.
+[pause 10s]
+
+Marie Kondo a popularisé une idée simple.
+[pause 5s]
+Garder ce qui fait vibrer.
+[pause 5s]
+Laisser partir le reste.
+[pause 5s]
+Pas comme une technique de rangement.
+[pause 5s]
+Comme une pratique de conscience.
+[pause 8s]
+
+Chaque objet que vous possédez occupe une part de votre attention.
+[pause 5s]
+Même inconsciemment.
+[pause 5s]
+Un tiroir en désordre que vous n'ouvrez jamais...
+[pause 5s]
+existe quand même dans votre charge mentale.
+[pause 10s]
+
+La discipline qui commence chez soi...
+[pause 5s]
+est la discipline la plus honnête qui soit.
+[pause 5s]
+Parce qu'elle ne peut pas être simulée.
+[pause 5s]
+Personne d'autre ne la voit.
+[pause 5s]
+Elle est entièrement pour vous.
+[pause 10s]
+
+C'est par le corps que nous allons ressentir l'impact de notre espace sur nous.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et laissez venir l'image de votre espace idéal.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il un espace dans votre environnement proche qui vous alourdit... sans que vous ayez encore agi ?
+[pause 18s]
+
+Quel objet ou encombrement portez-vous par habitude ou par culpabilité... alors qu'il ne vous nourrit plus ?
+[pause 18s]
+
+Quel serait le premier geste concret... aujourd'hui... pour commencer à alléger votre espace ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Votre espace extérieur façonne votre espace intérieur.
+[pause 5s]
+Changer l'un... c'est souvent commencer à changer l'autre.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Module 27 — Apprivoiser la solitude choisie
+        // ─────────────────────────────────────────────────────────
+        '27-solitude-choisie' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Et pour une fois... ne faites rien d'autre.
+[pause 5s]
+Pas lire en parallèle.
+[pause 4s]
+Pas vérifier quelque chose.
+[pause 4s]
+Juste être ici.
+[pause 5s]
+Avec vous-même.
+[pause 10s]
+
+Ce module vous demande quelque chose de contre-culturel.
+[pause 6s]
+Apprendre à être seul.
+[pause 5s]
+Par choix.
+[pause 5s]
+Et y trouver quelque chose de précieux.
+[pause 10s]
+
+Winnicott était pédiatre et psychanalyste.
+[pause 5s]
+En 1958... il a présenté ce qui allait devenir une pierre fondatrice de la psychologie du développement.
+[pause 6s]
+La capacité d'être seul...
+[pause 4s]
+est l'un des signes les plus importants de la maturité émotionnelle.
+[pause 8s]
+
+Paradoxe de Winnicott.
+[pause 5s]
+Cette capacité à être seul... se développe toujours en présence de quelqu'un.
+[pause 5s]
+L'enfant apprend à être seul...
+[pause 5s]
+parce qu'il a la certitude intérieure que quelqu'un est là s'il en a besoin.
+[pause 8s]
+
+Et si la solitude génère systématiquement de l'anxiété chez vous...
+[pause 5s]
+ce n'est pas une fatalité.
+[pause 5s]
+C'est une compétence qui n'a pas pu se construire.
+[pause 5s]
+Et qui peut encore s'apprendre.
+[pause 10s]
+
+Maintenant... remarquez.
+[pause 6s]
+Si vous êtes seul en ce moment...
+[pause 5s]
+qu'est-ce que ça génère dans votre corps ?
+[pause 6s]
+De l'agitation ?
+[pause 4s]
+De l'inconfort ?
+[pause 4s]
+L'envie de vérifier votre téléphone ?
+[pause 4s]
+De faire quelque chose d'utile ?
+[pause 4s]
+Ou quelque chose de plus neutre... voire de calme ?
+[pause 10s]
+
+Ne jugez pas.
+[pause 5s]
+Observez seulement.
+[pause 5s]
+Ce que vous ressentez est une information sur votre relation actuelle à votre propre présence.
+[pause 10s]
+
+Newton a développé le calcul infinitésimal... la loi de la gravitation... et l'optique...
+[pause 5s]
+pendant dix-huit mois de retraite forcée.
+[pause 5s]
+Il n'a vu aucun collègue pendant cette période.
+[pause 6s]
+Descartes passait ses matinées entières couché... à méditer seul.
+[pause 5s]
+Beethoven refusait toute compagnie pendant ses compositions.
+[pause 8s]
+
+La solitude choisie n'est pas un manque.
+[pause 5s]
+C'est souvent le signe d'une richesse intérieure.
+[pause 5s]
+Et la condition de son développement.
+[pause 10s]
+
+Vous — qu'est-ce qui vous attend dans votre silence ?
+[pause 12s]
+
+C'est par le corps que nous allons habiter ce silence.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... habitez-le.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quelle est votre relation actuelle à la solitude... est-ce quelque chose que vous recherchez ou que vous fuyez ?
+[pause 18s]
+
+Y a-t-il un espace régulier dans votre vie pour être seul... pleinement... sans distraction ?
+[pause 18s]
+
+Que pourriez-vous découvrir sur vous-même si vous passiez une heure dans un silence choisi ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+La solitude choisie n'est pas l'absence des autres.
+[pause 5s]
+C'est un retour à soi.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Module 36 — Le sens de ma vie
+        // ─────────────────────────────────────────────────────────
+        '36-sens-de-la-vie' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Fermez les yeux.
+[pause 5s]
+Et laissez venir... sans forcer... cette question.
+[pause 6s]
+
+Pour quoi... exactement... est-ce que je vis ?
+[pause 12s]
+
+Ce n'est pas la question de la dépression.
+[pause 5s]
+C'est la question de la maturité.
+[pause 5s]
+Celle qui arrive quand les masques ont fait leur temps.
+[pause 5s]
+Quand les objectifs atteints ne comblent plus.
+[pause 5s]
+Quand la vie demande quelque chose de plus vrai que la performance.
+[pause 10s]
+
+Viktor Frankl était psychiatre à Vienne.
+[pause 5s]
+En 1942... il fut déporté à Auschwitz.
+[pause 5s]
+Il avait perdu sa famille.
+[pause 5s]
+Il avait tout perdu.
+[pause 6s]
+Et dans ce contexte d'anéantissement absolu...
+[pause 5s]
+il a observé qui survivait mentalement... et qui capitulait.
+[pause 8s]
+
+Ce n'était pas les plus forts physiquement.
+[pause 5s]
+C'était ceux qui avaient une raison.
+[pause 5s]
+Un pourquoi.
+[pause 5s]
+Un sens qui tenait.
+[pause 10s]
+
+Celui qui a un pourquoi...
+[pause 4s]
+peut supporter presque tous les comment.
+[pause 6s]
+Nietzsche... repris par Frankl.
+[pause 5s]
+Validé par les pires conditions que l'humanité ait jamais connues.
+[pause 10s]
+
+Irvin Yalom... lui... identifie quatre éveilleurs existentiels.
+[pause 5s]
+La mort... qui donne son prix à l'existence.
+[pause 5s]
+La liberté... qui impose la responsabilité absolue de nos choix.
+[pause 5s]
+L'isolement existentiel... personne ne peut vivre ma vie à ma place.
+[pause 5s]
+Et l'absurde... l'univers n'a pas de sens intrinsèque.
+[pause 5s]
+C'est à nous de le créer.
+[pause 10s]
+
+Ces réalités ne sont pas des tragédies.
+[pause 5s]
+Ce sont des éveilleurs.
+[pause 5s]
+Ils dissolvent la trivialité du quotidien.
+[pause 5s]
+Ils remettent en contact avec ce qui compte vraiment.
+[pause 10s]
+
+Posez maintenant... intérieurement... cette question de Yalom.
+[pause 6s]
+Si tu savais que tu meurs dans un an...
+[pause 5s]
+qu'est-ce que tu ferais différemment ?
+[pause 15s]
+
+Restez avec ce qui vient.
+[pause 10s]
+
+Et cette autre question.
+[pause 6s]
+Dans trente ans...
+[pause 4s]
+quelle est l'histoire que vous voulez pouvoir vous raconter sur votre vie ?
+[pause 15s]
+
+Ce module vous donne les outils pour construire une réponse vivante.
+[pause 5s]
+Pas abstraite.
+[pause 5s]
+Ancrée dans vos journées.
+[pause 10s]
+
+C'est par le corps que nous allons toucher ce qui nous anime vraiment.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et laissez venir votre pourquoi.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il une activité dans votre vie qui vous donne le sentiment d'exister pleinement ?
+[pause 18s]
+
+Si vous saviez que vous ne pouviez pas échouer... qu'est-ce que vous choisiriez de faire de votre vie ?
+[pause 18s]
+
+Qu'est-ce qui vous retient de vivre davantage en accord avec ce qui vous semble profondément vrai ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Le sens n'est pas trouvé.
+[pause 5s]
+Il est construit.
+[pause 5s]
+Geste après geste.
+[pause 5s]
+Jour après jour.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Mouvement et posture
+        // ─────────────────────────────────────────────────────────
+        '07-mouvement-et-posture' => <<<'SCRIPT'
+Fermez les yeux si c'est naturel.
+[pause 5s]
+Sentez votre corps tel qu'il est là... maintenant.
+[pause 6s]
+Sans le modifier.
+[pause 5s]
+Juste observer.
+[pause 5s]
+Est-ce que vous êtes tendu quelque part ?
+[pause 5s]
+Dans les épaules ?
+[pause 4s]
+Dans la mâchoire ?
+[pause 4s]
+Dans la nuque ?
+[pause 8s]
+
+Le corps humain a été conçu pour bouger.
+[pause 5s]
+Pendant deux millions d'années... nos ancêtres marchaient entre huit et quinze kilomètres par jour.
+[pause 6s]
+Ils portaient.
+[pause 4s]
+Ils couraient.
+[pause 4s]
+Ils grimpaient.
+[pause 4s]
+Ils s'accroupissaient.
+[pause 6s]
+Puis en quelques décennies... nous avons créé un monde où l'on peut passer une journée entière à ne presque pas bouger.
+[pause 8s]
+
+Notre système nerveux n'a pas eu le temps d'évoluer.
+[pause 5s]
+Il perçoit la sédentarité comme une menace.
+[pause 5s]
+Pas explicitement.
+[pause 4s]
+Mais biologiquement.
+[pause 5s]
+La sédentarité augmente le cortisol.
+[pause 4s]
+Elle réduit les connexions neuronales.
+[pause 4s]
+Elle fragmente le sommeil.
+[pause 4s]
+Elle amplifie l'anxiété.
+[pause 8s]
+
+Et la posture est son miroir.
+[pause 5s]
+Amy Cuddy — Harvard — a montré que deux minutes dans une posture contractée suffisent à modifier vos hormones.
+[pause 5s]
+Épaules rentrées... tête baissée... torse fermé.
+[pause 5s]
+Le cortisol monte.
+[pause 4s]
+La testostérone baisse.
+[pause 4s]
+La confiance diminue.
+[pause 8s]
+
+Et l'inverse est vrai.
+[pause 5s]
+Deux minutes de posture ouverte... dos droit... poitrine disponible.
+[pause 5s]
+Le corps reçoit un signal différent.
+[pause 5s]
+Et l'état intérieur change.
+[pause 10s]
+
+Faites-le maintenant.
+[pause 4s]
+Redressez-vous légèrement.
+[pause 4s]
+Ouvrez la poitrine.
+[pause 4s]
+Reculez légèrement les épaules.
+[pause 4s]
+Soulevez légèrement le menton.
+[pause 6s]
+Restez dans cette posture.
+[pause 8s]
+
+Remarquez la différence... même petite... dans votre état intérieur.
+[pause 10s]
+
+Le corps n'est pas le transporteur de votre tête.
+[pause 5s]
+Il est un organe de pensée à part entière.
+[pause 5s]
+Il traite l'information.
+[pause 4s]
+Il stocke les émotions.
+[pause 4s]
+Il prend des décisions.
+[pause 5s]
+Et il répond à la façon dont vous le traitez.
+[pause 10s]
+
+C'est par le corps que nous allons sentir comment la posture crée la présence.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... sentez les points de contact entre votre corps et ce qui le supporte.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Comment décrieriez-vous votre posture habituelle dans la journée... assis... debout... en marchant ?
+[pause 18s]
+
+Y a-t-il un lien que vous avez déjà remarqué entre votre posture et votre état intérieur ?
+[pause 18s]
+
+Quel serait le premier geste de mouvement que vous seriez prêt à intégrer dans votre quotidien cette semaine ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Votre corps n'est pas le transporteur de votre tête.
+[pause 5s]
+C'est votre partenaire de vie.
+[pause 5s]
+Traitez-le en conséquence.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Système nerveux autonome
+        // ─────────────────────────────────────────────────────────
+        '08-systeme-nerveux' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Avant de commencer... posez vos deux mains sur votre ventre.
+[pause 6s]
+Sentez le mouvement de votre respiration sous vos paumes.
+[pause 6s]
+Juste ça.
+[pause 5s]
+Rien d'autre pour le moment.
+[pause 12s]
+
+Ce module vous présente l'un des systèmes les plus influents sur votre qualité de vie.
+[pause 6s]
+Et l'un des moins connus.
+[pause 5s]
+Le système nerveux autonome.
+[pause 10s]
+
+Le système nerveux autonome a deux branches principales.
+[pause 6s]
+Le sympathique.
+[pause 4s]
+L'accélérateur.
+[pause 4s]
+Combat ou fuite.
+[pause 4s]
+Cortisol. Adrénaline. Vigilance. Tension.
+[pause 4s]
+Conçu pour répondre à un danger... pendant quelques minutes.
+[pause 8s]
+
+Et le parasympathique.
+[pause 4s]
+Le frein.
+[pause 4s]
+Repos et digestion.
+[pause 4s]
+Ocytocine. Sérotonine. Récupération. Présence.
+[pause 4s]
+Conçu pour restaurer... intégrer... régénérer.
+[pause 8s]
+
+Stephen Porges... psychiatre... a ajouté une troisième branche.
+[pause 5s]
+Le circuit social.
+[pause 5s]
+L'état dans lequel nous sommes capables de connexion... de curiosité... de joie.
+[pause 5s]
+De confiance.
+[pause 5s]
+C'est notre état optimal de fonctionnement humain.
+[pause 10s]
+
+Le problème de notre époque...
+[pause 5s]
+c'est que nos corps vivent en mode sympathique chronique.
+[pause 5s]
+Sans danger réel.
+[pause 4s]
+Mais avec une charge permanente de notifications... de comparaisons... d'urgences...
+[pause 5s]
+qui maintient l'accélérateur appuyé... sans jamais trouver le frein.
+[pause 10s]
+
+Trois techniques activent directement le parasympathique.
+[pause 6s]
+La respiration longue.
+[pause 4s]
+Une expiration plus longue que l'inspiration... ralentit le cœur.
+[pause 4s]
+C'est physiologique. Immédiat. Sans condition.
+[pause 8s]
+Le mouvement.
+[pause 4s]
+Une marche... même courte... dissipe les hormones de stress accumulées.
+[pause 8s]
+Et la connexion au vivant.
+[pause 4s]
+Un visage bienveillant. Une main posée. Un espace naturel.
+[pause 4s]
+Tout cela régule directement le système nerveux.
+[pause 10s]
+
+Ce module vous donne les outils pratiques.
+[pause 5s]
+Pour apprendre à vous réguler.
+[pause 4s]
+À connaître vos propres signaux.
+[pause 4s]
+Et à repositionner votre système nerveux... là où vous pouvez fonctionner à votre meilleur.
+[pause 10s]
+
+C'est par le corps que nous allons entraîner notre système nerveux vers la régulation.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et observez l'état de votre système nerveux en ce moment.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Dans votre quotidien... quels sont les principaux déclencheurs qui activent votre système de stress ?
+[pause 18s]
+
+Avez-vous des pratiques régulières qui activent votre parasympathique... votre mode repos-réparation ?
+[pause 18s]
+
+Quelle serait une pratique simple... cinq à dix minutes... que vous pourriez intégrer dès cette semaine pour réguler votre système nerveux ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Votre système nerveux peut apprendre.
+[pause 5s]
+La régulation n'est pas un état fixe.
+[pause 5s]
+C'est une compétence.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Gestion des émotions
+        // ─────────────────────────────────────────────────────────
+        '09-gestion-des-emotions' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Respirez normalement.
+[pause 5s]
+Et reposez-vous cette question honnêtement.
+[pause 5s]
+Quelle émotion est présente en ce moment ?
+[pause 8s]
+
+Pas l'émotion que vous devriez ressentir.
+[pause 5s]
+Pas celle qui est acceptable.
+[pause 5s]
+Celle qui est là.
+[pause 10s]
+
+Les émotions ne sont pas des ennemies.
+[pause 5s]
+Ce sont des messagères.
+[pause 5s]
+Elles ont une fonction biologique précise.
+[pause 5s]
+La peur vous protège.
+[pause 4s]
+La colère défend vos frontières.
+[pause 4s]
+La tristesse intègre une perte.
+[pause 4s]
+La joie renforce ce qui nourrit.
+[pause 4s]
+La honte maintient l'appartenance sociale.
+[pause 8s]
+
+Le problème n'est pas d'avoir des émotions.
+[pause 5s]
+C'est de ne pas savoir quoi en faire.
+[pause 5s]
+De les subir.
+[pause 4s]
+Ou de les supprimer.
+[pause 4s]
+Ou de les amplifier par la rumination.
+[pause 8s]
+
+Paul Ekman a identifié six émotions universelles.
+[pause 5s]
+Présentes dans toutes les cultures de la planète.
+[pause 5s]
+La colère. La peur. La tristesse. La joie. Le dégoût. La surprise.
+[pause 6s]
+Elles s'expriment dans le corps avant de monter à la conscience.
+[pause 5s]
+Avant d'avoir un mot.
+[pause 5s]
+Elles sont là... dans la tension musculaire... dans le rythme cardiaque... dans la respiration.
+[pause 10s]
+
+La compétence émotionnelle commence par l'identification.
+[pause 5s]
+Nommer une émotion... réduit son intensité.
+[pause 5s]
+Les études de neuroimagerie le montrent.
+[pause 5s]
+Mettre des mots sur ce qu'on ressent... active le cortex préfrontal.
+[pause 5s]
+Et réduit l'activité de l'amygdale.
+[pause 5s]
+La partie réactive du cerveau.
+[pause 10s]
+
+Vous n'avez pas à contrôler ce que vous ressentez.
+[pause 5s]
+Vous avez à vous permettre de le ressentir... consciemment.
+[pause 5s]
+Et à choisir ce que vous en faites.
+[pause 5s]
+Pas en réaction.
+[pause 5s]
+En réponse.
+[pause 10s]
+
+C'est par le corps que nous allons apprendre à recevoir et traverser les émotions.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... observez l'émotion qui est là... sans la juger.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il une émotion que vous tendez à éviter... et quelle stratégie utilisez-vous pour l'éviter ?
+[pause 18s]
+
+Lorsqu'une émotion intense surgit... comment réagissez-vous... la contrôlez-vous... la fuyez-vous... ou la traversez-vous ?
+[pause 18s]
+
+Quelle leçon une émotion récurrente pourrait-elle essayer de vous transmettre ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Les émotions ne sont pas vos ennemies.
+[pause 5s]
+Elles sont vos informatrices.
+[pause 5s]
+Commencez à les écouter.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Vivre ici et maintenant
+        // ─────────────────────────────────────────────────────────
+        '10-vivre-ici-et-maintenant' => <<<'SCRIPT'
+Posez ce que vous avez en main.
+[pause 5s]
+Littéralement.
+[pause 4s]
+Si vous tenez quelque chose... posez-le.
+[pause 5s]
+Sentez vos pieds sur le sol.
+[pause 5s]
+Le contact de votre dos sur le siège ou le lit.
+[pause 6s]
+La température de l'air.
+[pause 5s]
+Les sons autour de vous... sans les juger.
+[pause 8s]
+
+Vous êtes ici.
+[pause 5s]
+Maintenant.
+[pause 5s]
+C'est le seul moment qui existe vraiment.
+[pause 10s]
+
+Une étude de Harvard — Matthew Killingsworth et Daniel Gilbert —
+[pause 5s]
+a suivi quarante-sept pour cent du temps...
+[pause 4s]
+les esprits humains ne sont pas là où se trouve leur corps.
+[pause 6s]
+Quarante-sept pour cent du temps... les gens pensent à autre chose que ce qu'ils font.
+[pause 5s]
+Au passé.
+[pause 4s]
+Au futur.
+[pause 4s]
+À des scénarios imaginaires.
+[pause 8s]
+
+Et la conclusion ?
+[pause 5s]
+Cet état de vagabondage mental est associé à un niveau de bonheur significativement plus bas.
+[pause 5s]
+Peu importe l'activité.
+[pause 5s]
+Même les activités désagréables... vécues avec présence...
+[pause 5s]
+produisaient plus de bien-être que les activités agréables vécues en distraction.
+[pause 10s]
+
+La pleine présence n'est pas un luxe spirituel.
+[pause 5s]
+C'est une compétence.
+[pause 5s]
+Neurologique. Entraînable. Mesurable.
+[pause 8s]
+
+Jon Kabat-Zinn a eu cette phrase.
+[pause 5s]
+Vous ne pouvez pas arrêter les vagues.
+[pause 5s]
+Mais vous pouvez apprendre à surfer.
+[pause 10s]
+
+Remarquez maintenant.
+[pause 5s]
+Où est votre esprit ?
+[pause 5s]
+Est-ce qu'il est ici... avec cette méditation ?
+[pause 5s]
+Ou est-il parti quelque part d'autre ?
+[pause 6s]
+Pas de jugement.
+[pause 4s]
+Juste une observation.
+[pause 4s]
+Et si vous êtes parti... la simple notice est le retour.
+[pause 10s]
+
+C'est par le corps que nous allons ancrer notre présence dans ce moment.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... soyez ici... entièrement.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Dans quels moments de votre journée êtes-vous le plus souvent absent... en pilote automatique ?
+[pause 18s]
+
+Y a-t-il une activité quotidienne que vous pourriez transformer en pratique de présence... manger... marcher... écouter ?
+[pause 18s]
+
+Que perdez-vous dans votre vie quotidienne... parce que vous n'êtes pas pleinement présent ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+La présence n'est pas une destination.
+[pause 5s]
+C'est une pratique.
+[pause 5s]
+Moment après moment.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Sommeil et récupération
+        // ─────────────────────────────────────────────────────────
+        '10-sommeil-et-recuperation' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Ce module peut s'écouter le soir avant de dormir.
+[pause 5s]
+Ou en toute autre occasion.
+[pause 5s]
+Mais si vous êtes là le soir... laissez votre corps s'alourdir un peu.
+[pause 5s]
+Laissez les paupières devenir lourdes si elles le veulent.
+[pause 10s]
+
+Matthew Walker... neuroscientifique à Berkeley... a passé sa carrière à étudier le sommeil.
+[pause 5s]
+Sa conclusion est sans ambiguïté.
+[pause 5s]
+Le sommeil n'est pas un luxe.
+[pause 5s]
+C'est la fondation biologique de tout le reste.
+[pause 8s]
+
+En une nuit de mauvais sommeil...
+[pause 5s]
+votre capacité d'attention baisse de trente pour cent.
+[pause 5s]
+Votre régulation émotionnelle s'effondre.
+[pause 5s]
+Votre mémoire consolidée la nuit précédente est partiellement effacée.
+[pause 5s]
+Votre système immunitaire ralentit.
+[pause 5s]
+Et vos décisions deviennent mesurables plus mauvaises.
+[pause 8s]
+
+Et voici la découverte qui devrait nous arrêter.
+[pause 5s]
+Après dix à douze jours de manque de sommeil chronique...
+[pause 5s]
+les gens ne ressentent plus la fatigue comme un signal d'alarme.
+[pause 5s]
+Ils se croient adaptés.
+[pause 5s]
+Ils ne le sont pas.
+[pause 5s]
+Leurs performances cognitives ont continué de baisser.
+[pause 5s]
+Mais ils ont cessé de le sentir.
+[pause 10s]
+
+Le sommeil n'est pas du temps passif.
+[pause 5s]
+C'est le moment où le cerveau se nettoie... littéralement.
+[pause 5s]
+Le système glymphatique active.
+[pause 5s]
+Les déchets métaboliques... dont les protéines liées à Alzheimer...
+[pause 5s]
+sont évacués uniquement pendant le sommeil profond.
+[pause 8s]
+
+Ce module vous donne les outils pour hygiéniser votre sommeil.
+[pause 5s]
+Rituels du soir.
+[pause 4s]
+Architecture de la chambre.
+[pause 4s]
+Régulation de la lumière bleue.
+[pause 4s]
+Température.
+[pause 4s]
+Consistance des horaires.
+[pause 8s]
+
+Pas comme une contrainte de plus.
+[pause 5s]
+Comme un investissement qui rend tout le reste plus facile.
+[pause 10s]
+
+C'est par le corps que nous allons honorer notre besoin de récupération.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et laissez votre corps se souvenir de ce que c'est que de vraiment reposer.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Comment qualifieriez-vous la qualité de votre sommeil au cours des dernières semaines ?
+[pause 18s]
+
+Y a-t-il des habitudes dans votre rituel du soir qui nuisent à votre sommeil... sans que vous les ayez vraiment questionnées ?
+[pause 18s]
+
+Quel serait le premier changement concret que vous pourriez apporter à votre routine du sommeil ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Le sommeil n'est pas du temps perdu.
+[pause 5s]
+C'est l'investissement qui rend tout le reste possible.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Relation à l'alimentation
+        // ─────────────────────────────────────────────────────────
+        '11-relation-alimentation' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Avant de commencer... posez cette question sans défense.
+[pause 6s]
+Quelle est ma véritable relation à la nourriture ?
+[pause 8s]
+Pas ce que je mange.
+[pause 5s]
+Mais pourquoi je mange... quand je mange... et comment.
+[pause 10s]
+
+Il y a une différence fondamentale entre nourrir et manger.
+[pause 6s]
+Nourrir... c'est fournir ce dont le corps a besoin pour fonctionner et se réparer.
+[pause 5s]
+Manger... c'est tout le reste.
+[pause 5s]
+Combler l'ennui.
+[pause 4s]
+Gérer le stress.
+[pause 4s]
+Fêter... punir... récompenser.
+[pause 4s]
+Appartenir à un groupe.
+[pause 4s]
+Combler un vide émotionnel.
+[pause 8s]
+
+La plupart des comportements alimentaires problématiques n'ont pas de cause alimentaire.
+[pause 5s]
+Ils ont une cause émotionnelle.
+[pause 5s]
+Ou relationnelle.
+[pause 5s]
+Ou psychologique.
+[pause 8s]
+
+La pleine conscience alimentaire —
+[pause 5s]
+manger lentement... sans écran... avec attention —
+[pause 5s]
+réduit l'apport calorique de vingt à trente pour cent.
+[pause 5s]
+Pas par restriction.
+[pause 5s]
+Par satiété réelle.
+[pause 5s]
+Parce que le corps peut enfin se faire entendre.
+[pause 10s]
+
+Remarquez la prochaine fois que vous mangez.
+[pause 5s]
+Avez-vous faim... ou ressentez-vous autre chose ?
+[pause 6s]
+Mangez-vous en présence... ou en automatique ?
+[pause 6s]
+Est-ce que ce que vous mangez vous nourrit... ou accomplit autre chose ?
+[pause 10s]
+
+Ce module ne prescrit pas un régime.
+[pause 5s]
+Il vous invite à une relation différente avec ce que vous mangez.
+[pause 5s]
+Consciente.
+[pause 4s]
+Bienveillante.
+[pause 4s]
+Informée.
+[pause 10s]
+
+C'est par le corps que nous allons transformer notre relation à la nourriture.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... observez votre rapport à la nourriture sans le juger.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il des moments dans votre semaine où vous mangez de façon émotionnelle plutôt que physique ?
+[pause 18s]
+
+Quand avez-vous mangé pour la dernière fois avec une pleine présence... sans écran... sans distraction ?
+[pause 18s]
+
+Quelle serait une pratique simple de pleine conscience alimentaire que vous pourriez intégrer dès aujourd'hui ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Nourrir votre corps avec conscience... c'est vous respecter à chaque repas.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Activité physique
+        // ─────────────────────────────────────────────────────────
+        '15-activite-physique' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Respirez.
+[pause 6s]
+Et laissez-moi vous raconter quelque chose que la plupart des gens ne savent pas.
+[pause 8s]
+
+L'exercice physique est l'antidépresseur le plus efficace jamais étudié.
+[pause 5s]
+Pas une métaphore.
+[pause 5s]
+Une donnée de méta-analyse.
+[pause 5s]
+Plus efficace que certains médicaments... sans les effets secondaires.
+[pause 10s]
+
+Blumenthal... à Duke... a mené une étude rigoureuse.
+[pause 5s]
+Dépression modérée à sévère.
+[pause 5s]
+Trois groupes.
+[pause 4s]
+Médicaments seuls.
+[pause 4s]
+Exercice seul.
+[pause 4s]
+Médicaments et exercice.
+[pause 6s]
+À six mois... le groupe exercice seul avait les mêmes résultats que les médicaments.
+[pause 5s]
+Et le taux de rechute... dans ce groupe... était le plus bas de tous.
+[pause 10s]
+
+Pourquoi ?
+[pause 5s]
+Parce que l'exercice génère du BDNF.
+[pause 5s]
+Brain-Derived Neurotrophic Factor.
+[pause 5s]
+Ce que John Ratey appelle Miracle-Gro pour le cerveau.
+[pause 5s]
+Un facteur de croissance neuronal.
+[pause 5s]
+Qui renforce les connexions... améliore la mémoire... et réduit l'anxiété.
+[pause 8s]
+
+Cent cinquante minutes par semaine à intensité modérée.
+[pause 5s]
+Trente minutes cinq fois par semaine.
+[pause 5s]
+C'est le seuil recommandé pour des effets significatifs.
+[pause 5s]
+Pas de salle de sport obligatoire.
+[pause 5s]
+Pas d'équipement.
+[pause 5s]
+Une marche rapide... un vélo... une nage... une danse.
+[pause 5s]
+Votre corps n'a pas besoin de performance.
+[pause 5s]
+Il a besoin de mouvement.
+[pause 10s]
+
+Ce module vous aide à trouver votre forme d'activité.
+[pause 5s]
+Celle qui vous ressemble.
+[pause 4s]
+Celle qui dure dans le temps parce qu'elle n'est pas une punition.
+[pause 5s]
+Mais une rencontre avec votre propre vitalité.
+[pause 10s]
+
+C'est par le corps que nous allons retrouver le plaisir de bouger.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... laissez venir le souvenir d'un moment où vous avez ressenti votre vitalité corporelle.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quel est votre niveau d'activité physique actuel... et en êtes-vous satisfait ?
+[pause 18s]
+
+Y a-t-il une forme de mouvement qui vous procure du plaisir... que vous ne vous accordez pas suffisamment ?
+[pause 18s]
+
+Quel serait le premier pas réaliste pour intégrer davantage de mouvement dans votre vie cette semaine ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Vous n'avez pas besoin de performance.
+[pause 5s]
+Vous avez besoin de mouvement.
+[pause 5s]
+Votre corps... lui... le sait déjà.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Nutrition et vitalité
+        // ─────────────────────────────────────────────────────────
+        '22-nutrition-et-vitalite' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Posez vos mains sur votre ventre.
+[pause 5s]
+Sentez le mouvement de votre respiration.
+[pause 8s]
+
+Votre intestin contient environ cent millions de neurones.
+[pause 5s]
+Il produit plus de quatre-vingt-quinze pour cent de la sérotonine de votre corps.
+[pause 5s]
+Ce que vous mangez... affecte directement ce que vous ressentez.
+[pause 5s]
+Pas indirectement.
+[pause 5s]
+Directement.
+[pause 10s]
+
+Ce module ne parle pas de calories.
+[pause 5s]
+Il parle d'information.
+[pause 5s]
+Parce que la nourriture est un signal.
+[pause 5s]
+Chaque repas dit quelque chose à vos cellules.
+[pause 5s]
+À vos hormones.
+[pause 5s]
+À votre microbiote.
+[pause 5s]
+À votre humeur.
+[pause 8s]
+
+Les sucres rapides créent des pics d'insuline...
+[pause 5s]
+suivis de creux... suivis d'envies... suivis de pics.
+[pause 5s]
+Un cycle qui pilote silencieusement votre énergie, votre concentration et votre humeur.
+[pause 8s]
+
+Les graisses de qualité... les oméga-3... les fibres... les polyphénols...
+[pause 5s]
+nourrissent le microbiote.
+[pause 5s]
+Réduisent l'inflammation chronique.
+[pause 5s]
+Et soutiennent la production de neurotransmetteurs.
+[pause 8s]
+
+Ce n'est pas de la discipline.
+[pause 5s]
+C'est de la biochimie.
+[pause 5s]
+Et quand vous comprenez ce que chaque aliment fait réellement...
+[pause 5s]
+les choix deviennent naturellement différents.
+[pause 10s]
+
+Ce module vous donne les fondamentaux.
+[pause 5s]
+Pas un régime.
+[pause 4s]
+Une connaissance.
+[pause 4s]
+Qui vous appartient et que personne ne peut vous retirer.
+[pause 10s]
+
+C'est par le corps que nous allons comprendre comment la nutrition façonne notre vitalité.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... sentez comment votre corps se sent... en ce moment... après ce que vous avez mangé aujourd'hui.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il un aliment ou une habitude alimentaire que vous savez nuisible... mais que vous peinez à changer ?
+[pause 18s]
+
+Remarquez-vous un lien entre ce que vous mangez et votre niveau d'énergie ou votre humeur ?
+[pause 18s]
+
+Quelle serait une modification simple dans votre alimentation que vous pourriez tester pendant une semaine ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Vous êtes en partie fait de ce que vous mangez.
+[pause 5s]
+Chaque repas est une information envoyée à votre biologie.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 2 — Médecines complémentaires
+        // ─────────────────────────────────────────────────────────
+        '19-medecines-complementaires' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Respirez normalement.
+[pause 6s]
+Et laissez ce module vous inviter à élargir votre perspective.
+[pause 8s]
+
+La médecine conventionnelle est magnificente pour les urgences.
+[pause 5s]
+Pour les infections.
+[pause 4s]
+Pour la chirurgie.
+[pause 4s]
+Pour les pathologies aiguës.
+[pause 6s]
+Elle sauve des vies chaque jour.
+[pause 8s]
+
+Mais pour la santé chronique...
+[pause 5s]
+Pour le bien-être durable...
+[pause 5s]
+Pour les déséquilibres fonctionnels qui ne trouvent pas de réponse dans le modèle bio-médical classique...
+[pause 6s]
+d'autres approches méritent d'être connues.
+[pause 10s]
+
+L'ostéopathie.
+[pause 4s]
+Travaille sur les tensions musculo-squelettiques... les restrictions de mobilité... et leur impact sur les systèmes viscéraux.
+[pause 8s]
+La naturopathie.
+[pause 4s]
+S'intéresse aux causes profondes des dysfonctions... alimentation... mode de vie... terrain individuel.
+[pause 8s]
+L'acupuncture.
+[pause 4s]
+Validée par des méta-analyses pour certaines indications... douleurs chroniques... migraines... anxiété.
+[pause 8s]
+La méditation et le yoga.
+[pause 4s]
+Avec des effets mesurés sur l'inflammation... le système nerveux... et la qualité du sommeil.
+[pause 8s]
+
+Ce module ne vous prescrit rien.
+[pause 5s]
+Il vous informe.
+[pause 5s]
+Pour que vous puissiez choisir de façon éclairée...
+[pause 5s]
+plutôt que de naviguer par hasard ou par publicité.
+[pause 8s]
+
+Votre santé est un territoire.
+[pause 5s]
+La connaissance est votre meilleure carte.
+[pause 10s]
+
+C'est par le corps que nous allons ouvrir notre perspective sur la santé globale.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et demandez-vous honnêtement... est-ce que je prends soin de moi de façon globale ?
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il une médecine complémentaire que vous n'avez pas encore explorée... par manque d'information ?
+[pause 18s]
+
+Dans votre approche de votre santé... traitez-vous surtout les symptômes... ou cherchez-vous aussi les causes ?
+[pause 18s]
+
+Quelle serait la prochaine étape pour enrichir votre approche de votre santé ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Votre santé mérite une pensée globale.
+[pause 5s]
+Intégrative.
+[pause 5s]
+Curieuse.
+[pause 5s]
+Et informée.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Présence à soi
+        // ─────────────────────────────────────────────────────────
+        '12-presence-a-soi' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Fermez les yeux.
+[pause 5s]
+Et posez cette question douce.
+[pause 6s]
+Comment est-ce que je me sens... vraiment... en ce moment ?
+[pause 10s]
+
+Pas ce que vous pensez devoir ressentir.
+[pause 5s]
+Ce qui est là.
+[pause 10s]
+
+La présence à soi est une forme de perception intérieure.
+[pause 6s]
+Les chercheurs l'appellent intéroception.
+[pause 5s]
+La capacité à percevoir les signaux internes du corps.
+[pause 5s]
+Le rythme cardiaque.
+[pause 4s]
+La tension musculaire.
+[pause 4s]
+La faim.
+[pause 4s]
+La fatigue.
+[pause 4s]
+Les states émotionnels avant qu'ils ne soient conscients.
+[pause 8s]
+
+Cette capacité prédit...
+[pause 5s]
+la régulation émotionnelle.
+[pause 4s]
+La qualité des décisions.
+[pause 4s]
+La résistance au stress.
+[pause 4s]
+Et la profondeur des relations.
+[pause 8s]
+
+Mais dans notre monde hyperconnecté...
+[pause 5s]
+nous sommes formés à nous tourner vers l'extérieur.
+[pause 5s]
+À vérifier ce que les autres pensent.
+[pause 4s]
+À chercher la validation.
+[pause 4s]
+À combler le silence avec du bruit.
+[pause 6s]
+Et cette attention permanente vers l'extérieur... affaiblit le muscle intérieur.
+[pause 8s]
+
+Ce parcours est un retour.
+[pause 5s]
+Un retour à soi.
+[pause 5s]
+Pas comme une retraite du monde.
+[pause 5s]
+Mais comme un ancrage.
+[pause 5s]
+Qui permet d'être pleinement présent dans le monde.
+[pause 5s]
+Parce qu'on est d'abord présent à soi.
+[pause 10s]
+
+Remarquez pendant les prochaines secondes.
+[pause 5s]
+Un signal dans votre corps.
+[pause 5s]
+N'importe lequel.
+[pause 5s]
+Une tension.
+[pause 4s]
+Une chaleur.
+[pause 4s]
+Un rythme.
+[pause 4s]
+Un relâchement.
+[pause 8s]
+
+Voilà votre intéroception à l'œuvre.
+[pause 5s]
+Elle était là... elle a toujours été là.
+[pause 5s]
+Ce module vous apprend à l'écouter davantage.
+[pause 10s]
+
+C'est par le corps que nous allons développer notre présence à nous-mêmes.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... percevez les signaux subtils de votre corps... sans les analyser.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Dans votre quotidien... prenez-vous le temps de vous demander comment vous vous sentez vraiment ?
+[pause 18s]
+
+Y a-t-il un signal de votre corps que vous ignorez régulièrement... fatigue... tension... inconfort ?
+[pause 18s]
+
+Quel serait un moment dans votre journée que vous pourriez transformer en un mini-check-in avec vous-même ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Plus vous êtes présent à vous-même...
+[pause 5s]
+plus vous pouvez l'être pour les autres.
+[pause 5s]
+L'intérieur précède l'extérieur.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Confiance corporelle
+        // ─────────────────────────────────────────────────────────
+        '13-confiance-corporelle' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Respirez.
+[pause 6s]
+Et sans vous juger... posez votre regard intérieur sur votre corps.
+[pause 6s]
+Pas esthétiquement.
+[pause 4s]
+Fonctionnellement.
+[pause 5s]
+Ce corps qui vous porte.
+[pause 4s]
+Qui respire sans que vous le demandiez.
+[pause 4s]
+Qui guérit vos petites blessures chaque jour.
+[pause 4s]
+Qui régule votre température.
+[pause 4s]
+Qui traite des milliards d'informations en ce moment même.
+[pause 8s]
+
+La confiance corporelle n'est pas une histoire de formes.
+[pause 5s]
+C'est une histoire de relation.
+[pause 5s]
+La relation que vous avez avec votre propre corps.
+[pause 8s]
+
+Pour beaucoup d'entre nous... cette relation a été perturbée tôt.
+[pause 5s]
+Par des regards.
+[pause 4s]
+Des commentaires.
+[pause 4s]
+Des comparaisons.
+[pause 4s]
+Des messages culturels sur ce qu'un corps devrait être.
+[pause 6s]
+Et nous avons appris à voir notre corps comme un problème à corriger...
+[pause 5s]
+plutôt que comme un partenaire à respecter.
+[pause 10s]
+
+La recherche de Kristin Neff sur l'auto-compassion montre que...
+[pause 5s]
+se traiter avec la même bienveillance qu'un ami...
+[pause 5s]
+réduit l'anxiété corporelle... améliore l'image de soi...
+[pause 5s]
+et paradoxalement... améliore les comportements de santé.
+[pause 8s]
+
+Pas en se mentant sur la réalité.
+[pause 5s]
+Mais en cessant d'être son propre ennemi.
+[pause 10s]
+
+Posez maintenant votre main sur une partie de votre corps.
+[pause 5s]
+N'importe laquelle.
+[pause 5s]
+Et envoyez-lui... ne serait-ce qu'un moment... de la gratitude.
+[pause 6s]
+Pour ce qu'elle fait.
+[pause 4s]
+Pour ce qu'elle supporte.
+[pause 4s]
+Pour ce qu'elle vous permet.
+[pause 12s]
+
+C'est par le corps que nous allons cultiver une relation de gratitude avec lui.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et envoyez de la gratitude à votre corps pour ce qu'il fait.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quel discours tenez-vous habituellement sur votre corps... est-il bienveillant ou critique ?
+[pause 18s]
+
+Y a-t-il une partie de votre corps envers laquelle vous portez de la honte ou de la frustration... qui mériterait de la compassion ?
+[pause 18s]
+
+Comment pourriez-vous traiter votre corps cette semaine comme un partenaire que vous respectez ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Votre corps n'est pas votre ennemi.
+[pause 5s]
+Il est votre partenaire le plus ancien.
+[pause 5s]
+Commencez à le traiter comme tel.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Interactions sociales
+        // ─────────────────────────────────────────────────────────
+        '14-interactions-sociales' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Pensez à une personne dans votre vie qui vous fait du bien.
+[pause 6s]
+Pas quelqu'un de parfait.
+[pause 4s]
+Quelqu'un dont la présence est ressourçante.
+[pause 6s]
+Remarquez ce que ça génère dans votre corps... juste d'y penser.
+[pause 10s]
+
+L'être humain est une espèce ultra-sociale.
+[pause 5s]
+Notre cerveau a co-évolué avec la communauté.
+[pause 5s]
+Pendant cent mille ans... être seul était dangereux.
+[pause 5s]
+L'appartenance à un groupe était une question de survie.
+[pause 8s]
+
+Matthew Lieberman — UCLA — a démontré par neuroimagerie...
+[pause 5s]
+que le cerveau traite l'exclusion sociale...
+[pause 5s]
+dans les mêmes zones que la douleur physique.
+[pause 5s]
+La douleur sociale est une douleur réelle.
+[pause 5s]
+Et la connexion... active les mêmes circuits que la nourriture et la chaleur.
+[pause 8s]
+
+Mais nous avons aussi des interactions qui drainent.
+[pause 5s]
+Des dynamiques qui épuisent.
+[pause 5s]
+Des relations qui prennent plus qu'elles ne donnent.
+[pause 6s]
+Et apprendre à distinguer les deux...
+[pause 5s]
+à choisir ses connexions avec conscience...
+[pause 5s]
+est une compétence que personne ne nous enseigne.
+[pause 10s]
+
+Ce module vous donne les outils pour cartographier vos relations.
+[pause 5s]
+Identifier celles qui nourrissent.
+[pause 4s]
+Comprendre celles qui épuisent.
+[pause 4s]
+Et naviguer les interactions sociales avec plus de fluidité et moins d'énergie perdue.
+[pause 10s]
+
+C'est par le corps que nous allons ressentir la qualité de nos connexions humaines.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... laissez venir le visage d'une personne qui vous ressource.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Pouvez-vous nommer trois personnes dont la présence vous ressource profondément ?
+[pause 18s]
+
+Y a-t-il des interactions régulières qui vous drainent... et avez-vous une marge de manœuvre sur elles ?
+[pause 18s]
+
+Quelle serait une action concrète cette semaine pour renforcer une connexion qui compte pour vous ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+La qualité de vos connexions humaines est le terreau de votre bien-être.
+[pause 5s]
+Chérissez celles qui vous font du bien.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Loisirs et plénitude
+        // ─────────────────────────────────────────────────────────
+        '16-loisirs-et-vie' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Pensez à la dernière fois que vous avez fait quelque chose... uniquement par plaisir.
+[pause 7s]
+Sans but.
+[pause 4s]
+Sans résultat.
+[pause 4s]
+Sans productivité.
+[pause 4s]
+Juste parce que ça vous faisait quelque chose de bien.
+[pause 8s]
+
+Quand était-ce ?
+[pause 10s]
+
+Mihaly Csikszentmihalyi.
+[pause 5s]
+Psychologue hongrois-américain.
+[pause 5s]
+Il a passé des décennies à étudier les états d'expérience optimale.
+[pause 5s]
+Ce qu'il appelle le flow.
+[pause 8s]
+
+Le flow... c'est cet état de complète absorption dans une activité.
+[pause 5s]
+Où l'ego s'efface.
+[pause 4s]
+Le temps perd sa consistance.
+[pause 4s]
+L'efforte et la facilité se confondent.
+[pause 4s]
+Et on ressent ce qu'il décrit comme un bonheur profond et authentique.
+[pause 8s]
+
+L'observation de Csikszentmihalyi est importante.
+[pause 6s]
+Le flow se produit quand le niveau de défi correspond légèrement à notre niveau de compétence.
+[pause 5s]
+Trop facile... on s'ennuie.
+[pause 4s]
+Trop difficile... on s'anxiète.
+[pause 5s]
+Au point juste... on rentre dans le flux.
+[pause 8s]
+
+Mais il a observé quelque chose de contre-intuitif.
+[pause 6s]
+Les gens rapportent plus de flow dans leur travail que dans leurs loisirs.
+[pause 5s]
+Et pourtant... ils décident librement de regarder la télévision plutôt que faire l'activité qui les fait vibrer.
+[pause 5s]
+Parce que le flow a un coût d'entrée.
+[pause 4s]
+Il demande de l'attention.
+[pause 4s]
+Il demande de commencer.
+[pause 6s]
+La passivité... elle... ne demande rien.
+[pause 8s]
+
+Ce module vous invite à identifier vos activités de flow.
+[pause 5s]
+Celles qui vous font entrer dans cet état.
+[pause 5s]
+Et à leur donner une place réelle dans votre agenda.
+[pause 5s]
+Pas par hasard.
+[pause 5s]
+Par choix.
+[pause 10s]
+
+C'est par le corps que nous allons retrouver le sens du jeu et de la vitalité.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et laissez venir une image d'une activité qui vous fait vibrer.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Pouvez-vous nommer une activité en dehors du travail qui vous procure de la joie pure... sans but utilitaire ?
+[pause 18s]
+
+Quelle est la place réelle que vous donnez au plaisir et au jeu dans votre semaine ?
+[pause 18s]
+
+Quel serait le premier pas pour intégrer davantage de flow dans votre quotidien... dès cette semaine ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Le plaisir n'est pas un luxe.
+[pause 5s]
+C'est un carburant.
+[pause 5s]
+Et vous méritez un plein réservoir.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Pièges des écrans
+        // ─────────────────────────────────────────────────────────
+        '32-pieges-ecrans' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Posez votre téléphone... face vers le bas.
+[pause 5s]
+Si vous l'utilisez pour écouter ce module... posez-le à portée... mais loin de votre regard.
+[pause 6s]
+Et remarquez si une légère résistance se manifeste.
+[pause 5s]
+Cette résistance est déjà une information.
+[pause 10s]
+
+Les technologies numériques ne sont pas neutres.
+[pause 5s]
+Elles ont été conçues... par des équipes entières de neuroscientifiques et de psychologues... pour capturer votre attention.
+[pause 6s]
+Tristan Harris... ancien designer chez Google... a nommé ça le modèle persuasif.
+[pause 5s]
+Ces systèmes n'essaient pas de vous rendre heureux.
+[pause 5s]
+Ils essaient de maximiser le temps que vous passez sur eux.
+[pause 5s]
+Et le bonheur et l'engagement ne sont pas la même chose.
+[pause 8s]
+
+La dopamine est le neurotransmetteur de l'anticipation.
+[pause 5s]
+Pas du plaisir.
+[pause 5s]
+De l'anticipation du plaisir.
+[pause 5s]
+Chaque notification... chaque scroll infini... chaque like incertain...
+[pause 5s]
+exploite exactement ce mécanisme.
+[pause 5s]
+Le même mécanisme que les machines à sous.
+[pause 8s]
+
+Les études sur le bien-être subjectif montrent que...
+[pause 5s]
+une heure de réseaux sociaux par jour est associée à une baisse measurable de bonheur.
+[pause 5s]
+Pour les adolescents... l'effet est encore plus marqué.
+[pause 8s]
+
+Ce module ne vous demande pas de supprimer vos applications.
+[pause 5s]
+Il vous propose de reprendre le contrôle.
+[pause 5s]
+D'utiliser consciemment.
+[pause 4s]
+Plutôt que d'être utilisé.
+[pause 5s]
+De choisir quand vous regardez.
+[pause 4s]
+Combien de temps.
+[pause 4s]
+Et pour quoi.
+[pause 10s]
+
+C'est par le corps que nous allons retrouver notre présence... au-delà des écrans.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... savourez l'absence de notification.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Combien de fois vérifiez-vous votre téléphone dans une journée... et est-ce conscient ?
+[pause 18s]
+
+Y a-t-il des moments de votre journée que vous pourriez protéger des écrans pour être davantage présent ?
+[pause 18s]
+
+Quelle serait une règle simple sur votre usage des écrans... qui respecterait vraiment votre attention ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Votre attention est votre ressource la plus précieuse.
+[pause 5s]
+Choisissez consciemment à qui... et à quoi vous la donnez.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Relation à l'autre
+        // ─────────────────────────────────────────────────────────
+        '17-relation-a-lautre' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Respirez.
+[pause 6s]
+Et pensez à la relation la plus importante de votre vie.
+[pause 5s]
+Pas nécessairement amoureuse.
+[pause 4s]
+La relation qui vous touche le plus profondément.
+[pause 5s]
+Qui vous définit.
+[pause 4s]
+Qui vous a le plus transformé.
+[pause 8s]
+
+Qu'est-ce qu'elle vous a appris sur vous-même ?
+[pause 10s]
+
+Les relations ne nous révèlent pas.
+[pause 5s]
+Elles nous construisent.
+[pause 5s]
+Il est impossible de devenir pleinement soi-même en isolation.
+[pause 5s]
+Nous nous voyons dans le regard de l'autre.
+[pause 5s]
+Nous nous découvrons en réaction.
+[pause 5s]
+Nous apprenons nos patterns dans la friction.
+[pause 8s]
+
+John Gottman... de l'Université de Washington...
+[pause 5s]
+a étudié des milliers de couples pendant des décennies.
+[pause 5s]
+Il peut prédire avec plus de quatre-vingt pour cent de précision...
+[pause 5s]
+si un couple va se séparer...
+[pause 5s]
+rien qu'en observant quelques minutes d'interaction.
+[pause 8s]
+
+Sa découverte principale ?
+[pause 5s]
+Ce n'est pas le conflit qui détruit les relations.
+[pause 5s]
+C'est le mépris.
+[pause 5s]
+Et son contraire... la bidirectionnalité du turning towards.
+[pause 5s]
+Ces petits moments quotidiens où l'on se tourne vers l'autre.
+[pause 4s]
+Où l'on répond à une tentative de connexion.
+[pause 4s]
+Même minuscule.
+[pause 8s]
+
+Ce module vous invite à regarder vos relations avec honnêteté.
+[pause 5s]
+Leur qualité.
+[pause 4s]
+Leur réciprocité.
+[pause 4s]
+Leur évolution.
+[pause 5s]
+Et les compétences relationnelles qui font la différence entre une relation qui s'use...
+[pause 5s]
+et une relation qui grandit.
+[pause 10s]
+
+C'est par le corps que nous allons ressentir la profondeur de nos liens.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et laissez venir la sensation d'être pleinement avec quelqu'un.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Dans vos relations importantes... êtes-vous plutôt dans le turning towards ou le turning away... la connexion ou le retrait ?
+[pause 18s]
+
+Y a-t-il quelque chose que vous gardez pour vous dans une relation importante... par peur de la réaction de l'autre ?
+[pause 18s]
+
+Comment pourriez-vous nourrir davantage la relation qui vous tient le plus à cœur cette semaine ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Les relations ne se maintiennent pas toutes seules.
+[pause 5s]
+Elles se choisissent... moment après moment.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Intimité et énergie relationnelle
+        // ─────────────────────────────────────────────────────────
+        '18-intimite-et-energie' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Ce module touche quelque chose d'intime.
+[pause 5s]
+Pas seulement l'intimité physique.
+[pause 4s]
+L'intimité comme capacité.
+[pause 4s]
+La capacité à laisser l'autre vous voir vraiment.
+[pause 5s]
+Et à vous voir dans ce reflet.
+[pause 10s]
+
+Brené Brown a passé des années à étudier la vulnérabilité.
+[pause 5s]
+Sa conclusion dérange les gens qui cherchent la force à travers le contrôle.
+[pause 6s]
+La vulnérabilité n'est pas une faiblesse.
+[pause 5s]
+C'est la source de la connexion authentique.
+[pause 5s]
+De la créativité.
+[pause 4s]
+De l'amour.
+[pause 4s]
+Et du sens.
+[pause 8s]
+
+Ceux qui évitent la vulnérabilité n'évitent pas la douleur.
+[pause 5s]
+Ils évitent aussi la joie.
+[pause 5s]
+et la profondeur.
+[pause 8s]
+
+Et l'énergie relationnelle...
+[pause 5s]
+cette ressource que certaines connexions nous donnent et d'autres nous prennent...
+[pause 5s]
+dépend directement de notre niveau de présence dans la relation.
+[pause 5s]
+Une relation vécue à distance de soi... par protection...
+[pause 5s]
+vide plus qu'elle ne nourrit.
+[pause 8s]
+
+Ce module vous invite à explorer...
+[pause 5s]
+votre capacité à être vu.
+[pause 5s]
+Et à voir vraiment.
+[pause 5s]
+Pas à travers des attentes.
+[pause 4s]
+Pas à travers des peurs.
+[pause 5s]
+Mais dans la présence directe.
+[pause 10s]
+
+C'est par le corps que nous allons explorer notre capacité à être vraiment vus.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... laissez venir la sensation d'être pleinement là... avec vous-même.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Dans vos relations proches... êtes-vous capable de vous montrer vulnérable... ou vous protégez-vous systématiquement ?
+[pause 18s]
+
+Y a-t-il une relation dans votre vie où vous n'êtes pas complètement vous-même... et pourquoi ?
+[pause 18s]
+
+Quel serait un geste de vulnérabilité authentique que vous pourriez offrir cette semaine à quelqu'un qui compte ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+L'intimité n'est pas une faiblesse.
+[pause 5s]
+C'est le courage de laisser l'autre vous voir... réellement.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Vivre, choisir, reconstruire
+        // ─────────────────────────────────────────────────────────
+        '20-vivre-choisir-reconstruire' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Pensez à un moment de votre vie où vous avez dû vous reconstruire.
+[pause 7s]
+Une rupture.
+[pause 4s]
+Une perte.
+[pause 4s]
+Un échec.
+[pause 4s]
+Un départ.
+[pause 5s]
+Ce moment où vous n'étiez plus sûr de savoir qui vous étiez... ni vers où.
+[pause 10s]
+
+Vous êtes ici maintenant.
+[pause 5s]
+Ce moment fait partie de vous.
+[pause 5s]
+Il ne vous a pas détruit.
+[pause 5s]
+Il vous a traversé.
+[pause 10s]
+
+Le kintsugi est une pratique japonaise.
+[pause 5s]
+Quand une céramique se brise... on la répare avec de l'or.
+[pause 5s]
+La cicatrice devient l'ornement.
+[pause 5s]
+La fragilité... transformée... devient ce qui est le plus précieux.
+[pause 8s]
+
+Les chercheurs en résilience ont découvert quelque chose de similaire.
+[pause 5s]
+Après un traumatisme...
+[pause 4s]
+certaines personnes ne reviennent pas au point de départ.
+[pause 4s]
+Elles dépassent leur niveau d'avant.
+[pause 5s]
+Tedeschi et Calhoun appellent ça le Post-Traumatic Growth.
+[pause 5s]
+La croissance post-traumatique.
+[pause 8s]
+
+Elle se manifeste par...
+[pause 5s]
+une plus grande profondeur dans les relations.
+[pause 4s]
+Une appréciation plus intense de la vie.
+[pause 4s]
+Une force personnelle découverte.
+[pause 4s]
+De nouveaux horizons.
+[pause 4s]
+Et parfois... un profond changement spirituel.
+[pause 8s]
+
+Ce n'est pas automatique.
+[pause 5s]
+Ça demande du travail intérieur.
+[pause 5s]
+Du temps.
+[pause 5s]
+Et souvent... un accompagnement.
+[pause 8s]
+
+Ce module vous invite à regarder vos fractures avec des yeux différents.
+[pause 5s]
+Pas pour minimiser ce que vous avez vécu.
+[pause 5s]
+Mais pour reconnaître ce que vous êtes capable de faire avec.
+[pause 10s]
+
+C'est par le corps que nous allons intégrer nos fractures... et en faire notre force.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... portez avec compassion ce que vous avez traversé.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il une expérience difficile de votre passé que vous n'avez pas encore complètement intégrée ?
+[pause 18s]
+
+Qu'avez-vous découvert sur vous-même à travers cette épreuve... que vous n'auriez peut-être pas découvert autrement ?
+[pause 18s]
+
+Comment pourriez-vous honorer ce que vous avez traversé... tout en choisissant d'avancer vers quelque chose de nouveau ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Vous n'êtes pas la somme de ce qui vous est arrivé.
+[pause 5s]
+Vous êtes ce que vous avez choisi d'en faire.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Amour à l'ère du jetable
+        // ─────────────────────────────────────────────────────────
+        '31-amour-ere-jetable' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Ce module aborde un terrain délicat.
+[pause 5s]
+L'amour dans une époque qui rend tout jetable.
+[pause 6s]
+Les objets... les emplois... et parfois les relations.
+[pause 8s]
+
+Zygmunt Bauman parlait de la modernité liquide.
+[pause 5s]
+Un monde sans solide.
+[pause 4s]
+Sans ancrage.
+[pause 4s]
+Où tout peut être échangé... remplacé... optimisé.
+[pause 5s]
+Et les relations... dans ce contexte... sont soumises à la logique du marché.
+[pause 5s]
+La comparaison permanente.
+[pause 4s]
+La disponibilité infinie.
+[pause 4s]
+Le coût de sortie minimisé.
+[pause 8s]
+
+Les applications de rencontre ont ajouté une couche supplémentaire.
+[pause 5s]
+En suggérant que l'amour est une affaire de tri.
+[pause 5s]
+De swipe.
+[pause 4s]
+De catalogue.
+[pause 5s]
+Que si cette personne ne correspond pas parfaitement...
+[pause 5s]
+la suivante le sera peut-être davantage.
+[pause 5s]
+L'illusion du mieux possible.
+[pause 8s]
+
+Et pourtant.
+[pause 5s]
+L'étude de Grant à Harvard...
+[pause 5s]
+la plus longue étude sur le bonheur humain jamais réalisée...
+[pause 5s]
+soixante-dix ans de suivi...
+[pause 5s]
+a conclu quelque chose que toutes les cultures savaient intuitivement.
+[pause 6s]
+La qualité des relations est le facteur le plus déterminant du bonheur humain.
+[pause 5s]
+Plus que la richesse.
+[pause 4s]
+Plus que la célébrité.
+[pause 4s]
+Plus que la santé physique.
+[pause 8s]
+
+Pas le nombre de relations.
+[pause 5s]
+Leur profondeur.
+[pause 5s]
+Leur chaleur.
+[pause 5s]
+Leur sécurité.
+[pause 10s]
+
+Ce module vous invite à réfléchir... et à choisir.
+[pause 5s]
+Pas la doctrine du passé.
+[pause 5s]
+Pas la liquidité du présent.
+[pause 5s]
+Mais votre propre philosophie de l'engagement.
+[pause 10s]
+
+C'est par le corps que nous allons sentir ce que la profondeur d'un lien fait réellement en nous.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... pensez à quelqu'un pour qui votre cœur est ouvert.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quelle est votre propre philosophie de l'engagement... dans vos relations importantes ?
+[pause 18s]
+
+Y a-t-il une relation dans votre vie où vous investissez vraiment dans la profondeur et la durée ?
+[pause 18s]
+
+Qu'est-ce qui vous semble le plus précieux dans une relation... et comment cela guide-t-il vos choix ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Dans un monde qui valorise le renouvellement...
+[pause 5s]
+choisir la profondeur est un acte courageux.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Éducation sacrifiée
+        // ─────────────────────────────────────────────────────────
+        '33-education-sacrifiee' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Ce module parle de transmission.
+[pause 5s]
+De ce qu'on donne... de ce qu'on reçoit.
+[pause 5s]
+Et de ce qu'on peut choisir de transmettre différemment.
+[pause 10s]
+
+Il y a ce que nous voulons transmettre à nos enfants.
+[pause 5s]
+Et il y a ce que nous transmettons réellement.
+[pause 5s]
+Ces deux choses ne sont pas toujours les mêmes.
+[pause 8s]
+
+D. W. Winnicott avait le concept du good enough parent.
+[pause 5s]
+Le parent suffisamment bon.
+[pause 5s]
+Pas parfait.
+[pause 4s]
+Assez présent.
+[pause 4s]
+Assez disponible.
+[pause 4s]
+Assez réparant.
+[pause 8s]
+
+Le perfectionnisme parental est souvent une projection.
+[pause 5s]
+Vouloir pour l'enfant ce qu'on n'a pas pu avoir.
+[pause 5s]
+Corriger à travers lui.
+[pause 5s]
+Réussir dans sa réussite.
+[pause 5s]
+Et l'enfant le ressent.
+[pause 5s]
+Pas comme amour.
+[pause 5s]
+Comme pression.
+[pause 8s]
+
+Daniel Siegel parle du cerveau narrant.
+[pause 5s]
+Les parents qui ont intégré leur propre histoire...
+[pause 5s]
+qui peuvent parler de leurs difficultés avec cohérence et clarté...
+[pause 5s]
+créent des enfants sécures.
+[pause 5s]
+Peu importe ce qu'ils ont vécu.
+[pause 5s]
+C'est l'intégration qui importe.
+[pause 5s]
+Pas le passé.
+[pause 10s]
+
+Ce module vous invite à regarder votre propre histoire.
+[pause 5s]
+Ce que vous avez reçu.
+[pause 4s]
+Ce que vous portez.
+[pause 4s]
+Ce que vous choisissez de transmettre... consciemment... avec amour.
+[pause 10s]
+
+C'est par le corps que nous allons sentir ce que nous portons de nos origines.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... portez avec compassion votre propre enfance.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Qu'avez-vous reçu de vos parents ou figures d'attachement... que vous êtes reconnaissant de porter ?
+[pause 18s]
+
+Y a-t-il quelque chose que vous avez reçu... blessure ou héritage... que vous choisissez de transformer dans votre vie ?
+[pause 18s]
+
+Si vous pouviez transmettre une seule chose à ceux qui viennent après vous... quelle serait-elle ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+La transmission la plus puissante n'est pas ce que vous dites.
+[pause 5s]
+C'est ce que vous devenez.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Entretenir nos relations
+        // ─────────────────────────────────────────────────────────
+        '21-entretenir-nos-relations' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Pensez à une relation importante dans votre vie.
+[pause 5s]
+Une qui existe depuis longtemps.
+[pause 5s]
+Et posez cette question honnêtement.
+[pause 5s]
+Est-ce que j'entretiens vraiment cette relation... ou est-ce que je compte sur sa durée ?
+[pause 10s]
+
+Les relations sont comme des jardins.
+[pause 5s]
+Elles ont besoin d'eau.
+[pause 4s]
+D'attention.
+[pause 4s]
+De présence.
+[pause 5s]
+Sans ça... elles ne meurent pas d'un coup.
+[pause 5s]
+Elles s'appauvrissent lentement.
+[pause 5s]
+Et un jour... on se regarde en se demandant ce qui s'est passé.
+[pause 8s]
+
+Gottman a nommé ça la Love Map.
+[pause 5s]
+La carte intérieure de l'autre.
+[pause 5s]
+Connaître les rêves de l'autre.
+[pause 4s]
+Ses peurs.
+[pause 4s]
+Ses joies récentes.
+[pause 4s]
+Ce qui l'occupe.
+[pause 4s]
+Ce qui l'a blessé.
+[pause 6s]
+Les couples en difficulté ont des Love Maps vides.
+[pause 5s]
+Ils vivent côte à côte... mais ils ne savent plus vraiment qui est là à côté d'eux.
+[pause 8s]
+
+Et ce n'est pas réservé aux couples.
+[pause 5s]
+Nos amitiés profondes.
+[pause 4s]
+Nos relations avec nos parents.
+[pause 4s]
+Nos liens avec nos frères et sœurs.
+[pause 5s]
+Toutes ces relations se vident de substance quand on cesse de les cultiver activement.
+[pause 8s]
+
+Ce module vous invite à agir.
+[pause 5s]
+Pas plus tard.
+[pause 5s]
+Aujourd'hui.
+[pause 5s]
+Un message.
+[pause 4s]
+Un appel.
+[pause 4s]
+Un repas.
+[pause 4s]
+Une question sincère.
+[pause 4s]
+Comment va vraiment ta vie ?
+[pause 10s]
+
+C'est par le corps que nous allons sentir la richesse de nos liens et l'envie de les nourrir.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et laissez venir le prénom d'une personne à qui vous devriez donner davantage de présence.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il une relation importante dans votre vie que vous avez laissée s'appauvrir par manque d'attention ?
+[pause 18s]
+
+Quelle est la différence entre les relations que vous entretenez activement... et celles que vous tenez pour acquises ?
+[pause 18s]
+
+Quel est le geste minimal que vous pouvez faire aujourd'hui pour nourrir une relation qui compte ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Les relations les plus précieuses sont celles auxquelles vous revenez... encore et encore.
+[pause 5s]
+Avec intention.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Je transmets ma transformation
+        // ─────────────────────────────────────────────────────────
+        '11-je-transmets-ma-transformation' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Respirez.
+[pause 5s]
+Et laissez venir cette question avec douceur.
+[pause 5s]
+Qu'est-ce que j'ai appris... vraiment... au fil de ce parcours ?
+[pause 10s]
+
+Pas intellectuellement.
+[pause 5s]
+Viscéralement.
+[pause 5s]
+Qu'est-ce qui a changé en vous ?
+[pause 10s]
+
+Il y a un principe dans l'enseignement bouddhiste.
+[pause 5s]
+Celui qui a reçu une connaissance... a la responsabilité de la transmettre.
+[pause 5s]
+Pas par devoir moral.
+[pause 5s]
+Parce que la connaissance se consolide dans la transmission.
+[pause 5s]
+Et parce que nous sommes tous reliés.
+[pause 8s]
+
+Mais la transmission ne se fait pas par les mots seuls.
+[pause 5s]
+Elle se fait par l'être.
+[pause 5s]
+Par ce que vous rayonnez quand vous entrez dans une pièce.
+[pause 4s]
+Par la façon dont vous écoutez.
+[pause 4s]
+Par la qualité de présence que vous apportez.
+[pause 4s]
+Par le courage de vivre selon ce que vous croyez vraiment.
+[pause 8s]
+
+Nicolas Chamfort a écrit... il y a deux siècles.
+[pause 5s]
+Jouissez et faites jouir... sans faire de mal ni à vous ni à personne.
+[pause 5s]
+C'est toute la morale.
+[pause 6s]
+Et c'est aussi toute la transmission digne de ce nom.
+[pause 10s]
+
+Votre transformation n'est pas seulement pour vous.
+[pause 5s]
+Elle est un point de lumière dans les vies des gens que vous touchez.
+[pause 5s]
+Souvent sans le savoir.
+[pause 5s]
+Souvent juste en étant qui vous devenez.
+[pause 10s]
+
+C'est par le corps que nous allons ancrer ce que nous sommes devenus... pour le transmettre.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et sentez ce qui a changé en vous depuis le début de ce parcours.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Qu'est-ce qui a changé concrètement en vous depuis que vous avez commencé ce travail ?
+[pause 18s]
+
+Y a-t-il une personne dans votre vie qui bénéficierait de ce que vous avez appris... et à qui vous pourriez le partager ?
+[pause 18s]
+
+Comment vivez-vous votre transformation au quotidien... par vos mots... vos actes... votre façon d'être ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Vous n'avez pas besoin d'être parfait pour transmettre.
+[pause 5s]
+Vous avez besoin d'être authentiquement en chemin.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Synthèse du parcours
+        // ─────────────────────────────────────────────────────────
+        '29-synthese-du-parcours' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+Fermez les yeux.
+[pause 5s]
+Et laissez venir... doucement... les images de ce que vous avez traversé.
+[pause 8s]
+
+Depuis le début de ce parcours.
+[pause 5s]
+Ce que vous savez maintenant que vous ne saviez pas.
+[pause 5s]
+Ce que vous avez compris dans votre corps... pas seulement dans votre tête.
+[pause 5s]
+Ce qui a bougé en vous.
+[pause 10s]
+
+Vous avez commencé par se retrouver.
+[pause 5s]
+Regarder honnêtement ce qui était là.
+[pause 4s]
+Vos limites.
+[pause 4s]
+Vos drains.
+[pause 4s]
+Vos blessures.
+[pause 4s]
+Votre vision.
+[pause 4s]
+Votre vie telle qu'elle est... pas telle que vous voudriez qu'elle soit.
+[pause 8s]
+
+Puis vous avez commencé à vous construire.
+[pause 5s]
+Des piliers.
+[pause 4s]
+Des priorités.
+[pause 4s]
+Un temps maîtrisé.
+[pause 4s]
+Un corps écouté.
+[pause 4s]
+Un système nerveux régulé.
+[pause 4s]
+Une alimentation consciente.
+[pause 4s]
+Un sommeil respecté.
+[pause 8s]
+
+Et puis vous vous êtes ouvert.
+[pause 5s]
+Aux autres.
+[pause 4s]
+Au monde.
+[pause 4s]
+À la complexité de l'amour.
+[pause 4s]
+De la solitude.
+[pause 4s]
+Du sens.
+[pause 4s]
+De la transmission.
+[pause 8s]
+
+Ce parcours n'avait pas pour but de vous rendre parfait.
+[pause 5s]
+Il avait pour but de vous rendre plus vivant.
+[pause 5s]
+Plus présent.
+[pause 5s]
+Plus ancré.
+[pause 5s]
+Plus capable d'habiter votre propre vie.
+[pause 8s]
+
+Se retrouver.
+[pause 4s]
+Se construire.
+[pause 4s]
+S'ouvrir.
+[pause 6s]
+Trois mouvements qui ne se font pas une fois.
+[pause 5s]
+Ils se répètent.
+[pause 4s]
+En spirale.
+[pause 4s]
+Chaque cycle vous amène plus loin... plus profond.
+[pause 10s]
+
+C'est par le corps que nous allons intégrer et honorer tout ce chemin parcouru.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et ressentez l'ampleur de ce que vous avez accompli.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Dans quelle dimension de ce parcours avez-vous ressenti le plus de transformation... se retrouver... se construire... ou s'ouvrir ?
+[pause 18s]
+
+Qu'est-ce que vous emportez de ce parcours comme ancrage... comme boussole pour la suite ?
+[pause 18s]
+
+Quel est le premier pas que vous vous engagez à faire... dès demain... pour continuer à vivre ce que vous avez appris ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Ce parcours ne se termine pas ici.
+[pause 5s]
+Il continue... dans chaque choix que vous faites.
+[pause 5s]
+Dans chaque souffle conscient.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS 3 — Mon programme quotidien
+        // ─────────────────────────────────────────────────────────
+        '30-mon-programme-quotidien' => <<<'SCRIPT'
+Installez-vous une dernière fois.
+[pause 5s]
+Ce module clôt le parcours.
+[pause 5s]
+Et il l'ouvre en même temps.
+[pause 5s]
+Parce que ce que vous avez appris ici n'a de valeur que dans ce que vous faites demain.
+[pause 10s]
+
+Aristote disait que nous sommes ce que nous faisons... répétitivement.
+[pause 5s]
+L'excellence n'est pas un acte.
+[pause 4s]
+C'est une habitude.
+[pause 8s]
+
+Les neurosciences ont confirmé ce que les philosophes savaient par l'intuition.
+[pause 5s]
+Le cerveau est plastique.
+[pause 4s]
+Il se recâble en fonction de ce que vous répétez.
+[pause 5s]
+Chaque comportement répété... renforce un réseau neuronal.
+[pause 5s]
+Jusqu'à ce qu'il devienne automatique.
+[pause 5s]
+Jusqu'à ce qu'il devienne... vous.
+[pause 8s]
+
+Un programme quotidien n'est pas une liste de contraintes.
+[pause 5s]
+C'est une architecture d'identité.
+[pause 5s]
+Qui est la personne que vous devenez... heure après heure... jour après jour ?
+[pause 8s]
+
+Ce programme doit être réaliste.
+[pause 5s]
+Pas parfait.
+[pause 5s]
+Durable.
+[pause 5s]
+Composé de petits rituels... qui prennent peu de place... mais qui disent tout.
+[pause 8s]
+
+Un moment de silence le matin.
+[pause 4s]
+Même cinq minutes.
+[pause 4s]
+Un mouvement.
+[pause 4s]
+Un repas conscient.
+[pause 4s]
+Un moment de connexion réelle.
+[pause 4s]
+Une intention le matin.
+[pause 4s]
+Une gratitude le soir.
+[pause 6s]
+Et le reste... organisé autour de vos vraies priorités.
+[pause 10s]
+
+Je vous invite maintenant à écrire votre programme.
+[pause 5s]
+Pas l'idéal.
+[pause 5s]
+Celui qui correspond à votre vie réelle.
+[pause 5s]
+Et que vous commencerez demain.
+[pause 5s]
+Pas lundi.
+[pause 5s]
+Pas le mois prochain.
+[pause 5s]
+Demain.
+[pause 10s]
+
+C'est par le corps que nous allons ancrer l'architecture de votre vie quotidienne.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... laissez la mâchoire s'ouvrir doucement.
+[pause 4s]
+Au blocage... restez dans ce silence... et laissez se dessiner l'image de la personne que vous êtes en train de devenir.
+[pause 4s]
+À l'expiration... lèvres légèrement resserrées... laissez partir ce qui peut partir.
+[pause 6s]
+
+Si l'esprit part... laissez-le partir.
+[pause 3s]
+Et revenez simplement... au souffle.
+[pause 7s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quels sont les rituels qui constituent déjà votre programme quotidien... ceux qui vous ancrent et vous ressourcent ?
+[pause 18s]
+
+Y a-t-il un rituel manquant... que vous savez important mais que vous n'avez pas encore installé ?
+[pause 18s]
+
+Qu'est-ce que vous voulez faire différemment... dès demain ?
+[pause 18s]
+
+Notez ce qui est venu... dans votre carnet.
+[pause 5s]
+Même si c'est juste un mot.
+[pause 8s]
+
+Ce n'est pas ce que vous savez qui change votre vie.
+[pause 5s]
+C'est ce que vous faites... chaque jour.
+[pause 5s]
+Commencez demain.
+[pause 8s]
+
+Merci d'avoir été là.
+[pause 6s]
+Ce parcours a été un honneur.
+[pause 5s]
+À vous.
+[pause 15s]
+SCRIPT,
+
     ];
 
     // ── Scripts EN — "TTS-ready" calm executive tone ──────────────
     private array $scriptsEn = [
+
+        // ─────────────────────────────────────────────────────────
+        // MODULE 0 EN — "Understanding the Body" (anatomy) — target : 8–10 min
+        // ─────────────────────────────────────────────────────────
+        '00-comprendre-le-corps' => <<<'SCRIPT'
+Welcome to this opening module.
+[pause 6s]
+
+Before we begin... settle in comfortably.
+[pause 3s]
+Sitting... lying down... standing... it doesn't matter.
+[pause 4s]
+Let your body find its natural support.
+[pause 8s]
+
+This module does not begin with Latin terms.
+[pause 4s]
+It does not begin with anatomical diagrams.
+[pause 4s]
+It begins with three images.
+[pause 5s]
+Simple... obvious... that everyone understands immediately.
+[pause 8s]
+
+Because to understand the body deeply...
+[pause 4s]
+you first need to see it differently.
+[pause 10s]
+
+First image.
+[pause 5s]
+
+The living house.
+[pause 6s]
+
+Imagine that your body is a living house.
+[pause 5s]
+Not an ordinary house...
+[pause 3s]
+A house that thinks... that breathes... that adapts every single moment.
+[pause 8s]
+
+Every house rests on a frame.
+[pause 4s]
+Without it... the walls collapse.
+[pause 3s]
+In your body... this is the skeleton.
+[pause 5s]
+It gives the structure... the form... the architecture.
+[pause 3s]
+The spine is the central beam.
+[pause 4s]
+Everything else organizes around it.
+[pause 8s]
+
+A house also has hinges.
+[pause 4s]
+Pivots... that allow opening... closing... bending.
+[pause 3s]
+In your body... these are the joints.
+[pause 5s]
+Knee... elbow... shoulder... hip.
+[pause 4s]
+They are what makes movement possible.
+[pause 8s]
+
+A modern house has mechanisms.
+[pause 4s]
+Doors that open... shutters that close...
+[pause 3s]
+Everything that puts the house in motion.
+[pause 4s]
+In your body... these are the muscles.
+[pause 5s]
+They pull on bones... activate joints... create every gesture.
+[pause 8s]
+
+A healthy house has air that circulates.
+[pause 4s]
+Not wind... air.
+[pause 3s]
+Windows you open in the morning...
+[pause 3s]
+An atmosphere that renews itself.
+[pause 4s]
+When air flows... the house is light... alive.
+[pause 3s]
+When air is blocked... the atmosphere becomes heavy.
+[pause 5s]
+In your body... this is your breath.
+[pause 4s]
+The Pause Souffle is the act of opening your house's windows... consciously.
+[pause 10s]
+
+And finally... a house without electricity is blind.
+[pause 4s]
+Electricity connects every room... lights everything... powers every device.
+[pause 4s]
+In your body... this is the nervous system.
+[pause 5s]
+It connects the brain to every muscle... every organ... every millimeter of skin.
+[pause 10s]
+
+Your living house is here... right now... holding you.
+[pause 12s]
+
+Second image.
+[pause 5s]
+
+The living tree.
+[pause 6s]
+
+If the house spoke to you of structure...
+[pause 4s]
+the tree speaks to you of life.
+[pause 8s]
+
+Imagine that your body is a tree.
+[pause 5s]
+A tree in full life... growing... breathing... nourishing.
+[pause 8s]
+
+Every tree organizes around its trunk.
+[pause 4s]
+Vertical... central... the link between earth and sky.
+[pause 4s]
+In your body... this is the spine.
+[pause 5s]
+Everything radiates from it.
+[pause 8s]
+
+The arms are the branches.
+[pause 4s]
+They extend... rise... open toward the world.
+[pause 5s]
+The legs are the roots.
+[pause 4s]
+They anchor... stabilize... absorb.
+[pause 4s]
+Feel your feet... right now... that is your grounding.
+[pause 10s]
+
+The muscles are the living bark.
+[pause 4s]
+They wrap around the bones... protect the organs...
+[pause 3s]
+give the body its visible form.
+[pause 4s]
+And like bark... they hold the memory of accumulated tensions.
+[pause 8s]
+
+The blood is the sap.
+[pause 4s]
+It circulates everywhere... constantly... from center to extremity.
+[pause 4s]
+It brings oxygen... nutrients... energy.
+[pause 3s]
+It carries away what the body no longer needs.
+[pause 8s]
+
+The lungs are the leaves.
+[pause 4s]
+With each breath in... they capture oxygen from the world.
+[pause 4s]
+With each breath out... they release what is no longer useful.
+[pause 5s]
+Each breath is an exchange... between you... and the world.
+[pause 10s]
+
+And the nerves... are the invisible network.
+[pause 4s]
+Beneath the surface... they transmit... inform... coordinate.
+[pause 4s]
+Sensation... movement... reaction... everything passes through them.
+[pause 12s]
+
+Third image.
+[pause 5s]
+
+The living orchestra.
+[pause 6s]
+
+If the house spoke of structure...
+[pause 3s]
+and the tree of life...
+[pause 3s]
+the orchestra speaks of intelligence.
+[pause 8s]
+
+Imagine that your body is a living orchestra.
+[pause 5s]
+In an orchestra... every instrument plays its part.
+[pause 4s]
+Everything must be coordinated.
+[pause 3s]
+Otherwise... the music becomes noise.
+[pause 8s]
+
+The brain is the conductor.
+[pause 4s]
+It leads... coordinates... sets the tempo.
+[pause 3s]
+Constantly... it receives thousands of signals... and makes decisions.
+[pause 8s]
+
+The nerves are the score.
+[pause 4s]
+They transmit instructions to the muscles.
+[pause 3s]
+Contract... release... move... stop.
+[pause 4s]
+And in return... they send sensations back to the brain.
+[pause 8s]
+
+The muscles are the instruments.
+[pause 4s]
+Some are powerful... like the brass.
+[pause 3s]
+Others are precise... like the violins.
+[pause 3s]
+Others still are stabilizing... silent... like the bass.
+[pause 5s]
+Fluid movement... is when all instruments play together... at the right moment.
+[pause 8s]
+
+The skeleton is the stage.
+[pause 4s]
+Musicians need a solid structure to perform.
+[pause 4s]
+Without it... nothing is possible.
+[pause 8s]
+
+And the breath...
+[pause 4s]
+is the rhythm.
+[pause 5s]
+When it is slow and deep...
+[pause 3s]
+the orchestra plays softly... the whole body settles.
+[pause 4s]
+When it is fast and shallow...
+[pause 3s]
+everything accelerates... tension rises.
+[pause 5s]
+What you do with your breath...
+[pause 3s]
+you do with your entire body.
+[pause 10s]
+
+Now... let us take a moment.
+[pause 5s]
+Three images... one single truth.
+[pause 6s]
+
+The house... tells you what the body is.
+[pause 5s]
+The tree... tells you what makes it alive.
+[pause 5s]
+The orchestra... tells you what makes it intelligent.
+[pause 10s]
+
+Your body is all of this at once.
+[pause 5s]
+It is not a machine to be repaired.
+[pause 4s]
+It is a being to be inhabited.
+[pause 10s]
+
+Now... I am going to take you on a journey.
+[pause 5s]
+A journey through the territories of your body.
+[pause 6s]
+From the feet... to the head.
+[pause 4s]
+Slowly... without searching for anything.
+[pause 5s]
+Just arriving there.
+[pause 10s]
+
+Feel your feet.
+[pause 4s]
+Twenty-six bones in each foot... arranged like a living arch.
+[pause 4s]
+Resting on them... the tibia... the fibula... the knee.
+[pause 5s]
+The largest hinge in your body.
+[pause 6s]
+
+Move up to the thighs.
+[pause 4s]
+The femur... the longest bone in your body.
+[pause 4s]
+Wrapped by the quadriceps at the front... the hamstrings at the back.
+[pause 5s]
+Powerful cables... that allow you to walk... to run... to stand.
+[pause 8s]
+
+The pelvis... the center of gravity.
+[pause 4s]
+The ilium... the ischium... the pubis.
+[pause 4s]
+The psoas... anchored here... linking the spine to the thighs.
+[pause 5s]
+This is the muscle the Pause Souffle releases most deeply.
+[pause 8s]
+
+The abdomen... the belly.
+[pause 4s]
+Four layers of spiral muscles... like a natural corset.
+[pause 4s]
+And beneath them... the organs that transform... nourish... eliminate.
+[pause 6s]
+
+The thorax... the cage.
+[pause 4s]
+Sternum... twelve pairs of ribs... thoracic vertebrae.
+[pause 4s]
+And at the center of everything... the diaphragm.
+[pause 4s]
+The only muscle that is both voluntary and automatic.
+[pause 4s]
+The bridge between what you control... and what the body does on its own.
+[pause 5s]
+Gently push your belly outward as you breathe in...
+[pause 3s]
+That is the diaphragm.
+[pause 8s]
+
+The shoulders... the arms... down to the hands.
+[pause 4s]
+Twenty-seven bones in each hand.
+[pause 4s]
+These hands that touch... that create... that care.
+[pause 6s]
+
+The back.
+[pause 4s]
+The trapezius... the latissimus dorsi... the rhomboids.
+[pause 4s]
+And deep beneath... the multifidus... vertebra by vertebra.
+[pause 4s]
+The silent guardians of your spine.
+[pause 8s]
+
+The neck... seven cervical vertebrae.
+[pause 4s]
+The vagus nerve passes through here...
+[pause 3s]
+the thread connecting the brain to the heart... the lungs... the gut.
+[pause 5s]
+Each slow breath calms it.
+[pause 8s]
+
+And the head.
+[pause 4s]
+Twenty-two bones forming the skull and face.
+[pause 4s]
+The brain inside... three pounds of living matter...
+[pause 4s]
+containing more connections than there are stars in the Milky Way.
+[pause 8s]
+
+Your body is a living city.
+[pause 5s]
+With its districts... its roads... its essential services.
+[pause 5s]
+The nervous system transmits at one hundred and twenty meters per second.
+[pause 4s]
+The heart beats one hundred thousand times a day without ever stopping.
+[pause 4s]
+The lungs exchange twenty thousand liters of air every day.
+[pause 4s]
+The immune system watches... filters... protects... in silence.
+[pause 5s]
+And the fascia... continuous tissue connecting everything...
+[pause 4s]
+forms an invisible suit inside your body.
+[pause 4s]
+Without any interruption... from head to toe.
+[pause 10s]
+
+When you breathe in deeply...
+[pause 4s]
+five systems respond simultaneously.
+[pause 4s]
+Respiratory... cardiovascular... nervous... endocrine... fascial.
+[pause 5s]
+Five systems. Five seconds. One single breath.
+[pause 10s]
+
+We will now practice together.
+[pause 3s]
+The Pause Souffle... five-five-five.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds of retention... mouth slightly open.
+[pause 2s]
+Five seconds to exhale... lips gently pursed.
+[pause 5s]
+
+This is your core tool.
+[pause 3s]
+The act of opening your house's windows.
+[pause 3s]
+Of circulating sap through your living tree.
+[pause 3s]
+Of reclaiming the baton of your orchestra.
+[pause 7s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Stay there for a moment.
+[pause 6s]
+Feel what just took place.
+[pause 8s]
+
+Welcome to the living knowledge of the body.
+[pause 5s]
+See you very soon.
+SCRIPT,
 
         // ─────────────────────────────────────────────────────────
         // MODULE 1 EN — "I Meet Myself" — target : 7–8 min
@@ -2463,7 +8592,7 @@ SCRIPT,
         // ─────────────────────────────────────────────────────────
         // MODULE 6 EN — "I Practice the Ritual" — target : 16–18 min
         // ─────────────────────────────────────────────────────────
-        '06-je-pratique-le-rituel' => <<<'SCRIPT'
+        '07-je-transmets-le-rituel' => <<<'SCRIPT'
 Welcome.
 [pause 6s]
 
@@ -2756,6 +8885,3405 @@ Thank you.
 [pause 8s]
 Truly.
 SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P1 — Module 03 — I Accept What I Cannot Change
+        // ─────────────────────────────────────────────────────────
+        '03-j-accepte-mes-limites' => <<<'SCRIPT'
+Find a comfortable position.
+[pause 5s]
+Back straight... but not rigid.
+[pause 4s]
+Feet grounded.
+[pause 4s]
+Hands resting on your knees... palms open.
+[pause 8s]
+
+There is something you have been carrying for a long time.
+[pause 6s]
+Something you have tried to change... again and again.
+[pause 5s]
+And it hasn't changed.
+[pause 8s]
+
+This module doesn't ask you to be strong.
+[pause 5s]
+It asks something harder.
+[pause 5s]
+It asks you to let go.
+[pause 12s]
+
+Three breaths to begin.
+[pause 4s]
+Inhale slowly... for five counts.
+[pause 7s]
+Hold... two counts.
+[pause 3s]
+Exhale... for seven counts.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+One last time.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale... and let something go with this breath.
+[pause 12s]
+
+Epictetus was a slave.
+[pause 6s]
+He had no power over his outer circumstances.
+[pause 5s]
+None.
+[pause 5s]
+And yet... he formulated a truth that spans two thousand years.
+[pause 8s]
+
+There is what depends on us.
+[pause 5s]
+And what does not.
+[pause 8s]
+This distinction... as simple as it seems...
+[pause 5s]
+is one of the most powerful keys philosophy has ever produced.
+[pause 10s]
+
+Bring this question into your body... right now.
+[pause 6s]
+What are you carrying... that you cannot change?
+[pause 8s]
+Not in your mind.
+[pause 4s]
+In your body.
+[pause 4s]
+Where do you feel it?
+[pause 4s]
+In your throat?
+[pause 3s]
+In your chest?
+[pause 3s]
+In your shoulders?
+[pause 8s]
+
+Stay with that sensation.
+[pause 5s]
+Don't fight it.
+[pause 5s]
+Don't try to solve it.
+[pause 5s]
+Simply observe it... like a cloud passing through a vast sky.
+[pause 12s]
+
+ACT — Acceptance and Commitment Therapy —
+[pause 4s]
+has demonstrated across hundreds of studies what Epictetus knew through experience.
+[pause 6s]
+Resistance to what cannot be changed amplifies suffering.
+[pause 5s]
+It is not reality that breaks people.
+[pause 5s]
+It is the struggle against reality.
+[pause 10s]
+
+Three final breaths.
+[pause 5s]
+Inhale... welcoming what is.
+[pause 7s]
+Exhale... releasing what isn't.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale one last time.
+[pause 7s]
+And exhale... slowly... completely.
+[pause 12s]
+
+This module is yours now.
+[pause 6s]
+The exercises are waiting.
+[pause 5s]
+Take the time to do them fully.
+[pause 5s]
+In presence.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P1 — Module 04 — I Recognize What Drains Me
+        // ─────────────────────────────────────────────────────────
+        '04-je-reconnais-ce-qui-me-draine' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Breathe naturally first... without changing anything.
+[pause 6s]
+Just notice how you arrive here.
+[pause 5s]
+Tired... or present?
+[pause 5s]
+Agitated... or calm?
+[pause 5s]
+There is no right answer.
+[pause 5s]
+Just an honest observation.
+[pause 10s]
+
+Most people who feel exhausted believe they lack time.
+[pause 6s]
+They are wrong.
+[pause 5s]
+They lack energy.
+[pause 5s]
+That is a different problem entirely.
+[pause 10s]
+
+Three slow breaths.
+[pause 4s]
+Inhale for five counts.
+[pause 7s]
+Hold two counts.
+[pause 3s]
+Exhale for seven counts.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last one.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale... and let your body settle a little more.
+[pause 12s]
+
+Jim Loehr and Tony Schwartz spent twenty years studying elite athletes.
+[pause 6s]
+What they discovered wasn't about sport.
+[pause 5s]
+It was about everyone.
+[pause 6s]
+Human performance is not limited by time... nor by willpower.
+[pause 5s]
+It is limited by energy.
+[pause 5s]
+And energy has four reservoirs.
+[pause 8s]
+
+Physical. Emotional. Mental. And meaning.
+[pause 8s]
+
+Each reservoir can have leaks.
+[pause 6s]
+And often... it does.
+[pause 5s]
+Through drains you've never mapped.
+[pause 10s]
+
+Take a slow scan of your life as it is today.
+[pause 6s]
+Not as you'd like it to be.
+[pause 5s]
+As it is.
+[pause 6s]
+
+What depletes you?
+[pause 8s]
+
+People. Environments. Screens. Thoughts. Commitments.
+[pause 10s]
+
+Stay with what arises.
+[pause 8s]
+No judgment.
+[pause 5s]
+No solving.
+[pause 5s]
+Just see.
+[pause 12s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale deeply.
+[pause 7s]
+Exhale... slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P1 — Module 06 — I Embody My Vision
+        // ─────────────────────────────────────────────────────────
+        '06-je-visualise-ma-vie' => <<<'SCRIPT'
+Settle comfortably.
+[pause 5s]
+Close your eyes if that feels natural.
+[pause 5s]
+Rest your hands on your thighs.
+[pause 5s]
+Feel the weight of your body.
+[pause 8s]
+
+This module works in the most intimate space there is.
+[pause 6s]
+The space of your vision.
+[pause 5s]
+What you truly want.
+[pause 5s]
+Not what others hope for you.
+[pause 5s]
+Not what society values by default.
+[pause 6s]
+What you feel is right from your deepest interior.
+[pause 12s]
+
+Three opening breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last time.
+[pause 7s]
+Inhale... as if welcoming something important.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale... opening.
+[pause 12s]
+
+Imagine five years have passed.
+[pause 5s]
+Five years of presence... conscious choices... courage.
+[pause 8s]
+
+Where are you?
+[pause 5s]
+Not the exact address.
+[pause 4s]
+The texture of the place.
+[pause 4s]
+The atmosphere.
+[pause 4s]
+What you see around you when you wake up.
+[pause 10s]
+
+Who is with you?
+[pause 5s]
+What relationships have depth in this life?
+[pause 10s]
+
+What fills your days?
+[pause 5s]
+Not a schedule.
+[pause 4s]
+A feeling.
+[pause 4s]
+Do you rise with momentum?
+[pause 5s]
+Does what you do carry meaning?
+[pause 10s]
+
+Stay in this image for a moment.
+[pause 8s]
+Let it take substance.
+[pause 5s]
+Colors. Sounds. Textures.
+[pause 15s]
+
+Three return breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale one last time.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P1 — Module 07 — I Take Care of Myself First
+        // ─────────────────────────────────────────────────────────
+        '07-je-prends-soin-de-moi' => <<<'SCRIPT'
+Set everything down.
+[pause 5s]
+What you carry for others.
+[pause 4s]
+What you finish before taking care of yourself.
+[pause 4s]
+What is waiting for your attention.
+[pause 6s]
+Set it all down... just for now.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last one.
+[pause 7s]
+Inhale... for yourself.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+The oxygen mask image from the airplane is not a pleasant metaphor.
+[pause 6s]
+It's a biological truth.
+[pause 5s]
+If you lose consciousness... you can do nothing for anyone.
+[pause 6s]
+If you're chronically exhausted... you give others a depleted version of yourself.
+[pause 10s]
+
+Ask honestly.
+[pause 6s]
+Do I truly take care of myself?
+[pause 8s]
+Do I sleep enough?
+[pause 5s]
+Do I eat to nourish my body?
+[pause 5s]
+Do I move?
+[pause 5s]
+Do I have moments of real rest?
+[pause 10s]
+
+And this deeper question.
+[pause 6s]
+Do I allow myself to receive?
+[pause 5s]
+Not just to give.
+[pause 5s]
+To receive help.
+[pause 4s]
+Pleasure.
+[pause 4s]
+Rest... without justifying it.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale... receiving.
+[pause 7s]
+Exhale... releasing something.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale one last time.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P1 — Module 08 — Gratitude and Intention
+        // ─────────────────────────────────────────────────────────
+        '08-gratitude-et-intention' => <<<'SCRIPT'
+This module works on two key moments of each day.
+[pause 5s]
+The evening... and the morning.
+[pause 5s]
+How you close a day.
+[pause 4s]
+And how you open the next one.
+[pause 10s]
+
+These two moments... repeated consciously...
+[pause 5s]
+transform the texture of your life in less than three weeks.
+[pause 10s]
+
+Settle in.
+[pause 5s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last one.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Robert Emmons... at the University of California...
+[pause 5s]
+spent twenty years studying gratitude scientifically.
+[pause 5s]
+Not gratitude as a passive feeling.
+[pause 5s]
+Gratitude as an active practice.
+[pause 8s]
+
+His key discovery is simple and radical.
+[pause 6s]
+People who practice gratitude regularly...
+[pause 5s]
+sleep better.
+[pause 4s]
+Have stronger relationships.
+[pause 4s]
+Are more resilient to difficult events.
+[pause 4s]
+And report significantly higher life satisfaction.
+[pause 8s]
+
+Effective gratitude is not general.
+[pause 5s]
+It is specific.
+[pause 5s]
+Not... I am grateful for my life.
+[pause 5s]
+But... today at 2:30 pm... when this person said this to me...
+[pause 4s]
+I felt something real.
+[pause 8s]
+
+Three breaths of gratitude.
+[pause 4s]
+Inhale... thinking of something specific you're grateful for.
+[pause 9s]
+Hold that feeling.
+[pause 3s]
+Exhale... letting it settle in your body.
+[pause 10s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 10s]
+Last breath.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Module 09 — My Priorities First
+        // ─────────────────────────────────────────────────────────
+        '09-mes-priorites-dabord' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Back straight. Feet grounded. Hands resting.
+[pause 6s]
+Breathe naturally for a moment before we begin.
+[pause 8s]
+
+This module asks a question that unsettles.
+[pause 6s]
+If you don't build your own dreams...
+[pause 5s]
+someone will hire you to build theirs.
+[pause 8s]
+Tony Gaskins.
+[pause 5s]
+A short sentence.
+[pause 4s]
+A long truth.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last one.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Eisenhower had a tool.
+[pause 5s]
+A matrix of four quadrants.
+[pause 5s]
+Urgent and important.
+[pause 4s]
+Important but not urgent.
+[pause 4s]
+Urgent but not important.
+[pause 4s]
+Neither urgent nor important.
+[pause 8s]
+
+Most people spend their lives in the first quadrant.
+[pause 5s]
+Urgency.
+[pause 5s]
+Always reactive.
+[pause 4s]
+Always firefighting.
+[pause 4s]
+Always responding to what others define as urgent.
+[pause 8s]
+
+The second quadrant is the most valuable.
+[pause 6s]
+What is important... but not urgent.
+[pause 5s]
+Health. Deep relationships. Learning. The life project. Prevention.
+[pause 6s]
+Everything that builds something lasting.
+[pause 8s]
+
+And because it is not urgent...
+[pause 5s]
+it is precisely what gets sacrificed.
+[pause 5s]
+To what shouts the loudest.
+[pause 10s]
+
+Ask yourself now.
+[pause 6s]
+In the last seven days...
+[pause 5s]
+how many hours did you spend in Quadrant 2?
+[pause 10s]
+
+Your time reflects your real priorities.
+[pause 6s]
+Not the ones you declare.
+[pause 5s]
+The ones you demonstrate... hour by hour.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale once more.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Module 12 — Mastering My Time
+        // ─────────────────────────────────────────────────────────
+        '12-maitriser-son-temps' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+You have the same number of hours as Darwin.
+[pause 5s]
+As Mozart.
+[pause 5s]
+As Marie Curie.
+[pause 5s]
+Twenty-four hours.
+[pause 5s]
+Not one more.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last one.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Cal Newport studied the geniuses of history.
+[pause 5s]
+Darwin worked four hours a day.
+[pause 5s]
+Really.
+[pause 5s]
+Blocks of total concentration... no distractions... no meetings.
+[pause 5s]
+The rest was walks... observations... recovery.
+[pause 8s]
+
+Newport calls this Deep Work.
+[pause 5s]
+The ability to focus without distraction on a cognitively demanding task.
+[pause 6s]
+This capacity has become rare.
+[pause 5s]
+And it has become valuable.
+[pause 10s]
+
+Parkinson observed something strange.
+[pause 6s]
+Work expands to fill the time available for its completion.
+[pause 5s]
+If you have three hours for a task... it takes three hours.
+[pause 5s]
+If you have six... it takes six.
+[pause 5s]
+Same result. Double the time.
+[pause 8s]
+
+The counter-intuitive conclusion...
+[pause 5s]
+is that having more time does not produce a better result.
+[pause 5s]
+It produces procrastination. Perfectionism. Shallow work.
+[pause 10s]
+
+Ask yourself now.
+[pause 6s]
+How many hours of true deep focus do I get each week?
+[pause 5s]
+Not screen presence.
+[pause 5s]
+Real concentration. No phone. No notifications.
+[pause 8s]
+
+Most people discover it's less than one hour a day.
+[pause 6s]
+Even working ten hours.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Module 13 — Managing My Finances
+        // ─────────────────────────────────────────────────────────
+        '13-gerer-ses-finances' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+This module touches something few spaces address honestly.
+[pause 5s]
+Money.
+[pause 5s]
+Not as a math problem.
+[pause 5s]
+But as a psychological one.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Brad Klontz spent years studying financial psychology.
+[pause 5s]
+His discovery...
+[pause 4s]
+four unconscious scripts inherited from family and culture...
+[pause 5s]
+drive nearly all of our financial behaviors.
+[pause 8s]
+
+Money Avoidance.
+[pause 4s]
+Money is bad. Rich people are corrupt. I don't deserve it.
+[pause 8s]
+
+Money Worship.
+[pause 4s]
+More money... more happiness. The problem will be solved when I have more.
+[pause 8s]
+
+Money Status.
+[pause 4s]
+My worth equals what I spend... what I own.
+[pause 8s]
+
+Money Vigilance.
+[pause 4s]
+Money can disappear. Save everything.
+[pause 4s]
+Chronic anxiety. Mistrust of all.
+[pause 10s]
+
+Which one resonates most?
+[pause 5s]
+Where do you come from... with money?
+[pause 5s]
+What were you taught... explicitly or silently?
+[pause 10s]
+
+Stay with these questions.
+[pause 8s]
+Without solving.
+[pause 5s]
+Just hold them.
+[pause 12s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Module 10 — A Clean and Organized Space
+        // ─────────────────────────────────────────────────────────
+        '10-interieur-propre-et-range' => <<<'SCRIPT'
+Close your eyes.
+[pause 5s]
+Think about the state of your living space this morning.
+[pause 6s]
+Not a judgment.
+[pause 4s]
+Just an observation.
+[pause 5s]
+What you see when you enter.
+[pause 5s]
+What you sense.
+[pause 5s]
+The texture of that space on your inner state.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+The outer space reflects the inner space.
+[pause 6s]
+This is not a metaphor.
+[pause 5s]
+It is neurological data.
+[pause 5s]
+Our brain constantly perceives the environment around it.
+[pause 5s]
+And it responds.
+[pause 5s]
+A cluttered space generates a background cognitive load.
+[pause 5s]
+Permanent. Invisible. But real.
+[pause 10s]
+
+Marie Kondo popularized a simple idea.
+[pause 5s]
+Keep what sparks joy.
+[pause 5s]
+Release the rest.
+[pause 5s]
+Not as a tidying technique.
+[pause 5s]
+As a practice of awareness.
+[pause 8s]
+
+The discipline that begins at home...
+[pause 5s]
+is the most honest discipline.
+[pause 5s]
+Because it cannot be performed for others.
+[pause 5s]
+It is entirely for you.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Module 27 — Chosen Solitude
+        // ─────────────────────────────────────────────────────────
+        '27-solitude-choisie' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+And for once... do nothing else.
+[pause 5s]
+Just be here.
+[pause 5s]
+With yourself.
+[pause 10s]
+
+This module asks something counter-cultural.
+[pause 6s]
+To learn how to be alone.
+[pause 5s]
+By choice.
+[pause 5s]
+And find something precious in it.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Winnicott was a pediatrician and psychoanalyst.
+[pause 5s]
+In 1958... he presented what would become a cornerstone of developmental psychology.
+[pause 6s]
+The capacity to be alone...
+[pause 4s]
+is one of the most important signs of emotional maturity.
+[pause 8s]
+
+The Winnicott paradox.
+[pause 5s]
+This capacity to be alone... always develops in the presence of someone.
+[pause 5s]
+The child learns to be alone...
+[pause 5s]
+because they have the inner certainty that someone is there if needed.
+[pause 8s]
+
+If solitude consistently generates anxiety in you...
+[pause 5s]
+it's not a fatality.
+[pause 5s]
+It's a skill that didn't get to build.
+[pause 5s]
+And it can still be learned.
+[pause 10s]
+
+Notice now.
+[pause 6s]
+If you are alone in this moment...
+[pause 5s]
+what does it generate in your body?
+[pause 6s]
+Restlessness? Discomfort? The urge to check your phone?
+[pause 6s]
+Or something more neutral... even calm?
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale once more.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Module 36 — The Meaning of My Life
+        // ─────────────────────────────────────────────────────────
+        '36-sens-de-la-vie' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Close your eyes.
+[pause 5s]
+And let this question come... without forcing.
+[pause 6s]
+
+For what... exactly... am I living?
+[pause 12s]
+
+This is not the question of depression.
+[pause 5s]
+It is the question of maturity.
+[pause 5s]
+The one that arrives when masks have served their time.
+[pause 5s]
+When goals achieved no longer fill the space.
+[pause 5s]
+When life asks something truer than performance.
+[pause 10s]
+
+Three deep breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Viktor Frankl was a psychiatrist in Vienna.
+[pause 5s]
+In 1942... he was deported to Auschwitz.
+[pause 5s]
+He had lost his family.
+[pause 5s]
+He had lost everything.
+[pause 6s]
+And in that context of absolute annihilation...
+[pause 5s]
+he observed who survived mentally... and who gave up.
+[pause 8s]
+
+It was not the strongest physically.
+[pause 5s]
+It was those who had a reason.
+[pause 5s]
+A why.
+[pause 5s]
+A meaning that held.
+[pause 10s]
+
+He who has a why...
+[pause 4s]
+can bear almost any how.
+[pause 6s]
+Nietzsche... echoed by Frankl.
+[pause 5s]
+Validated by the worst conditions humanity has ever known.
+[pause 10s]
+
+Ask Yalom's question now.
+[pause 6s]
+If you knew you would die in a year...
+[pause 5s]
+what would you do differently?
+[pause 15s]
+
+And this other question.
+[pause 6s]
+In thirty years...
+[pause 4s]
+what is the story you want to be able to tell about your life?
+[pause 15s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale once more.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Movement and Posture
+        // ─────────────────────────────────────────────────────────
+        '07-mouvement-et-posture' => <<<'SCRIPT'
+Close your eyes if that's natural.
+[pause 5s]
+Feel your body as it is right now.
+[pause 6s]
+Without modifying it.
+[pause 5s]
+Just observe.
+[pause 5s]
+Are you tense somewhere?
+[pause 5s]
+In your shoulders? Jaw? Neck?
+[pause 8s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+The human body was designed to move.
+[pause 5s]
+For two million years... our ancestors walked eight to fifteen kilometers a day.
+[pause 6s]
+They carried. They ran. They climbed. They crouched.
+[pause 6s]
+Then in a few decades... we created a world where someone can spend an entire day barely moving.
+[pause 8s]
+
+Our nervous system hasn't had time to evolve.
+[pause 5s]
+It perceives sedentariness as a threat.
+[pause 5s]
+Sedentarity increases cortisol.
+[pause 4s]
+Reduces neural connections.
+[pause 4s]
+Fragments sleep.
+[pause 4s]
+Amplifies anxiety.
+[pause 8s]
+
+Amy Cuddy — Harvard — showed that two minutes in a contracted posture is enough to alter your hormones.
+[pause 5s]
+Shoulders in. Head down. Chest closed.
+[pause 5s]
+Cortisol rises. Testosterone drops. Confidence diminishes.
+[pause 8s]
+
+Do this now.
+[pause 4s]
+Straighten up slightly.
+[pause 4s]
+Open your chest.
+[pause 4s]
+Draw your shoulders back gently.
+[pause 4s]
+Lift your chin slightly.
+[pause 6s]
+Stay in this posture.
+[pause 8s]
+
+Notice the difference... even small... in your inner state.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — The Autonomic Nervous System
+        // ─────────────────────────────────────────────────────────
+        '08-systeme-nerveux' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Before we begin... place both hands on your belly.
+[pause 6s]
+Feel the movement of your breath beneath your palms.
+[pause 6s]
+Just that.
+[pause 5s]
+Nothing else for now.
+[pause 12s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+The autonomic nervous system has two main branches.
+[pause 6s]
+The sympathetic. The accelerator.
+[pause 4s]
+Fight or flight. Cortisol. Adrenaline. Vigilance. Tension.
+[pause 4s]
+Designed to respond to danger... for a few minutes.
+[pause 8s]
+
+And the parasympathetic. The brake.
+[pause 4s]
+Rest and digest.
+[pause 4s]
+Oxytocin. Serotonin. Recovery. Presence.
+[pause 4s]
+Designed to restore... integrate... regenerate.
+[pause 8s]
+
+Stephen Porges added a third branch.
+[pause 5s]
+The social engagement circuit.
+[pause 5s]
+The state in which we are capable of connection... curiosity... joy.
+[pause 5s]
+Trust.
+[pause 5s]
+This is our optimal state of human functioning.
+[pause 10s]
+
+The problem of our era...
+[pause 5s]
+is that our bodies live in chronic sympathetic mode.
+[pause 5s]
+Without real danger.
+[pause 4s]
+But with a permanent load of notifications... comparisons... urgencies...
+[pause 5s]
+keeping the accelerator pressed... without ever finding the brake.
+[pause 10s]
+
+Three techniques directly activate the parasympathetic.
+[pause 6s]
+Long breathing. Movement. Connection to the living.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Emotional Regulation
+        // ─────────────────────────────────────────────────────────
+        '09-gestion-des-emotions' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Breathe normally.
+[pause 5s]
+And ask yourself honestly.
+[pause 5s]
+What emotion is present right now?
+[pause 8s]
+
+Not the emotion you should feel.
+[pause 5s]
+Not the acceptable one.
+[pause 5s]
+The one that's there.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Emotions are not enemies.
+[pause 5s]
+They are messengers.
+[pause 5s]
+They have a precise biological function.
+[pause 5s]
+Fear protects you. Anger defends your boundaries.
+[pause 4s]
+Sadness integrates loss. Joy reinforces what nourishes.
+[pause 8s]
+
+The problem is not having emotions.
+[pause 5s]
+It's not knowing what to do with them.
+[pause 5s]
+Suffering them. Suppressing them. Or amplifying them through rumination.
+[pause 8s]
+
+Paul Ekman identified six universal emotions.
+[pause 5s]
+Present in every culture on earth.
+[pause 5s]
+Anger. Fear. Sadness. Joy. Disgust. Surprise.
+[pause 6s]
+They express in the body before reaching consciousness.
+[pause 8s]
+
+Neuroimaging studies show that...
+[pause 5s]
+naming an emotion reduces its intensity.
+[pause 5s]
+Putting words on what we feel activates the prefrontal cortex.
+[pause 5s]
+And reduces amygdala activity.
+[pause 10s]
+
+You don't have to control what you feel.
+[pause 5s]
+You have to allow yourself to feel it... consciously.
+[pause 5s]
+And choose what you do with it.
+[pause 5s]
+Not in reaction. In response.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Living Here and Now
+        // ─────────────────────────────────────────────────────────
+        '10-vivre-ici-et-maintenant' => <<<'SCRIPT'
+Put down what you have in hand.
+[pause 5s]
+Literally.
+[pause 4s]
+Feel your feet on the floor.
+[pause 5s]
+The contact of your back on the chair.
+[pause 6s]
+The temperature of the air.
+[pause 5s]
+The sounds around you... without judging.
+[pause 8s]
+
+You are here. Now.
+[pause 5s]
+The only moment that truly exists.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+A Harvard study by Killingsworth and Gilbert found...
+[pause 5s]
+that human minds wander forty-seven percent of the time.
+[pause 6s]
+Nearly half the time... people are thinking about something other than what they're doing.
+[pause 8s]
+
+And the conclusion?
+[pause 5s]
+This mind-wandering is associated with significantly lower well-being.
+[pause 5s]
+Regardless of the activity.
+[pause 5s]
+Even unpleasant activities... experienced with presence...
+[pause 5s]
+produced more well-being than pleasant activities lived in distraction.
+[pause 10s]
+
+Jon Kabat-Zinn said it simply.
+[pause 5s]
+You can't stop the waves.
+[pause 5s]
+But you can learn to surf.
+[pause 10s]
+
+Notice now.
+[pause 5s]
+Where is your mind?
+[pause 5s]
+Is it here... with this meditation?
+[pause 5s]
+Or has it wandered somewhere else?
+[pause 6s]
+No judgment.
+[pause 4s]
+If you left... the simple noticing is the return.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Sleep and Recovery
+        // ─────────────────────────────────────────────────────────
+        '10-sommeil-et-recuperation' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+This module can be listened to in the evening before sleep.
+[pause 5s]
+Or at any other time.
+[pause 5s]
+But if you're here in the evening... let your body grow heavier.
+[pause 5s]
+Let your eyelids become heavy if they wish.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for eight.
+[pause 10s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 10s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Matthew Walker... neuroscientist at Berkeley...
+[pause 5s]
+spent his career studying sleep.
+[pause 5s]
+His conclusion is unambiguous.
+[pause 5s]
+Sleep is not a luxury.
+[pause 5s]
+It is the biological foundation of everything else.
+[pause 8s]
+
+In one night of poor sleep...
+[pause 5s]
+your attention capacity drops thirty percent.
+[pause 5s]
+Your emotional regulation collapses.
+[pause 5s]
+Your immune system slows.
+[pause 5s]
+And your decisions are measurably worse.
+[pause 8s]
+
+Sleep is not passive time.
+[pause 5s]
+It is when the brain literally cleans itself.
+[pause 5s]
+The glymphatic system activates.
+[pause 5s]
+Metabolic waste... including proteins linked to Alzheimer's...
+[pause 5s]
+are evacuated only during deep sleep.
+[pause 8s]
+
+Three slow breaths.
+[pause 5s]
+Inhale slowly.
+[pause 7s]
+Exhale even more slowly.
+[pause 10s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 10s]
+Inhale one last time.
+[pause 7s]
+Exhale... letting yourself drift toward rest.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Relationship with Food
+        // ─────────────────────────────────────────────────────────
+        '11-relation-alimentation' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Before we begin... ask yourself without defense.
+[pause 6s]
+What is my true relationship with food?
+[pause 8s]
+Not what I eat.
+[pause 5s]
+But why I eat... when... and how.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+There is a fundamental difference between nourishing and eating.
+[pause 6s]
+Nourishing... is providing what the body needs to function and repair.
+[pause 5s]
+Eating... is everything else.
+[pause 5s]
+Filling boredom. Managing stress. Celebrating. Punishing. Belonging to a group.
+[pause 8s]
+
+Most problematic eating behaviors don't have a nutritional cause.
+[pause 5s]
+They have an emotional one. Relational. Psychological.
+[pause 8s]
+
+Mindful eating... slowly... without a screen... with attention...
+[pause 5s]
+reduces caloric intake by twenty to thirty percent.
+[pause 5s]
+Not by restriction.
+[pause 5s]
+By real satiety.
+[pause 5s]
+Because the body can finally be heard.
+[pause 10s]
+
+Notice the next time you eat.
+[pause 5s]
+Are you hungry... or feeling something else?
+[pause 6s]
+Are you eating in presence... or on autopilot?
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Physical Activity
+        // ─────────────────────────────────────────────────────────
+        '15-activite-physique' => <<<'SCRIPT'
+Settle in. Breathe.
+[pause 6s]
+And let me share something most people don't know.
+[pause 8s]
+
+Physical exercise is the most effective antidepressant ever studied.
+[pause 5s]
+Not a metaphor.
+[pause 5s]
+Data from meta-analysis.
+[pause 5s]
+More effective than some medications... with no side effects.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Blumenthal at Duke ran a rigorous study.
+[pause 5s]
+Moderate to severe depression. Three groups.
+[pause 4s]
+Medication only. Exercise only. Medication and exercise.
+[pause 6s]
+At six months... the exercise-only group had the same results as medication.
+[pause 5s]
+And the relapse rate... in that group... was the lowest of all.
+[pause 10s]
+
+Why?
+[pause 5s]
+Because exercise generates BDNF.
+[pause 5s]
+Brain-Derived Neurotrophic Factor.
+[pause 5s]
+What John Ratey calls Miracle-Gro for the brain.
+[pause 5s]
+A neuronal growth factor that strengthens connections... improves memory... and reduces anxiety.
+[pause 8s]
+
+One hundred and fifty minutes per week at moderate intensity.
+[pause 5s]
+Thirty minutes five times a week.
+[pause 5s]
+No gym required. No equipment.
+[pause 5s]
+A brisk walk... a bike... a swim... a dance.
+[pause 5s]
+Your body doesn't need performance.
+[pause 5s]
+It needs movement.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Nutrition and Vitality
+        // ─────────────────────────────────────────────────────────
+        '22-nutrition-et-vitalite' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Place your hands on your belly.
+[pause 5s]
+Feel the movement of your breath.
+[pause 8s]
+
+Your gut contains around one hundred million neurons.
+[pause 5s]
+It produces more than ninety-five percent of your body's serotonin.
+[pause 5s]
+What you eat directly affects what you feel.
+[pause 5s]
+Not indirectly.
+[pause 5s]
+Directly.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+This module doesn't talk about calories.
+[pause 5s]
+It talks about information.
+[pause 5s]
+Food is a signal.
+[pause 5s]
+Every meal tells something to your cells... hormones... microbiome... mood.
+[pause 8s]
+
+Fast sugars create insulin spikes...
+[pause 5s]
+followed by crashes... followed by cravings... followed by spikes again.
+[pause 5s]
+A cycle that silently drives your energy, concentration and mood.
+[pause 8s]
+
+Quality fats... omega-3s... fiber... polyphenols...
+[pause 5s]
+nourish the microbiome.
+[pause 5s]
+Reduce chronic inflammation.
+[pause 5s]
+Support neurotransmitter production.
+[pause 8s]
+
+This is not discipline.
+[pause 5s]
+It is biochemistry.
+[pause 5s]
+And when you understand what each food actually does...
+[pause 5s]
+choices naturally become different.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P2 — Complementary Medicine
+        // ─────────────────────────────────────────────────────────
+        '19-medecines-complementaires' => <<<'SCRIPT'
+Settle in. Breathe naturally.
+[pause 6s]
+And let this module invite you to broaden your perspective.
+[pause 8s]
+
+Conventional medicine is magnificent for emergencies.
+[pause 5s]
+For infections. Surgery. Acute conditions.
+[pause 5s]
+It saves lives every day.
+[pause 8s]
+
+But for chronic health...
+[pause 5s]
+For lasting well-being...
+[pause 5s]
+For functional imbalances that don't find an answer in the classical bio-medical model...
+[pause 6s]
+other approaches deserve to be known.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Osteopathy. Naturopathy. Acupuncture. Meditation and yoga.
+[pause 6s]
+Each with growing evidence for specific indications.
+[pause 5s]
+Each offering something conventional medicine often doesn't... time, context, the person.
+[pause 8s]
+
+This module doesn't prescribe anything.
+[pause 5s]
+It informs you.
+[pause 5s]
+So you can choose wisely...
+[pause 5s]
+rather than navigating by chance or by advertising.
+[pause 8s]
+
+Your health is a territory.
+[pause 5s]
+Knowledge is your best map.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Presence to Self
+        // ─────────────────────────────────────────────────────────
+        '12-presence-a-soi' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Close your eyes.
+[pause 5s]
+And ask this gentle question.
+[pause 6s]
+How am I truly feeling... right now?
+[pause 10s]
+
+Not what you think you should feel.
+[pause 5s]
+What is here.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Presence to self is a form of inner perception.
+[pause 6s]
+Researchers call it interoception.
+[pause 5s]
+The ability to perceive the internal signals of the body.
+[pause 5s]
+Heart rate. Muscle tension. Hunger. Fatigue.
+[pause 4s]
+Emotional states before they become conscious.
+[pause 8s]
+
+This capacity predicts...
+[pause 5s]
+emotional regulation. Decision quality. Stress resilience. Depth of relationships.
+[pause 8s]
+
+But in our hyperconnected world...
+[pause 5s]
+we are trained to look outward.
+[pause 5s]
+To check what others think. To seek validation.
+[pause 4s]
+To fill silence with noise.
+[pause 6s]
+And this constant outward attention weakens the inner muscle.
+[pause 8s]
+
+This module is a return.
+[pause 5s]
+A return to self.
+[pause 5s]
+Not as a retreat from the world.
+[pause 5s]
+But as an anchor permitting full presence in the world.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Body Confidence
+        // ─────────────────────────────────────────────────────────
+        '13-confiance-corporelle' => <<<'SCRIPT'
+Settle in. Breathe.
+[pause 6s]
+And without judging... turn your inner attention to your body.
+[pause 6s]
+Not aesthetically.
+[pause 4s]
+Functionally.
+[pause 5s]
+This body that carries you.
+[pause 4s]
+That breathes without your asking.
+[pause 4s]
+That heals your small wounds daily.
+[pause 4s]
+That regulates your temperature.
+[pause 4s]
+That processes billions of pieces of information right now.
+[pause 8s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Body confidence is not about shape.
+[pause 5s]
+It's about relationship.
+[pause 5s]
+The relationship you have with your own body.
+[pause 8s]
+
+For many of us... that relationship was disrupted early.
+[pause 5s]
+By looks. Comments. Comparisons. Cultural messages about what a body should be.
+[pause 6s]
+And we learned to see our body as a problem to fix...
+[pause 5s]
+rather than a partner to respect.
+[pause 10s]
+
+Kristin Neff's research on self-compassion shows that...
+[pause 5s]
+treating yourself with the same kindness as a friend...
+[pause 5s]
+reduces body anxiety... improves self-image...
+[pause 5s]
+and paradoxically... improves health behaviors.
+[pause 8s]
+
+Place one hand on a part of your body now.
+[pause 5s]
+Any part.
+[pause 5s]
+And send it... even for a moment... some gratitude.
+[pause 6s]
+For what it does. For what it endures. For what it allows you.
+[pause 12s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Social Interactions
+        // ─────────────────────────────────────────────────────────
+        '14-interactions-sociales' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Think of someone in your life who does you good.
+[pause 6s]
+Not a perfect person.
+[pause 4s]
+Someone whose presence is nourishing.
+[pause 6s]
+Notice what it generates in your body... just thinking of them.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Humans are an ultra-social species.
+[pause 5s]
+Our brain co-evolved with community.
+[pause 5s]
+For a hundred thousand years... being alone was dangerous.
+[pause 5s]
+Belonging was a matter of survival.
+[pause 8s]
+
+Matthew Lieberman at UCLA demonstrated through neuroimaging...
+[pause 5s]
+that the brain processes social exclusion...
+[pause 5s]
+in the same zones as physical pain.
+[pause 5s]
+Social pain is real pain.
+[pause 5s]
+And connection activates the same circuits as food and warmth.
+[pause 8s]
+
+This module gives you tools to map your relationships.
+[pause 5s]
+Identify those that nourish.
+[pause 4s]
+Understand those that drain.
+[pause 4s]
+And navigate social interactions with more fluidity and less wasted energy.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Leisure and Fulfillment
+        // ─────────────────────────────────────────────────────────
+        '16-loisirs-et-vie' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Think of the last time you did something... purely for pleasure.
+[pause 7s]
+No goal. No result. No productivity.
+[pause 4s]
+Just because it felt good.
+[pause 8s]
+
+When was that?
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Mihaly Csikszentmihalyi studied optimal experience.
+[pause 5s]
+What he calls flow.
+[pause 8s]
+
+Flow is a state of complete absorption in an activity.
+[pause 5s]
+Where the ego steps back.
+[pause 4s]
+Time loses its density.
+[pause 4s]
+Effort and ease blur.
+[pause 4s]
+And one experiences what he describes as deep and authentic happiness.
+[pause 8s]
+
+Flow occurs when the challenge level slightly matches your skill level.
+[pause 5s]
+Too easy... boredom.
+[pause 4s]
+Too hard... anxiety.
+[pause 5s]
+At just the right point... flow.
+[pause 8s]
+
+His counter-intuitive observation...
+[pause 6s]
+people report more flow at work than in leisure.
+[pause 5s]
+Yet they choose to watch television rather than do the activity that makes them thrive.
+[pause 5s]
+Because flow has an entry cost.
+[pause 4s]
+It demands attention. It demands beginning.
+[pause 6s]
+Passivity demands nothing.
+[pause 8s]
+
+Identify your flow activities.
+[pause 5s]
+And give them a real place in your schedule.
+[pause 5s]
+Not by chance.
+[pause 5s]
+By choice.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Screen Traps
+        // ─────────────────────────────────────────────────────────
+        '32-pieges-ecrans' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Put your phone face down.
+[pause 5s]
+If you're using it to listen to this module... place it nearby but away from your gaze.
+[pause 6s]
+Notice if a slight resistance arises.
+[pause 5s]
+That resistance is already information.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Digital technologies are not neutral.
+[pause 5s]
+They were designed... by entire teams of neuroscientists and psychologists... to capture your attention.
+[pause 6s]
+Tristan Harris... former designer at Google... called this the persuasive model.
+[pause 5s]
+These systems don't try to make you happy.
+[pause 5s]
+They try to maximize the time you spend on them.
+[pause 5s]
+And happiness and engagement are not the same thing.
+[pause 8s]
+
+Dopamine is the neurotransmitter of anticipation.
+[pause 5s]
+Not pleasure.
+[pause 5s]
+Anticipation of pleasure.
+[pause 5s]
+Every notification... infinite scroll... uncertain like...
+[pause 5s]
+exploits exactly this mechanism.
+[pause 5s]
+The same mechanism as slot machines.
+[pause 8s]
+
+This module doesn't ask you to delete your apps.
+[pause 5s]
+It invites you to take back control.
+[pause 5s]
+To use consciously.
+[pause 4s]
+Rather than being used.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Relationship with Others
+        // ─────────────────────────────────────────────────────────
+        '17-relation-a-lautre' => <<<'SCRIPT'
+Settle in. Breathe.
+[pause 6s]
+And think of the most important relationship in your life.
+[pause 5s]
+Not necessarily romantic.
+[pause 4s]
+The one that touches you most deeply.
+[pause 5s]
+That defines you. That transformed you.
+[pause 8s]
+
+What did it teach you about yourself?
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Relationships don't just reveal us.
+[pause 5s]
+They build us.
+[pause 5s]
+It is impossible to become fully oneself in isolation.
+[pause 5s]
+We see ourselves in the gaze of the other.
+[pause 5s]
+We discover ourselves in reaction.
+[pause 5s]
+We learn our patterns in friction.
+[pause 8s]
+
+John Gottman at the University of Washington...
+[pause 5s]
+studied thousands of couples over decades.
+[pause 5s]
+He can predict with over eighty percent accuracy...
+[pause 5s]
+whether a couple will separate...
+[pause 5s]
+just by observing a few minutes of interaction.
+[pause 8s]
+
+His main discovery?
+[pause 5s]
+It's not conflict that destroys relationships.
+[pause 5s]
+It's contempt.
+[pause 5s]
+And its opposite... the daily habit of turning toward.
+[pause 5s]
+Small moments of responding to a bid for connection.
+[pause 8s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Intimacy and Relational Energy
+        // ─────────────────────────────────────────────────────────
+        '18-intimite-et-energie' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+This module touches something intimate.
+[pause 5s]
+Not only physical intimacy.
+[pause 4s]
+Intimacy as a capacity.
+[pause 4s]
+The ability to let another truly see you.
+[pause 5s]
+And to see yourself in that reflection.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Brené Brown spent years studying vulnerability.
+[pause 5s]
+Her conclusion disturbs those who seek strength through control.
+[pause 6s]
+Vulnerability is not weakness.
+[pause 5s]
+It is the source of authentic connection.
+[pause 5s]
+Of creativity. Of love. Of meaning.
+[pause 8s]
+
+Those who avoid vulnerability don't avoid pain.
+[pause 5s]
+They also avoid joy.
+[pause 5s]
+And depth.
+[pause 8s]
+
+This module invites you to explore...
+[pause 5s]
+your capacity to be seen.
+[pause 5s]
+And to truly see.
+[pause 5s]
+Not through expectations.
+[pause 4s]
+Not through fears.
+[pause 5s]
+But in direct presence.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Living, Choosing, Rebuilding
+        // ─────────────────────────────────────────────────────────
+        '20-vivre-choisir-reconstruire' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Think of a moment in your life when you had to rebuild.
+[pause 7s]
+A breakup. A loss. A failure. A departure.
+[pause 5s]
+That moment when you were no longer sure who you were... or where to go.
+[pause 10s]
+
+You are here now.
+[pause 5s]
+That moment is part of you.
+[pause 5s]
+It didn't destroy you.
+[pause 5s]
+It passed through you.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Kintsugi is a Japanese practice.
+[pause 5s]
+When a ceramic breaks... it is repaired with gold.
+[pause 5s]
+The scar becomes the ornament.
+[pause 5s]
+Fragility... transformed... becomes the most precious part.
+[pause 8s]
+
+Tedeschi and Calhoun call it Post-Traumatic Growth.
+[pause 5s]
+After trauma... some people don't return to baseline.
+[pause 4s]
+They surpass it.
+[pause 5s]
+Greater depth in relationships. More intense appreciation of life.
+[pause 4s]
+Discovered personal strength. New horizons.
+[pause 8s]
+
+This module invites you to look at your fractures with different eyes.
+[pause 5s]
+Not to minimize what you experienced.
+[pause 5s]
+But to recognize what you are capable of doing with it.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Love in the Disposable Age
+        // ─────────────────────────────────────────────────────────
+        '31-amour-ere-jetable' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+This module addresses delicate territory.
+[pause 5s]
+Love in an age that makes everything disposable.
+[pause 6s]
+Objects. Jobs. And sometimes relationships.
+[pause 8s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Zygmunt Bauman spoke of liquid modernity.
+[pause 5s]
+A world without solid. Without anchor.
+[pause 4s]
+Where everything can be swapped... replaced... optimized.
+[pause 5s]
+And relationships... in this context... are subject to market logic.
+[pause 5s]
+Permanent comparison. Infinite availability. Minimized exit cost.
+[pause 8s]
+
+And yet.
+[pause 5s]
+The Harvard Grant Study...
+[pause 5s]
+the longest study on human happiness ever conducted...
+[pause 5s]
+seventy years of follow-up...
+[pause 5s]
+concluded what all cultures knew intuitively.
+[pause 6s]
+The quality of relationships is the most determining factor of human happiness.
+[pause 5s]
+More than wealth. More than fame. More than physical health.
+[pause 8s]
+
+Not the number of relationships.
+[pause 5s]
+Their depth. Their warmth. Their safety.
+[pause 10s]
+
+This module invites you to reflect... and choose.
+[pause 5s]
+Not the orthodoxy of the past.
+[pause 5s]
+Not the liquidity of the present.
+[pause 5s]
+But your own philosophy of commitment.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Sacrificed Education
+        // ─────────────────────────────────────────────────────────
+        '33-education-sacrifiee' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+This module speaks of transmission.
+[pause 5s]
+What we give... what we receive.
+[pause 5s]
+And what we can choose to transmit differently.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+There is what we want to pass on to our children.
+[pause 5s]
+And there is what we actually transmit.
+[pause 5s]
+These two things are not always the same.
+[pause 8s]
+
+Winnicott had the concept of the good enough parent.
+[pause 5s]
+Not perfect.
+[pause 4s]
+Sufficiently present. Sufficiently available. Sufficiently repairing.
+[pause 8s]
+
+Parental perfectionism is often a projection.
+[pause 5s]
+Wanting for the child what we couldn't have.
+[pause 5s]
+Correcting through them.
+[pause 5s]
+And the child senses it.
+[pause 5s]
+Not as love.
+[pause 5s]
+As pressure.
+[pause 8s]
+
+Daniel Siegel speaks of the narrating brain.
+[pause 5s]
+Parents who have integrated their own story...
+[pause 5s]
+who can speak of their difficulties with coherence and clarity...
+[pause 5s]
+create secure children.
+[pause 5s]
+Regardless of what they lived through.
+[pause 5s]
+It's the integration that matters.
+[pause 5s]
+Not the past.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Sustaining Our Relationships
+        // ─────────────────────────────────────────────────────────
+        '21-entretenir-nos-relations' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Think of an important relationship in your life.
+[pause 5s]
+One that has existed for a long time.
+[pause 5s]
+And ask honestly.
+[pause 5s]
+Am I truly nurturing this relationship... or counting on its duration?
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Relationships are like gardens.
+[pause 5s]
+They need water. Attention. Presence.
+[pause 5s]
+Without care... they don't die suddenly.
+[pause 5s]
+They slowly impoverish.
+[pause 5s]
+And one day you look at each other wondering what happened.
+[pause 8s]
+
+Gottman named it the Love Map.
+[pause 5s]
+The inner map of the other.
+[pause 5s]
+Knowing their dreams. Their fears. Their recent joys. What occupies their mind. What hurt them.
+[pause 6s]
+Struggling couples have empty Love Maps.
+[pause 5s]
+They live side by side... but no longer truly know who is next to them.
+[pause 8s]
+
+This module invites you to act.
+[pause 5s]
+Not later.
+[pause 5s]
+Today.
+[pause 5s]
+A message. A call. A meal. A sincere question.
+[pause 4s]
+How is your life really going?
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — I Transmit My Transformation
+        // ─────────────────────────────────────────────────────────
+        '11-je-transmets-ma-transformation' => <<<'SCRIPT'
+Settle in. Breathe.
+[pause 5s]
+And let this question come gently.
+[pause 5s]
+What have I truly learned... throughout this journey?
+[pause 10s]
+
+Not intellectually.
+[pause 5s]
+Viscerally.
+[pause 5s]
+What has changed in you?
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+There is a principle in Buddhist teaching.
+[pause 5s]
+One who has received knowledge... has the responsibility to transmit it.
+[pause 5s]
+Not as moral duty.
+[pause 5s]
+Because knowledge consolidates through transmission.
+[pause 5s]
+And because we are all connected.
+[pause 8s]
+
+But transmission doesn't happen only through words.
+[pause 5s]
+It happens through being.
+[pause 5s]
+Through what you radiate when you enter a room.
+[pause 4s]
+Through how you listen.
+[pause 4s]
+Through the quality of presence you bring.
+[pause 4s]
+Through the courage to live according to what you truly believe.
+[pause 8s]
+
+Your transformation is not only for you.
+[pause 5s]
+It is a point of light in the lives of those you touch.
+[pause 5s]
+Often without knowing.
+[pause 5s]
+Often just by being who you are becoming.
+[pause 10s]
+
+Three closing breaths.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale slowly.
+[pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — Journey Synthesis
+        // ─────────────────────────────────────────────────────────
+        '29-synthese-du-parcours' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Close your eyes.
+[pause 5s]
+And let come... softly... the images of what you have crossed.
+[pause 8s]
+
+Since the beginning of this journey.
+[pause 5s]
+What you know now that you did not know.
+[pause 5s]
+What you understood in your body... not just in your head.
+[pause 5s]
+What has moved in you.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+You began by finding yourself.
+[pause 5s]
+Looking honestly at what was there.
+[pause 4s]
+Your limits. Your drains. Your wounds. Your vision.
+[pause 4s]
+Life as it is... not as you'd wish it to be.
+[pause 8s]
+
+Then you began to build yourself.
+[pause 5s]
+Foundations. Priorities. Mastered time. A listened-to body.
+[pause 4s]
+A regulated nervous system. Conscious eating. Respected sleep.
+[pause 8s]
+
+And then you opened.
+[pause 5s]
+To others. To the world. To the complexity of love.
+[pause 4s]
+Of solitude. Of meaning. Of transmission.
+[pause 8s]
+
+This journey was not meant to make you perfect.
+[pause 5s]
+It was meant to make you more alive.
+[pause 5s]
+More present. More grounded.
+[pause 5s]
+More capable of inhabiting your own life.
+[pause 8s]
+
+Find yourself. Build yourself. Open yourself.
+[pause 6s]
+Three movements that are not done once.
+[pause 5s]
+They repeat. In a spiral.
+[pause 4s]
+Each cycle takes you further... deeper.
+[pause 10s]
+
+Where are you today... compared to the beginning?
+[pause 12s]
+
+What do you want to take from this journey into your daily life?
+[pause 12s]
+
+Three breaths of gratitude.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale one last time.
+[pause 7s]
+Exhale slowly... and let something settle.
+[pause 15s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // P3 — My Daily Program
+        // ─────────────────────────────────────────────────────────
+        '30-mon-programme-quotidien' => <<<'SCRIPT'
+Settle in one last time.
+[pause 5s]
+This module closes the journey.
+[pause 5s]
+And opens it at the same time.
+[pause 5s]
+Because what you have learned here only has value in what you do tomorrow.
+[pause 10s]
+
+Three breaths.
+[pause 4s]
+Inhale for five.
+[pause 7s]
+Hold two.
+[pause 3s]
+Exhale for seven.
+[pause 9s]
+Again.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 9s]
+Last.
+[pause 7s]
+Inhale.
+[pause 7s]
+Hold.
+[pause 3s]
+Exhale.
+[pause 12s]
+
+Aristotle said we are what we repeatedly do.
+[pause 5s]
+Excellence is not an act.
+[pause 4s]
+It is a habit.
+[pause 8s]
+
+The neurosciences confirmed what philosophers knew by intuition.
+[pause 5s]
+The brain is plastic.
+[pause 4s]
+It rewires according to what you repeat.
+[pause 5s]
+Each repeated behavior strengthens a neural network.
+[pause 5s]
+Until it becomes automatic.
+[pause 5s]
+Until it becomes... you.
+[pause 8s]
+
+A daily program is not a list of constraints.
+[pause 5s]
+It is an architecture of identity.
+[pause 5s]
+Who is the person you are becoming... hour by hour... day by day?
+[pause 8s]
+
+This program must be realistic.
+[pause 5s]
+Not perfect.
+[pause 5s]
+Sustainable.
+[pause 5s]
+Composed of small rituals that take little space... but say everything.
+[pause 8s]
+
+A moment of silence in the morning. Even five minutes.
+[pause 4s]
+Movement.
+[pause 4s]
+A mindful meal.
+[pause 4s]
+A moment of real connection.
+[pause 4s]
+An intention in the morning.
+[pause 4s]
+A gratitude in the evening.
+[pause 6s]
+And the rest... organized around your true priorities.
+[pause 10s]
+
+I invite you now to write your program.
+[pause 5s]
+Not the ideal one.
+[pause 5s]
+The one that fits your real life.
+[pause 5s]
+And that you will begin tomorrow.
+[pause 5s]
+Not Monday.
+[pause 5s]
+Not next month.
+[pause 5s]
+Tomorrow.
+[pause 10s]
+
+Three opening breaths toward tomorrow.
+[pause 5s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale.
+[pause 7s]
+Exhale.
+[pause 9s]
+Inhale one last time.
+[pause 7s]
+Exhale... letting yourself move toward what you are about to build.
+[pause 15s]
+
+Thank you for being here.
+[pause 6s]
+This journey has been an honor.
+[pause 5s]
+Yours.
+[pause 15s]
+SCRIPT,
+
     ];
 
     // ── suppression anciens scripts EN (remplacés ci-dessus) ──────
@@ -3756,7 +13284,7 @@ SCRIPT,
         // ─────────────────────────────────────────────────────────
         // MODULE 6 EN — "I Practice the Ritual" — target : 4–6 min
         // ─────────────────────────────────────────────────────────
-        '06-je-pratique-le-rituel' => <<<'SCRIPT'
+        '07-je-transmets-le-rituel' => <<<'SCRIPT'
 Module six.
 [pause 2s]
 I Practice the Pause Souffle Ritual.

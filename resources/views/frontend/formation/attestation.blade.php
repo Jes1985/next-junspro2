@@ -5,7 +5,7 @@
 @section('style')
 <style>
 /* ══════════════════════════════════════════════════════
-   ATTESTATION — FORMATION PRATICIEN PAUSE SOUFFLE
+  ATTESTATION — FORMATION PRATICIEN PAUSE SOUFFLE
    Design cérémoniel : parchemin doré sur fond sombre
    ══════════════════════════════════════════════════════ */
 :root {
@@ -227,8 +227,8 @@ body { background: var(--dark); }
 
       <p class="att-text">
         a suivi et complété avec succès la formation<br>
-        <strong>« Praticien(ne) Pause Souffle »</strong><br>
-        6 modules · 8 semaines · Pratique certifiante
+        <strong>« Praticien Pause Souffle »</strong><br>
+        Parcours + pratique professionnelle · Attestation certifiante
       </p>
 
       <div class="att-ornament">✦</div>
@@ -257,7 +257,7 @@ body { background: var(--dark); }
         <div class="att-signature">
           <div class="att-signature-line"></div>
           <div class="att-signature-name">{{ $fullName }}</div>
-          <div class="att-signature-role">Praticien(ne) Pause Souffle</div>
+          <div class="att-signature-role">Praticien Pause Souffle</div>
         </div>
       </div>
 

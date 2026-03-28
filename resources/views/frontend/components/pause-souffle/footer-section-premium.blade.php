@@ -19,8 +19,14 @@
       <a href="{{ route('affiliate.landing') }}">{{ __('Apporteurs d\'Affaires') }}</a>
       <span class="footer-micro-desc">{{ __('Recommandez Junspro · Percevez jusqu\'à 10 % de commission') }}</span>
     </li>
+    <li>      <a href="{{ route('presence.ambassadeurs') }}">{{ __('Réseau des Ambassadeurs PS') }}</a>
+      <span class="footer-micro-desc">{{ __('Commissions 10-25 % · Cookie 90 jours · 4 programmes') }}</span>
+    </li>
+    <li>      <a href="{{ route('presence.parcours') }}">{{ __('Le Parcours Pause Souffle') }}</a>
+      <span class="footer-micro-desc">{{ __('6 modules · 8 semaines · Transformation personnelle') }}</span>
+    </li>
     <li>
-      <a href="{{ route('presence.formation-praticien') }}">{{ __('Devenir Praticien Pause Souffle') }}</a>
+      <a href="{{ route('presence.formation-praticien') }}">{{ __('Devenir Freelance Pause Souffle') }}</a>
       <span class="footer-micro-desc">{{ __('Formation certifiante · Pratiquez en professionnel') }}</span>
     </li>
     <li>

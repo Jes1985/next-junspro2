@@ -245,6 +245,46 @@ class User extends Authenticatable
       return $this->hasMany(Referral::class, 'referred_id');
   }
 
+    /**
+     * Pods de tutorat dont cet utilisateur est mentor
+     */
+    public function mentorPods(): HasMany
+    {
+      return $this->hasMany(MentorshipPod::class, 'mentor_user_id');
+    }
+
+    /**
+     * Adhésions tutorat où cet utilisateur est apprenant
+     */
+    public function mentorshipMemberships(): HasMany
+    {
+      return $this->hasMany(MentorshipMembership::class, 'trainee_user_id');
+    }
+
+    /**
+     * Soumissions de jalons tutorat réalisées par cet utilisateur
+     */
+    public function mentorshipSubmissions(): HasMany
+    {
+      return $this->hasMany(MentorshipSubmission::class, 'trainee_user_id');
+    }
+
+      /**
+       * Check-ins tutorat où cet utilisateur est apprenant
+       */
+      public function mentorshipCheckins(): HasMany
+      {
+        return $this->hasMany(MentorshipCheckin::class, 'trainee_user_id');
+      }
+
+    /**
+     * Soumissions de jalons tutorat revues par cet utilisateur
+     */
+    public function reviewedMentorshipSubmissions(): HasMany
+    {
+      return $this->hasMany(MentorshipSubmission::class, 'reviewed_by');
+    }
+
   /**
    * Utilisateur qui a parrainé cet utilisateur
    */

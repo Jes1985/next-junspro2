@@ -58,7 +58,7 @@
       « L'Éternel lui dit : Va avec la force que tu as… C'est moi qui t'envoie. »<br>— Juges 6:14
     </blockquote>
     <p class="fs-body">
-      Paiement reçu. Votre accès à la formation certifiante <strong>Praticien Pause Souffle</strong> est maintenant actif.<br><br>
+      Paiement reçu. Votre accès à la formation certifiante <strong>Freelance Pause Souffle</strong> est maintenant actif.<br><br>
       Les 6 modules sont disponibles dans votre espace personnel. Vous pouvez commencer dès maintenant par le premier module.
     </p>
     <div class="fs-actions">
@@ -70,6 +70,21 @@
         Découvrir le Rituel
       </a>
     </div>
+
+    {{-- CTA Ambassadeur — uniquement pour les non-ambassadeurs --}}
+    @if(!($isAlreadyAmbassadeur ?? false))
+    <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(201,168,76,0.15); text-align: center;">
+      <p style="font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,168,76,0.6); margin-bottom: 0.75rem;">Une invitation</p>
+      <p style="font-size: 0.88rem; color: rgba(232,224,208,0.55); line-height: 1.8; margin-bottom: 1.25rem;">
+        En tant que praticien certifié, vous êtes les mieux placés pour partager cette pratique.
+        Le Réseau des Ambassadeurs est fait pour vous.
+      </p>
+      <a href="{{ route('presence.ambassadeurs') }}"
+         style="display: inline-block; background: transparent; color: #c9a84c; border: 1px solid rgba(201,168,76,0.4); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 10px 24px; border-radius: 50px;">
+        ✦ Voir le programme Ambassadeur
+      </a>
+    </div>
+    @endif
   </div>
 </div>
 @endsection

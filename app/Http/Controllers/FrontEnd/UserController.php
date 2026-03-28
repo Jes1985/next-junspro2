@@ -295,8 +295,12 @@ class UserController extends Controller
       if ($request->session()->has('redirectTo')) {
         $redirectURL = $request->session()->get('redirectTo');
       } else {
+        // Compte créateur : redirection directe vers l'espace Parcours
+        $creatorId = (int) config('app.creator_user_id', 0);
+        if ($creatorId > 0 && (int) $authUser->id === $creatorId) {
+          $redirectURL = route('parcours.dashboard');
         // Respecter le rôle sélectionné sur la page de connexion
-        if ($selectedRole === 'nexus') {
+        } elseif ($selectedRole === 'nexus') {
           $redirectURL = route('nexus.dashboard');
         } elseif ($selectedRole === 'freelance' && $authUser->freelancerProfile) {
           $redirectURL = route('freelance.dashboard');

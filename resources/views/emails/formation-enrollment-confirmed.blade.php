@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription confirmée — Formation Praticien Pause Souffle</title>
+  <title>Inscription confirmée — Formation Freelance Pause Souffle</title>
 </head>
 <body style="margin:0; padding:0; background:#0f0f0f; font-family: 'Segoe UI', Arial, sans-serif;">
   <div style="max-width:600px; margin:0 auto; background:#0f0f0f; padding:40px 20px;">
@@ -32,10 +32,10 @@
       <p style="font-size:15px; color:rgba(232,224,208,.8); line-height:1.7; margin:0 0 20px;">
         @if($paymentType === 'installment')
           Votre paiement de <strong style="color:#c9a84c;">{{ number_format($amountPaid, 0, ',', ' ') }} €</strong> (mensualité 1/3) a bien été reçu.<br>
-          Votre accès à la formation <strong style="color:#fff;">Praticien Pause Souffle</strong> est maintenant <strong style="color:#22c55e;">actif</strong>.
+          Votre accès à la formation <strong style="color:#fff;">Freelance Pause Souffle</strong> est maintenant <strong style="color:#22c55e;">actif</strong>.
         @else
           Votre paiement de <strong style="color:#c9a84c;">{{ number_format($amountPaid, 0, ',', ' ') }} €</strong> a bien été reçu.<br>
-          Votre accès à la formation <strong style="color:#fff;">Praticien Pause Souffle</strong> est maintenant <strong style="color:#22c55e;">actif</strong>.
+          Votre accès à la formation <strong style="color:#fff;">Freelance Pause Souffle</strong> est maintenant <strong style="color:#22c55e;">actif</strong>.
         @endif
       </p>
 
@@ -49,7 +49,7 @@
           </tr>
           <tr>
             <td style="padding:4px 0; color:rgba(232,224,208,.5);">Formation</td>
-            <td style="padding:4px 0; text-align:right; color:#fff;">Praticien Pause Souffle</td>
+            <td style="padding:4px 0; text-align:right; color:#fff;">Freelance Pause Souffle</td>
           </tr>
           <tr>
             <td style="padding:4px 0; color:rgba(232,224,208,.5);">Modules</td>

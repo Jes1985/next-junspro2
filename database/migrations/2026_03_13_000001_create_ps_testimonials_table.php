@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('ps_testimonials', function (Blueprint $table) {
+            $table->id();
+            $table->string('author_name', 100);
+            $table->string('author_role', 150)->nullable();   // Ex: "Coach bien-être, Paris"
+            $table->text('content');                           // Le témoignage
+            $table->string('avatar_initial', 5)->nullable();  // Initiale(s) pour l'avatar généré (ex: "S")
+            $table->enum('highlight', ['standard', 'featured'])->default('standard');
+            $table->unsignedTinyInteger('sort_order')->default(0);
+            $table->boolean('is_published')->default(false);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('ps_testimonials');
+    }
+};

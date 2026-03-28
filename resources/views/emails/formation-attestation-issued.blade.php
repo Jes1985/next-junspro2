@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Félicitations Praticien(ne) Pause Souffle</title>
+  <title>Félicitations Freelance Pause Souffle</title>
 </head>
 <body style="margin:0; padding:0; background:#0f0f0f; font-family: 'Segoe UI', Arial, sans-serif;">
   <div style="max-width:600px; margin:0 auto; background:#0f0f0f; padding:40px 20px;">
 
     <!-- Header -->
     <div style="text-align:center; margin-bottom:32px;">
-      <div style="font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:#c9a84c; margin-bottom:8px;">Junspro · Formation Praticien Pause Souffle</div>
+      <div style="font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:#c9a84c; margin-bottom:8px;">Junspro · Formation Freelance Pause Souffle</div>
       <div style="font-size:42px; margin-bottom:4px;">🏅</div>
       <div style="font-size:22px; color:#c9a84c; letter-spacing:.1em;">∞+</div>
     </div>
@@ -22,7 +22,7 @@
         Félicitations, {{ $user->first_name ?? $user->name }} !
       </h1>
       <p style="font-size:15px; color:#c9a84c; font-weight:600; margin:0 0 24px;">
-        Vous êtes désormais officiellement Praticien(ne) Pause Souffle.
+        Vous êtes désormais officiellement Freelance Pause Souffle.
       </p>
 
       <blockquote style="border-left:2px solid #c9a84c; padding-left:14px; margin:16px 0 24px; font-style:italic; font-size:13px; color:rgba(201,168,76,.85); line-height:1.7;">
@@ -32,7 +32,7 @@
       </blockquote>
 
       <p style="font-size:14px; color:rgba(255,255,255,.8); line-height:1.7; margin:0 0 20px;">
-        Vous avez complété les 6 modules de la formation <strong style="color:#fff;">Praticien Pause Souffle</strong>.
+        Vous avez complété les 6 modules de la formation <strong style="color:#fff;">Freelance Pause Souffle</strong>.
         Votre attestation est disponible dès maintenant dans votre espace personnel.
       </p>
 

@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Stripe\Stripe;
 use Stripe\Price;
+use App\Models\PsAmbassadeur;
+use App\Mail\PsAmbassadorInvitationMail;
 
 class PauseSouffleController extends Controller
 {
@@ -68,12 +70,37 @@ class PauseSouffleController extends Controller
     }
 
     /**
-     * Page de présentation de la Retraite Pause Souffle (FR + EN)
+     * Page Le Parcours Pause Souffle (transformation personnelle)
+     * Route : GET /presence/le-parcours
      */
-    public function retraite()
+    public function parcours()
     {
         $misc = $this->miscController;
         $language = $misc->getLanguage();
+        $queryResult = [
+            'breadcrumb' => $misc->getBreadcrumb(),
+            'language' => $language,
+        ];
+
+        return view('frontend.presence.le-parcours', $queryResult);
+    }
+
+    /**
+     * Page de présentation de la Retraite Pause Souffle (FR + EN)
+     */
+    public function retraite(\Illuminate\Http\Request $request)
+    {
+        $misc = $this->miscController;
+        $language = $misc->getLanguage();
+
+        // Priorité au paramètre URL ?lang=en|fr (toggle flottant FR|EN)
+        $urlLang = $request->query('lang', '');
+        if (in_array($urlLang, ['en', 'fr'], true)) {
+            $override = \App\Models\Language::where('code', $urlLang)->first();
+            if ($override) {
+                $language = $override;
+            }
+        }
 
         return view('frontend.presence.retraite', [
             'breadcrumb' => $misc->getBreadcrumb(),
@@ -122,7 +149,7 @@ class PauseSouffleController extends Controller
     }
 
     /**
-     * Créer la session Stripe Checkout pour le paiement de la formation (1 490 €)
+     * Créer la session Stripe Checkout pour le paiement de la formation (3 490 €)
      * Route : POST /presence/formation/checkout  [auth:web]
      */
     public function formationCheckout(Request $request)
@@ -140,9 +167,19 @@ class PauseSouffleController extends Controller
         }
 
         try {
+            $productType = $request->input('product_type', 'pause_freelance');
+            // Sécuriser : seulement les types PS autorisés
+            if (!in_array($productType, ['pause_parcours', 'pause_freelance'])) {
+                $productType = 'pause_freelance';
+            }
+
+            $psAmbassadorCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+
             $session = $this->stripeService->createFormationCheckoutSession(
                 $user->id,
-                $user->email_address ?? $user->email ?? ''
+                $user->email_address ?? $user->email ?? '',
+                $productType,
+                $psAmbassadorCode ?: null
             );
 
             return redirect($session->url);
@@ -164,9 +201,29 @@ class PauseSouffleController extends Controller
     {
         $misc = $this->miscController;
         $language = $misc->getLanguage();
+
+        $user = Auth::user();
+        $isAlreadyAmbassadeur = false;
+        if ($user) {
+            $isAlreadyAmbassadeur = PsAmbassadeur::where('user_id', $user->id)
+                ->whereIn('status', ['active', 'pending'])
+                ->exists();
+
+            if (!$isAlreadyAmbassadeur && !session('ps_invitation_sent_formation_' . $user->id)) {
+                try {
+                    Mail::to($user->email_address ?? $user->email)
+                        ->queue(new PsAmbassadorInvitationMail($user, 'formation'));
+                    session(['ps_invitation_sent_formation_' . $user->id => true]);
+                } catch (\Throwable $e) {
+                    Log::warning('Erreur envoi invitation ambassadeur formation', ['error' => $e->getMessage()]);
+                }
+            }
+        }
+
         return view('frontend.presence.formation-success', [
-            'breadcrumb' => $misc->getBreadcrumb(),
-            'language'   => $language,
+            'breadcrumb'           => $misc->getBreadcrumb(),
+            'language'             => $language,
+            'isAlreadyAmbassadeur' => $isAlreadyAmbassadeur,
         ]);
     }
 
@@ -181,7 +238,7 @@ class PauseSouffleController extends Controller
     }
 
     /**
-     * Créer la session Stripe en 3 mensualités de 510 €
+     * Créer la session Stripe en 3 mensualités de 1 164 €
      * Route : POST /presence/formation/checkout-installment  [auth:web]
      */
     public function formationCheckoutInstallment(Request $request)
@@ -198,9 +255,12 @@ class PauseSouffleController extends Controller
         }
 
         try {
+            $psAmbassadorCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+
             $session = $this->stripeService->createFormationInstallmentCheckoutSession(
                 $user->id,
-                $user->email_address ?? $user->email ?? ''
+                $user->email_address ?? $user->email ?? '',
+                $psAmbassadorCode ?: null
             );
 
             return redirect($session->url);
@@ -211,6 +271,86 @@ class PauseSouffleController extends Controller
                 'error'   => $e->getMessage(),
             ]);
             return back()->with('error', 'Une erreur est survenue lors de la création du paiement. Veuillez réessayer.');
+        }
+    }
+
+    // ─── Parcours Pause Souffle — Checkout Niveau 1 / Niveau 2 / Pack Intégral ────
+
+    public function parcoursCheckoutNiveau1(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationNiveau1CheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Niveau 1', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function parcoursCheckoutNiveau1Installment(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationNiveau1InstallmentCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Niveau 1 mensualités', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function parcoursCheckoutNiveau2(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationNiveau2CheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Niveau 2', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function parcoursCheckoutNiveau2Installment(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationNiveau2InstallmentCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Niveau 2 mensualités', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function parcoursCheckoutPackIntegral(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationPackIntegralCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Pack Intégral', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function parcoursCheckoutPackIntegralInstallment(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationPackIntegralInstallmentCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Pack Intégral mensualités', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
         }
     }
 
@@ -750,12 +890,33 @@ class PauseSouffleController extends Controller
         $misc = $this->miscController;
         $language = $misc->getLanguage();
 
+        // Vérifier si l'utilisateur est déjà ambassadeur
+        $user = Auth::user();
+        $isAlreadyAmbassadeur = false;
+        if ($user) {
+            $isAlreadyAmbassadeur = PsAmbassadeur::where('user_id', $user->id)
+                ->whereIn('status', ['active', 'pending'])
+                ->exists();
+
+            // Envoyer l'invitation une seule fois (via session flag)
+            if (!$isAlreadyAmbassadeur && !session('ps_invitation_sent_' . $user->id)) {
+                try {
+                    Mail::to($user->email_address ?? $user->email)
+                        ->queue(new PsAmbassadorInvitationMail($user, 'cycle'));
+                    session(['ps_invitation_sent_' . $user->id => true]);
+                } catch (\Throwable $e) {
+                    Log::warning('Erreur envoi invitation ambassadeur', ['error' => $e->getMessage()]);
+                }
+            }
+        }
+
         return view('frontend.presence.pause-souffle-cycle-confirmation', [
-            'intake' => $intake,
-            'subscription' => $subscription,
-            'pending' => false,
-            'breadcrumb' => $misc->getBreadcrumb(),
-            'language' => $language,
+            'intake'               => $intake,
+            'subscription'         => $subscription,
+            'pending'              => false,
+            'isAlreadyAmbassadeur' => $isAlreadyAmbassadeur,
+            'breadcrumb'           => $misc->getBreadcrumb(),
+            'language'             => $language,
         ]);
     }
 

@@ -21,7 +21,7 @@ class PhonePeController extends Controller
     public function paymentProcess(Request $request, $_amount, $_success_url, $_cancel_url, $_title, $bex)
     {
         $info = OnlineGateway::where('keyword', 'phonepe')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
         $randomNo = substr(uniqid(), 0, 3);
 
         $cancel_url = $_cancel_url;
@@ -86,7 +86,7 @@ class PhonePeController extends Controller
         $cancel_url = Session::get('cancel_url');
         /** Get the payment ID before session clear **/
         $info = OnlineGateway::where('keyword', 'phonepe')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
         if ($request->code == 'PAYMENT_SUCCESS' && $information['merchant_id'] == $request->merchantId) {
             $paymentFor = Session::get('paymentFor');
             $package = Package::find($requestData['package_id']);

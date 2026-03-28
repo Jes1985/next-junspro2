@@ -21,7 +21,7 @@ class PerfectMoneyController extends Controller
     public function paymentProcess(Request $request, $_amount, $_success_url, $_cancel_url, $_title, $bex)
     {
         $info = OnlineGateway::where('keyword', 'perfect_money')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
 
         $cancel_url = $_cancel_url;
         $notify_url = $_success_url;

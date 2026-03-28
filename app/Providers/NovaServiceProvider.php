@@ -101,6 +101,20 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     }
 
     /**
+     * Déclarer explicitement les resources Nova — évite les problèmes d'auto-discover
+     *
+     * @return array<int, class-string<\Laravel\Nova\Resource>>
+     */
+    public function resources(): array
+    {
+        return [
+            \App\Nova\PsAmbassadeur::class,
+            \App\Nova\PsConversion::class,
+            \App\Nova\PsTestimonial::class,
+        ];
+    }
+
+    /**
      * Get the dashboards that should be listed in the Nova sidebar.
      *
      * @return array<int, \Laravel\Nova\Dashboard>

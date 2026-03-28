@@ -55,6 +55,16 @@ class FreelancerProfile extends Model
         'bank_country',
         'bank_routing',
         'bank_type',
+        'is_mentor',
+        'mentor_capacity',
+        'mentor_status',
+        'mentor_quality_score',
+        'mentor_domains',
+        'mentor_bio',
+        'mentor_motivation',
+        'mentor_years_experience',
+        'mentor_linkedin_url',
+        'mentor_rate_override',
         // HomeSwap scoring fields (anciens)
         'homeswap_property_type',
         'homeswap_bedrooms',
@@ -103,6 +113,11 @@ class FreelancerProfile extends Model
         'no_degree' => 'boolean',
         'diploma_files' => 'array',
         'is_verified' => 'boolean',
+        'is_mentor' => 'boolean',
+        'mentor_capacity' => 'integer',
+        'mentor_quality_score' => 'integer',
+        'mentor_domains' => 'array',
+        'mentor_years_experience' => 'integer',
         // HomeSwap scoring casts
         'homeswap_bedrooms' => 'integer',
         'homeswap_beds_real' => 'integer',
@@ -146,6 +161,21 @@ class FreelancerProfile extends Model
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class, 'freelancer_id');
+    }
+
+    /**
+     * Pods de tutorat créés par ce freelance (via User)
+     */
+    public function mentorshipPods(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            MentorshipPod::class,
+            User::class,
+            'id',
+            'mentor_user_id',
+            'user_id',
+            'id'
+        );
     }
 
     /**

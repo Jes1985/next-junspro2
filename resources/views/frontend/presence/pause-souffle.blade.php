@@ -848,16 +848,23 @@
         Vous souhaitez <em style="font-style:italic; color:#D4A853;">animer</em> ce Rituel ?
       </h2>
       <p style="font-size: 1rem; color: rgba(255,255,255,0.55); line-height:1.8; margin-bottom:2rem;">
-        Devenez Praticien Pause Souffle certifié Junspro.<br>
-        Une formation certifiante pour d'abord vous transformer,<br>
-        puis accompagner les autres avec authenticité.
+        Devenez Freelance Pause Souffle certifié Junspro.<br>
+        Commencez par <a href="{{ route('presence.parcours') }}" style="color:#D4A853; text-decoration:underline;">Le Parcours</a> — une transformation personnelle de 8 semaines —<br>
+        puis accédez à la Formation Freelance pour accompagner les autres avec authenticité.
       </p>
-      <a href="{{ route('presence.formation-praticien') }}"
+      <a href="{{ route('presence.parcours') }}"
          style="display:inline-flex; align-items:center; gap:8px; padding:1rem 2.5rem; background:linear-gradient(135deg,#D4A853,#B8893A); color:#fff; border-radius:50px; font-size:1rem; font-weight:500; text-decoration:none; transition:all .3s; box-shadow:0 8px 24px rgba(212,168,83,.3);"
          onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 32px rgba(212,168,83,.45)'"
          onmouseout="this.style.transform=''; this.style.boxShadow='0 8px 24px rgba(212,168,83,.3)'">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
-        Découvrir la formation Praticien
+        Découvrir Le Parcours — Étape 1
+      </a>
+      <a href="{{ route('presence.formation-praticien') }}"
+         style="display:inline-flex; align-items:center; gap:8px; padding:.75rem 2rem; border: 1px solid rgba(212,168,83,.45); color:#D4A853; border-radius:50px; font-size:.9rem; font-weight:500; text-decoration:none; transition:all .3s; margin-top:.75rem;"
+         onmouseover="this.style.background='rgba(212,168,83,.1)'"
+         onmouseout="this.style.background='transparent'">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+        Devenir Freelance Pause Souffle — Étape 2
       </a>
       <a href="{{ route('presence.retraite') }}"
          style="display:inline-flex; align-items:center; gap:8px; padding:.75rem 2rem; border: 1px solid rgba(212,168,83,.45); color:#D4A853; border-radius:50px; font-size:.9rem; font-weight:500; text-decoration:none; transition:all .3s; margin-top:.75rem;"

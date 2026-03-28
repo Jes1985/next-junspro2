@@ -20,7 +20,7 @@ class YocoController extends Controller
     public function paymentProcess(Request $request, $_amount, $_success_url, $_cancel_url, $_title, $bex)
     {
         $info = OnlineGateway::where('keyword', 'yoco')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
 
         $cancel_url = $_cancel_url;
         $notify_url = $_success_url;
@@ -57,7 +57,7 @@ class YocoController extends Controller
         $id = Session::get('yoco_id');
         $s_key = Session::get('s_key');
         $info = OnlineGateway::where('keyword', 'yoco')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
         if ($id && $information['secret_key'] == $s_key) {
             $paymentFor = Session::get('paymentFor');
             $package = Package::find($requestData['package_id']);

@@ -24,7 +24,7 @@ class ToyyibpayController extends Controller
         $notify_url = $_success_url;
 
         $info = OnlineGateway::where('keyword', 'toyyibpay')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
         $ref = uniqid();
         session()->put('toyyibpay_ref_id', $ref);
         $bill_title = 'Buy Plan';

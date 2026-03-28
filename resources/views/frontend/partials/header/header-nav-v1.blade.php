@@ -98,16 +98,32 @@
             </div>
             @if ($basicInfo->is_language == 1)
               <div class="item">
-                <div class="language">
-                  <form action="{{ route('change_language') }}" method="GET">
-                    <select class="niceselect" name="lang_code" onchange="this.form.submit()">
-                      @foreach ($allLanguageInfos as $languageInfo)
-                        <option value="{{ $languageInfo->code }}" @selected($languageInfo->code == $currentLanguageInfo->code)>
-                          {{ $languageInfo->name }}
-                        </option>
-                      @endforeach
-                    </select>
-                  </form>
+                <div class="lang-switcher-luxury">
+                  <button class="lang-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-globe lang-globe-icon"></i>
+                    <span class="lang-current-code">{{ strtoupper($currentLanguageInfo->code) }}</span>
+                    <i class="fas fa-chevron-down lang-chevron-icon"></i>
+                  </button>
+                  <div class="lang-panel">
+                    @foreach ($allLanguageInfos as $languageInfo)
+                      @php $langFlag = $languageInfo->code === 'fr' ? '🇫🇷' : ($languageInfo->code === 'en' ? '🇬🇧' : '🌐'); @endphp
+                      @if ($languageInfo->code == $currentLanguageInfo->code)
+                        <div class="lang-panel-item lang-panel-item--active">
+                          <span class="lang-flag">{{ $langFlag }}</span>
+                          <span class="lang-name">{{ $languageInfo->name }}</span>
+                          <i class="fas fa-check lang-check-icon"></i>
+                        </div>
+                      @else
+                        <form method="GET" action="{{ route('change_language') }}" style="margin:0;padding:0;">
+                          <input type="hidden" name="lang_code" value="{{ $languageInfo->code }}">
+                          <button type="submit" class="lang-panel-item">
+                            <span class="lang-flag">{{ $langFlag }}</span>
+                            <span class="lang-name">{{ $languageInfo->name }}</span>
+                          </button>
+                        </form>
+                      @endif
+                    @endforeach
+                  </div>
                 </div>
               </div>
             @endif

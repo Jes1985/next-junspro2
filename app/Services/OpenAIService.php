@@ -12,7 +12,7 @@ class OpenAIService
 
     public function __construct()
     {
-        $this->apiKey = config('services.openai.api_key', '');
+        $this->apiKey = (string) (config('services.openai.api_key') ?? '');
     }
 
     // ──────────────────────────────────────────────

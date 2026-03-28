@@ -4,6 +4,9 @@
   <a href="{{ route('client.agenda.index') }}" class="dashboard-nav-item {{ request()->routeIs('client.agenda.*') ? 'active' : '' }}">{{ __('Agenda') }}</a>
   <a href="{{ route('user.messages.index') }}" class="dashboard-nav-item {{ request()->routeIs('user.messages.*') || request()->routeIs('client.messages.*') ? 'active' : '' }}">{{ __('Messages') }}</a>
   <a href="{{ route('client.subscriptions.first') }}" class="dashboard-nav-item {{ request()->routeIs('client.subscriptions.*') || request()->routeIs('user.projects_sessions.*') ? 'active' : '' }}">{{ __('Rituels') }}</a>
+  <a href="{{ route('mentorship.subscription.index') }}" class="dashboard-nav-item {{ request()->routeIs('mentorship.subscription.*') ? 'active' : '' }}">🎓 {{ __('Mentorat') }}</a>
+  <a href="{{ route('mentorship.become-intern') }}" class="dashboard-nav-item {{ request()->routeIs('mentorship.become-intern') ? 'active' : '' }}">🎓 {{ __('Devenir Stagiaire') }}</a>
+  <a href="{{ route('mentorship.become-junior') }}" class="dashboard-nav-item {{ request()->routeIs('mentorship.become-junior') ? 'active' : '' }}">🚀 {{ __('Devenir Freelance Junior') }}</a>
   <a href="{{ route('user.settings.index') }}" class="dashboard-nav-item {{ request()->routeIs('user.settings.*') || request()->routeIs('user.edit_profile') || request()->routeIs('user.change_password') ? 'active' : '' }}">{{ __('Paramètres') }}</a>
 </nav>
 

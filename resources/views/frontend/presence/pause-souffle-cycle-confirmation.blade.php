@@ -212,6 +212,37 @@
           </a>
         </div>
       </div>
+
+      {{-- ──────────────────────────────────────────────────────────────
+           CTA AMBASSADEUR — visible uniquement si pas encore ambassadeur
+      ─────────────────────────────────────────────────────────────────── --}}
+      @if(!($isAlreadyAmbassadeur ?? false))
+      <div style="margin-top: 2.5rem; background: linear-gradient(160deg, #0D0D20, #070712); border: 1px solid rgba(201,168,76,0.28); border-radius: 18px; padding: 2.5rem 2rem; text-align: center;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(201,168,76,0.7); border: 1px solid rgba(201,168,76,0.2); padding: 5px 18px; border-radius: 50px; margin-bottom: 1.25rem;">
+          ✦ Invitation
+        </div>
+        <h3 style="font-size: 1.35rem; font-weight: 300; color: #fff; margin-bottom: 0.75rem; letter-spacing: -0.01em;">
+          Votre expérience mérite<br>d'être partagée
+        </h3>
+        <p style="font-size: 0.88rem; color: rgba(228,220,208,0.55); line-height: 1.8; max-width: 440px; margin: 0 auto 1.75rem;">
+          Vous venez de faire un pas. Si ce que vous avez choisi peut aider quelqu'un dans votre entourage,
+          le Réseau des Ambassadeurs Pause Souffle est là pour vous permettre de partager — simplement, avec un lien personnel.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="{{ route('presence.ambassadeurs') }}"
+             style="display: inline-block; background: linear-gradient(135deg, #C9A84C, #E8C96A); color: #000; text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 13px 30px; border-radius: 50px;">
+            Découvrir le programme Ambassadeur
+          </a>
+          <a href="{{ route('presence.pause-souffle') }}"
+             style="display: inline-block; background: transparent; color: rgba(228,220,208,0.5); text-decoration: none; font-size: 0.82rem; padding: 13px 24px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1);">
+            Pas maintenant
+          </a>
+        </div>
+        <p style="margin-top: 14px; font-size: 0.72rem; color: rgba(228,220,208,0.25); font-style: italic;">
+          Aucune obligation. Un email vous a également été envoyé avec les détails.
+        </p>
+      </div>
+      @endif
     @endif
   </div>
 </div>

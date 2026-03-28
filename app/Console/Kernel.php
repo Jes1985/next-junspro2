@@ -49,6 +49,19 @@ class Kernel extends ConsoleKernel
       ->at('03:00')
       ->name('affiliate-validate-conversions')
       ->withoutOverlapping();
+
+    // CRON quotidienne - Validation commissions Pause Souffle (J+30)
+    $schedule->job(\App\Jobs\PsValidateConversions::class)
+      ->daily()
+      ->at('03:30')
+      ->name('ps-validate-conversions')
+      ->withoutOverlapping();
+
+    // CRON 1er de chaque mois à 08h00 - Bilans mensuels ambassadeurs PS
+    $schedule->command('ps:send-monthly-stats')
+      ->monthlyOn(1, '08:00')
+      ->name('ps-monthly-stats')
+      ->withoutOverlapping();
   }
 
   /**

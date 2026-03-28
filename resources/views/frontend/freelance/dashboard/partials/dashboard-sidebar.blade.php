@@ -44,6 +44,20 @@
         <span class="nav-icon">✨</span>
         <span>Rituels</span>
       </a>
+      <a href="{{ route('mentorship.subscription.index') }}" class="nav-item {{ request()->routeIs('mentorship.subscription.*') ? 'active' : '' }}">
+        <span class="nav-icon">🎓</span>
+        <span>Mentorat</span>
+      </a>
+      @if(request()->routeIs('mentorship.dashboard.mentor'))
+      <a href="{{ route('mentorship.dashboard.mentor') }}" class="nav-item active" style="padding-left:2.5rem;font-size:.85rem;">
+        <span class="nav-icon">📋</span>
+        <span>Mon espace mentor</span>
+      </a>
+      @endif
+      <a href="{{ route('mentor.onboarding.show') }}" class="nav-item {{ request()->routeIs('mentor.onboarding.*') ? 'active' : '' }}" style="padding-left:2.5rem;font-size:.85rem;">
+        <span class="nav-icon">⭐</span>
+        <span>Devenir mentor</span>
+      </a>
     </div>
   </div>
 

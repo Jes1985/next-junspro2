@@ -24,7 +24,7 @@ class MyFatoorahController extends Controller
     public function __construct()
     {
         $info = OnlineGateway::where('keyword', 'myfatoorah')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
         $this->myfatoorah = MyFatoorah::getInstance($information['sandbox_status'] == 1 ? true : false);
     }
 
@@ -36,7 +36,7 @@ class MyFatoorahController extends Controller
          ********************************************************/
 
         $info = OnlineGateway::where('keyword', 'myfatoorah')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
         $random_1 = rand(999, 9999);
         $random_2 = rand(9999, 99999);
         $result = $this->myfatoorah->sendPayment(

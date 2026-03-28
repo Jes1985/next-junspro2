@@ -19,15 +19,16 @@ class MiscellaneousController extends Controller
 {
   public function getLanguage()
   {
-    // get the current locale of this system
-    if (Session::has('currentLocaleCode')) {
-      $locale = Session::get('currentLocaleCode');
-    }
+    // Source de vérité : cookie persistant > session > langue par défaut DB
+      $request = request();
+      $locale = ($request->hasSession() ? $request->session()->get('currentLocaleCode') : null)
+        ?? $request->cookie('junspro_locale');
 
     if (empty($locale)) {
       $language = Language::query()->where('is_default', '=', 1)->firstOrFail();
     } else {
-      $language = Language::query()->where('code', '=', $locale)->firstOrFail();
+      $language = Language::query()->where('code', '=', $locale)->first()
+               ?? Language::query()->where('is_default', '=', 1)->firstOrFail();
     }
 
     return $language;
@@ -63,12 +64,31 @@ class MiscellaneousController extends Controller
 
   public function changeLanguage(Request $request)
   {
-    // put the selected language in session
-    $langCode = $request['lang_code'];
+    $langCode = $request->get('lang_code');
 
+    // Valider que le code langue est connu
+    $allowedCodes = \App\Models\Language::pluck('code')->toArray();
+    if (empty($langCode) || !in_array($langCode, $allowedCodes)) {
+      $langCode = \App\Models\Language::where('is_default', 1)->value('code') ?? 'fr';
+    }
+
+    // Sauvegarder dans la session
     $request->session()->put('currentLocaleCode', $langCode);
+    $request->session()->save();
 
-    return redirect()->back();
+    // Déterminer la page de retour
+    $referer = $request->headers->get('referer', '');
+    if (!empty($referer) && strpos($referer, 'change-language') === false) {
+      $redirectTo = $referer;
+    } else {
+      $redirectTo = url('/');
+    }
+
+    // Stocker dans un cookie persistant (1 an) en plus de la session
+    // Le cookie est la source de vérité : résiste aux changements d'ID de session
+    $cookie = cookie('junspro_locale', $langCode, 525600); // 525600 = 1 an en minutes
+
+    return redirect()->to($redirectTo)->withCookie($cookie);
   }
 
 

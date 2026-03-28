@@ -22,7 +22,7 @@ class MidtransController extends Controller
     public function paymentProcess(Request $request, $_amount, $_success_url, $_cancel_url, $_title, $bex)
     {
         $info = OnlineGateway::where('keyword', 'midtrans')->first();
-        $information = json_decode($info->information, true);
+        $information = is_array($info->information) ? $info->information : json_decode($info->information, true);
 
         // will come from database
         $client_key = $information['server_key'];

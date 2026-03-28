@@ -38,7 +38,7 @@ class Affiliate extends Model
         'activated_at'     => 'datetime',
     ];
 
-    // ─── Paliers ──────────────────────────────────────────────
+    // ─── Paliers JunsPro générique ────────────────────────────
     const TIERS = [
         'ambassador' => ['label' => 'Ambassadeur',     'rate' => 5.00,  'duration_months' => 6,  'min_conversions' => 0],
         'elite'      => ['label' => 'Partenaire Élite', 'rate' => 7.00,  'duration_months' => 12, 'min_conversions' => 3],
@@ -102,4 +102,5 @@ class Affiliate extends Model
         $required = self::TIERS[$next]['min_conversions'];
         return $required > 0 ? min(100, (int)(($this->active_conversions / $required) * 100)) : 100;
     }
+
 }

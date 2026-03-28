@@ -114,7 +114,7 @@ class AffiliateController extends Controller
     }
 
     // =========================================================
-    // TRACKING — /a/{code}
+    // TRACKING — /a/{code} (JunsPro générique, cookie 30j)
     // =========================================================
 
     public function track(Request $request, string $code)
@@ -125,10 +125,7 @@ class AffiliateController extends Controller
             return redirect()->route('user.signup');
         }
 
-        // Cookie 30 jours pour attribuer la conversion à l'inscription
         Cookie::queue('affiliate_code', $code, 60 * 24 * 30);
-
-        // Stocker aussi en session pour les inscriptions immédiates
         Session::put('affiliate_code', $code);
 
         return redirect()->route('user.signup')

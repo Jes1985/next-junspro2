@@ -1432,6 +1432,39 @@
     window.junsproUserEmail = @json(Auth::guard('web')->check() ? Auth::guard('web')->user()->email : '');
   </script>
   <script defer src="{{ asset('assets/front/js/junspro-chatbot-premium.js') }}?v=6.3"></script>
+  <script>
+    // Luxury Language Switcher — dropdown toggle
+    (function () {
+      function init() {
+        document.querySelectorAll('.lang-trigger').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var sw = this.closest('.lang-switcher-luxury');
+            var opening = !sw.classList.contains('open');
+            document.querySelectorAll('.lang-switcher-luxury.open').forEach(function (el) {
+              el.classList.remove('open');
+              el.querySelector('.lang-trigger').setAttribute('aria-expanded', 'false');
+            });
+            if (opening) {
+              sw.classList.add('open');
+              this.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+        document.addEventListener('click', function (e) {
+          if (!e.target.closest('.lang-switcher-luxury')) {
+            document.querySelectorAll('.lang-switcher-luxury.open').forEach(function (el) {
+              el.classList.remove('open');
+              el.querySelector('.lang-trigger').setAttribute('aria-expanded', 'false');
+            });
+          }
+        });
+      }
+      document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', init)
+        : init();
+    })();
+  </script>
 </body>
 
 </html>

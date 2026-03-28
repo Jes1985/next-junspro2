@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class FormationModule extends Model
 {
+    public const TRACK_PARCOURS = 'parcours';
+    public const TRACK_PRATICIEN = 'praticien';
+
     protected $fillable = [
-        'slug', 'title', 'description', 'order', 'week_label', 'is_active', 'activities',
+        'slug', 'title', 'description', 'order', 'week_label', 'track', 'is_active', 'activities',
         'intro_text', 'audio_path',
         'title_en', 'description_en', 'intro_text_en', 'activities_en', 'audio_path_en',
     ];
@@ -29,5 +32,15 @@ class FormationModule extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true)->orderBy('order');
+    }
+
+    public function scopeForTrack($query, string $track)
+    {
+        return $query->where('track', $track);
+    }
+
+    public function getDisplayOrderAttribute(): string
+    {
+        return str_pad((string) $this->order, 2, '0', STR_PAD_LEFT);
     }
 }
