@@ -2459,6 +2459,514 @@ Prenez-les au sérieux.
 SCRIPT,
 
         // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 07 — Je maîtrise la Vision — Pratique Avancée
+        // ─────────────────────────────────────────────────────────
+        '07-je-maitrise-la-vision' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Vous avez appris à voir.
+[pause 5s]
+Aujourd'hui... vous apprenez à tenir.
+[pause 5s]
+Tenir une vision dans le temps.
+[pause 5s]
+Même quand la peur revient.
+[pause 5s]
+Même quand le doute s'installe.
+[pause 5s]
+Même quand la réalité résiste.
+[pause 10s]
+
+Dr Joe Dispenza dit que le cerveau ne fait pas la différence entre une expérience vécue et une expérience profondément imaginée.
+[pause 5s]
+Si vous voyez précisément... avec émotion... avec répétition...
+[pause 4s]
+le cerveau commence à construire les routes neuronales de cette réalité.
+[pause 5s]
+Avant même qu'elle existe.
+[pause 10s]
+
+La maîtrise de la vision, c'est cela.
+[pause 5s]
+Pas une pensée positive.
+[pause 4s]
+Un entraînement neuronal.
+[pause 8s]
+
+Fermez les yeux.
+[pause 6s]
+
+Respiration consciente... lente.
+[pause 4s]
+Inspir par le nez.
+[pause 5s]
+Expir par la bouche.
+[pause 5s]
+Trois cycles.
+[pause 15s]
+
+Maintenant... faites apparaître la scène.
+[pause 5s]
+La scène de votre vision... la plus précise possible.
+[pause 5s]
+Pas un fantasme vague.
+[pause 4s]
+Une image concrète.
+[pause 4s]
+Où êtes-vous ?
+[pause 5s]
+Qu'est-ce que vous voyez exactement ?
+[pause 5s]
+Qu'est-ce que vous entendez ?
+[pause 5s]
+Qu'est-ce que vous sentez dans votre corps ?
+[pause 8s]
+
+Laissez l'émotion venir.
+[pause 5s]
+Pas la forcer.
+[pause 5s]
+La laisser naître naturellement... de l'image.
+[pause 10s]
+
+C'est par le corps que nous ancrons cette vision maintenant.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence dans cette vision.
+[pause 6s]
+
+À chaque inspiration... laissez entrer la scène plus profondément.
+[pause 4s]
+Au blocage... tenez cette image dans le silence.
+[pause 4s]
+À l'expiration... laissez partir ce qui résiste encore en vous.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est le terrain de votre vision.
+[pause 5s]
+Elle pousse là.
+[pause 5s]
+Dans ce silence que vous venez de toucher.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Qu'est-ce qui est apparu pendant les cycles ?
+[pause 8s]
+Une image plus nette ?
+[pause 5s]
+Une résistance ?
+[pause 5s]
+Une certitude ?
+[pause 12s]
+
+La vision ne se maîtrise pas en un module.
+[pause 5s]
+Elle se pratique.
+[pause 5s]
+Chaque jour.
+[pause 5s]
+Cinq à dix minutes.
+[pause 5s]
+La même scène.
+[pause 5s]
+La même émotion.
+[pause 5s]
+Jusqu'à ce que le corps la connaisse par cœur.
+[pause 10s]
+
+Notez dans votre carnet :
+[pause 4s]
+La scène que vous avez vue.
+[pause 5s]
+L'émotion que vous avez touchée.
+[pause 5s]
+Ce qui a résisté.
+[pause 8s]
+
+À demain.
+[pause 5s]
+La vision vous attend.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 08 — Je renforce ma Discipline
+        // ─────────────────────────────────────────────────────────
+        '08-je-renforce-ma-discipline' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+La discipline n'est pas une punition.
+[pause 5s]
+C'est une déclaration d'identité.
+[pause 5s]
+Elle dit : je suis quelqu'un qui fait ce qu'il a décidé.
+[pause 5s]
+Même sans envie.
+[pause 5s]
+Même sans applaudissements.
+[pause 5s]
+Même sans résultat visible.
+[pause 10s]
+
+L'amiral McRaven, lors de son discours aux diplômés de 2014, a dit une chose simple.
+[pause 5s]
+Faites votre lit chaque matin.
+[pause 5s]
+Ce premier acte de discipline... donne le ton à toute la journée.
+[pause 5s]
+Il dit à votre cerveau : je suis quelqu'un qui termine ce qu'il commence.
+[pause 10s]
+
+James Clear, dans Atomic Habits, va plus loin.
+[pause 5s]
+L'identité précède le comportement.
+[pause 5s]
+Vous ne bâtissez pas des habitudes pour atteindre des objectifs.
+[pause 5s]
+Vous bâtissez des habitudes pour devenir quelqu'un.
+[pause 8s]
+
+Fermez les yeux.
+[pause 6s]
+
+Respiration consciente.
+[pause 4s]
+Trois cycles lents.
+[pause 15s]
+
+Pensez à un domaine de votre vie où vous manquez de constance.
+[pause 8s]
+Pas pour vous juger.
+[pause 5s]
+Pour observer.
+[pause 5s]
+Qu'est-ce qui cède en premier ?
+[pause 5s]
+L'énergie ?
+[pause 4s]
+La motivation ?
+[pause 4s]
+La clarté sur le pourquoi ?
+[pause 10s]
+
+C'est par le corps que nous ancrons cette discipline maintenant.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie pour ancrer l'identité de la personne disciplinée que vous devenez.
+[pause 6s]
+
+À l'inspiration... dites intérieurement : je suis quelqu'un qui tient.
+[pause 4s]
+Au blocage... tenez.
+[pause 4s]
+À l'expiration... relâchez ce qui n'est plus vous.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est la discipline dans sa forme pure.
+[pause 5s]
+Pas l'effort.
+[pause 5s]
+La présence.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quel est le rituel quotidien que vous vous engagez à tenir cette semaine ?
+[pause 18s]
+
+Pas dix habitudes.
+[pause 5s]
+Une seule.
+[pause 5s]
+Que vous ferez même si vous n'en avez pas envie.
+[pause 18s]
+
+Notez-la dans votre carnet.
+[pause 5s]
+Avec l'heure.
+[pause 5s]
+Avec la durée.
+[pause 5s]
+Avec l'identité qu'elle construit.
+[pause 8s]
+
+La discipline... c'est la liberté de demain.
+[pause 5s]
+Commencez aujourd'hui.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 09 — Je transmets le Rituel Pause Souffle
+        // ─────────────────────────────────────────────────────────
+        '09-je-transmets-le-rituel' => <<<'SCRIPT'
+Bienvenue dans ce dernier module de la formation Praticien.
+[pause 6s]
+
+Vous avez traversé neuf modules.
+[pause 5s]
+Vous avez compris le corps.
+[pause 5s]
+Vous vous êtes rencontré.
+[pause 5s]
+Vous avez reconnu vos blessures.
+[pause 5s]
+Vous avez décrit votre bonheur.
+[pause 5s]
+Vous avez écouté votre souffle.
+[pause 5s]
+Vous avez touché votre mission.
+[pause 5s]
+Vous avez incarné votre vision.
+[pause 5s]
+Vous avez maîtrisé cette vision dans le temps.
+[pause 5s]
+Vous avez renforcé votre discipline.
+[pause 10s]
+
+Maintenant... il est temps de transmettre.
+[pause 8s]
+
+Un praticien Pause Souffle ne guide pas les autres vers la sagesse.
+[pause 5s]
+Il crée les conditions pour que chaque personne trouve en elle-même ce dont elle a besoin.
+[pause 5s]
+Comme vous venez de le faire.
+[pause 10s]
+
+Installez-vous une dernière fois dans cet espace.
+[pause 5s]
+Dos droit... vivant.
+[pause 4s]
+Pieds ancrés.
+[pause 4s]
+Mains ouvertes.
+[pause 8s]
+
+C'est par le corps que nous scellons ce chemin.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq une dernière fois ici.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie pour intégrer tout ce qui a été semé.
+[pause 6s]
+
+À l'inspiration... laissez monter ce que vous emportez.
+[pause 4s]
+Au blocage... tenez-le dans le silence.
+[pause 4s]
+À l'expiration... offrez-le au monde.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+À qui voulez-vous transmettre ce que vous avez reçu ?
+[pause 18s]
+
+Qu'est-ce que vous voulez que les personnes que vous accompagnez ressentent en votre présence ?
+[pause 18s]
+
+Quel est le premier geste concret que vous posez dès demain ?
+[pause 18s]
+
+Notez ce qui est venu dans votre carnet.
+[pause 5s]
+Sans le corriger.
+[pause 5s]
+Sans le réduire.
+[pause 8s]
+
+Je vous remercie.
+[pause 5s]
+D'avoir été là.
+[pause 5s]
+D'avoir tenu.
+[pause 5s]
+D'avoir traversé.
+[pause 8s]
+
+Votre attestation Praticien Pause Souffle est maintenant disponible dans votre espace.
+[pause 6s]
+
+Vous l'avez gagnée.
+[pause 15s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS — Module 29 (ord) — 12-je-transmets-le-rituel
+        // ─────────────────────────────────────────────────────────
+        '12-je-transmets-le-rituel' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Ce module marque un moment particulier dans votre parcours.
+[pause 5s]
+Vous avez traversé vingt-neuf semaines.
+[pause 5s]
+Vous avez travaillé votre corps.
+[pause 5s]
+Votre souffle.
+[pause 5s]
+Vos relations.
+[pause 5s]
+Votre identité.
+[pause 10s]
+
+Aujourd'hui... vous transmettez.
+[pause 5s]
+Pas parce que vous avez tout compris.
+[pause 5s]
+Mais parce que vous avez traversé.
+[pause 5s]
+Et traverser... ça s'enseigne.
+[pause 10s]
+
+Le rituel Pause Souffle que vous allez guider n'est pas une technique.
+[pause 5s]
+C'est une présence.
+[pause 5s]
+Votre présence.
+[pause 5s]
+Avec ce que vous avez vécu.
+[pause 8s]
+
+Fermez les yeux.
+[pause 6s]
+
+Trois respirations conscientes pour arriver ici.
+[pause 15s]
+
+C'est par le corps que nous ancrons cette étape.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence pure.
+[pause 6s]
+
+À l'inspiration... recevez ce que vous avez semé.
+[pause 4s]
+Au blocage... tenez-le dans le silence.
+[pause 4s]
+À l'expiration... laissez-le rayonner vers ceux qui vous entourent.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est vous.
+[pause 5s]
+Simplement vous.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Qu'est-ce que vous avez reçu dans ce parcours que vous voulez offrir ?
+[pause 18s]
+
+À qui ?
+[pause 18s]
+
+Comment ?
+[pause 18s]
+
+Notez ce qui est venu dans votre carnet.
+[pause 5s]
+Sans le corriger.
+[pause 8s]
+
+Merci d'être là.
+[pause 5s]
+Continuez.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
         // PARCOURS 1 — Module 07 — Je prends soin de moi en premier
         // ─────────────────────────────────────────────────────────
         '07-je-prends-soin-de-moi' => <<<'SCRIPT'
@@ -9236,6 +9744,514 @@ Inhale one last time.
 [pause 7s]
 Exhale slowly.
 [pause 12s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRACTITIONER — Module 07 — Mastering the Vision — Advanced Practice
+        // ─────────────────────────────────────────────────────────
+        '07-je-maitrise-la-vision' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+You have learned to see.
+[pause 5s]
+Today... you learn to hold.
+[pause 5s]
+To hold a vision through time.
+[pause 5s]
+Even when fear returns.
+[pause 5s]
+Even when doubt settles in.
+[pause 5s]
+Even when reality resists.
+[pause 10s]
+
+Dr Joe Dispenza says the brain cannot distinguish between a lived experience and a deeply imagined one.
+[pause 5s]
+If you see precisely... with emotion... with repetition...
+[pause 4s]
+the brain begins to build the neural pathways of that reality.
+[pause 5s]
+Before it even exists.
+[pause 10s]
+
+That is what mastering the vision means.
+[pause 5s]
+Not positive thinking.
+[pause 4s]
+Neural training.
+[pause 8s]
+
+Close your eyes.
+[pause 6s]
+
+Conscious breathing... slow.
+[pause 4s]
+Inhale through the nose.
+[pause 5s]
+Exhale through the mouth.
+[pause 5s]
+Three cycles.
+[pause 15s]
+
+Now... bring the scene to mind.
+[pause 5s]
+The scene of your vision... as precise as possible.
+[pause 5s]
+Not a vague fantasy.
+[pause 4s]
+A concrete image.
+[pause 4s]
+Where are you?
+[pause 5s]
+What do you see exactly?
+[pause 5s]
+What do you hear?
+[pause 5s]
+What do you feel in your body?
+[pause 8s]
+
+Let the emotion come.
+[pause 5s]
+Do not force it.
+[pause 5s]
+Let it arise naturally... from the image.
+[pause 10s]
+
+It is through the body that we anchor this vision now.
+[pause 8s]
+
+We are going to practice the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of presence inside this vision.
+[pause 6s]
+
+On the inhale... let the scene enter more deeply.
+[pause 4s]
+During the hold... hold that image in the silence.
+[pause 4s]
+On the exhale... let go of what still resists inside you.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the ground of your vision.
+[pause 5s]
+It grows here.
+[pause 5s]
+In this silence you just touched.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+What appeared during the cycles?
+[pause 8s]
+A sharper image?
+[pause 5s]
+A resistance?
+[pause 5s]
+A certainty?
+[pause 12s]
+
+The vision is not mastered in one module.
+[pause 5s]
+It is practiced.
+[pause 5s]
+Every day.
+[pause 5s]
+Five to ten minutes.
+[pause 5s]
+The same scene.
+[pause 5s]
+The same emotion.
+[pause 5s]
+Until the body knows it by heart.
+[pause 10s]
+
+Write in your journal:
+[pause 4s]
+The scene you saw.
+[pause 5s]
+The emotion you touched.
+[pause 5s]
+What resisted.
+[pause 8s]
+
+See you tomorrow.
+[pause 5s]
+The vision is waiting for you.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRACTITIONER — Module 08 — Strengthening Discipline
+        // ─────────────────────────────────────────────────────────
+        '08-je-renforce-ma-discipline' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Discipline is not punishment.
+[pause 5s]
+It is an identity statement.
+[pause 5s]
+It says: I am someone who does what they decided.
+[pause 5s]
+Even without desire.
+[pause 5s]
+Even without applause.
+[pause 5s]
+Even without visible results.
+[pause 10s]
+
+Admiral McRaven, in his 2014 commencement address, said something simple.
+[pause 5s]
+Make your bed every morning.
+[pause 5s]
+This first act of discipline... sets the tone for the entire day.
+[pause 5s]
+It tells your brain: I am someone who finishes what they start.
+[pause 10s]
+
+James Clear, in Atomic Habits, goes further.
+[pause 5s]
+Identity precedes behavior.
+[pause 5s]
+You do not build habits to reach goals.
+[pause 5s]
+You build habits to become someone.
+[pause 8s]
+
+Close your eyes.
+[pause 6s]
+
+Conscious breathing.
+[pause 4s]
+Three slow cycles.
+[pause 15s]
+
+Think of an area of your life where you lack consistency.
+[pause 8s]
+Not to judge yourself.
+[pause 5s]
+To observe.
+[pause 5s]
+What gives way first?
+[pause 5s]
+Energy?
+[pause 4s]
+Motivation?
+[pause 4s]
+Clarity about the why?
+[pause 10s]
+
+It is through the body that we anchor this discipline now.
+[pause 8s]
+
+We are going to practice the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes to anchor the identity of the disciplined person you are becoming.
+[pause 6s]
+
+On the inhale... say inwardly: I am someone who holds.
+[pause 4s]
+During the hold... hold.
+[pause 4s]
+On the exhale... release what is no longer you.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is discipline in its purest form.
+[pause 5s]
+Not effort.
+[pause 5s]
+Presence.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+What is the daily ritual you commit to holding this week?
+[pause 18s]
+
+Not ten habits.
+[pause 5s]
+Just one.
+[pause 5s]
+That you will do even when you do not feel like it.
+[pause 18s]
+
+Write it in your journal.
+[pause 5s]
+With the time.
+[pause 5s]
+With the duration.
+[pause 5s]
+With the identity it builds.
+[pause 8s]
+
+Discipline... is tomorrow's freedom.
+[pause 5s]
+Start today.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRACTITIONER — Module 09 — I Transmit the Pause Souffle Ritual
+        // ─────────────────────────────────────────────────────────
+        '09-je-transmets-le-rituel' => <<<'SCRIPT'
+Welcome to this final module of the Practitioner training.
+[pause 6s]
+
+You have traveled nine modules.
+[pause 5s]
+You understood the body.
+[pause 5s]
+You met yourself.
+[pause 5s]
+You recognized your wounds.
+[pause 5s]
+You described your happiness.
+[pause 5s]
+You listened to your breath.
+[pause 5s]
+You touched your mission.
+[pause 5s]
+You embodied your vision.
+[pause 5s]
+You mastered that vision through time.
+[pause 5s]
+You strengthened your discipline.
+[pause 10s]
+
+Now... it is time to transmit.
+[pause 8s]
+
+A Pause Souffle practitioner does not guide others toward wisdom.
+[pause 5s]
+They create the conditions for each person to find within themselves what they need.
+[pause 5s]
+As you have just done.
+[pause 10s]
+
+Settle in one last time in this space.
+[pause 5s]
+Back straight... alive.
+[pause 4s]
+Feet grounded.
+[pause 4s]
+Hands open.
+[pause 8s]
+
+It is through the body that we seal this path.
+[pause 8s]
+
+We are going to practice the five-five-five method one final time here.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes to integrate everything that has been sown.
+[pause 6s]
+
+On the inhale... let rise what you are taking with you.
+[pause 4s]
+During the hold... hold it in the silence.
+[pause 4s]
+On the exhale... offer it to the world.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is you.
+[pause 5s]
+Simply you.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Who do you want to pass on what you have received?
+[pause 18s]
+
+What do you want the people you accompany to feel in your presence?
+[pause 18s]
+
+What is the first concrete step you take starting tomorrow?
+[pause 18s]
+
+Write what came in your journal.
+[pause 5s]
+Without correcting it.
+[pause 5s]
+Without diminishing it.
+[pause 8s]
+
+Thank you.
+[pause 5s]
+For being here.
+[pause 5s]
+For holding.
+[pause 5s]
+For crossing.
+[pause 8s]
+
+Your Pause Souffle Practitioner attestation is now available in your space.
+[pause 6s]
+
+You earned it.
+[pause 15s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS — Module 29 (ord) — 12-je-transmets-le-rituel EN
+        // ─────────────────────────────────────────────────────────
+        '12-je-transmets-le-rituel' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+This module marks a particular moment in your journey.
+[pause 5s]
+You have traveled twenty-nine weeks.
+[pause 5s]
+You have worked your body.
+[pause 5s]
+Your breath.
+[pause 5s]
+Your relationships.
+[pause 5s]
+Your identity.
+[pause 10s]
+
+Today... you transmit.
+[pause 5s]
+Not because you have understood everything.
+[pause 5s]
+But because you have crossed.
+[pause 5s]
+And crossing... can be taught.
+[pause 10s]
+
+The Pause Souffle ritual you are going to guide is not a technique.
+[pause 5s]
+It is a presence.
+[pause 5s]
+Your presence.
+[pause 5s]
+With what you have lived.
+[pause 8s]
+
+Close your eyes.
+[pause 6s]
+
+Three conscious breaths to arrive here.
+[pause 15s]
+
+It is through the body that we anchor this step.
+[pause 8s]
+
+We are going to practice the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of pure presence.
+[pause 6s]
+
+On the inhale... receive what you have sown.
+[pause 4s]
+During the hold... hold it in the silence.
+[pause 4s]
+On the exhale... let it radiate toward those around you.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is you.
+[pause 5s]
+Simply you.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+What have you received in this journey that you want to offer?
+[pause 18s]
+
+To whom?
+[pause 18s]
+
+How?
+[pause 18s]
+
+Write what came in your journal.
+[pause 5s]
+Without correcting it.
+[pause 8s]
+
+Thank you for being here.
+[pause 5s]
+Carry on.
+[pause 10s]
 SCRIPT,
 
         // ─────────────────────────────────────────────────────────

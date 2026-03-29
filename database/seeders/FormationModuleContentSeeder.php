@@ -676,7 +676,7 @@ organisé en 12 territoires, relié par les fascias, animé par 11 systèmes.<br
             ],
             'conclusion' => 'Infiniment + proche de votre raison d\'être.',
         ],
-        '07-je-transmets-le-rituel' => [
+        '09-je-transmets-le-rituel' => [
             'intro_text' => "Vous avez parcouru un chemin.\n\nVous vous êtes rencontré(e). Vous avez reconnu vos blessures. Vous avez décrit votre bonheur. Vous avez écouté votre souffle. Vous avez touché votre mission.\n\nMaintenant, il est temps de **transmettre**.\n\nParce que ce que vous avez vécu ici — d'autres personnes en ont besoin.\n\nLe Rituel Pause Souffle que vous allez guider n'est pas une technique. C'est une **présence**.",
             'description' => 'Intégrer tous les outils et apprendre à guider une séance complète. De praticant(e) à Praticien(ne) certifié(e).',
             'activities' => [
@@ -1390,7 +1390,7 @@ organised into 12 territories, connected by fascia, animated by 11 systems.<br>
                 ['type' => 'writing',  'title' => 'My mission statement',               'duration' => '20 min', 'description' => 'Complete: "My presence in the lives of others allows [who] to [do what] for [what result]." Write 3 versions. Keep the one that moves you.'],
             ],
         ],
-        '07-je-transmets-le-rituel' => [
+        '09-je-transmets-le-rituel' => [
             'title_en'       => 'I Practice the Pause Souffle Ritual',
             'description_en' => 'Integrating all tools and learning to guide a complete session. From practitioner-in-training to Certified Pause Souffle Practitioner.',
             'intro_text_en'  => "You have traveled a path.\n\nYou have met yourself. You have recognized your wounds. You have described your happiness. You have listened to your breath. You have touched your mission.\n\nNow it is time to **transmit**.\n\nBecause what you have lived here — other people need it.\n\nThe Pause Souffle Ritual you are going to guide is not a technique. It is a **presence**.",

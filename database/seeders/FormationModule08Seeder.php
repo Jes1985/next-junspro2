@@ -356,10 +356,10 @@ class FormationModule08Seeder extends Seeder
 
         // ─── INSERTION EN BASE ────────────────────────────────────────────────
         DB::table('formation_modules')
-            ->where('slug', '08-je-maitrise-la-vision')
+            ->where('slug', '07-je-maitrise-la-vision')
             ->update([
                 'title'       => 'Je maîtrise la Vision — Pratique Avancée & Transmission',
-                'week_label'  => 'Praticien · Module 08',
+                'week_label'  => 'Praticien · Module 07',
                 'intro_text'  => "Au Module 06 du Parcours, vous avez appris à tenir une direction.\nVous avez discerné l'obstacle intérieur qui la freine. Vous avez commencé à rendre votre vision crédible dans le réel.\nQuelque chose s'est ouvert.\n\nMaintenant c'est la maîtrise.\n\nLa différence entre initiation et maîtrise en visualisation :\n— Initiation : je clarifie une direction et je commence à l'habiter.\n— Maîtrise : je vis dans ma vision. Tous les sens. Le contexte entier.\n                Les détails qui n'ont l'air de rien — et qui sont tout.\n\nCe module est le sommet de la Formation Praticien.\nC'est aussi le plus personnel.\nCar votre vision ne ressemble à celle de personne d'autre.\n\nEt votre discipline — la fréquence, le rituel, le moment de la journée —\nc'est vous qui la construisez ici.",
                 'description' => '4 leçons + 2 exercices · Immersion sensorielle 5 sens + émotion (6ème dimension) · Protocoles 1×-3×-5×/semaine (règle 66 jours) · Quantum Self (Dr. Joe Dispenza) · Visualisation guidée en séance praticien · Session immersive 20 min · Protocole personnalisé 66 jours.',
                 'activities'  => json_encode($activities),
