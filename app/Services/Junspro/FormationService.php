@@ -60,17 +60,22 @@ class FormationService
         ['slug' => '11-je-transmets-ma-transformation','title' => 'Je transmets ma transformation — Rayonnement personnel',     'week_label' => 'Module 37', 'track' => FormationModule::TRACK_PARCOURS, 'order' => 37, 'part' => 3],
         ['slug' => '29-synthese-du-parcours',          'title' => 'Je synthétise mon Parcours — bilan de transformation',        'week_label' => 'Module 38', 'track' => FormationModule::TRACK_PARCOURS, 'order' => 38, 'part' => 3],
         ['slug' => '30-mon-programme-quotidien',       'title' => 'Mon Programme Quotidien — rituel vivant & personnalisable',  'week_label' => 'Module 39', 'track' => FormationModule::TRACK_PARCOURS, 'order' => 39, 'part' => 3],
-        // ── LA FORMATION PRATICIEN (10 modules professionnels — inchangée) ────────────────────
-        ['slug' => '00-comprendre-le-corps',          'title' => 'Comprendre le Corps — Anatomie & Physiologie',                'week_label' => 'Module 00', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 0],
-        ['slug' => '01-je-me-rencontre',              'title' => 'Je me rencontre',                                              'week_label' => 'Module 01', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 1],
-        ['slug' => '02-je-reconnais-mes-blessures',   'title' => 'Je reconnais mes blessures',                                  'week_label' => 'Module 02', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 2],
-        ['slug' => '03-je-decris-mon-bonheur',        'title' => 'Je décris mon bonheur',                                        'week_label' => 'Module 03', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 3],
-        ['slug' => '04-j-ecoute-mon-souffle',         'title' => 'J\'écoute mon souffle intérieur',                              'week_label' => 'Module 04', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 4],
-        ['slug' => '05-je-decouvre-ma-mission',       'title' => 'Je découvre ma mission unique',                                'week_label' => 'Module 05', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 5],
-        ['slug' => '06-je-visualise-ma-vie',          'title' => 'J\'incarne ma Vision — Clarté, Courage & Discipline',          'week_label' => 'Module 06', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 6],
-        ['slug' => '07-je-maitrise-la-vision',        'title' => 'Je maîtrise la Vision — Pratique Avancée',                    'week_label' => 'Module 07', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 7],
-        ['slug' => '08-je-renforce-ma-discipline',    'title' => 'Je renforce ma Discipline — le Pouvoir du Quotidien',         'week_label' => 'Module 08', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 8],
-        ['slug' => '09-je-transmets-le-rituel',       'title' => 'Je transmets le Rituel Pause Souffle',                        'week_label' => 'Module 09', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 9],
+        // ── LA FORMATION PRATICIEN (10 modules — restructurée Option B) ─────────────────────────
+        // 00 : Anatomie (inchangé)
+        // 01 : Condensé Soi+Blessures+Bonheur (ex-modules 01-03)
+        // 02 : Condensé Souffle+Mission+Vision initiation (ex-modules 04-06)
+        // 07-09 : Vision maîtrise · Discipline · Rituel (inchangés)
+        // 10-13 : 4 modules professionnels exclusifs (nouveaux)
+        ['slug' => '00-comprendre-le-corps',                       'title' => 'Comprendre le Corps — Anatomie & Physiologie',                          'week_label' => 'Module 00', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 0],
+        ['slug' => '01-je-me-connais-pour-accompagner',            'title' => 'Je me connais pour accompagner — Soi, Blessures & Bonheur',            'week_label' => 'Module 01', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 1],
+        ['slug' => '02-je-maitrise-les-outils-du-souffle',         'title' => 'Je maîtrise les outils du souffle — Respiration, Mission & Vision',    'week_label' => 'Module 02', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 2],
+        ['slug' => '07-je-maitrise-la-vision',                     'title' => 'Je maîtrise la Vision — Pratique Avancée & Transmission',              'week_label' => 'Module 07', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 3],
+        ['slug' => '08-je-renforce-ma-discipline',                 'title' => 'Je renforce ma Discipline — le Pouvoir du Quotidien',                  'week_label' => 'Module 08', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 4],
+        ['slug' => '09-je-transmets-le-rituel',                    'title' => 'Je transmets le Rituel Pause Souffle',                                  'week_label' => 'Module 09', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 5],
+        ['slug' => '10-la-posture-du-praticien',                   'title' => 'La Posture du Praticien — Présence, Voix & Burn-out',                  'week_label' => 'Module 10', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 6],
+        ['slug' => '11-lire-un-client-adapter-le-protocole',       'title' => 'Lire un Client — Adapter le Protocole',                                'week_label' => 'Module 11', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 7],
+        ['slug' => '12-construire-une-pratique-professionnelle',   'title' => 'Construire une Pratique Professionnelle',                               'week_label' => 'Module 12', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 8],
+        ['slug' => '13-limites-contre-indications-responsabilite', 'title' => 'Limites, Contre-indications & Responsabilité',                         'week_label' => 'Module 13', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 9],
     ];
 
     // ──────────────────────────────────────────────────────────
