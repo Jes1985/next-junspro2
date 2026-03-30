@@ -325,12 +325,16 @@ class StripeService
     }
 
     // ─────────────────────────────────────────────────────────
-    // PAUSE SOUFFLE — PARCOURS (2 Formations + Pack Intégral)
+    // PAUSE SOUFFLE — PARCOURS (3 Étapes + Pack Intégral)
+    // Étape 1 : Se Retrouver — 2 190 €
+    // Étape 2 : Se Construire — 2 490 €
+    // Étape 3 : S'Ouvrir     — 2 990 €
+    // Pack Intégral (3 étapes) — 6 390 € (remise 18 %)
     // ─────────────────────────────────────────────────────────
 
     /**
-     * Parcours 1 "Se Retrouver" — 3 490 € (paiement unique)
-     * Modules 01-11 · Certification Niveau 1 · Praticien Pause Souffle · Éveil
+     * Étape 1 "Se Retrouver" — 2 190 € (paiement unique)
+     * 10 modules · Certification Niveau 1 · Éveil
      */
     public function createFormationNiveau1CheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
     {
@@ -349,10 +353,10 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 349000,
+                    'unit_amount' => 219000,
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Parcours 1 — Se Retrouver',
-                        'description' => '11 modules en ligne · Certification Niveau 1 · Praticien Pause Souffle · Éveil',
+                        'name'        => 'Pause Souffle · Étape 1 — Se Retrouver',
+                        'description' => '10 modules en ligne · Certification Niveau 1 · Présence & Souffle · Éveil',
                     ],
                 ],
                 'quantity' => 1,
@@ -368,13 +372,13 @@ class StripeService
             ],
         ]);
 
-        Log::info('[StripeService] Session Formation Niveau 1 créée', ['session_id' => $session->id, 'user_id' => $userId]);
+        Log::info('[StripeService] Session Étape 1 créée', ['session_id' => $session->id, 'user_id' => $userId]);
 
         return $session;
     }
 
     /**
-     * Parcours 1 "Se Retrouver" — 3× mensualités de 1 164 €
+     * Étape 1 "Se Retrouver" — 3× mensualités de 730 €
      */
     public function createFormationNiveau1InstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
     {
@@ -393,11 +397,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 116700,
+                    'unit_amount' => 73000,
                     'recurring'   => ['interval' => 'month', 'interval_count' => 1],
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Parcours 1 — 3× mensualités',
-                        'description' => '3 mensualités de 1 167 € · Accès dès le 1er paiement',
+                        'name'        => 'Pause Souffle · Étape 1 — 3× mensualités',
+                        'description' => '3 mensualités de 730 € · Accès complet dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -422,14 +426,14 @@ class StripeService
             ],
         ]);
 
-        Log::info('[StripeService] Session Formation Niveau 1 mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
+        Log::info('[StripeService] Session Étape 1 mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
 
         return $session;
     }
 
     /**
-     * Parcours 2 "S'Ouvrir" — 3 490 € (paiement unique)
-     * Modules 12-24 · Certification Niveau 2 · Praticien Pause Souffle · Maître
+     * Étape 2 "Se Construire" — 2 590 € (paiement unique)
+     * 13 modules · Certification Niveau 2 · Ancrage
      */
     public function createFormationNiveau2CheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
     {
@@ -448,10 +452,10 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 349000,
+                    'unit_amount' => 249000,
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Parcours 2 — S\'Ouvrir',
-                        'description' => '13 modules en ligne · Certification Niveau 2 · Praticien Pause Souffle · Maître',
+                        'name'        => 'Pause Souffle · Étape 2 — Se Construire',
+                        'description' => '13 modules en ligne · Certification Niveau 2 · Corps, Énergie & Discipline · Ancrage',
                     ],
                 ],
                 'quantity' => 1,
@@ -467,13 +471,13 @@ class StripeService
             ],
         ]);
 
-        Log::info('[StripeService] Session Formation Niveau 2 créée', ['session_id' => $session->id, 'user_id' => $userId]);
+        Log::info('[StripeService] Session Étape 2 créée', ['session_id' => $session->id, 'user_id' => $userId]);
 
         return $session;
     }
 
     /**
-     * Parcours 2 "S'Ouvrir" — 3× mensualités de 1 164 €
+     * Étape 2 "Se Construire" — 3× mensualités de 830 €
      */
     public function createFormationNiveau2InstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
     {
@@ -492,11 +496,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 116700,
+                    'unit_amount' => 83000,
                     'recurring'   => ['interval' => 'month', 'interval_count' => 1],
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Parcours 2 — 3× mensualités',
-                        'description' => '3 mensualités de 1 167 € · Accès dès le 1er paiement',
+                        'name'        => 'Pause Souffle · Étape 2 — 3× mensualités',
+                        'description' => '3 mensualités de 830 € · Accès complet dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -521,14 +525,113 @@ class StripeService
             ],
         ]);
 
-        Log::info('[StripeService] Session Formation Niveau 2 mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
+        Log::info('[StripeService] Session Étape 2 mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
 
         return $session;
     }
 
     /**
-     * Pack Intégral (Parcours 1 + Parcours 2) — 5 990 € (paiement unique)
-     * Accès immédiat aux 22 modules · Certifications Niveaux 1 & 2
+     * Étape 3 "S'Ouvrir" — 2 990 € (paiement unique)
+     * 16 modules · Certification Niveau 3 · Relations, Sens & Maîtrise
+     */
+    public function createFormationNiveau3CheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 299000,
+                    'product_data' => [
+                        'name'        => 'Pause Souffle · Étape 3 — S\'Ouvrir',
+                        'description' => '16 modules en ligne · Certification Niveau 3 · Relations, Sens & Rayonnement · Maîtrise',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_parcours_3',
+                'user_id'            => $userId,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Étape 3 créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Étape 3 "S'Ouvrir" — 3× mensualités de 997 €
+     */
+    public function createFormationNiveau3InstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 99700,
+                    'recurring'   => ['interval' => 'month', 'interval_count' => 1],
+                    'product_data' => [
+                        'name'        => 'Pause Souffle · Étape 3 — 3× mensualités',
+                        'description' => '3 mensualités de 997 € · Accès complet dès le 1er paiement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_parcours_3_installment',
+                'user_id'            => $userId,
+                'max_installments'   => 3,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+            'subscription_data' => [
+                'metadata' => [
+                    'type'               => 'formation_parcours_3_installment',
+                    'user_id'            => $userId,
+                    'max_installments'   => 3,
+                    'ps_ambassador_code' => $psAmbassadorCode ?? '',
+                ],
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Étape 3 mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Pack Intégral (3 Étapes) — 6 390 € (paiement unique · remise 18 % vs 7 770 € unitaires)
+     * Accès immédiat aux 39 modules · Certifications Niveaux 1, 2 & 3
      */
     public function createFormationPackIntegralCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
     {
@@ -547,10 +650,10 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 599000,
+                    'unit_amount' => 639000,
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Pack Intégral — Se Retrouver & S\'Ouvrir',
-                        'description' => '22 modules en ligne · Certifications Niveau 1 & 2 · L\'une vous révèle. L\'autre vous épanouit.',
+                        'name'        => 'Pause Souffle · Pack Intégral — Se Retrouver, Se Construire & S\'Ouvrir',
+                        'description' => '39 modules en ligne · Certifications Niveaux 1, 2 & 3 · Accès immédiat · Économisez 1 380 €',
                     ],
                 ],
                 'quantity' => 1,
@@ -572,7 +675,7 @@ class StripeService
     }
 
     /**
-     * Pack Intégral — 3× mensualités de 1 997 €
+     * Pack Intégral — 6× mensualités de 1 065 €
      */
     public function createFormationPackIntegralInstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
     {
@@ -591,11 +694,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 199700,
+                    'unit_amount' => 106500,
                     'recurring'   => ['interval' => 'month', 'interval_count' => 1],
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Pack Intégral — 3× mensualités',
-                        'description' => '3 mensualités de 1 997 € · Accès aux 22 modules dès le 1er paiement',
+                        'name'        => 'Pause Souffle · Pack Intégral — 6× mensualités',
+                        'description' => '6 mensualités de 1 065 € · Accès aux 39 modules dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -607,14 +710,14 @@ class StripeService
             'metadata' => [
                 'type'               => 'formation_pack_integral_installment',
                 'user_id'            => $userId,
-                'max_installments'   => 3,
+                'max_installments'   => 6,
                 'ps_ambassador_code' => $psAmbassadorCode ?? '',
             ],
             'subscription_data' => [
                 'metadata' => [
                     'type'               => 'formation_pack_integral_installment',
                     'user_id'            => $userId,
-                    'max_installments'   => 3,
+                    'max_installments'   => 6,
                     'ps_ambassador_code' => $psAmbassadorCode ?? '',
                 ],
             ],

@@ -47,6 +47,17 @@ class AffiliateConversion extends Model
         'homeswap'     => 'HomeSwap',
         'subscription' => 'Abonnement',
         'other'        => 'Autre',
+        // ─── Parcours Pause Souffle ───────────────────────────
+        'formation_parcours_1'              => 'Parcours · Étape 1',
+        'formation_parcours_2'              => 'Parcours · Étape 2',
+        'formation_parcours_3'              => 'Parcours · Étape 3',
+        'formation_parcours_1_installment'  => 'Parcours · Étape 1 (mensualités)',
+        'formation_parcours_2_installment'  => 'Parcours · Étape 2 (mensualités)',
+        'formation_parcours_3_installment'  => 'Parcours · Étape 3 (mensualités)',
+        'formation_pack_integral'           => 'Pack Intégral',
+        'formation_pack_integral_installment' => 'Pack Intégral (mensualités)',
+        'formation_praticien'               => 'Formation Praticien',
+        'formation_praticien_installment'   => 'Formation Praticien (mensualités)',
     ];
 
     // ─── Relations ────────────────────────────────────────────

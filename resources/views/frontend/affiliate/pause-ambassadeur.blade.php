@@ -660,11 +660,11 @@
           <div class="psa-metric__label">Cookie tracking</div>
         </div>
         <div class="psa-metric">
-          <div class="psa-metric__value">4</div>
+          <div class="psa-metric__value">6</div>
           <div class="psa-metric__label">Programmes PS</div>
         </div>
         <div class="psa-metric">
-          <div class="psa-metric__value">1 695€</div>
+          <div class="psa-metric__value">3 139€</div>
           <div class="psa-metric__label">Par filleul complet</div>
         </div>
       </div>
@@ -802,7 +802,7 @@
   <div style="background: var(--ps-bg);">
     <div class="psa-section" style="padding-bottom: 0;">
       <div class="psa-section__eyebrow">Commissions · Structure inversée</div>
-      <h2 class="psa-section__title">Les <strong>4 programmes</strong><br>et leurs commissions</h2>
+      <h2 class="psa-section__title">Les <strong>6 programmes</strong><br>et leurs commissions</h2>
       <p class="psa-section__subtitle">
         Plus le produit est digital et scalable, plus la commission est haute.
         Plus il implique des coûts physiques, plus elle est prudente.
@@ -812,29 +812,47 @@
 
     <div style="max-width: 1100px; margin: 0 auto; border: 1px solid var(--ps-gold-border);">
       <div class="psa-products">
-        {{-- Parcours --}}
+        {{-- Étape 1 --}}
         <div class="psa-product-card psa-product-card--parcours">
-          <div class="psa-product-card__step">Étape 1 · Pour soi · Entrée</div>
-          <div class="psa-product-card__name">Le Parcours<br>Pause Souffle</div>
-          <div class="psa-product-card__desc">6 modules en ligne · 8 semaines · Transformation personnelle profonde · Attestation Retour à Soi</div>
-          <div class="psa-product-card__price">3 490 €</div>
+          <div class="psa-product-card__step">Étape 1 · Transformation · Éveil</div>
+          <div class="psa-product-card__name">Se Retrouver<br><span style="font-size:0.8em;opacity:0.65;">Parcours Pause Souffle</span></div>
+          <div class="psa-product-card__desc">10 modules en ligne · Présence & Souffle · Certification Niveau 1 · Éveil</div>
+          <div class="psa-product-card__price">2 190 €</div>
           <div class="psa-product-card__rate">25%</div>
-          <div class="psa-product-card__earn">Vous gagnez ≈ 873 €</div>
+          <div class="psa-product-card__earn">Vous gagnez ≈ 547 €</div>
         </div>
-        {{-- Freelance --}}
+        {{-- Étape 2 --}}
+        <div class="psa-product-card psa-product-card--parcours">
+          <div class="psa-product-card__step">Étape 2 · Transformation · Ancrage</div>
+          <div class="psa-product-card__name">Se Construire<br><span style="font-size:0.8em;opacity:0.65;">Parcours Pause Souffle</span></div>
+          <div class="psa-product-card__desc">13 modules en ligne · Corps, Énergie & Discipline · Certification Niveau 2 · Ancrage</div>
+          <div class="psa-product-card__price">2 490 €</div>
+          <div class="psa-product-card__rate">25%</div>
+          <div class="psa-product-card__earn">Vous gagnez ≈ 622 €</div>
+        </div>
+        {{-- Étape 3 --}}
+        <div class="psa-product-card psa-product-card--parcours">
+          <div class="psa-product-card__step">Étape 3 · Transformation · Maîtrise</div>
+          <div class="psa-product-card__name">S’Ouvrir<br><span style="font-size:0.8em;opacity:0.65;">Parcours Pause Souffle</span></div>
+          <div class="psa-product-card__desc">16 modules en ligne · Relations, Sens & Rayonnement · Certification Niveau 3 · Maîtrise</div>
+          <div class="psa-product-card__price">2 990 €</div>
+          <div class="psa-product-card__rate">25%</div>
+          <div class="psa-product-card__earn">Vous gagnez ≈ 747 €</div>
+        </div>
+        {{-- Formation Praticien --}}
         <div class="psa-product-card psa-product-card--freelance">
-          <div class="psa-product-card__step">Étape 2 · Professionnel</div>
-          <div class="psa-product-card__name">Devenir Freelance<br>Pause Souffle</div>
-          <div class="psa-product-card__desc">Maîtriser et animer les Rituels · Exercer en cabinet ou entreprise · Certification Freelance</div>
+          <div class="psa-product-card__step">Professionnel · Accompagnement</div>
+          <div class="psa-product-card__name">Formation<br>Praticien PS</div>
+          <div class="psa-product-card__desc">Maîtriser et animer les Rituels · Exercer en cabinet ou entreprise · Certification Praticien</div>
           <div class="psa-product-card__price">3 490 €</div>
           <div class="psa-product-card__rate" style="color: #a78bfa;">20%</div>
           <div class="psa-product-card__earn">Vous gagnez ≈ 698 €</div>
         </div>
         {{-- Formateur --}}
         <div class="psa-product-card psa-product-card--formateur">
-          <div class="psa-product-card__step">Étape 3 · Transmission</div>
+          <div class="psa-product-card__step">Transmission · Formation</div>
           <div class="psa-product-card__name">Formation<br>Formateur PS</div>
-          <div class="psa-product-card__desc">Former et accompagner d'autres freelances · Animer des groupes · Habilitation Formateur</div>
+          <div class="psa-product-card__desc">Former et accompagner d’autres praticiens · Animer des groupes · Habilitation Formateur</div>
           <div class="psa-product-card__price">3 500 €</div>
           <div class="psa-product-card__rate" style="color: #60a5fa;">15%</div>
           <div class="psa-product-card__earn">Vous gagnez ≈ 525 €</div>
@@ -873,13 +891,35 @@
           <div class="psa-journey__steps">
             <div class="psa-journey__step">
               <div class="psa-journey__left">
-                <div class="psa-journey__earn">873 €</div>
+                <div class="psa-journey__earn">547 €</div>
                 <div class="psa-journey__earn-label">commission ambassadeur</div>
               </div>
               <div class="psa-journey__node">1</div>
               <div class="psa-journey__right">
-                <div class="psa-journey__product-name">Le Parcours Pause Souffle</div>
-                <div class="psa-journey__product-price">3 490 € · 25%</div>
+                <div class="psa-journey__product-name">Étape 1 — Se Retrouver</div>
+                <div class="psa-journey__product-price">2 190 € · 25%</div>
+              </div>
+            </div>
+            <div class="psa-journey__step">
+              <div class="psa-journey__left">
+                <div class="psa-journey__earn">622 €</div>
+                <div class="psa-journey__earn-label">commission ambassadeur</div>
+              </div>
+              <div class="psa-journey__node">2</div>
+              <div class="psa-journey__right">
+                <div class="psa-journey__product-name">Étape 2 — Se Construire</div>
+                <div class="psa-journey__product-price">2 490 € · 25%</div>
+              </div>
+            </div>
+            <div class="psa-journey__step">
+              <div class="psa-journey__left">
+                <div class="psa-journey__earn">747 €</div>
+                <div class="psa-journey__earn-label">commission ambassadeur</div>
+              </div>
+              <div class="psa-journey__node">3</div>
+              <div class="psa-journey__right">
+                <div class="psa-journey__product-name">Étape 3 — S’Ouvrir</div>
+                <div class="psa-journey__product-price">2 990 € · 25%</div>
               </div>
             </div>
             <div class="psa-journey__step">
@@ -898,9 +938,9 @@
                 <div class="psa-journey__earn" style="color: #a78bfa;">698 €</div>
                 <div class="psa-journey__earn-label">commission ambassadeur</div>
               </div>
-              <div class="psa-journey__node">2</div>
+              <div class="psa-journey__node">4</div>
               <div class="psa-journey__right">
-                <div class="psa-journey__product-name">Freelance Pause Souffle</div>
+                <div class="psa-journey__product-name">Formation Praticien PS</div>
                 <div class="psa-journey__product-price">3 490 € · 20%</div>
               </div>
             </div>
@@ -909,17 +949,17 @@
                 <div class="psa-journey__earn" style="color: #60a5fa;">525 €</div>
                 <div class="psa-journey__earn-label">commission ambassadeur</div>
               </div>
-              <div class="psa-journey__node">3</div>
+              <div class="psa-journey__node">5</div>
               <div class="psa-journey__right">
-                <div class="psa-journey__product-name">Formation Formateur</div>
+                <div class="psa-journey__product-name">Formation Formateur PS</div>
                 <div class="psa-journey__product-price">3 500 € · 15%</div>
               </div>
             </div>
           </div>
           <div class="psa-journey__total">
             <div class="psa-journey__total-label">Total possible pour un seul filleul</div>
-            <div class="psa-journey__total-value">≈ <span>1 695 €</span></div>
-            <div class="psa-journey__total-sub">En recommandant l'ensemble de l'écosystème</div>
+            <div class="psa-journey__total-value">≈ <span>3 139 €</span></div>
+            <div class="psa-journey__total-sub">En recommandant l’écosystème complet (hors Retraite)</div>
           </div>
         </div>
       </div>
@@ -950,7 +990,7 @@
           <ul class="psa-tier__benefits">
             <li class="psa-tier__benefit">Lien ambassadeur personnel (format /ps/{code})</li>
             <li class="psa-tier__benefit">Cookie tracking 90 jours</li>
-            <li class="psa-tier__benefit">Commissions sur les 4 programmes Pause Souffle</li>
+            <li class="psa-tier__benefit">Commissions sur les 6 programmes Pause Souffle</li>
             <li class="psa-tier__benefit">Tableau de bord complet avec suivi en temps réel</li>
             <li class="psa-tier__benefit">Paiement mensuel par virement SEPA</li>
           </ul>
