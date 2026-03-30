@@ -7608,6 +7608,1084 @@ Ce parcours a été un honneur.
 [pause 15s]
 SCRIPT,
 
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 01 — Je me connais pour accompagner
+        // ─────────────────────────────────────────────────────────
+        '01-je-me-connais-pour-accompagner' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Avant d'accompagner qui que ce soit...
+[pause 5s]
+il faut vous rencontrer vous-même.
+[pause 5s]
+Pas la version que vous présentez au monde.
+[pause 4s]
+Celle qui est là... maintenant... sous les rôles.
+[pause 10s]
+
+Carl Rogers a dit quelque chose de simple et de profond.
+[pause 5s]
+La relation d'aide la plus puissante n'est pas celle d'un expert vers un novice.
+[pause 5s]
+C'est celle d'un être humain qui se connaît... vers un être humain qui cherche à se retrouver.
+[pause 10s]
+
+Ce module est le premier de votre formation praticien.
+[pause 5s]
+Il ne commence pas par des techniques.
+[pause 4s]
+Il commence par vous.
+[pause 8s]
+
+Fermez les yeux.
+[pause 6s]
+
+Trois respirations conscientes pour arriver ici.
+[pause 20s]
+
+Maintenant... posez cette question à votre corps.
+[pause 6s]
+Qui suis-je... quand personne ne me regarde ?
+[pause 15s]
+
+Pas une réponse rapide.
+[pause 5s]
+Laissez venir ce qui vient.
+[pause 12s]
+
+Un praticien efficace ne guide pas à travers ses théories.
+[pause 5s]
+Il guide à travers ce qu'il a traversé.
+[pause 5s]
+Ses blessures conscientes deviennent des clés.
+[pause 5s]
+Ses ressources développées deviennent des ponts.
+[pause 10s]
+
+Pensez à une blessure que vous portez... que vous avez commencé à apprivoiser.
+[pause 8s]
+Pas à expliquer aux autres.
+[pause 5s]
+Juste à reconnaître en vous.
+[pause 8s]
+
+Où est-elle dans votre corps ?
+[pause 5s]
+Comment se manifeste-t-elle encore aujourd'hui ?
+[pause 12s]
+
+Et maintenant... pensez à une ressource.
+[pause 6s]
+Quelque chose que vous avez développé... souvent à travers l'épreuve.
+[pause 5s]
+Une capacité à écouter.
+[pause 4s]
+Une présence tranquille.
+[pause 4s]
+Une intuition sur les états émotionnels des autres.
+[pause 8s]
+
+Cette ressource... vous la portez depuis longtemps.
+[pause 5s]
+Et c'est précisément elle qui va nourrir votre pratique.
+[pause 10s]
+
+C'est par le corps que nous ancrons ce travail.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence à vous-même.
+[pause 6s]
+
+À l'inspiration... laissez entrer la connaissance de soi.
+[pause 4s]
+Au blocage... restez avec ce que vous êtes.
+[pause 4s]
+À l'expiration... laissez partir ce qui n'est pas vous.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est la fondation de votre pratique.
+[pause 5s]
+Ce que vous touchez là... vous pouvez l'offrir à d'autres.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quelle est la blessure qui vous a le plus façonné... et que vous avez commencé à transformer en compréhension ?
+[pause 18s]
+
+Quelle est la ressource la plus profonde que vous apportez dans une relation d'aide ?
+[pause 18s]
+
+En une phrase... qui êtes-vous comme praticien ?
+[pause 18s]
+
+Notez ce qui est venu dans votre carnet.
+[pause 5s]
+Sans corriger.
+[pause 5s]
+Sans minimiser.
+[pause 8s]
+
+Vous commencez ici.
+[pause 5s]
+Avec ce que vous êtes.
+[pause 5s]
+C'est suffisant.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 02 — Je maîtrise les outils du souffle
+        // ─────────────────────────────────────────────────────────
+        '02-je-maitrise-les-outils-du-souffle' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Vous avez une intuition sur le souffle.
+[pause 5s]
+Vous sentez ce qu'il fait en vous.
+[pause 5s]
+Ce module vous donne les mots précis.
+[pause 4s]
+Et les outils pour les transmettre.
+[pause 10s]
+
+Un praticien Pause Souffle ne travaille pas avec une seule technique.
+[pause 5s]
+Il travaille avec un répertoire.
+[pause 5s]
+Sept outils distincts.
+[pause 5s]
+Chacun pour un état... un besoin... un moment spécifique.
+[pause 10s]
+
+Fermez les yeux.
+[pause 6s]
+
+Trois respirations pour arriver ici.
+[pause 20s]
+
+Le premier outil... vous le connaissez.
+[pause 5s]
+La Pause Souffle cinq-cinq-cinq.
+[pause 5s]
+Cohérence cardiaque.
+[pause 4s]
+Régulation du système nerveux autonome.
+[pause 4s]
+Activation du nerf vague.
+[pause 5s]
+C'est votre ancre centrale.
+[pause 8s]
+
+Le deuxième outil.
+[pause 5s]
+Le souffle de feu.
+[pause 5s]
+Inspirations et expirations courtes et rythmées par le nez.
+[pause 5s]
+Il active... éveille... libère les tensions accumulées.
+[pause 8s]
+
+Le troisième.
+[pause 5s]
+Le souffle alterné.
+[pause 5s]
+Narine droite... narine gauche... à tour de rôle.
+[pause 5s]
+Il équilibre les deux hémisphères du cerveau.
+[pause 4s]
+Clarté mentale.
+[pause 4s]
+Calme intérieur.
+[pause 8s]
+
+Le quatrième.
+[pause 5s]
+L'expiration prolongée.
+[pause 5s]
+Inspir sur quatre secondes... expir sur huit.
+[pause 5s]
+Le frein parasympathique le plus rapide qui soit.
+[pause 5s]
+Pour les urgences émotionnelles... le retour à la fenêtre de tolérance.
+[pause 8s]
+
+Le cinquième.
+[pause 5s]
+Le souffle en carré.
+[pause 5s]
+Quatre entrées... quatre blocages... quatre sorties... quatre pauses.
+[pause 5s]
+Utilisé par les forces spéciales pour rester calme sous pression extrême.
+[pause 8s]
+
+Le sixième.
+[pause 5s]
+Le souffle de cohérence étendue.
+[pause 5s]
+Six secondes d'inspiration... six secondes d'expiration.
+[pause 5s]
+Synchronisation optimale cœur-cerveau.
+[pause 4s]
+Pour les séances longues... les états profonds.
+[pause 8s]
+
+Le septième.
+[pause 5s]
+Le souffle de libération sonore.
+[pause 5s]
+Expiration avec un son... un soupir... un murmure.
+[pause 5s]
+Le son vibre dans le nerf vague.
+[pause 4s]
+Il libère ce que le corps retient en silence.
+[pause 10s]
+
+Sept outils.
+[pause 5s]
+Sept clés pour sept états.
+[pause 5s]
+Un praticien qui les maîtrise adapte sa séance à chaque client... à chaque moment.
+[pause 10s]
+
+C'est par le corps que nous ancrons cette maîtrise.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de présence dans votre répertoire.
+[pause 6s]
+
+À l'inspiration... laissez entrer la maîtrise.
+[pause 4s]
+Au blocage... sentez la solidité de ce que vous portez.
+[pause 4s]
+À l'expiration... imaginez le transmettre avec clarté.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est votre terrain de pratique.
+[pause 5s]
+C'est là que vous allez travailler.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quel outil du souffle correspond le mieux à votre énergie naturelle de praticien ?
+[pause 18s]
+
+Pour quel type de client ou de situation voulez-vous vous entraîner en priorité ?
+[pause 18s]
+
+Quelle est votre mission de praticien du souffle... en une phrase ?
+[pause 18s]
+
+Notez ce qui est venu dans votre carnet.
+[pause 5s]
+Les outils appartiennent à ceux qui les pratiquent.
+[pause 5s]
+Pratiquez chaque jour.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 10 — La Posture du Praticien
+        // ─────────────────────────────────────────────────────────
+        '10-la-posture-du-praticien' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Il y a une différence fondamentale entre savoir guider un souffle...
+[pause 5s]
+et être un praticien.
+[pause 5s]
+Cette différence... c'est la posture.
+[pause 10s]
+
+La posture du praticien n'est pas une technique.
+[pause 5s]
+C'est un état d'être.
+[pause 5s]
+Une façon d'occuper l'espace... d'habiter votre voix... de gérer votre état intérieur...
+[pause 4s]
+avant même que votre client entre dans la salle.
+[pause 10s]
+
+Fermez les yeux.
+[pause 6s]
+
+Trois respirations pour arriver ici.
+[pause 20s]
+
+La première dimension de la posture... c'est la présence physique.
+[pause 6s]
+
+Un praticien dont le corps est affaissé... agité... tendu...
+[pause 5s]
+transmet cet état à son client... avant d'avoir prononcé un mot.
+[pause 5s]
+Le système nerveux de l'autre vous lit.
+[pause 5s]
+En quelques secondes.
+[pause 5s]
+Il est câblé pour ça.
+[pause 8s]
+
+Sentez votre corps maintenant.
+[pause 5s]
+Les pieds au sol.
+[pause 4s]
+Le dos droit mais vivant.
+[pause 4s]
+Les épaules relâchées.
+[pause 4s]
+Le visage ouvert.
+[pause 6s]
+
+Cette posture physique est déjà un message.
+[pause 5s]
+Elle dit... je suis là.
+[pause 4s]
+Je suis stable.
+[pause 4s]
+Tu es en sécurité.
+[pause 10s]
+
+La deuxième dimension... la voix thérapeutique.
+[pause 6s]
+
+La voix d'un praticien n'est pas sa voix quotidienne.
+[pause 5s]
+Elle est plus lente.
+[pause 4s]
+Plus grave.
+[pause 4s]
+Plus posée.
+[pause 5s]
+Elle descend... plutôt qu'elle ne monte.
+[pause 5s]
+Elle crée un espace... plutôt qu'elle ne le remplit.
+[pause 8s]
+
+Votre voix peut activer ou désactiver le système nerveux de l'autre.
+[pause 5s]
+Chaque mot.
+[pause 4s]
+Chaque pause.
+[pause 4s]
+Chaque variation de ton.
+[pause 5s]
+C'est votre instrument thérapeutique principal.
+[pause 10s]
+
+La troisième dimension... l'état intérieur.
+[pause 6s]
+
+Un praticien ne peut pas être dans la peur... la performance... ou le jugement...
+[pause 5s]
+et en même temps créer un espace de sécurité pour son client.
+[pause 5s]
+Les deux choses ne peuvent pas coexister.
+[pause 8s]
+
+Avant chaque séance... prenez trois cycles de souffle conscient.
+[pause 5s]
+Pas pour vous préparer à performer.
+[pause 4s]
+Pour vous rappeler qui vous êtes.
+[pause 5s]
+Un espace.
+[pause 4s]
+Pas une solution.
+[pause 10s]
+
+La quatrième dimension... la prévention du burn-out du praticien.
+[pause 6s]
+
+Un praticien qui donne sans se recharger... s'épuise.
+[pause 5s]
+Ce n'est pas une faiblesse.
+[pause 4s]
+C'est la biologie.
+[pause 6s]
+
+La règle est simple.
+[pause 5s]
+Ce que vous demandez à vos clients de faire... vous le faites aussi.
+[pause 4s]
+Chaque jour.
+[pause 4s]
+Sans exception.
+[pause 10s]
+
+C'est par le corps que nous ancrons cette posture.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie dans la posture du praticien.
+[pause 6s]
+
+À l'inspiration... laissez entrer la stabilité.
+[pause 4s]
+Au blocage... tenez l'espace.
+[pause 4s]
+À l'expiration... offrez la sécurité.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est votre posture naturelle.
+[pause 5s]
+Elle existe en vous.
+[pause 5s]
+Ce module vous aide à l'habiter consciemment.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quelle dimension de la posture demande le plus de travail pour vous... physique... voix... état intérieur... ou ressourcement ?
+[pause 18s]
+
+Qu'est-ce que vous faites déjà naturellement bien dans votre posture de praticien ?
+[pause 18s]
+
+Quel rituel de ressourcement allez-vous mettre en place cette semaine ?
+[pause 18s]
+
+Notez ce qui est venu dans votre carnet.
+[pause 5s]
+La posture se cultive dans le quotidien.
+[pause 5s]
+Pas seulement devant un client.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 11 — Lire un Client, Adapter le Protocole
+        // ─────────────────────────────────────────────────────────
+        '11-lire-un-client-adapter-le-protocole' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Un protocole rigide... appliqué de la même façon à tout le monde...
+[pause 5s]
+n'est pas une pratique professionnelle.
+[pause 5s]
+C'est une prestation standardisée.
+[pause 8s]
+
+Un praticien se distingue par sa capacité à lire.
+[pause 5s]
+À percevoir.
+[pause 4s]
+À adapter.
+[pause 4s]
+En temps réel.
+[pause 10s]
+
+Ce module vous donne les clés de cette intelligence relationnelle.
+[pause 8s]
+
+Fermez les yeux.
+[pause 6s]
+
+Trois respirations pour arriver ici.
+[pause 20s]
+
+Commençons par les quatre profils de client.
+[pause 6s]
+
+Le premier profil.
+[pause 5s]
+Le client analytique.
+[pause 5s]
+Il a besoin de comprendre avant de ressentir.
+[pause 5s]
+Donnez-lui l'anatomie... la physiologie... les études.
+[pause 4s]
+Expliquez avant de guider.
+[pause 4s]
+Sa porte d'entrée... c'est l'intellect.
+[pause 8s]
+
+Le deuxième profil.
+[pause 5s]
+Le client émotionnel.
+[pause 5s]
+Il est déjà dans le ressenti.
+[pause 4s]
+Il a besoin de sécurité d'abord.
+[pause 4s]
+De votre présence.
+[pause 4s]
+Pas d'explications.
+[pause 5s]
+Sa porte d'entrée... c'est la connexion humaine.
+[pause 8s]
+
+Le troisième profil.
+[pause 5s]
+Le client sceptique.
+[pause 5s]
+Il teste.
+[pause 4s]
+Il observe.
+[pause 4s]
+Il est là malgré lui... ou presque.
+[pause 5s]
+Ne cherchez pas à le convaincre.
+[pause 4s]
+Laissez l'expérience parler.
+[pause 5s]
+Sa porte d'entrée... c'est le résultat concret.
+[pause 8s]
+
+Le quatrième profil.
+[pause 5s]
+Le client en crise.
+[pause 5s]
+Il est saturé.
+[pause 4s]
+Épuisé.
+[pause 4s]
+Submergé.
+[pause 5s]
+Il a besoin d'un ancrage immédiat.
+[pause 4s]
+Pas de théorie.
+[pause 4s]
+Juste... revenir au corps.
+[pause 4s]
+Là.
+[pause 3s]
+Maintenant.
+[pause 8s]
+
+Maintenant... les cinq canaux non-verbaux.
+[pause 6s]
+
+Ce que votre client vous dit par son corps... avant de parler.
+[pause 6s]
+
+La respiration.
+[pause 5s]
+Est-elle courte... haute... bloquée... ou ample ?
+[pause 8s]
+
+La posture.
+[pause 5s]
+Affaissée... fermée... rigide... ou ouverte ?
+[pause 8s]
+
+Le regard.
+[pause 5s]
+Fuyant... fixe... présent... ou absent ?
+[pause 8s]
+
+La voix.
+[pause 5s]
+Rapide... monotone... tremblante... ou posée ?
+[pause 8s]
+
+Le tonus général.
+[pause 5s]
+Hyper-activé... figé... ou disponible ?
+[pause 8s]
+
+Ces cinq canaux... ensemble... vous donnent le tableau de votre client.
+[pause 5s]
+Avant même qu'il vous ait dit un mot.
+[pause 10s]
+
+C'est par le corps que nous ancrons cette perception.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie d'attention ouverte.
+[pause 6s]
+
+À l'inspiration... ouvrez votre perception.
+[pause 4s]
+Au blocage... laissez entrer l'information.
+[pause 4s]
+À l'expiration... restez disponible.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est la fondation de votre perception.
+[pause 5s]
+Un praticien détendu perçoit mieux qu'un praticien concentré.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Parmi les quatre profils... lequel vous met le plus en défi ?
+[pause 18s]
+
+Quel canal non-verbal lisez-vous naturellement le mieux ?
+[pause 18s]
+
+Quelle est la question d'entrée que vous posez en début de séance pour calibrer votre approche ?
+[pause 18s]
+
+Notez ce qui est venu dans votre carnet.
+[pause 5s]
+La lecture du client est un art.
+[pause 5s]
+Il se développe à chaque séance.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 12 — Construire une Pratique Professionnelle
+        // ─────────────────────────────────────────────────────────
+        '12-construire-une-pratique-professionnelle' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Vous pouvez être le meilleur praticien du monde.
+[pause 5s]
+Si personne ne sait que vous existez...
+[pause 5s]
+votre pratique reste une intention.
+[pause 10s]
+
+Ce module ne parle pas de marketing au sens publicitaire.
+[pause 5s]
+Il parle de quelque chose de plus fondamental.
+[pause 5s]
+La construction d'une pratique qui vous ressemble.
+[pause 5s]
+Et qui sert vraiment les personnes qui en ont besoin.
+[pause 10s]
+
+Fermez les yeux.
+[pause 6s]
+
+Trois respirations pour arriver ici.
+[pause 20s]
+
+Premièrement... l'offre de service.
+[pause 6s]
+
+Un praticien Pause Souffle peut proposer quatre formats principaux.
+[pause 5s]
+
+La séance individuelle.
+[pause 5s]
+En cabinet... à domicile... ou en ligne.
+[pause 4s]
+45 à 90 minutes.
+[pause 4s]
+L'accompagnement le plus personnalisé.
+[pause 8s]
+
+L'atelier collectif.
+[pause 5s]
+Deux à vingt personnes.
+[pause 4s]
+En entreprise... en salle... en plein air.
+[pause 4s]
+Format énergie haute... impact immédiat.
+[pause 8s]
+
+Le programme d'accompagnement.
+[pause 5s]
+Six à douze semaines.
+[pause 4s]
+Séances régulières... progression mesurable.
+[pause 4s]
+La transformation la plus profonde.
+[pause 8s]
+
+La retraite ou le séminaire.
+[pause 5s]
+L'expérience immersive.
+[pause 4s]
+L'impact démultiplié.
+[pause 8s]
+
+Deuxièmement... la tarification.
+[pause 6s]
+
+Votre tarif n'est pas un chiffre aléatoire.
+[pause 5s]
+C'est une déclaration de valeur.
+[pause 5s]
+Trop bas... et vous vous dévaluez vous-même.
+[pause 4s]
+Vous envoyez un signal de manque de confiance.
+[pause 5s]
+Le bon tarif correspond à votre niveau de formation...
+[pause 4s]
+à la valeur transformationnelle que vous apportez...
+[pause 4s]
+et au marché local.
+[pause 8s]
+
+Troisièmement... les trois premiers clients.
+[pause 6s]
+
+Ce ne sont pas vos meilleurs clients.
+[pause 5s]
+Ce sont vos professeurs.
+[pause 5s]
+Les plus précieux.
+[pause 5s]
+Cherchez-les dans votre entourage direct.
+[pause 4s]
+Proposez les premières séances en échange de retours honnêtes.
+[pause 4s]
+Pas en échange d'avis publics.
+[pause 4s]
+En échange de vérité.
+[pause 8s]
+
+Quatrièmement... la présence digitale minimale.
+[pause 6s]
+
+Vous n'avez pas besoin d'un funnel marketing complexe pour commencer.
+[pause 5s]
+Vous avez besoin d'une chose.
+[pause 5s]
+Que les bonnes personnes puissent vous trouver et vous contacter.
+[pause 5s]
+Un profil clair... une offre lisible... un moyen de prendre rendez-vous.
+[pause 5s]
+C'est tout.
+[pause 10s]
+
+C'est par le corps que nous ancrons cette vision.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie pour incarner votre pratique.
+[pause 6s]
+
+À l'inspiration... voyez votre pratique déjà vivante.
+[pause 4s]
+Au blocage... tenez cette vision.
+[pause 4s]
+À l'expiration... laissez partir les peurs de ne pas être prêt.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est la confiance en ce que vous construisez.
+[pause 5s]
+Elle existe.
+[pause 5s]
+Elle grandit à chaque séance.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Quel format de service correspond le plus à votre énergie naturelle ?
+[pause 18s]
+
+Qui sont les trois premières personnes que vous pourriez accompagner dans votre entourage ?
+[pause 18s]
+
+Quelle peur vous retient encore de vous lancer... et qu'est-ce qui serait vrai si cette peur n'existait pas ?
+[pause 18s]
+
+Notez ce qui est venu dans votre carnet.
+[pause 5s]
+Votre pratique commence au moment où vous décidez qu'elle a commencé.
+[pause 5s]
+Pas quand vous serez parfaitement prêt.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 13 — Limites, Contre-indications & Responsabilité
+        // ─────────────────────────────────────────────────────────
+        '13-limites-contre-indications-responsabilite' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+L'éthique n'est pas une contrainte.
+[pause 5s]
+C'est la structure qui vous protège... vous... et vos clients.
+[pause 5s]
+Sans limites claires... une pratique professionnelle ne tient pas.
+[pause 10s]
+
+Ce module est l'un des plus importants de votre formation.
+[pause 5s]
+Pas le plus spectaculaire.
+[pause 4s]
+Le plus fondamental.
+[pause 10s]
+
+Fermez les yeux.
+[pause 6s]
+
+Trois respirations pour arriver ici.
+[pause 20s]
+
+Premièrement... les cinq situations qui nécessitent l'arrêt de la séance.
+[pause 6s]
+
+Une... hyperventilation incontrôlée.
+[pause 5s]
+Si le client perd le contrôle de sa respiration... arrêt immédiat.
+[pause 4s]
+Retour à la respiration naturelle.
+[pause 4s]
+Jamais de pression.
+[pause 8s]
+
+Deux... crise émotionnelle intense.
+[pause 5s]
+Pleurs incontrôlables... agitation majeure... état dissociatif.
+[pause 5s]
+Le praticien ne continue pas.
+[pause 4s]
+Il pose une présence.
+[pause 4s]
+Il stabilise.
+[pause 8s]
+
+Trois... douleur physique.
+[pause 5s]
+Toute douleur signalée... aussi minime soit-elle... justifie un ajustement ou un arrêt.
+[pause 5s]
+Le corps parle.
+[pause 4s]
+Écoutez-le.
+[pause 8s]
+
+Quatre... vertiges ou malaise.
+[pause 5s]
+Fréquents lors de techniques intenses.
+[pause 4s]
+Faites allonger.
+[pause 4s]
+Hydratation.
+[pause 4s]
+Repos.
+[pause 8s]
+
+Cinq... refus ou désir d'arrêt.
+[pause 5s]
+Si le client veut s'arrêter... pour quelque raison que ce soit...
+[pause 5s]
+on s'arrête.
+[pause 4s]
+Sans discussion.
+[pause 4s]
+Sans jugement.
+[pause 8s]
+
+Deuxièmement... les contre-indications médicales.
+[pause 6s]
+
+Toujours demander... avant toute séance.
+[pause 5s]
+Troubles cardiaques.
+[pause 4s]
+Épilepsie.
+[pause 4s]
+Grossesse avancée.
+[pause 4s]
+État psychiatrique non stabilisé.
+[pause 4s]
+Tension artérielle non contrôlée.
+[pause 5s]
+Consultez le médecin traitant si vous avez le moindre doute.
+[pause 5s]
+Ce n'est pas à vous de diagnostiquer.
+[pause 4s]
+C'est à vous d'orienter.
+[pause 8s]
+
+Troisièmement... le RGPD et la confidentialité.
+[pause 6s]
+
+Les données personnelles de vos clients sont protégées.
+[pause 5s]
+Nom... état de santé... informations partagées en séance.
+[pause 5s]
+Rien ne sort de la relation praticien-client sans consentement explicite.
+[pause 5s]
+Aucune exception.
+[pause 8s]
+
+Quatrièmement... la déontologie.
+[pause 6s]
+
+Un praticien Pause Souffle n'est pas thérapeute.
+[pause 5s]
+Il ne pose pas de diagnostic.
+[pause 4s]
+Il n'interprète pas les symptômes.
+[pause 4s]
+Il n'entre pas en concurrence avec le médecin ou le psychologue.
+[pause 5s]
+Il crée les conditions pour que le corps se régule.
+[pause 5s]
+Ce n'est pas rien.
+[pause 4s]
+C'est même précieux.
+[pause 4s]
+Soyez clair sur ce que vous êtes.
+[pause 8s]
+
+C'est par le corps que nous scellons cet engagement.
+[pause 8s]
+
+Nous allons pratiquer la méthode cinq-cinq-cinq.
+[pause 5s]
+
+Cinq secondes pour inspirer.
+[pause 2s]
+Cinq secondes pour bloquer.
+[pause 2s]
+Cinq secondes pour expirer.
+[pause 4s]
+Dix cycles.
+[pause 2s]
+Deux minutes et demie de responsabilité consciente.
+[pause 6s]
+
+À l'inspiration... laissez entrer la clarté.
+[pause 4s]
+Au blocage... tenez votre cadre.
+[pause 4s]
+À l'expiration... offrez cette sécurité à vos futurs clients.
+[pause 6s]
+
+Nous commençons.
+[BREATHING_CYCLES]
+[pause 20s]
+
+Ce calme... c'est la fondation de votre pratique éthique.
+[pause 5s]
+Un praticien clair... est un praticien sûr.
+[pause 15s]
+
+Laissez le souffle reprendre son rythme naturel.
+[pause 10s]
+
+Restez là.
+[pause 8s]
+Sans rien faire.
+[pause 12s]
+
+Y a-t-il une limite que vous n'avez pas encore osé poser... une situation que vous n'avez pas anticipée ?
+[pause 18s]
+
+Quel serait le premier geste pour structurer la partie administrative et éthique de votre pratique ?
+[pause 18s]
+
+Quelle phrase résume votre engagement envers vos clients... votre serment de praticien ?
+[pause 18s]
+
+Notez ce qui est venu dans votre carnet.
+[pause 5s]
+Un praticien éthique sait pourquoi il fait ce qu'il fait.
+[pause 5s]
+Et ce qu'il ne fait pas.
+[pause 10s]
+SCRIPT,
+
     ];
 
     // ── Scripts EN — "TTS-ready" calm executive tone ──────────────
@@ -13300,6 +14378,1082 @@ Yours.
 [pause 15s]
 SCRIPT,
 
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 01 — Knowing Yourself to Accompany Others
+        // ─────────────────────────────────────────────────────────
+        '01-je-me-connais-pour-accompagner' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Before you can accompany anyone else...
+[pause 5s]
+you must first meet yourself.
+[pause 5s]
+Not the version you present to the world.
+[pause 4s]
+The one that exists right now... beneath the roles.
+[pause 10s]
+
+Carl Rogers said something simple and profound.
+[pause 5s]
+The most powerful helping relationship is not from expert to novice.
+[pause 5s]
+It is from one human being who knows themselves... towards another who is trying to find themselves.
+[pause 10s]
+
+This is the first module of your practitioner training.
+[pause 5s]
+It does not begin with techniques.
+[pause 4s]
+It begins with you.
+[pause 8s]
+
+Close your eyes.
+[pause 6s]
+
+Three conscious breaths to arrive here.
+[pause 20s]
+
+Now... ask your body this question.
+[pause 6s]
+Who am I... when no one is watching?
+[pause 15s]
+
+Not a quick answer.
+[pause 5s]
+Let what comes... come.
+[pause 12s]
+
+An effective practitioner does not guide through their theories.
+[pause 5s]
+They guide through what they have lived.
+[pause 5s]
+Conscious wounds become keys.
+[pause 5s]
+Developed resources become bridges.
+[pause 10s]
+
+Think of a wound you carry... that you have begun to make peace with.
+[pause 8s]
+Not to explain to others.
+[pause 5s]
+Just to recognise within yourself.
+[pause 8s]
+
+Where does it live in your body?
+[pause 5s]
+How does it still show up today?
+[pause 12s]
+
+And now... think of a resource.
+[pause 6s]
+Something you developed... often through difficulty.
+[pause 5s]
+An ability to listen deeply.
+[pause 4s]
+A quiet presence.
+[pause 4s]
+An intuition about others' emotional states.
+[pause 8s]
+
+You have carried this resource for a long time.
+[pause 5s]
+And it is precisely this that will nourish your practice.
+[pause 10s]
+
+We anchor this work through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of deep self-presence.
+[pause 6s]
+
+On the inhale... let in self-knowledge.
+[pause 4s]
+On the hold... rest in what you are.
+[pause 4s]
+On the exhale... release what is not you.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the foundation of your practice.
+[pause 5s]
+What you touch here... you can offer to others.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+What wound has shaped you most... and that you have begun to transform into understanding?
+[pause 18s]
+
+What is the deepest resource you bring into a helping relationship?
+[pause 18s]
+
+In one sentence... who are you as a practitioner?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Without correcting.
+[pause 5s]
+Without minimising.
+[pause 8s]
+
+You begin here.
+[pause 5s]
+With what you are.
+[pause 5s]
+That is enough.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 02 — Mastering the Tools of the Breath
+        // ─────────────────────────────────────────────────────────
+        '02-je-maitrise-les-outils-du-souffle' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+You already sense what breath does inside you.
+[pause 5s]
+This module gives you precise language.
+[pause 4s]
+And the tools to transmit it.
+[pause 10s]
+
+A Pause Souffle practitioner does not work with a single technique.
+[pause 5s]
+They work with a repertoire.
+[pause 5s]
+Seven distinct tools.
+[pause 5s]
+Each for a specific state... need... and moment.
+[pause 10s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+The first tool... you already know.
+[pause 5s]
+The Pause Souffle five-five-five.
+[pause 5s]
+Cardiac coherence.
+[pause 4s]
+Autonomic nervous system regulation.
+[pause 4s]
+Vagus nerve activation.
+[pause 5s]
+Your central anchor.
+[pause 8s]
+
+The second tool.
+[pause 5s]
+The breath of fire.
+[pause 5s]
+Short rhythmic inhales and exhales through the nose.
+[pause 5s]
+It activates... awakens... releases accumulated tension.
+[pause 8s]
+
+The third.
+[pause 5s]
+Alternate nostril breathing.
+[pause 5s]
+Right nostril... left nostril... alternating.
+[pause 5s]
+It balances the two brain hemispheres.
+[pause 4s]
+Mental clarity.
+[pause 4s]
+Inner calm.
+[pause 8s]
+
+The fourth.
+[pause 5s]
+Extended exhale.
+[pause 5s]
+Four seconds in... eight seconds out.
+[pause 5s]
+The fastest parasympathetic brake available.
+[pause 5s]
+For emotional emergencies... returning to the window of tolerance.
+[pause 8s]
+
+The fifth.
+[pause 5s]
+Box breathing.
+[pause 5s]
+Four in... four hold... four out... four pause.
+[pause 5s]
+Used by special forces to stay calm under extreme pressure.
+[pause 8s]
+
+The sixth.
+[pause 5s]
+Extended coherence breath.
+[pause 5s]
+Six seconds inhale... six seconds exhale.
+[pause 5s]
+Optimal heart-brain synchronisation.
+[pause 4s]
+For deep states and longer sessions.
+[pause 8s]
+
+The seventh.
+[pause 5s]
+Sound release breath.
+[pause 5s]
+Exhale with a sound... a sigh... a gentle hum.
+[pause 5s]
+The sound vibrates through the vagus nerve.
+[pause 4s]
+It releases what the body holds in silence.
+[pause 10s]
+
+Seven tools.
+[pause 5s]
+Seven keys for seven states.
+[pause 5s]
+A practitioner who masters them adapts every session to every client.
+[pause 10s]
+
+We anchor this mastery through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of presence within your repertoire.
+[pause 6s]
+
+On the inhale... receive the mastery.
+[pause 4s]
+On the hold... feel the solidity of what you now carry.
+[pause 4s]
+On the exhale... imagine transmitting it with clarity.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is your practice ground.
+[pause 5s]
+This is where you will work.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Which breathing tool resonates most with your natural energy as a practitioner?
+[pause 18s]
+
+For which type of client or situation do you want to train first?
+[pause 18s]
+
+What is your mission as a breath practitioner... in one sentence?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Tools belong to those who practise them.
+[pause 5s]
+Practise every day.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 10 — The Practitioner's Posture
+        // ─────────────────────────────────────────────────────────
+        '10-la-posture-du-praticien' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+There is a fundamental difference between knowing how to guide a breath...
+[pause 5s]
+and being a practitioner.
+[pause 5s]
+That difference is posture.
+[pause 10s]
+
+The practitioner's posture is not a technique.
+[pause 5s]
+It is a state of being.
+[pause 5s]
+A way of occupying space... inhabiting your voice... managing your inner state...
+[pause 4s]
+before your client even enters the room.
+[pause 10s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+The first dimension of posture... physical presence.
+[pause 6s]
+
+A practitioner whose body is collapsed... agitated... or tense...
+[pause 5s]
+transmits that state to their client before saying a single word.
+[pause 5s]
+The other person's nervous system reads you.
+[pause 5s]
+Within seconds.
+[pause 5s]
+It is wired to do exactly that.
+[pause 8s]
+
+Feel your body right now.
+[pause 5s]
+Feet on the ground.
+[pause 4s]
+Spine upright but alive.
+[pause 4s]
+Shoulders released.
+[pause 4s]
+Face open.
+[pause 6s]
+
+This physical posture is already a message.
+[pause 5s]
+It says... I am here.
+[pause 4s]
+I am stable.
+[pause 4s]
+You are safe.
+[pause 10s]
+
+The second dimension... the therapeutic voice.
+[pause 6s]
+
+A practitioner's voice is not their everyday voice.
+[pause 5s]
+It is slower.
+[pause 4s]
+Deeper.
+[pause 4s]
+More grounded.
+[pause 5s]
+It descends... rather than rises.
+[pause 5s]
+It creates space... rather than filling it.
+[pause 8s]
+
+Your voice can activate or deactivate another person's nervous system.
+[pause 5s]
+Every word.
+[pause 4s]
+Every pause.
+[pause 4s]
+Every variation in tone.
+[pause 5s]
+It is your primary therapeutic instrument.
+[pause 10s]
+
+The third dimension... inner state.
+[pause 6s]
+
+A practitioner cannot be in fear... performance... or judgment...
+[pause 5s]
+and simultaneously create a safe space for a client.
+[pause 5s]
+Both things cannot coexist.
+[pause 8s]
+
+Before each session... take three cycles of conscious breath.
+[pause 5s]
+Not to prepare to perform.
+[pause 4s]
+To remember who you are.
+[pause 5s]
+A space.
+[pause 4s]
+Not a solution.
+[pause 10s]
+
+The fourth dimension... preventing practitioner burnout.
+[pause 6s]
+
+A practitioner who gives without recharging... burns out.
+[pause 5s]
+This is not weakness.
+[pause 4s]
+It is biology.
+[pause 6s]
+
+The rule is simple.
+[pause 5s]
+What you ask your clients to do... you do too.
+[pause 4s]
+Every day.
+[pause 4s]
+Without exception.
+[pause 10s]
+
+We anchor this posture through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes inside the practitioner's posture.
+[pause 6s]
+
+On the inhale... let in stability.
+[pause 4s]
+On the hold... hold the space.
+[pause 4s]
+On the exhale... offer safety.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is your natural posture.
+[pause 5s]
+It already exists in you.
+[pause 5s]
+This module helps you inhabit it consciously.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Which dimension of posture requires the most work for you — physical presence... voice... inner state... or replenishment?
+[pause 18s]
+
+What do you already do naturally well in your practitioner posture?
+[pause 18s]
+
+What replenishment practice will you put in place this week?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Posture is cultivated daily.
+[pause 5s]
+Not only in front of a client.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 11 — Reading a Client, Adapting the Protocol
+        // ─────────────────────────────────────────────────────────
+        '11-lire-un-client-adapter-le-protocole' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+A rigid protocol... applied the same way to everyone...
+[pause 5s]
+is not professional practice.
+[pause 5s]
+It is a standardised service.
+[pause 8s]
+
+A practitioner is distinguished by their ability to read.
+[pause 5s]
+To perceive.
+[pause 4s]
+To adapt.
+[pause 4s]
+In real time.
+[pause 10s]
+
+This module gives you the keys to this relational intelligence.
+[pause 8s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+Let us begin with the four client profiles.
+[pause 6s]
+
+The first profile.
+[pause 5s]
+The analytical client.
+[pause 5s]
+They need to understand before they can feel.
+[pause 5s]
+Give them anatomy... physiology... research.
+[pause 4s]
+Explain before you guide.
+[pause 4s]
+Their entry point is the intellect.
+[pause 8s]
+
+The second profile.
+[pause 5s]
+The emotional client.
+[pause 5s]
+They are already in the feeling.
+[pause 4s]
+They need safety first.
+[pause 4s]
+Your presence.
+[pause 4s]
+Not explanations.
+[pause 5s]
+Their entry point is human connection.
+[pause 8s]
+
+The third profile.
+[pause 5s]
+The sceptical client.
+[pause 5s]
+They are testing.
+[pause 4s]
+Observing.
+[pause 4s]
+Here despite themselves... almost.
+[pause 5s]
+Do not try to convince them.
+[pause 4s]
+Let the experience speak.
+[pause 5s]
+Their entry point is concrete results.
+[pause 8s]
+
+The fourth profile.
+[pause 5s]
+The client in crisis.
+[pause 5s]
+Saturated.
+[pause 4s]
+Exhausted.
+[pause 4s]
+Overwhelmed.
+[pause 5s]
+They need an immediate anchor.
+[pause 4s]
+No theory.
+[pause 4s]
+Just... return to the body.
+[pause 4s]
+Here.
+[pause 3s]
+Now.
+[pause 8s]
+
+Now... the five non-verbal channels.
+[pause 6s]
+
+What your client tells you through their body... before they speak.
+[pause 6s]
+
+The breath.
+[pause 5s]
+Is it shallow... high... blocked... or full?
+[pause 8s]
+
+The posture.
+[pause 5s]
+Collapsed... closed... rigid... or open?
+[pause 8s]
+
+The eyes.
+[pause 5s]
+Avoidant... fixed... present... or absent?
+[pause 8s]
+
+The voice.
+[pause 5s]
+Fast... flat... trembling... or grounded?
+[pause 8s]
+
+The overall tone.
+[pause 5s]
+Hyper-activated... frozen... or available?
+[pause 8s]
+
+These five channels together give you the picture of your client.
+[pause 5s]
+Before they have said a single word.
+[pause 10s]
+
+We anchor this perception through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of open attention.
+[pause 6s]
+
+On the inhale... open your perception.
+[pause 4s]
+On the hold... let information in.
+[pause 4s]
+On the exhale... remain available.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the foundation of your perception.
+[pause 5s]
+A relaxed practitioner perceives more than a concentrated one.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Among the four profiles... which challenges you most?
+[pause 18s]
+
+Which non-verbal channel do you read most naturally?
+[pause 18s]
+
+What is the opening question you ask at the start of a session to calibrate your approach?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Reading a client is an art.
+[pause 5s]
+It develops with every session.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 12 — Building a Professional Practice
+        // ─────────────────────────────────────────────────────────
+        '12-construire-une-pratique-professionnelle' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+You can be the best practitioner in the world.
+[pause 5s]
+If no one knows you exist...
+[pause 5s]
+your practice remains an intention.
+[pause 10s]
+
+This module is not about marketing in the commercial sense.
+[pause 5s]
+It is about something more fundamental.
+[pause 5s]
+Building a practice that reflects who you are.
+[pause 5s]
+And that truly serves the people who need it.
+[pause 10s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+First... your service offering.
+[pause 6s]
+
+A Pause Souffle practitioner can offer four main formats.
+[pause 5s]
+
+Individual sessions.
+[pause 5s]
+In a practice... at home... or online.
+[pause 4s]
+45 to 90 minutes.
+[pause 4s]
+The most personalised accompaniment.
+[pause 8s]
+
+Group workshops.
+[pause 5s]
+Two to twenty people.
+[pause 4s]
+Corporate... studio... or outdoors.
+[pause 4s]
+High-energy format... immediate impact.
+[pause 8s]
+
+Accompaniment programmes.
+[pause 5s]
+Six to twelve weeks.
+[pause 4s]
+Regular sessions... measurable progression.
+[pause 4s]
+The deepest transformation.
+[pause 8s]
+
+Retreats or seminars.
+[pause 5s]
+Immersive experience.
+[pause 4s]
+Multiplied impact.
+[pause 8s]
+
+Second... pricing.
+[pause 6s]
+
+Your rate is not an arbitrary number.
+[pause 5s]
+It is a declaration of value.
+[pause 5s]
+Too low... and you devalue yourself.
+[pause 4s]
+You send a signal of insufficient confidence.
+[pause 5s]
+The right rate reflects your training level...
+[pause 4s]
+the transformational value you bring...
+[pause 4s]
+and your local market.
+[pause 8s]
+
+Third... your first three clients.
+[pause 6s]
+
+They are not your best clients.
+[pause 5s]
+They are your teachers.
+[pause 5s]
+The most valuable ones.
+[pause 5s]
+Find them in your immediate circle.
+[pause 4s]
+Offer the first sessions in exchange for honest feedback.
+[pause 4s]
+Not public reviews.
+[pause 4s]
+Truth.
+[pause 8s]
+
+Fourth... minimal digital presence.
+[pause 6s]
+
+You do not need a complex marketing funnel to begin.
+[pause 5s]
+You need one thing.
+[pause 5s]
+For the right people to find you and contact you.
+[pause 5s]
+A clear profile... a readable offer... a way to book.
+[pause 5s]
+That is all.
+[pause 10s]
+
+We anchor this vision through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes to embody your practice.
+[pause 6s]
+
+On the inhale... see your practice already alive.
+[pause 4s]
+On the hold... hold that vision.
+[pause 4s]
+On the exhale... release the fear of not being ready.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the confidence in what you are building.
+[pause 5s]
+It exists.
+[pause 5s]
+It grows with every session.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Which service format fits your natural energy most?
+[pause 18s]
+
+Who are the three first people in your circle you could accompany?
+[pause 18s]
+
+What fear is still holding you back... and what would be true if that fear did not exist?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Your practice begins the moment you decide it has begun.
+[pause 5s]
+Not when you are perfectly ready.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 13 — Limits, Contraindications & Responsibility
+        // ─────────────────────────────────────────────────────────
+        '13-limites-contre-indications-responsabilite' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Ethics is not a constraint.
+[pause 5s]
+It is the structure that protects you... and your clients.
+[pause 5s]
+Without clear limits... a professional practice does not hold.
+[pause 10s]
+
+This is one of the most important modules in your training.
+[pause 5s]
+Not the most spectacular.
+[pause 4s]
+The most fundamental.
+[pause 10s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+First... the five situations requiring immediate session stop.
+[pause 6s]
+
+One... uncontrolled hyperventilation.
+[pause 5s]
+If the client loses control of their breathing... stop immediately.
+[pause 4s]
+Return to natural breathing.
+[pause 4s]
+Never any pressure.
+[pause 8s]
+
+Two... intense emotional crisis.
+[pause 5s]
+Uncontrollable crying... major agitation... dissociative state.
+[pause 5s]
+The practitioner does not continue.
+[pause 4s]
+They offer presence.
+[pause 4s]
+They stabilise.
+[pause 8s]
+
+Three... physical pain.
+[pause 5s]
+Any pain reported... however minor... justifies adjustment or stopping.
+[pause 5s]
+The body speaks.
+[pause 4s]
+Listen to it.
+[pause 8s]
+
+Four... dizziness or discomfort.
+[pause 5s]
+Common with intense techniques.
+[pause 4s]
+Have them lie down.
+[pause 4s]
+Hydration.
+[pause 4s]
+Rest.
+[pause 8s]
+
+Five... refusal or desire to stop.
+[pause 5s]
+If the client wants to stop... for any reason...
+[pause 5s]
+you stop.
+[pause 4s]
+Without discussion.
+[pause 4s]
+Without judgment.
+[pause 8s]
+
+Second... medical contraindications.
+[pause 6s]
+
+Always ask... before any session.
+[pause 5s]
+Heart conditions.
+[pause 4s]
+Epilepsy.
+[pause 4s]
+Advanced pregnancy.
+[pause 4s]
+Unstabilised psychiatric conditions.
+[pause 4s]
+Uncontrolled blood pressure.
+[pause 5s]
+Refer to the GP if you have any doubt.
+[pause 5s]
+It is not your role to diagnose.
+[pause 4s]
+It is your role to refer.
+[pause 8s]
+
+Third... GDPR and confidentiality.
+[pause 6s]
+
+Your clients' personal data is protected.
+[pause 5s]
+Name... health status... information shared in sessions.
+[pause 5s]
+Nothing leaves the practitioner-client relationship without explicit consent.
+[pause 5s]
+No exceptions.
+[pause 8s]
+
+Fourth... professional ethics.
+[pause 6s]
+
+A Pause Souffle practitioner is not a therapist.
+[pause 5s]
+They do not diagnose.
+[pause 4s]
+They do not interpret symptoms.
+[pause 4s]
+They do not compete with doctors or psychologists.
+[pause 5s]
+They create the conditions for the body to self-regulate.
+[pause 5s]
+That is not nothing.
+[pause 4s]
+In fact it is precious.
+[pause 4s]
+Be clear about who you are.
+[pause 8s]
+
+We seal this commitment through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of conscious responsibility.
+[pause 6s]
+
+On the inhale... let in clarity.
+[pause 4s]
+On the hold... hold your framework.
+[pause 4s]
+On the exhale... offer this safety to your future clients.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the foundation of your ethical practice.
+[pause 5s]
+A clear practitioner... is a safe practitioner.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Is there a limit you have not yet dared to set... a situation you have not yet anticipated?
+[pause 18s]
+
+What would be the first concrete step to structure the administrative and ethical side of your practice?
+[pause 18s]
+
+What sentence summarises your commitment to your clients... your practitioner's oath?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+An ethical practitioner knows why they do what they do.
+[pause 5s]
+And what they do not do.
+[pause 10s]
+SCRIPT,
+
     ];
 
     // ── suppression anciens scripts EN (remplacés ci-dessus) ──────
@@ -14454,6 +16608,1082 @@ And infinitely more.
 Thank you for being here.
 [pause 3s]
 Fully here.
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 01 — Knowing Yourself to Accompany Others
+        // ─────────────────────────────────────────────────────────
+        '01-je-me-connais-pour-accompagner' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Before you can accompany anyone else...
+[pause 5s]
+you must first meet yourself.
+[pause 5s]
+Not the version you present to the world.
+[pause 4s]
+The one that exists right now... beneath the roles.
+[pause 10s]
+
+Carl Rogers said something simple and profound.
+[pause 5s]
+The most powerful helping relationship is not from expert to novice.
+[pause 5s]
+It is from one human being who knows themselves... towards another who is trying to find themselves.
+[pause 10s]
+
+This is the first module of your practitioner training.
+[pause 5s]
+It does not begin with techniques.
+[pause 4s]
+It begins with you.
+[pause 8s]
+
+Close your eyes.
+[pause 6s]
+
+Three conscious breaths to arrive here.
+[pause 20s]
+
+Now... ask your body this question.
+[pause 6s]
+Who am I... when no one is watching?
+[pause 15s]
+
+Not a quick answer.
+[pause 5s]
+Let what comes... come.
+[pause 12s]
+
+An effective practitioner does not guide through their theories.
+[pause 5s]
+They guide through what they have lived.
+[pause 5s]
+Conscious wounds become keys.
+[pause 5s]
+Developed resources become bridges.
+[pause 10s]
+
+Think of a wound you carry... that you have begun to make peace with.
+[pause 8s]
+Not to explain to others.
+[pause 5s]
+Just to recognise within yourself.
+[pause 8s]
+
+Where does it live in your body?
+[pause 5s]
+How does it still show up today?
+[pause 12s]
+
+And now... think of a resource.
+[pause 6s]
+Something you developed... often through difficulty.
+[pause 5s]
+An ability to listen deeply.
+[pause 4s]
+A quiet presence.
+[pause 4s]
+An intuition about others' emotional states.
+[pause 8s]
+
+You have carried this resource for a long time.
+[pause 5s]
+And it is precisely this that will nourish your practice.
+[pause 10s]
+
+We anchor this work through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of deep self-presence.
+[pause 6s]
+
+On the inhale... let in self-knowledge.
+[pause 4s]
+On the hold... rest in what you are.
+[pause 4s]
+On the exhale... release what is not you.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the foundation of your practice.
+[pause 5s]
+What you touch here... you can offer to others.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+What wound has shaped you most... and that you have begun to transform into understanding?
+[pause 18s]
+
+What is the deepest resource you bring into a helping relationship?
+[pause 18s]
+
+In one sentence... who are you as a practitioner?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Without correcting.
+[pause 5s]
+Without minimising.
+[pause 8s]
+
+You begin here.
+[pause 5s]
+With what you are.
+[pause 5s]
+That is enough.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 02 — Mastering the Tools of the Breath
+        // ─────────────────────────────────────────────────────────
+        '02-je-maitrise-les-outils-du-souffle' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+You already sense what breath does inside you.
+[pause 5s]
+This module gives you precise language.
+[pause 4s]
+And the tools to transmit it.
+[pause 10s]
+
+A Pause Souffle practitioner does not work with a single technique.
+[pause 5s]
+They work with a repertoire.
+[pause 5s]
+Seven distinct tools.
+[pause 5s]
+Each for a specific state... need... and moment.
+[pause 10s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+The first tool... you already know.
+[pause 5s]
+The Pause Souffle five-five-five.
+[pause 5s]
+Cardiac coherence.
+[pause 4s]
+Autonomic nervous system regulation.
+[pause 4s]
+Vagus nerve activation.
+[pause 5s]
+Your central anchor.
+[pause 8s]
+
+The second tool.
+[pause 5s]
+The breath of fire.
+[pause 5s]
+Short rhythmic inhales and exhales through the nose.
+[pause 5s]
+It activates... awakens... releases accumulated tension.
+[pause 8s]
+
+The third.
+[pause 5s]
+Alternate nostril breathing.
+[pause 5s]
+Right nostril... left nostril... alternating.
+[pause 5s]
+It balances the two brain hemispheres.
+[pause 4s]
+Mental clarity.
+[pause 4s]
+Inner calm.
+[pause 8s]
+
+The fourth.
+[pause 5s]
+Extended exhale.
+[pause 5s]
+Four seconds in... eight seconds out.
+[pause 5s]
+The fastest parasympathetic brake available.
+[pause 5s]
+For emotional emergencies... returning to the window of tolerance.
+[pause 8s]
+
+The fifth.
+[pause 5s]
+Box breathing.
+[pause 5s]
+Four in... four hold... four out... four pause.
+[pause 5s]
+Used by special forces to stay calm under extreme pressure.
+[pause 8s]
+
+The sixth.
+[pause 5s]
+Extended coherence breath.
+[pause 5s]
+Six seconds inhale... six seconds exhale.
+[pause 5s]
+Optimal heart-brain synchronisation.
+[pause 4s]
+For deep states and longer sessions.
+[pause 8s]
+
+The seventh.
+[pause 5s]
+Sound release breath.
+[pause 5s]
+Exhale with a sound... a sigh... a gentle hum.
+[pause 5s]
+The sound vibrates through the vagus nerve.
+[pause 4s]
+It releases what the body holds in silence.
+[pause 10s]
+
+Seven tools.
+[pause 5s]
+Seven keys for seven states.
+[pause 5s]
+A practitioner who masters them adapts every session to every client.
+[pause 10s]
+
+We anchor this mastery through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of presence within your repertoire.
+[pause 6s]
+
+On the inhale... receive the mastery.
+[pause 4s]
+On the hold... feel the solidity of what you now carry.
+[pause 4s]
+On the exhale... imagine transmitting it with clarity.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is your practice ground.
+[pause 5s]
+This is where you will work.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Which breathing tool resonates most with your natural energy as a practitioner?
+[pause 18s]
+
+For which type of client or situation do you want to train first?
+[pause 18s]
+
+What is your mission as a breath practitioner... in one sentence?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Tools belong to those who practise them.
+[pause 5s]
+Practise every day.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 10 — The Practitioner's Posture
+        // ─────────────────────────────────────────────────────────
+        '10-la-posture-du-praticien' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+There is a fundamental difference between knowing how to guide a breath...
+[pause 5s]
+and being a practitioner.
+[pause 5s]
+That difference is posture.
+[pause 10s]
+
+The practitioner's posture is not a technique.
+[pause 5s]
+It is a state of being.
+[pause 5s]
+A way of occupying space... inhabiting your voice... managing your inner state...
+[pause 4s]
+before your client even enters the room.
+[pause 10s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+The first dimension of posture... physical presence.
+[pause 6s]
+
+A practitioner whose body is collapsed... agitated... or tense...
+[pause 5s]
+transmits that state to their client before saying a single word.
+[pause 5s]
+The other person's nervous system reads you.
+[pause 5s]
+Within seconds.
+[pause 5s]
+It is wired to do exactly that.
+[pause 8s]
+
+Feel your body right now.
+[pause 5s]
+Feet on the ground.
+[pause 4s]
+Spine upright but alive.
+[pause 4s]
+Shoulders released.
+[pause 4s]
+Face open.
+[pause 6s]
+
+This physical posture is already a message.
+[pause 5s]
+It says... I am here.
+[pause 4s]
+I am stable.
+[pause 4s]
+You are safe.
+[pause 10s]
+
+The second dimension... the therapeutic voice.
+[pause 6s]
+
+A practitioner's voice is not their everyday voice.
+[pause 5s]
+It is slower.
+[pause 4s]
+Deeper.
+[pause 4s]
+More grounded.
+[pause 5s]
+It descends... rather than rises.
+[pause 5s]
+It creates space... rather than filling it.
+[pause 8s]
+
+Your voice can activate or deactivate another person's nervous system.
+[pause 5s]
+Every word.
+[pause 4s]
+Every pause.
+[pause 4s]
+Every variation in tone.
+[pause 5s]
+It is your primary therapeutic instrument.
+[pause 10s]
+
+The third dimension... inner state.
+[pause 6s]
+
+A practitioner cannot be in fear... performance... or judgment...
+[pause 5s]
+and simultaneously create a safe space for a client.
+[pause 5s]
+Both things cannot coexist.
+[pause 8s]
+
+Before each session... take three cycles of conscious breath.
+[pause 5s]
+Not to prepare to perform.
+[pause 4s]
+To remember who you are.
+[pause 5s]
+A space.
+[pause 4s]
+Not a solution.
+[pause 10s]
+
+The fourth dimension... preventing practitioner burnout.
+[pause 6s]
+
+A practitioner who gives without recharging... burns out.
+[pause 5s]
+This is not weakness.
+[pause 4s]
+It is biology.
+[pause 6s]
+
+The rule is simple.
+[pause 5s]
+What you ask your clients to do... you do too.
+[pause 4s]
+Every day.
+[pause 4s]
+Without exception.
+[pause 10s]
+
+We anchor this posture through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes inside the practitioner's posture.
+[pause 6s]
+
+On the inhale... let in stability.
+[pause 4s]
+On the hold... hold the space.
+[pause 4s]
+On the exhale... offer safety.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is your natural posture.
+[pause 5s]
+It already exists in you.
+[pause 5s]
+This module helps you inhabit it consciously.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Which dimension of posture requires the most work for you — physical presence... voice... inner state... or replenishment?
+[pause 18s]
+
+What do you already do naturally well in your practitioner posture?
+[pause 18s]
+
+What replenishment practice will you put in place this week?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Posture is cultivated daily.
+[pause 5s]
+Not only in front of a client.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 11 — Reading a Client, Adapting the Protocol
+        // ─────────────────────────────────────────────────────────
+        '11-lire-un-client-adapter-le-protocole' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+A rigid protocol... applied the same way to everyone...
+[pause 5s]
+is not professional practice.
+[pause 5s]
+It is a standardised service.
+[pause 8s]
+
+A practitioner is distinguished by their ability to read.
+[pause 5s]
+To perceive.
+[pause 4s]
+To adapt.
+[pause 4s]
+In real time.
+[pause 10s]
+
+This module gives you the keys to this relational intelligence.
+[pause 8s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+Let us begin with the four client profiles.
+[pause 6s]
+
+The first profile.
+[pause 5s]
+The analytical client.
+[pause 5s]
+They need to understand before they can feel.
+[pause 5s]
+Give them anatomy... physiology... research.
+[pause 4s]
+Explain before you guide.
+[pause 4s]
+Their entry point is the intellect.
+[pause 8s]
+
+The second profile.
+[pause 5s]
+The emotional client.
+[pause 5s]
+They are already in the feeling.
+[pause 4s]
+They need safety first.
+[pause 4s]
+Your presence.
+[pause 4s]
+Not explanations.
+[pause 5s]
+Their entry point is human connection.
+[pause 8s]
+
+The third profile.
+[pause 5s]
+The sceptical client.
+[pause 5s]
+They are testing.
+[pause 4s]
+Observing.
+[pause 4s]
+Here despite themselves... almost.
+[pause 5s]
+Do not try to convince them.
+[pause 4s]
+Let the experience speak.
+[pause 5s]
+Their entry point is concrete results.
+[pause 8s]
+
+The fourth profile.
+[pause 5s]
+The client in crisis.
+[pause 5s]
+Saturated.
+[pause 4s]
+Exhausted.
+[pause 4s]
+Overwhelmed.
+[pause 5s]
+They need an immediate anchor.
+[pause 4s]
+No theory.
+[pause 4s]
+Just... return to the body.
+[pause 4s]
+Here.
+[pause 3s]
+Now.
+[pause 8s]
+
+Now... the five non-verbal channels.
+[pause 6s]
+
+What your client tells you through their body... before they speak.
+[pause 6s]
+
+The breath.
+[pause 5s]
+Is it shallow... high... blocked... or full?
+[pause 8s]
+
+The posture.
+[pause 5s]
+Collapsed... closed... rigid... or open?
+[pause 8s]
+
+The eyes.
+[pause 5s]
+Avoidant... fixed... present... or absent?
+[pause 8s]
+
+The voice.
+[pause 5s]
+Fast... flat... trembling... or grounded?
+[pause 8s]
+
+The overall tone.
+[pause 5s]
+Hyper-activated... frozen... or available?
+[pause 8s]
+
+These five channels together give you the picture of your client.
+[pause 5s]
+Before they have said a single word.
+[pause 10s]
+
+We anchor this perception through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of open attention.
+[pause 6s]
+
+On the inhale... open your perception.
+[pause 4s]
+On the hold... let information in.
+[pause 4s]
+On the exhale... remain available.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the foundation of your perception.
+[pause 5s]
+A relaxed practitioner perceives more than a concentrated one.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Among the four profiles... which challenges you most?
+[pause 18s]
+
+Which non-verbal channel do you read most naturally?
+[pause 18s]
+
+What is the opening question you ask at the start of a session to calibrate your approach?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Reading a client is an art.
+[pause 5s]
+It develops with every session.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 12 — Building a Professional Practice
+        // ─────────────────────────────────────────────────────────
+        '12-construire-une-pratique-professionnelle' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+You can be the best practitioner in the world.
+[pause 5s]
+If no one knows you exist...
+[pause 5s]
+your practice remains an intention.
+[pause 10s]
+
+This module is not about marketing in the commercial sense.
+[pause 5s]
+It is about something more fundamental.
+[pause 5s]
+Building a practice that reflects who you are.
+[pause 5s]
+And that truly serves the people who need it.
+[pause 10s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+First... your service offering.
+[pause 6s]
+
+A Pause Souffle practitioner can offer four main formats.
+[pause 5s]
+
+Individual sessions.
+[pause 5s]
+In a practice... at home... or online.
+[pause 4s]
+45 to 90 minutes.
+[pause 4s]
+The most personalised accompaniment.
+[pause 8s]
+
+Group workshops.
+[pause 5s]
+Two to twenty people.
+[pause 4s]
+Corporate... studio... or outdoors.
+[pause 4s]
+High-energy format... immediate impact.
+[pause 8s]
+
+Accompaniment programmes.
+[pause 5s]
+Six to twelve weeks.
+[pause 4s]
+Regular sessions... measurable progression.
+[pause 4s]
+The deepest transformation.
+[pause 8s]
+
+Retreats or seminars.
+[pause 5s]
+Immersive experience.
+[pause 4s]
+Multiplied impact.
+[pause 8s]
+
+Second... pricing.
+[pause 6s]
+
+Your rate is not an arbitrary number.
+[pause 5s]
+It is a declaration of value.
+[pause 5s]
+Too low... and you devalue yourself.
+[pause 4s]
+You send a signal of insufficient confidence.
+[pause 5s]
+The right rate reflects your training level...
+[pause 4s]
+the transformational value you bring...
+[pause 4s]
+and your local market.
+[pause 8s]
+
+Third... your first three clients.
+[pause 6s]
+
+They are not your best clients.
+[pause 5s]
+They are your teachers.
+[pause 5s]
+The most valuable ones.
+[pause 5s]
+Find them in your immediate circle.
+[pause 4s]
+Offer the first sessions in exchange for honest feedback.
+[pause 4s]
+Not public reviews.
+[pause 4s]
+Truth.
+[pause 8s]
+
+Fourth... minimal digital presence.
+[pause 6s]
+
+You do not need a complex marketing funnel to begin.
+[pause 5s]
+You need one thing.
+[pause 5s]
+For the right people to find you and contact you.
+[pause 5s]
+A clear profile... a readable offer... a way to book.
+[pause 5s]
+That is all.
+[pause 10s]
+
+We anchor this vision through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes to embody your practice.
+[pause 6s]
+
+On the inhale... see your practice already alive.
+[pause 4s]
+On the hold... hold that vision.
+[pause 4s]
+On the exhale... release the fear of not being ready.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the confidence in what you are building.
+[pause 5s]
+It exists.
+[pause 5s]
+It grows with every session.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Which service format fits your natural energy most?
+[pause 18s]
+
+Who are the three first people in your circle you could accompany?
+[pause 18s]
+
+What fear is still holding you back... and what would be true if that fear did not exist?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+Your practice begins the moment you decide it has begun.
+[pause 5s]
+Not when you are perfectly ready.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 13 — Limits, Contraindications & Responsibility
+        // ─────────────────────────────────────────────────────────
+        '13-limites-contre-indications-responsabilite' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Ethics is not a constraint.
+[pause 5s]
+It is the structure that protects you... and your clients.
+[pause 5s]
+Without clear limits... a professional practice does not hold.
+[pause 10s]
+
+This is one of the most important modules in your training.
+[pause 5s]
+Not the most spectacular.
+[pause 4s]
+The most fundamental.
+[pause 10s]
+
+Close your eyes.
+[pause 6s]
+
+Three breaths to arrive here.
+[pause 20s]
+
+First... the five situations requiring immediate session stop.
+[pause 6s]
+
+One... uncontrolled hyperventilation.
+[pause 5s]
+If the client loses control of their breathing... stop immediately.
+[pause 4s]
+Return to natural breathing.
+[pause 4s]
+Never any pressure.
+[pause 8s]
+
+Two... intense emotional crisis.
+[pause 5s]
+Uncontrollable crying... major agitation... dissociative state.
+[pause 5s]
+The practitioner does not continue.
+[pause 4s]
+They offer presence.
+[pause 4s]
+They stabilise.
+[pause 8s]
+
+Three... physical pain.
+[pause 5s]
+Any pain reported... however minor... justifies adjustment or stopping.
+[pause 5s]
+The body speaks.
+[pause 4s]
+Listen to it.
+[pause 8s]
+
+Four... dizziness or discomfort.
+[pause 5s]
+Common with intense techniques.
+[pause 4s]
+Have them lie down.
+[pause 4s]
+Hydration.
+[pause 4s]
+Rest.
+[pause 8s]
+
+Five... refusal or desire to stop.
+[pause 5s]
+If the client wants to stop... for any reason...
+[pause 5s]
+you stop.
+[pause 4s]
+Without discussion.
+[pause 4s]
+Without judgment.
+[pause 8s]
+
+Second... medical contraindications.
+[pause 6s]
+
+Always ask... before any session.
+[pause 5s]
+Heart conditions.
+[pause 4s]
+Epilepsy.
+[pause 4s]
+Advanced pregnancy.
+[pause 4s]
+Unstabilised psychiatric conditions.
+[pause 4s]
+Uncontrolled blood pressure.
+[pause 5s]
+Refer to the GP if you have any doubt.
+[pause 5s]
+It is not your role to diagnose.
+[pause 4s]
+It is your role to refer.
+[pause 8s]
+
+Third... GDPR and confidentiality.
+[pause 6s]
+
+Your clients' personal data is protected.
+[pause 5s]
+Name... health status... information shared in sessions.
+[pause 5s]
+Nothing leaves the practitioner-client relationship without explicit consent.
+[pause 5s]
+No exceptions.
+[pause 8s]
+
+Fourth... professional ethics.
+[pause 6s]
+
+A Pause Souffle practitioner is not a therapist.
+[pause 5s]
+They do not diagnose.
+[pause 4s]
+They do not interpret symptoms.
+[pause 4s]
+They do not compete with doctors or psychologists.
+[pause 5s]
+They create the conditions for the body to self-regulate.
+[pause 5s]
+That is not nothing.
+[pause 4s]
+In fact it is precious.
+[pause 4s]
+Be clear about who you are.
+[pause 8s]
+
+We seal this commitment through the body.
+[pause 8s]
+
+We will practise the five-five-five method.
+[pause 5s]
+
+Five seconds to inhale.
+[pause 2s]
+Five seconds to hold.
+[pause 2s]
+Five seconds to exhale.
+[pause 4s]
+Ten cycles.
+[pause 2s]
+Two and a half minutes of conscious responsibility.
+[pause 6s]
+
+On the inhale... let in clarity.
+[pause 4s]
+On the hold... hold your framework.
+[pause 4s]
+On the exhale... offer this safety to your future clients.
+[pause 6s]
+
+We begin.
+[BREATHING_CYCLES]
+[pause 20s]
+
+This calm... is the foundation of your ethical practice.
+[pause 5s]
+A clear practitioner... is a safe practitioner.
+[pause 15s]
+
+Let the breath return to its natural rhythm.
+[pause 10s]
+
+Stay here.
+[pause 8s]
+Without doing anything.
+[pause 12s]
+
+Is there a limit you have not yet dared to set... a situation you have not yet anticipated?
+[pause 18s]
+
+What would be the first concrete step to structure the administrative and ethical side of your practice?
+[pause 18s]
+
+What sentence summarises your commitment to your clients... your practitioner's oath?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+An ethical practitioner knows why they do what they do.
+[pause 5s]
+And what they do not do.
+[pause 10s]
 SCRIPT,
     ]; // fin _legacyEn
 

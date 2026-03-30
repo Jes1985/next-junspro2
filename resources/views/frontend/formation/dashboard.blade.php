@@ -280,6 +280,27 @@
     </div>
   </div>
 
+  {{-- Durée & format Formation Praticien --}}
+  @if($showPraticienExtras)
+  <div style="display:flex; flex-wrap:wrap; gap:.6rem; margin:.9rem 0 .5rem; padding:.8rem 1.1rem; background:rgba(201,168,76,.06); border:1px solid rgba(201,168,76,.18); border-radius:12px; align-items:center;">
+    <div style="display:flex; align-items:center; gap:.45rem; font-size:.75rem; font-weight:700; color:rgba(201,168,76,.9);">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      {{ $language === 'en' ? '5h total training' : '5h de formation' }}
+    </div>
+    <span style="color:rgba(255,255,255,.15);">|</span>
+    @foreach([
+      ['80%', $language === 'en' ? '4h online — self-paced modules' : '4h en ligne — modules auto-guidés', '💻'],
+      ['20%', $language === 'en' ? '1h live visio — group practice & Q/A' : '1h visio en direct — pratique groupe & Q/R', '🎥'],
+    ] as [$pct, $label_t, $ic])
+    <div style="display:flex; align-items:center; gap:.4rem; font-size:.74rem; color:rgba(232,224,208,.55);">
+      <span style="font-weight:700; color:rgba(201,168,76,.7);">{{ $pct }}</span>
+      <span>{{ $ic }}</span>
+      <span>{{ $label_t }}</span>
+    </div>
+    @endforeach
+  </div>
+  @endif
+
   {{-- Bannière attestation (si certifié PRATICIEN — rétrocompatibilité) --}}
   @if($showAttestationBanner && $is_certified)
   <div class="fd-attestation-banner">
@@ -578,6 +599,118 @@
       </div>
       @endif
 
+      {{-- ─ Fin d'étape : timing complémentaire + attestation ─ --}}
+      @if($spaceKey === 'parcours' && $__currentPart !== null)
+        @php
+          $__nextItem = $loop->last ? null : $modules->get($loop->index + 1);
+          $__isLastInPart = $loop->last || ($__nextItem && $__nextItem['module']->part !== $__currentPart);
+          $__partColorsMap = [
+            1 => ['rgb' => '99,102,241',  'icon' => '🌱', 'emoji_attest' => '🌟'],
+            2 => ['rgb' => '201,168,76',  'icon' => '🔥', 'emoji_attest' => '🎓'],
+            3 => ['rgb' => '20,184,166',  'icon' => '🌊', 'emoji_attest' => '🏆'],
+          ];
+          $__pc = $__partColorsMap[$__currentPart] ?? $__partColorsMap[1];
+          $__certifiedForPart = match((int)$__currentPart) {
+            1 => !empty($is_certified_level_1),
+            2 => !empty($is_certified_level_2),
+            3 => !empty($is_certified_level_3),
+            default => false,
+          };
+          $__attestCodeForPart = match((int)$__currentPart) {
+            1 => $attestation_code_lvl1 ?? '',
+            2 => $attestation_code_lvl2 ?? '',
+            3 => $attestation_code_lvl3 ?? '',
+            default => '',
+          };
+          $__partNames = [
+            1 => ['fr' => 'Se Retrouver',  'en' => 'Finding Yourself', 'lvl_fr' => 'Niveau 1 · Éveil',   'lvl_en' => 'Level 1 · Awakening'],
+            2 => ['fr' => 'Se Construire', 'en' => 'Building Yourself','lvl_fr' => 'Niveau 2 · Ancrage', 'lvl_en' => 'Level 2 · Anchoring'],
+            3 => ['fr' => "S'Ouvrir",      'en' => 'Opening Up',       'lvl_fr' => 'Niveau 3 · Maître',  'lvl_en' => 'Level 3 · Master'],
+          ];
+          $__pn = $__partNames[$__currentPart] ?? $__partNames[1];
+        @endphp
+        @if($__isLastInPart)
+        {{-- ══ Bloc fin Parcours {{ $__currentPart }} ══ --}}
+        <div style="margin:2rem 0 .5rem; border:1px solid rgba({{ $__pc['rgb'] }},.32); border-radius:16px; overflow:hidden; background:linear-gradient(135deg,rgba({{ $__pc['rgb'] }},.05),rgba(0,0,0,.45));">
+
+          {{-- En-tête --}}
+          <div style="padding:.75rem 1.4rem; border-bottom:1px solid rgba({{ $__pc['rgb'] }},.2); display:flex; align-items:center; gap:.6rem;">
+            <span style="font-size:1rem;">{{ $__pc['icon'] }}</span>
+            <span style="font-size:.68rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba({{ $__pc['rgb'] }},.85);">
+              {{ $language === 'en' ? 'End of Journey ' : 'Fin du Parcours ' }}{{ $__currentPart }} — {{ $language === 'en' ? $__pn['en'] : $__pn['fr'] }}
+            </span>
+          </div>
+
+          <div style="padding:1.4rem 1.6rem; display:flex; flex-wrap:wrap; gap:1.5rem; align-items:flex-start;">
+
+            {{-- Colonne gauche : sessions d'accompagnement --}}
+            <div style="flex:1; min-width:220px;">
+              <p style="font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba({{ $__pc['rgb'] }},.65); margin:0 0 .9rem;">
+                {{ $language === 'en' ? 'Complementary sessions included' : 'Sessions complémentaires incluses' }}
+              </p>
+              @foreach([
+                ['⏱','3h', $language === 'en' ? 'Live Visio — Collective ritual' : 'Visio live — Rituel collectif'],
+                ['👥','2h', $language === 'en' ? 'Group session — Practice & sharing' : 'Séance groupe — Pratique & partage'],
+                ['🎯','1h', $language === 'en' ? 'Individual session — Personalised coaching' : 'Séance individuelle — Accompagnement personnalisé'],
+              ] as [$icon_s, $dur, $label_s])
+              <div style="display:flex; align-items:center; gap:.75rem; margin-bottom:.65rem;">
+                <div style="width:36px; height:36px; border-radius:9px; background:rgba({{ $__pc['rgb'] }},.1); border:1px solid rgba({{ $__pc['rgb'] }},.22); display:flex; align-items:center; justify-content:center; font-size:.85rem; flex-shrink:0;">{{ $icon_s }}</div>
+                <div>
+                  <span style="font-size:.85rem; font-weight:700; color:rgba(232,224,208,.9);">{{ $dur }}</span>
+                  <span style="font-size:.8rem; color:rgba(232,224,208,.5); margin-left:.4rem;">{{ $label_s }}</span>
+                </div>
+              </div>
+              @endforeach
+              <div style="margin-top:.5rem; padding:.55rem .8rem; background:rgba({{ $__pc['rgb'] }},.07); border-radius:8px; font-size:.75rem; color:rgba(232,224,208,.45); line-height:1.5;">
+                {{ $language === 'en'
+                  ? 'Sessions scheduled after completing all modules of this journey.'
+                  : 'Sessions programmées après l\'achèvement de tous les modules de ce parcours.' }}
+              </div>
+            </div>
+
+            {{-- Colonne droite : attestation --}}
+            <div style="flex:0 0 auto; min-width:220px; max-width:300px;">
+              <p style="font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba({{ $__pc['rgb'] }},.65); margin:0 0 .9rem;">
+                {{ $language === 'en' ? 'Certification' : 'Attestation' }}
+              </p>
+              @if($__certifiedForPart)
+              {{-- Déverrouillée --}}
+              <div style="background:rgba({{ $__pc['rgb'] }},.08); border:1px solid rgba({{ $__pc['rgb'] }},.3); border-radius:12px; padding:1rem 1.1rem;">
+                <div style="font-size:1.5rem; margin-bottom:.4rem;">{{ $__pc['emoji_attest'] }}</div>
+                <p style="font-size:.82rem; font-weight:700; color:rgba(232,224,208,.9); margin:0 0 .2rem;">
+                  {{ $language === 'en' ? $__pn['lvl_en'] : $__pn['lvl_fr'] }}
+                </p>
+                @if($__attestCodeForPart)
+                <p style="font-size:.72rem; color:rgba(232,224,208,.4); font-family:monospace; letter-spacing:.08em; margin:.2rem 0 .6rem;">{{ $__attestCodeForPart }}</p>
+                @endif
+                <a href="{{ route($attestationRouteName) }}" style="display:inline-flex; align-items:center; gap:.4rem; background:rgba({{ $__pc['rgb'] }},.18); border:1px solid rgba({{ $__pc['rgb'] }},.45); color:rgba(232,224,208,.9); padding:.45rem .9rem; border-radius:8px; font-size:.78rem; font-weight:700; text-decoration:none;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  {{ $language === 'en' ? 'Download certificate' : 'Télécharger l\'attestation' }}
+                </a>
+              </div>
+              @else
+              {{-- Verrouillée --}}
+              <div style="background:rgba(40,40,50,.5); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:1rem 1.1rem; opacity:.6;">
+                <div style="font-size:1.5rem; margin-bottom:.4rem;">🔒</div>
+                <p style="font-size:.82rem; font-weight:700; color:rgba(232,224,208,.5); margin:0 0 .2rem;">
+                  {{ $language === 'en' ? $__pn['lvl_en'] : $__pn['lvl_fr'] }}
+                </p>
+                <p style="font-size:.75rem; color:rgba(232,224,208,.3); margin:.3rem 0 .7rem; line-height:1.5;">
+                  {{ $language === 'en' ? 'Complete all modules of this journey to unlock your certificate.' : 'Terminez tous les modules de ce parcours pour débloquer votre attestation.' }}
+                </p>
+                <span style="display:inline-flex; align-items:center; gap:.4rem; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); color:rgba(232,224,208,.3); padding:.45rem .9rem; border-radius:8px; font-size:.78rem; font-weight:700; cursor:not-allowed;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                  {{ $language === 'en' ? 'Locked' : 'Verrouillé' }}
+                </span>
+              </div>
+              @endif
+            </div>
+
+          </div>
+        </div>
+        @endif
+      @endif
+
     @endforeach
 
   </div>
@@ -622,14 +755,14 @@
       <div style="flex:1; min-width:240px;">
         <div style="font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(201,168,76,.7); margin-bottom:.6rem; display:flex; align-items:center; gap:.5rem;">
           <span style="width:16px; height:1px; background:rgba(201,168,76,.4); display:inline-block;"></span>
-          20% de votre formation · 3h visio
+          20% de votre formation · 1h visio en direct
           <span style="width:16px; height:1px; background:rgba(201,168,76,.4); display:inline-block;"></span>
         </div>
         <h3 style="font-size:1.25rem; font-weight:300; font-family:Georgia,serif; color:#fff; line-height:1.35; margin:0 0 .6rem;">
-          Rituel sur tapis —<br><em style="color:#c9a84c; font-style:italic;">2h groupe + 1h clinique Q/R</em>
+          Rituel sur tapis —<br><em style="color:#c9a84c; font-style:italic;">Pratique groupe + clinique Q/R</em>
         </h3>
         <p style="font-size:.85rem; color:rgba(232,224,208,.55); line-height:1.8; margin:0 0 1.25rem; max-width:400px;">
-          Après les modules 00 à 06, place au passage en pratique guidée : cycles respiratoires, détente cou/cervicales, jambes, massage des pieds, bras, puis tête et visage. Un protocole adaptable en 15, 30 ou 45 minutes.
+          Après les modules auto-guidés, place au passage en pratique guidée en direct : cycles respiratoires, détente, protocole sur tapis adapté en 15, 30 ou 45 minutes. Séance collective suivie d'une clinique Q/R individuelle.
         </p>
         <div style="display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; margin-bottom:.5rem;">
           <a href="{{ route('formation.visio') }}" style="display:inline-flex; align-items:center; gap:.5rem; padding:.65rem 1.5rem; background:linear-gradient(135deg,#c9a84c,#a8883c); color:#000; border-radius:50px; font-size:.82rem; font-weight:700; text-decoration:none; box-shadow:0 4px 16px rgba(201,168,76,.25); transition:transform .2s;">
@@ -637,7 +770,7 @@
             Voir le programme complet
           </a>
           <div style="font-size:.75rem; color:rgba(232,224,208,.35);">
-            <span style="color:rgba(201,168,76,.5);">◉</span> 3h · 2h groupe + 1h clinique Q/R
+            <span style="color:rgba(201,168,76,.5);">◉</span> 1h · Pratique groupe + clinique Q/R
           </div>
         </div>
       </div>
