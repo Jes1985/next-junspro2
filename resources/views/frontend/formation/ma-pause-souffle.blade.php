@@ -331,6 +331,83 @@
 }
 .ps-finale__quote em { color:var(--ps-gold); font-style:normal; }
 
+/* ════ 30 JOURS D'ANCRAGE ════ */
+.ps-30j { max-width:760px; margin:0 auto; padding:0 2rem; }
+.ps-30j__intro {
+  background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(0,0,0,0));
+  border:1px solid rgba(201,168,76,.14); border-radius:18px;
+  padding:1.6rem 2rem; text-align:center; margin-bottom:1.75rem;
+}
+.ps-30j__intro-text { font-size:.98rem; color:var(--ps-muted); line-height:1.85; max-width:510px; margin:0 auto; }
+.ps-30j__phases { display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; margin-top:1.2rem; }
+@media(max-width:540px){ .ps-30j__phases{ grid-template-columns:repeat(2,1fr); } }
+.ps-30j__phase { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:.85rem .7rem; text-align:center; }
+.ps-30j__phase-days { font-size:1.4rem; font-weight:800; color:var(--ps-gold); line-height:1; margin-bottom:.3rem; }
+.ps-30j__phase-lbl { font-size:.7rem; text-transform:uppercase; letter-spacing:.13em; color:rgba(232,224,208,.45); }
+.ps-30j__tabs { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.5rem; }
+.ps-30j__tab {
+  padding:.38rem .85rem; border-radius:20px; font-size:.83rem; font-weight:600;
+  cursor:pointer; border:1.5px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03);
+  color:rgba(232,224,208,.48); transition:all .18s; white-space:nowrap; font-family:inherit;
+}
+.ps-30j__tab.active { background:var(--tbg,rgba(201,168,76,.14)); border-color:var(--tbd,rgba(201,168,76,.38)); color:var(--tc,var(--ps-gold)); }
+.ps-30j__panel { display:none; }
+.ps-30j__panel.active { display:block; animation:ps30f .22s ease; }
+@keyframes ps30f { from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;} }
+.ps-30j__week { background:var(--ps-surf); border:1px solid var(--ps-border); border-radius:16px; overflow:hidden; margin-bottom:.6rem; }
+.ps-30j__week-hd {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.05rem 1.35rem; cursor:pointer; gap:.7rem; user-select:none; transition:background .15s;
+}
+.ps-30j__week-hd:hover { background:rgba(255,255,255,.02); }
+.ps-30j__whl { display:flex; align-items:center; gap:.7rem; flex:1; min-width:0; }
+.ps-30j__wkb {
+  font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  padding:.18rem .52rem; border-radius:20px; flex-shrink:0;
+  background:rgba(201,168,76,.07); color:rgba(201,168,76,.72); border:1px solid rgba(201,168,76,.17); white-space:nowrap;
+}
+.ps-30j__wkt { font-size:.93rem; font-weight:700; color:#fff; line-height:1.25; }
+.ps-30j__wkth { font-size:.8rem; color:var(--ps-muted); font-style:italic; }
+.ps-30j__wka { color:var(--ps-muted); font-size:.78rem; transition:transform .22s; flex-shrink:0; }
+.ps-30j__week.open .ps-30j__wka { transform:rotate(180deg); }
+.ps-30j__week-bd { display:none; }
+.ps-30j__week.open .ps-30j__week-bd { display:block; }
+.ps-30j__ctx {
+  margin:.45rem 1.35rem .7rem;
+  border-left:2px solid rgba(201,168,76,.2); padding:.65rem .95rem;
+  font-size:.84rem; color:rgba(232,224,208,.6); line-height:1.78; font-style:italic;
+}
+.ps-30j__ctx strong { color:rgba(255,255,255,.72); font-style:normal; }
+.ps-30j__days { display:flex; flex-direction:column; padding:0 .7rem .2rem; }
+.ps-30j__day {
+  display:flex; align-items:flex-start; gap:.7rem;
+  padding:.52rem .45rem; border-bottom:1px solid rgba(255,255,255,.033);
+  transition:background .12s; border-radius:6px;
+}
+.ps-30j__day:last-child { border-bottom:none; }
+.ps-30j__day:hover { background:rgba(255,255,255,.018); }
+.ps-30j__day.done { opacity:.48; }
+.ps-30j__dn {
+  min-width:25px; height:25px; border-radius:7px; flex-shrink:0;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);
+  font-size:.66rem; font-weight:800; color:rgba(232,224,208,.42);
+  display:flex; align-items:center; justify-content:center; margin-top:.1rem;
+}
+.ps-30j__day.done .ps-30j__dn { background:rgba(34,197,94,.1); border-color:rgba(34,197,94,.25); color:#4ade80; }
+.ps-30j__db { flex:1; min-width:0; }
+.ps-30j__dt { font-size:.88rem; font-weight:600; color:#fff; margin-bottom:.18rem; line-height:1.3; }
+.ps-30j__di { font-size:.82rem; color:rgba(232,224,208,.58); line-height:1.65; margin:0; }
+.ps-30j__dck {
+  flex-shrink:0; width:19px; height:19px; border-radius:5px; cursor:pointer; margin-top:.2rem;
+  background:rgba(255,255,255,.04); border:1.5px solid rgba(255,255,255,.1);
+  display:flex; align-items:center; justify-content:center; font-size:.62rem;
+  color:transparent; transition:all .18s;
+}
+.ps-30j__day.done .ps-30j__dck { background:rgba(34,197,94,.12); border-color:rgba(34,197,94,.32); color:#4ade80; }
+.ps-30j__wkq { margin:.45rem 1.35rem 1rem; padding:.7rem .95rem; background:rgba(201,168,76,.04); border:1px solid rgba(201,168,76,.1); border-radius:10px; }
+.ps-30j__wkq-l { font-size:.66rem; text-transform:uppercase; letter-spacing:.14em; color:rgba(201,168,76,.62); margin-bottom:.3rem; }
+.ps-30j__wkq-t { font-size:.84rem; color:var(--ps-text); line-height:1.7; }
+
 /* ════ BACK ════ */
 .ps-back { max-width:760px; margin:1.5rem auto; padding:0 2rem; }
 .ps-back a {
@@ -605,15 +682,15 @@
     <div class="ps-module-nav__title">Votre Protocole</div>
     <span class="ps-module-nav__badge ps-module-nav__badge--ok">✓ Disponible</span>
   </div>
-  <div class="ps-module-nav__card ps-module-nav__card--coming">
+  <div class="ps-module-nav__card ps-module-nav__card--available">
     <div class="ps-module-nav__num">Module 04</div>
     <div class="ps-module-nav__title">Audios Guidés</div>
-    <span class="ps-module-nav__badge ps-module-nav__badge--soon">🎧 En création</span>
+    <span class="ps-module-nav__badge ps-module-nav__badge--ok">✓ Disponible</span>
   </div>
-  <div class="ps-module-nav__card ps-module-nav__card--coming">
+  <div class="ps-module-nav__card ps-module-nav__card--available">
     <div class="ps-module-nav__num">Module 05</div>
-    <div class="ps-module-nav__title">Exercices Pratiques</div>
-    <span class="ps-module-nav__badge ps-module-nav__badge--soon">⚡ En création</span>
+    <div class="ps-module-nav__title">Ancrage Turbulence</div>
+    <span class="ps-module-nav__badge ps-module-nav__badge--ok">✓ Disponible</span>
   </div>
 </nav>
 
@@ -1455,25 +1532,125 @@
   </div>
 </div>
 
-{{-- ══════ MODULES 04 + 05 EN CRÉATION ══════ --}}
-<div class="ps-module-coming">
-  <div class="ps-module-coming__inner">
-    <div class="ps-module-coming__num">Module 04 · En Création</div>
-    <div class="ps-module-coming__icon">🎧</div>
-    <div class="ps-module-coming__title">Audios Guidés — Votre Pratique en Son</div>
-    <p class="ps-module-coming__desc">6 audios guidés de 10 à 25 minutes. Un audio par famille. Vous entendez le protocole — puis vous le guidez vous-même. Voix, musique, rythme. Contenu en cours d'enregistrement studio.</p>
-    <span class="ps-module-coming__tag">🎤 Enregistrement studio prévu</span>
+{{-- ══════ MODULE 04 ══════ --}}
+<div class="ps-module-heading" style="margin-top:5rem;" id="mod-04">
+  <div class="ps-module-heading__num">04</div>
+  <div class="ps-module-heading__body">
+    <div class="ps-module-heading__eyebrow">Module 04 · Audios guidés</div>
+    <div class="ps-module-heading__title">L'Avant — Votre Pratique en Son</div>
   </div>
 </div>
 
-<div class="ps-module-coming" style="margin-top:1.25rem;">
-  <div class="ps-module-coming__inner">
-    <div class="ps-module-coming__num">Module 05 · En Création</div>
-    <div class="ps-module-coming__icon">⚡</div>
-    <div class="ps-module-coming__title">Exercices Pratiques — 30 jours d'ancrage</div>
-    <p class="ps-module-coming__desc">Un défi de 30 jours. Chaque jour, une micro-action pour ancrer le protocole dans votre pratique réelle. Fiches PDF, journal de bord guidé, exercices progressifs par famille.</p>
-    <span class="ps-module-coming__tag">📋 Contenu en cours de conception</span>
+<p style="max-width:620px;margin:0 auto 2rem;text-align:center;color:var(--ps-muted);font-size:.95rem;line-height:1.8;padding:0 1.5rem;">
+  Un audio par famille. Choisissez le vôtre et écoutez le protocole guidé — conçu spécifiquement pour votre contexte.
+</p>
+
+{{-- Tabs familles module 04 --}}
+<div style="max-width:760px;margin:0 auto;padding:0 1.5rem;">
+  <div class="ps-30j__tabs" id="tabs-mod04">
+    <button class="ps-30j__tab active" style="--tbg:rgba(168,85,247,.14);--tbd:rgba(168,85,247,.38);--tc:#c4b5fd;" onclick="psMod04Tab('creatif',this)">🎨 Créatifs</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(20,184,166,.14);--tbd:rgba(20,184,166,.38);--tc:#5eead4;" onclick="psMod04Tab('soin',this)">🩺 Soignants</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(59,130,246,.14);--tbd:rgba(59,130,246,.38);--tc:#93c5fd;" onclick="psMod04Tab('enseignant',this)">📚 Enseignants</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(201,168,76,.14);--tbd:rgba(201,168,76,.38);--tc:#c9a84c;" onclick="psMod04Tab('leader',this)">🏆 Leaders</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(34,197,94,.14);--tbd:rgba(34,197,94,.38);--tc:#86efac;" onclick="psMod04Tab('educateur',this)">🌱 Éducateurs</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(244,114,182,.14);--tbd:rgba(244,114,182,.38);--tc:#f9a8d4;" onclick="psMod04Tab('bebe',this)">👶 Petite Enfance</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(251,146,60,.14);--tbd:rgba(251,146,60,.38);--tc:#fdba74;" onclick="psMod04Tab('proches',this)">🏠 Proches</button>
   </div>
+
+  @foreach([
+    ['creatif','Créatifs','L\'avant de la création','rgba(168,85,247,.08)','rgba(168,85,247,.25)','#c4b5fd'],
+    ['soin','Soignants','L\'avant de la consultation','rgba(20,184,166,.08)','rgba(20,184,166,.25)','#5eead4'],
+    ['enseignant','Enseignants','L\'avant d\'entrer en classe','rgba(59,130,246,.08)','rgba(59,130,246,.25)','#93c5fd'],
+    ['leader','Leaders','L\'avant de la réunion','rgba(201,168,76,.08)','rgba(201,168,76,.25)','#c9a84c'],
+    ['educateur','Éducateurs','L\'avant de la session','rgba(34,197,94,.08)','rgba(34,197,94,.25)','#86efac'],
+    ['bebe','Petite Enfance','L\'avant du soin','rgba(244,114,182,.08)','rgba(244,114,182,.25)','#f9a8d4'],
+    ['proches','Proches','L\'avant de rentrer','rgba(251,146,60,.08)','rgba(251,146,60,.25)','#fdba74'],
+  ] as [$key, $label, $subtitle, $bg, $border, $color])
+  <div id="pnl04-{{ $key }}" class="ps-30j__panel {{ $key === 'creatif' ? 'active' : '' }}">
+    <div class="ps-audio-block">
+      <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
+        <div style="display:flex;gap:8px;margin-bottom:10px;">
+          <button id="btn-lang-fr-04-{{ $key }}" onclick="psSwitchLang('04-{{ $key }}','fr')" style="background:#c9a84c;color:#0f0f0f;border:none;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇫🇷 Français</button>
+          <button id="btn-lang-en-04-{{ $key }}" onclick="psSwitchLang('04-{{ $key }}','en')" style="background:rgba(201,168,76,.15);color:#c9a84c;border:1px solid #c9a84c;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇬🇧 English</button>
+        </div>
+        <div class="ps-audio-label">▶ {{ $label }} — {{ $subtitle }}
+          <span>Audio guidé · 6–8 min</span>
+        </div>
+        <audio id="audio-player-04-{{ $key }}" controls preload="none"
+          style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+          src="{{ asset('storage/formation/audio/mps-04-' . $key . '-fr.mp3') }}">
+          Votre navigateur ne supporte pas la lecture audio.
+        </audio>
+        <div class="ps-audio-coming">🎧 Recommandé : écoutez votre famille, puis passez aux activités.</div>
+      </div>
+    </div>
+  </div>
+  @endforeach
+</div>
+
+{{-- ══════ MODULE 05 ══════ --}}
+<div class="ps-module-heading" style="margin-top:5rem;" id="mod-05">
+  <div class="ps-module-heading__num">05</div>
+  <div class="ps-module-heading__body">
+    <div class="ps-module-heading__eyebrow">Module 05 · Audios guidés</div>
+    <div class="ps-module-heading__title">L'Ancrage en Pleine Turbulence</div>
+  </div>
+</div>
+
+<p style="max-width:620px;margin:0 auto 2rem;text-align:center;color:var(--ps-muted);font-size:.95rem;line-height:1.8;padding:0 1.5rem;">
+  Un audio par famille. Choisissez le vôtre — conçu pour les moments de turbulence réelle.
+</p>
+
+<div style="max-width:760px;margin:0 auto;padding:0 1.5rem;">
+  <div class="ps-30j__tabs" id="tabs-mod05">
+    <button class="ps-30j__tab active" style="--tbg:rgba(168,85,247,.14);--tbd:rgba(168,85,247,.38);--tc:#c4b5fd;" onclick="psMod05Tab('creatif',this)">🎨 Créatifs</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(20,184,166,.14);--tbd:rgba(20,184,166,.38);--tc:#5eead4;" onclick="psMod05Tab('soin',this)">🩺 Soignants</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(59,130,246,.14);--tbd:rgba(59,130,246,.38);--tc:#93c5fd;" onclick="psMod05Tab('enseignant',this)">📚 Enseignants</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(201,168,76,.14);--tbd:rgba(201,168,76,.38);--tc:#c9a84c;" onclick="psMod05Tab('leader',this)">🏆 Leaders</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(34,197,94,.14);--tbd:rgba(34,197,94,.38);--tc:#86efac;" onclick="psMod05Tab('educateur',this)">🌱 Éducateurs</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(244,114,182,.14);--tbd:rgba(244,114,182,.38);--tc:#f9a8d4;" onclick="psMod05Tab('bebe',this)">👶 Petite Enfance</button>
+    <button class="ps-30j__tab" style="--tbg:rgba(251,146,60,.14);--tbd:rgba(251,146,60,.38);--tc:#fdba74;" onclick="psMod05Tab('proches',this)">🏠 Proches</button>
+  </div>
+
+  @foreach([
+    ['creatif','Créatifs','L\'ancrage en pleine création'],
+    ['soin','Soignants','L\'ancrage en consultation difficile'],
+    ['enseignant','Enseignants','L\'ancrage face à la classe'],
+    ['leader','Leaders','L\'ancrage sous pression'],
+    ['educateur','Éducateurs','L\'ancrage face à la résistance'],
+    ['bebe','Petite Enfance','L\'ancrage face aux pleurs'],
+    ['proches','Proches','L\'ancrage dans la tension familiale'],
+  ] as [$key, $label, $subtitle])
+  <div id="pnl05-{{ $key }}" class="ps-30j__panel {{ $key === 'creatif' ? 'active' : '' }}">
+    @if($key !== 'proches')
+    <div class="ps-audio-block">
+      <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
+        <div style="display:flex;gap:8px;margin-bottom:10px;">
+          <button id="btn-lang-fr-05-{{ $key }}" onclick="psSwitchLang('05-{{ $key }}','fr')" style="background:#c9a84c;color:#0f0f0f;border:none;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇫🇷 Français</button>
+          <button id="btn-lang-en-05-{{ $key }}" onclick="psSwitchLang('05-{{ $key }}','en')" style="background:rgba(201,168,76,.15);color:#c9a84c;border:1px solid #c9a84c;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇬🇧 English</button>
+        </div>
+        <div class="ps-audio-label">▶ {{ $label }} — {{ $subtitle }}
+          <span>Audio guidé · 6–8 min</span>
+        </div>
+        <audio id="audio-player-05-{{ $key }}" controls preload="none"
+          style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+          src="{{ asset('storage/formation/audio/mps-05-' . $key . '-fr.mp3') }}">
+          Votre navigateur ne supporte pas la lecture audio.
+        </audio>
+        <div class="ps-audio-coming">🎧 Recommandé : écoutez votre famille, puis travaillez les activités.</div>
+      </div>
+    </div>
+    @else
+    <div class="ps-module-coming" style="margin-top:0;">
+      <div class="ps-module-coming__inner">
+        <div class="ps-module-coming__icon">🔄</div>
+        <div class="ps-module-coming__title">Proches — Audio en cours de finalisation</div>
+        <span class="ps-module-coming__tag">⏳ Disponible très prochainement</span>
+      </div>
+    </div>
+    @endif
+  </div>
+  @endforeach
 </div>
 
 {{-- ══════ FINALE ══════ --}}
@@ -1556,6 +1733,20 @@ function psStartTimer(btn, inSec, holdSec, outSec, cycles) {
     setTimeout(function() { runPhase(pi, timeLeft - 1); }, 1000);
   }
   runPhase(0, phases[0].sec);
+}
+
+function psMod05Tab(fam, btn) {
+  document.querySelectorAll('#tabs-mod05 .ps-30j__tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('[id^="pnl05-"]').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pnl05-' + fam).classList.add('active');
+}
+
+function psMod04Tab(fam, btn) {
+  document.querySelectorAll('#tabs-mod04 .ps-30j__tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('[id^="pnl04-"]').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pnl04-' + fam).classList.add('active');
 }
 
 function psSwitchLang(mod, lang) {
