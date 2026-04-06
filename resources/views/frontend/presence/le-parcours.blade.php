@@ -35,13 +35,13 @@
   .fp-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,168,83,0.15) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(184,137,58,0.08) 0%, transparent 50%), radial-gradient(ellipse 50% 40% at 80% 70%, rgba(212,168,83,0.06) 0%, transparent 50%); pointer-events: none; }
   .fp-stars { position: absolute; inset: 0; background-image: radial-gradient(1px 1px at 10% 15%, rgba(212,168,83,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 30% 45%, rgba(255,255,255,0.2) 0%, transparent 100%), radial-gradient(1px 1px at 55% 20%, rgba(212,168,83,0.3) 0%, transparent 100%), radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.15) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 63% 50%, rgba(212,168,83,0.5) 0%, transparent 100%); pointer-events: none; }
   .fp-hero-content { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
-  .fp-hero-label { display: inline-block; padding: 6px 18px; border: 1px solid rgba(212,168,83,0.4); border-radius: 40px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 2rem; }
+  .fp-hero-label { display: inline-block; padding: 6px 18px; border: 1px solid rgba(212,168,83,0.4); border-radius: 40px; font-size:1.15rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 2rem; }
   .fp-hero-title { font-size: clamp(2rem,5vw,3.5rem); font-weight: 300; color: #fff; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
   .fp-hero-title em { font-style: italic; color: var(--fp-gold); }
-  .fp-hero-verse { font-size: 0.9375rem; color: rgba(255,255,255,0.45); font-style: italic; margin-bottom: 2rem; line-height: 1.6; }
+  .fp-hero-verse { font-size:1.1rem; color: rgba(255,255,255,0.45); font-style: italic; margin-bottom: 2rem; line-height: 1.6; }
   .fp-hero-subtitle { font-size: clamp(1rem,2vw,1.25rem); color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 600px; margin: 0 auto 3rem; }
   .fp-hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-  .fp-hero-scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce 2s infinite; }
+  .fp-hero-scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.3); font-size:1.15rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce 2s infinite; }
   @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
   /* BOUTONS */
@@ -57,17 +57,17 @@
   /* MANIFESTE */
   .fp-manifesto { background: var(--fp-bg-warm); padding: 100px 24px; text-align: center; }
   .fp-manifesto-inner { max-width: 720px; margin: 0 auto; }
-  .fp-manifesto-eyebrow { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold-dark); margin-bottom: 2rem; }
+  .fp-manifesto-eyebrow { font-size:1.15rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold-dark); margin-bottom: 2rem; }
   .fp-manifesto blockquote { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 300; line-height: 1.8; color: var(--fp-text); border: none; padding: 0; margin: 0 0 2.5rem; font-style: italic; }
   .fp-manifesto blockquote strong { font-weight: 600; color: var(--fp-text); font-style: normal; }
-  .fp-manifesto-note { font-size: 0.9375rem; color: var(--fp-text-soft); line-height: 1.7; }
+  .fp-manifesto-note { font-size:1.1rem; color: var(--fp-text-soft); line-height: 1.7; }
 
   /* CHIFFRES CLÉS */
   .fp-keydata { padding: 80px 24px; background: #fff; }
   .fp-keydata-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 2px; max-width: 900px; margin: 0 auto; background: var(--fp-border); }
   .fp-keydata-item { background: var(--fp-bg); padding: 2.5rem 2rem; text-align: center; }
   .fp-keydata-number { font-size: 2.5rem; font-weight: 300; color: var(--fp-gold-dark); line-height: 1; margin-bottom: 0.5rem; }
-  .fp-keydata-label { font-size: 0.875rem; color: var(--fp-text-soft); line-height: 1.4; }
+  .fp-keydata-label { font-size:1.05rem; color: var(--fp-text-soft); line-height: 1.4; }
 
   /* POUR QUI */
   .fp-forqui { padding: 100px 24px; background: var(--fp-bg-dark); color: #fff; }
@@ -81,7 +81,7 @@
   .fp-forqui-card:hover { border-color: rgba(212,168,83,0.5); background: rgba(212,168,83,0.07); transform: translateY(-4px); }
   .fp-forqui-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
   .fp-forqui-card h4 { font-size: 1.0625rem; font-weight: 500; color: #fff; margin-bottom: 0.5rem; }
-  .fp-forqui-card p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
+  .fp-forqui-card p { font-size:1.05rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
 
   /* MODULES */
   .fp-modules { padding: 100px 24px; background: var(--fp-bg-warm); }
@@ -90,13 +90,13 @@
   .fp-module-item { display: grid; grid-template-columns: 80px 1fr; gap: 0; border-bottom: 1px solid var(--fp-border); padding: 2rem 0; transition: all 0.3s; cursor: default; }
   .fp-module-item:first-child { border-top: 1px solid var(--fp-border); }
   .fp-module-item:hover .fp-module-body { padding-left: 8px; }
-  .fp-module-num { padding-top: 4px; font-size: 0.75rem; color: var(--fp-gold-dark); font-weight: 500; letter-spacing: 0.1em; }
+  .fp-module-num { padding-top: 4px; font-size:1.15rem; color: var(--fp-gold-dark); font-weight: 500; letter-spacing: 0.1em; }
   .fp-module-body { transition: padding 0.3s; }
   .fp-module-body h3 { font-size: 1.1875rem; font-weight: 500; color: var(--fp-text); margin-bottom: 0.25rem; }
-  .fp-module-week { font-size: 0.75rem; color: var(--fp-gold-dark); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  .fp-module-body p { font-size: 0.9375rem; color: var(--fp-text-soft); line-height: 1.6; margin-bottom: 0.75rem; }
+  .fp-module-week { font-size:1.15rem; color: var(--fp-gold-dark); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .fp-module-body p { font-size:1.1rem; color: var(--fp-text-soft); line-height: 1.6; margin-bottom: 0.75rem; }
   .fp-module-activities { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .fp-activity-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; background: #fff; border: 1px solid var(--fp-border); border-radius: 20px; font-size: 0.8125rem; color: var(--fp-text); }
+  .fp-activity-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; background: #fff; border: 1px solid var(--fp-border); border-radius: 20px; font-size:1rem; color: var(--fp-text); }
   .fp-activity-tag svg { width: 12px; height: 12px; flex-shrink: 0; color: var(--fp-gold-dark); }
 
   /* PÉDAGOGIE */
@@ -107,11 +107,11 @@
   @media (max-width: 768px) { .fp-pedagogy-split { grid-template-columns: 1fr; } .fp-forqui-grid { grid-template-columns: 1fr 1fr; } }
   .fp-pedagogy-visual { background: var(--fp-bg-warm); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--fp-border); }
   .fp-pace-bar { margin-bottom: 2rem; }
-  .fp-pace-bar-label { display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--fp-text); }
+  .fp-pace-bar-label { display: flex; justify-content: space-between; font-size:1.05rem; margin-bottom: 0.5rem; color: var(--fp-text); }
   .fp-pace-track { height: 8px; background: var(--fp-border); border-radius: 4px; overflow: hidden; }
   .fp-pace-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg,var(--fp-gold-dark),var(--fp-gold)); }
   .fp-pedagogy-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem; }
-  .fp-pedagogy-list li { display: flex; gap: 1rem; align-items: flex-start; font-size: 0.9375rem; color: var(--fp-text-soft); line-height: 1.6; }
+  .fp-pedagogy-list li { display: flex; gap: 1rem; align-items: flex-start; font-size:1.1rem; color: var(--fp-text-soft); line-height: 1.6; }
   .fp-pedagogy-list li .fp-check { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg,var(--fp-gold-dark),var(--fp-gold)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .fp-pedagogy-list li .fp-check svg { width: 12px; height: 12px; stroke: #fff; }
 
@@ -122,19 +122,19 @@
   .fp-cert-badge svg { width: 52px; height: 52px; stroke: #fff; }
   .fp-cert-title { font-size: clamp(1.5rem,3vw,2rem); font-weight: 300; color: var(--fp-text); margin-bottom: 1rem; letter-spacing: -0.01em; }
   .fp-cert-text { font-size: 1rem; color: var(--fp-text-soft); line-height: 1.8; max-width: 640px; margin: 0 auto 2.5rem; }
-  .fp-cert-warning { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 1.75rem; border-radius: 12px; font-size: 0.9375rem; }
+  .fp-cert-warning { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 1.75rem; border-radius: 12px; font-size:1.1rem; }
 
   /* TARIF */
   .fp-pricing { padding: 100px 24px; background: #fff; }
   .fp-pricing-inner { max-width: 900px; margin: 0 auto; text-align: center; }
   .fp-pricing-card { display: inline-block; padding: 3rem 4rem; border-radius: 24px; background: var(--fp-bg-dark); border: 1px solid rgba(212,168,83,0.3); box-shadow: 0 32px 80px rgba(0,0,0,0.15); text-align: center; margin-top: 3rem; position: relative; overflow: hidden; }
   .fp-pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,#D4A853,#B8893A); }
-  .fp-price-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 1.5rem; }
+  .fp-price-label { font-size:1.15rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 1.5rem; }
   .fp-price-main { font-size: 3.5rem; font-weight: 300; color: #fff; line-height: 1; margin-bottom: 0.25rem; }
   .fp-price-main span { font-size: 1.5rem; vertical-align: super; color: var(--fp-gold); }
-  .fp-price-period { font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+  .fp-price-period { font-size:1.05rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
   .fp-price-includes { list-style: none; padding: 0; margin: 0 0 2.5rem; text-align: left; display: flex; flex-direction: column; gap: 0.75rem; }
-  .fp-price-includes li { display: flex; gap: 0.75rem; font-size: 0.9375rem; color: rgba(255,255,255,0.7); }
+  .fp-price-includes li { display: flex; gap: 0.75rem; font-size:1.1rem; color: rgba(255,255,255,0.7); }
   .fp-price-includes li::before { content: '✓'; color: var(--fp-green); font-weight: 600; flex-shrink: 0; }
 
   /* PROMESSE */
@@ -142,7 +142,7 @@
   .fp-promise-inner { max-width: 680px; margin: 0 auto; }
   .fp-promise blockquote { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.75); line-height: 1.8; border: none; padding: 0; margin: 0 0 1.5rem; }
   .fp-promise blockquote em { color: var(--fp-gold); font-style: normal; }
-  .fp-promise-ref { font-size: 0.875rem; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
+  .fp-promise-ref { font-size:1.05rem; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
 
   /* CTA FINAL */
   .fp-cta-section { padding: 100px 24px; background: linear-gradient(135deg,#D4A853 0%,#B8893A 50%,#1a1a2e 100%); text-align: center; position: relative; overflow: hidden; }
@@ -409,7 +409,7 @@
       </div>
       <div class="fp-pedagogy-split">
         <div class="fp-pedagogy-visual">
-          <div style="font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--fp-text-soft); margin-bottom:1.75rem;">Répartition du temps</div>
+          <div style="font-size:1.15rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--fp-text-soft); margin-bottom:1.75rem;">Répartition du temps</div>
           <div class="fp-pace-bar">
             <div class="fp-pace-bar-label"><span>En ligne — à votre rythme</span><span style="color:var(--fp-gold-dark)">80%</span></div>
             <div class="fp-pace-track"><div class="fp-pace-fill" style="width:80%"></div></div>
@@ -419,7 +419,7 @@
             <div class="fp-pace-track"><div class="fp-pace-fill" style="width:20%"></div></div>
           </div>
           <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid var(--fp-border);">
-            <div style="font-size:0.875rem; color:var(--fp-text-soft); line-height:1.6;">
+            <div style="font-size:1.05rem; color:var(--fp-text-soft); line-height:1.6;">
               Durée totale estimée :<br>
               <strong style="color:var(--fp-text);">8 semaines en ligne + 3h visio (2h groupe + 1h clinique Q/R)</strong>
             </div>
@@ -503,10 +503,10 @@
             <a href="{{ route('user.login') }}?redirect={{ urlencode(route('presence.parcours')) }}" class="fp-btn-outline" style="width:100%; justify-content:center; margin-top:.6rem; color:rgba(232,224,208,.7); border-color:rgba(201,168,76,.4); text-align:center; display:block;">Payer en 3× 1 164 € / mois</a>
           @endauth
           <div style="margin-top:2rem; padding:1.25rem 1.5rem; background:rgba(212,168,83,.07); border:1px solid rgba(212,168,83,.2); border-radius:12px; text-align:left;">
-            <div style="font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:#D4A853; margin-bottom:.5rem;">Étape suivante · Après le Parcours</div>
-            <div style="font-size:.9375rem; color:rgba(255,255,255,.7);">Formation Freelance Pause Souffle — <strong style="color:#fff;">3 490 €</strong> · 3× 1 164 €/mois</div>
-            <div style="font-size:.8rem; color:rgba(255,255,255,.35); margin-top:.35rem;">Certification pour animer les Rituels · Accessible après obtention de l'Attestation</div>
-            <a href="{{ route('presence.formation-praticien') }}" style="display:inline-block; margin-top:.75rem; font-size:.8rem; color:#D4A853; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Découvrir la Formation Freelance →</a>
+            <div style="font-size:1.1rem; letter-spacing:.15em; text-transform:uppercase; color:#D4A853; margin-bottom:.5rem;">Étape suivante · Après le Parcours</div>
+            <div style="font-size:1.1rem; color:rgba(255,255,255,.7);">Formation Freelance Pause Souffle — <strong style="color:#fff;">3 490 €</strong> · 3× 1 164 €/mois</div>
+            <div style="font-size:1rem; color:rgba(255,255,255,.35); margin-top:.35rem;">Certification pour animer les Rituels · Accessible après obtention de l'Attestation</div>
+            <a href="{{ route('presence.formation-praticien') }}" style="display:inline-block; margin-top:.75rem; font-size:1rem; color:#D4A853; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Découvrir la Formation Freelance →</a>
           </div>
         </div>
       </div>

@@ -35,12 +35,12 @@
   .fp-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(37,99,235,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(212,168,83,0.10) 0%, transparent 50%), radial-gradient(ellipse 50% 40% at 80% 70%, rgba(132,204,22,0.06) 0%, transparent 50%); pointer-events: none; }
   .fp-stars { position: absolute; inset: 0; background-image: radial-gradient(1px 1px at 10% 15%, rgba(212,168,83,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 30% 45%, rgba(255,255,255,0.2) 0%, transparent 100%), radial-gradient(1px 1px at 55% 20%, rgba(212,168,83,0.3) 0%, transparent 100%), radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.15) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 63% 50%, rgba(212,168,83,0.5) 0%, transparent 100%); pointer-events: none; }
   .fp-hero-content { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
-  .fp-hero-label { display: inline-block; padding: 6px 18px; border: 1px solid rgba(212,168,83,0.4); border-radius: 40px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 2rem; }
+  .fp-hero-label { display: inline-block; padding: 6px 18px; border: 1px solid rgba(212,168,83,0.4); border-radius: 40px; font-size:1.15rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 2rem; }
   .fp-hero-title { font-size: clamp(2rem,5vw,3.5rem); font-weight: 300; color: #fff; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
   .fp-hero-title em { font-style: italic; color: var(--fp-gold); }
   .fp-hero-subtitle { font-size: clamp(1rem,2vw,1.25rem); color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 600px; margin: 0 auto 3rem; }
   .fp-hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-  .fp-hero-scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce 2s infinite; }
+  .fp-hero-scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.3); font-size:1.15rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce 2s infinite; }
   @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
   /* BOUTONS */
@@ -59,7 +59,7 @@
   .fp-prereq-icon { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg,#D4A853,#B8893A); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .fp-prereq-icon svg { width: 28px; height: 28px; stroke: #fff; }
   .fp-prereq-text h3 { font-size: 1.0625rem; font-weight: 600; color: var(--fp-text); margin-bottom: 0.35rem; }
-  .fp-prereq-text p { font-size: 0.9375rem; color: var(--fp-text-soft); margin: 0; line-height: 1.6; }
+  .fp-prereq-text p { font-size:1.1rem; color: var(--fp-text-soft); margin: 0; line-height: 1.6; }
   .fp-prereq-text a { color: var(--fp-gold-dark); font-weight: 500; text-decoration: underline; }
   @media (max-width: 640px) { .fp-prereq-inner { flex-direction: column; padding: 2rem; } .fp-prereq-icon { width: 48px; height: 48px; } }
 
@@ -68,7 +68,7 @@
   .fp-keydata-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 2px; max-width: 900px; margin: 0 auto; background: var(--fp-border); }
   .fp-keydata-item { background: var(--fp-bg); padding: 2.5rem 2rem; text-align: center; }
   .fp-keydata-number { font-size: 2.5rem; font-weight: 300; color: var(--fp-gold-dark); line-height: 1; margin-bottom: 0.5rem; }
-  .fp-keydata-label { font-size: 0.875rem; color: var(--fp-text-soft); line-height: 1.4; }
+  .fp-keydata-label { font-size:1.05rem; color: var(--fp-text-soft); line-height: 1.4; }
 
   /* POUR QUI */
   .fp-forqui { padding: 100px 24px; background: var(--fp-bg-dark); color: #fff; }
@@ -82,7 +82,7 @@
   .fp-forqui-card:hover { border-color: rgba(212,168,83,0.5); background: rgba(212,168,83,0.07); transform: translateY(-4px); }
   .fp-forqui-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
   .fp-forqui-card h4 { font-size: 1.0625rem; font-weight: 500; color: #fff; margin-bottom: 0.5rem; }
-  .fp-forqui-card p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
+  .fp-forqui-card p { font-size:1.05rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
 
   /* MODULES / PROGRAMME */
   .fp-modules { padding: 100px 24px; background: var(--fp-bg-warm); }
@@ -91,13 +91,13 @@
   .fp-module-item { display: grid; grid-template-columns: 80px 1fr; gap: 0; border-bottom: 1px solid var(--fp-border); padding: 2rem 0; transition: all 0.3s; }
   .fp-module-item:first-child { border-top: 1px solid var(--fp-border); }
   .fp-module-item:hover .fp-module-body { padding-left: 8px; }
-  .fp-module-num { padding-top: 4px; font-size: 0.75rem; color: var(--fp-gold-dark); font-weight: 500; letter-spacing: 0.1em; }
+  .fp-module-num { padding-top: 4px; font-size:1.15rem; color: var(--fp-gold-dark); font-weight: 500; letter-spacing: 0.1em; }
   .fp-module-body { transition: padding 0.3s; }
   .fp-module-body h3 { font-size: 1.1875rem; font-weight: 500; color: var(--fp-text); margin-bottom: 0.25rem; }
-  .fp-module-week { font-size: 0.75rem; color: var(--fp-gold-dark); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  .fp-module-body p { font-size: 0.9375rem; color: var(--fp-text-soft); line-height: 1.6; margin-bottom: 0.75rem; }
+  .fp-module-week { font-size:1.15rem; color: var(--fp-gold-dark); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .fp-module-body p { font-size:1.1rem; color: var(--fp-text-soft); line-height: 1.6; margin-bottom: 0.75rem; }
   .fp-module-activities { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .fp-activity-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; background: #fff; border: 1px solid var(--fp-border); border-radius: 20px; font-size: 0.8125rem; color: var(--fp-text); }
+  .fp-activity-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; background: #fff; border: 1px solid var(--fp-border); border-radius: 20px; font-size:1rem; color: var(--fp-text); }
   .fp-activity-tag svg { width: 12px; height: 12px; flex-shrink: 0; color: var(--fp-gold-dark); }
 
   /* PÉDAGOGIE */
@@ -108,7 +108,7 @@
   @media (max-width: 768px) { .fp-pedagogy-split { grid-template-columns: 1fr; } .fp-forqui-grid { grid-template-columns: 1fr 1fr; } }
   .fp-pedagogy-visual { background: var(--fp-bg-warm); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--fp-border); }
   .fp-pedagogy-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem; }
-  .fp-pedagogy-list li { display: flex; gap: 1rem; align-items: flex-start; font-size: 0.9375rem; color: var(--fp-text-soft); line-height: 1.6; }
+  .fp-pedagogy-list li { display: flex; gap: 1rem; align-items: flex-start; font-size:1.1rem; color: var(--fp-text-soft); line-height: 1.6; }
   .fp-pedagogy-list li .fp-check { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg,var(--fp-gold-dark),var(--fp-gold)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .fp-pedagogy-list li .fp-check svg { width: 12px; height: 12px; stroke: #fff; }
 
@@ -119,19 +119,19 @@
   .fp-cert-badge svg { width: 52px; height: 52px; stroke: #fff; }
   .fp-cert-title { font-size: clamp(1.5rem,3vw,2rem); font-weight: 300; color: var(--fp-text); margin-bottom: 1rem; letter-spacing: -0.01em; }
   .fp-cert-text { font-size: 1rem; color: var(--fp-text-soft); line-height: 1.8; max-width: 640px; margin: 0 auto 2.5rem; }
-  .fp-cert-warning { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 1.75rem; border-radius: 12px; font-size: 0.9375rem; }
+  .fp-cert-warning { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 1.75rem; border-radius: 12px; font-size:1.1rem; }
 
   /* TARIF */
   .fp-pricing { padding: 100px 24px; background: #fff; }
   .fp-pricing-inner { max-width: 900px; margin: 0 auto; text-align: center; }
   .fp-pricing-card { display: inline-block; padding: 3rem 4rem; border-radius: 24px; background: var(--fp-bg-dark); border: 1px solid rgba(212,168,83,0.3); box-shadow: 0 32px 80px rgba(0,0,0,0.15); text-align: center; margin-top: 3rem; position: relative; overflow: hidden; }
   .fp-pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,#D4A853,#84CC16,#2563EB); }
-  .fp-price-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 1.5rem; }
+  .fp-price-label { font-size:1.15rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 1.5rem; }
   .fp-price-main { font-size: 3.5rem; font-weight: 300; color: #fff; line-height: 1; margin-bottom: 0.25rem; }
   .fp-price-main span { font-size: 1.5rem; vertical-align: super; color: var(--fp-gold); }
-  .fp-price-period { font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+  .fp-price-period { font-size:1.05rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
   .fp-price-includes { list-style: none; padding: 0; margin: 0 0 2.5rem; text-align: left; display: flex; flex-direction: column; gap: 0.75rem; }
-  .fp-price-includes li { display: flex; gap: 0.75rem; font-size: 0.9375rem; color: rgba(255,255,255,0.7); }
+  .fp-price-includes li { display: flex; gap: 0.75rem; font-size:1.1rem; color: rgba(255,255,255,0.7); }
   .fp-price-includes li::before { content: '✓'; color: var(--fp-green); font-weight: 600; flex-shrink: 0; }
 
   /* PROMESSE */
@@ -139,7 +139,7 @@
   .fp-promise-inner { max-width: 680px; margin: 0 auto; }
   .fp-promise blockquote { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.75); line-height: 1.8; border: none; padding: 0; margin: 0 0 1.5rem; }
   .fp-promise blockquote em { color: var(--fp-gold); font-style: normal; }
-  .fp-promise-ref { font-size: 0.875rem; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
+  .fp-promise-ref { font-size:1.05rem; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
 
   /* CTA FINAL */
   .fp-cta-section { padding: 100px 24px; background: linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0d0d1a 100%); text-align: center; position: relative; overflow: hidden; }
@@ -298,19 +298,19 @@
   <section style="background:#fff; padding:100px 24px;" id="rituels">
     <div style="max-width:1000px; margin:0 auto;">
       <div style="text-align:center; margin-bottom:4rem;">
-        <div style="font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:#B8893A; margin-bottom:.75rem;">Ce que vous proposerez à vos clients</div>
+        <div style="font-size:1.1rem; letter-spacing:.2em; text-transform:uppercase; color:#B8893A; margin-bottom:.75rem;">Ce que vous proposerez à vos clients</div>
         <h2 style="font-size:clamp(1.5rem,2.5vw,2rem); font-weight:300; color:#1F2937; letter-spacing:-.02em; margin-bottom:1rem;">Exemple de Rituel Corps Complet <em style="font-style:italic; color:#B8893A;">Pause Souffle</em></h2>
-        <p style="font-size:.9375rem; color:#6B7280; max-width:600px; margin:0 auto;">Do In → Tai Chi → Pilates → Stretching → Méditation → Câlin signature.<br>L'ordre est physiologique : éveiller, fluidifier, tonifier, libérer, transformer, sceller.</p>
+        <p style="font-size:1.1rem; color:#6B7280; max-width:600px; margin:0 auto;">Do In → Tai Chi → Pilates → Stretching → Méditation → Câlin signature.<br>L'ordre est physiologique : éveiller, fluidifier, tonifier, libérer, transformer, sceller.</p>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
 
         <div style="border:1px solid #E5E7EB; border-radius:16px; overflow:hidden;">
           <div style="background:#0D0D1A; padding:1.5rem 2rem;">
-            <div style="font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:#D4A853;">Format</div>
+            <div style="font-size:1.1rem; letter-spacing:.15em; text-transform:uppercase; color:#D4A853;">Format</div>
             <div style="font-size:1.25rem; font-weight:300; color:#fff; margin-top:.25rem;">45 minutes</div>
           </div>
           <div style="padding:1.5rem 2rem;">
-            <table style="width:100%; border-collapse:collapse; font-size:.875rem;">
+            <table style="width:100%; border-collapse:collapse; font-size:1.05rem;">
               <tr style="border-bottom:1px solid #F3F4F6;"><td style="padding:.6rem 0; color:#B8893A; font-weight:600; width:50px;">3 min</td><td style="padding:.6rem 0; color:#1F2937;">Accueil · Installation · Respiration 5-5-5</td></tr>
               <tr style="border-bottom:1px solid #F3F4F6;"><td style="padding:.6rem 0; color:#B8893A; font-weight:600;">6 min</td><td style="padding:.6rem 0; color:#1F2937;"><strong>Do In</strong> — visage, nuque, avant-bras, pieds</td></tr>
               <tr style="border-bottom:1px solid #F3F4F6;"><td style="padding:.6rem 0; color:#B8893A; font-weight:600;">7 min</td><td style="padding:.6rem 0; color:#1F2937;"><strong>Tai Chi</strong> — 3 formes lentes</td></tr>
@@ -324,11 +324,11 @@
 
         <div style="border:1px solid rgba(212,168,83,.3); border-radius:16px; overflow:hidden;">
           <div style="background:linear-gradient(135deg,#0D0D1A,#1a0d00); padding:1.5rem 2rem;">
-            <div style="font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:#D4A853;">Format</div>
+            <div style="font-size:1.1rem; letter-spacing:.15em; text-transform:uppercase; color:#D4A853;">Format</div>
             <div style="font-size:1.25rem; font-weight:300; color:#fff; margin-top:.25rem;">60 minutes</div>
           </div>
           <div style="padding:1.5rem 2rem;">
-            <table style="width:100%; border-collapse:collapse; font-size:.875rem;">
+            <table style="width:100%; border-collapse:collapse; font-size:1.05rem;">
               <tr style="border-bottom:1px solid #F3F4F6;"><td style="padding:.6rem 0; color:#B8893A; font-weight:600; width:50px;">3 min</td><td style="padding:.6rem 0; color:#1F2937;">Accueil · Respiration consciente</td></tr>
               <tr style="border-bottom:1px solid #F3F4F6;"><td style="padding:.6rem 0; color:#B8893A; font-weight:600;">8 min</td><td style="padding:.6rem 0; color:#1F2937;"><strong>Do In</strong> — corps complet</td></tr>
               <tr style="border-bottom:1px solid #F3F4F6;"><td style="padding:.6rem 0; color:#B8893A; font-weight:600;">10 min</td><td style="padding:.6rem 0; color:#1F2937;"><strong>Tai Chi</strong> — séquence complète</td></tr>
@@ -341,7 +341,7 @@
         </div>
 
       </div>
-      <p style="text-align:center; margin-top:2rem; font-size:.8rem; color:#9CA3AF;">✦ Le câlin de clôture est la signature Junspro — enseigné en formation, encadré, sincère. Jamais obligatoire pour le client, toujours proposé par le freelance.</p>
+      <p style="text-align:center; margin-top:2rem; font-size:1rem; color:#9CA3AF;">✦ Le câlin de clôture est la signature Junspro — enseigné en formation, encadré, sincère. Jamais obligatoire pour le client, toujours proposé par le freelance.</p>
     </div>
   </section>
 
@@ -477,15 +477,15 @@
       </div>
       <div class="fp-pedagogy-split">
         <div class="fp-pedagogy-visual">
-          <div style="font-size: 0.875rem; font-weight:600; color: var(--fp-text); margin-bottom: 1.75rem;">Ce que vous obtenez</div>
+          <div style="font-size:1.05rem; font-weight:600; color: var(--fp-text); margin-bottom: 1.75rem;">Ce que vous obtenez</div>
           <div style="display: flex; flex-direction: column; gap: 1rem;">
             <div style="display: flex; gap: 1rem; align-items: center; padding: 1rem; background: white; border-radius: 12px; border: 1px solid var(--fp-border);">
               <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #D4A853, #B8893A); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                 <svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
               </div>
               <div>
-                <div style="font-weight: 600; font-size: .9375rem; color: var(--fp-text);">Certification Freelance Pause Souffle</div>
-                <div style="font-size: .8rem; color: var(--fp-text-soft);">Délivrée par Junspro · reconnue dans le réseau</div>
+                <div style="font-weight: 600; font-size:1.1rem; color: var(--fp-text);">Certification Freelance Pause Souffle</div>
+                <div style="font-size:1rem; color: var(--fp-text-soft);">Délivrée par Junspro · reconnue dans le réseau</div>
               </div>
             </div>
             <div style="display: flex; gap: 1rem; align-items: center; padding: 1rem; background: white; border-radius: 12px; border: 1px solid var(--fp-border);">
@@ -493,8 +493,8 @@
                 <svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
               </div>
               <div>
-                <div style="font-weight: 600; font-size: .9375rem; color: var(--fp-text);">Profil Freelance activé sur Junspro.com</div>
-                <div style="font-size: .8rem; color: var(--fp-text-soft);">Visible par les clients dès la certification</div>
+                <div style="font-weight: 600; font-size:1.1rem; color: var(--fp-text);">Profil Freelance activé sur Junspro.com</div>
+                <div style="font-size:1rem; color: var(--fp-text-soft);">Visible par les clients dès la certification</div>
               </div>
             </div>
             <div style="display: flex; gap: 1rem; align-items: center; padding: 1rem; background: white; border-radius: 12px; border: 1px solid var(--fp-border);">
@@ -502,8 +502,8 @@
                 <svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div>
-                <div style="font-weight: 600; font-size: .9375rem; color: var(--fp-text);">Kit de démarrage Freelance</div>
-                <div style="font-size: .8rem; color: var(--fp-text-soft);">Fiches Rituels, templates, supports clients</div>
+                <div style="font-weight: 600; font-size:1.1rem; color: var(--fp-text);">Kit de démarrage Freelance</div>
+                <div style="font-size:1rem; color: var(--fp-text-soft);">Fiches Rituels, templates, supports clients</div>
               </div>
             </div>
           </div>
@@ -587,7 +587,7 @@
           @else
             <a href="{{ route('user.login') }}?redirect={{ urlencode(route('presence.formation-praticien')) }}" class="fp-btn-outline" style="width:100%; justify-content:center; margin-top:.6rem; color:rgba(232,224,208,.7); border-color:rgba(201,168,76,.4); text-align:center; display:block;">Payer en 3× 1 164 € / mois</a>
           @endauth
-          <p style="font-size:0.75rem; color:rgba(255,255,255,0.3); margin-top:1rem;">
+          <p style="font-size:1.15rem; color:rgba(255,255,255,0.3); margin-top:1rem;">
             Prérequis : Attestation Retour à Soi (Le Parcours complété) obligatoire avant l'accès.
           </p>
         </div>

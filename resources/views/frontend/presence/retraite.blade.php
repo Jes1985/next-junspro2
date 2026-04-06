@@ -102,7 +102,7 @@
 
 .rt-hero__eyebrow {
   display: inline-flex; align-items: center; gap: .6rem;
-  font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+  font-size:1.1rem; letter-spacing: .22em; text-transform: uppercase;
   color: var(--rt-gold); margin-bottom: 2.2rem;
 }
 .rt-hero__eyebrow-dot {
@@ -153,7 +153,7 @@
   padding: 7px 18px;
   border: 1px solid var(--rt-gold-b);
   border-radius: 40px;
-  font-size: .72rem;
+  font-size:1.1rem;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--rt-gold);
@@ -169,7 +169,7 @@
   display: inline-flex; align-items: center; gap: .6rem;
   background: linear-gradient(135deg, var(--rt-gold), #b8893a);
   color: #0a0a0a;
-  font-size: .88rem; font-weight: 700;
+  font-size:1.05rem; font-weight: 700;
   letter-spacing: .06em; text-transform: uppercase;
   padding: 1rem 2.2rem;
   border: none; border-radius: 6px;
@@ -187,7 +187,7 @@
   display: inline-flex; align-items: center; gap: .6rem;
   background: transparent;
   color: var(--rt-sand);
-  font-size: .88rem; font-weight: 500; letter-spacing: .04em;
+  font-size:1.05rem; font-weight: 500; letter-spacing: .04em;
   padding: 1rem 2rem;
   border: 1px solid var(--rt-border2);
   border-radius: 6px;
@@ -200,7 +200,7 @@
 .rt-scroll-indicator {
   position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
-  color: var(--rt-muted); font-size: .65rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--rt-muted); font-size:1.05rem; letter-spacing: .14em; text-transform: uppercase;
   z-index: 2;
 }
 .rt-scroll-line {
@@ -234,7 +234,7 @@
 }
 
 .rt-section__eyebrow {
-  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+  font-size:1.05rem; letter-spacing: .2em; text-transform: uppercase;
   color: var(--rt-gold); margin-bottom: 1rem; text-align: center;
 }
 .rt-section__title {
@@ -278,7 +278,7 @@
   margin-bottom: .8rem; font-weight: 400;
 }
 .rt-concept-card__body {
-  font-size: .88rem; color: var(--rt-muted);
+  font-size:1.05rem; color: var(--rt-muted);
   line-height: 1.7;
 }
 
@@ -310,7 +310,7 @@
 }
 .rt-lieu-visual__name em { color: var(--rt-teal); font-style: italic; }
 .rt-lieu-visual__sub {
-  font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+  font-size:1.15rem; letter-spacing: .18em; text-transform: uppercase;
   color: var(--rt-teal); text-align: center;
 }
 .rt-lieu-visual__wave {
@@ -325,11 +325,11 @@
   font-size: 1.35rem; color: #fff; font-weight: 400;
   margin-bottom: 1.2rem; line-height: 1.3;
 }
-.rt-lieu-content__body { font-size: .9rem; color: var(--rt-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+.rt-lieu-content__body { font-size:1.1rem; color: var(--rt-muted); line-height: 1.8; margin-bottom: 1.5rem; }
 .rt-lieu-detail-list { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
 .rt-lieu-detail-list li {
   display: flex; align-items: center; gap: .75rem;
-  font-size: .85rem; color: var(--rt-sand);
+  font-size:1.05rem; color: var(--rt-sand);
 }
 .rt-lieu-detail-list li::before {
   content: ''; width: 5px; height: 5px; border-radius: 50%;
@@ -370,19 +370,19 @@
   background: var(--rt-gold-d);
   border: 1.5px solid var(--rt-gold);
   display: flex; align-items: center; justify-content: center;
-  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+  font-size:1.05rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--rt-gold); font-weight: 700;
   position: relative; z-index: 1;
   flex-shrink: 0;
 }
 .rt-day__label-num {
-  font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+  font-size:1.05rem; letter-spacing: .14em; text-transform: uppercase;
   color: var(--rt-muted);
 }
 
 .rt-day__body { flex: 1; }
 .rt-day__theme {
-  font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+  font-size:1.05rem; letter-spacing: .18em; text-transform: uppercase;
   color: var(--rt-gold); margin-bottom: .5rem;
 }
 .rt-day__title {
@@ -393,7 +393,7 @@
 }
 .rt-day__title em { font-style: italic; color: var(--rt-gold); }
 .rt-day__lead {
-  font-size: .9rem; color: var(--rt-muted);
+  font-size:1.1rem; color: var(--rt-muted);
   line-height: 1.75; margin-bottom: 1.2rem;
   max-width: 600px;
 }
@@ -404,9 +404,9 @@
   display: inline-flex; align-items: center; gap: .45rem;
   background: var(--rt-dark3); border: 1px solid var(--rt-border2);
   border-radius: 8px; padding: .55rem .9rem;
-  font-size: .78rem; color: var(--rt-sand); line-height: 1;
+  font-size:1.15rem; color: var(--rt-sand); line-height: 1;
 }
-.rt-day__act-icon { font-size: .95rem; }
+.rt-day__act-icon { font-size:1.15rem; }
 
 /* ── ACTIVITÉS GRID ───────────────────────────────────────────── */
 .rt-act-grid {
@@ -435,11 +435,11 @@
   font-size: 1.2rem; line-height: 1;
 }
 .rt-act-card__title { font-size: 1rem; font-weight: 600; color: #fff; line-height: 1.3; padding-top: .1rem; }
-.rt-act-card__subtitle { font-size: .72rem; color: var(--rt-gold); letter-spacing: .06em; text-transform: uppercase; }
-.rt-act-card__body { font-size: .85rem; color: var(--rt-muted); line-height: 1.7; }
+.rt-act-card__subtitle { font-size:1.1rem; color: var(--rt-gold); letter-spacing: .06em; text-transform: uppercase; }
+.rt-act-card__body { font-size:1.05rem; color: var(--rt-muted); line-height: 1.7; }
 .rt-act-card__tag {
   display: inline-block;
-  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+  font-size:1.05rem; letter-spacing: .1em; text-transform: uppercase;
   padding: 4px 10px; border-radius: 4px;
   background: var(--rt-gold-d); color: var(--rt-gold);
   align-self: flex-start;
@@ -461,8 +461,8 @@
 }
 .rt-inclus-item:hover { border-color: var(--rt-gold-b); }
 .rt-inclus-item__icon { font-size: 1.4rem; flex-shrink: 0; padding-top: .1rem; }
-.rt-inclus-item__title { font-size: .9rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
-.rt-inclus-item__body { font-size: .8rem; color: var(--rt-muted); line-height: 1.6; }
+.rt-inclus-item__title { font-size:1.1rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
+.rt-inclus-item__body { font-size:1rem; color: var(--rt-muted); line-height: 1.6; }
 
 /* ── POUR QUI ─────────────────────────────────────────────────── */
 .rt-pourqui {
@@ -486,14 +486,14 @@
 }
 .rt-pourqui__list li {
   display: flex; align-items: flex-start; gap: .8rem;
-  font-size: .9rem; color: var(--rt-sand); line-height: 1.6;
+  font-size:1.1rem; color: var(--rt-sand); line-height: 1.6;
 }
 .rt-pourqui__list li::before {
   content: '✦'; color: var(--rt-gold);
-  font-size: .65rem; padding-top: .3rem; flex-shrink: 0;
+  font-size:1.05rem; padding-top: .3rem; flex-shrink: 0;
 }
 .rt-pourqui__note {
-  font-size: .82rem; color: var(--rt-muted);
+  font-size:1rem; color: var(--rt-muted);
   font-style: italic; line-height: 1.6;
   border-top: 1px solid var(--rt-border2);
   padding-top: 1.2rem; margin-top: .5rem;
@@ -516,16 +516,16 @@
   background: linear-gradient(135deg, rgba(212,168,83,.08), rgba(212,168,83,.03));
 }
 .rt-edition-card__season {
-  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  font-size:1.1rem; letter-spacing: .15em; text-transform: uppercase;
   color: var(--rt-gold); margin-bottom: .5rem;
 }
 .rt-edition-card__date {
   font-family: var(--serif); font-size: 1.3rem; color: #fff; margin-bottom: .5rem;
 }
-.rt-edition-card__dest { font-size: .82rem; color: var(--rt-muted); margin-bottom: 1rem; }
+.rt-edition-card__dest { font-size:1rem; color: var(--rt-muted); margin-bottom: 1rem; }
 .rt-edition-card__status {
   display: inline-flex; align-items: center; gap: .4rem;
-  font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+  font-size:1.1rem; letter-spacing: .08em; text-transform: uppercase;
   font-weight: 700; padding: 4px 12px; border-radius: 20px;
 }
 .rt-edition-card__status--waiting { background: rgba(212,168,83,.15); color: var(--rt-gold); border: 1px solid var(--rt-gold-b); }
@@ -543,11 +543,11 @@
 .rt-waitlist__num { font-size: 3.5rem; font-weight: 800; color: var(--rt-gold); line-height: 1; }
 .rt-waitlist__counter-text { text-align:left; }
 .rt-waitlist__counter-text strong { color: #fff; display: block; font-size: 1rem; }
-.rt-waitlist__counter-text span   { color: var(--rt-sand); font-size: .85rem; }
+.rt-waitlist__counter-text span   { color: var(--rt-sand); font-size:1.05rem; }
 .rt-waitlist__rule {
   background: rgba(14,165,233,.08); border: 1px solid rgba(14,165,233,.2);
   border-radius: 12px; padding: 1rem 1.5rem; margin: 1.5rem auto;
-  max-width: 480px; font-size: .85rem; color: rgba(14,165,233,.9);
+  max-width: 480px; font-size:1.05rem; color: rgba(14,165,233,.9);
   display: flex; align-items: flex-start; gap: .7rem; line-height: 1.6;
 }
 .rt-waitlist__perks {
@@ -557,7 +557,7 @@
 .rt-waitlist__perk {
   display: inline-flex; align-items: center; gap: .4rem;
   background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
-  border-radius: 20px; padding: 6px 14px; font-size: .78rem; color: var(--rt-sand);
+  border-radius: 20px; padding: 6px 14px; font-size:1.15rem; color: var(--rt-sand);
 }
 .rt-waitlist__perk::before { content: '✓'; color: var(--rt-gold); font-weight:700; }
 .rt-waitlist__form {
@@ -571,14 +571,14 @@
 .rt-waitlist__fields { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-bottom: .8rem; }
 .rt-waitlist__input {
   background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
-  border-radius: 10px; padding: .75rem 1rem; color: #fff; font-size: .9rem;
+  border-radius: 10px; padding: .75rem 1rem; color: #fff; font-size:1.1rem;
   outline: none; transition: border-color .2s; width: 100%;
 }
 .rt-waitlist__input:focus { border-color: var(--rt-gold-b); }
 .rt-waitlist__input::placeholder { color: var(--rt-muted); }
 .rt-waitlist__select {
   background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
-  border-radius: 10px; padding: .75rem 1rem; color: #fff; font-size: .9rem;
+  border-radius: 10px; padding: .75rem 1rem; color: #fff; font-size:1.1rem;
   outline: none; width: 100%; cursor: pointer;
   -webkit-appearance: none; appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A853' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
@@ -589,7 +589,7 @@
   width: 100%; padding: .95rem;
   background: linear-gradient(135deg, var(--rt-gold), var(--rt-gold-b));
   border: none; border-radius: 10px; color: #06060f;
-  font-weight: 700; font-size: .95rem; cursor: pointer;
+  font-weight: 700; font-size:1.15rem; cursor: pointer;
   transition: opacity .2s; letter-spacing: .03em;
 }
 .rt-waitlist__btn:hover { opacity: .88; }
@@ -607,14 +607,14 @@
   border: 1px solid var(--rt-gold-b);
   border-radius: 50px;
   padding: .9rem 2rem;
-  font-size: .82rem;
+  font-size:1rem;
 }
 .rt-places__num {
   font-size: 1.8rem; font-weight: 800; color: var(--rt-gold);
   line-height: 1;
 }
 .rt-places__text { color: var(--rt-sand); line-height: 1.3; }
-.rt-places__text strong { color: #fff; font-size: .9rem; display: block; }
+.rt-places__text strong { color: #fff; font-size:1.1rem; display: block; }
 
 /* ── CTA FINAL ────────────────────────────────────────────────── */
 .rt-cta-final {
@@ -656,7 +656,7 @@
 }
 .rt-quote__text em { color: var(--rt-gold); }
 .rt-quote__attr {
-  font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+  font-size:1.1rem; letter-spacing: .16em; text-transform: uppercase;
   color: var(--rt-gold);
 }
 
@@ -697,7 +697,7 @@
   padding: .52rem 1.15rem;
   border-radius: 999px;
   font-family: 'Montserrat', Georgia, sans-serif;
-  font-size: .7rem;
+  font-size:1.1rem;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -903,7 +903,7 @@
             {{ $en ? '??' : '??' }}<br>
             <em>{{ $en ? 'The secret' : 'Le secret' }}</em>
           </p>
-          <p style="font-size:.82rem; color:rgba(14,165,233,.7); text-align:center; max-width:260px; line-height:1.6;">
+          <p style="font-size:1rem; color:rgba(14,165,233,.7); text-align:center; max-width:260px; line-height:1.6;">
             @if($en)
               Shore or summit · Private villa or chalet · Spa · Private chef
             @else
@@ -935,35 +935,35 @@
             {{-- ÉDITION FONDATRICE --}}
             <div style="margin-bottom:1.25rem; padding:1rem 1.25rem; background:linear-gradient(135deg,rgba(212,168,83,.1),rgba(212,168,83,.04)); border:1px solid rgba(212,168,83,.35); border-radius:12px;">
               <div style="display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem;">
-                <span style="background:var(--rt-gold); color:#0D0D1A; font-size:.6rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:20px;">{{ $en ? 'Founding Edition' : 'Édition Fondatrice' }}</span>
-                <span style="font-size:.72rem; color:rgba(212,168,83,.6); letter-spacing:1px;">{{ $en ? 'First 3 sea retreats' : '3 premières retraites mer' }}</span>
+                <span style="background:var(--rt-gold); color:#0D0D1A; font-size:1.05rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:20px;">{{ $en ? 'Founding Edition' : 'Édition Fondatrice' }}</span>
+                <span style="font-size:1.1rem; color:rgba(212,168,83,.6); letter-spacing:1px;">{{ $en ? 'First 3 sea retreats' : '3 premières retraites mer' }}</span>
               </div>
               <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;">
                 <span style="font-size:1.25rem;">🇲🇹</span>
                 <div>
-                  <div style="font-size:.95rem; font-weight:600; color:var(--rt-gold);">{{ $en ? 'Malta · Gozo' : 'Malte · Gozo' }}</div>
-                  <div style="font-size:.75rem; color:rgba(255,255,255,.4); line-height:1.5;">{{ $en ? 'Azure Window · Blue Lagoon · private villa overlooking the sea · 300 days of sun' : 'Azure Window · Blue Lagoon · villa privée surplombant la mer · 300 jours de soleil' }}</div>
+                  <div style="font-size:1.15rem; font-weight:600; color:var(--rt-gold);">{{ $en ? 'Malta · Gozo' : 'Malte · Gozo' }}</div>
+                  <div style="font-size:1.15rem; color:rgba(255,255,255,.4); line-height:1.5;">{{ $en ? 'Azure Window · Blue Lagoon · private villa overlooking the sea · 300 days of sun' : 'Azure Window · Blue Lagoon · villa privée surplombant la mer · 300 jours de soleil' }}</div>
                 </div>
               </div>
             </div>
 
-            <div style="font-size:.65rem; letter-spacing:1.8px; text-transform:uppercase; color:rgba(14,165,233,.6); margin-bottom:.6rem;">{{ $en ? '🌊 Sea editions — after Malte' : '🌊 Éditions Mer — après Malte' }}</div>
+            <div style="font-size:1.05rem; letter-spacing:1.8px; text-transform:uppercase; color:rgba(14,165,233,.6); margin-bottom:.6rem;">{{ $en ? '🌊 Sea editions — after Malte' : '🌊 Éditions Mer — après Malte' }}</div>
             <div style="display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem;">
-              <span style="background:rgba(212,168,83,.12); border:1px solid rgba(212,168,83,.25); color:var(--rt-gold); font-size:.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Crète</span>
-              <span style="background:rgba(212,168,83,.12); border:1px solid rgba(212,168,83,.25); color:var(--rt-gold); font-size:.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Pouilles</span>
-              <span style="background:rgba(212,168,83,.12); border:1px solid rgba(212,168,83,.25); color:var(--rt-gold); font-size:.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Essaouira</span>
-              <span style="background:rgba(212,168,83,.12); border:1px solid rgba(212,168,83,.25); color:var(--rt-gold); font-size:.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Bodrum</span>
-              <span style="background:rgba(14,165,233,.12); border:1px solid rgba(14,165,233,.2); color:rgba(14,165,233,.9); font-size:.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">{{ $en ? 'Or elsewhere…' : 'Ou ailleurs…' }}</span>
+              <span style="background:rgba(212,168,83,.12); border:1px solid rgba(212,168,83,.25); color:var(--rt-gold); font-size:1.1rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Crète</span>
+              <span style="background:rgba(212,168,83,.12); border:1px solid rgba(212,168,83,.25); color:var(--rt-gold); font-size:1.1rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Pouilles</span>
+              <span style="background:rgba(212,168,83,.12); border:1px solid rgba(212,168,83,.25); color:var(--rt-gold); font-size:1.1rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Essaouira</span>
+              <span style="background:rgba(212,168,83,.12); border:1px solid rgba(212,168,83,.25); color:var(--rt-gold); font-size:1.1rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Bodrum</span>
+              <span style="background:rgba(14,165,233,.12); border:1px solid rgba(14,165,233,.2); color:rgba(14,165,233,.9); font-size:1.1rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">{{ $en ? 'Or elsewhere…' : 'Ou ailleurs…' }}</span>
             </div>
 
-            <div style="font-size:.65rem; letter-spacing:1.8px; text-transform:uppercase; color:rgba(132,204,22,.6); margin-bottom:.6rem;">{{ $en ? '⛷️ Mountain editions' : '⛷️ Éditions Montagne' }}</div>
+            <div style="font-size:1.05rem; letter-spacing:1.8px; text-transform:uppercase; color:rgba(132,204,22,.6); margin-bottom:.6rem;">{{ $en ? '⛷️ Mountain editions' : '⛷️ Éditions Montagne' }}</div>
             <div style="display:flex; flex-wrap:wrap; gap:.5rem;">
-              <span style="background:rgba(132,204,22,.1); border:1px solid rgba(132,204,22,.3); color:#84CC16; font-size:.72rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px; position:relative;">Méribel-Village ★</span>
-              <span style="background:rgba(132,204,22,.1); border:1px solid rgba(132,204,22,.22); color:#84CC16; font-size:.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Megève</span>
-              <span style="background:rgba(132,204,22,.1); border:1px solid rgba(132,204,22,.22); color:#84CC16; font-size:.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Verbier</span>
-              <span style="background:rgba(132,204,22,.1); border:1px solid rgba(132,204,22,.22); color:#84CC16; font-size:.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Dolomites</span>
+              <span style="background:rgba(132,204,22,.1); border:1px solid rgba(132,204,22,.3); color:#84CC16; font-size:1.1rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px; position:relative;">Méribel-Village ★</span>
+              <span style="background:rgba(132,204,22,.1); border:1px solid rgba(132,204,22,.22); color:#84CC16; font-size:1.1rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Megève</span>
+              <span style="background:rgba(132,204,22,.1); border:1px solid rgba(132,204,22,.22); color:#84CC16; font-size:1.1rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Verbier</span>
+              <span style="background:rgba(132,204,22,.1); border:1px solid rgba(132,204,22,.22); color:#84CC16; font-size:1.1rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px;">Dolomites</span>
             </div>
-            <p style="font-size:.72rem; color:rgba(132,204,22,.45); margin-top:.5rem; font-style:italic;">★ {{ $en ? 'Méribel-Village — founding mountain edition. Chalet with independent staff annex.' : 'Méribel-Village — édition fondatrice montagne. Chalet avec dépendance indépendante.' }}</p>
+            <p style="font-size:1.1rem; color:rgba(132,204,22,.45); margin-top:.5rem; font-style:italic;">★ {{ $en ? 'Méribel-Village — founding mountain edition. Chalet with independent staff annex.' : 'Méribel-Village — édition fondatrice montagne. Chalet avec dépendance indépendante.' }}</p>
           </div>
 
           <ul class="rt-lieu-detail-list">
@@ -1004,7 +1004,7 @@
       {{-- TOGGLE MER / MONTAGNE --}}
       <style>
         .rt-prog-toggle { display:flex; gap:.75rem; margin-bottom:2.5rem; flex-wrap:wrap; }
-        .rt-prog-tab { background:transparent; border:1px solid rgba(212,168,83,.3); color:rgba(255,255,255,.4); font-size:.73rem; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; padding:.7rem 1.6rem; border-radius:30px; cursor:pointer; transition:all .28s ease; }
+        .rt-prog-tab { background:transparent; border:1px solid rgba(212,168,83,.3); color:rgba(255,255,255,.4); font-size:1.1rem; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; padding:.7rem 1.6rem; border-radius:30px; cursor:pointer; transition:all .28s ease; }
         .rt-prog-tab:hover { border-color:rgba(212,168,83,.6); color:rgba(255,255,255,.7); }
         .rt-prog-tab.rt-prog-tab--active { background:rgba(212,168,83,.12); border-color:var(--rt-gold); color:var(--rt-gold); }
         .rt-prog-tab.rt-prog-tab--mountain.rt-prog-tab--active { background:rgba(132,204,22,.1); border-color:#84CC16; color:#84CC16; }
@@ -1019,7 +1019,7 @@
 
       <div id="prog-mer" class="rt-prog-panel rt-prog-panel--visible">
       {{-- Note fondatrice --}}
-      <div style="margin-bottom:1.75rem; padding:.875rem 1.25rem; background:rgba(212,168,83,.06); border:1px solid rgba(212,168,83,.2); border-radius:10px; font-size:.78rem; color:rgba(212,168,83,.65); line-height:1.6;">
+      <div style="margin-bottom:1.75rem; padding:.875rem 1.25rem; background:rgba(212,168,83,.06); border:1px solid rgba(212,168,83,.2); border-radius:10px; font-size:1.15rem; color:rgba(212,168,83,.65); line-height:1.6;">
         🇲🇹 {{ $en ? 'Founding editions — Malta &amp; Gozo. The 3 first sea retreats take place on the island of Gozo — the wild, silent face of Malta.' : 'Éditions fondatrices — Malte &amp; Gozo. Les 3 premières retraites mer se déroulent sur l’île de Gozo — le visage sauvage et silencieux de Malte.' }}
       </div>
       <div class="rt-timeline">
@@ -1783,14 +1783,14 @@
             <button type="submit" class="rt-waitlist__btn" id="waitlist-submit">
               {{ $en ? '→ Join the waitlist' : '→ Rejoindre la liste d\'attente' }}
             </button>
-            <p style="font-size:.72rem; color:var(--rt-muted); margin-top:.8rem; text-align:center;">
+            <p style="font-size:1.1rem; color:var(--rt-muted); margin-top:.8rem; text-align:center;">
               {{ $en ? 'No commitment · Confidential · Unsubscribe at any time' : 'Aucun engagement · Confidentiel · Désinscription à tout moment' }}
             </p>
           </form>
           <div class="rt-waitlist__success" id="waitlist-success">
             <svg width="44" height="44" fill="none" stroke="#10b981" stroke-width="1.5" viewBox="0 0 24 24" style="display:block; margin:0 auto 1rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <p class="main">{{ $en ? 'You are on the list.' : 'Vous êtes sur la liste.' }}</p>
-            <p style="color:var(--rt-muted); font-size:.9rem;">
+            <p style="color:var(--rt-muted); font-size:1.1rem;">
               {{ $en ? 'You will receive a priority notification when the next edition is confirmed.' : 'Vous recevrez une notification prioritaire dès que la prochaine édition sera confirmée.' }}
             </p>
           </div>
@@ -1844,16 +1844,16 @@
       </p>
 
       <div class="rt-hero__cta-wrap">
-        <a href="{{ route('presence.formation-praticien') }}" class="rt-btn-primary" style="font-size:.95rem; padding: 1.1rem 2.6rem;">
+        <a href="{{ route('presence.formation-praticien') }}" class="rt-btn-primary" style="font-size:1.15rem; padding: 1.1rem 2.6rem;">
           {{ $en ? 'Reserve my place for the retreat →' : 'Réserver ma place pour la retraite →' }}
         </a>
-        <a href="{{ route('presence.retraite.livret') }}" class="rt-btn-ghost" style="font-size:.88rem; padding: .9rem 2rem; margin-top:.75rem; display:inline-flex; align-items:center; gap:.5rem;">
+        <a href="{{ route('presence.retraite.livret') }}" class="rt-btn-ghost" style="font-size:1.05rem; padding: .9rem 2rem; margin-top:.75rem; display:inline-flex; align-items:center; gap:.5rem;">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
           {{ $en ? 'View / Print the booklet' : 'Voir / Imprimer le livret' }}
         </a>
       </div>
 
-      <p style="font-size:.75rem; color:var(--rt-muted); margin-top:1.5rem; letter-spacing:.04em;">
+      <p style="font-size:1.15rem; color:var(--rt-muted); margin-top:1.5rem; letter-spacing:.04em;">
         @if($en)
           For those who completed the Pause Souffle programme · Retreat open to all alumni
         @else

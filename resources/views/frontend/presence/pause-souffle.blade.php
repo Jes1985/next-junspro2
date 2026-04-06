@@ -358,7 +358,7 @@
 
   .pause-souffle-checkbox-item label {
     cursor: pointer;
-    font-size: 0.9375rem;
+    font-size:1.1rem;
     color: var(--pause-souffle-text);
     margin: 0;
   }
@@ -386,7 +386,7 @@
 
   .pause-souffle-textarea-hints {
     margin-top: 0.5rem;
-    font-size: 0.875rem;
+    font-size:1.05rem;
     color: var(--pause-souffle-text-light);
     font-style: italic;
   }
@@ -401,7 +401,7 @@
   }
 
   .pause-souffle-consent p {
-    font-size: 0.9375rem;
+    font-size:1.1rem;
     line-height: 1.6;
     color: var(--pause-souffle-text-light);
     margin: 0 0 1rem 0;
@@ -419,7 +419,7 @@
   }
 
   .pause-souffle-consent-checkbox label {
-    font-size: 0.9375rem;
+    font-size:1.1rem;
     color: var(--pause-souffle-text);
     cursor: pointer;
     line-height: 1.5;
@@ -478,7 +478,7 @@
   .pause-souffle-progress {
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 0.875rem;
+    font-size:1.05rem;
     color: var(--pause-souffle-text-light);
   }
 
@@ -829,7 +829,7 @@
               <button type="button" class="pause-souffle-btn pause-souffle-btn-secondary" onclick="prevStep()">Précédent</button>
               <button type="submit" class="pause-souffle-btn pause-souffle-btn-primary" id="submitBtn" disabled>Réserver un Rituel d'essai</button>
             </div>
-            <p style="text-align: center; margin-top: 1rem; font-size: 0.875rem; color: #6B7280; line-height: 1.6;">
+            <p style="text-align: center; margin-top: 1rem; font-size:1.05rem; color: #6B7280; line-height: 1.6;">
               Clarifier ce qui compte vraiment • Poser des priorités réalistes • Choisir une direction cohérente
             </p>
           </div>
@@ -841,7 +841,7 @@
   <!-- SECTION PRATICIEN — Vous souhaitez animer ce Rituel ? -->
   <section style="padding: 80px 20px; background: #0D0D1A; text-align: center;">
     <div style="max-width: 680px; margin: 0 auto;">
-      <div style="display:inline-block; padding: 5px 16px; border: 1px solid rgba(212,168,83,0.4); border-radius: 40px; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:#D4A853; margin-bottom:1.5rem;">
+      <div style="display:inline-block; padding: 5px 16px; border: 1px solid rgba(212,168,83,0.4); border-radius: 40px; font-size:1.15rem; letter-spacing:0.12em; text-transform:uppercase; color:#D4A853; margin-bottom:1.5rem;">
         Service phare de l'Univers Présence
       </div>
       <h2 style="font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight:300; color:#fff; margin-bottom:1rem; line-height:1.3; letter-spacing:-0.01em;">
@@ -860,14 +860,14 @@
         Découvrir Le Parcours — Étape 1
       </a>
       <a href="{{ route('presence.formation-praticien') }}"
-         style="display:inline-flex; align-items:center; gap:8px; padding:.75rem 2rem; border: 1px solid rgba(212,168,83,.45); color:#D4A853; border-radius:50px; font-size:.9rem; font-weight:500; text-decoration:none; transition:all .3s; margin-top:.75rem;"
+         style="display:inline-flex; align-items:center; gap:8px; padding:.75rem 2rem; border: 1px solid rgba(212,168,83,.45); color:#D4A853; border-radius:50px; font-size:1.1rem; font-weight:500; text-decoration:none; transition:all .3s; margin-top:.75rem;"
          onmouseover="this.style.background='rgba(212,168,83,.1)'"
          onmouseout="this.style.background='transparent'">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
         Devenir Freelance Pause Souffle — Étape 2
       </a>
       <a href="{{ route('presence.retraite') }}"
-         style="display:inline-flex; align-items:center; gap:8px; padding:.75rem 2rem; border: 1px solid rgba(212,168,83,.45); color:#D4A853; border-radius:50px; font-size:.9rem; font-weight:500; text-decoration:none; transition:all .3s; margin-top:.75rem;"
+         style="display:inline-flex; align-items:center; gap:8px; padding:.75rem 2rem; border: 1px solid rgba(212,168,83,.45); color:#D4A853; border-radius:50px; font-size:1.1rem; font-weight:500; text-decoration:none; transition:all .3s; margin-top:.75rem;"
          onmouseover="this.style.background='rgba(212,168,83,.1)'"
          onmouseout="this.style.background='transparent'">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>

@@ -1,0 +1,296 @@
+﻿=== GENERATION AUDIO 2026-04-03 17:16 ===
+[1/13] 14-la-relation-de-soin --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  Ô£à  [fr] 14-la-relation-de-soin
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  Ô£à  [en] 14-la-relation-de-soin
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  OK 14-la-relation-de-soin-fr.mp3 (7.6 MB)
+  OK 14-la-relation-de-soin-en.mp3 (5.7 MB)
+
+[2/13] 15-signature-du-praticien --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  Ô£à  [fr] 15-signature-du-praticien
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  Ô£à  [en] 15-signature-du-praticien
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  OK 15-signature-du-praticien-fr.mp3 (7.1 MB)
+  OK 15-signature-du-praticien-en.mp3 (6.4 MB)
+
+[3/13] 16-l-argent-du-soin --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  Ô£à  [fr] 16-l-argent-du-soin
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  Ô£à  [en] 16-l-argent-du-soin
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  OK 16-l-argent-du-soin-fr.mp3 (7.5 MB)
+  OK 16-l-argent-du-soin-en.mp3 (7 MB)
+
+[4/13] 07-je-transmets-le-rituel --lang=en
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+Module introuvable : 07-je-transmets-le-rituel
+  FAIL 07-je-transmets-le-rituel-en.mp3
+
+[5/13] mentor-01-identite-du-mentor --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  Ô£à  [fr] mentor-01-identite-du-mentor
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  Ô£à  [en] mentor-01-identite-du-mentor
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  OK mentor-01-identite-du-mentor-fr.mp3 (7.3 MB)
+  OK mentor-01-identite-du-mentor-en.mp3 (6.5 MB)
+
+[6/13] mentor-02-posture-du-serviteur --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  Ô£à  [fr] mentor-02-posture-du-serviteur
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  Ô£à  [en] mentor-02-posture-du-serviteur
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  OK mentor-02-posture-du-serviteur-fr.mp3 (6.7 MB)
+  OK mentor-02-posture-du-serviteur-en.mp3 (7 MB)
+
+[7/13] mentor-03-ecoute-active --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  Ô£à  [fr] mentor-03-ecoute-active
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  Ô£à  [en] mentor-03-ecoute-active
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  OK mentor-03-ecoute-active-fr.mp3 (6.3 MB)
+  OK mentor-03-ecoute-active-en.mp3 (6 MB)
+
+[8/13] mentor-04-transmission-vivante --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  Ô£à  [fr] mentor-04-transmission-vivante
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  Ô£à  [en] mentor-04-transmission-vivante
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  OK mentor-04-transmission-vivante-fr.mp3 (4.7 MB)
+  OK mentor-04-transmission-vivante-en.mp3 (5.2 MB)
+
+[9/13] mentor-05-les-resistances --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  ÔØî  [fr] mentor-05-les-resistances : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 7 credits remaining, while 86 credits are required for this request."}}
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  ÔØî  [en] mentor-05-les-resistances : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 65 credits are required for this request."}}
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  FAIL mentor-05-les-resistances-fr.mp3
+  FAIL mentor-05-les-resistances-en.mp3
+
+[10/13] mentor-06-energie-du-mentor --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  ÔØî  [fr] mentor-06-energie-du-mentor : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 29 credits are required for this request."}}
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  ÔØî  [en] mentor-06-energie-du-mentor : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 19 credits are required for this request."}}
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  FAIL mentor-06-energie-du-mentor-fr.mp3
+  FAIL mentor-06-energie-du-mentor-en.mp3
+
+[11/13] mentor-07-cadre-sacre --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  ÔØî  [fr] mentor-07-cadre-sacre : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 29 credits are required for this request."}}
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  ÔØî  [en] mentor-07-cadre-sacre : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 19 credits are required for this request."}}
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  FAIL mentor-07-cadre-sacre-fr.mp3
+  FAIL mentor-07-cadre-sacre-en.mp3
+
+[12/13] mentor-08-art-du-lacher-prise --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  ÔØî  [fr] mentor-08-art-du-lacher-prise : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 29 credits are required for this request."}}
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  ÔØî  [en] mentor-08-art-du-lacher-prise : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 19 credits are required for this request."}}
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  FAIL mentor-08-art-du-lacher-prise-fr.mp3
+  FAIL mentor-08-art-du-lacher-prise-en.mp3
+
+[13/13] mentor-09-signature-de-mentor --lang=all
+­ƒÄÖ  G├®n├®ration audio bilingue FR + EN ÔÇö Formation Pause Souffle via ElevenLabs TTS (Charlotte)...
+
+
+  ÔØî  [fr] mentor-09-signature-de-mentor : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 29 credits are required for this request."}}
+php :  0/2 [>---------------------------]   0%
+Au caractère C:\Users\younes\Downloads\junspro-main 
+(1)\junspro-main3\generate_all_audio.ps1:37 : 5
++     php artisan formation:generate-audio --module="$slug" --lang="$la ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 0/2 [>-------------------------- 
+   -]   0%:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  ÔØî  [en] mentor-09-signature-de-mentor : ElevenLabs TTS error 401: {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 110000. You have 0 credits remaining, while 19 credits are required for this request."}}
+ 1/2 [==============>-------------]  50%
+
+
+Audios g├®n├®r├®s. V├®rifiez storage:link si n├®cessaire.
+ 2/2 [============================] 100%
+  FAIL mentor-09-signature-de-mentor-fr.mp3
+  FAIL mentor-09-signature-de-mentor-en.mp3
+
+=== TERMINE 2026-04-03 18:13 ===

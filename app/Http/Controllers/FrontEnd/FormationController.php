@@ -18,6 +18,7 @@ class FormationController extends Controller
 {
     private const TRACK_PARCOURS = FormationModule::TRACK_PARCOURS;
     private const TRACK_PRATICIEN = FormationModule::TRACK_PRATICIEN;
+    private const TRACK_MENTOR = FormationModule::TRACK_MENTOR;
 
     protected $miscController;
     protected $formationService;
@@ -47,6 +48,16 @@ class FormationController extends Controller
     public function dashboardPraticien()
     {
         return $this->renderDashboard(self::TRACK_PRATICIEN);
+    }
+
+    public function dashboardMentor()
+    {
+        return $this->renderDashboard(self::TRACK_MENTOR);
+    }
+
+    public function showMentorModule(string $slug)
+    {
+        return $this->renderTrackModule(self::TRACK_MENTOR, $slug);
     }
 
     /**
@@ -86,11 +97,12 @@ class FormationController extends Controller
 
         return view('frontend.formation.dashboard', array_merge($dashboardData, [
             'spaceKey'    => $track,
-            'dashboardRouteName' => $track === self::TRACK_PARCOURS ? 'parcours.dashboard' : 'formation.dashboard',
-            'moduleRouteName'    => $track === self::TRACK_PARCOURS ? 'parcours.module.show' : 'formation.module.show',
-            'moduleStartRouteName' => $track === self::TRACK_PARCOURS ? 'parcours.module.start' : 'formation.module.start',
+            'dashboardRouteName' => $track === self::TRACK_PARCOURS ? 'parcours.dashboard' : ($track === self::TRACK_MENTOR ? 'mentor.formation.dashboard' : 'formation.dashboard'),
+            'moduleRouteName'    => $track === self::TRACK_PARCOURS ? 'parcours.module.show' : ($track === self::TRACK_MENTOR ? 'mentor.formation.module.show' : 'formation.module.show'),
+            'moduleStartRouteName' => $track === self::TRACK_PARCOURS ? 'parcours.module.start' : ($track === self::TRACK_MENTOR ? 'mentor.formation.module.start' : 'formation.module.start'),
+            'showMentorDashboard' => $track === self::TRACK_MENTOR,
             'attestationRouteName' => 'formation.attestation',
-            'showPraticienExtras' => $track === self::TRACK_PRATICIEN,
+            'showPraticienExtras' => $track === self::TRACK_PRATICIEN || $track === self::TRACK_MENTOR,
             'showAttestationBanner' => true,
             'breadcrumb' => $misc->getBreadcrumb(),
             'language'   => $misc->getLanguage(),

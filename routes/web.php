@@ -496,6 +496,16 @@ Route::prefix('/mon-espace/formation')->middleware(['auth:web', 'change.lang'])-
   Route::get('/module/{slug}/pdf',                      [\App\Http\Controllers\FrontEnd\FormationController::class, 'downloadPdf'])->name('formation.module.pdf');
 });
 
+// Formation Mentor
+Route::prefix('/mon-espace/formation-mentor')->middleware(['auth:web', 'change.lang'])->group(function () {
+  Route::get('/',                       [\App\Http\Controllers\FrontEnd\FormationController::class, 'dashboardMentor'])->name('mentor.formation.dashboard');
+  Route::get('/module/{slug}',          [\App\Http\Controllers\FrontEnd\FormationController::class, 'showMentorModule'])->name('mentor.formation.module.show');
+  Route::post('/module/{moduleId}/start',   [\App\Http\Controllers\FrontEnd\FormationController::class, 'startModule'])->name('mentor.formation.module.start');
+  Route::post('/module/{moduleId}/complete',[\App\Http\Controllers\FrontEnd\FormationController::class, 'completeModule'])->name('mentor.formation.module.complete');
+  Route::post('/module/{slug}/activity/{idx}',     [\App\Http\Controllers\FrontEnd\FormationController::class, 'completeActivity'])->name('mentor.formation.activity.complete');
+  Route::post('/module/{slug}/activity/{idx}/notes',[\App\Http\Controllers\FrontEnd\FormationController::class, 'saveActivityNotes'])->name('mentor.formation.activity.notes');
+});
+
 // Compatibilite anciennes URLs /mon-espace/praticien/*
 Route::prefix('/mon-espace/praticien')->middleware(['auth:web', 'change.lang'])->group(function () {
   Route::get('/',                                       function () { return redirect()->route('formation.dashboard', [], 301); })->name('praticien.dashboard');

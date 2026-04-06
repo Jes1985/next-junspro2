@@ -2745,119 +2745,435 @@ SCRIPT,
         // PRATICIEN — Module 09 — Je transmets le Rituel Pause Souffle
         // ─────────────────────────────────────────────────────────
         '09-je-transmets-le-rituel' => <<<'SCRIPT'
-Bienvenue dans ce dernier module de la formation Praticien.
-[pause 6s]
+[pause 30s]
 
-Vous avez traversé neuf modules.
+Ce que vous venez de ressentir dans ce silence...
+[pause 6s]
+c'est exactement ce que votre premier client ressentira face à vous.
+[pause 8s]
+
+Pas un discours.
+[pause 3s]
+Pas une méthode.
+[pause 3s]
+Du vide.
 [pause 5s]
-Vous avez compris le corps.
-[pause 5s]
-Vous vous êtes rencontré.
-[pause 5s]
-Vous avez reconnu vos blessures.
-[pause 5s]
-Vous avez décrit votre bonheur.
-[pause 5s]
-Vous avez écouté votre souffle.
-[pause 5s]
-Vous avez touché votre mission.
-[pause 5s]
-Vous avez incarné votre vision.
-[pause 5s]
-Vous avez maîtrisé cette vision dans le temps.
-[pause 5s]
-Vous avez renforcé votre discipline.
+Et la façon dont vous le recevez... ou dont vous le fuyez.
 [pause 10s]
 
-Maintenant... il est temps de transmettre.
+Bienvenue dans le dernier module de la formation Praticien Pause Souffle.
 [pause 8s]
 
-Un praticien Pause Souffle ne guide pas les autres vers la sagesse.
+Ce module ne ressemble à aucun autre.
 [pause 5s]
-Il crée les conditions pour que chaque personne trouve en elle-même ce dont elle a besoin.
+Parce qu'il ne vous apprend rien.
+[pause 4s]
+Il vous révèle ce que vous savez déjà.
+[pause 12s]
+
+─────────────────────────
+[pause 2s]
+
+Commencez par observer votre souffle en ce moment précis.
+[pause 6s]
+Ne le modifiez pas.
+[pause 4s]
+Observez simplement.
+[pause 8s]
+
+Est-ce que vous respirez depuis la poitrine ?
 [pause 5s]
-Comme vous venez de le faire.
+Est-ce que votre ventre est contracté ?
+[pause 5s]
+Est-ce que votre souffle est court... retenu... contrôlé ?
+[pause 8s]
+
+Ce que vous observez là...
+[pause 5s]
+c'est l'état de votre système nerveux en ce moment.
+[pause 5s]
+Et votre client — le premier, le dixième, le centième —
+[pause 4s]
+respirera exactement comme ça dans la première minute avec vous.
+[pause 6s]
+Il copiera votre corps.
+[pause 4s]
+Pas vos mots.
+[pause 4s]
+Votre corps.
 [pause 10s]
 
-Installez-vous une dernière fois dans cet espace.
+Votre seul travail en tant que praticien Pause Souffle...
 [pause 5s]
-Dos droit... vivant.
-[pause 4s]
-Pieds ancrés.
-[pause 4s]
-Mains ouvertes.
-[pause 8s]
-
-C'est par le corps que nous scellons ce chemin.
-[pause 8s]
-
-Nous allons pratiquer la méthode cinq-cinq-cinq une dernière fois ici.
+c'est de descendre votre souffle en premier.
 [pause 5s]
-
-Cinq secondes pour inspirer.
-[pause 2s]
-Cinq secondes pour bloquer.
-[pause 2s]
-Cinq secondes pour expirer.
+Pas pour donner l'exemple.
 [pause 4s]
-Dix cycles.
-[pause 2s]
-Deux minutes et demie pour intégrer tout ce qui a été semé.
-[pause 6s]
-
-À l'inspiration... laissez monter ce que vous emportez.
-[pause 4s]
-Au blocage... tenez-le dans le silence.
-[pause 4s]
-À l'expiration... offrez-le au monde.
-[pause 6s]
-
-Nous commençons.
-[BREATHING_CYCLES]
-[pause 20s]
-
-Ce calme... c'est vous.
+Parce que le système nerveux de votre client s'accordera au vôtre.
 [pause 5s]
-Simplement vous.
+C'est de la neurobiologie.
+[pause 4s]
+C'est aussi du souffle.
+[pause 5s]
+C'est Pause Souffle.
 [pause 15s]
 
-Laissez le souffle reprendre son rythme naturel.
+─────────────────────────
+[pause 2s]
+
+Maintenant je vais vous demander quelque chose d'inhabituel.
+[pause 5s]
+Pas une visualisation.
+[pause 4s]
+Pas une affirmation.
+[pause 5s]
+Une expérience réelle.
+[pause 8s]
+
+Posez vos deux mains à plat sur votre sternum.
+[pause 5s]
+Sentez la chaleur.
+[pause 5s]
+Sentez le mouvement du souffle sous vos paumes.
+[pause 8s]
+
+Fermez les yeux.
+[pause 5s]
+Et placez devant vous — mentalement, précisément —
+[pause 4s]
+une personne réelle.
+[pause 5s]
+Son prénom.
+[pause 4s]
+Son visage.
+[pause 4s]
+Quelque chose qu'elle traîne.
+[pause 5s]
+Quelque chose qu'elle ne dit pas encore à voix haute.
 [pause 10s]
+
+Vous ne lui parlez pas.
+[pause 5s]
+Vous ne l'analysez pas.
+[pause 5s]
+Vous êtes simplement là.
+[pause 5s]
+Deux mains sur votre sternum.
+[pause 4s]
+Souffle conscient.
+[pause 4s]
+Présence totale.
+[pause 12s]
+
+Observez ce qui se passe dans votre corps quand vous pensez à cette personne.
+[pause 8s]
+Une légère tension dans les épaules ?
+[pause 5s]
+Une envie de vouloir l'aider tout de suite ?
+[pause 5s]
+Une impulsion de trouver les bons mots ?
+[pause 8s]
+
+Ce que vous ressentez là...
+[pause 5s]
+c'est votre pattern de praticien.
+[pause 5s]
+C'est ce que vous devrez apprivoiser.
+[pause 5s]
+Pas corriger.
+[pause 4s]
+Apprivoiser.
+[pause 12s]
+
+Pratiquons ensemble.
+[pause 5s]
+Inspiration profonde depuis le ventre...
+[pause 5s]
+Blocage...
+[pause 5s]
+Expiration lente...
+[pause 5s]
+
+[BREATHING_CYCLES]
+[pause 15s]
 
 Restez là.
 [pause 8s]
-Sans rien faire.
-[pause 12s]
-
-À qui voulez-vous transmettre ce que vous avez reçu ?
-[pause 18s]
-
-Qu'est-ce que vous voulez que les personnes que vous accompagnez ressentent en votre présence ?
-[pause 18s]
-
-Quel est le premier geste concret que vous posez dès demain ?
-[pause 18s]
-
-Notez ce qui est venu dans votre carnet.
+Mains sur le sternum.
 [pause 5s]
-Sans le corriger.
+Cette personne devant vous.
 [pause 5s]
-Sans le réduire.
+Votre souffle descendu.
+[pause 5s]
+Rien à dire.
+[pause 5s]
+Rien à faire.
+[pause 5s]
+Juste être là.
+[pause 15s]
+
+Ça — ce que vous venez de faire —
+[pause 4s]
+c'est votre première séance.
+[pause 6s]
+Elle a commencé maintenant.
+[pause 15s]
+
+─────────────────────────
+[pause 2s]
+
+Voici maintenant trois exercices.
+[pause 5s]
+Ils ne ressemblent à rien de ce que vous avez lu ailleurs.
+[pause 5s]
+Ils sont propres à ce que vous avez traversé dans ces douze modules.
+[pause 10s]
+
+PREMIER EXERCICE — Le souffle du témoin.
 [pause 8s]
 
-Je vous remercie.
+Pensez à la dernière fois qu'un silence a duré trop longtemps dans une conversation.
 [pause 5s]
-D'avoir été là.
+Pas en séance.
+[pause 4s]
+Dans votre vie.
 [pause 5s]
-D'avoir tenu.
-[pause 5s]
-D'avoir traversé.
-[pause 8s]
-
-Votre attestation Praticien Pause Souffle est maintenant disponible dans votre espace.
+Un repas de famille. Une dispute. Un moment gênant.
 [pause 6s]
 
-Vous l'avez gagnée.
+Qu'avez-vous fait ?
+[pause 5s]
+Vous avez parlé pour remplir.
+[pause 4s]
+Vous avez ri pour désamorcer.
+[pause 4s]
+Vous avez regardé votre téléphone.
+[pause 4s]
+Ou vous êtes resté là, inconfortable, à attendre que ça passe.
+[pause 8s]
+
+Ce geste automatique que vous avez eu face à ce silence...
+[pause 5s]
+votre client le fera pendant votre séance.
+[pause 6s]
+Et votre rôle ne sera pas de le rassurer.
+[pause 5s]
+Votre rôle sera de tenir l'espace suffisamment stable
+[pause 4s]
+pour qu'il n'ait pas à fuir.
+[pause 8s]
+
+Maintenant — faites ceci.
+[pause 5s]
+Inspirez lentement.
+[pause 4s]
+Et restez dans le silence qui suit.
+[pause 4s]
+Sans le remplir.
+[pause 4s]
+Sans anticiper la suite.
+[pause 4s]
+Juste tenir.
+[pause 20s]
+
+Ce que vous venez de pratiquer...
+[pause 4s]
+c'est la compétence la plus rare en thérapie.
+[pause 5s]
+Tenir le silence sans en avoir peur.
+[pause 5s]
+Vous venez de l'installer dans votre corps.
+[pause 12s]
+
+DEUXIÈME EXERCICE — Le diagnostic du souffle.
+[pause 8s]
+
+Ceci ne se pratique pas avec un client imaginaire.
+[pause 5s]
+Ceci se pratique sur vous-même. Maintenant.
+[pause 8s]
+
+Posez une main sur votre ventre.
+[pause 4s]
+Une main sur votre poitrine.
+[pause 6s]
+
+Je vais vous poser une question.
+[pause 4s]
+Ne répondez pas verbalement.
+[pause 4s]
+Observez seulement quelle main bouge en premier.
+[pause 8s]
+
+Voici la question.
+[pause 5s]
+Quel est le schéma que cette formation a révélé en vous...
+[pause 5s]
+que vous allez reconnaître chez vos clients ?
+[pause 20s]
+
+Quelle main a bougé ?
+[pause 6s]
+Si c'est la poitrine — votre réponse vient de la peur.
+[pause 5s]
+De l'urgence de trouver une réponse juste.
+[pause 5s]
+Si c'est le ventre — votre réponse vient de quelque chose de plus vrai.
+[pause 5s]
+Quelque chose que vous savez sans l'avoir appris.
+[pause 10s]
+
+Quand votre client vous posera une question difficile en séance...
+[pause 5s]
+observez quelle main bougerait en premier.
+[pause 5s]
+Pas pour analyser.
+[pause 4s]
+Pour savoir depuis quel endroit vous êtes en train de répondre.
+[pause 12s]
+
+TROISIÈME EXERCICE — La première phrase.
+[pause 8s]
+
+Celui-ci est le plus difficile.
+[pause 5s]
+Et le plus important.
+[pause 8s]
+
+Quelqu'un vous dit — et cette personne existe, vous la connaissez —
+[pause 5s]
+"La respiration consciente c'est du charlatanisme.
+[pause 3s]
+Le souffle c'est automatique. Ça ne soigne rien."
+[pause 8s]
+
+Vous avez quinze secondes pour trouver votre première phrase.
+[pause 4s]
+Pas une explication.
+[pause 4s]
+Pas une défense de la méthode.
+[pause 4s]
+Une phrase qui ouvre.
+[pause 4s]
+Qui ne referme pas.
+[pause 5s]
+Qui laisse de l'espace à cette personne pour rester dans la conversation.
+[pause 15s]
+
+Prenez ces quinze secondes.
+[pause 15s]
+
+Ce que vous avez trouvé...
+[pause 5s]
+c'est votre identité de praticien.
+[pause 5s]
+Pas un discours appris.
+[pause 4s]
+Une façon d'être en présence du doute de l'autre.
+[pause 5s]
+Notez-la.
+[pause 5s]
+C'est votre première phrase de praticien.
+[pause 12s]
+
+─────────────────────────
+[pause 2s]
+
+Vous avez traversé douze modules.
+[pause 6s]
+Pas pour accumuler des connaissances.
+[pause 5s]
+Pour transformer la façon dont vous êtes en présence d'un corps.
+[pause 5s]
+D'une personne.
+[pause 5s]
+D'un souffle qui essaie de dire quelque chose.
+[pause 10s]
+
+Il y a un paradoxe au cœur de ce que vous allez faire maintenant.
+[pause 6s]
+Vous allez transmettre le silence...
+[pause 5s]
+à des gens qui ont construit leur vie entière pour l'éviter.
+[pause 8s]
+
+Ils résisteront.
+[pause 4s]
+Pas contre vous.
+[pause 4s]
+Contre eux-mêmes.
+[pause 6s]
+Contre tout ce qu'ils ressentent quand le bruit s'arrête.
+[pause 8s]
+
+Et votre capacité à rester là, stable, sans remplir ce vide...
+[pause 5s]
+c'est exactement ce que vous avez entraîné.
+[pause 5s]
+Module après module.
+[pause 4s]
+Souffle après souffle.
+[pause 12s]
+
+Vous n'êtes pas un guérisseur.
+[pause 6s]
+Vous êtes un témoin.
+[pause 6s]
+Le souffle fait le travail.
+[pause 5s]
+Votre rôle est de créer un espace suffisamment silencieux
+[pause 4s]
+pour que le souffle de votre client ose dire la vérité.
+[pause 12s]
+
+Vous avez la permission d'être imparfait devant vos clients.
+[pause 6s]
+Le souffle ne demande pas la perfection.
+[pause 5s]
+Il demande l'honnêteté.
+[pause 6s]
+Un praticien qui dit "je ne sais pas"
+[pause 4s]
+en tenant l'espace sans le lâcher...
+[pause 4s]
+vaut infiniment plus qu'un praticien qui a réponse à tout
+[pause 4s]
+et le prouve à chaque séance.
+[pause 12s]
+
+─────────────────────────
+[pause 2s]
+
+Voici ce que je vous demande pour terminer.
+[pause 6s]
+
+Posez vos deux mains sur votre sternum.
+[pause 5s]
+Sentez votre souffle.
+[pause 5s]
+Pas le souffle idéal.
+[pause 4s]
+Le vôtre. Maintenant. Tel qu'il est.
+[pause 10s]
+
+Et dites intérieurement le prénom de la première personne que vous allez accompagner.
+[pause 5s]
+Pas demain.
+[pause 4s]
+La première.
+[pause 5s]
+Celle que vous voyez quand vous fermez les yeux et que vous pensez à pourquoi vous avez fait cette formation.
+[pause 20s]
+
+Ce n'est pas moi qui vous certifie.
+[pause 6s]
+C'est ce souffle — le vôtre — qui vient de vous reconnaître.
+[pause 20s]
+
+Votre attestation Praticien Pause Souffle est disponible dans votre espace.
+[pause 8s]
+
+Merci d'avoir tenu.
 [pause 15s]
 SCRIPT,
 
@@ -8686,6 +9002,2959 @@ Et ce qu'il ne fait pas.
 [pause 10s]
 SCRIPT,
 
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 14 — La Relation de Soin — cible : 16–18 min
+        // ─────────────────────────────────────────────────────────
+        '14-la-relation-de-soin' => <<<'SCRIPT'
+Bienvenue dans le module 14.
+[pause 6s]
+
+La Relation de Soin.
+[pause 5s]
+Ce qui guérit vraiment.
+[pause 8s]
+
+Vous avez appris des outils.
+[pause 5s]
+Vous avez appris des protocoles.
+[pause 5s]
+Vous avez traversé votre propre blessure pour mieux comprendre celle des autres.
+[pause 8s]
+
+Mais aujourd'hui, nous allons au cœur de ce qui fait la différence entre un technicien du souffle et un vrai praticien.
+[pause 8s]
+
+Ce qui guérit... ce n'est souvent pas la technique.
+[pause 6s]
+C'est la relation.
+[pause 8s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Jung a nommé ce paradoxe avec une précision rare.
+[pause 5s]
+Il l'appelait le Blessé-Guérisseur.
+[pause 8s]
+
+L'idée est simple et bouleversante.
+[pause 5s]
+Celui qui soigne porte lui-même une blessure.
+[pause 6s]
+Et ce n'est pas un obstacle à sa pratique.
+[pause 5s]
+C'est sa qualification la plus profonde.
+[pause 10s]
+
+Isidore de Séville, médecin du Moyen Âge, disait que le médecin qui n'a jamais souffert ne peut pas vraiment soigner.
+[pause 8s]
+Pas parce qu'il manque d'information.
+[pause 5s]
+Mais parce qu'il manque de résonance.
+[pause 8s]
+
+Quand vous avez traversé la peur, l'épuisement, le doute... vous reconnaissez ces états chez votre client.
+[pause 6s]
+Non pas intellectuellement.
+[pause 5s]
+Mais dans votre corps.
+[pause 8s]
+
+Votre blessure intégrée devient votre antenne.
+[pause 6s]
+Votre blessure non intégrée devient votre angle mort.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Parlons maintenant du conteneur thérapeutique.
+[pause 6s]
+
+Beaucoup de praticiens pensent que leur rôle est de guider une technique.
+[pause 6s]
+Mais votre rôle premier est de créer un espace.
+[pause 8s]
+
+Un espace où le client peut enfin se permettre de ne pas contrôler.
+[pause 6s]
+Où il peut lâcher certaines tensions qu'il portait depuis des années.
+[pause 6s]
+Où quelque chose de plus profond peut émerger.
+[pause 10s]
+
+Ce conteneur a cinq dimensions.
+[pause 6s]
+
+Premièrement — la sécurité physique.
+[pause 5s]
+L'espace est confortable, protégé, sans interruption possible.
+[pause 5s]
+Le client sait qu'il est en sécurité dans son corps.
+[pause 8s]
+
+Deuxièmement — la sécurité émotionnelle.
+[pause 5s]
+Il peut ressentir sans être jugé.
+[pause 5s]
+Il peut pleurer, se taire, ne pas savoir.
+[pause 5s]
+Vous êtes là — stable — quoi qu'il arrive.
+[pause 8s]
+
+Troisièmement — la clarté du cadre.
+[pause 5s]
+Il sait pourquoi il est là, ce qui va se passer, et ce qui ne se passera pas.
+[pause 5s]
+Le cadre est une forme de respect.
+[pause 8s]
+
+Quatrièmement — votre présence.
+[pause 5s]
+Pas votre performance. Votre présence.
+[pause 5s]
+Vous êtes ancré. Calme. Disponible.
+[pause 5s]
+Vous n'avez pas besoin qu'il aille bien pour ne pas vous effondrer.
+[pause 8s]
+
+Cinquièmement — l'intention claire.
+[pause 5s]
+Vous savez pourquoi vous êtes là.
+[pause 5s]
+Vous servez une transformation, pas votre propre besoin d'être reconnu.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Il existe un phénomène neurologique qui explique beaucoup de ce que vous vivez en séance.
+[pause 6s]
+On l'appelle la co-régulation nerveuse.
+[pause 8s]
+
+Votre système nerveux et celui de votre client... se parlent.
+[pause 6s]
+Pas avec des mots. Avec des micro-signaux.
+[pause 6s]
+Le rythme de votre respiration. Le tonus de votre corps. La qualité de votre regard.
+[pause 8s]
+
+Un praticien dont le système nerveux est cohérent crée automatiquement — involontairement — un effet régulateur sur son client.
+[pause 8s]
+C'est pour ça que votre pratique personnelle quotidienne n'est pas un luxe.
+[pause 6s]
+C'est le fondement de votre efficacité.
+[pause 10s]
+
+Quand vous arrivez en séance dans un état de cohérence cardiaque...
+[pause 5s]
+Votre client le ressent avant que vous ayez prononcé un seul mot.
+[pause 6s]
+Son système nerveux commence à se réguler simplement parce que le vôtre est régulé.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Ce que les clients cherchent vraiment.
+[pause 6s]
+
+Ils viennent pour le souffle. Ou pour dormir. Ou pour gérer le stress.
+[pause 6s]
+Ce qu'ils cherchent en surface est réel et doit être honoré.
+[pause 8s]
+
+Mais dans la couche plus profonde...
+[pause 5s]
+Ils cherchent à être vus.
+[pause 6s]
+Vraiment vus.
+[pause 6s]
+Pas corrigés. Pas optimisés. Pas réparés.
+[pause 5s]
+Vus.
+[pause 10s]
+
+Et dans la couche la plus profonde de toutes...
+[pause 5s]
+Ils cherchent à se réconcilier avec eux-mêmes.
+[pause 6s]
+À ne plus être en guerre contre leur corps, leurs émotions, leur histoire.
+[pause 10s]
+
+Votre rôle n'est pas de les guérir.
+[pause 5s]
+Votre rôle est de créer les conditions pour qu'ils puissent se guérir eux-mêmes.
+[pause 10s]
+
+Il y a une dernière dimension que nous n'abordons presque jamais.
+[pause 6s]
+Le silence thérapeutique.
+[pause 8s]
+
+Dans notre culture, le silence est inconfortable.
+[pause 5s]
+On se précipite pour le remplir.
+[pause 5s]
+On parle pour éviter de sentir.
+[pause 8s]
+
+Mais en séance, le silence est souvent l'outil le plus puissant disponible.
+[pause 6s]
+Il donne au client l'espace pour descendre plus profondément.
+[pause 6s]
+Pour rencontrer quelque chose qui ne peut émerger que dans la quietude.
+[pause 10s]
+
+Apprendre à tenir le silence sans l'interrompre...
+[pause 5s]
+C'est l'un des apprentissages les plus difficiles.
+[pause 5s]
+Et l'un des plus précieux.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Maintenant, posez-vous cette question.
+[pause 6s]
+Dans vos séances passées — qu'est-ce qui semble avoir véritablement touché vos clients ?
+[pause 18s]
+
+Est-ce une technique spécifique... ou quelque chose dans votre présence ?
+[pause 18s]
+
+Quelle dimension du conteneur thérapeutique vous semble la plus naturelle pour vous... et laquelle demande encore du travail ?
+[pause 18s]
+
+Notez ce qui est venu.
+[pause 5s]
+La relation de soin commence par la relation à soi-même.
+[pause 5s]
+Soignez-vous d'abord.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 15 — La Signature du Praticien — cible : 16–18 min
+        // ─────────────────────────────────────────────────────────
+        '15-signature-du-praticien' => <<<'SCRIPT'
+Bienvenue dans le module 15.
+[pause 6s]
+
+Le module final de votre formation.
+[pause 8s]
+
+La Signature du Praticien.
+[pause 6s]
+Qui êtes-vous vraiment ?
+[pause 10s]
+
+Depuis le module zéro jusqu'ici...
+[pause 5s]
+Vous avez traversé beaucoup.
+[pause 6s]
+Vous avez compris le corps. Maîtrisé les outils. Traversé vos propres blessures.
+[pause 6s]
+Vous avez appris la posture, la voix, l'état interne.
+[pause 6s]
+Vous avez compris ce qui guérit vraiment.
+[pause 10s]
+
+Il reste une chose.
+[pause 6s]
+La plus difficile pour beaucoup.
+[pause 8s]
+
+Incarnez tout cela... comme votre propre signature.
+[pause 8s]
+Pas la copie d'un autre praticien.
+[pause 5s]
+Pas le clone d'un modèle admiré.
+[pause 5s]
+Vous — unique, imparfait, vivant, singulier.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Une signature de praticien... ce n'est pas un slogan marketing.
+[pause 6s]
+C'est ce que les clients reconnaissent avant même que vous parliez.
+[pause 6s]
+C'est l'empreinte que vous laissez quand vous êtes pleinement vous-même.
+[pause 10s]
+
+Cette signature a cinq dimensions.
+[pause 6s]
+
+Premièrement — votre tonalité naturelle.
+[pause 5s]
+Êtes-vous chaleureux ou structuré ? Intuitif ou méthodique ? Guidant ou silencieux ?
+[pause 6s]
+Ce n'est pas ce que vous choisissez de montrer.
+[pause 5s]
+C'est ce qui émerge quand vous êtes à l'aise.
+[pause 5s]
+Votre tonalité est juste. Elle s'affine. Elle ne se remplace pas.
+[pause 8s]
+
+Deuxièmement — votre public naturel.
+[pause 5s]
+Qui vient vers vous spontanément ? Qui se sent immédiatement à l'aise avec vous ?
+[pause 6s]
+Ce sont les personnes que vous êtes le mieux équipé pour accompagner en premier.
+[pause 5s]
+Servir son public naturel d'abord... c'est choisir l'efficacité avant l'universalité.
+[pause 8s]
+
+Troisièmement — votre outil de prédilection.
+[pause 5s]
+Parmi tout ce que vous avez appris... où êtes-vous le plus naturellement à l'aise ?
+[pause 6s]
+Maîtriser un outil en profondeur vaut mille fois plus que connaître dix techniques en surface.
+[pause 8s]
+
+Quatrièmement — votre promesse implicite.
+[pause 5s]
+Pas votre accroche. La promesse que votre présence fait sans que vous la formuliez.
+[pause 6s]
+"Avec ce praticien, je vais être en sécurité."
+[pause 5s]
+"Avec ce praticien, je vais être challengé à aller plus loin."
+[pause 5s]
+"Avec ce praticien, je vais enfin être compris."
+[pause 8s]
+Connaître votre promesse implicite permet de la tenir consciemment.
+[pause 8s]
+
+Cinquièmement — votre valeur fondatrice.
+[pause 5s]
+La valeur que vous ne sacrifiez jamais dans votre pratique.
+[pause 5s]
+L'intégrité ? L'authenticité ? La profondeur ? La vérité nommée ?
+[pause 6s]
+Quand vous prenez une décision difficile dans votre pratique...
+[pause 5s]
+C'est cette valeur qui tranche.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Parlons maintenant de l'éthique.
+[pause 6s]
+
+La formation vous a transmis des outils puissants.
+[pause 5s]
+Des outils qui accèdent aux couches profondes du système nerveux.
+[pause 5s]
+Qui déverrouillent des émotions. Qui touchent aux blessures primaires.
+[pause 8s]
+
+Ce pouvoir s'accompagne d'une responsabilité absolue.
+[pause 10s]
+
+Vous ne dépassez jamais vos compétences.
+[pause 5s]
+Si un client présente des symptômes qui dépassent le bien-être...
+[pause 5s]
+vous l'orientez vers un professionnel de santé mentale.
+[pause 5s]
+Ce n'est pas un aveu de faiblesse. C'est de la déontologie.
+[pause 8s]
+
+Votre travail réussit quand votre client a moins besoin de vous.
+[pause 6s]
+Quand il pratique seul. Quand il porte ses propres outils.
+[pause 6s]
+Si vous sentez que vous cherchez à le garder... supervisez cela avec un pair.
+[pause 8s]
+
+Vous protégez le cadre de la relation.
+[pause 5s]
+Pas de relation personnelle avec un client en cours de suivi.
+[pause 5s]
+Le cadre protège le client. Il vous protège aussi.
+[pause 8s]
+
+Vous continuez de vous former et de vous superviser.
+[pause 5s]
+Un praticien qui arrête d'apprendre stagne.
+[pause 5s]
+La supervision n'est pas un signe que ça va mal.
+[pause 5s]
+C'est le signe que vous prenez votre pratique au sérieux.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Nous arrivons au moment le plus important de cette formation.
+[pause 6s]
+
+Posez votre main droite sur votre cœur.
+[pause 6s]
+
+Prenez le temps de traverser mentalement tout ce que vous avez appris depuis le module zéro.
+[pause 12s]
+
+Vos moments de doute. Vos moments de clarté.
+[pause 6s]
+Ce qui était facile. Ce qui vous a résisté.
+[pause 6s]
+Les pratiques qui you ont fait quelque chose.
+[pause 6s]
+Les idées qui ont réorganisé votre compréhension.
+[pause 10s]
+
+Et maintenant, depuis cet endroit...
+[pause 6s]
+Dites intérieurement, ou à voix haute si vous le pouvez :
+[pause 6s]
+
+Je m'appelle... votre prénom.
+[pause 6s]
+Je suis praticien du souffle.
+[pause 6s]
+Je sers en transmettant ce que j'ai moi-même traversé.
+[pause 6s]
+Ma présence est mon premier outil.
+[pause 6s]
+Ma blessure intégrée est ma qualification la plus profonde.
+[pause 6s]
+Je ne prétends pas être parfait.
+[pause 5s]
+Je m'engage à être présent.
+[pause 6s]
+Et à rester présent — pour ceux que j'accompagne...
+[pause 5s]
+et pour moi-même.
+[pause 15s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 12s]
+
+Dans votre carnet de praticien, écrivez votre propre version de cette déclaration.
+[pause 6s]
+En vos mots. Avec votre voix.
+[pause 6s]
+Ce texte sera votre boussole pour les années qui viennent.
+[pause 10s]
+
+Vous avez terminé la formation.
+[pause 6s]
+Mais votre pratique, elle, ne fait que commencer.
+[pause 6s]
+Portez ce que vous êtes.
+[pause 5s]
+C'est votre plus grand outil.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN — Module 16 — L'Argent du Soin — cible : 14–16 min
+        // ─────────────────────────────────────────────────────────
+        '16-l-argent-du-soin' => <<<'SCRIPT'
+Bienvenue dans le module 16.
+[pause 6s]
+
+Le chaînon manquant.
+[pause 8s]
+
+Ce module ne parle pas de techniques de souffle.
+[pause 5s]
+Il parle de quelque chose que presque aucune formation bien-être n'aborde jamais.
+[pause 8s]
+
+La conversation sur l'argent.
+[pause 10s]
+
+Voici une vérité que personne ne vous dit.
+[pause 6s]
+Quatre-vingt dix pourcent des praticiens en arts du soin abandonnent dans les trois premières années.
+[pause 8s]
+Pas par manque de talent.
+[pause 5s]
+Pas par manque de passion.
+[pause 5s]
+Par incapacité à parler d'argent... sans se sentir corrompus.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Il y a trois croyances qui sabotent en silence la plupart des praticiens bien-être.
+[pause 8s]
+
+Première croyance.
+[pause 5s]
+"Je ne peux pas facturer cher quelque chose de spirituel."
+[pause 8s]
+Réalité : votre temps, votre formation, votre espace et votre soin ont une valeur économique réelle.
+[pause 6s]
+Le spirituel ne justifie pas la précarité.
+[pause 5s]
+Vous pouvez honorer le sacré... et vivre dignement.
+[pause 10s]
+
+Deuxième croyance.
+[pause 5s]
+"Si je facture peu, plus de gens viendront."
+[pause 8s]
+L'inverse est souvent vrai.
+[pause 6s]
+Un prix trop bas communique une valeur faible.
+[pause 5s]
+Un client qui paie cinquante euros annule plus facilement qu'un client qui en a payé cent cinquante.
+[pause 6s]
+Le prix est un signal de valeur... pour vous... et pour votre client.
+[pause 10s]
+
+Troisième croyance.
+[pause 5s]
+"Si je gagne bien ma vie... je perds mon intégrité."
+[pause 8s]
+Cette croyance fait des ravages.
+[pause 6s]
+Un praticien financièrement épuisé ne peut pas servir pleinement.
+[pause 5s]
+Vous ne pouvez pas donner de l'eau... si votre puits est vide.
+[pause 5s]
+La durabilité financière... est un acte de service envers vos clients.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Parlons maintenant du prix juste.
+[pause 6s]
+
+Il existe une méthode simple en trois calculs.
+[pause 6s]
+
+Premier calcul — le prix de survie.
+[pause 5s]
+Vos charges mensuelles complètes, divisées par le nombre de séances réaliste par mois.
+[pause 6s]
+C'est votre seuil absolu. Vous ne pouvez jamais aller en dessous.
+[pause 8s]
+
+Deuxième calcul — le prix de dignité.
+[pause 5s]
+Le revenu qui vous permet de vivre bien, de vous former, de vous reposer.
+[pause 6s]
+Divisé par le nombre de séances sans vous épuiser.
+[pause 8s]
+Exemple : quatre mille cinq cents euros souhaités sur trente séances par mois... égal cent cinquante euros par séance.
+[pause 10s]
+
+Troisième calcul — le prix de valeur.
+[pause 5s]
+Quelle transformation concrète apportez-vous ?
+[pause 6s]
+Combien vaut-elle pour le client ?
+[pause 6s]
+Un client qui dort enfin après cinq ans d'insomnie —
+[pause 5s]
+combien valait ce résultat pour lui ?
+[pause 8s]
+Votre prix peut aller jusqu'à dix pourcent de la valeur perçue de la transformation.
+[pause 10s]
+
+Votre prix juste se situe entre le prix de dignité et le prix de valeur.
+[pause 6s]
+Il doit vous faire légèrement peur...
+[pause 5s]
+mais ne pas vous empêcher de le dire.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+L'appel découverte.
+[pause 6s]
+
+C'est l'outil le plus puissant du praticien freelance.
+[pause 6s]
+Et le plus mal maîtrisé.
+[pause 8s]
+
+Il n'est pas un argumentaire.
+[pause 5s]
+Il n'est pas une présentation de vos services.
+[pause 5s]
+Si ça ressemble à "vendre"... vous avez perdu l'appel avant de commencer.
+[pause 10s]
+
+La structure en quatre temps.
+[pause 6s]
+
+Premier temps — l'accueil.
+[pause 5s]
+Créez l'espace. Pas de pitch. Juste une présence.
+[pause 5s]
+La première question n'est jamais sur leurs objectifs.
+[pause 5s]
+Elle est sur leur état.
+[pause 5s]
+"Comment vous sentez-vous en ce moment ?"
+[pause 10s]
+
+Deuxième temps — la situation.
+[pause 5s]
+"Qu'est-ce qui vous a amené à chercher ce type d'accompagnement maintenant ?"
+[pause 6s]
+"Depuis combien de temps vivez-vous avec ça ?"
+[pause 6s]
+Écoutez vraiment. Ne prenez pas de notes. Soyez présent.
+[pause 8s]
+
+Troisième temps — la vision.
+[pause 5s]
+"Si dans trois mois vous vous regardez en arrière — qu'est-ce qui aurait changé dans votre vie quotidienne ?"
+[pause 8s]
+Laissez-les voir leur propre transformation.
+[pause 6s]
+Vous n'avez rien à vendre.
+[pause 8s]
+
+Quatrième temps — l'alignement.
+[pause 5s]
+"Voici ce que j'accompagne, comment je travaille, et ce que ça demande de votre part."
+[pause 6s]
+Puis le prix.
+[pause 5s]
+Clairement. Calmement. Sans s'excuser.
+[pause 6s]
+Puis... silence.
+[pause 8s]
+Celui qui parle en premier après avoir annoncé le prix... perd.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Une dernière chose.
+[pause 6s]
+
+Arrêtez de vendre des séances à l'unité.
+[pause 6s]
+C'est le modèle qui épuise le plus vite.
+[pause 5s]
+Les clients n'ont pas de continuité.
+[pause 5s]
+Vous n'avez pas de revenu prévisible.
+[pause 5s]
+La transformation est partielle. Tout le monde y perd.
+[pause 10s]
+
+Construisez un programme.
+[pause 6s]
+La transformation est complète.
+[pause 5s]
+Vos revenus sont prévisibles.
+[pause 5s]
+La valeur perçue est supérieure.
+[pause 8s]
+
+Et progressivement — construisez trois niveaux de revenus.
+[pause 6s]
+Les revenus actifs : vos séances et programmes.
+[pause 5s]
+Les revenus semi-passifs : ateliers, formations en groupe.
+[pause 5s]
+Les revenus passifs : audios guidés vendus, programme en ligne.
+[pause 8s]
+
+Un praticien qui a les trois niveaux... est libre.
+[pause 6s]
+Véritablement libre.
+[pause 10s]
+
+Notez ce qui vient de se passer en vous à l'écoute de ce module.
+[pause 18s]
+
+Quel est le changement le plus urgent à faire dans votre pratique financière ?
+[pause 18s]
+
+Quelle croyance devez-vous quitter pour avancer vers la dignité que vous méritez ?
+[pause 18s]
+
+Notez.
+[pause 5s]
+La liberté commence dans votre rapport à l'argent.
+[pause 5s]
+Et l'argent n'est que de la valeur rendue visible.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 01 — L'Identité du Mentor — cible : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-01-identite-du-mentor' => <<<'SCRIPT'
+Bienvenue dans la Formation Mentor.
+[pause 6s]
+
+Vous êtes ici parce que quelque chose en vous sait.
+[pause 5s]
+Sait que vous avez quelque chose à transmettre.
+[pause 5s]
+Une expérience. Une traversée. Une sagesse gagnée au prix fort.
+[pause 8s]
+
+Avant d'enseigner quoi que ce soit...
+[pause 4s]
+avant de guider qui que ce soit...
+[pause 4s]
+il y a une question fondatrice que vous devez avoir traversée vous-même.
+[pause 8s]
+
+Qui suis-je... moi qui ose accompagner ?
+[pause 12s]
+
+Installez-vous confortablement.
+[pause 4s]
+Fermez les yeux si vous le souhaitez.
+[pause 4s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 5s]
+Encore une fois.
+[pause 3s]
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 5s]
+
+Laissez votre corps trouver son appui naturel.
+[pause 6s]
+
+Ce module porte un titre simple : L'Identité du Mentor.
+[pause 5s]
+Mais ne vous y trompez pas.
+[pause 4s]
+C'est probablement le module le plus exigeant de cette formation.
+[pause 6s]
+
+Parce qu'il ne vous demande pas d'apprendre quelque chose de nouveau.
+[pause 5s]
+Il vous demande de regarder ce qui est déjà là.
+[pause 5s]
+Et de ne pas le fuir.
+[pause 10s]
+
+Il y a une vérité que tout mentor doit intégrer dès le départ.
+[pause 5s]
+
+Vous ne pouvez pas accompagner quelqu'un plus loin que vous-même.
+[pause 8s]
+
+Relisez cette phrase mentalement.
+[pause 5s]
+Vous ne pouvez pas accompagner quelqu'un plus loin que vous-même.
+[pause 10s]
+
+Cela veut dire que votre profondeur... est la profondeur de ce que vous pouvez offrir.
+[pause 6s]
+Votre clarté... est la clarté que vous pouvez transmettre.
+[pause 6s]
+Votre paix... est la paix que vous pouvez rayonner.
+[pause 10s]
+
+Alors la question n'est pas : "suis-je assez qualifié ?"
+[pause 5s]
+La vraie question est : "est-ce que je me connais suffisamment pour savoir ce que j'ai à donner ?"
+[pause 12s]
+
+Parlons de vos valeurs.
+[pause 6s]
+
+Vos valeurs fondatrices ne sont pas des idées que vous admirez.
+[pause 5s]
+Ce sont des lignes que vous ne franchissez pas.
+[pause 5s]
+Même sous pression. Même quand c'est coûteux.
+[pause 8s]
+
+Pensez à un moment dans votre vie où vous avez ressenti une colère profonde.
+[pause 6s]
+Pas une petite irritation... une colère qui venait de loin.
+[pause 6s]
+Qu'est ce qui avait été bafoué ce jour-là ?
+[pause 10s]
+
+Cette réponse... c'est une valeur.
+[pause 5s]
+La colère est souvent la gardienne de ce qui nous est sacré.
+[pause 8s]
+
+Maintenant, pensez à un moment de joie profonde.
+[pause 5s]
+Un moment où vous vous êtes dit : "c'est pour ça que je suis là."
+[pause 8s]
+Qu'est-ce qui était présent dans ce moment ?
+[pause 10s]
+
+Cette réponse aussi... c'est une valeur.
+[pause 8s]
+
+Prenons maintenant un souffle ensemble.
+[pause 3s]
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 5s]
+
+Maintenant je vous invite à une méditation.
+[pause 5s]
+Une méditation de l'identité profonde.
+[pause 5s]
+
+Posez vos mains sur vos genoux, paumes vers le ciel.
+[pause 5s]
+C'est le geste de la réception.
+[pause 5s]
+Vous n'allez pas chercher quelque chose.
+[pause 4s]
+Vous allez simplement accueillir ce qui est déjà là.
+[pause 10s]
+
+Je vais vous poser une question.
+[pause 4s]
+Ne cherchez pas la bonne réponse. Il n'y en a pas.
+[pause 4s]
+Laissez simplement quelque chose remonter du fond de vous.
+[pause 8s]
+
+Qui êtes-vous... quand personne ne regarde ?
+[pause 15s]
+
+Pas le rôle que vous jouez au travail.
+[pause 5s]
+Pas la version de vous que vos proches connaissent.
+[pause 5s]
+Pas celle que vous aimeriez montrer.
+[pause 6s]
+Qui êtes-vous... vraiment... au fond ?
+[pause 15s]
+
+Restez avec cette question.
+[pause 5s]
+Sans chercher à la résoudre.
+[pause 5s]
+Juste... l'habiter.
+[pause 12s]
+
+Maintenant une deuxième question.
+[pause 5s]
+
+Qu'est-ce que vous avez traversé... que personne d'autre ne peut prétendre avoir traversé de la même manière que vous ?
+[pause 12s]
+
+Une épreuve. Un effondrement. Une période de doute profond.
+[pause 6s]
+Ou peut-être une victoire silencieuse dont personne n'a su l'ampleur.
+[pause 8s]
+
+Cette traversée... c'est votre matière première de mentor.
+[pause 6s]
+
+Ce n'est pas vos diplômes qui vous qualifient.
+[pause 5s]
+Ce n'est pas le nombre d'années d'expérience.
+[pause 5s]
+C'est ce que vous avez vécu... intégré... transformé en sagesse.
+[pause 10s]
+
+Inspirez doucement...
+[pause 5s]
+Et en expirant... laissez partir le besoin de prouver quoi que ce soit.
+[pause 10s]
+
+Vous n'avez rien à prouver ici.
+[pause 6s]
+Vous avez seulement à vous connaître.
+[pause 6s]
+Et à transmettre ce que vous connaissez vraiment.
+[pause 12s]
+
+Il y a un verset qui traverse toute cette formation.
+[pause 5s]
+Marc... chapitre dix... versets quarante-trois à quarante-cinq.
+[pause 5s]
+
+"Celui qui voudra devenir grand parmi vous sera votre serviteur."
+[pause 8s]
+
+"Et celui qui voudra être le premier sera l'esclave de tous."
+[pause 8s]
+
+"Car le Fils de l'homme n'est pas venu pour être servi... mais pour servir."
+[pause 12s]
+
+Ce verset dit quelque chose de précis.
+[pause 5s]
+La grandeur n'est pas dans la position.
+[pause 5s]
+Elle est dans le service.
+[pause 8s]
+
+Et le mentor... le vrai mentor...
+[pause 4s]
+n'accompagne pas pour être admiré.
+[pause 4s]
+Il accompagne parce qu'il a quelque chose de précieux à transmettre.
+[pause 6s]
+Et parce qu'il sait que quelqu'un en a besoin.
+[pause 10s]
+
+Prenons un dernier souffle ensemble.
+[pause 3s]
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 5s]
+
+Avant de terminer cette méditation...
+[pause 4s]
+posez cette dernière question à votre coeur.
+[pause 5s]
+
+Quel mentore... quel guide... auriez-vous eu besoin d'être pour vous... il y a dix ans ?
+[pause 12s]
+
+Cette personne... c'est peut-être le mentor que vous êtes en train de devenir.
+[pause 8s]
+
+Pour quelqu'un qui vit aujourd'hui ce que vous avez traversé.
+[pause 8s]
+
+Prenez le temps de noter ce qui est venu pendant cette méditation.
+[pause 5s]
+Sans censure. Sans correction.
+[pause 5s]
+Ce qui vient en premier est souvent le plus vrai.
+[pause 10s]
+
+À tout de suite pour la suite du module.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 02 — La Posture du Serviteur — cible : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-02-posture-du-serviteur' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Module deux. La Posture du Serviteur.
+[pause 6s]
+
+Trois souffles d'abord. 5-5-5.
+[pause 5s]
+Inspiration... 5... 4... 3... 2... 1...
+[pause 6s]
+Rétention... 5... 4... 3... 2... 1...
+[pause 6s]
+Expiration... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Il y a un paradoxe au coeur du leadership.
+[pause 6s]
+
+Le monde croit que commander, c'est être grand.
+[pause 5s]
+Que l'autorité vient du rang.
+[pause 5s]
+Que celui qui parle le plus fort a le plus de pouvoir.
+[pause 8s]
+
+Le mentor sait le contraire.
+[pause 6s]
+
+"Celui qui voudra devenir grand parmi vous sera votre serviteur."
+[pause 8s]
+
+Marc dix... verset quarante-trois.
+[pause 5s]
+Ces mots ont deux mille ans.
+[pause 5s]
+Et ils restent les plus perturbants... les plus pertinents... sur ce qu'est le vrai leadership.
+[pause 10s]
+
+Ce module vous demande de choisir votre posture.
+[pause 5s]
+Consciemment. Délibérément.
+[pause 5s]
+Pas celle que votre ego veut adopter.
+[pause 5s]
+Celle qui sert vraiment les personnes que vous accompagnez.
+[pause 10s]
+
+Il y a trois postures possibles.
+[pause 6s]
+
+La première... le formateur-autorité.
+[pause 5s]
+Il sait. Il enseigne. Il évalue.
+[pause 5s]
+La relation est verticale. L'autre apprend en dessous.
+[pause 6s]
+Ce n'est pas mauvais en soi.
+[pause 4s]
+Mais le résultat sur le long terme... c'est la dépendance.
+[pause 8s]
+
+La deuxième... le coach-expert.
+[pause 5s]
+Il guide. Il questionne. Il structure le passage à l'action.
+[pause 5s]
+La relation est plus horizontale. Plus professionnelle.
+[pause 6s]
+Le résultat... la performance.
+[pause 8s]
+
+La troisième... le mentor-serviteur.
+[pause 5s]
+Il précède. Il protège. Il libère.
+[pause 6s]
+La relation est de vie. Elle traverse les années.
+[pause 6s]
+Le résultat... l'autonomie durable.
+[pause 8s]
+
+L'autre devient capable de se passer de vous.
+[pause 5s]
+Et c'est exactement ça, la victoire.
+[pause 10s]
+
+Prenez un souffle.
+[pause 8s]
+
+Il y a une question que le mentor-serviteur se pose avant chaque échange.
+[pause 6s]
+
+Est-ce que cette interaction le rapproche de moi... ou de lui-même ?
+[pause 12s]
+
+Si la réponse est "de moi"...
+[pause 4s]
+vous êtes en train de construire une dépendance.
+[pause 5s]
+Pas un mentore. Pas une transformation.
+[pause 5s]
+Une dépendance.
+[pause 8s]
+
+Soyons honnêtes maintenant.
+[pause 5s]
+
+Il y a quatre pièges dans lesquels le mentor tombe.
+[pause 5s]
+Pas par malveillance. Souvent par bonne intention.
+[pause 6s]
+Mais les conséquences sont les mêmes.
+[pause 8s]
+
+Le premier piège : le besoin de validation.
+[pause 5s]
+Vous accompagnez pour être admiré.
+[pause 6s]
+Reconnaissez-vous ce moment où vous cherchez l'approbation dans les yeux de vos accompagnés ?
+[pause 8s]
+
+Le deuxième piège : le contrôle déguisé en aide.
+[pause 5s]
+Vous guidez... mais vers là où vous voulez aller.
+[pause 5s]
+Vous êtes déçu quand ils ne suivent pas vos conseils.
+[pause 8s]
+
+Le troisième piège : l'urgence de réparer.
+[pause 5s]
+Vous voulez résoudre trop vite.
+[pause 5s]
+Vous interrompez pour donner des solutions avant d'avoir vraiment compris.
+[pause 8s]
+
+Le quatrième piège : l'empreinte excessive.
+[pause 5s]
+Vous voulez qu'ils vous ressemblent.
+[pause 5s]
+Vous vous sentez menacé quand ils développent leur propre style.
+[pause 10s]
+
+L'antidote à ces quatre pièges... c'est toujours le même.
+[pause 5s]
+Revenir au verset. Servir... pas briller.
+[pause 10s]
+
+Prenons maintenant la méditation de ce module.
+[pause 5s]
+
+Trois souffles 5-5-5.
+[pause 15s]
+
+Visualisez quelqu'un que vous avez accompagné... ou que vous allez accompagner.
+[pause 6s]
+Voyez son visage.
+[pause 5s]
+Sentez sa présence.
+[pause 5s]
+
+Maintenant... observez votre intention profonde envers cette personne.
+[pause 6s]
+
+Est-ce que vous êtes là pour elle... ou pour vous ?
+[pause 12s]
+
+Sans jugement.
+[pause 5s]
+Ce n'est ni bien ni mal.
+[pause 5s]
+C'est juste... l'honnêteté.
+[pause 10s]
+
+Si vous sentez une part d'ego... respirez avec elle.
+[pause 6s]
+Reconnaissez-la. Remerciez-la de vous avoir protégé jusqu'ici.
+[pause 6s]
+Et demandez-lui de s'effacer pour laisser la place au service.
+[pause 10s]
+
+Posez cette question dans votre coeur.
+[pause 5s]
+
+Si personne ne le savait jamais... si aucun regard extérieur ne pouvait vous voir...
+[pause 6s]
+est-ce que vous feriez quand même ce que vous faites ?
+[pause 15s]
+
+Restez dans cette question.
+[pause 5s]
+Sans chercher à répondre rapidement.
+[pause 5s]
+Laissez la réponse vraie remonter.
+[pause 15s]
+
+Si la réponse est oui... vous avez trouvé votre posture de serviteur.
+[pause 6s]
+
+Si la réponse hésite... c'est parfait aussi.
+[pause 5s]
+C'est une invitation à creuser.
+[pause 5s]
+À nettoyer ce qui reste encore mélangé.
+[pause 8s]
+
+La posture du serviteur n'est pas un état qu'on atteint une fois pour toutes.
+[pause 5s]
+C'est un choix qu'on refait... chaque jour... avant chaque session.
+[pause 10s]
+
+Inspirez.
+[pause 5s]
+En expirant... dites-vous intérieurement : je suis là pour servir.
+[pause 10s]
+
+Inspirez.
+[pause 5s]
+En expirant... je suis là pour libérer... pas pour retenir.
+[pause 10s]
+
+Inspirez.
+[pause 5s]
+En expirant... ma grandeur est dans mon service.
+[pause 12s]
+
+Notez ce qui est venu pendant cette méditation.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 03 — L'Écoute Active — cible : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-03-ecoute-active' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Module trois. L'Écoute Active.
+[pause 5s]
+
+Avant de commencer...
+[pause 3s]
+observez combien de pensées traversent votre esprit en ce moment.
+[pause 8s]
+
+Une liste à faire. Un message à envoyer. Une préoccupation qui revient.
+[pause 6s]
+C'est normal.
+[pause 4s]
+C'est exactement pourquoi ce module existe.
+[pause 8s]
+
+Trois souffles ensemble.
+[pause 5s]
+Inspiration lente... rétention douce... expiration profonde.
+[pause 18s]
+
+La plupart des gens n'écoutent pas.
+[pause 6s]
+Ils attendent leur tour pour parler.
+[pause 6s]
+Ils construisent leur réponse pendant que l'autre parle encore.
+[pause 6s]
+Ils filtrent ce qu'ils entendent à travers leur propre vécu.
+[pause 8s]
+
+Ce n'est pas de la mauvaise volonté.
+[pause 4s]
+C'est simplement que personne ne nous a appris à écouter vraiment.
+[pause 8s]
+
+L'écoute active n'est pas une technique.
+[pause 5s]
+C'est un état.
+[pause 5s]
+Un état de présence totale.
+[pause 5s]
+Où l'autre sent — pour la première fois peut-être — qu'il est vraiment compris.
+[pause 10s]
+
+Il y a cinq niveaux d'écoute.
+[pause 5s]
+
+Niveau un : l'écoute superficielle.
+[pause 4s]
+Vous entendez les mots. Votre esprit est ailleurs.
+[pause 6s]
+
+Niveau deux : l'écoute partielle.
+[pause 4s]
+Vous captez les grandes lignes. Vous préparez votre réponse en parallèle.
+[pause 6s]
+
+Niveau trois : l'écoute active.
+[pause 4s]
+Vous suivez le fil. Vous posez des questions de clarification.
+[pause 6s]
+
+Niveau quatre : l'écoute empathique.
+[pause 4s]
+Vous ressentez l'émotion derrière les mots. Vous reflétiez avant de répondre.
+[pause 6s]
+
+Niveau cinq : l'écoute générative.
+[pause 5s]
+Vous écoutez ce qui n'est pas encore dit.
+[pause 5s]
+Ce que la personne cherche à formuler.
+[pause 5s]
+Vous créez l'espace pour que ça émerge.
+[pause 10s]
+
+Le mentor vise le niveau cinq.
+[pause 8s]
+
+Où êtes-vous habituellement ?
+[pause 10s]
+
+Soyez honnête. Sans vous juger.
+[pause 8s]
+
+La plupart des mentors sincères oscillent entre trois et quatre.
+[pause 5s]
+Le niveau cinq s'apprend. Il se pratique.
+[pause 5s]
+Il commence par... le silence.
+[pause 10s]
+
+Parlons un moment des questions.
+[pause 5s]
+
+Une question fermée ferme.
+[pause 4s]
+Une question ouverte ouvre.
+[pause 4s]
+Une question puissante... transforme.
+[pause 8s]
+
+La différence entre une question orientée et une question puissante...
+[pause 5s]
+c'est l'intention derrière elle.
+[pause 6s]
+
+Une question orientée mène l'autre vers là où vous voulez aller.
+[pause 5s]
+"Ne penses-tu pas que tu devrais..."
+[pause 4s]
+"Et si tu essayais plutôt..."
+[pause 4s]
+"Il me semble que la solution est..."
+[pause 6s]
+
+Une question puissante ouvre sans orienter.
+[pause 5s]
+"Qu'est-ce qui se passe vraiment ?"
+[pause 5s]
+"Qu'est-ce qui ferait que ce soit parfait ?"
+[pause 5s]
+"Si tu savais déjà la réponse... que serait-elle ?"
+[pause 8s]
+
+Et après une question puissante...
+[pause 4s]
+il y a la règle d'or.
+[pause 5s]
+
+Taisez-vous.
+[pause 6s]
+Complètement.
+[pause 6s]
+Comptez jusqu'à dix si nécessaire.
+[pause 8s]
+
+Le silence après une question puissante...
+[pause 5s]
+c'est l'espace dans lequel la transformation se produit.
+[pause 5s]
+Ne le remplissez pas.
+[pause 8s]
+
+Maintenant la méditation de ce module.
+[pause 5s]
+
+La méditation du silence intérieur.
+[pause 6s]
+
+Installez-vous encore plus confortablement.
+[pause 5s]
+Fermez les yeux.
+[pause 4s]
+
+Pendant les dix prochaines minutes...
+[pause 4s]
+vous n'allez rien faire que observer vos propres pensées.
+[pause 5s]
+Sans les suivre. Sans les combattre.
+[pause 5s]
+Juste... les observer passer.
+[pause 8s]
+
+Quand une pensée vient...
+[pause 4s]
+notez-la mentalement : "pensée".
+[pause 4s]
+Et revenez au souffle.
+[pause 8s]
+
+C'est tout.
+[pause 5s]
+Rien d'autre.
+[pause 6s]
+
+Pourquoi cette pratique pour un mentor ?
+[pause 5s]
+
+Parce qu'un mentor qui ne sait pas faire le silence intérieur...
+[pause 5s]
+ne peut pas créer le silence accueillant pour l'autre.
+[pause 6s]
+
+Vous ne pouvez offrir aux autres que ce que vous avez d'abord cultivé en vous.
+[pause 10s]
+
+Commençons.
+[pause 5s]
+
+Inspiration douce...
+[pause 4s]
+Expiration lente...
+[pause 5s]
+Simple présence.
+[pause 180s]
+
+Vous revenez doucement.
+[pause 6s]
+
+Remarquez comment vous vous sentez après ce moment de silence.
+[pause 6s]
+
+Un peu plus léger peut-être.
+[pause 4s]
+Un peu plus disponible.
+[pause 4s]
+Un peu plus présent.
+[pause 8s]
+
+C'est cette qualité de présence que vous allez apporter à vos accompagnés.
+[pause 6s]
+
+Ils ne le nommeront pas.
+[pause 4s]
+Mais ils le sentiront.
+[pause 5s]
+Ils sentiront que vous êtes vraiment là.
+[pause 5s]
+Et c'est ce qui fait la différence.
+[pause 10s]
+
+Notez ce qui est venu pendant cette méditation.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 04 — La Transmission Vivante — cible : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-04-transmission-vivante' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Module quatre. La Transmission Vivante.
+[pause 6s]
+
+Trois souffles 5-5-5.
+[pause 18s]
+
+Il y a une différence fondamentale entre quelqu'un qui enseigne... et quelqu'un qui transmet.
+[pause 8s]
+
+L'enseignant transmet de l'information.
+[pause 5s]
+Le mentor transmet une vie.
+[pause 8s]
+
+Un discours instruit.
+[pause 4s]
+Une vie vécue inspire.
+[pause 8s]
+
+Pensez aux personnes qui vous ont le plus profondément influencé dans votre vie.
+[pause 6s]
+
+Était-ce par ce qu'elles vous ont dit ?
+[pause 5s]
+Ou par ce qu'elles étaient ?
+[pause 5s]
+Par la façon dont elles vivaient ce qu'elles croyaient ?
+[pause 10s]
+
+La transmission vivante... c'est ça.
+[pause 5s]
+Quand ce que vous dites et ce que vous êtes sont alignés.
+[pause 6s]
+Quand il n'y a aucun écart entre le mentor devant le groupe...
+[pause 4s]
+et l'être humain à vingt-trois heures dans sa cuisine.
+[pause 8s]
+
+Ce n'est pas de la perfection qu'on vous demande.
+[pause 5s]
+C'est de la cohérence.
+[pause 8s]
+
+Gandhi disait : soyez le changement que vous voulez voir dans le monde.
+[pause 6s]
+Le mentor dit : je suis déjà en train de vivre ce que j'enseigne.
+[pause 8s]
+
+Une des formes les plus puissantes de transmission vivante...
+[pause 5s]
+c'est l'histoire vraie.
+[pause 6s]
+
+Pas une anecdote qui impressionne.
+[pause 5s]
+Pas une success story soigneusement polie.
+[pause 5s]
+Une histoire vraie qui libère.
+[pause 8s]
+
+Il y a une structure en cinq moments pour raconter ce qui libère.
+[pause 6s]
+
+Premier moment : le basculement.
+[pause 5s]
+"Il y a X années... j'étais..."
+[pause 5s]
+Poser le contexte. Puis le moment où quelque chose a changé.
+[pause 8s]
+
+Deuxième moment : la descente.
+[pause 5s]
+"Et puis... quelque chose s'est effondré."
+[pause 5s]
+Être honnête sur ce que ça a coûté.
+[pause 8s]
+
+Troisième moment : la traversée.
+[pause 5s]
+"J'ai dû faire face à..."
+[pause 5s]
+Ce que vous avez dû traverser. Pas la version heroïque. La version vraie.
+[pause 8s]
+
+Quatrième moment : l'apprentissage.
+[pause 5s]
+"Ce que j'ai compris à ce moment-là..."
+[pause 5s]
+La sagesse que vous n'auriez pas pu avoir autrement.
+[pause 8s]
+
+Cinquième moment : le pont.
+[pause 5s]
+"Et c'est exactement pourquoi je vous parle de ça aujourd'hui."
+[pause 6s]
+Le lien entre votre vécu et ce que vit votre accompagné.
+[pause 10s]
+
+La règle de l'histoire qui libère.
+[pause 5s]
+Ne racontez pas une histoire pour briller.
+[pause 5s]
+Racontez pour que l'autre se reconnaisse.
+[pause 8s]
+
+Prenons maintenant la méditation de ce module.
+[pause 5s]
+
+La méditation de l'alignement intérieur.
+[pause 6s]
+
+Installez-vous. Fermez les yeux.
+[pause 5s]
+
+Trois souffles.
+[pause 15s]
+
+Visualisez-vous en train d'enseigner quelque chose qui vous tient à coeur.
+[pause 6s]
+Un sujet sur lequel vous avez réellement quelque chose à dire.
+[pause 6s]
+
+Ressentez-vous de l'alignement quand vous vous imaginez le transmettre ?
+[pause 8s]
+Ou ressentez-vous une forme d'imposteur ?
+[pause 8s]
+
+Où dans votre corps vous sentez-vous le plus vrai dans cette projection ?
+[pause 8s]
+Où sentez-vous un écart ?
+[pause 8s]
+
+Respirez à l'endroit de l'écart.
+[pause 5s]
+Pas pour le résoudre.
+[pause 4s]
+Pour l'honorer.
+[pause 6s]
+
+Cet écart dit : "je grandis encore dans ce domaine."
+[pause 5s]
+Et c'est précieux.
+[pause 5s]
+Parce que vous n'enseigner pas depuis un sommet atteint.
+[pause 5s]
+Vous enseignez depuis le chemin.
+[pause 10s]
+
+Répétez intérieurement... ou à voix basse si vous le souhaitez.
+[pause 5s]
+
+"Je suis en chemin."
+[pause 5s]
+"Et mon chemin m'équipe."
+[pause 5s]
+"Je transmets ce que je vis... pas seulement ce que je sais."
+[pause 12s]
+
+Prenez un dernier souffle profond.
+[pause 5s]
+Inspiration...
+[pause 5s]
+Rétention...
+[pause 5s]
+Expiration lente.
+[pause 10s]
+
+Notez l'histoire fondatrice qui est venue pendant cette méditation.
+[pause 5s]
+Elle pourrait bien devenir la clé de voûte de votre transmission.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 05 — Les Résistances — cible : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-05-les-resistances' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Module cinq. Les Résistances.
+[pause 6s]
+
+Trois souffles 5-5-5.
+[pause 18s]
+
+Dans chaque accompagnement... dans chaque groupe... dans chaque relation de mentorat...
+[pause 6s]
+vous rencontrerez des résistances.
+[pause 6s]
+
+Celles de vos accompagnés.
+[pause 4s]
+Et aussi... les vôtres.
+[pause 8s]
+
+Le mentor non-préparé vit les résistances comme des échecs.
+[pause 6s]
+"Il ne veut pas changer."
+[pause 4s]
+"Elle n'est pas prête."
+[pause 4s]
+"Ils ne m'écoutent pas."
+[pause 6s]
+
+Le mentor expérimenté les lit comme des messages.
+[pause 8s]
+
+Une résistance dit toujours quelque chose.
+[pause 5s]
+
+"J'ai peur."
+[pause 4s]
+"Je n'y crois pas encore."
+[pause 4s]
+"J'ai déjà été déçu."
+[pause 4s]
+"Ce n'est pas le bon moment."
+[pause 4s]
+"Je ne me sens pas capable."
+[pause 8s]
+
+Votre travail n'est pas de supprimer la résistance.
+[pause 5s]
+C'est de l'entendre.
+[pause 8s]
+
+Il y a cinq types de résistances que vous rencontrerez.
+[pause 6s]
+
+La première : la résistance par peur.
+[pause 5s]
+"Et si ça ne marchait pas ?"
+[pause 5s]
+Signe : questionnement excessif, procrastination, besoin de garanties.
+[pause 8s]
+
+La deuxième : la résistance par blessure passée.
+[pause 5s]
+"J'ai déjà essayé, ça n'a pas marché."
+[pause 5s]
+Signe : cynisme, fermeture, protection anticipée.
+[pause 8s]
+
+La troisième : la résistance par croyance limitante.
+[pause 5s]
+"Je ne suis pas fait pour ça."
+[pause 5s]
+Signe : minimisation systématique de soi, comparaison aux autres.
+[pause 8s]
+
+La quatrième : la résistance par déni.
+[pause 5s]
+"Je n'ai pas vraiment de problème."
+[pause 5s]
+Signe : changement de sujet, rationalisation excessive.
+[pause 8s]
+
+La cinquième : la résistance par timing.
+[pause 5s]
+"Pas maintenant... plus tard."
+[pause 5s]
+Signe : report répété. Parfois légitime... souvent un évitement.
+[pause 10s]
+
+Pour chacun de ces types...
+[pause 4s]
+il y a un protocole de transformation en cinq étapes.
+[pause 6s]
+
+Étape un : accueillir sans corriger.
+[pause 5s]
+"Je t'entends. Cette résistance est là. C'est valide."
+[pause 6s]
+
+Étape deux : nommer sans diagnostiquer.
+[pause 5s]
+"Je perçois quelque chose qui ressemble à de la peur. Est-ce que ça résonne ?"
+[pause 6s]
+
+Étape trois : explorer avec curiosité.
+[pause 5s]
+"Qu'est-ce qui se passerait si cette peur avait raison ? Et si elle avait tort ?"
+[pause 6s]
+
+Étape quatre : chercher la ressource dans la résistance.
+[pause 5s]
+"Qu'est-ce que cette résistance protège ? Qu'est-ce qui a besoin d'être respecté ici ?"
+[pause 6s]
+
+Étape cinq : proposer un tout petit pas.
+[pause 5s]
+"Pas tout. Pas maintenant. Juste un pour cent de mouvement."
+[pause 8s]
+
+Maintenant... je vous invite à tourner le regard vers vous.
+[pause 6s]
+
+Quelle est la résistance principale que vous avez en ce moment ?
+[pause 8s]
+Pas celle de vos accompagnés.
+[pause 5s]
+La vôtre.
+[pause 8s]
+
+Entrons dans la méditation de ce module.
+[pause 5s]
+
+La méditation des nœuds intérieurs.
+[pause 6s]
+
+Fermez les yeux. Trois souffles lents.
+[pause 18s]
+
+Pensez à une résistance que vous avez en ce moment dans votre vie.
+[pause 6s]
+Une chose que vous repoussez. Que vous évitez d'affronter.
+[pause 6s]
+
+Localisez-la dans votre corps.
+[pause 5s]
+Peut-être dans la poitrine ? Dans le ventre ? Dans la gorge ?
+[pause 8s]
+
+Donnez-lui une forme.
+[pause 5s]
+Une couleur.
+[pause 5s]
+Une texture.
+[pause 8s]
+
+Sans chercher à la résoudre.
+[pause 5s]
+Juste... la rencontrer.
+[pause 8s]
+
+Maintenant posez-lui une question.
+[pause 5s]
+
+"Qu'est-ce que tu protèges ?"
+[pause 15s]
+
+Écoutez.
+[pause 5s]
+Sans défense.
+[pause 5s]
+Sans chercher à corriger.
+[pause 10s]
+
+Ce que vous entendez là...
+[pause 4s]
+c'est une information précieuse.
+[pause 5s]
+C'est ce que vos accompagnés ressentent aussi quand ils résistent.
+[pause 6s]
+
+Toute résistance que vous avez traversée vous équipe pour accompagner celle de l'autre.
+[pause 8s]
+
+Respirez avec cette résistance.
+[pause 6s]
+Pas pour la faire partir.
+[pause 4s]
+Pour la remercier.
+[pause 5s]
+Elle a fait son travail de protection.
+[pause 5s]
+Et maintenant... vous pouvez aller plus loin.
+[pause 12s]
+
+Prenez un dernier souffle profond.
+[pause 5s]
+Et en expirant... laissez sortir ce qui n'a plus besoin d'être porté.
+[pause 12s]
+
+Notez ce qui est venu.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 06 — L'Énergie du Mentor — cible : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-06-energie-du-mentor' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Module six. L'Énergie du Mentor.
+[pause 6s]
+
+Trois souffles.
+[pause 18s]
+
+Voici une vérité que peu de mentors veulent entendre.
+[pause 6s]
+
+Un mentor épuisé n'accompagne plus.
+[pause 5s]
+Il survit.
+[pause 6s]
+
+Et dans la survie...
+[pause 4s]
+il prend inconsciemment de l'énergie à ses accompagnés...
+[pause 4s]
+au lieu d'en donner.
+[pause 8s]
+
+La gestion de votre énergie n'est pas une question de confort.
+[pause 5s]
+C'est une question d'éthique.
+[pause 8s]
+
+Vous ne pouvez pas donner ce que vous n'avez pas.
+[pause 6s]
+
+Un praticien qui ne prend pas soin de lui transmet son épuisement.
+[pause 5s]
+Sa frustration. Son manque.
+[pause 5s]
+
+Un praticien qui rayonne transmet sa vitalité.
+[pause 5s]
+Sa paix. Sa présence.
+[pause 8s]
+
+Vos accompagnés ne l'analyseront pas.
+[pause 5s]
+Mais ils le sentiront.
+[pause 5s]
+Dans votre voix. Dans votre regard. Dans la qualité de votre silence.
+[pause 10s]
+
+Il y a quatre sources d'énergie que vous devez alimenter consciemment.
+[pause 6s]
+
+La première : l'énergie physique.
+[pause 5s]
+Sommeil suffisant. Mouvement régulier. Nutrition consciente. Pause Souffle quotidienne.
+[pause 6s]
+Question diagnostic : votre corps est-il un allié... ou une charge en ce moment ?
+[pause 8s]
+
+La deuxième : l'énergie émotionnelle.
+[pause 5s]
+Le traitement des émotions non résolues.
+[pause 4s]
+Les relations nourrissantes versus vampirisantes.
+[pause 5s]
+Question diagnostic : avez-vous des conversations qui vous alourdissent... ou des conversations qui vous allègent ?
+[pause 8s]
+
+La troisième : l'énergie mentale.
+[pause 5s]
+La clarté d'intention. L'absence de dissonance entre ce que vous pensez et ce que vous faites.
+[pause 6s]
+Question diagnostic : avez-vous des pensées intrusives récurrentes ? Des décisions non prises qui occupent de l'espace mental ?
+[pause 8s]
+
+La quatrième : l'énergie spirituelle.
+[pause 5s]
+La connexion à votre sens profond.
+[pause 4s]
+Le sentiment que votre vie a une direction.
+[pause 5s]
+Question diagnostic : vous levez-vous le matin avec un sentiment de mission... ou d'obligation ?
+[pause 10s]
+
+Il y a un rituel simple que je vous propose.
+[pause 5s]
+Le rituel quotidien du mentor.
+[pause 5s]
+Quinze minutes le matin. Deux minutes avant chaque session. Dix minutes le soir.
+[pause 8s]
+
+Le matin.
+[pause 4s]
+Cinq minutes de Pause Souffle 5-5-5.
+[pause 4s]
+Cinq minutes d'intention du jour de mentor : "aujourd'hui je sers en..."
+[pause 4s]
+Cinq minutes de lecture ou d'écoute d'une phrase qui vous inspire.
+[pause 8s]
+
+Avant chaque session.
+[pause 4s]
+Check-in corporel. État émotionnel. Intention centrée sur l'autre.
+[pause 6s]
+
+Le soir.
+[pause 4s]
+Qu'est-ce que j'ai bien servi aujourd'hui ?
+[pause 4s]
+Où est-ce que je me suis laissé drainer... et pourquoi ?
+[pause 4s]
+Qu'est-ce que j'emporte de positif de cette journée ?
+[pause 10s]
+
+Entrons dans la méditation de ce module.
+[pause 5s]
+
+La méditation de la fontaine intérieure.
+[pause 6s]
+
+Installez-vous. Fermez les yeux.
+[pause 5s]
+
+Trois souffles 5-5-5.
+[pause 18s]
+
+Imaginez une source lumineuse au centre de votre poitrine.
+[pause 6s]
+
+À chaque inspiration... elle grandit.
+[pause 5s]
+Chaude. Dorée. Apaisante.
+[pause 5s]
+
+À chaque expiration... elle rayonne vers l'extérieur.
+[pause 6s]
+En cercles concentriques.
+[pause 5s]
+Touchant tout ce qui vous entoure.
+[pause 8s]
+
+Inspirez. La fontaine grandit.
+[pause 8s]
+Expirez. Elle rayonne.
+[pause 8s]
+
+Maintenant visualisez vos quatre sources d'énergie se remplir.
+[pause 5s]
+
+D'abord votre corps.
+[pause 4s]
+Imaginez chaque cellule recevoir une lumière régénératrice.
+[pause 6s]
+Chaque muscle se détendre. Chaque articulation se libérer.
+[pause 8s]
+
+Maintenant vos émotions.
+[pause 5s]
+Imaginez toutes les tensions émotionnelles se dissoudre doucement.
+[pause 5s]
+Comme de la glace qui fond au soleil.
+[pause 8s]
+
+Votre mental.
+[pause 5s]
+Un espace qui se clarifie. Le bruit qui se tait.
+[pause 5s]
+Une clarté simple et apaisante.
+[pause 8s]
+
+Votre sens profond.
+[pause 5s]
+Reconnectez-vous à la raison pour laquelle vous avez choisi ce chemin.
+[pause 6s]
+Pas la raison intellectuelle.
+[pause 4s]
+La raison du coeur.
+[pause 8s]
+
+Restez dans cet état de plénitude.
+[pause 5s]
+Aussi longtemps que vous le souhaitez.
+[pause 5s]
+
+Répétez intérieurement.
+[pause 5s]
+"Je me nourris pour nourrir."
+[pause 5s]
+"Je me ressource pour ressourcer."
+[pause 8s]
+
+Prenez un dernier souffle.
+[pause 5s]
+Inspiration profonde...
+[pause 5s]
+Expirez en souriant doucement.
+[pause 10s]
+
+Notez sur votre carnet de mentor : quelle source d'énergie avez-vous le plus besoin de nourrir cette semaine ?
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 07 — Le Cadre Sacré — cible : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-07-cadre-sacre' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Module sept. Le Cadre Sacré.
+[pause 6s]
+
+Trois souffles ensemble.
+[pause 18s]
+
+Pensez à un endroit... une conversation... un moment...
+[pause 5s]
+où vous vous êtes senti pleinement en sécurité pour être vous-même.
+[pause 8s]
+
+Vraiment vous-même.
+[pause 5s]
+Sans calcul. Sans masque. Sans performance.
+[pause 8s]
+
+Comment vous sentiez-vous dans cet espace ?
+[pause 8s]
+
+C'est ce qu'un cadre sacré crée.
+[pause 6s]
+
+Un cadre sacré n'est pas un lieu.
+[pause 5s]
+C'est une qualité de présence.
+[pause 5s]
+C'est ce qui fait que quelqu'un entre dans une salle... ou dans une conversation...
+[pause 5s]
+et sent instinctivement : ici, je peux être moi-même.
+[pause 10s]
+
+Les gens passent des années sans jamais avoir cet espace.
+[pause 6s]
+Sans jamais avoir quelqu'un devant eux qui ne juge pas.
+[pause 5s]
+Qui ne cherche pas à en tirer quelque chose.
+[pause 5s]
+Qui est simplement... là.
+[pause 8s]
+
+Votre travail de mentor : créer cet espace. Le maintenir. Le défendre.
+[pause 10s]
+
+Il y a cinq éléments qui constituent un cadre sacré.
+[pause 6s]
+
+Le premier : la confidentialité totale.
+[pause 5s]
+Ce qui se partage dans le cadre ne sort pas du cadre.
+[pause 5s]
+C'est la condition première de la confiance.
+[pause 6s]
+Pas seulement comme règle affichée... mais comme engagement vécu.
+[pause 8s]
+
+Le deuxième : l'absence de jugement.
+[pause 5s]
+Ce n'est pas l'approbation de tout.
+[pause 4s]
+C'est l'accueil de tout.
+[pause 5s]
+"Je t'écoute sans te juger."
+[pause 5s]
+Et le vivre... dans chaque micro-réaction.
+[pause 5s]
+Même face à ce qui vous surprend.
+[pause 8s]
+
+Le troisième : la présence totale.
+[pause 5s]
+Téléphone rangé. Regard posé. Corps tourné. Esprit disponible.
+[pause 5s]
+Pas quatre-vingts pour cent de présence.
+[pause 4s]
+Cent pour cent.
+[pause 8s]
+
+Le quatrième : la permission d'être incomplet.
+[pause 5s]
+"Tu n'as pas à avoir les réponses ici. Tu as juste à être honnête."
+[pause 5s]
+Cette permission... pour beaucoup de personnes...
+[pause 4s]
+est la chose la plus libératrice qu'on leur ait jamais dite.
+[pause 8s]
+
+Le cinquième : la ritualisation de l'espace.
+[pause 5s]
+Une ouverture. Un souffle partagé. Un mot d'intention.
+[pause 5s]
+Le corps comprend que c'est différent.
+[pause 5s]
+Que ce qui va se passer ici est précieux.
+[pause 10s]
+
+Parlons aussi de ce qui brise le cadre.
+[pause 6s]
+
+Un commentaire non sollicité qui juge... même bien intentionné.
+[pause 5s]
+Une confidence partagée hors du groupe.
+[pause 5s]
+Un manque de présence perçu par les accompagnés.
+[pause 5s]
+Une surprise ou un malaise visible du mentor face à ce qui est partagé.
+[pause 8s]
+
+Ces violations arrivent.
+[pause 5s]
+Même aux meilleurs mentors.
+[pause 5s]
+
+La réponse n'est pas de fuir.
+[pause 4s]
+C'est de nommer avec sincérité.
+[pause 5s]
+
+"J'ai dit quelque chose qui a brisé la confiance. Je veux réparer. Voici comment."
+[pause 8s]
+
+La réparation honnête renforce souvent le cadre plus qu'il n'y avait eu de violation.
+[pause 8s]
+
+Entrons dans la méditation de ce module.
+[pause 5s]
+
+La méditation de l'espace d'accueil.
+[pause 6s]
+
+Fermez les yeux. Trois souffles 5-5-5.
+[pause 18s]
+
+Imaginez l'espace que vous allez créer pour ceux que vous accompagnez.
+[pause 6s]
+
+Pas la salle. Pas le décor.
+[pause 5s]
+La qualité de présence que vous apportez.
+[pause 8s]
+
+Visualisez quelqu'un qui entre dans cet espace.
+[pause 5s]
+Et qui se détend.
+[pause 4s]
+Qui baisse la garde.
+[pause 4s]
+Qui respire différemment.
+[pause 6s]
+
+Que ressentez-vous dans votre corps quand vous voyez cela ?
+[pause 8s]
+
+C'est votre raison d'être comme mentor.
+[pause 6s]
+Ce moment où l'autre retrouve de la sécurité.
+[pause 6s]
+Où il retrouve un espace pour être vrai.
+[pause 8s]
+
+Répétez intérieurement.
+[pause 5s]
+"Je suis cet espace."
+[pause 5s]
+"Je le porte en moi."
+[pause 5s]
+"Il commence par ma propre paix."
+[pause 12s]
+
+Prenez un dernier souffle.
+[pause 8s]
+
+Et revenez doucement.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 08 — L'Art du Lâcher-Prise — cible : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-08-art-du-lacher-prise' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Module huit. L'Art du Lâcher-Prise.
+[pause 6s]
+
+Trois souffles 5-5-5.
+[pause 18s]
+
+Voici le paradoxe final du mentor.
+[pause 6s]
+
+Le mentor accomplit sa mission...
+[pause 5s]
+quand son accompagné n'a plus besoin de lui.
+[pause 8s]
+
+Laissez cette phrase résonner.
+[pause 6s]
+
+Plus votre travail est réussi...
+[pause 5s]
+plus ils s'éloignent.
+[pause 5s]
+Et c'est exactement ça... la victoire.
+[pause 10s]
+
+Un parent réussi lève des enfants autonomes.
+[pause 5s]
+Un thérapeute réussi clôture sa relation thérapeutique.
+[pause 5s]
+Un mentor réussi crée d'autres mentors.
+[pause 8s]
+
+Mais notre ego... notre besoin de nous sentir utile...
+[pause 5s]
+peut résister à cette vérité.
+[pause 6s]
+
+Il y a trois formes d'attachement chez le mentor.
+[pause 6s]
+
+La première : l'attachement au rôle.
+[pause 5s]
+"J'ai besoin qu'ils aient besoin de moi."
+[pause 5s]
+Signe : un malaise quand un accompagné progresse vite et devient autonome.
+[pause 8s]
+
+La deuxième : l'attachement aux résultats.
+[pause 5s]
+"Leur succès prouve ma valeur."
+[pause 5s]
+Signe : une déception personnelle quand quelqu'un abandonne... même si c'est son choix.
+[pause 8s]
+
+La troisième : l'attachement affectif.
+[pause 5s]
+La relation dépasse le cadre du mentorat.
+[pause 5s]
+Signe : difficulté à maintenir les limites professionnelles.
+[pause 8s]
+
+Reconnaître son attachement n'est pas une honte.
+[pause 5s]
+C'est le premier acte du lâcher-prise.
+[pause 8s]
+
+Il y a trois pratiques qui aident.
+[pause 6s]
+
+La première : la clôture rituelle.
+[pause 5s]
+À la fin de chaque session : "je te confie à toi-même."
+[pause 5s]
+Symboliquement remettre la responsabilité à l'autre.
+[pause 5s]
+Couper l'énergie du contrôle.
+[pause 8s]
+
+La deuxième : la délégation à plus grand que soi.
+[pause 5s]
+"Ce chemin n'est pas le mien à porter.
+[pause 4s]
+Je fais ce que je peux... et je confie le reste."
+[pause 8s]
+
+La troisième : le bilan sans jugement.
+[pause 5s]
+Après chaque accompagnement terminé... bien ou mal.
+[pause 5s]
+"Qu'est-ce que j'ai appris ? Qu'est-ce que je lâche ?"
+[pause 5s]
+Un cahier de clôture. Deux pages. Et on tourne.
+[pause 10s]
+
+Entrons dans la méditation de ce module.
+[pause 5s]
+
+La méditation du détachement bienveillant.
+[pause 6s]
+
+Fermez les yeux. Trois souffles profonds.
+[pause 18s]
+
+Pensez à quelqu'un que vous accompagnez... ou que vous avez accompagné.
+[pause 6s]
+
+Ressentez si vous portez quelque chose pour eux...
+[pause 5s]
+qui leur appartient.
+[pause 6s]
+
+Une inquiétude à leur place. Une attente de résultat. Un espoir que vous n'avez pas exprimé.
+[pause 8s]
+
+Visualisez cette chose que vous portez.
+[pause 5s]
+Donnez-lui une forme.
+[pause 5s]
+
+Et maintenant... imaginez la leur remettre avec amour.
+[pause 6s]
+
+Pas avec froideur. Pas avec indifférence.
+[pause 5s]
+Avec amour.
+[pause 6s]
+
+"Ceci est à toi."
+[pause 4s]
+"Je te le rends."
+[pause 4s]
+"Je reste là si tu as besoin."
+[pause 4s]
+"Mais c'est toi qui portes ton chemin."
+[pause 10s]
+
+Ressentez le soulagement dans votre corps.
+[pause 6s]
+
+La légèreté du mentor qui ne porte pas ce qui ne lui appartient pas.
+[pause 8s]
+
+Répétez intérieurement.
+[pause 5s]
+"Je suis présent."
+[pause 5s]
+"Je ne suis pas responsable de leur chemin."
+[pause 5s]
+"Je suis là pour éclairer... pas pour porter."
+[pause 12s]
+
+Respirez avec cette légèreté.
+[pause 6s]
+
+Et revenez doucement.
+[pause 8s]
+
+Notez : quel accompagnement en cours vous demande de lâcher quelque chose ?
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 09 — Ma Signature de Mentor — cible : 20–22 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-09-signature-de-mentor' => <<<'SCRIPT'
+Installez-vous.
+[pause 5s]
+
+Module neuf. Ma Signature de Mentor.
+[pause 6s]
+
+Le dernier module.
+[pause 6s]
+
+Trois souffles profonds. Plus lents que d'habitude.
+[pause 25s]
+
+Vous avez traversé huit modules.
+[pause 5s]
+
+Vous avez exploré votre identité.
+[pause 4s]
+Vous avez choisi votre posture.
+[pause 4s]
+Vous avez approfondi votre écoute.
+[pause 4s]
+Vous avez aligné votre transmission.
+[pause 4s]
+Vous avez traversé les résistances.
+[pause 4s]
+Vous avez nourri votre énergie.
+[pause 4s]
+Vous avez créé un cadre sacré.
+[pause 4s]
+Vous avez appris à lâcher.
+[pause 8s]
+
+Ce module n'est pas un résumé.
+[pause 5s]
+C'est une synthèse vivante.
+[pause 5s]
+
+La question n'est plus : qu'est-ce qu'un bon mentor ?
+[pause 5s]
+Elle est : quel mentor unique es-tu, toi ?
+[pause 10s]
+
+Personne ne peut être vous.
+[pause 6s]
+
+Votre combinaison de blessures... de forces... de valeurs... de style...
+[pause 5s]
+est unique sur cette planète.
+[pause 8s]
+
+Ce que vous allez créer ne ressemblera à aucun autre mentor.
+[pause 6s]
+Et c'est exactement ce dont le monde a besoin.
+[pause 10s]
+
+Il y a cinq dimensions de votre signature de mentor.
+[pause 6s]
+
+La première : votre ton.
+[pause 5s]
+Êtes-vous direct ou doux ?
+[pause 4s]
+Provocateur ou enveloppant ?
+[pause 4s]
+Solennel ou joyeux ?
+[pause 5s]
+Ce n'est pas ce que vous choisissez de paraître.
+[pause 4s]
+C'est ce que vous êtes... quand vous êtes à l'aise.
+[pause 8s]
+
+La deuxième : votre approche.
+[pause 5s]
+Structurée : plan clair, étapes définies, outils concrets.
+[pause 4s]
+Ou intuitive : fluide, au feeling de la personne.
+[pause 5s]
+La plupart des mentors sont un mélange.
+[pause 4s]
+Mais il y en a une qui est dominante.
+[pause 8s]
+
+La troisième : votre force première.
+[pause 5s]
+Écoute. Présence. Clarté. Provocation bienveillante. Transmission d'expérience.
+[pause 6s]
+Quelle est celle qui vous est la plus naturelle ?
+[pause 8s]
+
+La quatrième : votre public naturel.
+[pause 5s]
+Qui vous cherche naturellement ?
+[pause 4s]
+Qui vous trouve sans que vous ayez à forcer ?
+[pause 5s]
+Ce sont les personnes pour qui vous êtes particulièrement équipé.
+[pause 8s]
+
+La cinquième : votre empreinte.
+[pause 5s]
+Dans dix ans...
+[pause 4s]
+que veulent dire les personnes que vous avez accompagnées quand elles parlent de vous ?
+[pause 10s]
+
+Prenons maintenant la méditation finale de cette formation.
+[pause 5s]
+
+La méditation de synthèse et d'engagement.
+[pause 6s]
+
+Installez-vous dans la position la plus confortable.
+[pause 5s]
+Prenez le temps. Ce n'est pas un moment à bâcler.
+[pause 5s]
+
+Trois souffles très lents.
+[pause 25s]
+
+Je vais vous inviter à revivre en images les huit modules précédents.
+[pause 6s]
+
+Module un. L'Identité.
+[pause 5s]
+Qui êtes-vous... avant ce que vous transmettez ?
+[pause 6s]
+Laissez venir une image.
+[pause 8s]
+
+Module deux. La Posture du Serviteur.
+[pause 5s]
+Comment avez-vous choisi de vous mettre au service ?
+[pause 6s]
+Laissez venir une sensation.
+[pause 8s]
+
+Module trois. L'Écoute Active.
+[pause 5s]
+L'espace de silence que vous savez maintenant créer.
+[pause 6s]
+Laissez venir une couleur.
+[pause 8s]
+
+Module quatre. La Transmission Vivante.
+[pause 5s]
+L'histoire fondatrice que vous portez.
+[pause 6s]
+Laissez venir un visage.
+[pause 8s]
+
+Module cinq. Les Résistances.
+[pause 5s]
+Ce que vous avez traversé... et ce qui vous équipe maintenant.
+[pause 6s]
+Laissez venir un mot.
+[pause 8s]
+
+Module six. L'Énergie.
+[pause 5s]
+La fontaine intérieure que vous avez appris à nourrir.
+[pause 6s]
+Laissez venir une lumière.
+[pause 8s]
+
+Module sept. Le Cadre Sacré.
+[pause 5s]
+L'espace que vous créez où les autres osent être vrais.
+[pause 6s]
+Laissez venir un sentiment.
+[pause 8s]
+
+Module huit. Le Lâcher-Prise.
+[pause 5s]
+La légèreté que vous avez découverte en ne portant que ce qui vous appartient.
+[pause 6s]
+Laissez venir un souffle.
+[pause 10s]
+
+Maintenant... avec tout cela qui réside en vous.
+[pause 6s]
+
+Posez votre main droite sur votre coeur.
+[pause 6s]
+
+Et dites à voix haute... ou dans votre coeur...
+[pause 5s]
+
+"Je suis..."
+[pause 4s]
+Dites votre prénom.
+[pause 5s]
+
+"Je suis mentor."
+[pause 5s]
+
+"Je sers en..."
+[pause 5s]
+Dites votre valeur fondatrice.
+[pause 8s]
+
+"Mon empreinte commence maintenant."
+[pause 12s]
+
+Prenez un dernier souffle.
+[pause 5s]
+Profond. Conscient. Reconnaissant.
+[pause 5s]
+Inspiration...
+[pause 5s]
+Rétention...
+[pause 5s]
+Expiration.
+[pause 12s]
+
+Félicitez-vous.
+[pause 5s]
+
+Vous avez traversé cette formation.
+[pause 5s]
+Vous n'êtes plus le même.
+[pause 5s]
+Et ceux que vous allez accompagner ne seront pas les mêmes non plus.
+[pause 8s]
+
+C'est votre empreinte.
+[pause 5s]
+Elle commence maintenant.
+[pause 10s]
+
+À bientôt. Mentor.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR — Module 10 — La Transmission Invisible — cible : 16–18 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-10-transmission-invisible' => <<<'SCRIPT'
+Bienvenue dans le module 10.
+[pause 6s]
+
+Le module final.
+[pause 8s]
+
+La Transmission Invisible.
+[pause 6s]
+Ce que vous transmettez sans jamais l'avoir enseigné.
+[pause 10s]
+
+Ce module est différent des autres.
+[pause 6s]
+Il ne vous donne pas de nouvelles techniques.
+[pause 5s]
+Il vous demande de regarder quelque chose que peu de mentors ont le courage de regarder en face.
+[pause 10s]
+
+Une vérité dérangeante.
+[pause 6s]
+
+Vos étudiants n'apprennent pas ce que vous enseignez.
+[pause 6s]
+Ils apprennent ce que vous êtes.
+[pause 8s]
+
+Pas consciemment.
+[pause 5s]
+Par mimétisme neurologique profond.
+[pause 6s]
+Leur système nerveux observe et capture votre façon d'être en relation avec votre propre pratique...
+[pause 6s]
+avec l'incertitude... avec vos erreurs... avec votre corps...
+[pause 6s]
+avec l'argent... avec le conflit... avec le silence.
+[pause 10s]
+
+C'est ce que j'appelle le Curriculum Invisible.
+[pause 10s]
+
+Installez-vous.
+[pause 4s]
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Il y a cinq choses que vous transmettez sans le savoir.
+[pause 8s]
+
+Première chose — votre relation à votre propre pratique.
+[pause 6s]
+Est-ce que vous faites vous-même ce que vous enseignez ?
+[pause 6s]
+Vos étudiants le voient. Pas dans vos mots. Dans votre corps.
+[pause 6s]
+Un mentor qui enseigne la cohérence cardiaque et qui vibre d'impatience en cours...
+[pause 5s]
+transmet l'impatience. Pas la cohérence cardiaque.
+[pause 10s]
+
+Deuxième chose — votre relation à vos propres erreurs.
+[pause 6s]
+Quand vous vous trompez devant eux — que se passe-t-il en vous ?
+[pause 6s]
+Vous couvrez ? Vous justifiez ? Vous assumez ?
+[pause 6s]
+Un mentor qui assume ses erreurs avec grâce enseigne plus sur la résilience en trente secondes...
+[pause 5s]
+que cinq modules entiers sur le sujet.
+[pause 10s]
+
+Troisième chose — votre relation à l'incertitude.
+[pause 6s]
+Savez-vous dire... "je ne sais pas" ?
+[pause 6s]
+Ou est-ce que l'incertitude vous force à remplir chaque silence avec une réponse ?
+[pause 6s]
+Un mentor qui tient l'incertitude avec sérénité transmet que l'incertitude est tenable.
+[pause 5s]
+C'est l'un des apprentissages les plus libérateurs pour un étudiant.
+[pause 10s]
+
+Quatrième chose — votre relation au conflit.
+[pause 6s]
+Quand un étudiant vous contredit... comment réagissez-vous réellement ?
+[pause 6s]
+La façon dont vous accueillez l'opposition est la façon dont ils apprendront à l'accueillir eux-mêmes.
+[pause 10s]
+
+Cinquième chose — votre relation à votre propre limite.
+[pause 6s]
+Savez-vous quand vous êtes fatigué, hors-présence, pas au mieux de vous-même ?
+[pause 6s]
+Et osez-vous le nommer... ou jouez-vous toujours le mentor inébranlable ?
+[pause 6s]
+La vulnérabilité nommée transmet la permission d'être humain.
+[pause 5s]
+C'est l'un des cadeaux les plus rares qu'un mentor puisse offrir.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Parlons maintenant de l'échec comme matière pédagogique.
+[pause 6s]
+
+Demandez à n'importe quel adulte de vous rappeler une leçon qui a changé sa vie.
+[pause 8s]
+Dans neuf cas sur dix... ce n'est pas quand le mentor a brillé.
+[pause 6s]
+C'est quand il a chuté... et s'est relevé devant eux.
+[pause 10s]
+
+La réussite crée de l'admiration. Et souvent de la distance.
+[pause 6s]
+"C'est pour lui. Pas pour moi."
+[pause 8s]
+
+L'échec partagé avec grâce crée de l'identification.
+[pause 6s]
+"Si lui a traversé ça et continué — moi aussi, je peux."
+[pause 8s]
+
+La réussite transmet un résultat.
+[pause 5s]
+L'échec transmet... un chemin.
+[pause 10s]
+
+Trois règles pour partager un échec de façon transformatrice.
+[pause 6s]
+
+Premièrement — nommez l'échec précisément.
+[pause 5s]
+Pas "j'ai traversé des choses difficiles".
+[pause 5s]
+"J'avais douze étudiants inscrits à ma deuxième formation. Quatre sont venus."
+[pause 8s]
+
+Deuxièmement — nommez ce que vous avez ressenti. Vraiment.
+[pause 5s]
+Pas la version édulcorée.
+[pause 5s]
+La version qui fait encore un peu mal en la disant.
+[pause 8s]
+
+Troisièmement — nommez ce que ça a changé.
+[pause 5s]
+En quoi cet échec a affiné votre pratique, votre humilité, votre service.
+[pause 10s]
+
+Ce n'est pas de la faiblesse.
+[pause 5s]
+C'est de la transmission vivante.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Il y a un piège discret qui attend les mentors à succès.
+[pause 6s]
+On l'appelle la crystallisation du savoir.
+[pause 8s]
+
+Le jour où vous enseignez la même chose...
+[pause 5s]
+de la même façon...
+[pause 5s]
+avec la même certitude...
+[pause 5s]
+depuis trop longtemps...
+[pause 6s]
+vous avez arrêté de transmettre du vivant.
+[pause 5s]
+Vous transmettez une archive.
+[pause 10s]
+
+Il y a une différence palpable entre un mentor qui récite...
+[pause 5s]
+et un mentor qui découvre en enseignant.
+[pause 10s]
+
+Quatre pratiques du perpétuel étudiant.
+[pause 6s]
+
+Premièrement — pratiquez vous-même toujours.
+[pause 5s]
+Pas pour l'exemple. Pour votre propre découverte continue.
+[pause 8s]
+
+Deuxièmement — cherchez activement les gens qui vous contredisent.
+[pause 5s]
+Pas pour les convaincre. Pour vous laisser questionner.
+[pause 8s]
+
+Troisièmement — servez-vous de vos étudiants comme enseignants.
+[pause 5s]
+Leurs questions naïves sont souvent les plus profondes.
+[pause 5s]
+"Je ne sais pas — explorons ça ensemble" est l'une des phrases les plus puissantes d'un mentor.
+[pause 8s]
+
+Quatrièmement — tenez un journal de vos propres découvertes récentes.
+[pause 5s]
+Si vous n'avez rien de nouveau à noter depuis trois mois... c'est un signal d'alarme.
+[pause 10s]
+
+Inspirez profondément...
+[pause 5s]
+Bloquez...
+[pause 5s]
+Relâchez...
+[pause 8s]
+
+Une dernière dimension.
+[pause 6s]
+La lignée vivante.
+[pause 8s]
+
+Vos étudiants vont, un jour, transmettre à d'autres.
+[pause 6s]
+Ces autres vont transmettre à d'autres encore.
+[pause 6s]
+Dans vingt ans, des gens qui ne vous ont jamais rencontré...
+[pause 5s]
+seront influencés par la façon dont vous vous êtes comporté avec vos étudiants d'aujourd'hui.
+[pause 10s]
+
+Ce n'est pas une métaphore.
+[pause 5s]
+C'est de la transmission du comportement à travers le temps.
+[pause 10s]
+
+Les grands transmetteurs ne transmettent pas leur méthode.
+[pause 6s]
+Ils transmettent l'amour de la méthode.
+[pause 6s]
+Ils ne veulent pas des copies d'eux-mêmes.
+[pause 5s]
+Ils veulent des versions différentes qui continuent le feu.
+[pause 8s]
+
+Leur victoire la plus haute ?
+[pause 6s]
+Un étudiant qui les dépasse.
+[pause 5s]
+Et qui célèbre cela avec eux.
+[pause 10s]
+
+La question que chaque mentor devrait se poser une fois par an.
+[pause 6s]
+"Est-ce que mes étudiants, en observant ma vie...
+[pause 5s]
+apprennent ce que je veux qu'ils apprennent ?"
+[pause 15s]
+
+Si la réponse est "je ne suis pas sûr"...
+[pause 5s]
+c'est là que le travail commence.
+[pause 10s]
+
+Dans votre journal de mentor.
+[pause 6s]
+Cinq questions honnêtes.
+[pause 6s]
+
+Dans les trente derniers jours — avez-vous pratiqué les outils que vous enseignez pour vous-même ?
+[pause 18s]
+
+Quel est le dernier raté que vous avez eu dans votre rôle de mentor ?
+[pause 18s]
+
+Y a-t-il un enseignement que vous donnez sur pilotage automatique depuis trop longtemps ?
+[pause 18s]
+
+Si vos étudiants devaient vous décrire — pas votre enseignement, VOUS — qu'est-ce qu'ils diraient ?
+[pause 18s]
+
+Citez trois comportements que vous espérez voir chez vos étudiants dans dix ans. Est-ce que vous incarnez ces trois choses aujourd'hui ?
+[pause 18s]
+
+Notez.
+[pause 5s]
+Revenez à cet inventaire une fois par an.
+[pause 5s]
+C'est l'acte le plus honnête d'un mentor.
+[pause 10s]
+
+À bientôt, mentor.
+[pause 5s]
+Continuez à apprendre.
+[pause 5s]
+Continuez à transmettre du vivant.
+[pause 10s]
+SCRIPT,
+
     ];
 
     // ── Scripts EN — "TTS-ready" calm executive tone ──────────────
@@ -11111,119 +14380,674 @@ SCRIPT,
         // PRACTITIONER — Module 09 — I Transmit the Pause Souffle Ritual
         // ─────────────────────────────────────────────────────────
         '09-je-transmets-le-rituel' => <<<'SCRIPT'
-Welcome to this final module of the Practitioner training.
+[pause 30s]
+
+What you just felt in that silence...
 [pause 6s]
-
-You have traveled nine modules.
-[pause 5s]
-You understood the body.
-[pause 5s]
-You met yourself.
-[pause 5s]
-You recognized your wounds.
-[pause 5s]
-You described your happiness.
-[pause 5s]
-You listened to your breath.
-[pause 5s]
-You touched your mission.
-[pause 5s]
-You embodied your vision.
-[pause 5s]
-You mastered that vision through time.
-[pause 5s]
-You strengthened your discipline.
-[pause 10s]
-
-Now... it is time to transmit.
+is exactly what your first client will feel facing you.
 [pause 8s]
 
-A Pause Souffle practitioner does not guide others toward wisdom.
+Not a speech.
+[pause 3s]
+Not a method.
+[pause 3s]
+Emptiness.
 [pause 5s]
-They create the conditions for each person to find within themselves what they need.
-[pause 5s]
-As you have just done.
+And the way you receive it... or flee from it.
 [pause 10s]
 
-Settle in one last time in this space.
+Welcome to the final module of the Pause Souffle Practitioner training.
+[pause 8s]
+
+This module resembles no other.
 [pause 5s]
-Back straight... alive.
+Because it teaches you nothing.
+[pause 4s]
+It reveals what you already know.
+[pause 12s]
+
+─────────────────────────
+[pause 2s]
+
+Begin by observing your breath at this precise moment.
+[pause 6s]
+Do not modify it.
+[pause 4s]
+Simply observe.
+[pause 8s]
+
+Are you breathing from your chest?
+[pause 5s]
+Is your belly contracted?
+[pause 5s]
+Is your breath short... held... controlled?
+[pause 8s]
+
+What you observe right now...
+[pause 5s]
+is the state of your nervous system in this moment.
+[pause 5s]
+And your client — the first, the tenth, the hundredth —
+[pause 4s]
+will breathe exactly like this in the first minute with you.
+[pause 6s]
+They will copy your body.
+[pause 4s]
+Not your words.
+[pause 4s]
+Your body.
+[pause 10s]
+
+Your only work as a Pause Souffle practitioner...
+[pause 5s]
+is to bring your own breath down first.
+[pause 5s]
+Not to set an example.
+[pause 4s]
+Because your client's nervous system will attune to yours.
+[pause 5s]
+This is neurobiology.
+[pause 4s]
+This is also breath.
+[pause 5s]
+This is Pause Souffle.
+[pause 15s]
+
+─────────────────────────
+[pause 2s]
+
+Now I am going to ask you something unusual.
+[pause 5s]
+Not a visualization.
+[pause 4s]
+Not an affirmation.
+[pause 5s]
+A real experience.
+[pause 8s]
+
+Place both hands flat on your sternum.
+[pause 5s]
+Feel the warmth.
+[pause 5s]
+Feel the movement of breath beneath your palms.
+[pause 8s]
+
+Close your eyes.
+[pause 5s]
+And place before you — mentally, precisely —
+[pause 4s]
+a real person.
+[pause 5s]
+Their first name.
+[pause 4s]
+Their face.
+[pause 4s]
+Something they carry.
+[pause 5s]
+Something they do not yet say out loud.
+[pause 10s]
+
+You are not speaking to them.
+[pause 5s]
+You are not analyzing them.
+[pause 5s]
+You are simply there.
+[pause 5s]
+Two hands on your sternum.
+[pause 4s]
+Conscious breath.
+[pause 4s]
+Total presence.
+[pause 12s]
+
+Observe what happens in your body when you think about this person.
+[pause 8s]
+A slight tension in the shoulders?
+[pause 5s]
+An urge to help them immediately?
+[pause 5s]
+An impulse to find the right words?
+[pause 8s]
+
+What you feel right now...
+[pause 5s]
+is your practitioner pattern.
+[pause 5s]
+This is what you will need to tame.
+[pause 5s]
+Not correct.
+[pause 4s]
+Tame.
+[pause 12s]
+
+Let us practice together.
+[pause 5s]
+Deep inhale from the belly...
+[pause 5s]
+Hold...
+[pause 5s]
+Slow exhale...
+[pause 5s]
+
+[BREATHING_CYCLES]
+[pause 15s]
+
+Stay here.
+[pause 8s]
+Hands on the sternum.
+[pause 5s]
+That person before you.
+[pause 5s]
+Your breath descended.
+[pause 5s]
+Nothing to say.
+[pause 5s]
+Nothing to do.
+[pause 5s]
+Just be there.
+[pause 15s]
+
+This — what you just did —
+[pause 4s]
+is your first session.
+[pause 6s]
+It began now.
+[pause 15s]
+
+─────────────────────────
+[pause 2s]
+
+Here are three exercises.
+[pause 5s]
+They resemble nothing you have read elsewhere.
+[pause 5s]
+They belong to what you have crossed in these twelve modules.
+[pause 10s]
+
+FIRST EXERCISE — The witness breath.
+[pause 8s]
+
+Think of the last time a silence lasted too long in a conversation.
+[pause 5s]
+Not in a session.
+[pause 4s]
+In your life.
+[pause 5s]
+A family dinner. An argument. An awkward moment.
+[pause 6s]
+
+What did you do?
+[pause 5s]
+You spoke to fill it.
+[pause 4s]
+You laughed to defuse it.
+[pause 4s]
+You looked at your phone.
+[pause 4s]
+Or you stayed there, uncomfortable, waiting for it to pass.
+[pause 8s]
+
+That automatic gesture you had facing that silence...
+[pause 5s]
+your client will do it during your session.
+[pause 6s]
+And your role will not be to reassure them.
+[pause 5s]
+Your role will be to hold the space steady enough
+[pause 4s]
+that they do not need to flee.
+[pause 8s]
+
+Now — do this.
+[pause 5s]
+Inhale slowly.
+[pause 4s]
+And stay in the silence that follows.
+[pause 4s]
+Without filling it.
+[pause 4s]
+Without anticipating what comes next.
+[pause 4s]
+Just hold.
+[pause 20s]
+
+What you just practiced...
+[pause 4s]
+is the rarest skill in therapy.
+[pause 5s]
+Holding silence without being afraid of it.
+[pause 5s]
+You have just installed it in your body.
+[pause 12s]
+
+SECOND EXERCISE — The breath diagnosis.
+[pause 8s]
+
+This is not practiced with an imaginary client.
+[pause 5s]
+This is practiced on yourself. Now.
+[pause 8s]
+
+Place one hand on your belly.
+[pause 4s]
+One hand on your chest.
+[pause 6s]
+
+I am going to ask you a question.
+[pause 4s]
+Do not answer verbally.
+[pause 4s]
+Simply observe which hand moves first.
+[pause 8s]
+
+Here is the question.
+[pause 5s]
+What is the pattern this training has revealed in you...
+[pause 5s]
+that you will recognize in your clients?
+[pause 20s]
+
+Which hand moved?
+[pause 6s]
+If it was the chest — your answer comes from fear.
+[pause 5s]
+From the urgency to find the right answer.
+[pause 5s]
+If it was the belly — your answer comes from something truer.
+[pause 5s]
+Something you know without having learned it.
+[pause 10s]
+
+When your client asks you a difficult question during a session...
+[pause 5s]
+observe which hand would move first.
+[pause 5s]
+Not to analyze.
+[pause 4s]
+To know from which place you are responding.
+[pause 12s]
+
+THIRD EXERCISE — The first sentence.
+[pause 8s]
+
+This one is the hardest.
+[pause 5s]
+And the most important.
+[pause 8s]
+
+Someone says to you — and this person exists, you know them —
+[pause 5s]
+"Conscious breathing is nonsense.
+[pause 3s]
+Breath is automatic. It heals nothing."
+[pause 8s]
+
+You have fifteen seconds to find your first sentence.
+[pause 4s]
+Not an explanation.
+[pause 4s]
+Not a defense of the method.
+[pause 4s]
+A sentence that opens.
+[pause 4s]
+That does not close.
+[pause 4s]
+That leaves space for this person to stay in the conversation.
+[pause 15s]
+
+Take those fifteen seconds.
+[pause 15s]
+
+What you found...
+[pause 5s]
+is your practitioner identity.
+[pause 5s]
+Not a learned speech.
+[pause 4s]
+A way of being in the presence of another person's doubt.
+[pause 5s]
+Write it down.
+[pause 5s]
+This is your first sentence as a practitioner.
+[pause 12s]
+
+─────────────────────────
+[pause 2s]
+
+You have crossed twelve modules.
+[pause 6s]
+Not to accumulate knowledge.
+[pause 5s]
+To transform the way you are present to a body.
+[pause 5s]
+To a person.
+[pause 5s]
+To a breath trying to say something.
+[pause 10s]
+
+There is a paradox at the heart of what you are about to do.
+[pause 6s]
+You are going to transmit silence...
+[pause 5s]
+to people who have built their entire lives to avoid it.
+[pause 8s]
+
+They will resist.
+[pause 4s]
+Not against you.
+[pause 4s]
+Against themselves.
+[pause 6s]
+Against everything they feel when the noise stops.
+[pause 8s]
+
+And your ability to stay there, steady, without filling that void...
+[pause 5s]
+is exactly what you have trained.
+[pause 5s]
+Module after module.
+[pause 4s]
+Breath after breath.
+[pause 12s]
+
+You are not a healer.
+[pause 6s]
+You are a witness.
+[pause 6s]
+The breath does the work.
+[pause 5s]
+Your role is to create a space silent enough
+[pause 4s]
+that your client's breath dares to tell the truth.
+[pause 12s]
+
+You have permission to be imperfect in front of your clients.
+[pause 6s]
+Breath does not ask for perfection.
+[pause 5s]
+It asks for honesty.
+[pause 6s]
+A practitioner who says "I don't know"
+[pause 4s]
+while holding the space without letting go...
+[pause 4s]
+is worth infinitely more than a practitioner who has an answer for everything
+[pause 4s]
+and proves it in every session.
+[pause 12s]
+
+─────────────────────────
+[pause 2s]
+
+Here is what I ask of you to finish.
+[pause 6s]
+
+Place both hands on your sternum.
+[pause 5s]
+Feel your breath.
+[pause 5s]
+Not the ideal breath.
+[pause 4s]
+Yours. Now. As it is.
+[pause 10s]
+
+And say inwardly the first name of the first person you are going to accompany.
+[pause 5s]
+Not tomorrow.
+[pause 4s]
+The first one.
+[pause 5s]
+The one you see when you close your eyes and think about why you did this training.
+[pause 20s]
+
+It is not I who certifies you.
+[pause 6s]
+It is this breath — yours — that has just recognized you.
+[pause 20s]
+
+Your Pause Souffle Practitioner attestation is available in your space.
+[pause 8s]
+
+Thank you for holding.
+[pause 15s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PARCOURS — Module 29 (ord) — 12-je-transmets-le-rituel EN
+        // ─────────────────────────────────────────────────────────
+        '12-je-transmets-le-rituel' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+Not the end of a list.
+[pause 4s]
+The end of a crossing.
+[pause 10s]
+
+Let me remind you where you came from.
+[pause 8s]
+
+In the first module... you placed your hands on a living body with real consciousness for the first time.
+[pause 5s]
+You understood that breath is not breathed — it is received.
+[pause 5s]
+You learned anatomy not to know... but to feel.
+[pause 10s]
+
+Then you turned toward yourself.
+[pause 5s]
+You dared to look at your wounds, your blind spots, your ways of avoiding.
+[pause 5s]
+Not to correct yourself.
+[pause 4s]
+To know yourself.
+[pause 5s]
+Because a practitioner who does not know themselves... accompanies from their fears.
+[pause 10s]
+
+You mastered the tools of breath.
+[pause 5s]
+Heart coherence. Conscious breathing. The protocol.
+[pause 5s]
+And you understood something few therapists truly know:
+[pause 5s]
+A tool is only as valuable as the presence of the hand that holds it.
+[pause 10s]
+
+You worked on your vision.
+[pause 5s]
+Not a surface vision... "I want to help people."
+[pause 5s]
+A vision rooted in what you have been through.
+[pause 5s]
+In what you know about breath because you have inhabited it.
+[pause 10s]
+
+You strengthened your discipline.
+[pause 5s]
+Not the discipline that forces itself.
+[pause 4s]
+The one that is chosen.
+[pause 5s]
+Every morning. Every practice. Every time you wanted to stop... and kept going.
+[pause 10s]
+
+Then you entered the modules that are frightening.
+[pause 5s]
+The practitioner's posture.
+[pause 4s]
+How you hold your body when someone entrusts theirs to you.
+[pause 5s]
+How your voice carries without crushing.
+[pause 5s]
+How your presence begins to heal before you have even spoken a word.
+[pause 10s]
+
+You learned to read a client.
+[pause 5s]
+Not to judge them. Not to diagnose them.
+[pause 4s]
+To receive them as they are... and to adapt what you know to what they are living.
+[pause 10s]
+
+You built your professional practice.
+[pause 5s]
+The foundations. The framework. The rates. The communication.
+[pause 5s]
+You understood that the professional and the sacred are not opposites.
+[pause 5s]
+That a well-built practice is an act of love toward your future clients.
+[pause 10s]
+
+You looked squarely at limits, contraindications, responsibility.
+[pause 5s]
+This is the module many avoid.
+[pause 5s]
+You crossed through it.
+[pause 5s]
+And that is precisely what makes you trustworthy.
+[pause 10s]
+
+You meditated on the care relationship.
+[pause 5s]
+On what truly heals in an accompaniment.
+[pause 5s]
+It is not the technique.
+[pause 4s]
+It is the quality of presence.
+[pause 5s]
+It is the fact that a person feels seen... without being analyzed.
+[pause 10s]
+
+You found your signature.
+[pause 5s]
+What is uniquely yours in the way you accompany.
+[pause 5s]
+What no one else can reproduce...
+[pause 4s]
+because no one else has lived exactly what you have lived.
+[pause 10s]
+
+And you faced the money of care.
+[pause 5s]
+You understood that you deserve to be compensated for what you give.
+[pause 5s]
+That value is not in the number of hours... but in the transformation you make possible.
+[pause 10s]
+
+That is your path.
+[pause 8s]
+Twelve modules. Twelve facets of the same diamond.
+[pause 5s]
+And now... you transmit.
+[pause 12s]
+
+Settle in one last time in this training space.
+[pause 5s]
+Back straight and alive.
 [pause 4s]
 Feet grounded.
 [pause 4s]
-Hands open.
+Palms open on your knees.
 [pause 8s]
 
-It is through the body that we seal this path.
-[pause 8s]
-
-We are going to practice the five-five-five method one final time here.
+We are going to practice together the ritual that is at the heart of everything you are going to transmit.
 [pause 5s]
-
-Five seconds to inhale.
+The five-five-five method.
+[pause 5s]
+Five seconds of inhale.
 [pause 2s]
-Five seconds to hold.
+Five seconds of hold.
 [pause 2s]
-Five seconds to exhale.
+Five seconds of exhale.
 [pause 4s]
 Ten cycles.
-[pause 2s]
-Two and a half minutes to integrate everything that has been sown.
-[pause 6s]
-
-On the inhale... let rise what you are taking with you.
 [pause 4s]
-During the hold... hold it in the silence.
-[pause 4s]
-On the exhale... offer it to the world.
-[pause 6s]
+Not to calm yourself down.
+[pause 3s]
+To remind yourself who you are.
+[pause 8s]
 
-We begin.
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release slowly...
+[pause 5s]
+
 [BREATHING_CYCLES]
 [pause 20s]
 
-This calm... is you.
-[pause 5s]
-Simply you.
+Stay here.
+[pause 8s]
+In this silence that now belongs to you.
 [pause 15s]
+
+What you feel right now...
+[pause 5s]
+is what you are going to transmit.
+[pause 8s]
+Not techniques.
+[pause 4s]
+Not protocols.
+[pause 4s]
+This.
+[pause 5s]
+This space.
+[pause 5s]
+This quality of presence to oneself.
+[pause 12s]
 
 Let the breath return to its natural rhythm.
 [pause 10s]
 
-Stay here.
-[pause 8s]
-Without doing anything.
-[pause 12s]
-
-Who do you want to pass on what you have received?
-[pause 18s]
-
-What do you want the people you accompany to feel in your presence?
-[pause 18s]
-
-What is the first concrete step you take starting tomorrow?
-[pause 18s]
-
-Write what came in your journal.
+There is a question I need to ask you.
 [pause 5s]
-Without correcting it.
-[pause 5s]
-Without diminishing it.
+Take your time answering it.
 [pause 8s]
 
-Thank you.
-[pause 5s]
-For being here.
-[pause 5s]
-For holding.
-[pause 5s]
-For crossing.
-[pause 8s]
+Who is the human being — a specific, real person — to whom you want to transmit what you have just received?
+[pause 20s]
 
-Your Pause Souffle Practitioner attestation is now available in your space.
+What do you want them to feel in the first minute spent with you?
+[pause 20s]
+
+And what do you want them to carry from your accompaniment... in six months... in a year?
+[pause 20s]
+
+Write these answers.
+[pause 5s]
+Now. Before you close this space.
+[pause 5s]
+These are the foundations of your practitioner commitment.
+[pause 15s]
+
+You are a Pause Souffle practitioner.
 [pause 6s]
+Not because a certificate says so.
+[pause 5s]
+Because you have crossed what many dare not cross.
+[pause 5s]
+You looked at yourself honestly.
+[pause 5s]
+You learned. Practiced. Doubted. Continued.
+[pause 8s]
 
-You earned it.
+The world needs people who know how to create silence.
+[pause 5s]
+Who know how to hold a space without filling it.
+[pause 5s]
+Who know how to accompany without imposing.
+[pause 8s]
+
+You are that person.
+[pause 10s]
+
+Your Pause Souffle Practitioner attestation is available in your space.
+[pause 5s]
+
+Thank you for being here.
+[pause 5s]
+Thank you for continuing.
 [pause 15s]
 SCRIPT,
 
@@ -15451,6 +19275,2993 @@ Write what came in your notebook.
 An ethical practitioner knows why they do what they do.
 [pause 5s]
 And what they do not do.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 14 — The Relationship of Care — target : 16–18 min
+        // ─────────────────────────────────────────────────────────
+        '14-la-relation-de-soin' => <<<'SCRIPT'
+Welcome to module 14.
+[pause 6s]
+
+The Relationship of Care.
+[pause 5s]
+What really heals.
+[pause 8s]
+
+You have learned tools.
+[pause 5s]
+You have learned protocols.
+[pause 5s]
+You have crossed your own wound to better understand others'.
+[pause 8s]
+
+But today, we go to the heart of what makes the difference between a breath technician and a true practitioner.
+[pause 8s]
+
+What heals... is often not the technique.
+[pause 6s]
+It is the relationship.
+[pause 8s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+Jung named this paradox with rare precision.
+[pause 5s]
+He called it the Wounded Healer.
+[pause 8s]
+
+The idea is simple and striking.
+[pause 5s]
+The one who heals carries their own wound.
+[pause 6s]
+And this is not an obstacle to their practice.
+[pause 5s]
+It is their deepest qualification.
+[pause 10s]
+
+When you have crossed fear, exhaustion, doubt... you recognise these states in your client.
+[pause 6s]
+Not intellectually.
+[pause 5s]
+But in your body.
+[pause 8s]
+
+Your integrated wound becomes your antenna.
+[pause 6s]
+Your unintegrated wound becomes your blind spot.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+Let us talk about the therapeutic container.
+[pause 6s]
+
+Many practitioners believe their role is to guide a technique.
+[pause 6s]
+But your primary role is to create a space.
+[pause 8s]
+
+A space where the client can finally allow themselves to stop controlling.
+[pause 6s]
+Where something deeper can emerge.
+[pause 10s]
+
+This container has five dimensions.
+[pause 6s]
+
+First — physical safety.
+[pause 5s]
+The space is comfortable, protected, without possible interruption.
+[pause 5s]
+The client knows they are safe in their body.
+[pause 8s]
+
+Second — emotional safety.
+[pause 5s]
+They can feel without being judged.
+[pause 5s]
+They can cry, be silent, not know.
+[pause 5s]
+You are there — stable — whatever happens.
+[pause 8s]
+
+Third — clarity of the frame.
+[pause 5s]
+They know why they are here, what will happen, and what will not.
+[pause 5s]
+The frame is a form of respect.
+[pause 8s]
+
+Fourth — your presence.
+[pause 5s]
+Not your performance. Your presence.
+[pause 5s]
+You are grounded. Calm. Available.
+[pause 5s]
+You do not need them to be well in order to not collapse.
+[pause 8s]
+
+Fifth — clear intention.
+[pause 5s]
+You know why you are there.
+[pause 5s]
+You serve a transformation, not your own need to be recognised.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+There is a neurological phenomenon that explains much of what you experience in sessions.
+[pause 6s]
+It is called nervous co-regulation.
+[pause 8s]
+
+Your nervous system and your client's... talk to each other.
+[pause 6s]
+Not with words. With micro-signals.
+[pause 6s]
+The rhythm of your breath. The tone of your body. The quality of your gaze.
+[pause 8s]
+
+A practitioner whose nervous system is coherent automatically creates a regulatory effect on their client.
+[pause 8s]
+This is why your daily personal practice is not a luxury.
+[pause 6s]
+It is the foundation of your effectiveness.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+What clients are really looking for.
+[pause 6s]
+
+They come for the breath. Or for sleep. Or to manage stress.
+[pause 6s]
+What they seek on the surface is real and must be honoured.
+[pause 8s]
+
+But in the deeper layer...
+[pause 5s]
+They are looking to be seen.
+[pause 6s]
+Truly seen.
+[pause 6s]
+Not corrected. Not optimised. Not fixed.
+[pause 5s]
+Seen.
+[pause 10s]
+
+And in the deepest layer of all...
+[pause 5s]
+They are looking to reconcile with themselves.
+[pause 6s]
+To no longer be at war with their body, their emotions, their history.
+[pause 10s]
+
+Your role is not to heal them.
+[pause 5s]
+Your role is to create the conditions so they can heal themselves.
+[pause 10s]
+
+Learn to hold silence without interrupting it.
+[pause 5s]
+It is one of the most difficult learnings.
+[pause 5s]
+And one of the most precious.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+In your past sessions — what seems to have truly touched your clients?
+[pause 18s]
+
+Was it a specific technique... or something in your presence?
+[pause 18s]
+
+Which dimension of the therapeutic container feels most natural to you... and which one still needs work?
+[pause 18s]
+
+Write what came in your notebook.
+[pause 5s]
+The relationship of care begins with the relationship to oneself.
+[pause 5s]
+Take care of yourself first.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 15 — The Practitioner's Signature — target : 16–18 min
+        // ─────────────────────────────────────────────────────────
+        '15-signature-du-praticien' => <<<'SCRIPT'
+Welcome to module 15.
+[pause 6s]
+
+The final module of your training.
+[pause 8s]
+
+The Practitioner's Signature.
+[pause 6s]
+Who are you really?
+[pause 10s]
+
+From module zero until here...
+[pause 5s]
+You have crossed a great deal.
+[pause 6s]
+You understood the body. Mastered the tools. Crossed your own wounds.
+[pause 6s]
+You learned posture, voice, internal state.
+[pause 6s]
+You understood what really heals.
+[pause 10s]
+
+One thing remains.
+[pause 6s]
+The most difficult for many.
+[pause 8s]
+
+Embody all of this... as your own signature.
+[pause 8s]
+Not a copy of another practitioner.
+[pause 5s]
+Not a clone of an admired model.
+[pause 5s]
+You — unique, imperfect, alive, singular.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+A practitioner's signature is not a marketing slogan.
+[pause 6s]
+It is what clients recognise before you even speak.
+[pause 6s]
+It is the imprint you leave when you are fully yourself.
+[pause 10s]
+
+This signature has five dimensions.
+[pause 6s]
+
+First — your natural tone.
+[pause 5s]
+Are you warm or structured? Intuitive or methodical? Guiding or silent?
+[pause 6s]
+This is not what you choose to show.
+[pause 5s]
+It is what emerges when you are at ease.
+[pause 5s]
+Your tone is right. It refines. It cannot be replaced.
+[pause 8s]
+
+Second — your natural audience.
+[pause 5s]
+Who naturally comes toward you? Who feels immediately at ease with you?
+[pause 6s]
+These are the people you are best equipped to accompany first.
+[pause 5s]
+Serving your natural audience first means choosing effectiveness over universality.
+[pause 8s]
+
+Third — your preferred tool.
+[pause 5s]
+Among everything you have learned... where are you most naturally at ease?
+[pause 6s]
+Mastering one tool in depth is worth a thousand times more than knowing ten techniques at the surface.
+[pause 8s]
+
+Fourth — your implicit promise.
+[pause 5s]
+Not your tagline. The promise your presence makes without you formulating it.
+[pause 6s]
+"With this practitioner, I will be safe."
+[pause 5s]
+"With this practitioner, I will be challenged to go further."
+[pause 5s]
+"With this practitioner, I will finally be understood."
+[pause 8s]
+Knowing your implicit promise allows you to hold it consciously.
+[pause 8s]
+
+Fifth — your founding value.
+[pause 5s]
+The value you never sacrifice in your practice.
+[pause 5s]
+Integrity? Authenticity? Depth? Named truth?
+[pause 6s]
+When you make a difficult decision in your practice...
+[pause 5s]
+This value decides.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+The training has given you powerful tools.
+[pause 5s]
+Tools that access the deep layers of the nervous system.
+[pause 5s]
+That unlock emotions. That touch primary wounds.
+[pause 8s]
+
+This power comes with absolute responsibility.
+[pause 10s]
+
+You never exceed your competence.
+[pause 5s]
+If a client presents symptoms that go beyond well-being...
+[pause 5s]
+you refer them to a mental health professional.
+[pause 5s]
+This is not an admission of weakness. It is professional ethics.
+[pause 8s]
+
+Your work succeeds when your client needs you less.
+[pause 6s]
+When they practise alone. When they carry their own tools.
+[pause 6s]
+If you sense you are trying to keep them... supervise this with a peer.
+[pause 8s]
+
+You protect the frame of the relationship.
+[pause 5s]
+No personal relationship with a client during active accompaniment.
+[pause 5s]
+The frame protects the client. It protects you too.
+[pause 8s]
+
+You continue to learn and to supervise yourself.
+[pause 5s]
+A practitioner who stops learning stagnates.
+[pause 5s]
+Supervision is not a sign that something is wrong.
+[pause 5s]
+It is a sign you take your practice seriously.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+We arrive at the most important moment of this training.
+[pause 6s]
+
+Place your right hand on your heart.
+[pause 6s]
+
+Take the time to mentally cross everything you have learned since module zero.
+[pause 12s]
+
+Your moments of doubt. Your moments of clarity.
+[pause 6s]
+What was easy. What resisted you.
+[pause 6s]
+The practices that moved something in you.
+[pause 6s]
+The ideas that reorganised your understanding.
+[pause 10s]
+
+And now, from this place...
+[pause 6s]
+Say inwardly, or aloud if you can:
+[pause 6s]
+
+My name is... your first name.
+[pause 6s]
+I am a breath practitioner.
+[pause 6s]
+I serve by transmitting what I have myself crossed.
+[pause 6s]
+My presence is my first tool.
+[pause 6s]
+My integrated wound is my deepest qualification.
+[pause 6s]
+I do not claim to be perfect.
+[pause 5s]
+I commit to being present.
+[pause 6s]
+And to remaining present — for those I accompany...
+[pause 5s]
+and for myself.
+[pause 15s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 12s]
+
+In your practitioner's notebook, write your own version of this declaration.
+[pause 6s]
+In your words. In your voice.
+[pause 6s]
+This text will be your compass for the years ahead.
+[pause 10s]
+
+You have completed the training.
+[pause 6s]
+But your practice has only just begun.
+[pause 6s]
+Carry who you are.
+[pause 5s]
+It is your greatest tool.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // PRATICIEN EN — Module 16 — The Money of Care — target : 14–16 min
+        // ─────────────────────────────────────────────────────────
+        '16-l-argent-du-soin' => <<<'SCRIPT'
+Welcome to module 16.
+[pause 6s]
+
+The missing link.
+[pause 8s]
+
+This module does not speak about breath techniques.
+[pause 5s]
+It speaks about something almost no wellness training ever addresses.
+[pause 8s]
+
+The money conversation.
+[pause 10s]
+
+Here is a truth nobody tells you.
+[pause 6s]
+Ninety percent of care practitioners quit within the first three years.
+[pause 8s]
+Not for lack of talent.
+[pause 5s]
+Not for lack of passion.
+[pause 5s]
+For inability to speak about money... without feeling corrupted.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+There are three beliefs that silently sabotage most wellness practitioners.
+[pause 8s]
+
+First belief.
+[pause 5s]
+"I cannot charge high prices for something spiritual."
+[pause 8s]
+Reality: your time, your training, your space and your care have real economic value.
+[pause 6s]
+The spiritual does not justify precarity.
+[pause 5s]
+You can honour the sacred... and live with dignity.
+[pause 10s]
+
+Second belief.
+[pause 5s]
+"If I charge less, more people will come."
+[pause 8s]
+The opposite is often true.
+[pause 6s]
+A price that is too low communicates low value.
+[pause 5s]
+A client who pays fifty euros cancels more easily than one who has paid one hundred and fifty.
+[pause 6s]
+Price is a signal of value... for you... and for your client.
+[pause 10s]
+
+Third belief.
+[pause 5s]
+"If I earn well... I lose my integrity."
+[pause 8s]
+This belief causes enormous damage.
+[pause 6s]
+A financially exhausted practitioner cannot serve fully.
+[pause 5s]
+You cannot give water... if your well is empty.
+[pause 5s]
+Financial sustainability... is an act of service toward your clients.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+Let us now talk about the fair price.
+[pause 6s]
+
+There is a simple three-calculation method.
+[pause 6s]
+
+First calculation — the survival price.
+[pause 5s]
+Your total monthly costs, divided by the realistic number of sessions per month.
+[pause 6s]
+This is your absolute floor. You can never go below it.
+[pause 8s]
+
+Second calculation — the dignity price.
+[pause 5s]
+The income that allows you to live well, to train yourself, to rest.
+[pause 6s]
+Divided by the number of sessions you can do without exhausting yourself.
+[pause 8s]
+Example: four thousand five hundred euros desired over thirty sessions per month... equals one hundred and fifty euros per session.
+[pause 10s]
+
+Third calculation — the value price.
+[pause 5s]
+What concrete transformation do you bring?
+[pause 6s]
+How much is that worth to the client?
+[pause 6s]
+A client who finally sleeps after five years of insomnia —
+[pause 5s]
+how much was that result worth to them?
+[pause 8s]
+Your price can go up to ten percent of the perceived value of the transformation.
+[pause 10s]
+
+Your fair price lies between the dignity price and the value price.
+[pause 6s]
+It should make you slightly afraid...
+[pause 5s]
+but not prevent you from saying it.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+The discovery call.
+[pause 6s]
+
+It is the most powerful tool of the freelance practitioner.
+[pause 6s]
+And the most poorly mastered.
+[pause 8s]
+
+It is not a sales pitch.
+[pause 5s]
+It is not a presentation of your services.
+[pause 5s]
+If it feels like "selling"... you have lost the call before it began.
+[pause 10s]
+
+The four-stage structure.
+[pause 6s]
+
+First stage — the welcome.
+[pause 5s]
+Create the space. No pitch. Just presence.
+[pause 5s]
+The first question is never about their objectives.
+[pause 5s]
+It is about their state.
+[pause 5s]
+"How are you feeling right now?"
+[pause 10s]
+
+Second stage — the situation.
+[pause 5s]
+"What brought you to look for this type of accompaniment now?"
+[pause 6s]
+"How long have you been living with this?"
+[pause 6s]
+Listen truly. Do not take notes. Be present.
+[pause 8s]
+
+Third stage — the vision.
+[pause 5s]
+"If in three months you look back — what would have changed in your daily life?"
+[pause 8s]
+Let them see their own transformation.
+[pause 6s]
+You have nothing to sell.
+[pause 8s]
+
+Fourth stage — the alignment.
+[pause 5s]
+"Here is what I accompany, how I work, and what it requires from you."
+[pause 6s]
+Then the price.
+[pause 5s]
+Clearly. Calmly. Without apologising.
+[pause 6s]
+Then... silence.
+[pause 8s]
+The one who speaks first after stating the price... loses.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+One final thing.
+[pause 6s]
+
+Stop selling individual sessions.
+[pause 6s]
+It is the model that exhausts you fastest.
+[pause 5s]
+Clients have no continuity.
+[pause 5s]
+You have no predictable income.
+[pause 5s]
+The transformation is partial. Everyone loses.
+[pause 10s]
+
+Build a programme.
+[pause 6s]
+The transformation is complete.
+[pause 5s]
+Your income is predictable.
+[pause 5s]
+The perceived value is higher.
+[pause 8s]
+
+And progressively — build three income streams.
+[pause 6s]
+Active income: your sessions and programmes.
+[pause 5s]
+Semi-passive income: workshops, group trainings.
+[pause 5s]
+Passive income: audio guides for sale, recorded online programme.
+[pause 8s]
+
+A practitioner who has all three streams... is free.
+[pause 6s]
+Truly free.
+[pause 10s]
+
+Note what happened inside you while listening to this module.
+[pause 18s]
+
+What is the most urgent change to make in your financial practice?
+[pause 18s]
+
+Which belief must you leave behind to move towards the dignity you deserve?
+[pause 18s]
+
+Write.
+[pause 5s]
+Freedom begins in your relationship with money.
+[pause 5s]
+And money is only value made visible.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 01 — The Mentor's Identity — target : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-01-identite-du-mentor' => <<<'SCRIPT'
+Welcome to the Mentor Formation.
+[pause 6s]
+
+You are here because something in you already knows.
+[pause 5s]
+Knows that you have something to transmit.
+[pause 5s]
+An experience. A crossing. A wisdom earned at great cost.
+[pause 8s]
+
+Before you teach anything to anyone...
+[pause 5s]
+there is a founding question you must have already crossed yourself.
+[pause 8s]
+
+Who am I... I who dare to accompany others?
+[pause 12s]
+
+Settle in comfortably.
+[pause 4s]
+Close your eyes if you wish.
+[pause 4s]
+
+Let us begin with the 5-5-5 breathing method.
+[pause 4s]
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 5s]
+Again.
+[pause 3s]
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 5s]
+One more time.
+[pause 3s]
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 5s]
+
+Let your body find its natural support.
+[pause 6s]
+
+This module has a simple title: The Mentor's Identity.
+[pause 5s]
+But do not be misled.
+[pause 4s]
+It is probably the most demanding module in this entire formation.
+[pause 6s]
+
+Because it does not ask you to learn something new.
+[pause 5s]
+It asks you to look at what is already there.
+[pause 5s]
+And not to flee from it.
+[pause 10s]
+
+There is one truth every mentor must integrate from the very start.
+[pause 6s]
+
+You cannot accompany someone further than you have gone yourself.
+[pause 8s]
+
+Repeat that sentence in your mind.
+[pause 5s]
+You cannot accompany someone further than you have gone yourself.
+[pause 10s]
+
+Your depth... is the depth of what you can offer.
+[pause 6s]
+Your clarity... is the clarity you can transmit.
+[pause 6s]
+Your peace... is the peace you can radiate.
+[pause 10s]
+
+So the real question is not: am I qualified enough?
+[pause 5s]
+The real question is: do I know myself well enough to understand what I have to give?
+[pause 12s]
+
+Let us speak about your values.
+[pause 6s]
+
+Your founding values are not ideas you admire.
+[pause 5s]
+They are lines you do not cross.
+[pause 5s]
+Even under pressure. Even when it costs you.
+[pause 8s]
+
+Think of a moment in your life when you felt a deep anger.
+[pause 6s]
+Not a small irritation... a deep anger that came from far within.
+[pause 6s]
+What had been violated that day?
+[pause 10s]
+
+That answer... is a value.
+[pause 5s]
+Anger is often the guardian of what we hold sacred.
+[pause 8s]
+
+Now think of a moment of deep joy.
+[pause 5s]
+A moment when you said to yourself: this is why I am here.
+[pause 8s]
+What was present in that moment?
+[pause 10s]
+
+That answer too... is a value.
+[pause 8s]
+
+Let us breathe together with the 5-5-5 method.
+[pause 4s]
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 5s]
+
+Now I invite you into this module's meditation.
+[pause 5s]
+A meditation of deep identity.
+[pause 6s]
+
+Place your hands on your knees, palms facing up.
+[pause 5s]
+This is the gesture of reception.
+[pause 5s]
+You are not going to search for something.
+[pause 4s]
+You are simply going to welcome what is already there.
+[pause 10s]
+
+I will ask you a question.
+[pause 4s]
+Do not search for the right answer. There is none.
+[pause 4s]
+Simply allow something to rise from deep within you.
+[pause 8s]
+
+Who are you... when nobody is watching?
+[pause 15s]
+
+Not the role you play at work.
+[pause 5s]
+Not the version of yourself that your loved ones know.
+[pause 5s]
+Not the one you would like to show.
+[pause 6s]
+Who are you... truly... at your core?
+[pause 15s]
+
+Stay with that question.
+[pause 5s]
+Without trying to solve it.
+[pause 5s]
+Simply... inhabit it.
+[pause 12s]
+
+Now a second question.
+[pause 5s]
+
+What have you gone through... that no one else could have gone through in exactly the same way as you?
+[pause 12s]
+
+An ordeal. A collapse. A period of deep doubt.
+[pause 6s]
+Or perhaps a silent victory whose magnitude no one ever knew.
+[pause 8s]
+
+That crossing... is your raw material as a mentor.
+[pause 6s]
+
+It is not your degrees that qualify you.
+[pause 5s]
+It is not the number of years of experience.
+[pause 5s]
+It is what you have lived... integrated... transformed into wisdom.
+[pause 10s]
+
+Inhale gently...
+[pause 5s]
+And exhaling... release the need to prove anything.
+[pause 10s]
+
+There is a verse that runs through this entire formation.
+[pause 5s]
+Mark... chapter ten... verses forty-three through forty-five.
+[pause 5s]
+
+"Whoever wants to become great among you must be your servant."
+[pause 8s]
+
+"And whoever wants to be first must be slave of all."
+[pause 8s]
+
+"For even the Son of Man did not come to be served... but to serve."
+[pause 12s]
+
+This verse says something precise.
+[pause 5s]
+Greatness is not in position.
+[pause 5s]
+It is in service.
+[pause 8s]
+
+One last breath... 5-5-5.
+[pause 4s]
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 5s]
+
+Before ending this meditation...
+[pause 4s]
+Ask your heart this last question.
+[pause 5s]
+
+What mentor... what guide... would you have needed to be for yourself... ten years ago?
+[pause 12s]
+
+That person... might be the mentor you are becoming.
+[pause 8s]
+
+For someone who is living today what you once lived through.
+[pause 8s]
+
+Take a moment to write down what came during this meditation.
+[pause 5s]
+Without censure. Without correction.
+[pause 5s]
+What comes first is often the most true.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 02 — The Servant Posture — target : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-02-posture-du-serviteur' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Module two. The Servant Posture.
+[pause 6s]
+
+Three breaths — 5-5-5 method.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+There is a paradox at the heart of leadership.
+[pause 6s]
+
+The world believes that commanding is greatness.
+[pause 5s]
+That authority comes from rank.
+[pause 5s]
+That whoever speaks loudest holds the most power.
+[pause 8s]
+
+The mentor knows the opposite.
+[pause 6s]
+
+"Whoever wants to become great among you must be your servant."
+[pause 8s]
+
+Mark ten... verse forty-three.
+[pause 5s]
+These words are two thousand years old.
+[pause 5s]
+And they remain the most unsettling... the most relevant...
+[pause 4s]
+words ever written about true leadership.
+[pause 10s]
+
+This module asks you to choose your posture.
+[pause 5s]
+Consciously. Deliberately.
+[pause 5s]
+Not the posture your ego wants to adopt.
+[pause 5s]
+The posture that truly serves the people you accompany.
+[pause 10s]
+
+There are three possible postures.
+[pause 6s]
+
+The first... the authority-trainer.
+[pause 5s]
+They know. They teach. They evaluate.
+[pause 5s]
+The relationship is vertical. The other learns below.
+[pause 6s]
+Not inherently wrong.
+[pause 4s]
+But the long-term result... is dependence.
+[pause 8s]
+
+The second... the expert-coach.
+[pause 5s]
+They guide. They question. They structure action.
+[pause 5s]
+A more horizontal relationship.
+[pause 6s]
+The result... performance.
+[pause 8s]
+
+The third... the servant-mentor.
+[pause 5s]
+They go ahead. They protect. They liberate.
+[pause 6s]
+A relationship of life. One that crosses years.
+[pause 6s]
+The result... lasting autonomy.
+[pause 8s]
+
+The other becomes capable of doing without you.
+[pause 5s]
+And that is exactly the victory.
+[pause 10s]
+
+One breath — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+There is a question the servant-mentor asks before every interaction.
+[pause 6s]
+
+Does this interaction bring them closer to me... or to themselves?
+[pause 12s]
+
+If the answer is "to me"...
+[pause 4s]
+you are building dependence.
+[pause 5s]
+Not a mentor. Not a transformation.
+[pause 5s]
+A dependence.
+[pause 8s]
+
+Let us be honest now.
+[pause 5s]
+
+There are four traps the mentor falls into.
+[pause 5s]
+Not out of malice. Often out of good intention.
+[pause 6s]
+But the consequences are the same.
+[pause 8s]
+
+The first trap: the need for validation.
+[pause 5s]
+You accompany to be admired.
+[pause 6s]
+Do you recognise the moment when you seek approval in your mentee's eyes?
+[pause 8s]
+
+The second trap: control disguised as help.
+[pause 5s]
+You guide... but toward where you want to go.
+[pause 5s]
+You are disappointed when they do not follow your advice.
+[pause 8s]
+
+The third trap: the urgency to fix.
+[pause 5s]
+You want to solve things too quickly.
+[pause 5s]
+You interrupt to give solutions before you have truly understood.
+[pause 8s]
+
+The fourth trap: excessive imprint.
+[pause 5s]
+You want them to resemble you.
+[pause 5s]
+You feel threatened when they develop their own style.
+[pause 10s]
+
+The antidote to all four traps... is always the same.
+[pause 5s]
+Return to the verse. Serve... do not shine.
+[pause 10s]
+
+Let us enter the meditation of this module.
+[pause 5s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Visualise someone you have accompanied... or are about to accompany.
+[pause 6s]
+See their face.
+[pause 5s]
+Feel their presence.
+[pause 5s]
+
+Now... observe your deep intention toward this person.
+[pause 6s]
+
+Are you there for them... or for yourself?
+[pause 12s]
+
+No judgment.
+[pause 5s]
+Neither right nor wrong.
+[pause 5s]
+Just... honesty.
+[pause 10s]
+
+If you sense a part of ego... breathe with it.
+[pause 6s]
+Acknowledge it. Thank it for protecting you until now.
+[pause 6s]
+And ask it to step aside to make room for service.
+[pause 10s]
+
+Ask yourself this question.
+[pause 5s]
+
+If nobody ever knew... if no external gaze could see you...
+[pause 6s]
+would you still do what you do?
+[pause 15s]
+
+Stay with this question.
+[pause 5s]
+
+If the answer is yes... you have found your servant posture.
+[pause 6s]
+If it hesitates... that is perfect too.
+[pause 5s]
+It is an invitation to go deeper.
+[pause 8s]
+
+Now — inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... saying inwardly: I am here to serve.
+[pause 10s]
+
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... I am here to liberate, not to hold.
+[pause 10s]
+
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... my greatness is in my service.
+[pause 12s]
+
+Write down what came during this meditation.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 03 — Active Listening — target : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-03-ecoute-active' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Module three. Active Listening.
+[pause 5s]
+
+Before we begin...
+[pause 3s]
+notice how many thoughts are crossing your mind right now.
+[pause 8s]
+
+A to-do list. A message to send. A worry that keeps returning.
+[pause 6s]
+That is normal.
+[pause 4s]
+And it is precisely why this module exists.
+[pause 8s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Most people do not listen.
+[pause 6s]
+They wait for their turn to speak.
+[pause 6s]
+They build their response while the other is still talking.
+[pause 6s]
+They filter what they hear through their own experience.
+[pause 8s]
+
+This is not ill will.
+[pause 4s]
+It is simply that nobody ever taught us to truly listen.
+[pause 8s]
+
+Active listening is not a technique.
+[pause 5s]
+It is a state.
+[pause 5s]
+A state of total presence.
+[pause 5s]
+Where the other feels — perhaps for the first time — truly understood.
+[pause 10s]
+
+There are five levels of listening.
+[pause 5s]
+
+Level one: surface listening.
+[pause 4s]
+You hear the words. Your mind is elsewhere.
+[pause 6s]
+
+Level two: partial listening.
+[pause 4s]
+You catch the main points. You prepare your reply in parallel.
+[pause 6s]
+
+Level three: active listening.
+[pause 4s]
+You follow the thread. You ask clarifying questions.
+[pause 6s]
+
+Level four: empathic listening.
+[pause 4s]
+You feel the emotion behind the words. You reflect before responding.
+[pause 6s]
+
+Level five: generative listening.
+[pause 5s]
+You listen for what has not yet been said.
+[pause 5s]
+What the person is trying to formulate.
+[pause 5s]
+You create the space for it to emerge.
+[pause 10s]
+
+The mentor aims for level five.
+[pause 8s]
+
+Where are you, usually?
+[pause 10s]
+
+Be honest. Without judging yourself.
+[pause 8s]
+
+The difference between a directed question and a powerful question...
+[pause 5s]
+is the intention behind it.
+[pause 6s]
+
+A directed question leads the other toward where you want to go.
+[pause 5s]
+"Don't you think you should..."
+[pause 4s]
+"What if you tried instead..."
+[pause 4s]
+"It seems to me the solution is..."
+[pause 6s]
+
+A powerful question opens without directing.
+[pause 5s]
+"What is really happening here?"
+[pause 5s]
+"What would make this perfect?"
+[pause 5s]
+"If you already knew the answer... what would it be?"
+[pause 8s]
+
+And after a powerful question...
+[pause 4s]
+there is the golden rule.
+[pause 5s]
+
+Be silent.
+[pause 6s]
+Completely.
+[pause 6s]
+Count to ten if you need to.
+[pause 8s]
+
+The silence after a powerful question...
+[pause 5s]
+is the space where transformation happens.
+[pause 5s]
+Do not fill it.
+[pause 8s]
+
+Now let us enter the meditation of this module.
+[pause 5s]
+
+The meditation of inner silence.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+For the next several minutes...
+[pause 4s]
+you will do nothing but observe your own thoughts.
+[pause 5s]
+Without following them. Without fighting them.
+[pause 5s]
+Just... observe them pass.
+[pause 8s]
+
+When a thought arrives...
+[pause 4s]
+note it mentally: "thought."
+[pause 4s]
+And return to the breath.
+[pause 8s]
+
+That is all.
+[pause 5s]
+Nothing else.
+[pause 6s]
+
+Why this practice for a mentor?
+[pause 5s]
+
+Because a mentor who cannot create inner silence...
+[pause 5s]
+cannot create welcoming silence for the other.
+[pause 6s]
+
+You can only offer others what you have first cultivated in yourself.
+[pause 10s]
+
+Begin now.
+[pause 5s]
+
+Gentle inhale...
+[pause 4s]
+Slow exhale...
+[pause 5s]
+Simple presence.
+[pause 120s]
+
+You return slowly.
+[pause 6s]
+
+Notice how you feel after this moment of silence.
+[pause 6s]
+
+A little lighter perhaps.
+[pause 4s]
+A little more available.
+[pause 4s]
+A little more present.
+[pause 8s]
+
+This quality of presence is what you will bring to those you accompany.
+[pause 6s]
+
+They will not name it.
+[pause 4s]
+But they will feel it.
+[pause 5s]
+They will feel that you are truly there.
+[pause 5s]
+And that is what makes the difference.
+[pause 10s]
+
+One last breath — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 8s]
+
+Write down what came during this meditation.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 04 — Living Transmission — target : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-04-transmission-vivante' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Module four. Living Transmission.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+There is a fundamental difference between someone who teaches... and someone who transmits.
+[pause 8s]
+
+The teacher transmits information.
+[pause 5s]
+The mentor transmits a life.
+[pause 8s]
+
+A speech instructs.
+[pause 4s]
+A lived life inspires.
+[pause 8s]
+
+Think of the people who have most deeply influenced you in your life.
+[pause 6s]
+
+Was it by what they said?
+[pause 5s]
+Or by who they were?
+[pause 5s]
+By the way they lived what they believed?
+[pause 10s]
+
+Living transmission is exactly that.
+[pause 5s]
+When what you say and who you are are aligned.
+[pause 6s]
+When there is no gap between the mentor in front of the group...
+[pause 4s]
+and the human being at eleven o'clock at night in their kitchen.
+[pause 8s]
+
+It does not require perfection.
+[pause 5s]
+It requires coherence.
+[pause 8s]
+
+Gandhi said: be the change you wish to see in the world.
+[pause 6s]
+The mentor says: I am already living what I teach.
+[pause 8s]
+
+One of the most powerful forms of living transmission...
+[pause 5s]
+is a true story.
+[pause 6s]
+
+Not an anecdote that impresses.
+[pause 5s]
+Not a carefully polished success story.
+[pause 5s]
+A true story that liberates.
+[pause 8s]
+
+There are five moments in a story that liberates.
+[pause 6s]
+
+First moment: the tipping point.
+[pause 5s]
+"X years ago... I was..."
+[pause 5s]
+Set the context. Then the moment something changed.
+[pause 8s]
+
+Second moment: the descent.
+[pause 5s]
+"And then... something collapsed."
+[pause 5s]
+Be honest about what it cost you.
+[pause 8s]
+
+Third moment: the crossing.
+[pause 5s]
+"I had to face..."
+[pause 5s]
+What you had to go through. Not the heroic version. The true version.
+[pause 8s]
+
+Fourth moment: the learning.
+[pause 5s]
+"What I understood at that moment..."
+[pause 5s]
+The wisdom you could not have gained any other way.
+[pause 8s]
+
+Fifth moment: the bridge.
+[pause 5s]
+"And that is exactly why I am talking to you about this today."
+[pause 6s]
+The link between your experience and what your mentee is living.
+[pause 10s]
+
+The rule of the story that liberates.
+[pause 5s]
+Do not tell a story to shine.
+[pause 5s]
+Tell it so the other can recognise themselves.
+[pause 8s]
+
+Now let us enter the meditation of this module.
+[pause 5s]
+
+The meditation of inner alignment.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Visualise yourself teaching something that matters deeply to you.
+[pause 6s]
+A subject on which you genuinely have something to say.
+[pause 6s]
+
+Do you feel alignment when you imagine transmitting it?
+[pause 8s]
+Or do you feel a form of impostor syndrome?
+[pause 8s]
+
+Where in your body do you feel most authentic in that projection?
+[pause 8s]
+Where do you feel a gap?
+[pause 8s]
+
+Breathe into the place of the gap.
+[pause 5s]
+Not to solve it.
+[pause 4s]
+To honour it.
+[pause 6s]
+
+That gap says: I am still growing in this area.
+[pause 5s]
+And that is precious.
+[pause 5s]
+Because you are not teaching from a summit already reached.
+[pause 5s]
+You are teaching from the path.
+[pause 10s]
+
+Repeat inwardly... or softly aloud if you wish.
+[pause 5s]
+
+"I am on the path."
+[pause 5s]
+"And my path equips me."
+[pause 5s]
+"I transmit what I live... not only what I know."
+[pause 12s]
+
+One last breath — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Write down the founding story that surfaced during this meditation.
+[pause 5s]
+It may well become the cornerstone of your transmission.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 05 — Resistances — target : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-05-les-resistances' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Module five. Resistances.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+In every accompaniment... in every group... in every mentoring relationship...
+[pause 6s]
+you will encounter resistance.
+[pause 6s]
+
+Your mentees' resistance.
+[pause 4s]
+And also... your own.
+[pause 8s]
+
+The unprepared mentor experiences resistance as failure.
+[pause 6s]
+"He doesn't want to change."
+[pause 4s]
+"She's not ready."
+[pause 4s]
+"They're not listening to me."
+[pause 6s]
+
+The experienced mentor reads resistance as messages.
+[pause 8s]
+
+Every resistance says something.
+[pause 5s]
+
+"I am afraid."
+[pause 4s]
+"I don't believe in this yet."
+[pause 4s]
+"I have been disappointed before."
+[pause 4s]
+"This is not the right time."
+[pause 4s]
+"I don't feel capable."
+[pause 8s]
+
+Your job is not to remove the resistance.
+[pause 5s]
+It is to hear it.
+[pause 8s]
+
+Five types of resistance you will encounter.
+[pause 6s]
+
+The first: resistance through fear.
+[pause 5s]
+"What if it doesn't work?"
+[pause 5s]
+Signs: excessive questioning, procrastination, the need for guarantees.
+[pause 8s]
+
+The second: resistance through past wounds.
+[pause 5s]
+"I've already tried this, it didn't work."
+[pause 5s]
+Signs: cynicism, closure, anticipatory protection.
+[pause 8s]
+
+The third: resistance through limiting belief.
+[pause 5s]
+"I'm not made for this."
+[pause 5s]
+Signs: systematic self-minimisation, constant comparison with others.
+[pause 8s]
+
+The fourth: resistance through denial.
+[pause 5s]
+"I don't really have a problem."
+[pause 5s]
+Signs: subject-changing, excessive rationalisation.
+[pause 8s]
+
+The fifth: resistance through timing.
+[pause 5s]
+"Not now... later."
+[pause 5s]
+Signs: repeated postponement. Sometimes legitimate... often avoidance.
+[pause 10s]
+
+For each of these types...
+[pause 4s]
+there is a five-step transformation protocol.
+[pause 6s]
+
+Step one: welcome without correcting.
+[pause 5s]
+"I hear you. This resistance is here. It is valid."
+[pause 6s]
+
+Step two: name without diagnosing.
+[pause 5s]
+"I sense something that looks like fear. Does that resonate?"
+[pause 6s]
+
+Step three: explore with curiosity.
+[pause 5s]
+"What would happen if this fear were right? And if it were wrong?"
+[pause 6s]
+
+Step four: find the resource within the resistance.
+[pause 5s]
+"What is this resistance protecting? What needs to be respected here?"
+[pause 6s]
+
+Step five: propose a tiny step.
+[pause 5s]
+"Not everything. Not now. Just one percent of movement."
+[pause 8s]
+
+Now... I invite you to turn the gaze toward yourself.
+[pause 6s]
+
+What is the main resistance you carry right now?
+[pause 8s]
+Not your mentees'. Yours.
+[pause 8s]
+
+Let us enter the meditation of this module.
+[pause 5s]
+
+The meditation of inner knots.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Think of a resistance you carry right now in your life.
+[pause 6s]
+Something you keep pushing away. Something you avoid confronting.
+[pause 6s]
+
+Locate it in your body.
+[pause 5s]
+Perhaps in the chest? In the belly? In the throat?
+[pause 8s]
+
+Give it a shape.
+[pause 5s]
+A colour.
+[pause 5s]
+A texture.
+[pause 8s]
+
+Without trying to solve it.
+[pause 5s]
+Just... meet it.
+[pause 8s]
+
+Now ask it a question.
+[pause 5s]
+
+"What are you protecting?"
+[pause 15s]
+
+Listen.
+[pause 5s]
+Without defence.
+[pause 5s]
+Without trying to correct.
+[pause 10s]
+
+Whatever you hear...
+[pause 4s]
+is precious information.
+[pause 5s]
+It is what your mentees feel when they resist.
+[pause 6s]
+
+Every resistance you have crossed yourself equips you to accompany someone else's.
+[pause 8s]
+
+Breathe with this resistance.
+[pause 6s]
+Not to make it leave.
+[pause 4s]
+To thank it.
+[pause 5s]
+It has done its protective work.
+[pause 5s]
+And now... you can go further.
+[pause 12s]
+
+One last breath — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... releasing what no longer needs to be carried.
+[pause 12s]
+
+Write down what came.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 06 — The Mentor's Energy — target : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-06-energie-du-mentor' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Module six. The Mentor's Energy.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Here is a truth few mentors want to hear.
+[pause 6s]
+
+An exhausted mentor is no longer accompanying.
+[pause 5s]
+They are surviving.
+[pause 6s]
+
+And in survival mode...
+[pause 4s]
+they unconsciously take energy from those they accompany...
+[pause 4s]
+instead of giving it.
+[pause 8s]
+
+Managing your energy is not a question of comfort.
+[pause 5s]
+It is a question of ethics.
+[pause 8s]
+
+You cannot give what you do not have.
+[pause 6s]
+
+A practitioner who does not take care of themselves transmits their exhaustion.
+[pause 5s]
+Their frustration. Their lack.
+[pause 5s]
+
+A practitioner who radiates transmits their vitality.
+[pause 5s]
+Their peace. Their presence.
+[pause 8s]
+
+Those you accompany will not analyse it.
+[pause 5s]
+But they will feel it.
+[pause 5s]
+In your voice. In your gaze. In the quality of your silence.
+[pause 10s]
+
+There are four energy sources you must consciously nourish.
+[pause 6s]
+
+The first: physical energy.
+[pause 5s]
+Sufficient sleep. Regular movement. Conscious nutrition. Daily 5-5-5 breathing.
+[pause 6s]
+Diagnostic question: is your body an ally... or a burden right now?
+[pause 8s]
+
+The second: emotional energy.
+[pause 5s]
+Processing unresolved emotions.
+[pause 4s]
+Nourishing versus draining relationships.
+[pause 5s]
+Diagnostic question: do you have conversations that weigh you down... or conversations that lighten you?
+[pause 8s]
+
+The third: mental energy.
+[pause 5s]
+Clarity of intention. Absence of dissonance between what you think and what you do.
+[pause 6s]
+Diagnostic question: do you have recurring intrusive thoughts? Unmade decisions occupying mental space?
+[pause 8s]
+
+The fourth: spiritual energy.
+[pause 5s]
+Connection to your deep purpose.
+[pause 4s]
+The sense that your life has a direction.
+[pause 5s]
+Diagnostic question: do you wake up in the morning with a sense of mission... or of obligation?
+[pause 10s]
+
+There is a simple daily ritual.
+[pause 5s]
+The mentor's daily ritual.
+[pause 5s]
+Fifteen minutes in the morning. Two minutes before each session. Ten minutes in the evening.
+[pause 8s]
+
+Morning.
+[pause 4s]
+Five minutes of 5-5-5 breathing.
+[pause 4s]
+Five minutes setting the mentor intention for the day: "today I serve by..."
+[pause 4s]
+Five minutes reading or listening to an inspiring sentence.
+[pause 8s]
+
+Before each session.
+[pause 4s]
+Body check-in. Emotional state. Intention centred on the other.
+[pause 6s]
+
+Evening.
+[pause 4s]
+What did I serve well today?
+[pause 4s]
+Where did I let myself be drained... and why?
+[pause 4s]
+What positive thing do I take from this day?
+[pause 10s]
+
+Let us enter the meditation of this module.
+[pause 5s]
+
+The meditation of the inner fountain.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Imagine a luminous source at the centre of your chest.
+[pause 6s]
+
+With each inhale... it grows.
+[pause 5s]
+Warm. Golden. Soothing.
+[pause 5s]
+
+With each exhale... it radiates outward.
+[pause 6s]
+In concentric circles.
+[pause 5s]
+Touching everything around you.
+[pause 8s]
+
+Inhale... 5... 4... 3... 2... 1... the fountain grows.
+[pause 8s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1... it radiates.
+[pause 8s]
+
+Now visualise your four energy sources filling up.
+[pause 5s]
+
+First your body.
+[pause 4s]
+Every cell receiving regenerating light.
+[pause 6s]
+Every muscle relaxing. Every joint releasing.
+[pause 8s]
+
+Now your emotions.
+[pause 5s]
+All emotional tensions dissolving gently.
+[pause 5s]
+Like ice melting in sunlight.
+[pause 8s]
+
+Your mental space.
+[pause 5s]
+A space becoming clear. The noise falling quiet.
+[pause 5s]
+Simple, soothing clarity.
+[pause 8s]
+
+Your deep purpose.
+[pause 5s]
+Reconnect to the reason you chose this path.
+[pause 6s]
+Not the intellectual reason.
+[pause 4s]
+The reason of the heart.
+[pause 8s]
+
+Remain in this state of fullness.
+[pause 5s]
+
+Repeat inwardly.
+[pause 5s]
+"I nourish myself to nourish others."
+[pause 5s]
+"I recharge to help others recharge."
+[pause 8s]
+
+One last breath — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... with a gentle smile.
+[pause 10s]
+
+Write in your mentor journal: which energy source do you most need to nourish this week?
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 07 — The Sacred Frame — target : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-07-cadre-sacre' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Module seven. The Sacred Frame.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Think of a place... a conversation... a moment...
+[pause 5s]
+where you felt fully safe to be yourself.
+[pause 8s]
+
+Truly yourself.
+[pause 5s]
+Without calculation. Without a mask. Without performance.
+[pause 8s]
+
+How did you feel in that space?
+[pause 8s]
+
+That is what a sacred frame creates.
+[pause 6s]
+
+A sacred frame is not a place.
+[pause 5s]
+It is a quality of presence.
+[pause 5s]
+It is what makes someone walk into a room... or into a conversation...
+[pause 5s]
+and feel instinctively: here, I can be myself.
+[pause 10s]
+
+People go years without ever having that space.
+[pause 6s]
+Without ever having someone in front of them who does not judge.
+[pause 5s]
+Who is not trying to get something from them.
+[pause 5s]
+Who is simply... there.
+[pause 8s]
+
+Your work as a mentor: create this space. Maintain it. Defend it.
+[pause 10s]
+
+Five elements constitute a sacred frame.
+[pause 6s]
+
+The first: total confidentiality.
+[pause 5s]
+What is shared within the frame does not leave the frame.
+[pause 5s]
+This is the primary condition for trust.
+[pause 6s]
+Not just as a stated rule... but as a lived commitment.
+[pause 8s]
+
+The second: the absence of judgment.
+[pause 5s]
+This is not approval of everything.
+[pause 4s]
+It is the welcome of everything.
+[pause 5s]
+"I listen to you without judging you."
+[pause 5s]
+And living that... in every micro-reaction.
+[pause 5s]
+Even when what is shared surprises you.
+[pause 8s]
+
+The third: total presence.
+[pause 5s]
+Phone away. Gaze settled. Body turned toward. Mind available.
+[pause 5s]
+Not eighty percent present.
+[pause 4s]
+One hundred percent.
+[pause 8s]
+
+The fourth: permission to be incomplete.
+[pause 5s]
+"You don't have to have the answers here. You just have to be honest."
+[pause 5s]
+For many people...
+[pause 4s]
+that permission is the most liberating thing anyone has ever said to them.
+[pause 8s]
+
+The fifth: ritualisation of the space.
+[pause 5s]
+An opening. A shared breath. A word of intention.
+[pause 5s]
+The body understands that this is different.
+[pause 5s]
+That what is about to happen here is precious.
+[pause 10s]
+
+Let us speak also of what breaks the frame.
+[pause 6s]
+
+An unsolicited comment that judges... even well-intentioned.
+[pause 5s]
+A confidence shared outside the group.
+[pause 5s]
+A perceived lack of presence from the mentor.
+[pause 5s]
+A visible surprise or discomfort from the mentor at what is shared.
+[pause 8s]
+
+These violations happen.
+[pause 5s]
+Even to the best mentors.
+[pause 5s]
+
+The response is not to flee.
+[pause 4s]
+It is to name it with sincerity.
+[pause 5s]
+
+"I said something that broke the trust. I want to repair it. Here is how."
+[pause 8s]
+
+Honest repair often strengthens the frame more than if no violation had occurred.
+[pause 8s]
+
+Let us enter the meditation of this module.
+[pause 5s]
+
+The meditation of the welcoming space.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Imagine the space you are going to create for those you accompany.
+[pause 6s]
+
+Not the room. Not the decor.
+[pause 5s]
+The quality of presence you bring.
+[pause 8s]
+
+Visualise someone entering that space.
+[pause 5s]
+And relaxing.
+[pause 4s]
+Dropping their guard.
+[pause 4s]
+Breathing differently.
+[pause 6s]
+
+What do you feel in your body when you see that?
+[pause 8s]
+
+This is your reason for being as a mentor.
+[pause 6s]
+That moment when the other rediscovers safety.
+[pause 6s]
+Where they rediscover a space to be real.
+[pause 8s]
+
+Repeat inwardly.
+[pause 5s]
+"I am this space."
+[pause 5s]
+"I carry it within me."
+[pause 5s]
+"It begins with my own peace."
+[pause 12s]
+
+One last breath — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 8s]
+
+Return gently.
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 08 — The Art of Letting Go — target : 18–20 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-08-art-du-lacher-prise' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Module eight. The Art of Letting Go.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Here is the mentor's ultimate paradox.
+[pause 6s]
+
+The mentor fulfils their mission...
+[pause 5s]
+when their mentee no longer needs them.
+[pause 8s]
+
+Let that sentence resonate.
+[pause 6s]
+
+The more successful your work...
+[pause 5s]
+the more they move away.
+[pause 5s]
+And that is exactly the victory.
+[pause 10s]
+
+A successful parent raises autonomous children.
+[pause 5s]
+A successful therapist closes their therapeutic relationship.
+[pause 5s]
+A successful mentor creates other mentors.
+[pause 8s]
+
+But our ego... our need to feel useful...
+[pause 5s]
+can resist this truth.
+[pause 6s]
+
+Three forms of attachment in the mentor.
+[pause 6s]
+
+The first: attachment to the role.
+[pause 5s]
+"I need them to need me."
+[pause 5s]
+Sign: discomfort when a mentee progresses quickly and becomes autonomous.
+[pause 8s]
+
+The second: attachment to results.
+[pause 5s]
+"Their success proves my worth."
+[pause 5s]
+Sign: personal disappointment when someone quits... even if it is their choice.
+[pause 8s]
+
+The third: emotional attachment.
+[pause 5s]
+The relationship extends beyond the mentoring frame.
+[pause 5s]
+Sign: difficulty maintaining professional boundaries.
+[pause 8s]
+
+Recognising your attachment is not a shame.
+[pause 5s]
+It is the first act of letting go.
+[pause 8s]
+
+Three practices that help.
+[pause 6s]
+
+The first: the ritual closing.
+[pause 5s]
+At the end of every session: "I entrust you to yourself."
+[pause 5s]
+Symbolically returning responsibility to the other.
+[pause 5s]
+Cutting the energy of control.
+[pause 8s]
+
+The second: delegation to something greater than yourself.
+[pause 5s]
+"This path is not mine to carry.
+[pause 4s]
+I do what I can... and I entrust the rest."
+[pause 8s]
+
+The third: non-judgmental review.
+[pause 5s]
+After every accompaniment that ends... well or badly.
+[pause 5s]
+"What did I learn? What do I let go of?"
+[pause 5s]
+A closing notebook. Two pages. And you turn the page.
+[pause 10s]
+
+Let us enter the meditation of this module.
+[pause 5s]
+
+The meditation of compassionate detachment.
+[pause 6s]
+
+Three breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 10s]
+
+Think of someone you are accompanying... or have accompanied.
+[pause 6s]
+
+Sense whether you are carrying something for them...
+[pause 5s]
+that belongs to them.
+[pause 6s]
+
+A worry on their behalf. A hope for a result. An expectation you have not expressed.
+[pause 8s]
+
+Visualise this thing you are carrying.
+[pause 5s]
+Give it a shape.
+[pause 5s]
+
+And now... imagine returning it to them with love.
+[pause 6s]
+
+Not with coldness. Not with indifference.
+[pause 5s]
+With love.
+[pause 6s]
+
+"This belongs to you."
+[pause 4s]
+"I return it to you."
+[pause 4s]
+"I am here if you need me."
+[pause 4s]
+"But it is you who carry your path."
+[pause 10s]
+
+Feel the relief in your body.
+[pause 6s]
+
+The lightness of the mentor who does not carry what is not theirs to carry.
+[pause 8s]
+
+Repeat inwardly.
+[pause 5s]
+"I am present."
+[pause 5s]
+"I am not responsible for their path."
+[pause 5s]
+"I am here to illuminate... not to carry."
+[pause 12s]
+
+One last breath — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... releasing what no longer belongs to you.
+[pause 12s]
+
+Write down: which current accompaniment asks you to let something go?
+[pause 5s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 09 — My Mentor Signature — target : 20–22 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-09-signature-de-mentor' => <<<'SCRIPT'
+Settle in.
+[pause 5s]
+
+Module nine. My Mentor Signature.
+[pause 6s]
+
+The last module.
+[pause 6s]
+
+Three very slow breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 12s]
+
+You have crossed eight modules.
+[pause 5s]
+
+You have explored your identity.
+[pause 4s]
+You have chosen your posture.
+[pause 4s]
+You have deepened your listening.
+[pause 4s]
+You have aligned your transmission.
+[pause 4s]
+You have crossed resistances.
+[pause 4s]
+You have nourished your energy.
+[pause 4s]
+You have created a sacred frame.
+[pause 4s]
+You have learned to let go.
+[pause 8s]
+
+This module is not a summary.
+[pause 5s]
+It is a living synthesis.
+[pause 5s]
+
+The question is no longer: what is a good mentor?
+[pause 5s]
+It is: what unique mentor are you?
+[pause 10s]
+
+Nobody can be you.
+[pause 6s]
+
+Your combination of wounds... strengths... values... style...
+[pause 5s]
+is unique on this planet.
+[pause 8s]
+
+What you are going to create will not look like any other mentor.
+[pause 6s]
+And that is exactly what the world needs.
+[pause 10s]
+
+Five dimensions of your mentor signature.
+[pause 6s]
+
+The first: your tone.
+[pause 5s]
+Are you direct or gentle?
+[pause 4s]
+Provocative or enveloping?
+[pause 4s]
+Solemn or joyful?
+[pause 5s]
+This is not what you choose to appear.
+[pause 4s]
+It is who you are... when you are at ease.
+[pause 8s]
+
+The second: your approach.
+[pause 5s]
+Structured: clear plan, defined steps, concrete tools.
+[pause 4s]
+Or intuitive: fluid, following the person's feeling.
+[pause 5s]
+Most mentors are a blend.
+[pause 4s]
+But one is dominant.
+[pause 8s]
+
+The third: your primary strength.
+[pause 5s]
+Listening. Presence. Clarity. Compassionate provocation. Transmission of experience.
+[pause 6s]
+Which feels most natural to you?
+[pause 8s]
+
+The fourth: your natural audience.
+[pause 5s]
+Who seeks you out naturally?
+[pause 4s]
+Who finds you without you having to force it?
+[pause 5s]
+These are the people you are particularly equipped for.
+[pause 8s]
+
+The fifth: your legacy.
+[pause 5s]
+In ten years...
+[pause 4s]
+what do the people you accompanied say when they speak of you?
+[pause 10s]
+
+Let us enter the final meditation of this formation.
+[pause 5s]
+
+The meditation of synthesis and commitment.
+[pause 6s]
+
+Settle into the most comfortable position.
+[pause 5s]
+Take your time. This is not a moment to rush.
+[pause 5s]
+
+Three very slow breaths — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 12s]
+
+I will invite you to relive the eight previous modules in images.
+[pause 6s]
+
+Module one. Identity.
+[pause 5s]
+Who are you... before what you transmit?
+[pause 6s]
+Let an image come.
+[pause 8s]
+
+Module two. The Servant Posture.
+[pause 5s]
+How have you chosen to place yourself in service?
+[pause 6s]
+Let a sensation come.
+[pause 8s]
+
+Module three. Active Listening.
+[pause 5s]
+The space of silence you now know how to create.
+[pause 6s]
+Let a colour come.
+[pause 8s]
+
+Module four. Living Transmission.
+[pause 5s]
+The founding story you carry.
+[pause 6s]
+Let a face come.
+[pause 8s]
+
+Module five. Resistances.
+[pause 5s]
+What you have crossed... and what equips you now.
+[pause 6s]
+Let a word come.
+[pause 8s]
+
+Module six. Energy.
+[pause 5s]
+The inner fountain you have learned to nourish.
+[pause 6s]
+Let a light come.
+[pause 8s]
+
+Module seven. The Sacred Frame.
+[pause 5s]
+The space you create where others dare to be real.
+[pause 6s]
+Let a feeling come.
+[pause 8s]
+
+Module eight. Letting Go.
+[pause 5s]
+The lightness discovered by carrying only what is yours.
+[pause 6s]
+Let a breath come.
+[pause 10s]
+
+Now... with all of this residing in you.
+[pause 6s]
+
+Place your right hand on your heart.
+[pause 6s]
+
+And say aloud... or in your heart...
+[pause 5s]
+
+"I am..."
+[pause 4s]
+Say your name.
+[pause 5s]
+
+"I am a mentor."
+[pause 5s]
+
+"I serve through..."
+[pause 5s]
+Say your founding value.
+[pause 8s]
+
+"My legacy begins now."
+[pause 12s]
+
+One final breath — 5-5-5.
+[pause 4s]
+Inhale... 5... 4... 3... 2... 1...
+[pause 6s]
+Hold... 5... 4... 3... 2... 1...
+[pause 6s]
+Exhale... 5... 4... 3... 2... 1...
+[pause 12s]
+
+Congratulate yourself.
+[pause 5s]
+
+You have crossed this formation.
+[pause 5s]
+You are no longer the same.
+[pause 5s]
+And those you are going to accompany will not be the same either.
+[pause 8s]
+
+This is your legacy.
+[pause 5s]
+It begins now.
+[pause 10s]
+
+Until next time. Mentor.
+[pause 8s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MENTOR EN — Module 10 — The Invisible Transmission — target : 16–18 min
+        // ─────────────────────────────────────────────────────────
+        'mentor-10-transmission-invisible' => <<<'SCRIPT'
+Welcome to module 10.
+[pause 6s]
+
+The final module.
+[pause 8s]
+
+The Invisible Transmission.
+[pause 6s]
+What you transmit without ever having taught it.
+[pause 10s]
+
+This module is different from the others.
+[pause 6s]
+It gives you no new techniques.
+[pause 5s]
+It asks you to look at something that few mentors have the courage to face.
+[pause 10s]
+
+A disturbing truth.
+[pause 6s]
+
+Your students do not learn what you teach.
+[pause 6s]
+They learn what you are.
+[pause 8s]
+
+Not consciously.
+[pause 5s]
+Through deep neurological mimicry.
+[pause 6s]
+Their nervous system observes and captures your way of being with your own practice...
+[pause 6s]
+with uncertainty... with your mistakes... with your body...
+[pause 6s]
+with money... with conflict... with silence.
+[pause 10s]
+
+This is what I call the Invisible Curriculum.
+[pause 10s]
+
+Settle in.
+[pause 4s]
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+There are five things you transmit without knowing it.
+[pause 8s]
+
+First — your relationship to your own practice.
+[pause 6s]
+Do you yourself do what you teach?
+[pause 6s]
+Your students see it. Not in your words. In your body.
+[pause 6s]
+A mentor who teaches cardiac coherence but vibrates with impatience during class...
+[pause 5s]
+transmits impatience. Not cardiac coherence.
+[pause 10s]
+
+Second — your relationship to your own mistakes.
+[pause 6s]
+When you are wrong in front of them — what happens inside you?
+[pause 6s]
+Do you cover it? Justify it? Own it?
+[pause 6s]
+A mentor who owns their mistakes with grace teaches more about resilience in thirty seconds...
+[pause 5s]
+than five full modules on the subject.
+[pause 10s]
+
+Third — your relationship to uncertainty.
+[pause 6s]
+Can you say... "I don't know"?
+[pause 6s]
+Or does uncertainty force you to fill every silence with an answer?
+[pause 6s]
+A mentor who holds uncertainty with serenity transmits that uncertainty is bearable.
+[pause 5s]
+That is one of the most liberating learnings for a student.
+[pause 10s]
+
+Fourth — your relationship to conflict.
+[pause 6s]
+When a student contradicts you... how do you actually react?
+[pause 6s]
+The way you welcome opposition is the way they will learn to welcome it themselves.
+[pause 10s]
+
+Fifth — your relationship to your own limit.
+[pause 6s]
+Do you know when you are tired, out of presence, not at your best?
+[pause 6s]
+And do you dare name it... or do you always play the unshakeable mentor?
+[pause 6s]
+Named vulnerability transmits permission to be human.
+[pause 5s]
+That is one of the rarest gifts a mentor can offer.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+Let us now talk about failure as pedagogical material.
+[pause 6s]
+
+Ask any adult to recall a lesson that changed their life.
+[pause 8s]
+In nine cases out of ten... it was not when the mentor shone.
+[pause 6s]
+It was when they fell... and got back up in front of them.
+[pause 10s]
+
+Success creates admiration. And often distance.
+[pause 6s]
+"That is for them. Not for me."
+[pause 8s]
+
+Failure shared with grace creates identification.
+[pause 6s]
+"If they crossed that and continued — I can too."
+[pause 8s]
+
+Success transmits a result.
+[pause 5s]
+Failure transmits... a path.
+[pause 10s]
+
+Three rules for sharing failure in a way that transforms.
+[pause 6s]
+
+First — name the failure precisely.
+[pause 5s]
+Not "I went through difficult things."
+[pause 5s]
+"I had twelve students registered for my second training. Four came."
+[pause 8s]
+
+Second — name what you felt. Really.
+[pause 5s]
+Not the softened version.
+[pause 5s]
+The version that still hurts a little when you say it.
+[pause 8s]
+
+Third — name what it changed.
+[pause 5s]
+How that failure refined your practice, your humility, your service.
+[pause 10s]
+
+This is not weakness.
+[pause 5s]
+This is living transmission.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+There is a subtle trap that awaits successful mentors.
+[pause 6s]
+It is called knowledge crystallisation.
+[pause 8s]
+
+The day when you teach the same thing...
+[pause 5s]
+in the same way...
+[pause 5s]
+with the same certainty...
+[pause 5s]
+for too long...
+[pause 6s]
+you have stopped transmitting something living.
+[pause 5s]
+You are transmitting an archive.
+[pause 10s]
+
+There is a palpable difference between a mentor who recites...
+[pause 5s]
+and a mentor who discovers while teaching.
+[pause 10s]
+
+Four practices of the perpetual student.
+[pause 6s]
+
+First — practise yourself, always.
+[pause 5s]
+Not for the example. For your own continued discovery.
+[pause 8s]
+
+Second — actively seek out people who contradict you.
+[pause 5s]
+Not to convince them. To let yourself be questioned.
+[pause 8s]
+
+Third — use your students as teachers.
+[pause 5s]
+Their naive questions are often the deepest ones.
+[pause 5s]
+"I don't know — let us explore this together" is one of the most powerful phrases a mentor can say.
+[pause 8s]
+
+Fourth — keep a journal of your own recent discoveries.
+[pause 5s]
+If you have nothing new to write for three months... that is a warning sign.
+[pause 10s]
+
+Inhale deeply...
+[pause 5s]
+Hold...
+[pause 5s]
+Release...
+[pause 8s]
+
+One final dimension.
+[pause 6s]
+The living lineage.
+[pause 8s]
+
+Your students will one day transmit to others.
+[pause 6s]
+Those others will transmit to others still.
+[pause 6s]
+In twenty years, people who have never met you...
+[pause 5s]
+will be influenced by the way you behaved with your students today.
+[pause 10s]
+
+This is not a metaphor.
+[pause 5s]
+It is transmitting behaviour through time.
+[pause 10s]
+
+Great transmitters do not transmit their method.
+[pause 6s]
+They transmit the love of the method.
+[pause 6s]
+They do not want copies of themselves.
+[pause 5s]
+They want different versions who continue the fire.
+[pause 8s]
+
+Their highest victory?
+[pause 6s]
+A student who surpasses them.
+[pause 5s]
+And who celebrates that with them.
+[pause 10s]
+
+The question every mentor should ask themselves once a year.
+[pause 6s]
+"Do my students, by observing my life...
+[pause 5s]
+learn what I want them to learn?"
+[pause 15s]
+
+If the answer is "I am not sure"...
+[pause 5s]
+that is where the work begins.
+[pause 10s]
+
+In your mentor journal.
+[pause 6s]
+Five honest questions.
+[pause 6s]
+
+In the last thirty days — have you practised the tools you teach for yourself?
+[pause 18s]
+
+What is the last mistake you made in your role as mentor?
+[pause 18s]
+
+Is there a teaching you give on autopilot for too long?
+[pause 18s]
+
+If your students were to describe you — not your teaching, YOU — what would they say?
+[pause 18s]
+
+Name three behaviours you hope to see in your students in ten years. Do you embody those three things today?
+[pause 18s]
+
+Write.
+[pause 5s]
+Return to this inventory once a year.
+[pause 5s]
+It is the most honest act of a mentor.
+[pause 10s]
+
+Until next time, mentor.
+[pause 5s]
+Keep learning.
+[pause 5s]
+Keep transmitting something living.
 [pause 10s]
 SCRIPT,
 

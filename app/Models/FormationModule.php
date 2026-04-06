@@ -9,6 +9,7 @@ class FormationModule extends Model
 {
     public const TRACK_PARCOURS = 'parcours';
     public const TRACK_PRATICIEN = 'praticien';
+    public const TRACK_MENTOR = 'mentor';
 
     protected $fillable = [
         'slug', 'title', 'description', 'order', 'week_label', 'track', 'is_active', 'activities',

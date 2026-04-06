@@ -76,6 +76,16 @@ class FormationService
         ['slug' => '11-lire-un-client-adapter-le-protocole',       'title' => 'Lire un Client — Adapter le Protocole',                                'week_label' => 'Module 11', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 7],
         ['slug' => '12-construire-une-pratique-professionnelle',   'title' => 'Construire une Pratique Professionnelle',                               'week_label' => 'Module 12', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 8],
         ['slug' => '13-limites-contre-indications-responsabilite', 'title' => 'Limites, Contre-indications & Responsabilité',                         'week_label' => 'Module 13', 'track' => FormationModule::TRACK_PRATICIEN, 'order' => 9],
+        // ── FORMATION MENTOR (9 modules) ────────────────────────────────────────────────────
+        ['slug' => 'mentor-01-identite-du-mentor',       'title' => 'L\'Identité du Mentor',           'week_label' => 'Module 01', 'track' => FormationModule::TRACK_MENTOR, 'order' => 1],
+        ['slug' => 'mentor-02-posture-du-serviteur',     'title' => 'La Posture du Serviteur',         'week_label' => 'Module 02', 'track' => FormationModule::TRACK_MENTOR, 'order' => 2],
+        ['slug' => 'mentor-03-ecoute-active',            'title' => 'L\'Écoute Active',                'week_label' => 'Module 03', 'track' => FormationModule::TRACK_MENTOR, 'order' => 3],
+        ['slug' => 'mentor-04-transmission-vivante',     'title' => 'La Transmission Vivante',         'week_label' => 'Module 04', 'track' => FormationModule::TRACK_MENTOR, 'order' => 4],
+        ['slug' => 'mentor-05-les-resistances',          'title' => 'Les Résistances',                 'week_label' => 'Module 05', 'track' => FormationModule::TRACK_MENTOR, 'order' => 5],
+        ['slug' => 'mentor-06-energie-du-mentor',        'title' => 'L\'Énergie du Mentor',            'week_label' => 'Module 06', 'track' => FormationModule::TRACK_MENTOR, 'order' => 6],
+        ['slug' => 'mentor-07-cadre-sacre',              'title' => 'Le Cadre Sacré',                  'week_label' => 'Module 07', 'track' => FormationModule::TRACK_MENTOR, 'order' => 7],
+        ['slug' => 'mentor-08-art-du-lacher-prise',      'title' => 'L\'Art du Lâcher-Prise',          'week_label' => 'Module 08', 'track' => FormationModule::TRACK_MENTOR, 'order' => 8],
+        ['slug' => 'mentor-09-signature-de-mentor',      'title' => 'Ma Signature de Mentor',          'week_label' => 'Module 09', 'track' => FormationModule::TRACK_MENTOR, 'order' => 9],
     ];
 
     // ──────────────────────────────────────────────────────────
@@ -343,7 +353,7 @@ class FormationService
 
     private function syncModuleProgress(FormationEnrollment $enrollment): void
     {
-        foreach ([FormationModule::TRACK_PARCOURS, FormationModule::TRACK_PRATICIEN] as $track) {
+        foreach ([FormationModule::TRACK_PARCOURS, FormationModule::TRACK_PRATICIEN, FormationModule::TRACK_MENTOR] as $track) {
             $modules = FormationModule::active()->forTrack($track)->get();
 
             if ($modules->isEmpty()) {

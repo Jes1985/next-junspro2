@@ -46,16 +46,16 @@ body { background: var(--dark); color: var(--text); }
 }
 .mod-nav__back {
   display: flex; align-items: center; gap: .5rem;
-  color: var(--muted); font-size: .82rem; text-decoration: none;
+  color: var(--muted); font-size:1rem; text-decoration: none;
   transition: color .2s;
 }
 .mod-nav__back:hover { color: var(--text); }
 .mod-nav__title {
-  font-size: .85rem; font-weight: 600; color: var(--gold);
+  font-size:1.05rem; font-weight: 600; color: var(--gold);
   text-align: center; flex: 1; padding: 0 1rem;
 }
 .mod-nav__progress {
-  font-size: .78rem; color: var(--muted); white-space: nowrap;
+  font-size:1.15rem; color: var(--muted); white-space: nowrap;
 }
 
 /* ── Hero du module ── */
@@ -66,7 +66,7 @@ body { background: var(--dark); color: var(--text); }
   text-align: center;
 }
 .mod-hero__eyebrow {
-  font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+  font-size:1.1rem; letter-spacing: .18em; text-transform: uppercase;
   color: var(--gold); margin-bottom: .8rem;
 }
 .mod-hero__num {
@@ -81,7 +81,7 @@ body { background: var(--dark); color: var(--text); }
   color: #fff; margin: 0 0 .6rem; line-height: 1.25;
 }
 .mod-hero__week {
-  font-size: .85rem; color: var(--muted); margin: 0 0 1.5rem;
+  font-size:1.05rem; color: var(--muted); margin: 0 0 1.5rem;
 }
 
 /* Barre de progression activités */
@@ -90,7 +90,7 @@ body { background: var(--dark); color: var(--text); }
 }
 .mod-hero__progress-label {
   display: flex; justify-content: space-between;
-  font-size: .76rem; color: var(--muted); margin-bottom: .4rem;
+  font-size:1.15rem; color: var(--muted); margin-bottom: .4rem;
 }
 .mod-hero__progress-track {
   height: 5px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden;
@@ -117,7 +117,7 @@ body { background: var(--dark); color: var(--text); }
 }
 .mod-audio__label {
   display: flex; align-items: center; gap: .6rem;
-  font-size: .85rem; color: var(--gold); font-weight: 600;
+  font-size:1.05rem; color: var(--gold); font-weight: 600;
 }
 .mod-audio audio {
   width: 100%;
@@ -126,7 +126,7 @@ body { background: var(--dark); color: var(--text); }
   accent-color: var(--gold);
 }
 .mod-audio__hint {
-  font-size: .74rem; color: var(--muted);
+  font-size:1.1rem; color: var(--muted);
 }
 
 /* Intro narrative */
@@ -146,7 +146,7 @@ body { background: var(--dark); color: var(--text); }
 .mod-divider {
   display: flex; align-items: center; gap: 1rem;
   margin: 2.5rem 0;
-  color: var(--muted); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); font-size:1.15rem; letter-spacing: .12em; text-transform: uppercase;
 }
 .mod-divider::before, .mod-divider::after {
   content: ''; flex: 1; height: 1px; background: var(--border);
@@ -241,7 +241,7 @@ body { background: var(--dark); color: var(--text); }
   display: flex; align-items: flex-start; gap: .5rem; flex-wrap: wrap;
   margin-top: 1.5rem; padding-top: 1rem;
   border-top: 1px solid rgba(255,255,255,.1);
-  font-size: .78rem;
+  font-size:1.15rem;
   color: rgba(232,224,208,.5);
   font-style: italic;
   line-height: 1.6;
@@ -250,13 +250,13 @@ body { background: var(--dark); color: var(--text); }
 
 .mod-activity__meta { flex: 1; }
 .mod-activity__title {
-  font-size: .95rem; font-weight: 600; color: #fff; margin: 0 0 .25rem; line-height: 1.3;
+  font-size:1.15rem; font-weight: 600; color: #fff; margin: 0 0 .25rem; line-height: 1.3;
 }
 .mod-activity__tags {
   display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
 }
 .mod-activity__tag {
-  font-size: .7rem; padding: .18rem .55rem; border-radius: 20px;
+  font-size:1.1rem; padding: .18rem .55rem; border-radius: 20px;
   background: rgba(255,255,255,.07); color: var(--muted);
   text-transform: capitalize;
 }
@@ -265,11 +265,11 @@ body { background: var(--dark); color: var(--text); }
   width: 22px; height: 22px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   background: rgba(34,197,94,.2); border: 1.5px solid rgba(34,197,94,.5);
-  color: #4ade80; font-size: .85rem;
+  color: #4ade80; font-size:1.05rem;
 }
 .mod-activity__expand {
   flex-shrink: 0; margin-top: .25rem;
-  color: var(--muted); font-size: .8rem;
+  color: var(--muted); font-size:1rem;
   transition: transform .25s;
 }
 .mod-activity.is-expanded .mod-activity__expand { transform: rotate(180deg); }
@@ -283,13 +283,13 @@ body { background: var(--dark); color: var(--text); }
 .mod-activity.is-expanded .mod-activity__body { display: block; }
 
 .mod-activity__desc {
-  font-size: .9rem; color: rgba(232,224,208,.75); line-height: 1.75;
+  font-size:1.1rem; color: rgba(232,224,208,.75); line-height: 1.75;
   margin-bottom: 1.2rem; margin-top: 1rem;
 }
 
 /* Textarea journal */
 .mod-journal-label {
-  font-size: .78rem; color: var(--gold); margin-bottom: .45rem;
+  font-size:1.15rem; color: var(--gold); margin-bottom: .45rem;
   display: flex; align-items: center; gap: .4rem;
 }
 .mod-journal-textarea {
@@ -298,7 +298,7 @@ body { background: var(--dark); color: var(--text); }
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 10px;
   color: var(--text);
-  font-size: .875rem; line-height: 1.65;
+  font-size:1.05rem; line-height: 1.65;
   padding: .9rem 1rem;
   resize: vertical;
   outline: none;
@@ -308,7 +308,7 @@ body { background: var(--dark); color: var(--text); }
 .mod-journal-textarea:focus { border-color: rgba(201,168,76,.4); }
 .mod-journal-textarea::placeholder { color: rgba(232,224,208,.25); }
 .mod-journal-saved {
-  font-size: .72rem; color: var(--muted); margin-top: .35rem; height: .9rem;
+  font-size:1.1rem; color: var(--muted); margin-top: .35rem; height: .9rem;
   transition: opacity .3s;
 }
 
@@ -319,7 +319,7 @@ body { background: var(--dark); color: var(--text); }
   background: linear-gradient(135deg, #1a4a1a, #14391e);
   border: 1.5px solid rgba(34,197,94,.4);
   color: #4ade80; padding: .6rem 1.2rem; border-radius: 10px;
-  font-size: .85rem; font-weight: 600; cursor: pointer;
+  font-size:1.05rem; font-weight: 600; cursor: pointer;
   transition: all .2s;
 }
 .mod-btn-validate:hover { border-color: rgba(34,197,94,.7); background: rgba(34,197,94,.15); }
@@ -338,14 +338,14 @@ body { background: var(--dark); color: var(--text); }
   margin-bottom: 1rem;
 }
 .mod-breath-guide__title {
-  font-size: .8rem; color: #6ee7b7; margin-bottom: .75rem;
+  font-size:1rem; color: #6ee7b7; margin-bottom: .75rem;
   display: flex; align-items: center; gap: .4rem;
 }
 .mod-breath-timer-btn {
   display: inline-flex; align-items: center; gap: .5rem;
   background: rgba(16,185,129,.15); border: 1px solid rgba(16,185,129,.3);
   color: #6ee7b7; border-radius: 8px; padding: .5rem 1rem;
-  font-size: .82rem; cursor: pointer; transition: all .2s;
+  font-size:1rem; cursor: pointer; transition: all .2s;
 }
 .mod-breath-timer-btn:hover { background: rgba(16,185,129,.25); }
 .mod-breath-display {
@@ -354,7 +354,7 @@ body { background: var(--dark); color: var(--text); }
   display: none;
 }
 .mod-breath-phase {
-  font-size: .8rem; color: rgba(110,231,183,.7); margin-top: .2rem;
+  font-size:1rem; color: rgba(110,231,183,.7); margin-top: .2rem;
 }
 
 /* ── Conclusion ── */
@@ -390,7 +390,7 @@ body { background: var(--dark); color: var(--text); }
 }
 .mod-pdf-download__eyebrow {
   position: relative;
-  font-size: .68rem; letter-spacing: .24em; text-transform: uppercase;
+  font-size:1.05rem; letter-spacing: .24em; text-transform: uppercase;
   color: rgba(201,168,76,.72); margin-bottom: .8rem;
 }
 .mod-pdf-download__title {
@@ -399,7 +399,7 @@ body { background: var(--dark); color: var(--text); }
 }
 .mod-pdf-download__text {
   position: relative;
-  font-size: .95rem; line-height: 1.8; color: rgba(232,224,208,.78); margin-bottom: 1rem;
+  font-size:1.15rem; line-height: 1.8; color: rgba(232,224,208,.78); margin-bottom: 1rem;
 }
 .mod-pdf-download__actions {
   position: relative;
@@ -428,10 +428,10 @@ body { background: var(--dark); color: var(--text); }
   font-size: 1rem; flex-shrink: 0;
 }
 .mod-pdf-download__label {
-  display: block; font-size: .92rem; font-weight: 600; color: #fff;
+  display: block; font-size:1.1rem; font-weight: 600; color: #fff;
 }
 .mod-pdf-download__sub {
-  display: block; font-size: .74rem; color: rgba(232,224,208,.58); margin-top: .12rem;
+  display: block; font-size:1.1rem; color: rgba(232,224,208,.58); margin-top: .12rem;
 }
 
 /* ── Navigation prev/next ── */
@@ -460,7 +460,7 @@ body { background: var(--dark); color: var(--text); }
 
 /* ─ Titre de section ─ */
 .mod-chapter-label {
-  font-size: .62rem; letter-spacing: .32em; text-transform: uppercase;
+  font-size:1.05rem; letter-spacing: .32em; text-transform: uppercase;
   color: rgba(201,168,76,.6); margin-bottom: 1.75rem; text-align: center;
 }
 
@@ -508,13 +508,13 @@ body { background: var(--dark); color: var(--text); }
   margin: 0 0 .55rem; line-height: 1.3;
 }
 .mod-path-card__text {
-  font-size: .82rem; color: rgba(232,224,208,.5);
+  font-size:1rem; color: rgba(232,224,208,.5);
   line-height: 1.75; flex: 1;
 }
 .mod-path-card__arrow {
   margin-top: 1.5rem;
   display: flex; align-items: center; gap: 6px;
-  font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  font-size:1.15rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
   color: rgba(201,168,76,.55);
   transition: color .2s, gap .2s;
 }
@@ -540,14 +540,14 @@ body { background: var(--dark); color: var(--text); }
   pointer-events: none;
 }
 .mod-amb-block__eyebrow {
-  font-size: .6rem; letter-spacing: .32em; text-transform: uppercase;
+  font-size:1.05rem; letter-spacing: .32em; text-transform: uppercase;
   color: rgba(201,168,76,.6); margin-bottom: 1.1rem;
   display: flex; align-items: center; justify-content: center; gap: .75rem;
 }
 .mod-amb-block__eyebrow::before,
 .mod-amb-block__eyebrow::after {
   content: '∿';
-  color: rgba(201,168,76,.25); font-size: .85rem;
+  color: rgba(201,168,76,.25); font-size:1.05rem;
 }
 .mod-amb-block__title {
   font-size: clamp(1.35rem, 3.5vw, 1.9rem);
@@ -556,7 +556,7 @@ body { background: var(--dark); color: var(--text); }
 }
 .mod-amb-block__title em { color: #c9a84c; font-style: normal; }
 .mod-amb-block__text {
-  font-size: .9rem; line-height: 1.85;
+  font-size:1.1rem; line-height: 1.85;
   color: rgba(232,224,208,.55);
   max-width: 540px; margin: 0 auto 2rem;
 }
@@ -569,7 +569,7 @@ body { background: var(--dark); color: var(--text); }
   display: inline-flex; align-items: center; gap: .65rem;
   background: linear-gradient(135deg, #c9a84c, #e8d17a);
   color: #0a0800 !important; text-decoration: none;
-  font-size: .85rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  font-size:1.05rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
   padding: 1rem 2.75rem; border-radius: 50px;
   border: none; cursor: pointer;
   transition: box-shadow .25s, transform .2s;
@@ -581,7 +581,7 @@ body { background: var(--dark); color: var(--text); }
 }
 .mod-amb-btn svg { flex-shrink: 0; }
 .mod-amb-skip {
-  font-size: .75rem; color: rgba(232,224,208,.25);
+  font-size:1.15rem; color: rgba(232,224,208,.25);
   font-style: italic; letter-spacing: .02em;
 }
 /* Si déjà ambassadeur */
@@ -590,7 +590,7 @@ body { background: var(--dark); color: var(--text); }
   background: rgba(201,168,76,.08);
   border: 1px solid rgba(201,168,76,.22);
   border-radius: 50px; padding: .75rem 1.75rem;
-  font-size: .85rem; color: #c9a84c; font-weight: 600;
+  font-size:1.05rem; color: #c9a84c; font-weight: 600;
   text-decoration: none;
   transition: background .2s;
 }
@@ -604,17 +604,17 @@ body { background: var(--dark); color: var(--text); }
   border-top: 1px solid rgba(201,168,76,.1);
 }
 .mod-final-verse__text {
-  font-size: .95rem; font-style: italic; color: rgba(232,224,208,.4);
+  font-size:1.15rem; font-style: italic; color: rgba(232,224,208,.4);
   line-height: 1.9; letter-spacing: .01em;
 }
 .mod-final-verse__attr {
-  margin-top: .75rem; font-size: .72rem; letter-spacing: .2em;
+  margin-top: .75rem; font-size:1.1rem; letter-spacing: .2em;
   text-transform: uppercase; color: rgba(201,168,76,.3);
 }
 .mod-nav-btn {
   display: flex; align-items: center; gap: .5rem;
   padding: .75rem 1.4rem; border-radius: 10px;
-  font-size: .85rem; font-weight: 600; text-decoration: none;
+  font-size:1.05rem; font-weight: 600; text-decoration: none;
   transition: all .2s;
   border: 1.5px solid rgba(255,255,255,.1); color: var(--muted);
   background: var(--surf);
@@ -639,13 +639,13 @@ body { background: var(--dark); color: var(--text); }
   font-size: 1.05rem; color: #fff; margin: 0 0 .4rem;
 }
 .mod-complete-wrap p {
-  font-size: .85rem; color: var(--muted); margin: 0 0 1.25rem;
+  font-size:1.05rem; color: var(--muted); margin: 0 0 1.25rem;
 }
 .mod-btn-complete {
   display: inline-flex; align-items: center; gap: .6rem;
   background: linear-gradient(135deg, #7c3aed, #4c1d95);
   color: #fff; padding: .9rem 2rem; border-radius: 12px;
-  font-size: .95rem; font-weight: 700; border: none; cursor: pointer;
+  font-size:1.15rem; font-weight: 700; border: none; cursor: pointer;
   transition: all .2s; text-decoration: none;
 }
 .mod-btn-complete:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,58,237,.4); }
@@ -661,7 +661,7 @@ body { background: var(--dark); color: var(--text); }
   max-width: 740px; margin: 0 auto;
 }
 .mod-flash__msg {
-  border-radius: 10px; padding: .8rem 1.2rem; font-size: .88rem; margin-bottom: .5rem;
+  border-radius: 10px; padding: .8rem 1.2rem; font-size:1.05rem; margin-bottom: .5rem;
 }
 .mod-flash__msg--success { background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25); color: #86efac; }
 .mod-flash__msg--info    { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25); color: #93c5fd; }
@@ -708,9 +708,9 @@ body { background: var(--dark); color: var(--text); }
   {{-- Badge Mode Créateur --}}
   @if(!empty($creatorMode))
   <div style="background:linear-gradient(90deg,rgba(201,168,76,.1),rgba(201,168,76,.05));border-bottom:1px solid rgba(201,168,76,.3);padding:.5rem 1.5rem;display:flex;align-items:center;gap:.6rem;">
-    <span style="font-size:.9rem;">🔑</span>
-    <span style="font-size:.72rem;font-weight:700;letter-spacing:.1em;color:rgba(201,168,76,.9);text-transform:uppercase;">{{ $isEn ? 'Creator Mode' : 'Mode Créateur' }}</span>
-    <span style="font-size:.72rem;color:rgba(255,255,255,.4);">{{ $isEn ? '— Preview access without progress lock' : '— Accès prévisualisé sans verrou de progression' }}</span>
+    <span style="font-size:1.1rem;">🔑</span>
+    <span style="font-size:1.1rem;font-weight:700;letter-spacing:.1em;color:rgba(201,168,76,.9);text-transform:uppercase;">{{ $isEn ? 'Creator Mode' : 'Mode Créateur' }}</span>
+    <span style="font-size:1.1rem;color:rgba(255,255,255,.4);">{{ $isEn ? '— Preview access without progress lock' : '— Accès prévisualisé sans verrou de progression' }}</span>
   </div>
   @endif
 
@@ -739,15 +739,16 @@ body { background: var(--dark); color: var(--text); }
   {{-- Corps du module --}}
   <div class="mod-body">
 
-    {{-- Lecteur audio guidé FR / EN --}}
-    @if($module->audio_path || $module->audio_path_en)
+    {{-- Lecteur audio guidé FR / EN — affiché toujours, lecteur actif quand fichier disponible --}}
+    @php
+      $hasAudioFr = !empty($module->audio_path);
+      $hasAudioEn = !empty($module->audio_path_en);
+      $hasAnyAudio = $hasAudioFr || $hasAudioEn;
+      $frBtnActive = !($isEn && $hasAudioEn);
+      $enBtnActive = $isEn && $hasAudioEn;
+    @endphp
     <div class="mod-audio">
-      {{-- Toggle langue : toujours affiché si au moins 1 audio existe --}}
-      @php
-        // FR actif si page FR, OU page EN mais sans audio EN (fallback FR)
-        $frBtnActive = !($isEn && $module->audio_path_en);
-        $enBtnActive = $isEn && $module->audio_path_en;
-      @endphp
+      {{-- Toggle langue : toujours affiché --}}
       <div style="display:flex;gap:8px;margin-bottom:10px;">
         <button id="btn-lang-fr" onclick="switchAudioLang('fr')"
           style="{{ $frBtnActive ? 'background:#c9a84c;color:#0f0f0f;border:none;' : 'background:rgba(201,168,76,.15);color:#c9a84c;border:1px solid #c9a84c;' }}padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">
@@ -759,42 +760,56 @@ body { background: var(--dark); color: var(--text); }
         </button>
       </div>
 
-      <div class="mod-audio__label">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/></svg>
-        <span id="audio-label-text">{{ $isEn ? 'Listen to the guided module' : 'Écouter le module guidé' }}</span>
-      </div>
-      <audio id="mod-audio-player" controls preload="metadata" style="width:100%">
-        <source id="mod-audio-source"
-          src="{{ asset('storage/' . ($isEn && $module->audio_path_en ? $module->audio_path_en : ($module->audio_path ?? $module->audio_path_en))) }}"
-          type="audio/mpeg">
-      </audio>
-      <div class="mod-audio__hint">{{ $isEn ? '🎧 Recommended: listen to the guided module first, then work through the activities.' : '🎧 Recommandé : écoutez d\'abord le module guidé, puis travaillez les activités.' }}</div>
+      @if($hasAnyAudio)
+        {{-- Lecteur actif --}}
+        <div class="mod-audio__label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/></svg>
+          <span id="audio-label-text">{{ $isEn ? 'Listen to the guided module' : 'Écouter le module guidé' }}</span>
+        </div>
+        <audio id="mod-audio-player" controls preload="metadata" style="width:100%">
+          <source id="mod-audio-source"
+            src="{{ asset('storage/' . ($isEn && $hasAudioEn ? $module->audio_path_en : ($module->audio_path ?? $module->audio_path_en))) }}"
+            type="audio/mpeg">
+        </audio>
+        <div class="mod-audio__hint">{{ $isEn ? '🎧 Recommended: listen to the guided module first, then work through the activities.' : '🎧 Recommandé : écoutez d\'abord le module guidé, puis travaillez les activités.' }}</div>
+      @else
+        {{-- Placeholder : audio en cours de préparation --}}
+        <div class="mod-audio__label" style="opacity:.6;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/></svg>
+          <span>{{ $isEn ? 'Guided audio — coming soon' : 'Audio guidé — bientôt disponible' }}</span>
+        </div>
+        <div style="width:100%;padding:14px 18px;border:1px dashed rgba(201,168,76,.35);border-radius:10px;color:rgba(201,168,76,.6);font-size:13px;text-align:center;letter-spacing:.03em;">
+          🎙 {{ $isEn ? 'The guided audio for this module is being prepared.' : 'L\'audio guidé de ce module est en cours de préparation.' }}
+        </div>
+        <div class="mod-audio__hint" style="opacity:.5;">{{ $isEn ? '🎧 The audio will be available shortly.' : '🎧 L\'audio sera disponible prochainement.' }}</div>
+      @endif
     </div>
 
     <script>
-    var _audioFr  = "{{ $module->audio_path ? asset('storage/'.$module->audio_path) : '' }}";
-    var _audioEn  = "{{ $module->audio_path_en ? asset('storage/'.$module->audio_path_en) : '' }}";
+    var _audioFr  = "{{ $hasAudioFr ? asset('storage/'.$module->audio_path) : '' }}";
+    var _audioEn  = "{{ $hasAudioEn ? asset('storage/'.$module->audio_path_en) : '' }}";
     function switchAudioLang(lang) {
       var player  = document.getElementById('mod-audio-player');
       var source  = document.getElementById('mod-audio-source');
       var label   = document.getElementById('audio-label-text');
       var btnFr   = document.getElementById('btn-lang-fr');
       var btnEn   = document.getElementById('btn-lang-en');
+      if (!player || !source) return;
       if (lang === 'fr' && _audioFr) {
         source.src = _audioFr;
-        label.textContent = '{{ $isEn ? 'Listen to the guided module' : 'Écouter le module guidé' }}';
-        if (btnFr) { btnFr.style.background='#c9a84c'; btnFr.style.color='#0f0f0f'; }
-        if (btnEn) { btnEn.style.background='rgba(201,168,76,.15)'; btnEn.style.color='#c9a84c'; }
+        if (label) label.textContent = '{{ $isEn ? 'Listen to the guided module' : 'Écouter le module guidé' }}';
+        if (btnFr) { btnFr.style.background='#c9a84c'; btnFr.style.color='#0f0f0f'; btnFr.style.border='none'; }
+        if (btnEn) { btnEn.style.background='rgba(201,168,76,.15)'; btnEn.style.color='#c9a84c'; btnEn.style.border='1px solid #c9a84c'; }
+        player.load();
       } else if (lang === 'en' && _audioEn) {
         source.src = _audioEn;
-        label.textContent = 'Listen to the guided module';
-        if (btnEn) { btnEn.style.background='#c9a84c'; btnEn.style.color='#0f0f0f'; }
-        if (btnFr) { btnFr.style.background='rgba(201,168,76,.15)'; btnFr.style.color='#c9a84c'; }
+        if (label) label.textContent = 'Listen to the guided module';
+        if (btnEn) { btnEn.style.background='#c9a84c'; btnEn.style.color='#0f0f0f'; btnEn.style.border='none'; }
+        if (btnFr) { btnFr.style.background='rgba(201,168,76,.15)'; btnFr.style.color='#c9a84c'; btnFr.style.border='1px solid #c9a84c'; }
+        player.load();
       }
-      player.load();
     }
     </script>
-    @endif
 
     {{-- Texte introductif narratif (FR par défaut, bascule EN via bouton) --}}
     @if($module->intro_text || $module->intro_text_en)

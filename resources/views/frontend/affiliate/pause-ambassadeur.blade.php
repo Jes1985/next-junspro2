@@ -85,6 +85,7 @@
   .psa-wrap .psa-product-card__rate { color: var(--ps-gold) !important; }
   .psa-wrap .psa-product-card--freelance .psa-product-card__rate { color: #a78bfa !important; }
   .psa-wrap .psa-product-card--formateur .psa-product-card__rate { color: #60a5fa !important; }
+  .psa-wrap .psa-product-card--pause-souffle .psa-product-card__rate { color: #fb923c !important; }
   .psa-wrap .psa-product-card--retraite  .psa-product-card__rate { color: var(--ps-green) !important; }
   .psa-wrap .psa-product-card__earn { color: rgba(228,220,208,0.7) !important; }
 
@@ -316,6 +317,7 @@
   .psa-product-card--parcours::before { background: linear-gradient(90deg, var(--ps-gold), var(--ps-gold-light)); }
   .psa-product-card--freelance::before { background: linear-gradient(90deg,#7c3aed, #a78bfa); }
   .psa-product-card--formateur::before { background: linear-gradient(90deg, #2563eb, #60a5fa); }
+  .psa-product-card--pause-souffle::before { background: linear-gradient(90deg, #fb923c, #fbbf24); }
   .psa-product-card--retraite::before { background: linear-gradient(90deg,#84cc16, var(--ps-gold)); }
   .psa-product-card__step {
     font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -324,6 +326,7 @@
   .psa-product-card--parcours .psa-product-card__step  { color: var(--ps-gold); }
   .psa-product-card--freelance .psa-product-card__step { color: #a78bfa; }
   .psa-product-card--formateur .psa-product-card__step { color: #60a5fa; }
+  .psa-product-card--pause-souffle .psa-product-card__step { color: #fb923c; }
   .psa-product-card--retraite .psa-product-card__step  { color: var(--ps-green); }
   .psa-product-card__name {
     font-size: 1.1rem; font-weight: 600; color: #fff;
@@ -343,6 +346,7 @@
   }
   .psa-product-card--freelance .psa-product-card__rate { color: #a78bfa; }
   .psa-product-card--formateur .psa-product-card__rate { color: #60a5fa; }
+  .psa-product-card--pause-souffle .psa-product-card__rate { color: #fb923c; }
   .psa-product-card--retraite  .psa-product-card__rate { color: var(--ps-green); }
   .psa-product-card__earn {
     display: inline-block;
@@ -660,11 +664,11 @@
           <div class="psa-metric__label">Cookie tracking</div>
         </div>
         <div class="psa-metric">
-          <div class="psa-metric__value">6</div>
+          <div class="psa-metric__value">7</div>
           <div class="psa-metric__label">Programmes PS</div>
         </div>
         <div class="psa-metric">
-          <div class="psa-metric__value">3 139€</div>
+          <div class="psa-metric__value">3 339€</div>
           <div class="psa-metric__label">Par filleul complet</div>
         </div>
       </div>
@@ -802,7 +806,7 @@
   <div style="background: var(--ps-bg);">
     <div class="psa-section" style="padding-bottom: 0;">
       <div class="psa-section__eyebrow">Commissions · Structure inversée</div>
-      <h2 class="psa-section__title">Les <strong>6 programmes</strong><br>et leurs commissions</h2>
+      <h2 class="psa-section__title">Les <strong>7 programmes</strong><br>et leurs commissions</h2>
       <p class="psa-section__subtitle">
         Plus le produit est digital et scalable, plus la commission est haute.
         Plus il implique des coûts physiques, plus elle est prudente.
@@ -848,14 +852,23 @@
           <div class="psa-product-card__rate" style="color: #a78bfa;">20%</div>
           <div class="psa-product-card__earn">Vous gagnez ≈ 698 €</div>
         </div>
-        {{-- Formateur --}}
+        {{-- Mentors --}}
         <div class="psa-product-card psa-product-card--formateur">
           <div class="psa-product-card__step">Transmission · Formation</div>
-          <div class="psa-product-card__name">Formation<br>Formateur PS</div>
-          <div class="psa-product-card__desc">Former et accompagner d’autres praticiens · Animer des groupes · Habilitation Formateur</div>
+          <div class="psa-product-card__name">Formation<br>des Mentors</div>
+          <div class="psa-product-card__desc">Former et accompagner d'autres praticiens · Animer des groupes · Habilitation Formateur</div>
           <div class="psa-product-card__price">3 500 €</div>
           <div class="psa-product-card__rate" style="color: #60a5fa;">15%</div>
           <div class="psa-product-card__earn">Vous gagnez ≈ 525 €</div>
+        </div>
+        {{-- Ma Pause Souffle dans votre univers --}}
+        <div class="psa-product-card" style="border-top: 3px solid #fb923c;">
+          <div class="psa-product-card__step" style="color: #fb923c;">Indépendant · Votre univers</div>
+          <div class="psa-product-card__name">Ma Pause Souffle<br><span style="font-size:0.8em;opacity:0.65;">dans votre univers</span></div>
+          <div class="psa-product-card__desc">Intégrer le 5-5-5 dans votre métier · Potier, prof de yoga, manager, éducateur · 5 modules en ligne</div>
+          <div class="psa-product-card__price">999 €</div>
+          <div class="psa-product-card__rate" style="color: #fb923c;">20%</div>
+          <div class="psa-product-card__earn">Vous gagnez ≈ 200 €</div>
         </div>
         {{-- Retraite --}}
         <div class="psa-product-card psa-product-card--retraite">
@@ -951,14 +964,25 @@
               </div>
               <div class="psa-journey__node">5</div>
               <div class="psa-journey__right">
-                <div class="psa-journey__product-name">Formation Formateur PS</div>
+                <div class="psa-journey__product-name">Formation des Mentors</div>
                 <div class="psa-journey__product-price">3 500 € · 15%</div>
+              </div>
+            </div>
+            <div class="psa-journey__step">
+              <div class="psa-journey__left">
+                <div class="psa-journey__earn" style="color: #fb923c;">200 €</div>
+                <div class="psa-journey__earn-label">commission ambassadeur</div>
+              </div>
+              <div class="psa-journey__node">+</div>
+              <div class="psa-journey__right">
+                <div class="psa-journey__product-name">Ma Pause Souffle dans votre univers</div>
+                <div class="psa-journey__product-price">999 € · 20% · option</div>
               </div>
             </div>
           </div>
           <div class="psa-journey__total">
             <div class="psa-journey__total-label">Total possible pour un seul filleul</div>
-            <div class="psa-journey__total-value">≈ <span>3 139 €</span></div>
+            <div class="psa-journey__total-value">≈ <span>3 339 €</span></div>
             <div class="psa-journey__total-sub">En recommandant l’écosystème complet (hors Retraite)</div>
           </div>
         </div>
@@ -990,7 +1014,7 @@
           <ul class="psa-tier__benefits">
             <li class="psa-tier__benefit">Lien ambassadeur personnel (format /ps/{code})</li>
             <li class="psa-tier__benefit">Cookie tracking 90 jours</li>
-            <li class="psa-tier__benefit">Commissions sur les 6 programmes Pause Souffle</li>
+            <li class="psa-tier__benefit">Commissions sur les 7 programmes Pause Souffle</li>
             <li class="psa-tier__benefit">Tableau de bord complet avec suivi en temps réel</li>
             <li class="psa-tier__benefit">Paiement mensuel par virement SEPA</li>
           </ul>

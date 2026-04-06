@@ -13,7 +13,7 @@
   --ps-surf:      #111111;
   --ps-surf2:     #181818;
   --ps-text:      #e8e0d0;
-  --ps-muted:     rgba(232,224,208,.48);
+  --ps-muted:     rgba(232,224,208,.78);
   --ps-border:    rgba(255,255,255,.07);
 }
 
@@ -29,7 +29,7 @@
   border-bottom:1px solid var(--ps-gold-dim);
 }
 .ps-hero__eyebrow {
-  font-size:.65rem; letter-spacing:.25em; text-transform:uppercase;
+  font-size:1.05rem; letter-spacing:.25em; text-transform:uppercase;
   color:var(--ps-gold); margin-bottom:1.5rem;
   display:flex; align-items:center; justify-content:center; gap:1rem;
 }
@@ -49,7 +49,7 @@
   display:flex; align-items:center; justify-content:center; gap:1.5rem;
   background:rgba(201,168,76,.06); border:1px solid rgba(201,168,76,.2);
   border-radius:60px; padding:.9rem 2.5rem; max-width:480px; margin:0 auto;
-  font-size:.82rem; color:var(--ps-text); flex-wrap:wrap; text-align:center;
+  font-size:1rem; color:var(--ps-text); flex-wrap:wrap; text-align:center;
 }
 .ps-hero__rule strong { color:var(--ps-gold); font-size:1rem; }
 
@@ -58,8 +58,8 @@
   max-width:760px; margin:4rem auto 2rem; padding:0 2rem; text-align:center;
 }
 .ps-section-head__eyebrow {
-  font-size:.62rem; letter-spacing:.22em; text-transform:uppercase;
-  color:rgba(201,168,76,.55); margin-bottom:.75rem;
+  font-size:1.05rem; letter-spacing:.22em; text-transform:uppercase;
+  color:rgba(201,168,76,.75); margin-bottom:.75rem;
 }
 .ps-section-head__title {
   font-size:clamp(1.3rem,3vw,1.8rem); font-weight:300; font-family:Georgia,serif;
@@ -67,7 +67,7 @@
 }
 .ps-section-head__title em { color:var(--ps-gold); font-style:italic; }
 .ps-section-head__sub {
-  font-size:.9rem; color:var(--ps-muted); line-height:1.85; max-width:520px; margin:0 auto;
+  font-size:1.1rem; color:var(--ps-muted); line-height:1.85; max-width:520px; margin:0 auto;
 }
 
 /* ════ PHILOSOPHIE ════ */
@@ -86,10 +86,10 @@
 }
 .ps-philo__icon { font-size:1.75rem; margin-bottom:.75rem; line-height:1; }
 .ps-philo__label {
-  font-size:.62rem; text-transform:uppercase; letter-spacing:.16em;
-  color:rgba(201,168,76,.55); margin-bottom:.5rem;
+  font-size:1.05rem; text-transform:uppercase; letter-spacing:.16em;
+  color:rgba(201,168,76,.8); margin-bottom:.5rem;
 }
-.ps-philo__text { font-size:.9rem; color:var(--ps-text); line-height:1.85; }
+.ps-philo__text { font-size:1.1rem; color:var(--ps-text); line-height:1.85; }
 .ps-philo__text strong { color:var(--ps-gold); }
 .ps-philo__axiom {
   font-size:1.1rem; font-family:Georgia,serif; font-style:italic;
@@ -120,9 +120,9 @@
 }
 .ps-card__meta {}
 .ps-card__name { font-size:1rem; font-weight:700; color:#fff; margin-bottom:.15rem; }
-.ps-card__prof { font-size:.72rem; color:var(--ps-muted); line-height:1.5; }
+.ps-card__prof { font-size:1.1rem; color:var(--ps-muted); line-height:1.5; }
 .ps-card__tag {
-  font-size:.68rem; font-weight:700; letter-spacing:.06em;
+  font-size:1.05rem; font-weight:700; letter-spacing:.06em;
   padding:.3rem .85rem; border-radius:20px; white-space:nowrap; flex-shrink:0;
 }
 
@@ -147,12 +147,68 @@
 .ps-card--educ     .ps-card__tag  { background:rgba(34,197,94,.1); color:#86efac; border:1px solid rgba(34,197,94,.25); }
 .ps-card--educ     { border-left:3px solid rgba(34,197,94,.35); }
 
+.ps-card--bebe     .ps-card__icon { background:rgba(244,114,182,.1); }
+.ps-card--bebe     .ps-card__tag  { background:rgba(244,114,182,.1); color:#f9a8d4; border:1px solid rgba(244,114,182,.25); }
+.ps-card--bebe     { border-left:3px solid rgba(244,114,182,.4); }
+
+.ps-card--proches  .ps-card__icon { background:rgba(251,146,60,.1); }
+.ps-card--proches  .ps-card__tag  { background:rgba(251,146,60,.1); color:#fdba74; border:1px solid rgba(251,146,60,.25); }
+.ps-card--proches  { border-left:3px solid rgba(251,146,60,.4); }
+
+/* ══ SECTION VISION ══ */
+.ps-vision {
+  position:relative; overflow:hidden;
+  background:linear-gradient(135deg,rgba(201,168,76,.07) 0%,rgba(0,0,0,0) 55%,rgba(201,168,76,.04) 100%);
+  border:1px solid rgba(201,168,76,.18); border-radius:20px;
+  padding:4.5rem 3.5rem; text-align:center;
+}
+@media(max-width:680px){ .ps-vision{ padding:3rem 1.5rem; } }
+.ps-vision__bg-text {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  font-size:16rem; font-weight:900; letter-spacing:.12em;
+  color:rgba(201,168,76,.04); pointer-events:none; white-space:nowrap; user-select:none;
+}
+.ps-vision__eyebrow {
+  font-size:.72rem; text-transform:uppercase; letter-spacing:.22em;
+  color:var(--ps-gold); margin-bottom:1.2rem; position:relative;
+}
+.ps-vision__title {
+  font-size:clamp(1.9rem,4vw,3rem); font-weight:800; color:#fff;
+  line-height:1.15; margin-bottom:1.5rem; position:relative;
+}
+.ps-vision__title em { color:var(--ps-gold); font-style:normal; }
+.ps-vision__lead {
+  max-width:560px; margin:0 auto 3rem;
+  font-size:1.05rem; color:var(--ps-muted); line-height:1.85; position:relative;
+}
+.ps-vision__lead em { color:rgba(255,255,255,.8); }
+.ps-vision__pillars {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;
+  text-align:left; margin-bottom:3rem; position:relative;
+}
+@media(max-width:680px){ .ps-vision__pillars{ grid-template-columns:1fr; } }
+.ps-vision__pillar {
+  background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.07);
+  border-radius:14px; padding:1.7rem; transition:border-color .2s;
+}
+.ps-vision__pillar:hover { border-color:rgba(201,168,76,.25); }
+.ps-vision__pillar-icon { font-size:2rem; margin-bottom:.75rem; }
+.ps-vision__pillar-title { font-size:1rem; font-weight:700; color:#fff; margin-bottom:.6rem; }
+.ps-vision__pillar p { font-size:.88rem; color:var(--ps-muted); line-height:1.8; margin:0; }
+.ps-vision__divider { width:40px; height:2px; background:rgba(201,168,76,.3); margin:0 auto 2.2rem; position:relative; }
+.ps-vision__quote {
+  max-width:550px; margin:0 auto; font-size:1.1rem; color:rgba(255,255,255,.7);
+  font-style:italic; line-height:1.75; border-top:1px solid rgba(201,168,76,.2);
+  padding-top:2rem; position:relative;
+}
+.ps-vision__quote-mark { font-size:1.5rem; color:var(--ps-gold); vertical-align:-.12em; margin:0 .15rem; }
+
 .ps-card__body {
   padding:0 1.75rem 1.75rem;
   border-top:1px solid rgba(255,255,255,.05);
 }
 .ps-card__subtitle {
-  font-size:.8rem; color:var(--ps-muted); font-style:italic;
+  font-size:1rem; color:var(--ps-muted); font-style:italic;
   padding:.8rem 0 .6rem; line-height:1.7;
 }
 .ps-card__moment {
@@ -160,23 +216,23 @@
   border-radius:12px; padding:1.1rem 1.35rem; margin:.5rem 0 .75rem;
 }
 .ps-card__moment-label {
-  font-size:.6rem; text-transform:uppercase; letter-spacing:.14em;
+  font-size:1.05rem; text-transform:uppercase; letter-spacing:.14em;
   color:var(--ps-muted); margin-bottom:.6rem;
 }
 .ps-card__moment-text {
-  font-size:.875rem; color:var(--ps-text); line-height:1.85; font-style:italic;
+  font-size:1.05rem; color:var(--ps-text); line-height:1.85; font-style:italic;
 }
 .ps-card__moment-text strong { color:#fff; font-style:normal; }
 .ps-card__examples {
   display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.75rem;
 }
 .ps-card__ex {
-  font-size:.72rem; color:var(--ps-muted);
+  font-size:1.1rem; color:var(--ps-muted);
   background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
   border-radius:6px; padding:.25rem .65rem;
 }
 .ps-card__result {
-  font-size:.82rem; color:var(--ps-text); line-height:1.8; margin-top:.75rem;
+  font-size:1rem; color:var(--ps-text); line-height:1.8; margin-top:.75rem;
   border-left:2px solid var(--ps-gold-dim); padding-left:1rem;
 }
 .ps-card__result em { color:var(--ps-gold); font-style:normal; }
@@ -194,7 +250,7 @@
   color:#fff; text-align:center; margin-bottom:.5rem; line-height:1.45;
 }
 .ps-proto__sub {
-  font-size:.85rem; color:var(--ps-muted); text-align:center;
+  font-size:1.05rem; color:var(--ps-muted); text-align:center;
   line-height:1.8; margin-bottom:2.5rem;
 }
 .ps-proto__steps { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.75rem; }
@@ -206,15 +262,15 @@
 .ps-proto__step-num {
   width:32px; height:32px; flex-shrink:0; border-radius:50%;
   background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.3);
-  font-size:.78rem; font-weight:800; color:var(--ps-gold);
+  font-size:1.15rem; font-weight:800; color:var(--ps-gold);
   display:flex; align-items:center; justify-content:center;
 }
 .ps-proto__step-body {}
 .ps-proto__step-q {
-  font-size:.88rem; font-weight:600; color:#fff; margin-bottom:.35rem; line-height:1.45;
+  font-size:1.05rem; font-weight:600; color:#fff; margin-bottom:.35rem; line-height:1.45;
 }
 .ps-proto__step-hint {
-  font-size:.8rem; color:var(--ps-muted); line-height:1.75; font-style:italic;
+  font-size:1rem; color:var(--ps-muted); line-height:1.75; font-style:italic;
 }
 .ps-proto__step-hint em { color:rgba(201,168,76,.8); font-style:normal; }
 .ps-proto__example {
@@ -222,14 +278,14 @@
   border-radius:14px; padding:1.5rem;
 }
 .ps-proto__ex-label {
-  font-size:.62rem; text-transform:uppercase; letter-spacing:.16em;
+  font-size:1.05rem; text-transform:uppercase; letter-spacing:.16em;
   color:rgba(201,168,76,.55); margin-bottom:1rem;
 }
 .ps-proto__ex-item {
   display:flex; gap:.75rem; align-items:baseline; margin-bottom:.6rem;
-  font-size:.83rem; color:var(--ps-text); line-height:1.75;
+  font-size:1rem; color:var(--ps-text); line-height:1.75;
 }
-.ps-proto__ex-item::before { content:'✦'; color:var(--ps-gold); flex-shrink:0; font-size:.65rem; }
+.ps-proto__ex-item::before { content:'✦'; color:var(--ps-gold); flex-shrink:0; font-size:1.05rem; }
 .ps-proto__ex-item strong { color:#fff; }
 
 /* ════ BREATH REMINDER ════ */
@@ -243,10 +299,10 @@
 }
 .ps-breath__step:last-child { border-right:none; }
 .ps-breath__step strong { display:block; font-size:1.8rem; color:var(--ps-gold); font-weight:700; line-height:1; margin-bottom:.4rem; }
-.ps-breath__step span { font-size:.65rem; color:var(--ps-muted); text-transform:uppercase; letter-spacing:.08em; }
+.ps-breath__step span { font-size:1.05rem; color:var(--ps-muted); text-transform:uppercase; letter-spacing:.08em; }
 .ps-breath__unchanged {
   max-width:760px; margin:.5rem auto 0; padding:0 2rem;
-  text-align:center; font-size:.78rem; color:var(--ps-muted); font-style:italic;
+  text-align:center; font-size:1.15rem; color:var(--ps-muted); font-style:italic;
 }
 
 /* ════ FINALE ════ */
@@ -264,7 +320,7 @@
 }
 .ps-finale__title em { color:var(--ps-gold); font-style:italic; }
 .ps-finale__body {
-  font-size:.92rem; color:var(--ps-muted); max-width:520px; margin:0 auto 2.5rem;
+  font-size:1.1rem; color:var(--ps-muted); max-width:520px; margin:0 auto 2.5rem;
   line-height:1.95;
 }
 .ps-finale__quote {
@@ -278,15 +334,237 @@
 /* ════ BACK ════ */
 .ps-back { max-width:760px; margin:1.5rem auto; padding:0 2rem; }
 .ps-back a {
-  font-size:.82rem; color:var(--ps-muted); text-decoration:none;
+  font-size:1rem; color:var(--ps-muted); text-decoration:none;
   display:inline-flex; align-items:center; gap:.4rem; transition:color .2s;
 }
 .ps-back a:hover { color:var(--ps-gold); }
+
+/* ════ MODULE NAV ════ */
+.ps-module-nav {
+  max-width:760px; margin:2.5rem auto 0; padding:0 2rem;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:.6rem;
+}
+.ps-module-nav__card {
+  background:var(--ps-surf); border:1px solid var(--ps-border);
+  border-radius:14px; padding:.85rem 1rem; display:flex; flex-direction:column; gap:.35rem;
+  transition:border-color .2s;
+}
+.ps-module-nav__card--available { border-left:3px solid rgba(201,168,76,.5); }
+.ps-module-nav__card--coming    { border-left:3px solid rgba(255,255,255,.08); opacity:.65; }
+.ps-module-nav__num { font-size:.85rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ps-muted); }
+.ps-module-nav__title { font-size:1rem; font-weight:600; color:#fff; line-height:1.3; }
+.ps-module-nav__badge {
+  display:inline-block; font-size:.8rem; padding:.15rem .5rem;
+  border-radius:20px; margin-top:.1rem; align-self:flex-start;
+}
+.ps-module-nav__badge--ok     { background:rgba(201,168,76,.12); color:rgba(201,168,76,.9); border:1px solid rgba(201,168,76,.2); }
+.ps-module-nav__badge--soon   { background:rgba(255,255,255,.04); color:rgba(232,224,208,.45); border:1px solid rgba(255,255,255,.07); }
+
+/* ════ MODULE HEADING ════ */
+.ps-module-heading {
+  max-width:760px; margin:4rem auto 2rem; padding:0 2rem;
+  display:flex; align-items:center; gap:1.1rem;
+}
+.ps-module-heading__num {
+  width:40px; height:40px; border-radius:50%; flex-shrink:0;
+  background:rgba(201,168,76,.08); border:1.5px solid rgba(201,168,76,.35);
+  font-size:1.05rem; font-weight:800; color:var(--ps-gold);
+  display:flex; align-items:center; justify-content:center;
+}
+.ps-module-heading__body {}
+.ps-module-heading__eyebrow { font-size:.9rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(201,168,76,.7); margin-bottom:.2rem; }
+.ps-module-heading__title { font-size:1.25rem; font-weight:600; color:#fff; }
+
+/* ════ AUDIO BLOCK ════ */
+.ps-audio-block {
+  max-width:760px; margin:2rem auto 0; padding:0 2rem;
+}
+.ps-audio-inner {
+  display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+  background:rgba(201,168,76,.05); border:1px solid rgba(201,168,76,.18);
+  border-radius:14px; padding:1.1rem 1.4rem;
+}
+.ps-audio-icon {
+  width:38px; height:38px; flex-shrink:0; border-radius:10px;
+  background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.25);
+  display:flex; align-items:center; justify-content:center; color:var(--ps-gold);
+}
+.ps-audio-label { font-size:1rem; color:var(--ps-text); flex:1; min-width:140px; font-weight:600; }
+.ps-audio-label span { display:block; font-size:.9rem; color:var(--ps-muted); font-weight:400; margin-top:.1rem; }
+.ps-audio-coming {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.9rem; color:rgba(232,224,208,.5); background:rgba(255,255,255,.04);
+  border:1px dashed rgba(255,255,255,.12); border-radius:8px; padding:.4rem .9rem;
+  font-style:italic;
+}
+
+/* ════ MODULE COMING SOON ════ */
+.ps-module-coming {
+  max-width:760px; margin:4rem auto 0; padding:0 2rem;
+}
+.ps-module-coming__inner {
+  background:rgba(255,255,255,.02); border:1px dashed rgba(255,255,255,.1);
+  border-radius:18px; padding:2.5rem 2rem; text-align:center;
+}
+.ps-module-coming__num { font-size:.9rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(232,224,208,.4); margin-bottom:.75rem; }
+.ps-module-coming__icon { font-size:2rem; margin-bottom:.75rem; opacity:.5; }
+.ps-module-coming__title { font-size:1.2rem; font-weight:600; color:rgba(255,255,255,.6); margin-bottom:.5rem; }
+.ps-module-coming__desc { font-size:1rem; color:rgba(232,224,208,.45); line-height:1.75; max-width:440px; margin:0 auto .9rem; }
+.ps-module-coming__tag {
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-size:.9rem; color:rgba(232,224,208,.4); background:rgba(255,255,255,.04);
+  border:1px dashed rgba(255,255,255,.1); border-radius:20px; padding:.3rem .9rem;
+}
+
+/* ════ INFO BAR PREMIUM ════ */
+.ps-info-bar {
+  background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.04));
+  border-bottom:1px solid rgba(201,168,76,.2);
+  padding:.8rem 2rem;
+}
+.ps-info-bar__inner {
+  max-width:760px; margin:0 auto;
+  display:flex; align-items:center; gap:.7rem; flex-wrap:wrap; justify-content:center;
+}
+.ps-info-bar__badge {
+  font-size:.85rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:#000; background:linear-gradient(135deg,#c9a84c,#a07820);
+  padding:.22rem .7rem; border-radius:20px;
+}
+.ps-info-bar__sep { color:rgba(255,255,255,.18); }
+.ps-info-bar__item { font-size:.95rem; color:rgba(232,224,208,.8); }
+.ps-info-bar__price { font-size:1.1rem; font-weight:800; color:var(--ps-gold); letter-spacing:.02em; }
+.ps-info-bar__acc { font-size:.82rem; color:rgba(232,224,208,.55); letter-spacing:.08em; text-transform:uppercase; }
+
+/* ════ ACTIVITÉS MODULE ════ */
+.ps-act-section {
+  max-width:760px; margin:2.5rem auto 0; padding:0 2rem;
+}
+.ps-act-section__head {
+  display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem;
+  color:var(--ps-muted); font-size:.85rem; letter-spacing:.16em; text-transform:uppercase;
+}
+.ps-act-section__head::before, .ps-act-section__head::after {
+  content:''; flex:1; height:1px; background:rgba(255,255,255,.07);
+}
+.ps-activities { display:flex; flex-direction:column; gap:.9rem; }
+.ps-act {
+  background:var(--ps-surf); border:1px solid var(--ps-border);
+  border-radius:14px; overflow:hidden; transition:border-color .2s;
+}
+.ps-act.is-done { border-color:rgba(34,197,94,.3); background:rgba(34,197,94,.04); }
+.ps-act__header {
+  display:flex; align-items:flex-start; gap:1rem; padding:1.15rem 1.4rem;
+  cursor:pointer; user-select:none;
+}
+.ps-act__icon {
+  flex-shrink:0; width:42px; height:42px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center; font-size:1.2rem;
+  background:rgba(255,255,255,.05);
+}
+.ps-act__icon--lecture   { background:rgba(59,130,246,.12); }
+.ps-act__icon--pratique  { background:rgba(16,185,129,.12); }
+.ps-act__icon--ecriture  { background:rgba(245,158,11,.10); }
+.ps-act__icon--exercice  { background:rgba(139,92,246,.12); }
+.ps-act__icon--reflexion { background:rgba(236,72,153,.10); }
+.ps-act__meta { flex:1; }
+.ps-act__title { font-size:1rem; font-weight:600; color:#fff; margin:0 0 .2rem; line-height:1.3; }
+.ps-act__tags { display:flex; align-items:center; gap:.45rem; flex-wrap:wrap; }
+.ps-act__tag {
+  font-size:.78rem; padding:.12rem .48rem; border-radius:20px;
+  background:rgba(255,255,255,.06); color:var(--ps-muted); text-transform:capitalize;
+}
+.ps-act__expand { flex-shrink:0; color:var(--ps-muted); font-size:.85rem; transition:transform .25s; margin-top:.3rem; }
+.ps-act.is-expanded .ps-act__expand { transform:rotate(180deg); }
+.ps-act__body {
+  display:none; padding:0 1.4rem 1.4rem;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+.ps-act.is-expanded .ps-act__body { display:block; }
+.ps-act__desc {
+  font-size:.95rem; color:rgba(232,224,208,.75); line-height:1.8;
+  margin:1rem 0 .75rem;
+}
+.ps-act__rich {
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09);
+  border-radius:12px; padding:1.25rem 1.5rem; margin:.5rem 0 .9rem;
+  font-size:.95rem; line-height:1.9; color:#e8e0d0;
+}
+.ps-act__rich h4 { font-size:1rem; font-weight:700; color:#fff; margin:1.25rem 0 .5rem; }
+.ps-act__rich h4:first-child { margin-top:0; }
+.ps-act__rich p { margin:0 0 .9rem; }
+.ps-act__rich p:last-child { margin-bottom:0; }
+.ps-act__rich strong { color:#fff; }
+.ps-act__rich em { color:var(--ps-gold); font-style:italic; }
+.ps-act__rich blockquote {
+  border-left:3px solid var(--ps-gold); padding:.75rem 1.1rem;
+  margin:1rem 0; background:rgba(201,168,76,.08); border-radius:0 8px 8px 0;
+  font-style:italic; color:#f0e6c8; font-size:.93rem; line-height:1.85;
+}
+.ps-act__rich ul { padding-left:1.2rem; margin:.7rem 0; }
+.ps-act__rich ul li { margin-bottom:.55rem; color:#e8e0d0; line-height:1.8; }
+.ps-act__questions { display:flex; flex-direction:column; gap:.65rem; margin:.75rem 0; }
+.ps-act__q {
+  display:flex; gap:.75rem; align-items:baseline;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);
+  border-radius:10px; padding:.85rem 1.1rem;
+  font-size:.93rem; color:var(--ps-text); line-height:1.75;
+}
+.ps-act__q-num { color:var(--ps-gold); font-weight:700; flex-shrink:0; }
+.ps-act__timer-wrap { margin:.5rem 0 1rem; }
+.ps-act__timer-btn {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:rgba(16,185,129,.1); border:1px solid rgba(16,185,129,.3);
+  color:#6ee7b7; border-radius:8px; padding:.48rem .95rem;
+  font-size:.9rem; cursor:pointer; transition:all .2s; font-family:inherit;
+}
+.ps-act__timer-btn:hover { background:rgba(16,185,129,.2); }
+.ps-act__timer-display {
+  font-size:2.2rem; font-weight:700; color:#6ee7b7; letter-spacing:.05em;
+  text-align:center; margin:.6rem 0; display:none;
+}
+.ps-act__timer-phase { font-size:.88rem; color:rgba(110,231,183,.65); text-align:center; min-height:1.2rem; }
+.ps-act__journal-label {
+  font-size:.88rem; color:var(--ps-gold); margin-bottom:.4rem;
+  display:flex; align-items:center; gap:.4rem;
+}
+.ps-act__journal-area {
+  width:100%; min-height:100px;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09);
+  border-radius:10px; color:var(--ps-text); font-family:inherit;
+  font-size:.93rem; line-height:1.65; padding:.82rem .95rem; resize:vertical; outline:none;
+  transition:border-color .2s; box-sizing:border-box;
+}
+.ps-act__journal-area:focus { border-color:rgba(201,168,76,.4); }
+.ps-act__journal-area::placeholder { color:rgba(232,224,208,.2); }
+.ps-act__validate {
+  margin-top:.8rem;
+  display:inline-flex; align-items:center; gap:.45rem;
+  background:linear-gradient(135deg,#1a4a1a,#14391e);
+  border:1.5px solid rgba(34,197,94,.4); color:#4ade80;
+  padding:.5rem 1.05rem; border-radius:10px;
+  font-size:.9rem; font-weight:600; cursor:pointer; transition:all .2s; font-family:inherit;
+}
+.ps-act__validate:hover { border-color:rgba(34,197,94,.7); background:rgba(34,197,94,.15); }
 </style>
 @endsection
 
 @section('content')
 <div class="ps-page">
+
+{{-- ══════ INFO BAR ══════ --}}
+<div class="ps-info-bar">
+  <div class="ps-info-bar__inner">
+    <span class="ps-info-bar__badge">Formation indépendante</span>
+    <span class="ps-info-bar__sep">·</span>
+    <span class="ps-info-bar__item">1 module transformateur</span>
+    <span class="ps-info-bar__sep">·</span>
+    <span class="ps-info-bar__item">🎧 Audios guidés · Exercices pratiques</span>
+    <span class="ps-info-bar__sep">·</span>
+    <span class="ps-info-bar__price">999 €</span>
+    <span class="ps-info-bar__acc">accès à vie</span>
+  </div>
+</div>
 
 {{-- ══════ HERO ══════ --}}
 <div class="ps-hero">
@@ -307,6 +585,61 @@
     <strong>×</strong>
     <span>Expirer</span>
     <strong>= Universel</strong>
+  </div>
+</div>
+
+{{-- ══════ MODULE NAV ══════ --}}
+<nav class="ps-module-nav" aria-label="Modules de la formation">
+  <div class="ps-module-nav__card ps-module-nav__card--available">
+    <div class="ps-module-nav__num">Module 01</div>
+    <div class="ps-module-nav__title">Le Principe Fondateur</div>
+    <span class="ps-module-nav__badge ps-module-nav__badge--ok">✓ Disponible</span>
+  </div>
+  <div class="ps-module-nav__card ps-module-nav__card--available">
+    <div class="ps-module-nav__num">Module 02</div>
+    <div class="ps-module-nav__title">Les 7 Familles</div>
+    <span class="ps-module-nav__badge ps-module-nav__badge--ok">✓ Disponible</span>
+  </div>
+  <div class="ps-module-nav__card ps-module-nav__card--available">
+    <div class="ps-module-nav__num">Module 03</div>
+    <div class="ps-module-nav__title">Votre Protocole</div>
+    <span class="ps-module-nav__badge ps-module-nav__badge--ok">✓ Disponible</span>
+  </div>
+  <div class="ps-module-nav__card ps-module-nav__card--coming">
+    <div class="ps-module-nav__num">Module 04</div>
+    <div class="ps-module-nav__title">Audios Guidés</div>
+    <span class="ps-module-nav__badge ps-module-nav__badge--soon">🎧 En création</span>
+  </div>
+  <div class="ps-module-nav__card ps-module-nav__card--coming">
+    <div class="ps-module-nav__num">Module 05</div>
+    <div class="ps-module-nav__title">Exercices Pratiques</div>
+    <span class="ps-module-nav__badge ps-module-nav__badge--soon">⚡ En création</span>
+  </div>
+</nav>
+
+{{-- ══════ MODULE 01 ══════ --}}
+<div class="ps-module-heading">
+  <div class="ps-module-heading__num">01</div>
+  <div class="ps-module-heading__body">
+    <div class="ps-module-heading__eyebrow">Module 01 · Fondation</div>
+    <div class="ps-module-heading__title">Le Principe Fondateur — Ce qui ne change jamais</div>
+  </div>
+</div>
+<div class="ps-audio-block">
+  <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
+    <div style="display:flex;gap:8px;margin-bottom:10px;">
+      <button id="btn-lang-fr-01" onclick="psSwitchLang('01','fr')" style="background:#c9a84c;color:#0f0f0f;border:none;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇫🇷 Français</button>
+      <button id="btn-lang-en-01" onclick="psSwitchLang('01','en')" style="background:rgba(201,168,76,.15);color:#c9a84c;border:1px solid #c9a84c;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇬🇧 English</button>
+    </div>
+    <div class="ps-audio-label">▶ Écouter le module guidé
+      <span>Audio guidé · 5-5-5 · Introduction au principe fondateur</span>
+    </div>
+    <audio id="audio-player-01" controls preload="none"
+      style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+      src="{{ asset('storage/formation/audio/mps-01-fr.mp3') }}">
+      Votre navigateur ne supporte pas la lecture audio.
+    </audio>
+    <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
 </div>
 
@@ -338,9 +671,186 @@
   </div>
 </div>
 
+{{-- ══════ ACTIVITÉS MODULE 01 ══════ --}}
+<div class="ps-act-section">
+  <div class="ps-act-section__head">Vos activités &middot; Module 01</div>
+  <div class="ps-activities">
+
+    {{-- Activité 01 — Lecture --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--lecture">📖</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">La science des 5 secondes</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Lecture</span>
+            <span class="ps-act__tag">~8 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <div class="ps-act__rich">
+          <h4>Pourquoi 5 — et pas 4, ni 6 ?</h4>
+          <p>Ce n'est pas un chiffre choisi par intuition. <strong>Cinq secondes</strong> correspond à la zone de résonance du système cardio-respiratoire adulte. En dessous de 4 secondes, le cycle est trop court pour atteindre les récepteurs du <em>nerf vague</em> — le câble neurologique qui relie le cerveau au cœur, aux poumons, à l'intestin. Au-delà de 6, la majorité des gens force — et la force crée de la résistance, non du calme.</p>
+          <blockquote>"5 secondes, c'est là où la variabilité cardiaque atteint sa cohérence maximale. Là où le cortex préfrontal reprend le contrôle sur l'amygdale. En termes simples : là où vous passez de réactif à lucide."</blockquote>
+          <h4>Le nerf vague — votre interrupteur</h4>
+          <p>Le nerf vague est le pivot du système nerveux autonome. Stimulé correctement — par une expiration longue, par une rétention — il active le système parasympathique. Résultat : fréquence cardiaque ralentie, cortisol diminué, champ attentionnel élargi. Vous n'êtes plus en réaction. Vous êtes en <em>présence</em>.</p>
+          <h4>Ce que ça signifie concrètement</h4>
+          <ul>
+            <li>Un cycle 5-5-5 (15 secondes) produit un effet mesurable sur la variabilité cardiaque immédiatement.</li>
+            <li>Trois cycles (45 secondes) induisent une cohérence cardiaque suffisante pour changer la qualité décisionnelle.</li>
+            <li>Pratiqué régulièrement au même moment, l'effet devient conditionné — le simple geste d'amorçe suffit à déclencher l'état.</li>
+          </ul>
+        </div>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Marquer comme lu</button>
+      </div>
+    </div>
+
+    {{-- Activité 02 — Exercice sensoriel --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--exercice">🔬</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Le miroir du souffle</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Exercice sensoriel</span>
+            <span class="ps-act__tag">2 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">Avant de modifier quoi que ce soit, vous allez simplement observer votre souffle naturel — sans le corriger, sans juger ce que vous ressentez. Le miroir, avant la transformation.</p>
+        <div class="ps-act__rich">
+          <h4>Consigne</h4>
+          <p>Installez-vous. Fermez doucement les yeux. Posez une main sur la poitrine, une autre sur le ventre. Respirez comme vous respirez normalement — ne forcez rien. Pendant 2 minutes, observez en silence :</p>
+          <ul>
+            <li><strong>L'amplitude :</strong> votre souffle est-il court, moyen, profond ?</li>
+            <li><strong>Le rythme :</strong> régulier ou saccadé ?</li>
+            <li><strong>La tension :</strong> où sent-on de la résistance ? Gorge, poitrine, ventre ?</li>
+            <li><strong>La température :</strong> l'air est-il frais à l'entrée, chaud à la sortie ?</li>
+          </ul>
+        </div>
+        <div class="ps-act__journal-label">📝 Vos observations</div>
+        <textarea class="ps-act__journal-area" placeholder="Mon souffle naturel est... J'ai remarqué... La tension était dans..."></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Exercice terminé</button>
+      </div>
+    </div>
+
+    {{-- Activité 03 — Réflexion --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--reflexion">💭</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">20 000 respirations</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Réflexion</span>
+            <span class="ps-act__tag">5 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">Vous respirez en moyenne 20 000 fois par jour. Ces questions ne cherchent pas à vous faire culpabiliser — elles vous invitent à voir ce qui existe déjà, et ce qui pourrait être autrement.</p>
+        <div class="ps-act__questions">
+          <div class="ps-act__q"><span class="ps-act__q-num">1</span> Dans quel état respirez-vous habituellement pendant votre pratique professionnelle ?</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">2</span> Quel moment de votre journée est le plus chaôtique ? Le plus drainant ?</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">3</span> Avez-vous déjà ressenti une différence notable dans votre efficacité selon votre état intérieur ce jour-là ?</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">4</span> Si vous deviez nommer votre état « par défaut » dans les moments difficiles — quel serait ce mot ?</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">5</span> Y a-t-il un geste, un rituel, un endroit qui vous recentre naturellement ? Comment se manifeste-t-il ?</div>
+        </div>
+        <div class="ps-act__journal-label">📝 Votre réflexion</div>
+        <textarea class="ps-act__journal-area" placeholder="Ce qui me revient après ces questions..."></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Réflexion complétée</button>
+      </div>
+    </div>
+
+    {{-- Activité 04 — Pratique guidée --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--pratique">⏱️</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Premier cycle 5-5-5</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Pratique guidée</span>
+            <span class="ps-act__tag">45 sec · 3 cycles</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">Votre première pratique consciente du 5-5-5. Pas de performance attendue. Juste ressentir — sans chercher à comprendre.</p>
+        <div class="ps-act__rich">
+          <h4>Consigne</h4>
+          <p>Installez-vous. Dos droit, pieds au sol. Fermez les yeux si possible. Quand vous êtes prêt, cliquez sur Démarrer.</p>
+          <ul>
+            <li><strong>Inspirer</strong> — comptez mentalement jusqu'à 5</li>
+            <li><strong>Retenir</strong> — comptez jusqu'à 5 (sans bloquer, juste suspendre)</li>
+            <li><strong>Expirer</strong> — comptez jusqu'à 5, lentement, jusqu'au bout</li>
+          </ul>
+          <p>Répétez 3 fois. Puis rouvrez les yeux doucement.</p>
+        </div>
+        <div class="ps-act__timer-wrap">
+          <button class="ps-act__timer-btn" onclick="psStartTimer(this,5,5,5,3)">▶ Démarrer les 3 cycles guidés</button>
+          <div class="ps-act__timer-display">5</div>
+          <div class="ps-act__timer-phase"></div>
+        </div>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Pratique effectuée</button>
+      </div>
+    </div>
+
+    {{-- Activité 05 — Journal --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--ecriture">✍️</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Avant &amp; Après</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Journal</span>
+            <span class="ps-act__tag">3 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">En deux phrases, nommez ce que vous avez ressenti avant votre premier cycle, et ce que vous avez ressenti après. La trace qui rend le changement visible.</p>
+        <div class="ps-act__journal-label">📝 Avant le cycle</div>
+        <textarea class="ps-act__journal-area" placeholder="Avant, je me sentais..." style="margin-bottom:.75rem;min-height:65px;"></textarea>
+        <div class="ps-act__journal-label">📝 Après le cycle</div>
+        <textarea class="ps-act__journal-area" placeholder="Après, j'ai remarqué..." style="min-height:65px;"></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Journal complété</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{{-- ══════ MODULE 02 ══════ --}}
+<div class="ps-module-heading" style="margin-top:5rem;">
+  <div class="ps-module-heading__num">02</div>
+  <div class="ps-module-heading__body">
+    <div class="ps-module-heading__eyebrow">Module 02 · Reconnaissance</div>
+    <div class="ps-module-heading__title">Les 7 Familles — Trouvez votre famille, reconnaissez-vous</div>
+  </div>
+</div>
+<div class="ps-audio-block">
+  <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
+    <div style="display:flex;gap:8px;margin-bottom:10px;">
+      <button id="btn-lang-fr-02" onclick="psSwitchLang('02','fr')" style="background:#c9a84c;color:#0f0f0f;border:none;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇫🇷 Français</button>
+      <button id="btn-lang-en-02" onclick="psSwitchLang('02','en')" style="background:rgba(201,168,76,.15);color:#c9a84c;border:1px solid #c9a84c;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇬🇧 English</button>
+    </div>
+    <div class="ps-audio-label">▶ Écouter le module guidé
+      <span>Audio de 22 min — immersion dans votre famille de pratique</span>
+    </div>
+    <div style="width:100%;padding:14px 18px;border:1px dashed rgba(201,168,76,.35);border-radius:10px;color:rgba(201,168,76,.6);font-size:13px;text-align:center;margin:.5rem 0;">🎙 L'audio guidé de ce module est en cours d'enregistrement.</div>
+    <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
+  </div>
+</div>
+
 {{-- ══════ 5 FAMILLES ══════ --}}
 <div class="ps-section-head" style="margin-top:4.5rem;">
-  <div class="ps-section-head__eyebrow">5 familles · Des dizaines de pratiques</div>
+  <div class="ps-section-head__eyebrow">7 familles · Des dizaines de pratiques</div>
   <h2 class="ps-section-head__title">Trouvez <em>votre famille.</em> Reconnaissez-vous.</h2>
   <p class="ps-section-head__sub">Chaque carte décrit le moment exact d'activation du 5-5-5 — pas une nouvelle méthode. Une greffe sur la vôtre.</p>
 </div>
@@ -408,33 +918,35 @@
     </div>
   </div>
 
-  {{-- 3 — ENSEIGNANTS DU CORPS --}}
+  {{-- 3 — ENSEIGNANTS --}}
   <div class="ps-card ps-card--corps">
     <div class="ps-card__head">
       <div class="ps-card__left">
-        <div class="ps-card__icon">🧘</div>
+        <div class="ps-card__icon">🏫</div>
         <div class="ps-card__meta">
-          <div class="ps-card__name">Les Enseignants du Corps</div>
-          <div class="ps-card__prof">Prof de yoga · Prof de pilates · Coach sportif · Entraîneur · Prof de danse · Arts martiaux</div>
+          <div class="ps-card__name">Les Enseignants</div>
+          <div class="ps-card__prof">Maternelle · Primaire · Collège · Lycée · Classes prépa · Université · Grandes Écoles</div>
         </div>
       </div>
-      <span class="ps-card__tag">Mouvement & Ancrage</span>
+      <span class="ps-card__tag">Savoir & Transmission</span>
     </div>
     <div class="ps-card__body">
-      <div class="ps-card__subtitle">Le mouvement commence dans le souffle. Pas dans le muscle.</div>
+      <div class="ps-card__subtitle">Ce que vous enseignez, ils l'emportent pour toujours. Commencez par leur apprendre à être là.</div>
       <div class="ps-card__moment">
         <div class="ps-card__moment-label">Le moment d'activation</div>
         <div class="ps-card__moment-text">
-          <strong>Les 5 premières minutes de chaque cours.</strong> Collectif. Debout ou assis. Les yeux fermés. Vous guidez les 5 cycles à voix posée. La question posée avant de commencer : <em style="color:var(--ps-gold);">"Qu'est-ce que votre corps veut vous dire aujourd'hui ? Pas ce qu'on attend de lui."</em>
+          <strong>Le rituel d'entrée.</strong> Chaque matin, avant la première leçon — ou avant chaque cours. Debout ou assis. Vous guidez 3 cycles à voix posée. Puis : <em style="color:var(--ps-gold);">"Ouvrez les yeux. Vous êtes là. On commence."</em> 30 secondes d'ancrage — universellement applicable de la maternelle aux grandes écoles.
         </div>
       </div>
       <div class="ps-card__examples">
-        <span class="ps-card__ex">🧘 ouverture de cours collectif</span>
-        <span class="ps-card__ex">🏋️ avant un effort maximal</span>
-        <span class="ps-card__ex">⚔️ avant un kata, une compétition</span>
-        <span class="ps-card__ex">💃 avant d'entrer en scène</span>
+        <span class="ps-card__ex">🏫 rituel d'entrée en classe le matin</span>
+        <span class="ps-card__ex">📝 avant une évaluation ou un examen</span>
+        <span class="ps-card__ex">😤 gestion d'une tension en classe</span>
+        <span class="ps-card__ex">🎤 avant un exposé oral ou une soutenance</span>
+        <span class="ps-card__ex">🎓 avant un oral de grandes écoles ou de bac</span>
+        <span class="ps-card__ex">📚 en ouverture de TP ou de cours magistral</span>
       </div>
-      <div class="ps-card__result">Ce que ça change : les élèves entrent dans le cours — pas juste dans la salle. <em>Votre heure devient leur respiration</em>. Ils reviennent pour ça.</div>
+      <div class="ps-card__result">Ce que ça change : vous installez un ancrage neurologique que <em>ces élèves garderont toute leur vie</em>. De la maternelle à Sciences Po — c'est peut-être le seul outil que vous leur transmettrez qui n'a pas de date de péremption.</div>
     </div>
   </div>
 
@@ -445,7 +957,7 @@
         <div class="ps-card__icon">🏢</div>
         <div class="ps-card__meta">
           <div class="ps-card__name">Les Leaders</div>
-          <div class="ps-card__prof">Chef d'entreprise · Manager · Coach · Consultant · Directeur · Entrepreneur</div>
+          <div class="ps-card__prof">Chef d'entreprise · Manager · Cadre · Coach · Consultant · RH &amp; DRH · Directeur · Entrepreneur</div>
         </div>
       </div>
       <span class="ps-card__tag">Décision & Clarté</span>
@@ -500,6 +1012,68 @@
     </div>
   </div>
 
+  {{-- 6 — GARDIENS DU TOUT-PETIT --}}
+  <div class="ps-card ps-card--bebe">
+    <div class="ps-card__head">
+      <div class="ps-card__left">
+        <div class="ps-card__icon">🍼</div>
+        <div class="ps-card__meta">
+          <div class="ps-card__name">Les Gardiens du Tout-Petit</div>
+          <div class="ps-card__prof">Nounou · Assistante maternelle · Auxiliaire de puériculture · Sage-femme · Puéricultrice · Crèche &amp; Maternité</div>
+        </div>
+      </div>
+      <span class="ps-card__tag">Premiers instants &amp; Éveil</span>
+    </div>
+    <div class="ps-card__body">
+      <div class="ps-card__subtitle">Un nourrisson ressent votre tension avant d'entendre votre voix. Votre souffle est son premier ancrage.</div>
+      <div class="ps-card__moment">
+        <div class="ps-card__moment-label">Le moment d'activation</div>
+        <div class="ps-card__moment-text">
+          <strong>Avant chaque change, chaque biberon, chaque portage.</strong> Mains posées, un cycle silencieux. Le corps du tout-petit se règle sur le vôtre — rythme cardiaque, tonus musculaire, qualité de présence. La question intérieure&nbsp;: <em style="color:var(--ps-gold);">&quot;Est-ce que je suis vraiment là… pour lui&nbsp;?&quot;</em>
+        </div>
+      </div>
+      <div class="ps-card__examples">
+        <span class="ps-card__ex">🍼 avant chaque biberon</span>
+        <span class="ps-card__ex">🛁 avant le bain du soir</span>
+        <span class="ps-card__ex">😴 avant d'endormir le bébé</span>
+        <span class="ps-card__ex">😢 face aux pleurs inconsolables</span>
+        <span class="ps-card__ex">🤱 transition maternité → maison</span>
+      </div>
+      <div class="ps-card__result">Ce que ça change&nbsp;: vous offrez à ces enfants <em>dès les premiers instants de leur vie</em> un système nerveux qui rencontre le calme. L'ancrage le plus profond qui soit — avant même les premiers mots.</div>
+    </div>
+  </div>
+
+  {{-- 7 — LES PROCHES --}}
+  <div class="ps-card ps-card--proches">
+    <div class="ps-card__head">
+      <div class="ps-card__left">
+        <div class="ps-card__icon">🏡</div>
+        <div class="ps-card__meta">
+          <div class="ps-card__name">Les Proches</div>
+          <div class="ps-card__prof">Parent · Conjoint · Mari · Femme · Ami(e) · Femme au foyer · Aidant familial</div>
+        </div>
+      </div>
+      <span class="ps-card__tag">Vie quotidienne &amp; Lien</span>
+    </div>
+    <div class="ps-card__body">
+      <div class="ps-card__subtitle">Pas de titre, pas de protocole. Juste la vie. Un souffle avant de répondre change tout ce qui suit.</div>
+      <div class="ps-card__moment">
+        <div class="ps-card__moment-label">Le moment d'activation</div>
+        <div class="ps-card__moment-text">
+          <strong>L'éclat de voix sur le point d'arriver.</strong> L'enfant qui crie, le partenaire qui reproche, la fatigue du soir qui déborde. Pause. Un cycle 5-5-5. Puis vous répondez. La question intérieure&nbsp;: <em style="color:var(--ps-gold);">"Est-ce que je veux réagir… ou agir ?"</em>
+        </div>
+      </div>
+      <div class="ps-card__examples">
+        <span class="ps-card__ex">👶 avant de répondre à un enfant en crise</span>
+        <span class="ps-card__ex">👩‍❤️‍👨 avant une conversation difficile en couple</span>
+        <span class="ps-card__ex">🌙 rituel du soir après les enfants couchés</span>
+        <span class="ps-card__ex">🛒 dans la file d'attente, entre deux corvnées</span>
+        <span class="ps-card__ex">🤗 avant de retrouver un ami en peine</span>
+      </div>
+      <div class="ps-card__result">Ce que ça change : un parent qui respire apprend à son enfant que la paix est possible — <em>sans le dire, sans l'enseigner, juste en le vivant devant eux</em>. C'est peut-être la transmission la plus profonde de toutes.</div>
+    </div>
+  </div>
+
 </div>
 
 {{-- ══════ LE SOUFFLE COMMUN ══════ --}}
@@ -513,7 +1087,181 @@
     </div>
   </div>
 </div>
-<p class="ps-breath__unchanged">Ce protocole est identique pour le potier, le chirurgien, la maîtresse d'école et le chef d'entreprise. C'est sa force.</p>
+<p class="ps-breath__unchanged">Ce protocole est identique pour le potier, le chirurgien, la maîtresse d'école, le chef d'entreprise et le parent épuisé du soir. C'est sa force.</p>
+
+{{-- ══════ VISION : NOS VIES · NOS MAISONS · NOS RUES ══════ --}}
+<div class="ps-vision" style="max-width:760px;margin:5rem auto 4rem;">
+  <div class="ps-vision__bg-text" aria-hidden="true">SOUFFLE</div>
+  <div class="ps-vision__eyebrow">Une pratique pour chaque vie</div>
+  <h2 class="ps-vision__title">La Pause Souffle<br><em>dans nos vies,</em><br><em>dans nos maisons,</em><br><em>dans nos rues.</em></h2>
+  <p class="ps-vision__lead">
+    Le 5-5-5 n'a pas de lieu attitré. Pas de cabinet, pas de salle de cours, pas de bureau.<br>
+    Il appartient à quiconque respire — et veut choisir <em>comment</em> il respire.
+  </p>
+  <div class="ps-vision__pillars">
+    <div class="ps-vision__pillar">
+      <div class="ps-vision__pillar-icon">🏠</div>
+      <div class="ps-vision__pillar-title">Dans nos maisons</div>
+      <p>La cuisine à 7 h du matin, avant que tout commence. La chambre des enfants le soir, quand la voix doit rester douce. Le couloir après une journée qui vous a tout pris. Un seul cycle — et la maison change de tonalité. Pas parce que les murs ont bougé. Parce que vous avez bougé.</p>
+    </div>
+    <div class="ps-vision__pillar">
+      <div class="ps-vision__pillar-icon">🌆</div>
+      <div class="ps-vision__pillar-title">Dans nos rues</div>
+      <p>Dans la voiture entre deux rendez-vous. Dans le métro avant d'arriver. Sur le quai, à la caisse du supermarché, dans la salle d'attente. Ces espaces de transition que l'on traverse sans les habiter — la Pause Souffle les transforme en espaces de retour à soi. Trente secondes. N'importe où.</p>
+    </div>
+    <div class="ps-vision__pillar">
+      <div class="ps-vision__pillar-icon">🌍</div>
+      <div class="ps-vision__pillar-title">Dans notre monde</div>
+      <p>Une enseignante qui respire avant d'entrer en classe depuis dix ans. Deux cents élèves qui ont appris à faire pareil. Et les enfants de ces enfants, qui sauront que le calme est possible. Une pratique se transmet silencieusement — par l'exemple, par la présence, par la qualité de ce qu'on dépose dans l'espace.</p>
+    </div>
+  </div>
+  <div class="ps-vision__divider"></div>
+  <div class="ps-vision__quote">
+    <span class="ps-vision__quote-mark">&laquo;</span>Le souffle est le seul acte que vous faites depuis votre naissance jusqu'à votre dernier instant. Autant choisir <em>comment</em> vous le faites.<span class="ps-vision__quote-mark">&raquo;</span>
+  </div>
+</div>
+
+{{-- ══════ ACTIVITÉS MODULE 02 ══════ --}}
+<div class="ps-act-section">
+  <div class="ps-act-section__head">Vos activités &middot; Module 02</div>
+  <div class="ps-activities">
+
+    {{-- Activité 01 — Lecture résumé audio --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--lecture">📖</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Ce que dit l'audio — les 7 familles en détail</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Lecture</span>
+            <span class="ps-act__tag">~10 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <div class="ps-act__rich">
+          <h4>Pour les Créateurs — Art & Création</h4>
+          <p>Potiers, musiciens, peintres, artisans, chanteurs. Pour eux, le souffle est une porte. Avant de toucher la matière, on entre. Ce cycle n'est pas un échauffement — c'est une invocation. La matière reçoit votre intention <em>avant</em> votre technique.</p>
+          <h4>Pour les Soignants — Soin & Présence</h4>
+          <p>Massothérapeutes, médecins, osteopathes, infirmiers, psychologues. Le souffle est un reset entre chaque patient. La personne précédente a eu tout ce que vous aviez. La suivante mérite que vous recommenciez neuf.</p>
+          <h4>Pour les Enseignants — Savoir & Transmission</h4>
+          <p>Instituteurs de maternelle, professeurs de collège, enseignants de lycée, chargés de cours en faculté, formateurs en grandes écoles. Le souffle est un ancrage neurologique. Chaque élève qui apprend à respirer avec vous emporte un outil qu'il n'oubliera jamais. <em>De la maternelle à Sciences Po, c'est peut-être le seul enseignement qui n'a pas de date de péremption.</em></p>
+          <h4>Pour les Leaders — Décision & Clarté</h4>
+          <p>Chefs d'entreprise, managers, coachs, consultants, directeurs. Le souffle est une clarification délibérée. Une décision prise depuis le calme est une décision prise depuis votre intelligence la plus haute. 90 secondes avant une réunion valent parfois deux heures de préparation.</p>
+          <h4>Pour les Éducateurs — Transmission & Ancrage</h4>
+          <p>Maîtresses d'école, formateurs, éducateurs spécialisés, animateurs jeunesse. Le souffle ritualise la présence. Un enfant qui respire apprend différemment. Un adulte qui enseigne calmement transforme.</p>
+          <h4>Pour les Proches — Vie quotidienne & Lien</h4>
+          <p>Parents, conjoints, maris, femmes, amis, femmes au foyer, aidants familiaux. Le souffle est un battement de cœur avant la réponse. Ce n'est pas une pratique professionnelle — c'est une pratique humaine. Un parent qui respire avant de répondre à un enfant en crise lui transmet silencieusement que la paix intérieure existe. <em>Pas besoin de séance, ni de titre. Juste la vie, et un souffle avant d'agir.</em></p>
+        </div>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Marquer comme lu</button>
+      </div>
+    </div>
+
+    {{-- Activité 02 — Quelle est votre famille ? --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--exercice">🧭</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Quelle est votre famille ?</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Exercice</span>
+            <span class="ps-act__tag">5 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">Ces 5 questions vous aident à identifier votre famille de pratique. Il n'y a pas de bonne réponse — seulement la vôtre.</p>
+        <div class="ps-act__questions">
+          <div class="ps-act__q"><span class="ps-act__q-num">1</span> Dans votre pratique, êtes-vous principalement seul devant votre travail, face à une personne, ou devant un groupe ?</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">2</span> Le moment le plus délicat de votre journée — c'est avant de commencer, entre deux personnes, ou au milieu d'une décision ?</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">3</span> Ce que vous transmettez — c'est une œuvre, une guérison, un savoir, une direction, ou une présence ?</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">4</span> Quand vous n'êtes pas centré, cela se voit-il dans le résultat (qualité du travail), dans la relation (qualité du contact), dans la salle (ambiance du groupe) ?</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">5</span> Quelle carte vous a touché instinctivement — même si vous ne vous y retrouvez pas à 100 % ?</div>
+        </div>
+        <div class="ps-act__journal-label">📝 Votre famille (ou vos familles)</div>
+        <textarea class="ps-act__journal-area" placeholder="Je me reconnais dans... parce que..."></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Exercice terminé</button>
+      </div>
+    </div>
+
+    {{-- Activité 03 — Le moment vivant --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--exercice">⚡</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Le moment vivant</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Exercice de projection</span>
+            <span class="ps-act__tag">5 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">Choisissez un moment réel dans votre semaine à venir. Un moment professionnel précis où vous allez activer le 5-5-5 pour la première fois. Nommez-le maintenant — avant de l'avoir vécu.</p>
+        <div class="ps-act__rich">
+          <h4>Comment nommer un moment vivant</h4>
+          <p>Soyez précis jusqu'à l'absurde. Pas « avant une réunion » — mais « mardi 14h, dans le couloir du 2e étage, avant d'entrer en salle de conférence. » Pas « avant mon cours » — mais « lundi matin 8h45, dans la salle 12 avant que les élèves arrivent. »</p>
+          <p>La précision du contexte active la mémoire anticipatoire. Vous aurez déjà « vécu » ce moment — avant qu'il arrive.</p>
+        </div>
+        <div class="ps-act__journal-label">📝 Mon moment vivant</div>
+        <textarea class="ps-act__journal-area" placeholder="[Jour] — [Heure] — [Lieu exact] — [Ce qui précède]&#10;&#10;Je pratique le 5-5-5 systématiquement quand : "></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Moment nommé</button>
+      </div>
+    </div>
+
+    {{-- Activité 04 — Mon moment d'activation --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--ecriture">✍️</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Mon moment d'activation</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Écriture</span>
+            <span class="ps-act__tag">3 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">Trois phrases. La précision d'un photographe — pas la générosité d'un poète. Ce que vous écrivez ici devient votre engagement envers vous-même.</p>
+        <div class="ps-act__rich">
+          <p><strong>Phrase 1 — Le lieu :</strong> où êtes-vous physiquement ?<br><em>Ex : « Dans le couloir, la main sur la poignée de porte de mon bureau. »</em></p>
+          <p><strong>Phrase 2 — Le geste :</strong> que faites-vous juste avant ?<br><em>Ex : « Je pose les deux mains à plat sur mes cuisses. »</em></p>
+          <p><strong>Phrase 3 — La seconde exacte :</strong> quel est le déclencheur ?<br><em>Ex : « Dès que j'entends la sonnerie dans le couloir — systématiquement. »</em></p>
+        </div>
+        <div class="ps-act__journal-label">📝 Mes trois phrases</div>
+        <textarea class="ps-act__journal-area" placeholder="Lieu : &#10;Geste : &#10;Seconde exacte : " style="min-height:90px;"></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Engagement écrit</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{{-- ══════ MODULE 03 ══════ --}}
+<div class="ps-module-heading" style="margin-top:5rem;">
+  <div class="ps-module-heading__num">03</div>
+  <div class="ps-module-heading__body">
+    <div class="ps-module-heading__eyebrow">Module 03 · Création</div>
+    <div class="ps-module-heading__title">Votre Protocole Personnel — Votre signature unique</div>
+  </div>
+</div>
+<div class="ps-audio-block">
+  <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
+    <div style="display:flex;gap:8px;margin-bottom:10px;">
+      <button id="btn-lang-fr-03" onclick="psSwitchLang('03','fr')" style="background:#c9a84c;color:#0f0f0f;border:none;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇫🇷 Français</button>
+      <button id="btn-lang-en-03" onclick="psSwitchLang('03','en')" style="background:rgba(201,168,76,.15);color:#c9a84c;border:1px solid #c9a84c;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.04em;">🇬🇧 English</button>
+    </div>
+    <div class="ps-audio-label">▶ Écouter le module guidé
+      <span>Audio de 28 min — construction de votre protocole pas à pas</span>
+    </div>
+    <div style="width:100%;padding:14px 18px;border:1px dashed rgba(201,168,76,.35);border-radius:10px;color:rgba(201,168,76,.6);font-size:13px;text-align:center;margin:.5rem 0;">🎙 L'audio guidé de ce module est en cours d'enregistrement.</div>
+    <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
+  </div>
+</div>
 
 {{-- ══════ CONSTRUIRE SON PROTOCOLE ══════ --}}
 <div class="ps-section-head" style="margin-top:4rem;">
@@ -568,6 +1316,158 @@
   </div>
 </div>
 
+{{-- ══════ ACTIVITÉS MODULE 03 ══════ --}}
+<div class="ps-act-section">
+  <div class="ps-act-section__head">Vos activités &middot; Module 03</div>
+  <div class="ps-activities">
+
+    {{-- Activité 01 — Mon ancrage corporel --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--exercice">⚓</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Mon ancrage corporel</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Exercice sensoriel</span>
+            <span class="ps-act__tag">5 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">L'ancrage est le signal physique que vous envoyez à votre système nerveux avant chaque cycle. Testez les 5 options — chacune 30 secondes — puis notez celle qui « active » sans effort, sans forcer.</p>
+        <div class="ps-act__questions">
+          <div class="ps-act__q"><span class="ps-act__q-num">A</span> Deux mains à plat sur les genoux, dos droit, yeux mi-clos.</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">B</span> Une main sur le sternum, l'autre sur le ventre, debout.</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">C</span> Pouce et index réunis (mudra simple), assis ou debout.</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">D</span> Deux pieds bien à plat au sol, sensation dans les plantes, yeux fermés.</div>
+          <div class="ps-act__q"><span class="ps-act__q-num">E</span> Votre geste naturel — celui qui revient quand vous avez besoin de calme.</div>
+        </div>
+        <div class="ps-act__journal-label">📝 Mon ancrage choisi</div>
+        <textarea class="ps-act__journal-area" placeholder="L'option qui m'a parlé naturellement est... Parce que..."></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Ancrage identifié</button>
+      </div>
+    </div>
+
+    {{-- Activité 02 — Mon déclencheur nommé --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--ecriture">🎯</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Mon déclencheur nommé</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Écriture précise</span>
+            <span class="ps-act__tag">3 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">Le déclencheur n'est pas « quand j'en ai besoin » — c'est l'instant précis, reconductible, automatisable. Complétez cette phrase jusqu'à ce qu'elle soit inattaquable.</p>
+        <div class="ps-act__rich">
+          <p><em>« Je pratique le 5-5-5 systématiquement quand ________. »</em></p>
+          <p>Exemples valides :</p>
+          <ul>
+            <li>« Je pose la main sur la poignée de porte de mon cabinet. »</li>
+            <li>« Je m'assieds dans ma voiture, moteur coupé, après la dernière séance. »</li>
+            <li>« J'entends la sonnerie de début de cours dans le couloir. »</li>
+            <li>« Je clique sur "Démarrer" dans mon logiciel de réservation. »</li>
+          </ul>
+          <p>Exemples invalides : <strong>« quand je suis stressé »</strong> (trop vague) — <strong>« quand je le décide »</strong> (trop dépendant de la volonté).</p>
+        </div>
+        <div class="ps-act__journal-label">📝 Ma phrase complète</div>
+        <textarea class="ps-act__journal-area" placeholder="Je pratique le 5-5-5 systématiquement quand ..." style="min-height:70px;"></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Déclencheur nommé</button>
+      </div>
+    </div>
+
+    {{-- Activité 03 — Ma question d'intention --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--reflexion">❓</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Ma question d'intention</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Réflexion créatrice</span>
+            <span class="ps-act__tag">5 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">La question d'intention est posée à la fin du dernier cycle — juste avant d'agir. Elle oriente l'état que vous venez d'installer. Choisissez-en une ou formulez la vôtre.</p>
+        <div class="ps-act__questions">
+          <div class="ps-act__q"><span class="ps-act__q-num">🎨</span> « Qu'est-ce que je veux que cette œuvre traverse ? » — <em style="color:rgba(201,168,76,.75)">Créateurs</em></div>
+          <div class="ps-act__q"><span class="ps-act__q-num">🤲</span> « Qu'est-ce que cette personne a besoin de recevoir — à travers moi ? » — <em style="color:rgba(201,168,76,.75)">Soignants</em></div>
+          <div class="ps-act__q"><span class="ps-act__q-num">🏫</span> « Qu'est-ce que ces élèves ont besoin que j'incarne aujourd'hui ? » — <em style="color:rgba(201,168,76,.75)">Enseignants</em></div>
+          <div class="ps-act__q"><span class="ps-act__q-num">🏢</span> « Qu'est-ce qui compte vraiment dans les 60 prochaines minutes ? » — <em style="color:rgba(201,168,76,.75)">Leaders</em></div>
+          <div class="ps-act__q"><span class="ps-act__q-num">📚</span> « Qu'est-ce que je veux que ces enfants emportent de cet instant ? » — <em style="color:rgba(201,168,76,.75)">Éducateurs</em></div>
+        </div>
+        <div class="ps-act__journal-label">📝 Ma question personnelle</div>
+        <textarea class="ps-act__journal-area" placeholder="Ma question d'intention est : « __________________ »" style="min-height:65px;"></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Question choisie</button>
+      </div>
+    </div>
+
+    {{-- Activité 04 — Répétition générale --}}
+    <div class="ps-act">
+      <div class="ps-act__header" onclick="psToggleAct(this)">
+        <div class="ps-act__icon ps-act__icon--pratique">🎬</div>
+        <div class="ps-act__meta">
+          <div class="ps-act__title">Répétition générale</div>
+          <div class="ps-act__tags">
+            <span class="ps-act__tag">Pratique complète</span>
+            <span class="ps-act__tag">2 min</span>
+          </div>
+        </div>
+        <span class="ps-act__expand">▼</span>
+      </div>
+      <div class="ps-act__body">
+        <p class="ps-act__desc">Votre protocole complet — une première fois. Ancrage → 3 cycles 5-5-5 → question d'intention → ouverture. Exactement comme vous le ferez demain matin dans votre contexte réel.</p>
+        <div class="ps-act__rich">
+          <h4>Déroulé</h4>
+          <ul>
+            <li>Adoptez votre <strong>ancrage</strong> (celui que vous avez défini)</li>
+            <li>Cliquez sur <strong>Démarrer</strong> pour les 3 cycles guidés</li>
+            <li>À la fin du dernier cycle, posez votre <strong>question d'intention</strong> en silence</li>
+            <li>Ouvrez les yeux doucement — notez ce qui a changé</li>
+          </ul>
+        </div>
+        <div class="ps-act__timer-wrap">
+          <button class="ps-act__timer-btn" onclick="psStartTimer(this,5,5,5,3)">▶ Démarrer le protocole complet</button>
+          <div class="ps-act__timer-display">5</div>
+          <div class="ps-act__timer-phase"></div>
+        </div>
+        <div class="ps-act__journal-label">📝 Déclaration de Protocole</div>
+        <textarea class="ps-act__journal-area" placeholder="Mon ancrage est :&#10;Mon déclencheur est :&#10;Ma question est : « ... »" style="min-height:90px;"></textarea>
+        <button class="ps-act__validate" onclick="psValidate(this)"><span>✓</span> Protocole complété</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{{-- ══════ MODULES 04 + 05 EN CRÉATION ══════ --}}
+<div class="ps-module-coming">
+  <div class="ps-module-coming__inner">
+    <div class="ps-module-coming__num">Module 04 · En Création</div>
+    <div class="ps-module-coming__icon">🎧</div>
+    <div class="ps-module-coming__title">Audios Guidés — Votre Pratique en Son</div>
+    <p class="ps-module-coming__desc">6 audios guidés de 10 à 25 minutes. Un audio par famille. Vous entendez le protocole — puis vous le guidez vous-même. Voix, musique, rythme. Contenu en cours d'enregistrement studio.</p>
+    <span class="ps-module-coming__tag">🎤 Enregistrement studio prévu</span>
+  </div>
+</div>
+
+<div class="ps-module-coming" style="margin-top:1.25rem;">
+  <div class="ps-module-coming__inner">
+    <div class="ps-module-coming__num">Module 05 · En Création</div>
+    <div class="ps-module-coming__icon">⚡</div>
+    <div class="ps-module-coming__title">Exercices Pratiques — 30 jours d'ancrage</div>
+    <p class="ps-module-coming__desc">Un défi de 30 jours. Chaque jour, une micro-action pour ancrer le protocole dans votre pratique réelle. Fiches PDF, journal de bord guidé, exercices progressifs par famille.</p>
+    <span class="ps-module-coming__tag">📋 Contenu en cours de conception</span>
+  </div>
+</div>
+
 {{-- ══════ FINALE ══════ --}}
 <div class="ps-finale">
   <div class="ps-finale__inner">
@@ -599,4 +1499,86 @@
 </div>
 
 </div>
+
+<script>
+function psToggleAct(header) {
+  var act = header.closest('.ps-act');
+  act.classList.toggle('is-expanded');
+}
+
+function psValidate(btn) {
+  var act = btn.closest('.ps-act');
+  act.classList.add('is-done');
+  btn.innerHTML = '<span>✓</span> Complété';
+  btn.disabled = true;
+  btn.style.opacity = '.65';
+  btn.style.cursor = 'default';
+}
+
+function psStartTimer(btn, inSec, holdSec, outSec, cycles) {
+  var wrap = btn.closest('.ps-act__timer-wrap');
+  var display = wrap.querySelector('.ps-act__timer-display');
+  var phase = wrap.querySelector('.ps-act__timer-phase');
+  if (!display || !phase) return;
+  btn.disabled = true;
+  btn.style.opacity = '.45';
+  display.style.display = 'block';
+  var cycle = 0;
+  var phases = [
+    { label: 'Inspirer ↑', sec: inSec },
+    { label: 'Retenir ●', sec: holdSec },
+    { label: 'Expirer ↓', sec: outSec }
+  ];
+  function runPhase(pi, timeLeft) {
+    if (pi >= phases.length) {
+      cycle++;
+      if (cycle >= cycles) {
+        display.textContent = '✓';
+        phase.textContent = 'Terminé — rouvrez les yeux doucement';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        return;
+      }
+      runPhase(0, phases[0].sec);
+      return;
+    }
+    phase.textContent = phases[pi].label + ' · cycle ' + (cycle + 1) + '/' + cycles;
+    display.textContent = timeLeft;
+    if (timeLeft <= 0) { runPhase(pi + 1, phases[pi + 1] ? phases[pi + 1].sec : 0); return; }
+    setTimeout(function() { runPhase(pi, timeLeft - 1); }, 1000);
+  }
+  runPhase(0, phases[0].sec);
+}
+
+function psSwitchLang(mod, lang) {
+  var btnFr = document.getElementById('btn-lang-fr-' + mod);
+  var btnEn = document.getElementById('btn-lang-en-' + mod);
+  if (!btnFr || !btnEn) return;
+  if (lang === 'fr') {
+    btnFr.style.background = '#c9a84c';
+    btnFr.style.color = '#0f0f0f';
+    btnFr.style.border = 'none';
+    btnEn.style.background = 'rgba(201,168,76,.15)';
+    btnEn.style.color = '#c9a84c';
+    btnEn.style.border = '1px solid #c9a84c';
+  } else {
+    btnEn.style.background = '#c9a84c';
+    btnEn.style.color = '#0f0f0f';
+    btnEn.style.border = 'none';
+    btnFr.style.background = 'rgba(201,168,76,.15)';
+    btnFr.style.color = '#c9a84c';
+    btnFr.style.border = '1px solid #c9a84c';
+  }
+  // Switche la source audio si un player existe
+  var player = document.getElementById('audio-player-' + mod);
+  if (player) {
+    var base = player.getAttribute('data-base') || player.src.replace(/-fr\.mp3$/, '').replace(/-en\.mp3$/, '');
+    player.setAttribute('data-base', base);
+    player.pause();
+    player.src = base + '-' + lang + '.mp3';
+    player.load();
+  }
+}
+</script>
+
 @endsection
