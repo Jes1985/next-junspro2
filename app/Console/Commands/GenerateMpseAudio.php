@@ -2105,6 +2105,1079 @@ Les enfants apprennent en observant. Et ce que vous vivez devant eux... devient 
 Rouvrez les yeux... doucement. La clé dans la serrure. La porte qui s'ouvre. Bienvenue chez vous.
 [pause 6s]
 SCRIPT,
+
+        // ── MODULE 05 : L'ANCRAGE EN PLEINE TURBULENCE ────────────
+
+        '05-creatif' => <<<'SCRIPT'
+Quelque chose ne vient pas.
+[pause 6s]
+
+Vous êtes là. La matière est là. Les outils sont là.
+[pause 5s]
+Tout est en place. Et pourtant... rien.
+[pause 5s]
+Le vide.
+[pause 8s]
+
+Pas l'absence d'idées. Quelque chose de plus opaque.
+[pause 5s]
+Une résistance sans forme. Un mur sans bords.
+[pause 5s]
+Vous recommencez. Vous effacez. Vous reprenez.
+[pause 5s]
+Et le résultat vous dit quelque chose que vous ne voulez pas entendre.
+[pause 5s]
+Ce n'est pas ça.
+[pause 10s]
+
+Ce moment a un nom dans tous les ateliers du monde.
+[pause 5s]
+Le blocage.
+[pause 6s]
+
+Et il est presque toujours interprété de la même façon.
+[pause 5s]
+Comme une défaillance. Un signe. Une preuve.
+[pause 5s]
+La preuve que ce projet était au-dessus de vous.
+[pause 4s]
+Que le talent a des limites. Que les autres ont quelque chose que vous n'avez pas.
+[pause 5s]
+Que peut-être vous n'êtes pas vraiment fait pour ça.
+[pause 10s]
+
+Ce que la science du cerveau dit de ce moment... est radicalement différent.
+[pause 6s]
+
+Quand vous êtes bloqué... votre cortex préfrontal est en surchauffe.
+[pause 5s]
+Il évalue. Il juge. Il compare. Il perfectionne.
+[pause 5s]
+Il travaille contre vous. À plein régime.
+[pause 8s]
+
+Et la créativité... ne vient pas de là.
+[pause 5s]
+Elle vient du réseau en mode par défaut. Le circuit qui s'active quand on ne force pas.
+[pause 5s]
+Quand on lâche. Quand on erre. Quand on ne cherche plus.
+[pause 8s]
+
+Le blocage n'est pas une absence de talent.
+[pause 5s]
+C'est trop de contrôle. Trop d'évaluation. Trop de cortex.
+[pause 5s]
+Et la solution n'est pas d'essayer plus fort.
+[pause 5s]
+C'est de créer une interruption. Consciente. Délibérée.
+[pause 10s]
+
+Voici ce qui se passe dans votre corps quand vous êtes bloqué.
+[pause 5s]
+Vos épaules sont remontées. Vos mâchoires sont serrées.
+[pause 4s]
+Votre regard est durci. Votre respiration est superficielle.
+[pause 5s]
+Votre corps est en mode surveillance. En mode menace.
+[pause 5s]
+Il défend quelque chose.
+[pause 6s]
+Votre image. Votre identité de créateur. L'idée que vous avez de votre valeur.
+[pause 8s]
+
+Et dans cet état... rien de vivant ne peut émerger.
+[pause 5s]
+Parce que ce qui est vivant ne nait pas dans la défense.
+[pause 5s]
+Il nait dans l'ouverture.
+[pause 10s]
+
+Le cinq-cinq-cinq dans le blocage... n'est pas une pause.
+[pause 5s]
+C'est un signal envoyé au cerveau.
+[pause 5s]
+La menace n'est pas réelle.
+[pause 4s]
+Tu peux arrêter de surveiller.
+[pause 4s]
+Tu peux lâcher le contrôle.
+[pause 5s]
+Et dans ce lâcher... quelque chose qui attendait peut enfin bouger.
+[pause 10s]
+
+Posez ce que vous tenez. Les outils. Le crayon. La tension.
+[pause 6s]
+Reculez légèrement. Ou quittez la matière des yeux.
+[pause 5s]
+Sentez le dossier de votre chaise. Ou le sol sous vos pieds.
+[pause 8s]
+
+Desserrez les mâchoires. Laissez tomber les épaules.
+[pause 5s]
+Ne cherchez rien. Ne résolvez rien.
+[pause 5s]
+Fermez les yeux.
+[pause 8s]
+
+Pendant les dix cycles... une seule consigne.
+[pause 5s]
+Ne pensez pas à l'œuvre. Ne cherchez pas la solution. Ne préparez pas la prochaine tentative.
+[pause 5s]
+Laissez le cerveau errer librement.
+[pause 5s]
+Sans destination. Sans performance.
+[pause 8s]
+
+Lui seul sait où chercher. Pas vous. Pas maintenant.
+[pause 8s]
+
+Nous commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 10s]
+
+Restez encore un moment sans regarder l'œuvre.
+[pause 5s]
+Laissez votre regard aller quelque part d'autre.
+[pause 5s]
+La fenêtre. Le sol. Un détail de l'espace autour de vous.
+[pause 5s]
+Laissez la pensée dériver encore un peu.
+[pause 10s]
+
+Quelque chose a changé dans le calme. Peut-être une image. Peut-être une sensation.
+[pause 5s]
+Peut-être rien de visible encore. Mais quelque chose s'est dénoué.
+[pause 5s]
+Une légère détente dans le système. Une permission.
+[pause 8s]
+
+Quand vous retournerez à la matière... retournez-y différemment.
+[pause 5s]
+Pas pour réussir. Pour voir ce qui vient.
+[pause 5s]
+Sans jugement sur le résultat. Sans évaluation dans la main.
+[pause 5s]
+Juste un geste. Et puis un autre.
+[pause 8s]
+
+Le blocage n'était pas votre ennemi.
+[pause 5s]
+Il était le signal que vous portiez trop. Que vous contrôliez trop.
+[pause 5s]
+Et ce signal... vous savez maintenant comment y répondre.
+[pause 8s]
+
+Rouvrez les yeux... doucement. Retournez à la matière. Sans hâte.
+[pause 6s]
+SCRIPT,
+
+        '05-soin' => <<<'SCRIPT'
+Quelque chose vous est resté de la dernière séance.
+[pause 6s]
+
+Ce n'est pas de la fatigue ordinaire. C'est plus précis que ça.
+[pause 5s]
+Une image. Un mot qui a été dit. Une douleur que vous avez tenue.
+[pause 5s]
+Quelque chose qui a traversé le cadre professionnel... et qui est encore là.
+[pause 8s]
+
+Ou peut-être c'est maintenant. Ici. Cette consultation-ci.
+[pause 5s]
+La personne en face de vous est en détresse.
+[pause 4s]
+Une détresse qui déborde. Qui vous regarde. Qui vous sollicite au-delà du protocole.
+[pause 5s]
+Et quelque chose en vous... commence à se contracter.
+[pause 8s]
+
+Ce que vous ressentez a un nom précis.
+[pause 5s]
+La résonance empathique.
+[pause 6s]
+
+Votre système nerveux est conçu pour se synchroniser avec celui de l'autre.
+[pause 5s]
+C'est une capacité remarquable. C'est ce qui fait de vous un soignant exceptionnel.
+[pause 5s]
+Et c'est aussi ce qui vous expose.
+[pause 8s]
+
+Car recevoir la souffrance de quelqu'un... sans protocole de protection...
+[pause 5s]
+ce n'est pas de l'empathie. C'est de la fusion.
+[pause 5s]
+Et dans la fusion... vous ne pouvez plus aider.
+[pause 5s]
+Vous portez avec. Au lieu d'accompagner depuis.
+[pause 10s]
+
+La différence entre les deux... c'est votre ancrage.
+[pause 8s]
+
+Un soignant ancré reçoit. Il entend. Il est touché.
+[pause 5s]
+Mais il reste debout.
+[pause 5s]
+Pas parce qu'il s'est protégé derrière une vitre.
+[pause 5s]
+Parce qu'il a un sol sous les pieds.
+[pause 6s]
+Et ce sol... se cultive. Délibérément. En temps réel.
+[pause 10s]
+
+Voici ce qui se passe dans votre corps quand une consultation pèse.
+[pause 5s]
+Votre respiration se raccourcit. Votre rythme cardiaque s'élève.
+[pause 5s]
+Vos épaules se contractent. Vos mains se ferment.
+[pause 5s]
+Votre attention se rétrécit autour de l'urgence de l'autre.
+[pause 6s]
+Et quelque part... vous n'êtes plus tout à fait là.
+[pause 5s]
+Votre corps est dans la pièce. Votre présence est dans sa détresse.
+[pause 8s]
+
+Le paradoxe : au moment où votre patient a le plus besoin que vous soyez là...
+[pause 5s]
+c'est précisément quand vous risquez d'être le moins présent.
+[pause 10s]
+
+Le cinq-cinq-cinq au cœur de la consultation...
+[pause 5s]
+n'est pas visible.
+[pause 5s]
+Ce n'est pas : "attendez, je dois respirer."
+[pause 5s]
+C'est un cycle silencieux. Intérieur. Pendant que vous écoutez.
+[pause 5s]
+Pendant qu'il parle. Pendant un silence.
+[pause 5s]
+Un seul cycle. Discret. Presque imperceptible.
+[pause 8s]
+
+Ce cycle fait quelque chose de précis.
+[pause 5s]
+Il vous repose dans votre corps.
+[pause 5s]
+Il rappelle à votre système nerveux qu'il y a un sol.
+[pause 4s]
+Que la détresse de l'autre est réelle. Et qu'elle lui appartient.
+[pause 5s]
+Que votre rôle est de tenir l'espace... pas de partager le poids.
+[pause 10s]
+
+Prenons un moment maintenant pour ancrer ça dans le corps.
+[pause 5s]
+Fermez les yeux. Visualisez une consultation difficile.
+[pause 5s]
+Pas la pire. Juste une qui a pesé.
+[pause 5s]
+La personne en face. Sa voix. Ce qu'elle portait.
+[pause 8s]
+
+Sentez ce que votre corps porte en ce moment en y pensant.
+[pause 5s]
+Les épaules. La poitrine. La mâchoire.
+[pause 8s]
+
+Maintenant... ancrez vos pieds au sol. Les deux. Complètement.
+[pause 5s]
+Sentez le dossier qui vous soutient. Votre dos qui existe.
+[pause 5s]
+Vous n'êtes pas dans sa détresse. Vous êtes dans votre corps. Ici.
+[pause 8s]
+
+Dix cycles. Pendant que vous respirez...
+[pause 4s]
+restez dans votre corps. Pas dans le scénario.
+[pause 5s]
+Chaque inspiration vous ramène ici.
+[pause 5s]
+Chaque expiration dépose ce qui ne vous appartient pas.
+[pause 8s]
+
+Nous commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 10s]
+
+Sentez la différence entre recevoir... et porter.
+[pause 5s]
+Vous pouvez recevoir la souffrance de quelqu'un... sans la porter dans votre corps.
+[pause 5s]
+Ce n'est pas de la distance. C'est de la présence solide.
+[pause 8s]
+
+La chose la plus utile que vous puissiez faire pour votre patient dans un moment difficile...
+[pause 5s]
+c'est rester debout. Ancré. Disponible. Sans vous effondrer avec lui.
+[pause 5s]
+Votre stabilité... est sa ressource la plus précieuse.
+[pause 8s]
+
+Et votre stabilité... ce n'est pas une qualité innée. C'est un geste.
+[pause 5s]
+Celui-là. Disponible. En temps réel. Dans la consultation elle-même.
+[pause 10s]
+
+Rouvrez les yeux... doucement. Pieds au sol. Dos ancré. Présence choisie.
+[pause 6s]
+SCRIPT,
+
+        '05-enseignant' => <<<'SCRIPT'
+Vous l'avez déjà vécu.
+[pause 6s]
+
+Ce moment où la salle vous échappe.
+[pause 5s]
+Pas progressivement. D'un coup.
+[pause 5s]
+Une conversation parasite qui enflamme. Un incident. Un élève qui défie.
+[pause 5s]
+Ou simplement cette énergie collective... ce bruit diffus...
+[pause 5s]
+qui monte, qui s'installe, et qui transforme trente individus en quelque chose d'ingérable.
+[pause 8s]
+
+Et vous. Debout. Au milieu.
+[pause 5s]
+Quelque chose monte en vous aussi.
+[pause 5s]
+De la frustration. De l'impuissance. Ou pire... de la colère.
+[pause 8s]
+
+Voici ce qui se passe neurobiologiquement dans cette salle.
+[pause 6s]
+
+Quand un groupe humain s'emballe... les systèmes nerveux se synchronisent dans le désordre.
+[pause 5s]
+L'un agite l'autre. L'autre amplifie le premier.
+[pause 5s]
+En quelques secondes... la salle entière est dans un état collectif d'activation.
+[pause 8s]
+
+Et votre voix... votre présence... vos mots...
+[pause 5s]
+ont un impact démesuré dans ce moment.
+[pause 5s]
+Ils peuvent amplifier. Ou ils peuvent interrompre.
+[pause 5s]
+Pas par ce que vous dites.
+[pause 5s]
+Par ce que vous êtes... dans les cinq secondes qui suivent.
+[pause 10s]
+
+C'est ici que tout se joue.
+[pause 6s]
+
+L'enseignant qui hausse la voix... envoie un signal de menace.
+[pause 5s]
+Le cortisol dans la salle monte. L'agitation se fige... ou s'intensifie.
+[pause 5s]
+Les élèves se souviennent de ce moment. Pas de la leçon.
+[pause 8s]
+
+L'enseignant qui s'arrête...
+[pause 5s]
+qui ralentit délibérément...
+[pause 5s]
+qui parle moins fort... plus lentement... plus posément...
+[pause 5s]
+envoie un signal radicalement différent.
+[pause 5s]
+Un signal qui dit : quelqu'un ici est encore debout. On peut descendre.
+[pause 8s]
+
+Et le groupe... se règle dessus. Pas immédiatement. Mais il se règle.
+[pause 5s]
+Parce que c'est ce que font les systèmes nerveux en groupe.
+[pause 5s]
+Ils cherchent le régulateur le plus stable dans la pièce.
+[pause 5s]
+Et ce régulateur... c'est vous.
+[pause 10s]
+
+La question n'est donc pas : comment je fais taire la salle ?
+[pause 5s]
+La question est : comment je reste le régulateur... quand tout tire dans l'autre sens ?
+[pause 10s]
+
+La réponse est physique avant d'être stratégique.
+[pause 6s]
+
+Avant de parler... vous respirez.
+[pause 5s]
+Un seul cycle. Silencieux. Invisible.
+[pause 5s]
+Pendant que la salle bruisse... vous faites une chose que personne ne voit.
+[pause 5s]
+Vous abaissez votre rythme cardiaque.
+[pause 5s]
+Vous ancrez vos pieds.
+[pause 5s]
+Vous choisissez votre état.
+[pause 8s]
+
+Et puis vous parlez. Lentement. Distinctement. Sans force.
+[pause 5s]
+Pas pour punir. Pour ramener.
+[pause 5s]
+Vous êtes le calme que la salle cherche sans le savoir.
+[pause 10s]
+
+Fermez les yeux. Visualisez cette salle perdue que vous connaissez.
+[pause 5s]
+Le bruit. L'agitation. Cette énergie collective qui déborde.
+[pause 8s]
+
+Sentez ce que ça fait dans votre corps. La montée. Le rétrécissement.
+[pause 8s]
+
+Maintenant. Ancrez.
+[pause 5s]
+Pieds au sol. Dos droit. Épaules qui s'abaissent.
+[pause 5s]
+Vous êtes encore debout.
+[pause 8s]
+
+Dix cycles. Pendant que vous respirez...
+[pause 5s]
+laissez descendre la pression de la salle.
+[pause 5s]
+Elle n'est pas en vous. Elle est devant vous. C'est différent.
+[pause 5s]
+Et vous... vous êtes le point fixe.
+[pause 8s]
+
+Nous commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 10s]
+
+Sentez la qualité de cette présence. Ancrée. Solide. Douce en même temps.
+[pause 8s]
+
+Ce n'est pas de l'autorité imposée.
+[pause 5s]
+C'est de la régulation offerte.
+[pause 5s]
+Une salle perdue a juste besoin de retrouver quelqu'un de stable pour se recalibrer.
+[pause 5s]
+Et vous... vous êtes capable de l'être.
+[pause 5s]
+Pas toujours parfaitement. Mais de plus en plus consciemment.
+[pause 10s]
+
+La prochaine fois que la salle s'emballe... vous savez quoi faire.
+[pause 5s]
+Pas hausser la voix. Pas forcer.
+[pause 5s]
+Un cycle. Silencieux. Et puis être ce point fixe.
+[pause 5s]
+La salle va se régler dessus.
+[pause 8s]
+
+Rouvrez les yeux... doucement. La salle vous regarde. Vous êtes prêt.
+[pause 6s]
+SCRIPT,
+
+        '05-leader' => <<<'SCRIPT'
+Il n'y a pas de bonne réponse.
+[pause 6s]
+
+Vous le savez. Vous avez cherché.
+[pause 5s]
+Vous avez retourné le problème dans tous les sens.
+[pause 5s]
+Vous avez regardé les chiffres, les avis, les précédents.
+[pause 5s]
+Et il n'y a toujours pas de bonne réponse.
+[pause 5s]
+Seulement des mauvaises de différentes natures.
+[pause 8s]
+
+Et on attend. On attend que vous tranchiez.
+[pause 5s]
+Aujourd'hui. Maintenant. Bientôt.
+[pause 8s]
+
+Ce moment a un nom.
+[pause 5s]
+La décision impossible.
+[pause 6s]
+
+Tout leader la rencontre. Plusieurs fois. À des niveaux différents.
+[pause 5s]
+Parfois c'est une réorganisation qui blesse des gens.
+[pause 4s]
+Parfois c'est un partenariat à rompre. Un projet à abandonner.
+[pause 4s]
+Une personne à ne pas garder. Une direction à changer.
+[pause 5s]
+Des choix où quoi que vous décidiez... quelque chose est perdu.
+[pause 10s]
+
+Voici ce que fait votre cerveau dans ce moment.
+[pause 5s]
+Il cherche la certitude. Il la veut absolue. Il refuse de trancher sans elle.
+[pause 5s]
+Et comme la certitude absolue n'existe pas...
+[pause 5s]
+il tourne. Il reporte. Il cherche encore.
+[pause 5s]
+Non par faiblesse. Par précision. Votre cerveau veut bien faire.
+[pause 8s]
+
+Mais il y a un coût.
+[pause 5s]
+Le cortisol monte. L'adrénaline tient les muscles en alerte.
+[pause 5s]
+Le sommeil se fragmente. Les décisions secondaires se dégradent.
+[pause 5s]
+Et la décision importante... continue d'attendre dans son propre siège.
+[pause 8s]
+
+Les leaders qui traversent ces moments avec le plus de clarté...
+[pause 5s]
+ne cherchent pas plus d'informations.
+[pause 5s]
+Ils cherchent un état.
+[pause 6s]
+
+Pas l'état de la certitude. Ils savent qu'elle ne viendra pas.
+[pause 5s]
+L'état de la clarté acceptable.
+[pause 5s]
+L'état dans lequel vous pouvez voir ce qui compte vraiment.
+[pause 5s]
+Pas tout. Ce qui compte.
+[pause 5s]
+Et trancher depuis là.
+[pause 10s]
+
+Ce que le cinq-cinq-cinq fait dans ce moment...
+[pause 5s]
+c'est activer le cortex préfrontal ventromédian.
+[pause 5s]
+Le siège du jugement moral. De la perspective à long terme. De l'alignement avec vos valeurs.
+[pause 5s]
+Ce circuit est inhibé sous l'adrénaline.
+[pause 5s]
+Il se réactive avec la respiration lente.
+[pause 8s]
+
+En d'autres termes : votre capacité à prendre une bonne décision dans l'incertitude...
+[pause 5s]
+est biologiquement liée à votre état respiratoire.
+[pause 5s]
+Pas à votre intelligence. Pas à votre expérience.
+[pause 5s]
+À votre respiration dans les trente secondes qui précèdent.
+[pause 10s]
+
+Posez tout. Ce dossier. Ce dilemme. Ces chiffres.
+[pause 5s]
+Pas pour les fuir. Pour les regarder de plus haut.
+[pause 5s]
+Installez-vous. Dos droit. Mains qui s'ouvrent.
+[pause 6s]
+Fermez les yeux.
+[pause 8s]
+
+Pendant les dix cycles... laissez une seule question être présente.
+[pause 5s]
+Pas : quelle est la bonne décision ?
+[pause 5s]
+Mais : à quoi je tiens vraiment dans cette situation ?
+[pause 5s]
+Quelle valeur est-ce que je veux que cette décision serve ?
+[pause 8s]
+
+Cette question n'a pas besoin de réponse immédiate.
+[pause 5s]
+Elle a besoin d'espace. Et nous allons lui en donner.
+[pause 8s]
+
+Nous commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 10s]
+
+Restez encore dans ce silence. Avec cette question.
+[pause 8s]
+
+Sentez ce qui a changé. Pas dans le problème.
+[pause 5s]
+Dans votre rapport au problème.
+[pause 5s]
+La même situation. Un regard légèrement différent.
+[pause 5s]
+Une légère distance entre vous et l'urgence.
+[pause 8s]
+
+Ce n'est pas de la désinvolture. C'est du recul.
+[pause 5s]
+Et dans ce recul... quelque chose de votre propre clarté refait surface.
+[pause 5s]
+Ce que vous savez. Ce qui compte. Ce que vous pouvez assumer.
+[pause 10s]
+
+Vous n'avez peut-être pas encore la décision.
+[pause 5s]
+Mais vous êtes dans un meilleur état pour la prendre.
+[pause 5s]
+Et ça... c'est tout ce que cette pause pouvait vous donner.
+[pause 5s]
+Le reste vous appartient.
+[pause 8s]
+
+Rouvrez les yeux... doucement. Le problème est toujours là. Et vous aussi.
+[pause 6s]
+SCRIPT,
+
+        '05-educateur' => <<<'SCRIPT'
+Le groupe résiste.
+[pause 6s]
+
+Vous le sentez depuis ce matin.
+[pause 5s]
+Les bras croisés. Les regards qui glissent. Les réponses courtes.
+[pause 5s]
+Ou pire — le silence poli mais vide.
+[pause 5s]
+Ces sourires de façade qui disent : on est là, on fait l'effort, mais non.
+[pause 8s]
+
+Et vous... vous avez préparé. Vous avez une méthode. Vous croyez en ce que vous faites.
+[pause 5s]
+Et pourtant — rien ne passe.
+[pause 8s]
+
+Ce moment est l'un des plus difficiles du métier d'éducateur.
+[pause 5s]
+Parce qu'il touche quelque chose de central.
+[pause 5s]
+L'identité.
+[pause 8s]
+
+Quand un groupe résiste... la première interprétation est presque toujours la même.
+[pause 5s]
+Je fais quelque chose de mal. Mon contenu n'est pas bon. Je ne suis pas à la hauteur.
+[pause 5s]
+Ils me rejettent. Moi.
+[pause 8s]
+
+Cette interprétation est souvent fausse.
+[pause 5s]
+Voici ce qu'est réellement la résistance dans un groupe.
+[pause 6s]
+
+La résistance est une information.
+[pause 5s]
+Elle dit : il y a quelque chose que ce groupe n'est pas encore prêt à traverser.
+[pause 5s]
+Pas parce qu'il ne veut pas. Parce qu'il n'a pas encore le sentiment d'être en sécurité.
+[pause 6s]
+La sécurité pour changer. Pour questionner. Pour lâcher quelque chose d'ancien.
+[pause 8s]
+
+Et la sécurité dans un groupe... ne vient pas du contenu.
+[pause 5s]
+Elle vient de la qualité de présence de celui qui tient l'espace.
+[pause 8s]
+
+Voici le paradoxe cruel de la résistance.
+[pause 5s]
+C'est précisément quand le groupe résiste...
+[pause 5s]
+que l'éducateur, sous pression, perd de sa présence.
+[pause 5s]
+Il force. Il accélère. Il tente de convaincre. Il se défend.
+[pause 5s]
+Et ce faisant... il réduit exactement ce dont le groupe a besoin.
+[pause 5s]
+L'espace sûr pour ne pas être convaincu tout de suite.
+[pause 10s]
+
+Ce que la résistance appelle... c'est plus de présence. Pas moins.
+[pause 5s]
+Pas plus de contenu. Pas plus d'arguments.
+[pause 5s]
+Plus d'ancrage. Plus de calme. Plus de solidité tranquille.
+[pause 5s]
+La capacité à tenir sans avoir besoin que ça marche maintenant.
+[pause 10s]
+
+Vous pouvez pratiquer ça maintenant.
+[pause 5s]
+Fermez les yeux. Visualisez ce groupe. Sa résistance. Ce silence qui pèse.
+[pause 8s]
+
+Sentez ce que ça crée dans votre corps.
+[pause 5s]
+L'inconfort. Le besoin de faire quelque chose. L'urgence de récupérer l'attention.
+[pause 8s]
+
+Maintenant... restez. Sans bouger. Sans résoudre.
+[pause 5s]
+Ancrez vos pieds. Allongez votre dos.
+[pause 5s]
+Laissez la résistance être là — sans que ça vous déplace.
+[pause 8s]
+
+Dix cycles. Pendant que vous respirez...
+[pause 5s]
+entrainez-vous à tenir sans besoin de résultat immédiat.
+[pause 5s]
+À être présent à ce qui est... plutôt qu'à ce qui devrait être.
+[pause 8s]
+
+Nous commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 10s]
+
+Sentez ce que vous portez maintenant.
+[pause 5s]
+Pas la nécessité que ça marche.
+[pause 5s]
+Juste la présence. Juste l'espace que vous êtes capable de tenir.
+[pause 10s]
+
+Quand vous retournerez face à ce groupe...
+[pause 5s]
+vous pouvez nommer ce qui se passe. Directement. Calmement.
+[pause 5s]
+Je sens que quelque chose ne circule pas facilement ce matin. C'est juste. Ce n'est pas un problème.
+[pause 5s]
+Prenez quelques secondes. Respirons ensemble si vous voulez.
+[pause 8s]
+
+Cette honnêteté tranquille... désamorce souvent plus que n'importe quelle technique.
+[pause 5s]
+Parce qu'elle dit au groupe : il n'y a pas de danger à ne pas être prêt.
+[pause 5s]
+Et dans cet espace-là... parfois quelque chose se déplace enfin.
+[pause 10s]
+
+Rouvrez les yeux... doucement. Le groupe vous attend. Vous êtes prêt à tenir.
+[pause 6s]
+SCRIPT,
+
+        '05-bebe' => <<<'SCRIPT'
+Il pleure depuis longtemps.
+[pause 6s]
+
+Vous avez tout fait. Vous avez changé, nourri, porté, bercé.
+[pause 5s]
+Vous avez vérifié la température, le ventre, les habits.
+[pause 5s]
+Vous avez chanté. Vous avez marché. Vous avez proposé tous les angles.
+[pause 8s]
+
+Et rien.
+[pause 6s]
+
+Les pleurs continuent.
+[pause 5s]
+Et quelque chose en vous commence à se fissurer.
+[pause 8s]
+
+Ce n'est pas de l'impuissance ordinaire.
+[pause 5s]
+C'est l'une des expériences les plus biologiquement intenses qui existent.
+[pause 6s]
+
+Les pleurs d'un nourrisson activent le cerveau de l'adulte avec une précision absolue.
+[pause 5s]
+Ils déclenchent une alarme dans l'amygdale.
+[pause 5s]
+Immédiate. Puissante. Difficile à éteindre.
+[pause 5s]
+Ce n'est pas de la faiblesse. C'est de la biologie évolutive.
+[pause 5s]
+Le cerveau humain est câblé pour répondre aux pleurs d'un enfant. Sans exception.
+[pause 8s]
+
+Et quand la réponse ne suffit pas... quand les pleurs continuent malgré tout...
+[pause 5s]
+cette alarme reste allumée. Et monte.
+[pause 5s]
+La frustration. L'inquiétude. L'épuisement.
+[pause 5s]
+L'impression de ne pas être à la hauteur.
+[pause 5s]
+Parfois... quelque chose qui ressemble à de la colère.
+[pause 8s]
+
+Ce que vous ne vous permettez peut-être pas de dire... c'est que ce moment vous dépasse.
+[pause 5s]
+Que vous ne savez plus. Que vous avez besoin d'aide. Que votre corps est à bout.
+[pause 8s]
+
+Je vais vous dire quelque chose d'important.
+[pause 5s]
+Votre état dans ce moment... est reçu par cet enfant.
+[pause 5s]
+Il peut vous entendre vous tenir. Ou vous sentir perdre pied.
+[pause 5s]
+Et quand il vous sent perdre pied... ses propres pleurs s'amplifient.
+[pause 5s]
+Pas pour vous blesser. Parce que son système nerveux cherche votre régulation.
+[pause 5s]
+Et il ne la trouve plus.
+[pause 8s]
+
+La chose la plus utile que vous puissiez faire pour lui en ce moment...
+[pause 5s]
+n'est pas de trouver une nouvelle technique.
+[pause 5s]
+C'est de revenir à vous-même.
+[pause 5s]
+D'interrompre l'alarme une dizaine de secondes.
+[pause 5s]
+Et de lui offrir à nouveau cette constante qu'il cherche.
+[pause 5s]
+Votre rythme cardiaque qui ralentit.
+[pause 10s]
+
+Posez-le en sécurité si c'est possible. Ou gardez-le dans vos bras... mais reculez d'un pas intérieur.
+[pause 5s]
+Sentez le sol sous vos pieds.
+[pause 5s]
+Desserrez vos mains.
+[pause 5s]
+Desserrez vos épaules.
+[pause 5s]
+Desserrez vos mâchoires.
+[pause 8s]
+
+Fermez les yeux une seconde.
+[pause 5s]
+Juste vous. Juste votre corps. Juste ce sol sous vos pieds.
+[pause 8s]
+
+Dix cycles. Pendant que vous respirez...
+[pause 5s]
+vous n'êtes pas en train d'abandonner. Vous êtes en train de revenir.
+[pause 5s]
+Revenir dans votre corps. Dans votre calme.
+[pause 5s]
+Pour lui redonner ce qu'il cherche.
+[pause 8s]
+
+Nous commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 10s]
+
+Sentez vos mains. Elles se sont ouvertes. Leur tonus a changé.
+[pause 5s]
+Sentez votre rythme cardiaque. Il a descendu.
+[pause 5s]
+Sentez vos épaules. Elles portent moins.
+[pause 8s]
+
+Maintenant... rapprochez-vous. Ou reprenez-le si vous l'avez posé.
+[pause 5s]
+Avec ces mains-là. Ce rythme cardiaque. Cette qualité de présence.
+[pause 5s]
+Il va le recevoir.
+[pause 5s]
+Pas immédiatement peut-être. Mais il va le recevoir.
+[pause 8s]
+
+Et si les pleurs continuent encore après ça...
+[pause 5s]
+c'est une autre conversation. Avec un médecin. Avec quelqu'un qui peut aider.
+[pause 5s]
+Vous n'êtes pas seul. Vous n'avez pas à porter ça sans ressource.
+[pause 8s]
+
+Mais dans ce moment... vous avez fait la chose la plus précieuse.
+[pause 5s]
+Vous avez choisi de revenir à vous. Pour lui.
+[pause 5s]
+C'est exactement ce que font les bons soignants de l'enfance.
+[pause 8s]
+
+Rouvrez les yeux... doucement. Vous êtes là. Il a besoin que vous soyez là.
+[pause 6s]
+SCRIPT,
+
+        '05-proches' => <<<'SCRIPT'
+Les mots sont sur le point de sortir.
+[pause 6s]
+
+Vous les sentez. Dans la gorge. Dans la poitrine.
+[pause 5s]
+Des mots que vous regretterez peut-être. Ou peut-être pas tout de suite.
+[pause 5s]
+Mais qui laisseront quelque chose.
+[pause 5s]
+Chez l'enfant qui vous regarde. Chez le conjoint qui attend.
+[pause 5s]
+Chez vous aussi.
+[pause 8s]
+
+Ce moment... vous le connaissez.
+[pause 5s]
+C'est le point de rupture.
+[pause 6s]
+
+Il arrive toujours à un endroit précis.
+[pause 5s]
+Pas après une grande catastrophe. Après l'accumulation silencieuse de petites choses.
+[pause 5s]
+La journée qui a été longue. La demande de trop. L'intonation mal choisie.
+[pause 5s]
+Le verre renversé. La troisième fois qu'on vous demande la même chose.
+[pause 5s]
+Quelque chose qui en soi ne mérite pas ce qui va sortir de vous.
+[pause 8s]
+
+Et pourtant. Quelque chose va sortir.
+[pause 8s]
+
+Voici ce qui se passe dans votre cerveau à ce moment précis.
+[pause 6s]
+
+L'amygdale a pris le contrôle.
+[pause 5s]
+Le circuit de la menace est activé.
+[pause 5s]
+Votre cortex préfrontal — celui qui évalue, qui relativise, qui choisit les mots — est en partie hors ligne.
+[pause 6s]
+Ce n'est pas un défaut de caractère.
+[pause 5s]
+C'est de la neurologie.
+[pause 5s]
+Et cela arrive à tous les humains. Sans exception.
+[pause 8s]
+
+Mais voici quelque chose de fondamental.
+[pause 5s]
+Entre l'impulsion... et l'action...
+[pause 5s]
+il y a un espace.
+[pause 6s]
+Pas toujours visible. Pas toujours facile à saisir.
+[pause 5s]
+Mais il est là.
+[pause 6s]
+Une fraction de seconde.
+[pause 5s]
+Parfois deux.
+[pause 5s]
+Et dans cet espace... vous pouvez faire quelque chose.
+[pause 10s]
+
+Pas tout. Pas un discours calme et parfait.
+[pause 5s]
+Juste une expiration longue.
+[pause 5s]
+Pas un cycle complet. Une expiration.
+[pause 5s]
+Lente. Contrôlée.
+[pause 5s]
+Qui dit à votre amygdale : la menace n'est pas physique.
+[pause 5s]
+Tu peux abaisser le niveau d'alerte.
+[pause 8s]
+
+Cette expiration change ce qui est possible dans les cinq secondes suivantes.
+[pause 5s]
+Pas toujours. Pas miraculeusement.
+[pause 5s]
+Mais suffisamment souvent pour que ce soit la compétence la plus importante que vous puissiez cultiver.
+[pause 5s]
+Dans votre maison. Avec vos proches.
+[pause 10s]
+
+Entraînons-nous à cette expiration maintenant.
+[pause 5s]
+Fermez les yeux. Pensez à ce moment. Celui que vous connaissez.
+[pause 5s]
+La tension qui monte. Le point de rupture.
+[pause 8s]
+
+Sentez-le dans le corps. Réellement.
+[pause 5s]
+La gorge. La poitrine. Les poings qui se ferment.
+[pause 5s]
+Ne le fuyez pas. Restez-y un moment.
+[pause 8s]
+
+Et maintenant. Une seule expiration longue.
+[pause 5s]
+Cinq secondes. Douce. Lente. Par le nez si possible.
+[pause 5s]
+Laissez la tension sortir avec.
+[pause 8s]
+
+Une autre. Si vous pouvez.
+[pause 8s]
+
+Et une troisième. Avec l'intention : je ne suis pas sous menace physique. Je peux choisir.
+[pause 10s]
+
+Maintenant les dix cycles complets. Pour ancrer ça dans le corps.
+[pause 5s]
+Pour que ce geste soit disponible automatiquement... au moment où vous en aurez besoin.
+[pause 8s]
+
+Nous commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 10s]
+
+Restez dans ce calme un instant.
+[pause 5s]
+Sentez ce qu'il y a de disponible dans cet état.
+[pause 5s]
+Le choix. La distance. La possibilité de parler différemment.
+[pause 8s]
+
+Vous ne serez pas parfait. Personne ne l'est.
+[pause 5s]
+Vous allez encore vous emporter parfois. C'est humain.
+[pause 5s]
+Ce que vous êtes en train de construire... ce n'est pas la perfection.
+[pause 5s]
+C'est un répertoire.
+[pause 5s]
+Une réponse de plus disponible dans votre corps... pour les moments difficiles.
+[pause 8s]
+
+Et ce répertoire... vos enfants l'observent.
+[pause 5s]
+Pas vos mots. Votre façon de gérer ce qui déborde.
+[pause 5s]
+Ce que vous leur montrez là... est plus profond que n'importe quelle leçon.
+[pause 5s]
+C'est leur futur répertoire à eux.
+[pause 10s]
+
+Rouvrez les yeux... doucement. La situation est toujours là. Et vous aussi. Autrement.
+[pause 6s]
+SCRIPT,
     ];
 
     // ══════════════════════════════════════════════════════════
