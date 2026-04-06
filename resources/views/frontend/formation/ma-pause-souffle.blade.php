@@ -843,7 +843,11 @@
     <div class="ps-audio-label">▶ Écouter le module guidé
       <span>Audio de 22 min — immersion dans votre famille de pratique</span>
     </div>
-    <div style="width:100%;padding:14px 18px;border:1px dashed rgba(201,168,76,.35);border-radius:10px;color:rgba(201,168,76,.6);font-size:13px;text-align:center;margin:.5rem 0;">🎙 L'audio guidé de ce module est en cours d'enregistrement.</div>
+    <audio id="audio-player-02" controls preload="none"
+      style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+      src="{{ asset('storage/formation/audio/mps-02-fr.mp3') }}">
+      Votre navigateur ne supporte pas la lecture audio.
+    </audio>
     <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
 </div>
@@ -1258,7 +1262,11 @@
     <div class="ps-audio-label">▶ Écouter le module guidé
       <span>Audio de 28 min — construction de votre protocole pas à pas</span>
     </div>
-    <div style="width:100%;padding:14px 18px;border:1px dashed rgba(201,168,76,.35);border-radius:10px;color:rgba(201,168,76,.6);font-size:13px;text-align:center;margin:.5rem 0;">🎙 L'audio guidé de ce module est en cours d'enregistrement.</div>
+    <audio id="audio-player-03" controls preload="none"
+      style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+      src="{{ asset('storage/formation/audio/mps-03-fr.mp3') }}">
+      Votre navigateur ne supporte pas la lecture audio.
+    </audio>
     <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
 </div>
