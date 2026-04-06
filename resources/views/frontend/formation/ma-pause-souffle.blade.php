@@ -1653,6 +1653,89 @@
   @endforeach
 </div>
 
+{{-- ══════ VISIO ══════ --}}
+<div style="max-width:760px;margin:5rem auto 0;padding:0 2rem;">
+  <div style="
+    background:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(201,168,76,.1),transparent 70%),
+               linear-gradient(160deg,rgba(201,168,76,.06),rgba(0,0,0,0));
+    border:1px solid rgba(201,168,76,.22); border-radius:24px; padding:3.5rem 2.5rem;
+    text-align:center; position:relative; overflow:hidden;
+  ">
+    {{-- Fond décoratif --}}
+    <div style="
+      position:absolute;top:0;left:0;right:0;bottom:0;
+      background:repeating-linear-gradient(45deg,rgba(201,168,76,.018) 0,rgba(201,168,76,.018) 1px,transparent 1px,transparent 28px);
+      pointer-events:none;
+    "></div>
+
+    <div style="position:relative;">
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:1.2rem;">
+        Session d'intégration · Incluse dans la formation
+      </div>
+
+      <h2 style="font-size:clamp(1.3rem,3vw,1.85rem);font-weight:200;font-family:Georgia,serif;color:#fff;margin-bottom:.9rem;line-height:1.4;">
+        Votre séance de clôture<br><em style="color:var(--ps-gold);font-style:italic;">en visio privée</em>
+      </h2>
+
+      <p style="font-size:1rem;color:var(--ps-muted);max-width:480px;margin:0 auto 2rem;line-height:1.9;">
+        La formation représente <strong style="color:rgba(232,224,208,.8);">3h30 de contenu guidé</strong>.
+        Conformément à la règle des 20 %, votre parcours se conclut par une
+        <strong style="color:rgba(232,224,208,.8);">séance visio de 45 minutes</strong> —
+        pour ancrer, ajuster, et personnaliser ce que vous avez vécu.
+      </p>
+
+      {{-- 3 piliers --}}
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;">
+        @foreach([
+          ['🔍','Bilan personnel','Ce qui a changé. Ce qui résiste encore. Ce que vous emportez.'],
+          ['🎯','Ajustement','Votre protocole affiné — précisément pour votre réalité, pas la moyenne.'],
+          ['🚀','Projection','Les 30 prochains jours. Un engagement concret. Une direction claire.'],
+        ] as [$icon,$title,$desc])
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.4rem 1.1rem;text-align:center;">
+          <div style="font-size:1.6rem;margin-bottom:.65rem;">{{ $icon }}</div>
+          <div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.5rem;">{{ $title }}</div>
+          <p style="font-size:.8rem;color:var(--ps-muted);line-height:1.75;margin:0;">{{ $desc }}</p>
+        </div>
+        @endforeach
+      </div>
+
+      {{-- Durée + format --}}
+      <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.5rem;">
+        @foreach([
+          ['⏱','45 minutes','Séance individuelle'],
+          ['🎥','Visio privée','Lien envoyé par e-mail'],
+          ['📅','À votre rythme','Dans les 30 jours suivant la formation'],
+        ] as [$ic,$val,$lbl])
+        <div style="display:flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.14);border-radius:30px;padding:.5rem 1.1rem;">
+          <span>{{ $ic }}</span>
+          <div style="text-align:left;">
+            <div style="font-size:.82rem;font-weight:700;color:#fff;">{{ $val }}</div>
+            <div style="font-size:.7rem;color:var(--ps-muted);">{{ $lbl }}</div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+
+      {{-- CTA --}}
+      <a href="mailto:contact@junspro.com?subject=Réservation séance visio — Ma Pause Souffle"
+         style="
+           display:inline-flex;align-items:center;gap:.6rem;
+           background:var(--ps-gold);color:#0a0a0a;
+           padding:.85rem 2.2rem;border-radius:30px;
+           font-size:.92rem;font-weight:700;letter-spacing:.04em;
+           text-decoration:none;transition:opacity .18s;
+         "
+         onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        📅 Réserver ma séance de clôture
+      </a>
+
+      <p style="font-size:.78rem;color:rgba(232,224,208,.35);margin-top:1.2rem;">
+        Incluse dans votre accès formation · Aucun frais supplémentaire
+      </p>
+    </div>
+  </div>
+</div>
+
 {{-- ══════ FINALE ══════ --}}
 <div class="ps-finale">
   <div class="ps-finale__inner">
