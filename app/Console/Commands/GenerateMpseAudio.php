@@ -4300,6 +4300,665 @@ In your universe. In your reality. In your life.
 [pause 6s]
 SCRIPT,
 
+        // ── MODULE 04 EN ──────────────────────────────────────
+
+        '04-creatif' => <<<'SCRIPT'
+Welcome.
+[pause 4s]
+You are a creator.
+[pause 3s]
+That means something specific — and demanding.
+[pause 5s]
+It means your state before you begin... shapes what you make.
+[pause 6s]
+Not partially. Entirely.
+[pause 8s]
+
+The first touch is never neutral.
+[pause 5s]
+The first brushstroke. The first word. The first chord.
+[pause 4s]
+It carries the state you arrived in.
+[pause 8s]
+
+So the question this module asks is simple.
+[pause 5s]
+What state do you want to bring to your creative threshold?
+[pause 8s]
+
+This is what we call the before.
+[pause 5s]
+The moment between the world... and the work.
+[pause 4s]
+It costs nothing. It changes everything.
+[pause 8s]
+
+Let's do it now. Together.
+[pause 5s]
+Settle into your posture.
+[pause 4s]
+Put your hands where they'll be when you create.
+[pause 5s]
+Feel the contact. The weight. The temperature.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+Notice what's different in your hands now.
+[pause 5s]
+In your vision. In your pace.
+[pause 6s]
+That state... is available before every session.
+[pause 5s]
+Every time. Without exception.
+[pause 8s]
+
+Your creative practice deserves this entrance.
+[pause 5s]
+Give it one — starting today.
+[pause 6s]
+SCRIPT,
+
+        '04-soin' => <<<'SCRIPT'
+Welcome.
+[pause 4s]
+You work in care.
+[pause 3s]
+Which means you carry things.
+[pause 5s]
+Other people's pain. Their fear. Their weight.
+[pause 6s]
+And yours — that you've learned to set aside.
+[pause 8s]
+
+The hallway between two consultations is not wasted time.
+[pause 5s]
+It is the space where you can reset.
+[pause 4s]
+Where you can choose who you want to be... for the next person who walks through that door.
+[pause 10s]
+
+This module gives that space a content.
+[pause 5s]
+One cycle. One breath. One question.
+[pause 8s]
+
+Take a moment now.
+[pause 4s]
+Close your eyes if you can.
+[pause 4s]
+Place both feet flat on the floor.
+[pause 5s]
+Feel the solidity beneath you.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+That's what it feels like... to arrive.
+[pause 5s]
+Not rushed. Not already inside the next patient's story.
+[pause 6s]
+Present. Available. Solid.
+[pause 8s]
+
+Every person you care for... deserves this version of you.
+[pause 5s]
+And so do you.
+[pause 6s]
+SCRIPT,
+
+        '04-enseignant' => <<<'SCRIPT'
+Welcome.
+[pause 4s]
+You teach.
+[pause 3s]
+Which means every morning... before a single word is spoken...
+[pause 4s]
+your state is already teaching something.
+[pause 8s]
+
+The way you walk through that door.
+[pause 4s]
+The pace of your first steps.
+[pause 4s]
+The quality of your first glance.
+[pause 6s]
+Students feel this before you speak.
+[pause 8s]
+
+The doorknob moment is not a detail.
+[pause 5s]
+It is the foundation of what follows.
+[pause 8s]
+
+Stand now — or sit upright.
+[pause 4s]
+Feel your feet on the ground.
+[pause 4s]
+Your hands resting.
+[pause 5s]
+And let the breath do what it knows how to do.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+That's the state you can bring into every classroom.
+[pause 5s]
+Not as a performance. As a choice.
+[pause 6s]
+A choice you make... before the door opens.
+[pause 8s]
+SCRIPT,
+
+        '04-leader' => <<<'SCRIPT'
+Welcome.
+[pause 4s]
+You lead.
+[pause 3s]
+Which means before every meeting... every decision... every difficult conversation...
+[pause 4s]
+the state you're in... sets the tone for everyone in the room.
+[pause 8s]
+
+Your nervous system... is the thermostat.
+[pause 5s]
+When you're regulated... they regulate.
+[pause 4s]
+When you're scattered... they scatter.
+[pause 4s]
+Whether you know it or not. Whether you intend it or not.
+[pause 8s]
+
+The elevator. The hallway. The thirty seconds before you open the door.
+[pause 5s]
+That's your moment.
+[pause 5s]
+Use it.
+[pause 8s]
+
+Put your phone in your pocket now.
+[pause 4s]
+Two feet on the floor.
+[pause 4s]
+One breath — chosen, not automatic.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+The leader who walks in from that state...
+[pause 4s]
+makes better decisions.
+[pause 3s]
+Listens more deeply.
+[pause 3s]
+Holds the room without effort.
+[pause 8s]
+
+That leader is you.
+[pause 5s]
+Choose it — every time.
+[pause 6s]
+SCRIPT,
+
+        '04-educateur' => <<<'SCRIPT'
+Welcome.
+[pause 4s]
+You train. You facilitate. You hold space.
+[pause 5s]
+Which means your presence before the group begins...
+[pause 4s]
+is already part of the program.
+[pause 8s]
+
+An empty room before participants arrive is not empty.
+[pause 5s]
+It's full of your preparation. Your intention. Your state.
+[pause 6s]
+What you bring into that space... becomes the container.
+[pause 8s]
+
+This module gives that moment a structure.
+[pause 5s]
+A breath. A question. A reset.
+[pause 8s]
+
+Stand in your space — real or imagined.
+[pause 4s]
+Feel the floor beneath you.
+[pause 4s]
+The air in the room.
+[pause 5s]
+The silence before it begins.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+You are now the container.
+[pause 5s]
+Stable. Present. Open.
+[pause 4s]
+Whatever the group brings... you won't be moved.
+[pause 5s]
+You'll hold.
+[pause 8s]
+SCRIPT,
+
+        '04-bebe' => <<<'SCRIPT'
+Welcome.
+[pause 4s]
+You work with the very beginning of life.
+[pause 4s]
+With infants. With newborns. With the smallest humans.
+[pause 6s]
+Who feel everything.
+[pause 5s]
+Before words. Before concepts. Before explanation.
+[pause 8s]
+
+Your hands are not just hands.
+[pause 5s]
+They are the first language this child encounters.
+[pause 6s]
+And they speak your state.
+[pause 8s]
+
+The tension in your arms.
+[pause 3s]
+The rhythm of your breathing.
+[pause 3s]
+The quality of your attention.
+[pause 5s]
+All of it... arrives before you do.
+[pause 8s]
+
+Before you pick up a child... pause now.
+[pause 5s]
+Hands a few centimetres from your body.
+[pause 4s]
+Feel them. The weight. The warmth.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+Those hands are different now.
+[pause 5s]
+Softer. More present. More available.
+[pause 6s]
+That's what the child will receive.
+[pause 6s]
+SCRIPT,
+
+        '04-proches' => <<<'SCRIPT'
+Welcome.
+[pause 4s]
+You are returning home.
+[pause 4s]
+Or you're about to.
+[pause 5s]
+And between the day you've carried... and the door you're about to open...
+[pause 5s]
+there is a threshold.
+[pause 8s]
+
+What you bring through that door... matters.
+[pause 5s]
+Not just for you. For them.
+[pause 5s]
+The people you love most in the world...
+[pause 4s]
+are waiting for a version of you.
+[pause 8s]
+
+This module is about choosing which version that is.
+[pause 6s]
+Not from guilt. Not from performance.
+[pause 5s]
+From presence.
+[pause 8s]
+
+Wherever you are now — car, train, sidewalk, staircase —
+[pause 4s]
+stop for a moment.
+[pause 4s]
+One hand on the door. Or just still, wherever you are.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+That's who walks through the door.
+[pause 5s]
+Not the meeting. Not the deadline. Not the traffic.
+[pause 5s]
+You.
+[pause 5s]
+Present. Warm. Here.
+[pause 8s]
+SCRIPT,
+
+        // ── MODULE 05 EN ──────────────────────────────────────
+
+        '05-creatif' => <<<'SCRIPT'
+Welcome back.
+[pause 4s]
+You're mid-process.
+[pause 4s]
+Or you've been derailed from one.
+[pause 5s]
+Either way — something is in motion. And something is resisting.
+[pause 8s]
+
+Creative turbulence is not a problem to solve.
+[pause 5s]
+It's a signal to read.
+[pause 6s]
+The block. The doubt. The empty page. The abandoned canvas.
+[pause 5s]
+They're not failures. They're thresholds.
+[pause 8s]
+
+And thresholds... have a single requirement.
+[pause 5s]
+Presence. Not technique. Not willpower. Not inspiration.
+[pause 5s]
+Presence.
+[pause 8s]
+
+Feel what's here right now.
+[pause 5s]
+The tension in your jaw. Your shoulders. Your hands.
+[pause 5s]
+Don't try to release it. Just notice it.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+The resistance hasn't disappeared.
+[pause 5s]
+But you're no longer inside it.
+[pause 5s]
+You're alongside it. Watching it.
+[pause 6s]
+From there... the next gesture becomes possible.
+[pause 8s]
+SCRIPT,
+
+        '05-soin' => <<<'SCRIPT'
+Welcome back.
+[pause 4s]
+You're in the middle of a difficult consultation.
+[pause 4s]
+Or you've just come out of one.
+[pause 5s]
+The weight is still there — in your chest, your shoulders, your thoughts.
+[pause 8s]
+
+This is what carrying someone looks like.
+[pause 5s]
+It's not a weakness. It's the cost of real presence.
+[pause 6s]
+And it needs a moment of discharge.
+[pause 8s]
+
+Right now — still in the hallway, or at your desk, or sitting in your car —
+[pause 4s]
+you have thirty seconds.
+[pause 5s]
+That's enough.
+[pause 8s]
+
+Let the weight be acknowledged first.
+[pause 5s]
+Don't push it away. Name it silently.
+[pause 5s]
+Then breathe.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+What belonged to them... stays here.
+[pause 5s]
+What's yours... you carry wisely.
+[pause 5s]
+You are not their pain. You are their witness.
+[pause 6s]
+That distinction... sustains a career.
+[pause 8s]
+SCRIPT,
+
+        '05-enseignant' => <<<'SCRIPT'
+Welcome back.
+[pause 4s]
+The class was difficult.
+[pause 4s]
+Or you walked in depleted — and it showed.
+[pause 5s]
+Or something happened that shifted the room... and you followed it.
+[pause 8s]
+
+Teaching in turbulence is a skill.
+[pause 5s]
+Not learned in training programs.
+[pause 5s]
+Learned in the hallway. In the doorway. In the breath before you speak.
+[pause 8s]
+
+You are the point of stability in that room.
+[pause 5s]
+Not because you have all the answers.
+[pause 4s]
+Because you have an anchor.
+[pause 5s]
+And you choose to use it — even when it's hard.
+[pause 8s]
+
+Find that anchor now.
+[pause 5s]
+Two feet on the ground. One breath chosen, not automatic.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+That state is the one they need from you.
+[pause 5s]
+Not perfection. Not calm.
+[pause 4s]
+Just — present.
+[pause 5s]
+Unmoved.
+[pause 8s]
+SCRIPT,
+
+        '05-leader' => <<<'SCRIPT'
+Welcome back.
+[pause 4s]
+The pressure is real.
+[pause 4s]
+The decision is urgent. The meeting went sideways. The team is watching.
+[pause 6s]
+And you're still expected to be the one who holds it together.
+[pause 8s]
+
+Leadership under pressure is not about suppressing the pressure.
+[pause 5s]
+It's about not transmitting it.
+[pause 5s]
+There's a difference.
+[pause 8s]
+
+One breath. Before you respond.
+[pause 5s]
+Before you re-enter the room.
+[pause 4s]
+Before you make the call.
+[pause 8s]
+
+That one breath... is not a pause.
+[pause 5s]
+It's a choice.
+[pause 5s]
+A choice about who leads in the next thirty seconds.
+[pause 8s]
+
+Make it now.
+[pause 5s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+The version of you that just breathed...
+[pause 4s]
+makes better calls.
+[pause 3s]
+Steadier decisions.
+[pause 3s]
+More trust in the room.
+[pause 6s]
+That's the one they need. Go be that one.
+[pause 6s]
+SCRIPT,
+
+        '05-educateur' => <<<'SCRIPT'
+Welcome back.
+[pause 4s]
+The group is resisting.
+[pause 4s]
+Or you are. Both happen.
+[pause 5s]
+The energy has shifted — and you can feel it.
+[pause 8s]
+
+Resistance in a group is rarely about the content.
+[pause 5s]
+It's about safety. Trust. The quality of the container.
+[pause 6s]
+And the container... is you.
+[pause 8s]
+
+When the container is regulated... the group feels it.
+[pause 5s]
+Not always consciously. But in their bodies.
+[pause 5s]
+They soften. They open. They risk.
+[pause 8s]
+
+So before you intervene... regulate first.
+[pause 5s]
+Silently. Internally. Completely invisible to the group.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+Now you can hold the resistance without reacting to it.
+[pause 5s]
+Name it. Sit with it. Let the group find their way through it.
+[pause 6s]
+That's not passivity. That's mastery.
+[pause 8s]
+SCRIPT,
+
+        '05-bebe' => <<<'SCRIPT'
+Welcome back.
+[pause 4s]
+The baby won't stop crying.
+[pause 4s]
+Or the feeding went badly. Or the night was brutal.
+[pause 5s]
+And your reserves are running low.
+[pause 8s]
+
+The hardest thing about caring for an infant...
+[pause 5s]
+is that they absorb your state.
+[pause 5s]
+There's nowhere to hide.
+[pause 5s]
+They feel the tension before your hands even touch them.
+[pause 8s]
+
+So the most effective thing you can do — right now —
+[pause 4s]
+is not try harder.
+[pause 5s]
+It's breathe first.
+[pause 8s]
+
+Hands near the child. Or resting on your own lap.
+[pause 5s]
+Jaw unclenched. Shoulders dropped.
+[pause 5s]
+One full cycle.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+Different hands now.
+[pause 5s]
+Different signal to the nervous system — yours, and theirs.
+[pause 6s]
+From this state... something can shift.
+[pause 8s]
+SCRIPT,
+
+        '05-proches' => <<<'SCRIPT'
+Welcome back.
+[pause 4s]
+Something happened at home.
+[pause 4s]
+The evening escalated. A word landed wrong. The tension is still in the room.
+[pause 6s]
+And you're not sure what to do next.
+[pause 8s]
+
+The people we love most... are also the ones who can reach us the deepest.
+[pause 5s]
+That's not a flaw in the relationship.
+[pause 5s]
+That's the nature of closeness.
+[pause 8s]
+
+But you don't have to respond from the place of impact.
+[pause 5s]
+You have a choice.
+[pause 5s]
+A thirty-second choice.
+[pause 8s]
+
+Step back — physically if you can.
+[pause 4s]
+Or inward, if the space doesn't allow it.
+[pause 5s]
+Feel your feet. Feel your hands.
+[pause 5s]
+And breathe.
+[pause 8s]
+
+Inhale... for five seconds.
+[BREATHING_CYCLES]
+
+From here... you can choose your words.
+[pause 5s]
+From here... the conversation can change direction.
+[pause 5s]
+Not because the problem is solved.
+[pause 4s]
+Because you are no longer inside the reaction.
+[pause 6s]
+You are beside it. And that changes everything.
+[pause 8s]
+SCRIPT,
+
     ];
 
     // ══════════════════════════════════════════════════════════

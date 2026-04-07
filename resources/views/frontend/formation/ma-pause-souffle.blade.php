@@ -1622,7 +1622,6 @@
     ['proches','Proches','L\'ancrage dans la tension familiale'],
   ] as [$key, $label, $subtitle])
   <div id="pnl05-{{ $key }}" class="ps-30j__panel {{ $key === 'creatif' ? 'active' : '' }}">
-    @if($key !== 'proches')
     <div class="ps-audio-block">
       <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
         <div style="display:flex;gap:8px;margin-bottom:10px;">
@@ -1640,15 +1639,6 @@
         <div class="ps-audio-coming">🎧 Recommandé : écoutez votre famille, puis travaillez les activités.</div>
       </div>
     </div>
-    @else
-    <div class="ps-module-coming" style="margin-top:0;">
-      <div class="ps-module-coming__inner">
-        <div class="ps-module-coming__icon">🔄</div>
-        <div class="ps-module-coming__title">Proches — Audio en cours de finalisation</div>
-        <span class="ps-module-coming__tag">⏳ Disponible très prochainement</span>
-      </div>
-    </div>
-    @endif
   </div>
   @endforeach
 </div>
