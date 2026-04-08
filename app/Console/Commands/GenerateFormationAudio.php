@@ -11955,6 +11955,315 @@ Continuez à transmettre du vivant.
 [pause 10s]
 SCRIPT,
 
+        // ─────────────────────────────────────────────────────────
+        // MODULE 40 FR — "Traverser la perte" — cible : 14–16 min
+        // ─────────────────────────────────────────────────────────
+        '40-traverser-la-perte' => <<<'SCRIPT'
+Bienvenue.
+[pause 6s]
+
+Prenez un moment pour trouver une position dans laquelle vous pouvez vraiment vous déposer.
+[pause 4s]
+Allongé ou assis, le dos soutenu.
+[pause 3s]
+Mains posées sur votre ventre ou votre cœur.
+[pause 5s]
+
+Fermez les yeux si vous le souhaitez.
+[pause 4s]
+
+Il y a quelque chose de courageux dans le fait d'être ici.
+[pause 5s]
+D'avoir choisi de se poser... dans un moment qui porte peut-être quelque chose de lourd.
+[pause 6s]
+
+Ce module ne vous demandera pas d'aller mieux.
+[pause 5s]
+Il ne vous demandera pas de tourner la page.
+[pause 5s]
+Il vous demande simplement... d'être là. Avec ce qui est.
+[pause 8s]
+
+Respirons ensemble trois fois avant de commencer.
+[pause 4s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+Laissez votre respiration reprendre son rythme naturel.
+[pause 5s]
+
+Je voudrais vous poser une question.
+[pause 5s]
+Pas pour que vous répondiez avec la pensée.
+[pause 4s]
+Mais pour que vous répondiez avec le corps.
+[pause 5s]
+
+Où est la perte... dans votre corps... en ce moment ?
+[pause 8s]
+
+Pour certains, c'est une gorge serrée.
+[pause 4s]
+Pour d'autres, un creux au milieu de la poitrine, comme si quelque chose manquait là.
+[pause 5s]
+Parfois c'est un dos alourdi.
+[pause 4s]
+Des mains qui ont oublié quoi tenir.
+[pause 5s]
+Ou simplement une fatigue... profonde... sans origine claire.
+[pause 6s]
+
+Localisez cet endroit-là.
+[pause 5s]
+Et si vous pouvez... posez une main dessus.
+[pause 6s]
+Pas pour le faire partir.
+[pause 4s]
+Juste pour lui dire : je sais que tu es là.
+[pause 8s]
+
+La neuroscientifique Mary-Frances O'Connor a passé vingt ans à étudier le cerveau des personnes en deuil.
+[pause 5s]
+Et ce qu'elle a découvert est à la fois douloureux et libérateur :
+[pause 5s]
+la douleur que vous ressentez... est réelle.
+[pause 6s]
+Pas une fragilité. Pas un manque de caractère.
+[pause 5s]
+Mais une réponse neurologique à une perte réelle.
+[pause 5s]
+Les mêmes circuits qui s'activaient quand vous anticipiez cette présence... continuent de chercher.
+[pause 6s]
+Et chaque confrontation à l'absence... est une micro-privation dans le cerveau.
+[pause 8s]
+
+Ce n'est pas dans la tête.
+[pause 4s]
+C'est dans le corps.
+[pause 4s]
+C'est dans les bras qui ont tenu.
+[pause 4s]
+Dans la voix qui a appelé.
+[pause 4s]
+Dans les yeux qui ont cherché.
+[pause 6s]
+
+Le corps porte ce que l'esprit ne peut pas encore nommer.
+[pause 8s]
+
+Revenons à la respiration.
+[pause 4s]
+Cette fois avec une intention précise.
+[pause 5s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+Cinq temps pour inspirer... et accueillir ce qui est.
+[pause 4s]
+Cinq temps de silence... pour tenir. Sans s'effondrer. Sans fuir.
+[pause 4s]
+Cinq temps pour expirer... et lâcher le poids d'un instant.
+[pause 5s]
+Pas lâcher la personne.
+[pause 4s]
+Pas lâcher le souvenir.
+[pause 5s]
+Juste... le poids de ce moment précis.
+[pause 8s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+Il y a un mythe que nous devons défaire ensemble.
+[pause 5s]
+Le mythe du "faire son deuil".
+[pause 6s]
+L'idée qu'il faudrait "lâcher prise", "tourner la page", "passer à autre chose".
+[pause 7s]
+
+En 1996, les chercheurs Klass, Silverman et Nickman ont démontré quelque chose que les gens qui ont perdu quelqu'un savent déjà intuitivement :
+[pause 5s]
+maintenir un lien avec ce qui est parti... n'est pas de la pathologie.
+[pause 5s]
+C'est de la santé.
+[pause 6s]
+
+Parler de la personne disparue.
+[pause 4s]
+Honorer sa mémoire.
+[pause 4s]
+Lui écrire encore.
+[pause 4s]
+Cuisiner ce qu'elle aimait.
+[pause 4s]
+Garder ses rituels.
+[pause 5s]
+
+Tout cela... n'est pas rester coincé.
+[pause 5s]
+C'est rester connecté.
+[pause 8s]
+
+Le deuil ne vous demande pas d'oublier.
+[pause 5s]
+Il vous demande d'apprendre à porter autrement.
+[pause 8s]
+
+Maintenant... je voudrais vous inviter à laisser venir une image.
+[pause 5s]
+Un souvenir.
+[pause 4s]
+Pas forcément le plus douloureux.
+[pause 5s]
+Peut-être le plus vrai.
+[pause 5s]
+Un moment... avec cette personne, cette relation, cette version de vous-même... qui porte quelque chose de beau.
+[pause 8s]
+
+Un sourire que vous avez vu.
+[pause 5s]
+Une phrase qu'on vous a dite.
+[pause 5s]
+Un lieu que vous partagiez.
+[pause 5s]
+Une qualité que vous aimiez.
+[pause 8s]
+
+Restez avec cette image.
+[pause 6s]
+Sans l'analyser.
+[pause 4s]
+Sans vous défendre de ce qu'elle fait remonter.
+[pause 5s]
+Laissez-vous être touché.
+[pause 10s]
+
+Ce que vous ressentez là... c'est la preuve d'un amour.
+[pause 5s]
+Pas d'une faiblesse.
+[pause 6s]
+C'est le prix que nous payons pour avoir aimé.
+[pause 5s]
+Et si nous le payons, c'est parce que ça en valait la peine.
+[pause 10s]
+
+Il y a quelque chose que je voulais vous partager.
+[pause 5s]
+Une idée de David Kessler... qui a passé sa vie à accompagner des personnes en deuil.
+[pause 5s]
+Il dit que le deuil a un sixième stade.
+[pause 5s]
+Non pas une obligation.
+[pause 4s]
+Mais une possibilité.
+[pause 6s]
+Ce stade s'appelle : trouver du sens.
+[pause 7s]
+
+Pas un sens imposé de l'extérieur.
+[pause 5s]
+Pas de "c'était pour le mieux" ou "Dieu avait un plan".
+[pause 6s]
+Un sens que vous construisez vous-même.
+[pause 5s]
+À votre rythme.
+[pause 5s]
+Qui peut prendre des années.
+[pause 5s]
+Et qui peut prendre des formes très différentes pour chacun.
+[pause 8s]
+
+Certains trouvent ce sens dans un engagement.
+[pause 4s]
+D'autres dans une création.
+[pause 4s]
+D'autres dans la façon dont ils choisissent de vivre.
+[pause 4s]
+D'autres dans ce qu'ils transmettent.
+[pause 8s]
+
+Et d'autres encore... n'ont pas encore trouvé ce sens.
+[pause 5s]
+C'est aussi valide.
+[pause 5s]
+Tenir dans l'absence de sens... est parfois le travail le plus courageux qu'on puisse faire.
+[pause 8s]
+
+Viktor Frankl, qui a survécu aux camps de concentration et perdu presque tous ses proches, a écrit une phrase que je vous confie :
+[pause 5s]
+"Tout peut être pris à un homme... sauf une chose.
+[pause 4s]
+La dernière des libertés humaines.
+[pause 4s]
+Choisir son attitude face à n'importe quelle circonstance donnée."
+[pause 10s]
+
+Vous ne choisissez pas la perte.
+[pause 5s]
+Vous choisissez comment vous la traversez.
+[pause 8s]
+
+Revenons à la respiration une dernière fois.
+[pause 4s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+[BREATHING_CYCLES]
+
+[pause 10s]
+
+Je vais vous laisser avec une invitation intérieure.
+[pause 5s]
+Dites-vous, à l'intérieur ou à voix haute si vous le souhaitez :
+[pause 5s]
+Je porte cette perte.
+[pause 4s]
+Et je continue de vivre.
+[pause 4s]
+Ces deux choses ne se contredisent pas.
+[pause 4s]
+Elles coexistent.
+[pause 5s]
+Et je suis capable de les tenir ensemble.
+[pause 10s]
+
+Maintenant...
+[pause 4s]
+Sentez le poids de votre corps dans la position dans laquelle vous êtes.
+[pause 5s]
+Sentez votre respiration... qui continue.
+[pause 5s]
+Sentez... cette capacité que vous avez... de tenir.
+[pause 6s]
+Elle a toujours été là.
+[pause 5s]
+Même quand vous n'y croyiez plus.
+[pause 8s]
+
+Prenez le temps qu'il vous faut pour revenir.
+[pause 6s]
+
+À bientôt.
+[pause 5s]
+Continuez à traverser.
+[pause 5s]
+Pas à aller mieux.
+[pause 4s]
+À traverser.
+[pause 5s]
+C'est suffisant.
+[pause 5s]
+C'est même courageux.
+[pause 10s]
+SCRIPT,
+
     ];
 
     // ── Scripts EN — "TTS-ready" calm executive tone ──────────────
@@ -22262,6 +22571,315 @@ Until next time, mentor.
 Keep learning.
 [pause 5s]
 Keep transmitting something living.
+[pause 10s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MODULE 40 EN — "Moving Through Loss" — target : 14–16 min
+        // ─────────────────────────────────────────────────────────
+        '40-traverser-la-perte' => <<<'SCRIPT'
+Welcome.
+[pause 6s]
+
+Take a moment to find a position in which you can truly settle.
+[pause 4s]
+Lying down or sitting, your back supported.
+[pause 3s]
+Hands resting on your belly or your heart.
+[pause 5s]
+
+Close your eyes if you wish.
+[pause 4s]
+
+There is something courageous about being here.
+[pause 5s]
+About having chosen to pause... in a moment that may be carrying something heavy.
+[pause 6s]
+
+This module will not ask you to feel better.
+[pause 5s]
+It will not ask you to turn the page.
+[pause 5s]
+It simply asks you... to be here. With what is.
+[pause 8s]
+
+Let us breathe together three times before we begin.
+[pause 4s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+Let your breathing return to its natural rhythm.
+[pause 5s]
+
+I would like to ask you a question.
+[pause 5s]
+Not for you to answer with thought.
+[pause 4s]
+But for you to answer with your body.
+[pause 5s]
+
+Where is the loss... in your body... right now?
+[pause 8s]
+
+For some, it is a tight throat.
+[pause 4s]
+For others, a hollow in the middle of the chest, as if something were missing there.
+[pause 5s]
+Sometimes it is a weighted back.
+[pause 4s]
+Hands that have forgotten what to hold.
+[pause 5s]
+Or simply a tiredness... deep... with no clear origin.
+[pause 6s]
+
+Locate that place.
+[pause 5s]
+And if you can... place a hand on it.
+[pause 6s]
+Not to make it leave.
+[pause 4s]
+Just to say: I know you are here.
+[pause 8s]
+
+Neuroscientist Mary-Frances O'Connor spent twenty years studying the brains of grieving people.
+[pause 5s]
+And what she discovered is both painful and liberating:
+[pause 5s]
+the pain you feel... is real.
+[pause 6s]
+Not a fragility. Not a lack of character.
+[pause 5s]
+But a neurological response to a real loss.
+[pause 5s]
+The same circuits that activated when you anticipated that presence... keep searching.
+[pause 6s]
+And each confrontation with absence... is a micro-withdrawal in the brain.
+[pause 8s]
+
+This is not in the head.
+[pause 4s]
+It is in the body.
+[pause 4s]
+It is in the arms that held.
+[pause 4s]
+In the voice that called.
+[pause 4s]
+In the eyes that searched.
+[pause 6s]
+
+The body carries what the mind cannot yet name.
+[pause 8s]
+
+Let us return to the breath.
+[pause 4s]
+This time with a precise intention.
+[pause 5s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+Five counts to breathe in... and welcome what is.
+[pause 4s]
+Five counts of silence... to hold. Without collapsing. Without fleeing.
+[pause 4s]
+Five counts to breathe out... and release the weight of one moment.
+[pause 5s]
+Not releasing the person.
+[pause 4s]
+Not releasing the memory.
+[pause 5s]
+Just... the weight of this precise moment.
+[pause 8s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+There is a myth we must dismantle together.
+[pause 5s]
+The myth of "grieving properly."
+[pause 6s]
+The idea that you should "let go," "turn the page," "move on."
+[pause 7s]
+
+In 1996, researchers Klass, Silverman, and Nickman demonstrated something people who have lost someone already know intuitively:
+[pause 5s]
+maintaining a bond with what has gone... is not pathology.
+[pause 5s]
+It is health.
+[pause 6s]
+
+Talking about the person who is gone.
+[pause 4s]
+Honoring their memory.
+[pause 4s]
+Writing to them still.
+[pause 4s]
+Cooking what they loved.
+[pause 4s]
+Keeping their rituals.
+[pause 5s]
+
+None of this... is being stuck.
+[pause 5s]
+It is staying connected.
+[pause 8s]
+
+Grief does not ask you to forget.
+[pause 5s]
+It asks you to learn to carry differently.
+[pause 8s]
+
+Now... I would like to invite an image to come.
+[pause 5s]
+A memory.
+[pause 4s]
+Not necessarily the most painful one.
+[pause 5s]
+Perhaps the truest.
+[pause 5s]
+A moment... with that person, that relationship, that version of yourself... that carries something beautiful.
+[pause 8s]
+
+A smile you saw.
+[pause 5s]
+A phrase that was said to you.
+[pause 5s]
+A place you shared.
+[pause 5s]
+A quality you loved.
+[pause 8s]
+
+Stay with this image.
+[pause 6s]
+Without analyzing it.
+[pause 4s]
+Without defending against what it brings up.
+[pause 5s]
+Let yourself be moved.
+[pause 10s]
+
+What you feel there... is proof of love.
+[pause 5s]
+Not of weakness.
+[pause 6s]
+It is the price we pay for having loved.
+[pause 5s]
+And if we paid it, it is because it was worth it.
+[pause 10s]
+
+There is something I wanted to share with you.
+[pause 5s]
+An idea from David Kessler... who spent his life accompanying the bereaved.
+[pause 5s]
+He says grief has a sixth stage.
+[pause 5s]
+Not an obligation.
+[pause 4s]
+But a possibility.
+[pause 6s]
+This stage is called: finding meaning.
+[pause 7s]
+
+Not a meaning imposed from outside.
+[pause 5s]
+Not "it was for the best" or "God had a plan."
+[pause 6s]
+A meaning you construct yourself.
+[pause 5s]
+At your own pace.
+[pause 5s]
+Which can take years.
+[pause 5s]
+And which can take very different forms for each person.
+[pause 8s]
+
+Some find this meaning in a commitment.
+[pause 4s]
+Others in a creation.
+[pause 4s]
+Others in how they choose to live.
+[pause 4s]
+Others in what they transmit.
+[pause 8s]
+
+And still others... have not yet found that meaning.
+[pause 5s]
+That is also valid.
+[pause 5s]
+Holding on in the absence of meaning... is sometimes the most courageous work one can do.
+[pause 8s]
+
+Viktor Frankl, who survived the concentration camps and lost almost everyone he loved, wrote a sentence I entrust to you:
+[pause 5s]
+"Everything can be taken from a man... but one thing.
+[pause 4s]
+The last of human freedoms.
+[pause 4s]
+To choose one's attitude in any given set of circumstances."
+[pause 10s]
+
+You do not choose the loss.
+[pause 5s]
+You choose how you move through it.
+[pause 8s]
+
+Let us return to the breath one final time.
+[pause 4s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+[BREATHING_CYCLES]
+
+[pause 10s]
+
+I will leave you with an inner invitation.
+[pause 5s]
+Say to yourself, inwardly or aloud if you wish:
+[pause 5s]
+I carry this loss.
+[pause 4s]
+And I continue to live.
+[pause 4s]
+These two things do not contradict each other.
+[pause 4s]
+They coexist.
+[pause 5s]
+And I am capable of holding them both.
+[pause 10s]
+
+Now...
+[pause 4s]
+Feel the weight of your body in the position you are in.
+[pause 5s]
+Feel your breath... continuing.
+[pause 5s]
+Feel... this capacity you have... to hold.
+[pause 6s]
+It has always been there.
+[pause 5s]
+Even when you no longer believed it.
+[pause 8s]
+
+Take all the time you need to return.
+[pause 6s]
+
+Until next time.
+[pause 5s]
+Keep moving through.
+[pause 5s]
+Not feeling better.
+[pause 4s]
+Moving through.
+[pause 5s]
+That is enough.
+[pause 5s]
+It is even courageous.
 [pause 10s]
 SCRIPT,
 
