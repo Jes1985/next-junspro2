@@ -4303,660 +4303,2041 @@ SCRIPT,
         // ── MODULE 04 EN ──────────────────────────────────────
 
         '04-creatif' => <<<'SCRIPT'
-Welcome.
-[pause 4s]
-You are a creator.
-[pause 3s]
-That means something specific — and demanding.
-[pause 5s]
-It means your state before you begin... shapes what you make.
+Clay does not lie.
 [pause 6s]
-Not partially. Entirely.
+
+Nor does wood. Nor colour. Nor sound.
+[pause 5s]
+The material you work with... it receives what you are at the moment you touch it.
+[pause 5s]
+Not what you want to be. What you are.
+[pause 10s]
+
+You have probably seen works that carry tension.
+[pause 5s]
+Paintings that feel heavy. Music played with contracted hands. Dance that pushes instead of flows.
+[pause 5s]
+And you have seen the opposite. Works that breathe. That have something you cannot name... but feel immediately.
+[pause 8s]
+That something... is the state of the one who created it.
+[pause 5s]
+Graved into the result. Invisible. But undeniable.
+[pause 10s]
+
+What we are doing today... is learning to deliberately enter the state that precedes works that breathe.
+[pause 5s]
+Not through talent. Through protocol.
+[pause 10s]
+
+Here is what really happens when you begin to work.
+[pause 5s]
+Your hand approaches. And in that hand... everything you have been carrying since this morning.
+[pause 5s]
+Unanswered emails. Doubt about the project. Money worries. Comparison with others. Fatigue.
+[pause 5s]
+All of it... in your fingers... at the moment of first contact.
 [pause 8s]
 
-The first touch is never neutral.
+And the material receives all of that.
 [pause 5s]
-The first brushstroke. The first word. The first chord.
+Without filter. Without exception.
+[pause 5s]
+It even amplifies what you carry.
 [pause 4s]
-It carries the state you arrived in.
+Impatience becomes rushing. Tension becomes stiffness. Agitation becomes scattered gesture.
+[pause 8s]
+You work against yourself. Without meaning to. Without knowing it.
 [pause 8s]
 
-So the question this module asks is simple.
+There is a moment most creators ignore.
 [pause 5s]
-What state do you want to bring to your creative threshold?
+Between placing the tools on the table... and touching for the first time.
 [pause 8s]
 
-This is what we call the before.
+This moment has no name.
 [pause 5s]
-The moment between the world... and the work.
+In workshops, it is sometimes called the installation. In dance, the time of presence before the first movement. In music, the silence before the first note.
+[pause 5s]
+Great musicians know that this silence is already music. That the quality of this silence... defines the quality of everything that follows.
+[pause 10s]
+
+This moment... is yours. And it is waiting for you. Each time.
+[pause 10s]
+
+Visualize your creative space. With precision.
 [pause 4s]
-It costs nothing. It changes everything.
+The light. The smells. The texture of surfaces. The material waiting.
+[pause 5s]
+And your hands. A few centimetres away. Not yet in contact.
 [pause 8s]
 
-Let's do it now. Together.
+And in this passage... let one question rise. One only. Not aloud. Just within you.
+[pause 6s]
+
+What do I want this work to carry through?
+[pause 10s]
+
+Not its form. Not its content. What it carries through.
 [pause 5s]
-Settle into your posture.
+What invisible quality. What silent intention.
+[pause 5s]
+What truth of yours... do I want this material to receive.
+[pause 10s]
+
+This question does not need an answer. It needs space.
+[pause 8s]
+
+Settle in. Back elongated. Shoulders dropping. Hands resting. Not on the material. Not yet on the work.
+[pause 6s]
+Close your eyes. Visualize this suspended moment. Your hands a few centimetres away. The material waiting.
+[pause 8s]
+
+We will do ten full cycles.
 [pause 4s]
-Put your hands where they'll be when you create.
+During these ten cycles... let everything that preceded fall away.
 [pause 5s]
-Feel the contact. The weight. The temperature.
+The emails. The doubts. The comparisons. The fatigue.
+[pause 4s]
+Not by fighting them. By letting them settle... like sediment... to the bottom.
+[pause 5s]
+And you... rise back up.
 [pause 8s]
 
-Inhale... for five seconds.
+We begin.
+
 [BREATHING_CYCLES]
 
-Notice what's different in your hands now.
+Good.
+[pause 8s]
+Feel your hands. Their tone has changed. The pressure inside them... has changed.
 [pause 5s]
-In your vision. In your pace.
+What these hands carry now... is different from what they carried ten minutes ago.
+[pause 10s]
+
+In a few moments... you will touch. And your material will receive what you carry now.
+[pause 5s]
+Not the morning's tension. Not the doubt. Not the impatience.
 [pause 6s]
-That state... is available before every session.
+It will receive... a creator who has chosen their state.
 [pause 5s]
-Every time. Without exception.
+Who decided to enter the work... from this space.
 [pause 8s]
 
-Your creative practice deserves this entrance.
+Those who will one day receive your work... will not know what you did before you began.
+[pause 4s]
+But they will feel something. A quality in the gesture. A presence in the result.
+[pause 4s]
+An invisible trace of the state in which you created.
+[pause 8s]
+
+This is your real signature. Deeper than your style. More lasting than your technique.
 [pause 5s]
-Give it one — starting today.
+It cannot be learned. It is cultivated. Exactly like this.
+[pause 10s]
+
+Open your eyes... gently. Let the light return. Feel the floor. Feel the space.
+[pause 5s]
+And your hands. Look at them.
+[pause 6s]
+They already know.
+[pause 5s]
+Approach the material. It was waiting for you.
 [pause 6s]
 SCRIPT,
 
         '04-soin' => <<<'SCRIPT'
-Welcome.
-[pause 4s]
-You work in care.
-[pause 3s]
-Which means you carry things.
-[pause 5s]
-Other people's pain. Their fear. Their weight.
+There is a door between you and them.
 [pause 6s]
-And yours — that you've learned to set aside.
-[pause 8s]
 
-The hallway between two consultations is not wasted time.
+In a few seconds, you will open it.
 [pause 5s]
-It is the space where you can reset.
+And on the other side... someone is waiting. Someone who made an appointment.
 [pause 4s]
-Where you can choose who you want to be... for the next person who walks through that door.
+Who may have waited weeks. Who crossed a city — or an inner city of a complexity you cannot yet measure.
+[pause 5s]
+To arrive at this chair. Across from you.
 [pause 10s]
 
-This module gives that space a content.
+What you probably do not know... is that your patient is already reading you.
 [pause 5s]
-One cycle. One breath. One question.
+Not your words. Not your diploma on the wall. Your state.
 [pause 8s]
 
-Take a moment now.
-[pause 4s]
-Close your eyes if you can.
-[pause 4s]
-Place both feet flat on the floor.
+Their nervous system is analyzing yours... in a few hundredths of a second.
 [pause 5s]
-Feel the solidity beneath you.
+Is this person truly present? Are they carrying something else right now? Is there room... for me... here?
 [pause 8s]
 
-Inhale... for five seconds.
+These questions are not conscious.
+[pause 5s]
+They happen below words. Below politeness. In the body.
+[pause 5s]
+In that ancient intelligence every human being possesses... which knows, before thought, whether someone is truly present.
+[pause 10s]
+
+This is the reality of your day.
+[pause 5s]
+You work with dozens of people. And each one brings something.
+[pause 5s]
+A chronic pain the body has carried for years.
+[pause 4s]
+An anxiety that words cannot contain.
+[pause 4s]
+A story you may be the first to truly hear.
+[pause 6s]
+
+And you... hold all of that.
+[pause 5s]
+You carry it through the session. You accompany it.
+[pause 4s]
+Then the door opens again. And someone else enters.
+[pause 8s]
+
+What you may not allow yourself to say... is that it weighs on you.
+[pause 5s]
+That some days the tenth consultation arrives... and something in you is narrower. More tired. Less available.
+[pause 8s]
+
+This is not a lack of vocation. It is biology.
+[pause 5s]
+The human nervous system is not designed to absorb without depositing.
+[pause 5s]
+Without a transition ritual. Without a moment where one chapter closes... before the next one opens.
+[pause 10s]
+
+This corridor...
+[pause 6s]
+this corridor you walk between two patients... is the most important space in your practice.
+[pause 8s]
+Not the treatment room. Not your office. This corridor.
+[pause 6s]
+Twenty seconds. One cycle.
+[pause 5s]
+Hand not yet on the next door handle.
+[pause 5s]
+And one question, one only, asked in silence:
+[pause 6s]
+Who is this person... today... now... at this moment in their life?
+[pause 10s]
+
+Not their file. Not their symptoms. Not what you know of them from last time.
+[pause 5s]
+Who is this person today.
+[pause 5s]
+Because they may have changed since last week.
+[pause 4s]
+Because your open curiosity... is already a form of care.
+[pause 10s]
+
+There is also another possibility.
+[pause 5s]
+Offering this breath... together. At the start of the session. One shared cycle.
+[pause 5s]
+Before the first word. You regulate your nervous system.
+[pause 4s]
+And you offer your patient... a space to set down what they have been carrying until now.
+[pause 5s]
+The consultation can then begin in a different state. For both of you.
+[pause 10s]
+
+Now. Settle in. Close your eyes.
+[pause 4s]
+Visualize this corridor. Its exact length. The floor beneath your feet. The light.
+[pause 5s]
+And that door, in front of you. Hand not yet on the handle.
+[pause 5s]
+On the other side... someone is waiting. Someone who needs you to be whole.
+[pause 8s]
+
+Back anchored. Shoulders dropping. Jaw unclenched. Feet on the ground.
+[pause 8s]
+
+Ten cycles. While you breathe...
+[pause 4s]
+let what came before settle. Not erase it. Leave it in its place.
+[pause 5s]
+In the immediate past. Where it belongs.
+[pause 5s]
+And let the space clear... for someone who deserves your best presence.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-That's what it feels like... to arrive.
+Good.
+[pause 8s]
+Feel what you carry now. It is no longer the previous session. It is no longer accumulated fatigue.
 [pause 5s]
-Not rushed. Not already inside the next patient's story.
-[pause 6s]
-Present. Available. Solid.
+It is a clean presence. Clear. Open.
 [pause 8s]
 
-Every person you care for... deserves this version of you.
+When you open that door in a few moments...
 [pause 5s]
-And so do you.
+your patient will receive someone whole. Someone who chose to be there. Fully. For this person. For this hour.
+[pause 8s]
+
+This cannot be explained. Nor taught. It is given.
+[pause 5s]
+Twenty seconds in this corridor... so that someone on the other side receives the full version of you.
+[pause 10s]
+
+This also preserves something else. Your sustainability in this profession.
+[pause 5s]
+This transition ritual... means you do not empty yourself. You regenerate.
+[pause 4s]
+Consultation after consultation. Not because you are invincible. Because you have a protocol.
+[pause 10s]
+
+Open your eyes... gently. Hand on the handle. You are ready. Enter.
 [pause 6s]
 SCRIPT,
 
         '04-enseignant' => <<<'SCRIPT'
-Welcome.
-[pause 4s]
-You teach.
-[pause 3s]
-Which means every morning... before a single word is spoken...
-[pause 4s]
-your state is already teaching something.
+Before you walk into that room...
+[pause 5s]
+something is happening. The room is waiting for you.
 [pause 8s]
 
-The way you walk through that door.
+Not in a poetic way. In a physiological way.
+[pause 5s]
+The nervous systems of your students... will adjust to yours...
 [pause 4s]
-The pace of your first steps.
-[pause 4s]
-The quality of your first glance.
+in the first seconds after you enter.
+[pause 5s]
+Before you have even opened your mouth.
+[pause 8s]
+
+This is called co-regulation.
 [pause 6s]
-Students feel this before you speak.
-[pause 8s]
-
-The doorknob moment is not a detail.
-[pause 5s]
-It is the foundation of what follows.
-[pause 8s]
-
-Stand now — or sit upright.
+Human beings are a social species.
 [pause 4s]
-Feel your feet on the ground.
-[pause 4s]
-Your hands resting.
+Our nervous systems are not sealed. They read each other. They respond. They influence.
 [pause 5s]
-And let the breath do what it knows how to do.
+It is an ancient necessity: to quickly know what state the other is in... to know whether we can lower our guard. Whether we can learn. Whether we are safe.
 [pause 8s]
 
-Inhale... for five seconds.
+Your students do this. Constantly. With you.
+[pause 8s]
+
+You enter tense... and the room perceives the tension.
+[pause 5s]
+A diffuse signal circulates: something here is not entirely safe.
+[pause 5s]
+Restlessness rises. Attention fragments. Resistance sets in.
+[pause 5s]
+Not consciously. Automatically.
+[pause 8s]
+
+You enter anchored... and the room receives it.
+[pause 5s]
+A different diffuse signal circulates: someone solid has entered. We can set down what we were carrying. We can be here. We can learn.
+[pause 8s]
+
+This is not magic. It is neurobiology.
+[pause 8s]
+
+Think of the teacher you remember.
+[pause 6s]
+You have one. Someone whose presence you still recall. Years, sometimes decades later.
+[pause 5s]
+It is not the content of their lessons you remember.
+[pause 5s]
+It is how you felt in their class. What it was possible to be... there.
+[pause 8s]
+
+That teacher had a protocol. Consciously or not.
+[pause 5s]
+They entered their room... in a certain way. They carried something you felt before you heard what they said.
+[pause 8s]
+
+That something is not an innate gift. It is a state. And a state... can be chosen. Prepared. Cultivated.
+[pause 10s]
+
+Your threshold... is the door handle.
+[pause 6s]
+The moment when the hand rests on it...
+[pause 4s]
+and the door is not yet open.
+[pause 5s]
+This five-to-ten-second moment... that exists in every day of every teacher's life... and that almost none of them use.
+[pause 8s]
+
+One cycle. The silent question:
+[pause 5s]
+In what state do I want to enter? What quality do I choose to bring into this room?
+[pause 8s]
+
+And then... the door opens.
+[pause 10s]
+
+Close your eyes. Visualize your corridor. Your school. Your room.
+[pause 5s]
+You are standing in front of it. Hand on the handle.
+[pause 4s]
+Behind that door... your students are waiting. They do not know yet that you are there.
+[pause 5s]
+You still have this moment.
+[pause 8s]
+
+Anchor your feet. Elongate your back. Settle your shoulders. Unclench your jaw.
+[pause 8s]
+
+Ten cycles. While you breathe...
+[pause 4s]
+let the corridor stay in the corridor.
+[pause 5s]
+The papers waiting to be marked. The meeting this week. The difficult colleague.
+[pause 4s]
+All of that stays behind. You pass through. Light. Anchored. Whole.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-That's the state you can bring into every classroom.
-[pause 5s]
-Not as a performance. As a choice.
-[pause 6s]
-A choice you make... before the door opens.
+Good.
 [pause 8s]
+
+Feel the state you carry now. It is no longer fatigue. It is no longer worry.
+[pause 5s]
+It is a solidness. Gentle. Anchored. Available.
+[pause 10s]
+
+Behind that door... there may be difficult children. Resistant teenagers. Tired students.
+[pause 5s]
+That is not going to change. What will change... is the space they encounter when they enter.
+[pause 5s]
+The space you create. Through what you carry. Through what you are when you enter.
+[pause 10s]
+
+Some of these students... in years to come... will remember you.
+[pause 5s]
+Not what you taught them. How you were. What it was like to be in your class.
+[pause 8s]
+
+Open your eyes... gently. The hand is on the handle. Open the door.
+[pause 6s]
 SCRIPT,
 
         '04-leader' => <<<'SCRIPT'
-Welcome.
-[pause 4s]
-You lead.
-[pause 3s]
-Which means before every meeting... every decision... every difficult conversation...
-[pause 4s]
-the state you're in... sets the tone for everyone in the room.
-[pause 8s]
+Your teams read you.
+[pause 6s]
 
-Your nervous system... is the thermostat.
+With a precision you are probably underestimating.
 [pause 5s]
-When you're regulated... they regulate.
-[pause 4s]
-When you're scattered... they scatter.
-[pause 4s]
-Whether you know it or not. Whether you intend it or not.
-[pause 8s]
-
-The elevator. The hallway. The thirty seconds before you open the door.
+Not your words. Your state.
 [pause 5s]
-That's your moment.
+The micro-tension in your voice.
+[pause 4s]
+The quality of your gaze in a meeting. The speed with which you sit down.
+[pause 4s]
+The way you hold your pen. They read all of that.
 [pause 5s]
-Use it.
+And they adjust everything accordingly.
 [pause 8s]
 
-Put your phone in your pocket now.
-[pause 4s]
-Two feet on the floor.
-[pause 4s]
-One breath — chosen, not automatic.
+What they cannot always name... is precisely what their body knows.
+[pause 5s]
+Their level of psychological safety at work... is correlated to your level of regulation.
+[pause 5s]
+Not to your competence. To your ability to remain anchored under pressure.
 [pause 8s]
 
-Inhale... for five seconds.
+Here is the cruelest paradox of leadership.
+[pause 5s]
+It is precisely when pressure is most intense... that your inner state has the greatest impact on others. And that this state is most difficult to master.
+[pause 8s]
+
+Under adrenaline... the brain narrows its field of vision.
+[pause 4s]
+It accelerates response time at the expense of reflection quality.
+[pause 5s]
+It seeks the immediate solution. The quick decision. The visible action.
+[pause 5s]
+And meanwhile... teams receive the urgency in your body. And they adjust to it.
+[pause 5s]
+Panic spreads. Even silently. Even involuntarily.
+[pause 8s]
+
+Leaders who navigated crises well... all have one thing in common.
+[pause 5s]
+They found a way to create a conscious disconnection...
+[pause 4s]
+between the pressure of the situation... and the state from which they would respond.
+[pause 8s]
+
+Not by denying the gravity. Not by simulating calm.
+[pause 5s]
+By deliberately creating the neurological conditions... for a quality decision.
+[pause 8s]
+
+Your moment... is the elevator.
+[pause 6s]
+Or the corridor between the previous meeting and the next.
+[pause 5s]
+This transition moment that almost all leaders spend... checking their phone.
+[pause 4s]
+Mentally preparing the next battle.
+[pause 5s]
+Carrying the previous meeting... into the space of the next.
+[pause 8s]
+
+Phone in pocket. Back straight. Thirty seconds. One cycle.
+[pause 5s]
+And one question.
+[pause 5s]
+What leader do I choose to be... in thirty seconds... for these people?
+[pause 10s]
+
+Not the ideal leader. Not the invincible leader.
+[pause 5s]
+The one who chose their state. Consciously. In this elevator. Today.
+[pause 10s]
+
+There are also solitary decisions. Those you make facing a blank page.
+[pause 5s]
+The important decisions. Those you know will carry weight. For a long time.
+[pause 8s]
+
+Before you decide... ask one single question.
+[pause 5s]
+In what state am I making this decision right now?
+[pause 8s]
+
+If the answer is under adrenaline... take one cycle. One only. Then decide.
+[pause 5s]
+The difference in the quality of the decision will be real. Measurable.
+[pause 5s]
+Felt by everyone who will live with that decision.
+[pause 10s]
+
+Settle in. Close your eyes.
+[pause 4s]
+Visualize your elevator. Or your corridor.
+[pause 5s]
+The building around you. The people waiting.
+[pause 5s]
+And this moment... yours alone. Thirty seconds. That no one is claiming.
+[pause 8s]
+
+Anchor yourself. Back straight. Shoulders settled. Hands opening slightly.
+[pause 8s]
+
+Ten cycles. While you breathe... let the question rise.
+[pause 5s]
+What leader do I choose to be? In what state do I want to enter that room?
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-The leader who walks in from that state...
-[pause 4s]
-makes better decisions.
-[pause 3s]
-Listens more deeply.
-[pause 3s]
-Holds the room without effort.
+Good.
 [pause 8s]
 
-That leader is you.
+Feel the difference. Between the state before... and what you carry now.
+[pause 8s]
+
+What you are bringing into that room... is not your expertise. They know that.
 [pause 5s]
-Choose it — every time.
+It is your state. And your state... will determine what is possible in this conversation.
+[pause 5s]
+What people dare to say. What they dare to propose. The quality of the collective you will create together.
+[pause 8s]
+
+Some teams remember the leader who crossed the crisis with them.
+[pause 5s]
+Not because they had the best solutions. Because they were anchored when everything was shaking.
+[pause 5s]
+Because their state... said: we can get through this.
+[pause 8s]
+
+You can be that leader. Not because you are exceptional.
+[pause 4s]
+Because you have a protocol. This one. In this elevator. Today.
+[pause 10s]
+
+Open your eyes... gently. The door to the room is in front of you. You are ready.
 [pause 6s]
 SCRIPT,
 
         '04-educateur' => <<<'SCRIPT'
-Welcome.
-[pause 4s]
-You train. You facilitate. You hold space.
-[pause 5s]
-Which means your presence before the group begins...
-[pause 4s]
-is already part of the program.
-[pause 8s]
-
-An empty room before participants arrive is not empty.
-[pause 5s]
-It's full of your preparation. Your intention. Your state.
+You cannot force a transformation.
 [pause 6s]
-What you bring into that space... becomes the container.
-[pause 8s]
-
-This module gives that moment a structure.
+You already know this. You have lived it.
 [pause 5s]
-A breath. A question. A reset.
-[pause 8s]
-
-Stand in your space — real or imagined.
-[pause 4s]
-Feel the floor beneath you.
-[pause 4s]
-The air in the room.
+Those sessions where you gave everything... and nothing happened.
 [pause 5s]
-The silence before it begins.
+Those groups where the content was excellent... and participants left exactly as they arrived.
 [pause 8s]
 
-Inhale... for five seconds.
+And then there were the other times.
+[pause 5s]
+When something occurred. When you felt a shift.
+[pause 4s]
+Not necessarily spectacular. Something discreet.
+[pause 5s]
+A look that changes. A question that comes from nowhere. A different silence.
+[pause 5s]
+And you know something just moved.
+[pause 8s]
+
+The difference between the two... was not your content. It was the space.
+[pause 8s]
+
+The space in which someone can allow themselves to change.
+[pause 5s]
+The space safe enough to try something new. To say something never said before.
+[pause 5s]
+To question a belief carried for years.
+[pause 6s]
+This space... only you can create it.
+[pause 5s]
+And you create it with what you carry when you enter.
+[pause 8s]
+
+There is a particular tension in your profession. It is called expertise.
+[pause 5s]
+You have built something. Knowledge. Methods. A trained eye.
+[pause 4s]
+And this expertise... sometimes... precedes you. It enters the room before you do.
+[pause 5s]
+It installs an asymmetry. I know. You learn. I guide. You follow. I transmit. You receive.
+[pause 8s]
+
+And in this asymmetry... transformation becomes difficult.
+[pause 5s]
+Because transformation does not happen in reception. It happens in encounter.
+[pause 5s]
+In the space between two people... where something unexpected can occur.
+[pause 8s]
+
+Arriving available... means suspending the expertise.
+[pause 5s]
+Not denying it. Putting it at the service of a question rather than an answer.
+[pause 5s]
+Putting it at the service of the real person who is there... today... in this state... with what they carry.
+[pause 10s]
+
+The five-five-five before each session... does not make you less of an expert.
+[pause 5s]
+It makes you more human. And it is this humanity... that creates the space in which transformation can take place.
+[pause 10s]
+
+Your activation moment... is the empty room.
+[pause 6s]
+This moment before participants arrive. When the room is still silent.
+[pause 5s]
+The chairs. The light. The board. And this emptiness waiting to be filled.
+[pause 5s]
+With who you are going to be... during these next hours.
+[pause 10s]
+
+Close your eyes. Visualize your room. Empty. Silent. The chairs waiting.
+[pause 5s]
+In a few minutes... people will enter. They are coming for something. Something that perhaps surpasses them.
+[pause 5s]
+And you are here to hold this space.
+[pause 8s]
+
+Anchor yourself. Back straight. Shoulders settled. Feet firmly on the ground.
+[pause 8s]
+
+During these ten cycles... set aside your programme. Just for these minutes.
+[pause 5s]
+And let the question enter: with what quality of presence do I want to hold this space?
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-You are now the container.
-[pause 5s]
-Stable. Present. Open.
-[pause 4s]
-Whatever the group brings... you won't be moved.
-[pause 5s]
-You'll hold.
+Good.
 [pause 8s]
+
+This quality you carry now... is what the room will receive.
+[pause 5s]
+Before your first word. Before your first question.
+[pause 5s]
+Your participants will enter this space. And something in this space... will allow them to be more fully themselves.
+[pause 8s]
+
+You may not see the effects today.
+[pause 5s]
+Transformation is rarely visible in the moment.
+[pause 5s]
+But somewhere... in the weeks or months to come... someone will remember something.
+[pause 4s]
+A phrase. A silence. A permission. Something of what you had in your hands today.
+[pause 8s]
+
+The space is ready. So are you. Welcome them.
+[pause 6s]
 SCRIPT,
 
         '04-bebe' => <<<'SCRIPT'
-Welcome.
-[pause 4s]
-You work with the very beginning of life.
-[pause 4s]
-With infants. With newborns. With the smallest humans.
+This being does not yet know you.
+[pause 5s]
+They are already reading you.
+[pause 8s]
+
+Not with their eyes. Not with their thoughts.
+[pause 5s]
+With everything they are. With their skin. With their breath.
+[pause 5s]
+With what neuroscience research calls... physiological synchrony.
+[pause 8s]
+
+A newborn borrows your nervous system.
 [pause 6s]
-Who feel everything.
-[pause 5s]
-Before words. Before concepts. Before explanation.
-[pause 8s]
 
-Your hands are not just hands.
+This is not a metaphor. Their brain is not yet capable of self-regulation.
 [pause 5s]
-They are the first language this child encounters.
-[pause 6s]
-And they speak your state.
-[pause 8s]
-
-The tension in your arms.
-[pause 3s]
-The rhythm of your breathing.
-[pause 3s]
-The quality of your attention.
+Their circuits of calm are not yet formed.
 [pause 5s]
-All of it... arrives before you do.
-[pause 8s]
-
-Before you pick up a child... pause now.
-[pause 5s]
-Hands a few centimetres from your body.
+To come down... to settle... to feel safe...
 [pause 4s]
-Feel them. The weight. The warmth.
+they need your heart rate. Your muscle tone. The quality of your breathing. The chemical scent of your calm.
 [pause 8s]
 
-Inhale... for five seconds.
+Yes. They receive the chemistry of your state.
+[pause 5s]
+The cortisol in your body... passes into the air. They breathe it.
+[pause 4s]
+Your muscle tension... they feel in your arms.
+[pause 4s]
+Your heart rate... they perceive through your skin.
+[pause 8s]
+
+You are not babysitting a child.
+[pause 5s]
+You are offering a developing human nervous system...
+[pause 5s]
+their first experience of what it means for calm to be possible.
+[pause 8s]
+
+This first experience... creates an imprint.
+[pause 5s]
+Not a memory. A body memory.
+[pause 5s]
+An automatic response inscribed into the circuits... that will remain. For years. Sometimes for a lifetime.
+[pause 10s]
+
+Here is what you are actually doing.
+[pause 5s]
+You are building the neurological foundations of security.
+[pause 6s]
+
+Not toys. Not calories.
+[pause 4s]
+The deep, visceral, embodied conviction... that the world can be safe.
+[pause 4s]
+That someone can be there. That letting go... is possible.
+[pause 8s]
+
+This begins in your arms. Before the first word. Before the first song.
+[pause 5s]
+In the quality of your hands... at the moment they settle.
+[pause 10s]
+
+Your activation moment... is before contact.
+[pause 6s]
+Before you pick them up. Before the bottle. Before the change. Before the carry.
+[pause 5s]
+That tenth of a second just before your hands touch this body.
+[pause 8s]
+
+One cycle. Hands that open. Shoulders that drop. Heart rate that slows.
+[pause 5s]
+And your arms... becoming what this child is searching for.
+[pause 8s]
+
+I want to be honest with you. You are tired sometimes. Very tired.
+[pause 5s]
+This work weighs. These children weigh. These families weigh.
+[pause 5s]
+And no one tells you often enough how important what you do truly is.
+[pause 8s]
+
+So let me say it clearly.
+[pause 5s]
+What you place in these arms... belongs to someone forever.
+[pause 5s]
+These children will not know your name in ten years.
+[pause 4s]
+But something in their nervous system... will carry the trace of your calm.
+[pause 5s]
+Of your presence. Of those moments when you chose to be anchored... for them.
+[pause 10s]
+
+Close your eyes. Visualize your hands. Open. A few centimetres from a small body.
+[pause 5s]
+Not yet in contact. In that moment just before.
+[pause 8s]
+
+Release everything. The shoulders. The jaw. The fists. The neck.
+[pause 5s]
+Let your heart rate descend. Let your body become what this being needs.
+[pause 8s]
+
+Ten cycles. Breathe in this calm. Hold it. Breathe out this tension.
+[pause 4s]
+And let your hands become calm. Truly calm.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-Those hands are different now.
+Good.
+[pause 8s]
+
+Feel your hands. Their tone has changed. The tension that lived in them... has settled.
 [pause 5s]
-Softer. More present. More available.
-[pause 6s]
-That's what the child will receive.
+They are ready now. Ready to receive. Ready to carry.
+[pause 5s]
+Ready to give what only calm hands can give.
+[pause 10s]
+
+What this child will receive in these hands... they will carry it.
+[pause 5s]
+Without knowing it. Without being able to name it.
+[pause 5s]
+As a bodily certainty. Calm is possible. Safety exists. Someone can be there.
+[pause 10s]
+
+This is the most beautiful gift one human being can give another.
+[pause 5s]
+And it is what you are doing. With these hands. Now.
+[pause 10s]
+
+Open your eyes... Approach. They are waiting for you.
 [pause 6s]
 SCRIPT,
 
         '04-proches' => <<<'SCRIPT'
-Welcome.
-[pause 4s]
-You are returning home.
-[pause 4s]
-Or you're about to.
-[pause 5s]
-And between the day you've carried... and the door you're about to open...
-[pause 5s]
-there is a threshold.
-[pause 8s]
-
-What you bring through that door... matters.
-[pause 5s]
-Not just for you. For them.
-[pause 5s]
-The people you love most in the world...
-[pause 4s]
-are waiting for a version of you.
-[pause 8s]
-
-This module is about choosing which version that is.
+No one gave you this title.
 [pause 6s]
-Not from guilt. Not from performance.
+
+There is no diploma. No practice. No white coat. No nameplate on the door.
 [pause 5s]
-From presence.
+Just your home. Your kitchen. Your car full of school bags. Your sofa in the evening.
 [pause 8s]
 
-Wherever you are now — car, train, sidewalk, staircase —
-[pause 4s]
-stop for a moment.
-[pause 4s]
-One hand on the door. Or just still, wherever you are.
+And yet.
 [pause 8s]
 
-Inhale... for five seconds.
+What you do there... in ordinary life... in the corridors of your home...
+[pause 5s]
+has more impact than most professionals will ever have.
+[pause 8s]
+
+Because the most important person in a child's development... is you.
+[pause 5s]
+Not their teacher. Not their paediatrician. Not the best therapist.
+[pause 5s]
+You. The parent. The close one. The person who is there every day.
+[pause 5s]
+In the small moments. In the ordinary moments. In the moments when no one is watching.
+[pause 10s]
+
+And here is what research says unequivocally.
+[pause 5s]
+What your children learn from you... is not what you tell them.
+[pause 5s]
+It is what they see you live.
+[pause 8s]
+
+Not "do your best". Not "be brave". Not "calm down".
+[pause 5s]
+How you manage frustration. How you navigate difficulty.
+[pause 4s]
+How you respond when something overwhelms you.
+[pause 8s]
+
+A parent who breathes... teaches their child that regulation is possible.
+[pause 5s]
+Without a word. Just by the way of being. And this lesson... is encoded in the nervous system. It stays. For decades.
+[pause 10s]
+
+I want to speak about one specific moment. You know this moment.
+[pause 5s]
+You come home. The day was long. Difficult. Or just... exhausting.
+[pause 5s]
+And the second you open the door... something begins immediately.
+[pause 4s]
+Voices. Demands. A conflict. A need.
+[pause 4s]
+And you have nothing left. Truly nothing left.
+[pause 8s]
+
+You know what happens in these moments.
+[pause 5s]
+The voice that rises. The patience that cracks. The words one regrets.
+[pause 5s]
+Not because you are a bad parent. Because no one gave you thirty seconds to come back to yourself.
+[pause 8s]
+
+Those thirty seconds... they exist.
+[pause 5s]
+They are waiting in your car. In front of your door.
+[pause 5s]
+In that short instant between the sound of the key in the lock... and the moment you enter.
+[pause 8s]
+
+This threshold...
+[pause 6s]
+it is your space. Perhaps the only one that truly belongs to you. In an entire day.
+[pause 10s]
+
+And in this threshold... one question.
+[pause 6s]
+Who do I want to be for them tonight?
+[pause 10s]
+
+Not perfect. Not infinite. Who do I choose to be... with what I have... in this state... tonight.
+[pause 10s]
+
+There is also the other threshold. The one before the outburst.
+[pause 5s]
+The fraction of a second... before the words come out. Before the voice rises.
+[pause 5s]
+This microsecond space... which exists even in the most charged moments.
+[pause 8s]
+
+One single long exhale. Not fifteen seconds. One exhale.
+[pause 5s]
+And something changes in what can come out next. Not always. Often enough to matter.
+[pause 10s]
+
+Close your eyes. Visualize your threshold.
+[pause 4s]
+Your front door. The key in hand. Not yet in the lock.
+[pause 5s]
+The day behind you. Those you love... ahead. And you... in this passage.
+[pause 8s]
+
+Back straight. Shoulders dropping. Jaw unclenching. Hands opening.
+[pause 8s]
+
+Ten cycles. While you breathe...
+[pause 4s]
+let the day stay outside. It does not need to enter with you.
+[pause 5s]
+It was. It has been. What comes now is something else.
+[pause 5s]
+And you can choose how you enter it.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-That's who walks through the door.
-[pause 5s]
-Not the meeting. Not the deadline. Not the traffic.
-[pause 5s]
-You.
-[pause 5s]
-Present. Warm. Here.
+Good.
 [pause 8s]
+
+Feel what you carry now. It is no longer the morning meeting. It is no longer the commute.
+[pause 6s]
+It is a presence. Gentle. Imperfect. Real. And chosen.
+[pause 8s]
+
+Those behind that door... will never know what you just did for them.
+[pause 5s]
+But they will receive the difference. In your voice. In your gaze.
+[pause 4s]
+In the way you will move through this evening with them.
+[pause 8s]
+
+And something even deeper.
+[pause 5s]
+In the years to come... when they face their own difficulties...
+[pause 5s]
+they may do what you showed them without saying it.
+[pause 5s]
+They will take a breath. Before responding. Before reacting. Before entering.
+[pause 8s]
+
+This is not propaganda. This is neurology.
+[pause 5s]
+Children learn by observing. And what you live in front of them... becomes their repertoire.
+[pause 8s]
+
+Open your eyes... gently. The key in the lock. The door opening. Welcome home.
+[pause 6s]
 SCRIPT,
 
         // ── MODULE 05 EN ──────────────────────────────────────
 
         '05-creatif' => <<<'SCRIPT'
-Welcome back.
-[pause 4s]
-You're mid-process.
-[pause 4s]
-Or you've been derailed from one.
-[pause 5s]
-Either way — something is in motion. And something is resisting.
-[pause 8s]
-
-Creative turbulence is not a problem to solve.
-[pause 5s]
-It's a signal to read.
+Something is not coming.
 [pause 6s]
-The block. The doubt. The empty page. The abandoned canvas.
+
+You are here. The material is here. The tools are here.
 [pause 5s]
-They're not failures. They're thresholds.
+Everything is in place. And yet... nothing.
+[pause 5s]
+The void.
 [pause 8s]
 
-And thresholds... have a single requirement.
+Not an absence of ideas. Something more opaque.
 [pause 5s]
-Presence. Not technique. Not willpower. Not inspiration.
+A shapeless resistance. A wall without edges.
 [pause 5s]
-Presence.
+You start again. You erase. You try again.
+[pause 5s]
+And the result tells you something you do not want to hear.
+[pause 5s]
+This is not it.
+[pause 10s]
+
+This moment has a name in every workshop in the world.
+[pause 5s]
+The block.
+[pause 6s]
+
+And it is almost always interpreted the same way.
+[pause 5s]
+As a failure. A sign. A proof.
+[pause 5s]
+Proof that this project was beyond you.
+[pause 4s]
+That talent has its limits. That others have something you do not.
+[pause 5s]
+That perhaps you are not truly made for this.
+[pause 10s]
+
+What brain science says about this moment... is radically different.
+[pause 6s]
+
+When you are blocked... your prefrontal cortex is overloaded.
+[pause 5s]
+It evaluates. It judges. It compares. It perfects.
+[pause 5s]
+It is working against you. At full capacity.
 [pause 8s]
 
-Feel what's here right now.
+And creativity... does not come from there.
 [pause 5s]
-The tension in your jaw. Your shoulders. Your hands.
+It comes from the default mode network. The circuit that activates when we do not force.
 [pause 5s]
-Don't try to release it. Just notice it.
+When we let go. When we wander. When we stop searching.
 [pause 8s]
 
-Inhale... for five seconds.
+The block is not an absence of talent.
+[pause 5s]
+It is too much control. Too much evaluation. Too much cortex.
+[pause 5s]
+And the solution is not to try harder.
+[pause 5s]
+It is to create an interruption. Conscious. Deliberate.
+[pause 10s]
+
+Here is what happens in your body when you are blocked.
+[pause 5s]
+Your shoulders have risen. Your jaw is clenched.
+[pause 4s]
+Your gaze is hardened. Your breathing is shallow.
+[pause 5s]
+Your body is in surveillance mode. In threat mode.
+[pause 5s]
+It is defending something.
+[pause 6s]
+Your image. Your identity as a creator. The idea you have of your own worth.
+[pause 8s]
+
+And in that state... nothing alive can emerge.
+[pause 5s]
+Because what is alive is not born in defence.
+[pause 5s]
+It is born in openness.
+[pause 10s]
+
+The five-five-five within the block... is not a pause.
+[pause 5s]
+It is a signal sent to the brain.
+[pause 5s]
+The threat is not real.
+[pause 4s]
+You can stop watching.
+[pause 4s]
+You can release control.
+[pause 5s]
+And in that release... something that was waiting can finally move.
+[pause 10s]
+
+Put down what you are holding. The tools. The pencil. The tension.
+[pause 6s]
+Step back slightly. Or take your eyes away from the material.
+[pause 5s]
+Feel the back of your chair. Or the floor beneath your feet.
+[pause 8s]
+
+Unclench your jaw. Let your shoulders fall.
+[pause 5s]
+Do not search for anything. Do not resolve anything.
+[pause 5s]
+Close your eyes.
+[pause 8s]
+
+During the ten cycles... one single instruction.
+[pause 5s]
+Do not think about the work. Do not search for the solution. Do not prepare the next attempt.
+[pause 5s]
+Let the brain wander freely.
+[pause 5s]
+Without destination. Without performance.
+[pause 8s]
+
+It alone knows where to search. Not you. Not now.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-The resistance hasn't disappeared.
+Good.
+[pause 10s]
+
+Stay a moment longer without looking at the work.
 [pause 5s]
-But you're no longer inside it.
+Let your gaze go somewhere else.
 [pause 5s]
-You're alongside it. Watching it.
-[pause 6s]
-From there... the next gesture becomes possible.
+The window. The floor. A detail of the space around you.
+[pause 5s]
+Let thought drift a little more.
+[pause 10s]
+
+Something has changed in the calm. Perhaps an image. Perhaps a sensation.
+[pause 5s]
+Perhaps nothing visible yet. But something has loosened.
+[pause 5s]
+A slight easing in the system. A permission.
 [pause 8s]
+
+When you return to the material... return differently.
+[pause 5s]
+Not to succeed. To see what comes.
+[pause 5s]
+Without judgement on the result. Without evaluation in the hand.
+[pause 5s]
+Just one gesture. And then another.
+[pause 8s]
+
+The block was not your enemy.
+[pause 5s]
+It was the signal that you were carrying too much. Controlling too much.
+[pause 5s]
+And that signal... you now know how to answer it.
+[pause 8s]
+
+Open your eyes... gently. Return to the material. Without haste.
+[pause 6s]
 SCRIPT,
 
         '05-soin' => <<<'SCRIPT'
-Welcome back.
-[pause 4s]
-You're in the middle of a difficult consultation.
-[pause 4s]
-Or you've just come out of one.
-[pause 5s]
-The weight is still there — in your chest, your shoulders, your thoughts.
-[pause 8s]
-
-This is what carrying someone looks like.
-[pause 5s]
-It's not a weakness. It's the cost of real presence.
+Something stayed with you from the last session.
 [pause 6s]
-And it needs a moment of discharge.
+
+It is not ordinary fatigue. It is more precise than that.
+[pause 5s]
+An image. A word that was spoken. A pain you held.
+[pause 5s]
+Something that crossed the professional boundary... and is still there.
 [pause 8s]
 
-Right now — still in the hallway, or at your desk, or sitting in your car —
+Or perhaps it is now. Here. This consultation.
+[pause 5s]
+The person across from you is in distress.
 [pause 4s]
-you have thirty seconds.
+A distress that overflows. That looks at you. That solicits you beyond the protocol.
 [pause 5s]
-That's enough.
+And something in you... begins to contract.
 [pause 8s]
 
-Let the weight be acknowledged first.
+What you are experiencing has a precise name.
 [pause 5s]
-Don't push it away. Name it silently.
+Empathic resonance.
+[pause 6s]
+
+Your nervous system is designed to synchronize with that of the other.
 [pause 5s]
-Then breathe.
+This is a remarkable capacity. It is what makes you an exceptional caregiver.
+[pause 5s]
+And it is also what exposes you.
 [pause 8s]
 
-Inhale... for five seconds.
+Because receiving someone's suffering... without a protocol of protection...
+[pause 5s]
+is not empathy. It is fusion.
+[pause 5s]
+And in fusion... you can no longer help.
+[pause 5s]
+You carry with. Instead of accompanying from.
+[pause 10s]
+
+The difference between the two... is your anchoring.
+[pause 8s]
+
+An anchored caregiver receives. They hear. They are touched.
+[pause 5s]
+But they remain standing.
+[pause 5s]
+Not because they have shielded themselves behind glass.
+[pause 5s]
+Because they have ground beneath their feet.
+[pause 6s]
+And this ground... is cultivated. Deliberately. In real time.
+[pause 10s]
+
+Here is what happens in your body when a consultation weighs on you.
+[pause 5s]
+Your breathing shortens. Your heart rate rises.
+[pause 5s]
+Your shoulders contract. Your hands close.
+[pause 5s]
+Your attention narrows around the urgency of the other.
+[pause 6s]
+And somewhere... you are no longer quite there.
+[pause 5s]
+Your body is in the room. Your presence is in their distress.
+[pause 8s]
+
+The paradox: at the very moment your patient most needs you to be there...
+[pause 5s]
+is precisely when you risk being least present.
+[pause 10s]
+
+The five-five-five in the midst of the consultation...
+[pause 5s]
+is invisible.
+[pause 5s]
+It is not: "wait, I need to breathe."
+[pause 5s]
+It is one silent cycle. Internal. Almost imperceptible to the outside.
+[pause 5s]
+While you listen. While they speak. During a silence.
+[pause 5s]
+One single cycle. Discreet. Almost undetectable.
+[pause 8s]
+
+This cycle does something precise.
+[pause 5s]
+It places you back in your body.
+[pause 5s]
+It reminds your nervous system that there is ground.
+[pause 4s]
+That the other's distress is real. And that it belongs to them.
+[pause 5s]
+That your role is to hold the space... not to share the weight.
+[pause 10s]
+
+Let us take a moment now to anchor this in the body.
+[pause 5s]
+Close your eyes. Visualize a difficult consultation.
+[pause 5s]
+Not the worst. Just one that weighed.
+[pause 5s]
+The person across from you. Their voice. What they were carrying.
+[pause 8s]
+
+Feel what your body carries right now as you think of it.
+[pause 5s]
+The shoulders. The chest. The jaw.
+[pause 8s]
+
+Now... anchor your feet to the ground. Both of them. Completely.
+[pause 5s]
+Feel the support at your back. Your back that exists.
+[pause 5s]
+You are not in their distress. You are in your body. Here.
+[pause 8s]
+
+Ten cycles. While you breathe...
+[pause 4s]
+stay in your body. Not in the scenario.
+[pause 5s]
+Each inhale brings you back here.
+[pause 5s]
+Each exhale sets down what does not belong to you.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-What belonged to them... stays here.
+Good.
+[pause 10s]
+
+Feel the difference between receiving... and carrying.
 [pause 5s]
-What's yours... you carry wisely.
+You can receive someone's suffering... without carrying it in your body.
 [pause 5s]
-You are not their pain. You are their witness.
-[pause 6s]
-That distinction... sustains a career.
+This is not distance. It is solid presence.
 [pause 8s]
+
+The most useful thing you can do for your patient in a difficult moment...
+[pause 5s]
+is remain standing. Anchored. Available. Without collapsing with them.
+[pause 5s]
+Your stability... is their most precious resource.
+[pause 8s]
+
+And your stability... is not an innate quality. It is a gesture.
+[pause 5s]
+This one. Available. In real time. Within the consultation itself.
+[pause 10s]
+
+Open your eyes... gently. Feet on the ground. Back anchored. Presence chosen.
+[pause 6s]
 SCRIPT,
 
         '05-enseignant' => <<<'SCRIPT'
-Welcome back.
-[pause 4s]
-The class was difficult.
-[pause 4s]
-Or you walked in depleted — and it showed.
+You have already lived this.
+[pause 6s]
+
+That moment when the room escapes you.
 [pause 5s]
-Or something happened that shifted the room... and you followed it.
+Not gradually. All at once.
+[pause 5s]
+A side conversation that ignites. An incident. A student who challenges.
+[pause 5s]
+Or simply that collective energy... that diffuse noise...
+[pause 5s]
+that rises, settles in, and transforms thirty individuals into something unmanageable.
 [pause 8s]
 
-Teaching in turbulence is a skill.
+And you. Standing. In the middle.
 [pause 5s]
-Not learned in training programs.
+Something rises in you too.
 [pause 5s]
-Learned in the hallway. In the doorway. In the breath before you speak.
+Frustration. Helplessness. Or worse... anger.
 [pause 8s]
 
-You are the point of stability in that room.
+Here is what happens neurobiologically in this room.
+[pause 6s]
+
+When a human group spirals... nervous systems synchronize in disorder.
 [pause 5s]
-Not because you have all the answers.
-[pause 4s]
-Because you have an anchor.
+One agitates the other. The other amplifies the first.
 [pause 5s]
-And you choose to use it — even when it's hard.
+Within seconds... the entire room is in a collective state of activation.
 [pause 8s]
 
-Find that anchor now.
+And your voice... your presence... your words...
 [pause 5s]
-Two feet on the ground. One breath chosen, not automatic.
+have a disproportionate impact in this moment.
+[pause 5s]
+They can amplify. Or they can interrupt.
+[pause 5s]
+Not through what you say.
+[pause 5s]
+Through what you are... in the five seconds that follow.
+[pause 10s]
+
+This is where everything is decided.
+[pause 6s]
+
+The teacher who raises their voice... sends a threat signal.
+[pause 5s]
+Cortisol in the room rises. The agitation freezes... or intensifies.
+[pause 5s]
+Students remember this moment. Not the lesson.
 [pause 8s]
 
-Inhale... for five seconds.
+The teacher who stops...
+[pause 5s]
+who slows down deliberately...
+[pause 5s]
+who speaks more quietly... more slowly... more steadily...
+[pause 5s]
+sends a radically different signal.
+[pause 5s]
+A signal that says: someone here is still standing. We can come down.
+[pause 8s]
+
+And the group... regulates to them. Not immediately. But it regulates.
+[pause 5s]
+Because that is what nervous systems do in groups.
+[pause 5s]
+They look for the most stable regulator in the room.
+[pause 5s]
+And that regulator... is you.
+[pause 10s]
+
+The question therefore is not: how do I silence the room?
+[pause 5s]
+The question is: how do I remain the regulator... when everything is pulling the other way?
+[pause 10s]
+
+The answer is physical before it is strategic.
+[pause 6s]
+
+Before you speak... you breathe.
+[pause 5s]
+One single cycle. Silent. Invisible.
+[pause 5s]
+While the room hums... you do one thing that no one sees.
+[pause 5s]
+You lower your heart rate.
+[pause 5s]
+You anchor your feet.
+[pause 5s]
+You choose your state.
+[pause 8s]
+
+And then you speak. Slowly. Distinctly. Without force.
+[pause 5s]
+Not to punish. To bring back.
+[pause 5s]
+You are the calm the room is searching for without knowing it.
+[pause 10s]
+
+Close your eyes. Visualize that lost room you know.
+[pause 5s]
+The noise. The agitation. That collective energy overflowing.
+[pause 8s]
+
+Feel what it does in your body. The rising. The narrowing.
+[pause 8s]
+
+Now. Anchor.
+[pause 5s]
+Feet on the ground. Back straight. Shoulders lower.
+[pause 5s]
+You are still standing.
+[pause 8s]
+
+Ten cycles. While you breathe...
+[pause 5s]
+let the pressure of the room come down.
+[pause 5s]
+It is not inside you. It is in front of you. That is different.
+[pause 5s]
+And you... are the fixed point.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-That state is the one they need from you.
-[pause 5s]
-Not perfection. Not calm.
-[pause 4s]
-Just — present.
-[pause 5s]
-Unmoved.
+Good.
+[pause 10s]
+
+Feel the quality of this presence. Anchored. Solid. Gentle at the same time.
 [pause 8s]
+
+This is not imposed authority.
+[pause 5s]
+It is offered regulation.
+[pause 5s]
+A lost room simply needs to find someone stable to recalibrate.
+[pause 5s]
+And you... are capable of being that person.
+[pause 5s]
+Not always perfectly. But with increasing consciousness.
+[pause 10s]
+
+The next time the room spirals... you know what to do.
+[pause 5s]
+Not raise your voice. Not force.
+[pause 5s]
+One cycle. Silent. And then be that fixed point.
+[pause 5s]
+The room will regulate to you.
+[pause 8s]
+
+Open your eyes... gently. The room is watching you. You are ready.
+[pause 6s]
 SCRIPT,
 
         '05-leader' => <<<'SCRIPT'
-Welcome back.
-[pause 4s]
-The pressure is real.
-[pause 4s]
-The decision is urgent. The meeting went sideways. The team is watching.
+There is no good answer.
 [pause 6s]
-And you're still expected to be the one who holds it together.
+
+You know this. You have searched.
+[pause 5s]
+You have turned the problem over in every direction.
+[pause 5s]
+You have looked at the numbers, the opinions, the precedents.
+[pause 5s]
+And there is still no good answer.
+[pause 5s]
+Only bad ones of different kinds.
 [pause 8s]
 
-Leadership under pressure is not about suppressing the pressure.
+And they are waiting. Waiting for you to decide.
 [pause 5s]
-It's about not transmitting it.
-[pause 5s]
-There's a difference.
+Today. Now. Soon.
 [pause 8s]
 
-One breath. Before you respond.
+This moment has a name.
 [pause 5s]
-Before you re-enter the room.
+The impossible decision.
+[pause 6s]
+
+Every leader encounters it. Several times. At different levels.
+[pause 5s]
+Sometimes it is a restructuring that hurts people.
 [pause 4s]
-Before you make the call.
+Sometimes it is a partnership to end. A project to abandon.
+[pause 4s]
+A person you cannot keep. A direction to change.
+[pause 5s]
+Choices where whatever you decide... something is lost.
+[pause 10s]
+
+Here is what your brain does in this moment.
+[pause 5s]
+It searches for certainty. It wants it absolute. It refuses to decide without it.
+[pause 5s]
+And since absolute certainty does not exist...
+[pause 5s]
+it circles. It postpones. It searches again.
+[pause 5s]
+Not from weakness. From precision. Your brain wants to do things right.
 [pause 8s]
 
-That one breath... is not a pause.
+But there is a cost.
 [pause 5s]
-It's a choice.
+Cortisol rises. Adrenaline keeps the muscles on alert.
 [pause 5s]
-A choice about who leads in the next thirty seconds.
+Sleep fragments. Secondary decisions degrade.
+[pause 5s]
+And the important decision... continues to wait in its own seat.
 [pause 8s]
 
-Make it now.
+The leaders who navigate these moments with the most clarity...
 [pause 5s]
+do not look for more information.
+[pause 5s]
+They look for a state.
+[pause 6s]
 
-Inhale... for five seconds.
+Not the state of certainty. They know it will not come.
+[pause 5s]
+The state of acceptable clarity.
+[pause 5s]
+The state in which you can see what truly matters.
+[pause 5s]
+Not everything. What matters.
+[pause 5s]
+And decide from there.
+[pause 10s]
+
+What the five-five-five does in this moment...
+[pause 5s]
+is activate the ventromedial prefrontal cortex.
+[pause 5s]
+The seat of moral judgement. Of long-term perspective. Of alignment with your values.
+[pause 5s]
+This circuit is inhibited under adrenaline.
+[pause 5s]
+It reactivates with slow breathing.
+[pause 8s]
+
+In other words: your capacity to make a good decision in uncertainty...
+[pause 5s]
+is biologically linked to your respiratory state.
+[pause 5s]
+Not to your intelligence. Not to your experience.
+[pause 5s]
+To your breathing in the thirty seconds that precede.
+[pause 10s]
+
+Set everything down. This file. This dilemma. These numbers.
+[pause 5s]
+Not to escape them. To look at them from higher up.
+[pause 5s]
+Settle in. Back straight. Hands opening.
+[pause 6s]
+Close your eyes.
+[pause 8s]
+
+During the ten cycles... let one single question be present.
+[pause 5s]
+Not: what is the right decision?
+[pause 5s]
+But: what do I truly care about in this situation?
+[pause 5s]
+What value do I want this decision to serve?
+[pause 8s]
+
+This question does not need an immediate answer.
+[pause 5s]
+It needs space. And we are going to give it some.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-The version of you that just breathed...
-[pause 4s]
-makes better calls.
-[pause 3s]
-Steadier decisions.
-[pause 3s]
-More trust in the room.
-[pause 6s]
-That's the one they need. Go be that one.
+Good.
+[pause 10s]
+
+Stay a moment longer in this silence. With this question.
+[pause 8s]
+
+Feel what has changed. Not in the problem.
+[pause 5s]
+In your relationship to the problem.
+[pause 5s]
+The same situation. A slightly different gaze.
+[pause 5s]
+A slight distance between you and the urgency.
+[pause 8s]
+
+This is not nonchalance. It is perspective.
+[pause 5s]
+And in this perspective... something of your own clarity resurfaces.
+[pause 5s]
+What you know. What matters. What you can stand behind.
+[pause 10s]
+
+You may not have the decision yet.
+[pause 5s]
+But you are in a better state to make it.
+[pause 5s]
+And that... is everything this pause could give you.
+[pause 5s]
+The rest belongs to you.
+[pause 8s]
+
+Open your eyes... gently. The problem is still there. And so are you.
 [pause 6s]
 SCRIPT,
 
         '05-educateur' => <<<'SCRIPT'
-Welcome back.
-[pause 4s]
 The group is resisting.
-[pause 4s]
-Or you are. Both happen.
-[pause 5s]
-The energy has shifted — and you can feel it.
-[pause 8s]
-
-Resistance in a group is rarely about the content.
-[pause 5s]
-It's about safety. Trust. The quality of the container.
 [pause 6s]
-And the container... is you.
+
+You have felt it since this morning.
+[pause 5s]
+Crossed arms. Sliding gazes. Short answers.
+[pause 5s]
+Or worse — the polite but empty silence.
+[pause 5s]
+Those surface smiles that say: we are here, we are making the effort, but no.
 [pause 8s]
 
-When the container is regulated... the group feels it.
+And you... you have prepared. You have a method. You believe in what you do.
 [pause 5s]
-Not always consciously. But in their bodies.
-[pause 5s]
-They soften. They open. They risk.
+And yet — nothing passes through.
 [pause 8s]
 
-So before you intervene... regulate first.
+This moment is one of the most difficult in the educator's profession.
 [pause 5s]
-Silently. Internally. Completely invisible to the group.
+Because it touches something central.
+[pause 5s]
+Identity.
 [pause 8s]
 
-Inhale... for five seconds.
+When a group resists... the first interpretation is almost always the same.
+[pause 5s]
+I am doing something wrong. My content is not good. I am not up to it.
+[pause 5s]
+They are rejecting me. Me.
+[pause 8s]
+
+This interpretation is often wrong.
+[pause 5s]
+Here is what resistance in a group actually is.
+[pause 6s]
+
+Resistance is information.
+[pause 5s]
+It says: there is something this group is not yet ready to cross.
+[pause 5s]
+Not because they do not want to. Because they do not yet feel safe.
+[pause 6s]
+Safe to change. To question. To let go of something old.
+[pause 8s]
+
+And safety in a group... does not come from the content.
+[pause 5s]
+It comes from the quality of presence of the one holding the space.
+[pause 8s]
+
+Here is the cruel paradox of resistance.
+[pause 5s]
+It is precisely when the group resists...
+[pause 5s]
+that the educator, under pressure, loses their presence.
+[pause 5s]
+They force. They accelerate. They try to convince. They defend themselves.
+[pause 5s]
+And in doing so... they reduce exactly what the group needs.
+[pause 5s]
+The safe space to not be convinced right away.
+[pause 10s]
+
+What resistance calls for... is more presence. Not less.
+[pause 5s]
+Not more content. Not more arguments.
+[pause 5s]
+More anchoring. More calm. More quiet solidity.
+[pause 5s]
+The capacity to hold without needing it to work right now.
+[pause 10s]
+
+You can practise this now.
+[pause 5s]
+Close your eyes. Visualize this group. Its resistance. That weighted silence.
+[pause 8s]
+
+Feel what it creates in your body.
+[pause 5s]
+The discomfort. The need to do something. The urgency to recover attention.
+[pause 8s]
+
+Now... stay. Without moving. Without resolving.
+[pause 5s]
+Anchor your feet. Elongate your back.
+[pause 5s]
+Let the resistance be there — without it displacing you.
+[pause 8s]
+
+Ten cycles. While you breathe...
+[pause 5s]
+train yourself to hold without needing immediate results.
+[pause 5s]
+To be present to what is... rather than what should be.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-Now you can hold the resistance without reacting to it.
+Good.
+[pause 10s]
+
+Feel what you carry now.
 [pause 5s]
-Name it. Sit with it. Let the group find their way through it.
-[pause 6s]
-That's not passivity. That's mastery.
+Not the necessity that it works.
+[pause 5s]
+Just the presence. Just the space you are capable of holding.
+[pause 10s]
+
+When you return to face this group...
+[pause 5s]
+you can name what is happening. Directly. Calmly.
+[pause 5s]
+I feel that something is not flowing easily this morning. That is fine. It is not a problem.
+[pause 5s]
+Take a few seconds. We can breathe together if you like.
 [pause 8s]
+
+This quiet honesty... often defuses more than any technique.
+[pause 5s]
+Because it says to the group: there is no danger in not being ready yet.
+[pause 5s]
+And in that space... sometimes something finally shifts.
+[pause 10s]
+
+Open your eyes... gently. The group is waiting. You are ready to hold.
+[pause 6s]
 SCRIPT,
 
         '05-bebe' => <<<'SCRIPT'
-Welcome back.
-[pause 4s]
-The baby won't stop crying.
-[pause 4s]
-Or the feeding went badly. Or the night was brutal.
+They have been crying for a long time.
+[pause 6s]
+
+You have done everything. You have changed, fed, carried, rocked.
 [pause 5s]
-And your reserves are running low.
+You have checked the temperature, the belly, the clothes.
+[pause 5s]
+You have sung. You have walked. You have tried every angle.
 [pause 8s]
 
-The hardest thing about caring for an infant...
+And nothing.
+[pause 6s]
+
+The crying continues.
 [pause 5s]
-is that they absorb your state.
-[pause 5s]
-There's nowhere to hide.
-[pause 5s]
-They feel the tension before your hands even touch them.
+And something in you begins to crack.
 [pause 8s]
 
-So the most effective thing you can do — right now —
-[pause 4s]
-is not try harder.
+This is not ordinary helplessness.
 [pause 5s]
-It's breathe first.
+It is one of the most biologically intense experiences that exists.
+[pause 6s]
+
+A newborn's cries activate the adult brain with absolute precision.
+[pause 5s]
+They trigger an alarm in the amygdala.
+[pause 5s]
+Immediate. Powerful. Difficult to extinguish.
+[pause 5s]
+This is not weakness. This is evolutionary biology.
+[pause 5s]
+The human brain is wired to respond to a child's cries. Without exception.
 [pause 8s]
 
-Hands near the child. Or resting on your own lap.
+And when the response is not enough... when the crying continues despite everything...
 [pause 5s]
-Jaw unclenched. Shoulders dropped.
+this alarm stays on. And rises.
 [pause 5s]
-One full cycle.
+The frustration. The worry. The exhaustion.
+[pause 5s]
+The feeling of not being up to it.
+[pause 5s]
+Sometimes... something that resembles anger.
 [pause 8s]
 
-Inhale... for five seconds.
+What you may not allow yourself to say... is that this moment is beyond you.
+[pause 5s]
+That you no longer know. That you need help. That your body is at its limit.
+[pause 8s]
+
+I am going to tell you something important.
+[pause 5s]
+Your state in this moment... is received by this child.
+[pause 5s]
+They can hear you holding on. Or sense you losing ground.
+[pause 5s]
+And when they sense you losing ground... their own crying amplifies.
+[pause 5s]
+Not to hurt you. Because their nervous system is searching for your regulation.
+[pause 5s]
+And can no longer find it.
+[pause 8s]
+
+The most useful thing you can do for them right now...
+[pause 5s]
+is not find a new technique.
+[pause 5s]
+It is to come back to yourself.
+[pause 5s]
+To interrupt the alarm for ten seconds or so.
+[pause 5s]
+And offer them again that constant they are searching for.
+[pause 5s]
+Your heart rate slowing.
+[pause 10s]
+
+Put them down safely if you can. Or keep them in your arms... but step back one inner step.
+[pause 5s]
+Feel the ground beneath your feet.
+[pause 5s]
+Unclench your hands.
+[pause 5s]
+Unclench your shoulders.
+[pause 5s]
+Unclench your jaw.
+[pause 8s]
+
+Close your eyes for a second.
+[pause 5s]
+Just you. Just your body. Just this ground beneath your feet.
+[pause 8s]
+
+Ten cycles. While you breathe...
+[pause 5s]
+you are not abandoning them. You are coming back.
+[pause 5s]
+Coming back into your body. Into your calm.
+[pause 5s]
+To give them again what they are searching for.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-Different hands now.
+Good.
+[pause 10s]
+
+Feel your hands. They have opened. Their tone has changed.
 [pause 5s]
-Different signal to the nervous system — yours, and theirs.
-[pause 6s]
-From this state... something can shift.
+Feel your heart rate. It has come down.
+[pause 5s]
+Feel your shoulders. They carry less.
 [pause 8s]
+
+Now... move closer. Or pick them up again if you set them down.
+[pause 5s]
+With these hands. This heart rate. This quality of presence.
+[pause 5s]
+They will receive it.
+[pause 5s]
+Perhaps not immediately. But they will receive it.
+[pause 8s]
+
+And if the crying continues after this...
+[pause 5s]
+that is a different conversation. With a doctor. With someone who can help.
+[pause 5s]
+You are not alone. You do not have to carry this without support.
+[pause 8s]
+
+But in this moment... you have done the most precious thing.
+[pause 5s]
+You chose to come back to yourself. For them.
+[pause 5s]
+That is exactly what good early childhood caregivers do.
+[pause 8s]
+
+Open your eyes... gently. You are here. They need you to be here.
+[pause 6s]
 SCRIPT,
 
         '05-proches' => <<<'SCRIPT'
-Welcome back.
-[pause 4s]
-Something happened at home.
-[pause 4s]
-The evening escalated. A word landed wrong. The tension is still in the room.
+The words are about to come out.
 [pause 6s]
-And you're not sure what to do next.
+
+You feel them. In your throat. In your chest.
+[pause 5s]
+Words you may regret. Or perhaps not right away.
+[pause 5s]
+But that will leave something.
+[pause 5s]
+In the child looking at you. In the partner waiting.
+[pause 5s]
+In yourself too.
 [pause 8s]
 
-The people we love most... are also the ones who can reach us the deepest.
+This moment... you know it.
 [pause 5s]
-That's not a flaw in the relationship.
+It is the breaking point.
+[pause 6s]
+
+It always arrives at a specific place.
 [pause 5s]
-That's the nature of closeness.
+Not after one great catastrophe. After the silent accumulation of small things.
+[pause 5s]
+The day that was long. The demand too many. The poorly chosen intonation.
+[pause 5s]
+The spilled glass. The third time someone asks the same thing.
+[pause 5s]
+Something that in itself does not deserve what is about to come out of you.
 [pause 8s]
 
-But you don't have to respond from the place of impact.
-[pause 5s]
-You have a choice.
-[pause 5s]
-A thirty-second choice.
+And yet. Something is going to come out.
 [pause 8s]
 
-Step back — physically if you can.
-[pause 4s]
-Or inward, if the space doesn't allow it.
+Here is what happens in your brain at this precise moment.
+[pause 6s]
+
+The amygdala has taken control.
 [pause 5s]
-Feel your feet. Feel your hands.
+The threat circuit is activated.
 [pause 5s]
-And breathe.
+Your prefrontal cortex — the one that evaluates, relativizes, chooses words — is partly offline.
+[pause 6s]
+This is not a character flaw.
+[pause 5s]
+This is neurology.
+[pause 5s]
+And it happens to every human being. Without exception.
 [pause 8s]
 
-Inhale... for five seconds.
+But here is something fundamental.
+[pause 5s]
+Between the impulse... and the action...
+[pause 5s]
+there is a space.
+[pause 6s]
+Not always visible. Not always easy to grasp.
+[pause 5s]
+But it is there.
+[pause 6s]
+A fraction of a second.
+[pause 5s]
+Sometimes two.
+[pause 5s]
+And in that space... you can do something.
+[pause 10s]
+
+Not everything. Not a calm and perfect speech.
+[pause 5s]
+Just one long exhale.
+[pause 5s]
+Not a full cycle. One exhale.
+[pause 5s]
+Slow. Controlled.
+[pause 5s]
+That tells your amygdala: the threat is not physical.
+[pause 5s]
+You can lower the alert level.
+[pause 8s]
+
+This exhale changes what is possible in the five seconds that follow.
+[pause 5s]
+Not always. Not miraculously.
+[pause 5s]
+But often enough for this to be the most important skill you can cultivate.
+[pause 5s]
+In your home. With those you love.
+[pause 10s]
+
+Let us train this exhale now.
+[pause 5s]
+Close your eyes. Think of this moment. The one you know.
+[pause 5s]
+The tension rising. The breaking point.
+[pause 8s]
+
+Feel it in the body. Really.
+[pause 5s]
+The throat. The chest. The fists closing.
+[pause 5s]
+Do not flee it. Stay with it a moment.
+[pause 8s]
+
+And now. One single long exhale.
+[pause 5s]
+Five seconds. Gentle. Slow. Through the nose if possible.
+[pause 5s]
+Let the tension leave with it.
+[pause 8s]
+
+Another one. If you can.
+[pause 8s]
+
+And a third. With the intention: I am not under physical threat. I can choose.
+[pause 10s]
+
+Now the ten full cycles. To anchor this in the body.
+[pause 5s]
+So that this gesture is automatically available... at the moment you need it.
+[pause 8s]
+
+We begin.
+
 [BREATHING_CYCLES]
 
-From here... you can choose your words.
+Good.
+[pause 10s]
+
+Stay in this calm a moment.
 [pause 5s]
-From here... the conversation can change direction.
+Feel what is available in this state.
 [pause 5s]
-Not because the problem is solved.
-[pause 4s]
-Because you are no longer inside the reaction.
-[pause 6s]
-You are beside it. And that changes everything.
+The choice. The distance. The possibility of speaking differently.
 [pause 8s]
+
+You will not be perfect. No one is.
+[pause 5s]
+You will still sometimes lose your temper. That is human.
+[pause 5s]
+What you are building... is not perfection.
+[pause 5s]
+It is a repertoire.
+[pause 5s]
+One more response available in your body... for the difficult moments.
+[pause 8s]
+
+And this repertoire... your children observe.
+[pause 5s]
+Not your words. Your way of managing what overflows.
+[pause 5s]
+What you show them there... is deeper than any lesson.
+[pause 5s]
+It is their future repertoire.
+[pause 10s]
+
+Open your eyes... gently. The situation is still there. And so are you. Differently.
+[pause 6s]
 SCRIPT,
 
     ];
