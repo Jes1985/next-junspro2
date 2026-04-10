@@ -12,12 +12,12 @@ $acts_en = json_decode($mod->activities_en, true);
 
 $acts_fr[0]['title']   = 'À Chantal — Pourquoi ce parcours existe';
 $acts_fr[0]['content'] = <<<'HTML'
-<div class="activity-content hommage-chantal" style="font-family: Georgia, serif; line-height: 1.9; color: #1a1a2e;">
+<div class="activity-content hommage-chantal" style="font-family: Georgia, serif; line-height: 1.9; color: #e8ddd0;">
 
   <div style="text-align:center; margin-bottom: 2.5rem;">
     <div style="font-size: 2rem; color: #c9a96e; margin-bottom: 0.5rem;">✦</div>
     <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: #c9a96e; font-weight: 400; letter-spacing: 0.05em;">À Chantal</h2>
-    <p style="font-style: italic; color: #8a7560; font-size: 1rem;">Pourquoi ce parcours existe</p>
+    <p style="font-style: italic; color: #b8a898; font-size: 1rem;">Pourquoi ce parcours existe</p>
   </div>
 
   <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
@@ -91,7 +91,7 @@ $acts_fr[0]['content'] = <<<'HTML'
 
   <hr style="border: none; border-top: 1px solid #c9a96e; margin: 2rem auto; width: 60%;">
 
-  <p style="font-size: 1.1rem; font-style: italic; color: #5a4a3a; margin-bottom: 1.5rem;">
+  <p style="font-size: 1.1rem; font-style: italic; color: #c4b49a; margin-bottom: 1.5rem;">
     Chantal, tu m'as réveillée.<br>
     Pas par ta mort — par qui tu étais.<br>
     Par la façon dont tu as choisi de vivre,<br>
@@ -127,12 +127,12 @@ HTML;
 
 $acts_en[0]['title']   = 'To Chantal — Why this program exists';
 $acts_en[0]['content'] = <<<'HTML'
-<div class="activity-content hommage-chantal" style="font-family: Georgia, serif; line-height: 1.9; color: #1a1a2e;">
+<div class="activity-content hommage-chantal" style="font-family: Georgia, serif; line-height: 1.9; color: #e8ddd0;">
 
   <div style="text-align:center; margin-bottom: 2.5rem;">
     <div style="font-size: 2rem; color: #c9a96e; margin-bottom: 0.5rem;">✦</div>
     <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: #c9a96e; font-weight: 400; letter-spacing: 0.05em;">To Chantal</h2>
-    <p style="font-style: italic; color: #8a7560; font-size: 1rem;">Why this program exists</p>
+    <p style="font-style: italic; color: #b8a898; font-size: 1rem;">Why this program exists</p>
   </div>
 
   <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
@@ -206,7 +206,7 @@ $acts_en[0]['content'] = <<<'HTML'
 
   <hr style="border: none; border-top: 1px solid #c9a96e; margin: 2rem auto; width: 60%;">
 
-  <p style="font-size: 1.1rem; font-style: italic; color: #5a4a3a; margin-bottom: 1.5rem;">
+  <p style="font-size: 1.1rem; font-style: italic; color: #c4b49a; margin-bottom: 1.5rem;">
     Chantal, you woke me up.<br>
     Not through your death — but through who you were.<br>
     Through the way you chose to live,<br>
