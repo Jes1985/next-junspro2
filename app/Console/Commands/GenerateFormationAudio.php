@@ -718,10 +718,30 @@ Et son premier réflexe... c'était les autres.
 Toujours.
 [pause 8s]
 
-Elle était là pour elle...
+Durant toutes ces années où j'étais partie...
+[pause 5s]
+ma sœur a traversé des périodes difficiles.
+[pause 5s]
+Et Chantal était là pour elle.
+[pause 5s]
+Sa meilleure amie.
 [pause 4s]
-quand moi je ne l'étais pas.
+Présente.
+[pause 4s]
+Quand moi j'étais loin.
 [pause 10s]
+
+Je lui suis tellement reconnaissante pour ça.
+[pause 6s]
+
+Elle a semé dans la vie de ma sœur.
+[pause 5s]
+Et aujourd'hui...
+[pause 4s]
+je veux être pour ses enfants...
+[pause 4s]
+ce qu'elle a été pour elle.
+[pause 12s]
 
 Et pendant ce temps-là...
 [pause 5s]
@@ -765,17 +785,193 @@ les choix d'être vraiment présente à ta vie —
 je ne les avais pas faits.
 [pause 8s]
 
-J'étais en train de vivre à côté de mes enfants.
+Je me suis rendu compte à quel point je vivais à côté.
+[pause 6s]
+À côté de ce qui comptait vraiment.
+[pause 5s]
+Avec mes enfants — là, mais sans être vraiment là.
+[pause 5s]
+Avec ma sœur — présente, mais pas assez.
 [pause 4s]
-À côté de mes rêves.
-[pause 3s]
-À côté de mes amis.
-[pause 3s]
+Avec mes amis — en contact, mais sans prendre vraiment le temps.
+[pause 5s]
+Avec mes rêves — en mouvement, mais avec l'impression de faire du surplace.
+[pause 5s]
 À côté de moi-même.
 [pause 12s]
 
-Tu m'as réveillé.
+Tu m'as réveillée.
 [pause 8s]
+
+Pas par ta mort.
+[pause 5s]
+Par qui tu étais.
+[pause 10s]
+
+Depuis que tu es partie...
+[pause 5s]
+il s'est passé des choses.
+[pause 4s]
+De vraies choses.
+[pause 8s]
+
+Ce projet existait déjà.
+[pause 4s]
+Mais il tournait en rond.
+[pause 4s]
+Il avançait — sans vraiment avancer.
+[pause 4s]
+J'avais l'impression de faire du surplace.
+[pause 8s]
+
+Et puis quelque chose a changé.
+[pause 5s]
+Quelque chose que je n'arrive pas tout à fait à expliquer...
+[pause 4s]
+mais que je ressens comme une certitude.
+[pause 10s]
+
+Je me suis mise au travail.
+[pause 4s]
+Dans le silence.
+[pause 4s]
+Des heures. Des semaines. Des mois.
+[pause 5s]
+Avec l'aide de mon compagnon.
+[pause 4s]
+Avec des outils que je ne maîtrisais pas au départ.
+[pause 4s]
+Sans plan écrit.
+[pause 3s]
+Sans feuille de route tracée à l'avance.
+[pause 8s]
+
+Et pourtant — le plan était là.
+[pause 5s]
+Chaque jour, je découvrais la suite.
+[pause 4s]
+Comme si quelqu'un me la soufflait.
+[pause 10s]
+
+Au départ, je voulais juste moderniser un site.
+[pause 4s]
+Aujourd'hui, il contient six univers.
+[pause 3s]
+Un parcours de quarante modules.
+[pause 3s]
+Plusieurs formations.
+[pause 3s]
+Et bien plus encore.
+[pause 5s]
+Je ne m'en reviens pas moi-même.
+[pause 8s]
+
+C'est là que j'ai compris quelque chose.
+[pause 5s]
+Quelque chose que je n'aurais pas osé dire il y a encore un an.
+[pause 6s]
+
+Je suis l'outil.
+[pause 6s]
+Junspro — ce parcours — cette formation —
+[pause 4s]
+c'est l'œuvre de Dieu.
+[pause 8s]
+
+Je sais que cela peut paraître fou à entendre.
+[pause 4s]
+Mais c'est ce que je crois.
+[pause 4s]
+Profondément. Calmement. Avec certitude.
+[pause 5s]
+Au début c'était une impression.
+[pause 4s]
+Aujourd'hui c'est une évidence.
+[pause 5s]
+Dans le silence, je suis cœur à cœur avec Lui sur ce projet.
+[pause 4s]
+Et chaque matin, Il me fait découvrir la suite.
+[pause 12s]
+
+En septembre, je pars à Malte avec mes enfants.
+[pause 5s]
+Ce n'est pas un projet de plus que je remets à l'année prochaine.
+[pause 5s]
+C'est un moment que je choisis de vivre.
+[pause 4s]
+Pleinement. Maintenant.
+[pause 10s]
+
+J'appelle davantage.
+[pause 4s]
+Ma sœur. Mes amis.
+[pause 4s]
+Je dis les choses. Je prends le temps.
+[pause 4s]
+Je ne laisse plus le silence s'épaissir entre ceux que j'aime.
+[pause 10s]
+
+Intérieurement, quelque chose s'est déplacé.
+[pause 4s]
+Je me sens plus sage.
+[pause 3s]
+Plus résiliente. Plus compréhensive.
+[pause 4s]
+Ma spiritualité s'est approfondie.
+[pause 4s]
+Je cherche à comprendre davantage.
+[pause 3s]
+À juger moins.
+[pause 3s]
+À voir l'autre — vraiment.
+[pause 10s]
+
+Je veux que mes enfants aient leur père.
+[pause 5s]
+Pas par obligation.
+[pause 4s]
+Par conviction.
+[pause 6s]
+Parce que leurs années ne se rachèteront pas.
+[pause 5s]
+Parce que chaque jour dans le silence, c'est un jour de moins avec leur père.
+[pause 4s]
+Un repas raté.
+[pause 3s]
+Un trait d'humour qu'il n'aura pas entendu.
+[pause 3s]
+Un câlin qui n'aura pas eu lieu.
+[pause 6s]
+Parce que ni lui ni moi ne sommes éternels.
+[pause 6s]
+Alors je tends la main.
+[pause 4s]
+Je fais le premier pas.
+[pause 4s]
+Que Dieu m'accompagne dans ça.
+[pause 10s]
+
+Et puis...
+[pause 5s]
+j'ai rencontré quelqu'un.
+[pause 6s]
+Je ne sais pas ce que l'avenir nous réserve.
+[pause 5s]
+Mais pour la première fois depuis longtemps...
+[pause 5s]
+je veux à nouveau construire avec quelqu'un.
+[pause 4s]
+Que Dieu me guide et m'accompagne.
+[pause 12s]
+
+Il y a un avant.
+[pause 5s]
+Et il y a un après.
+[pause 6s]
+Et cet après...
+[pause 4s]
+je te le dois, Chantal.
+[pause 12s]
 
 Et pour ça...
 [pause 4s]
@@ -14062,10 +14258,30 @@ And her first instinct... was still others.
 Always.
 [pause 8s]
 
-She was there for her...
+During all those years I had been away...
+[pause 5s]
+my sister went through difficult periods.
+[pause 5s]
+And Chantal was there for her.
+[pause 5s]
+Her best friend.
 [pause 4s]
-when I wasn't.
+Present.
+[pause 4s]
+When I was far away.
 [pause 10s]
+
+I am so grateful to her for that.
+[pause 6s]
+
+She sowed something in my sister's life.
+[pause 5s]
+And today...
+[pause 4s]
+I want to be for her children...
+[pause 4s]
+what she was for her.
+[pause 12s]
 
 And during that same time...
 [pause 5s]
@@ -14109,17 +14325,193 @@ the choices to be truly present to your life —
 I had not made them.
 [pause 8s]
 
-I was living alongside my children.
+I realized how much I had been living alongside my own life.
+[pause 6s]
+Alongside what truly mattered.
+[pause 5s]
+With my children — present, but not really there.
+[pause 5s]
+With my sister — there, but not enough.
 [pause 4s]
-Alongside my dreams.
-[pause 3s]
-Alongside my friends.
-[pause 3s]
+With my friends — in touch, but without really taking the time.
+[pause 5s]
+With my dreams — moving, but feeling like I was going nowhere.
+[pause 5s]
 Alongside myself.
 [pause 12s]
 
 You woke me up.
 [pause 8s]
+
+Not through your death.
+[pause 5s]
+Through who you were.
+[pause 10s]
+
+Since you left...
+[pause 5s]
+things have happened.
+[pause 4s]
+Real things.
+[pause 8s]
+
+This project already existed.
+[pause 4s]
+But it was going in circles.
+[pause 4s]
+Moving forward — without really moving forward.
+[pause 4s]
+I had the feeling of going nowhere.
+[pause 8s]
+
+And then something changed.
+[pause 5s]
+Something I can't quite explain...
+[pause 4s]
+but which I feel as a certainty.
+[pause 10s]
+
+I got to work.
+[pause 4s]
+In the silence.
+[pause 4s]
+Hours. Weeks. Months.
+[pause 5s]
+With the help of my partner.
+[pause 4s]
+With tools I didn't know at the beginning.
+[pause 4s]
+Without a written plan.
+[pause 3s]
+Without a roadmap laid out in advance.
+[pause 8s]
+
+And yet — the plan was there.
+[pause 5s]
+Each day, I discovered what came next.
+[pause 4s]
+As if someone was whispering it to me.
+[pause 10s]
+
+At the start, I just wanted to modernize a website.
+[pause 4s]
+Today, it holds six universes.
+[pause 3s]
+A program of forty modules.
+[pause 3s]
+Several courses.
+[pause 3s]
+And much more.
+[pause 5s]
+I can barely believe it myself.
+[pause 8s]
+
+That is when I understood something.
+[pause 5s]
+Something I would not have dared to say a year ago.
+[pause 6s]
+
+I am the tool.
+[pause 6s]
+Junspro — this program — this course —
+[pause 4s]
+it is God's work.
+[pause 8s]
+
+I know that may sound strange to hear.
+[pause 4s]
+But it is what I believe.
+[pause 4s]
+Deeply. Calmly. With certainty.
+[pause 5s]
+At first it was a feeling.
+[pause 4s]
+Today it is an evidence.
+[pause 5s]
+In the silence, I am heart to heart with Him on this project.
+[pause 4s]
+And each morning, He shows me what comes next.
+[pause 12s]
+
+In September, I am going to Malta with my children.
+[pause 5s]
+Not another project I push to next year.
+[pause 5s]
+A moment I choose to live.
+[pause 4s]
+Fully. Now.
+[pause 10s]
+
+I call more often.
+[pause 4s]
+My sister. My friends.
+[pause 4s]
+I say the things. I take the time.
+[pause 4s]
+I no longer let the silence thicken between those I love.
+[pause 10s]
+
+Something has shifted inside me.
+[pause 4s]
+I feel wiser.
+[pause 3s]
+More resilient. More understanding.
+[pause 4s]
+My spirituality has deepened.
+[pause 4s]
+I seek to understand more.
+[pause 3s]
+To judge less.
+[pause 3s]
+To truly see the other.
+[pause 10s]
+
+I want my children to have their father.
+[pause 5s]
+Not out of obligation.
+[pause 4s]
+Out of conviction.
+[pause 6s]
+Because their years cannot be bought back.
+[pause 5s]
+Because every day in the silence is one day less with their father.
+[pause 4s]
+A missed meal.
+[pause 3s]
+A joke he won't have heard.
+[pause 3s]
+A hug that won't have happened.
+[pause 6s]
+Because neither he nor I are eternal.
+[pause 6s]
+So I reach out.
+[pause 4s]
+I take the first step.
+[pause 4s]
+May God walk with me in that.
+[pause 10s]
+
+And then...
+[pause 5s]
+I met someone.
+[pause 6s]
+I don't know what the future holds for us.
+[pause 5s]
+But for the first time in a long time...
+[pause 5s]
+I want to build something with someone again.
+[pause 4s]
+May God guide me and walk with me.
+[pause 12s]
+
+There is a before.
+[pause 5s]
+And there is an after.
+[pause 6s]
+And this after...
+[pause 4s]
+I owe it to you, Chantal.
+[pause 12s]
 
 And for that...
 [pause 4s]
