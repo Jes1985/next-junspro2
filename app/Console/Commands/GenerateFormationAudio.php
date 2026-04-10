@@ -564,9 +564,11 @@ Elle avait choisi le bon père pour ses enfants.
 [pause 5s]
 Ce n'était pas le choix le plus simple.
 [pause 5s]
-Sa belle-mère n'était pas tendre avec elle.
+Il y avait des résistances autour d'elle.
+[pause 4s]
+Des personnes qui n'accueillaient pas ce choix.
 [pause 5s]
-Elle aurait pu laisser cette blessure guider son choix.
+Elle aurait pu se laisser décourager.
 [pause 4s]
 Se protéger.
 [pause 3s]
@@ -574,7 +576,7 @@ Choisir différemment.
 [pause 5s]
 Elle ne l'a pas fait.
 [pause 6s]
-Elle a regardé au-delà de ce qu'elle subissait.
+Elle a regardé au-delà de ce qu'elle traversait.
 [pause 4s]
 Au-delà d'elle-même.
 [pause 4s]
@@ -583,15 +585,13 @@ Vers ce dont ses enfants auraient besoin...
 après elle.
 [pause 10s]
 
-Et aujourd'hui...
+Et certaines de ces personnes qui semblaient si loin d'elle à l'époque...
 [pause 5s]
-cette belle-mère qui n'était pas simple avec elle...
-[pause 5s]
-est l'une des personnes qui chérit ses enfants.
+sont aujourd'hui celles qui chérissent ses enfants le plus.
 [pause 4s]
-Qui veille sur eux.
+Qui veillent sur eux.
 [pause 4s]
-Qui les porte.
+Qui les portent.
 [pause 8s]
 
 Chantal avait vu juste.
@@ -697,7 +697,11 @@ Ce n'était pas un appel pour elle.
 [pause 5s]
 Ce n'était pas pour me dire qu'elle était malade.
 [pause 5s]
-C'était pour me prévenir que ma sœur avait fait une tentative de suicide.
+C'était pour quelqu'un qu'elle aimait.
+[pause 5s]
+Quelqu'un qui traversait quelque chose de très difficile.
+[pause 5s]
+Quelqu'un qui avait besoin que l'on soit là.
 [pause 10s]
 
 Elle avait déjà son cancer.
@@ -711,12 +715,10 @@ Elle portait ça.
 [pause 4s]
 Et son premier réflexe... c'était les autres.
 [pause 4s]
-Ma sœur.
-[pause 3s]
-Nous.
+Toujours.
 [pause 8s]
 
-Elle était là pour ma sœur...
+Elle était là pour elle...
 [pause 4s]
 quand moi je ne l'étais pas.
 [pause 10s]
@@ -13906,9 +13908,11 @@ She chose the right father for her children.
 [pause 5s]
 It was not the easiest choice.
 [pause 5s]
-His mother was not kind to her.
+There were resistances around her.
+[pause 4s]
+People who didn't welcome that choice.
 [pause 5s]
-She could have let that wound guide her decision.
+She could have let herself be discouraged.
 [pause 4s]
 Could have protected herself.
 [pause 3s]
@@ -13916,7 +13920,7 @@ Chosen differently.
 [pause 5s]
 She didn't.
 [pause 6s]
-She looked beyond what she was enduring.
+She looked beyond what she was going through.
 [pause 4s]
 Beyond herself.
 [pause 4s]
@@ -13925,15 +13929,13 @@ Toward what her children would need...
 after her.
 [pause 10s]
 
-And today...
+And some of the people who seemed so far from her back then...
 [pause 5s]
-that mother-in-law who was not kind to her...
-[pause 5s]
-is one of the people who cherishes her children.
+are now the ones who cherish her children the most.
 [pause 4s]
-Who watches over them.
+Who watch over them.
 [pause 4s]
-Who holds them.
+Who hold them.
 [pause 8s]
 
 Chantal had seen clearly.
@@ -14039,7 +14041,11 @@ It wasn't a call about her.
 [pause 5s]
 It wasn't to tell me she was sick.
 [pause 5s]
-It was to warn me that my sister had attempted suicide.
+It was for someone she loved.
+[pause 5s]
+Someone who was going through something very hard.
+[pause 5s]
+Someone who needed someone to be there.
 [pause 10s]
 
 She already had her cancer.
@@ -14053,12 +14059,10 @@ She was carrying that.
 [pause 4s]
 And her first instinct... was still others.
 [pause 4s]
-My sister.
-[pause 3s]
-Us.
+Always.
 [pause 8s]
 
-She was there for my sister...
+She was there for her...
 [pause 4s]
 when I wasn't.
 [pause 10s]
