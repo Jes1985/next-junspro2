@@ -560,45 +560,15 @@ Pas les choix faciles.
 Les choix justes.
 [pause 6s]
 
-Elle avait choisi le bon père pour ses enfants.
+Elle avait construit quelque chose de vrai.
 [pause 5s]
-Ce n'était pas le choix le plus simple.
-[pause 5s]
-Il y avait des résistances autour d'elle.
-[pause 4s]
-Des personnes qui n'accueillaient pas ce choix.
-[pause 5s]
-Elle aurait pu se laisser décourager.
-[pause 4s]
-Se protéger.
-[pause 3s]
-Choisir différemment.
-[pause 5s]
-Elle ne l'a pas fait.
+Une famille. Un foyer. Des liens solides.
 [pause 6s]
-Elle a regardé au-delà de ce qu'elle traversait.
+Ses enfants sont entourés aujourd'hui.
 [pause 4s]
-Au-delà d'elle-même.
-[pause 4s]
-Vers ce dont ses enfants auraient besoin...
-[pause 3s]
-après elle.
-[pause 10s]
-
-Et certaines de ces personnes qui semblaient si loin d'elle à l'époque...
+Aimés. Portés.
 [pause 5s]
-sont aujourd'hui celles qui chérissent ses enfants le plus.
-[pause 4s]
-Qui veillent sur eux.
-[pause 4s]
-Qui les portent.
-[pause 8s]
-
-Chantal avait vu juste.
-[pause 5s]
-À quarante ans.
-[pause 4s]
-Avec une sagesse que peu de gens atteignent en toute une vie.
+C'est le fruit de ce qu'elle avait semé.
 [pause 10s]
 
 Quand elle est partie...
@@ -742,17 +712,6 @@ je veux être pour ses enfants...
 [pause 4s]
 ce qu'elle a été pour elle.
 [pause 12s]
-
-Et pendant ce temps-là...
-[pause 5s]
-j'accompagnais dans la même ville une amie qui traversait un cancer du sein.
-[pause 5s]
-Je vivais à côté de Chantal sans le savoir.
-[pause 5s]
-À côté de ce qu'elle traversait.
-[pause 5s]
-À côté de tout ce qu'elle représentait.
-[pause 10s]
 
 Maintenant que tu n'es plus là...
 [pause 5s]
@@ -14100,45 +14059,15 @@ Not the easy choices.
 The right ones.
 [pause 6s]
 
-She chose the right father for her children.
+She had built something real.
 [pause 5s]
-It was not the easiest choice.
-[pause 5s]
-There were resistances around her.
-[pause 4s]
-People who didn't welcome that choice.
-[pause 5s]
-She could have let herself be discouraged.
-[pause 4s]
-Could have protected herself.
-[pause 3s]
-Chosen differently.
-[pause 5s]
-She didn't.
+A family. A home. Solid bonds.
 [pause 6s]
-She looked beyond what she was going through.
+Her children are surrounded today.
 [pause 4s]
-Beyond herself.
-[pause 4s]
-Toward what her children would need...
-[pause 3s]
-after her.
-[pause 10s]
-
-And some of the people who seemed so far from her back then...
+Loved. Held.
 [pause 5s]
-are now the ones who cherish her children the most.
-[pause 4s]
-Who watch over them.
-[pause 4s]
-Who hold them.
-[pause 8s]
-
-Chantal had seen clearly.
-[pause 5s]
-At forty years old.
-[pause 4s]
-With a wisdom that few people reach in a whole lifetime.
+This is the fruit of what she had sown.
 [pause 10s]
 
 When she left...
@@ -14282,17 +14211,6 @@ I want to be for her children...
 [pause 4s]
 what she was for her.
 [pause 12s]
-
-And during that same time...
-[pause 5s]
-I was accompanying a friend in the same city who was fighting breast cancer.
-[pause 5s]
-I was living alongside Chantal without knowing it.
-[pause 5s]
-Alongside what she was going through.
-[pause 5s]
-Alongside everything she meant to me.
-[pause 10s]
 
 Now that you are no longer here...
 [pause 5s]
