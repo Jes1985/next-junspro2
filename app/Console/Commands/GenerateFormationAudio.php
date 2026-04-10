@@ -1270,9 +1270,18 @@ Trois.
 Quatre.
 [pause 1s]
 Cinq.
-[pause 4s]
-Retenez... une seconde.
-[pause 3s]
+[pause 2s]
+Retenez... en cinq temps.
+Un.
+[pause 1s]
+Deux.
+[pause 1s]
+Trois.
+[pause 1s]
+Quatre.
+[pause 1s]
+Cinq.
+[pause 2s]
 Expirez... en cinq temps.
 Un.
 [pause 1s]
@@ -1288,19 +1297,19 @@ Cinq.
 Deuxième cycle.
 [pause 3s]
 Inspirez.
-[pause 6s]
+[pause 5s]
 Retenez.
-[pause 3s]
+[pause 5s]
 Expirez.
-[pause 8s]
+[pause 5s]
 
 Troisième cycle.
 [pause 3s]
 Inspirez.
-[pause 6s]
+[pause 5s]
 Retenez.
-[pause 3s]
-Expirez.
+[pause 5s]
+Expirez doucement.
 [pause 12s]
 
 Restez là.
@@ -14769,9 +14778,18 @@ Three.
 Four.
 [pause 1s]
 Five.
-[pause 4s]
-Hold... one second.
-[pause 3s]
+[pause 2s]
+Hold... in five counts.
+One.
+[pause 1s]
+Two.
+[pause 1s]
+Three.
+[pause 1s]
+Four.
+[pause 1s]
+Five.
+[pause 2s]
 Breathe out... in five counts.
 One.
 [pause 1s]
@@ -14787,19 +14805,19 @@ Five.
 Second cycle.
 [pause 3s]
 Breathe in.
-[pause 6s]
+[pause 5s]
 Hold.
-[pause 3s]
+[pause 5s]
 Breathe out.
-[pause 8s]
+[pause 5s]
 
 Third cycle.
 [pause 3s]
 Breathe in.
-[pause 6s]
+[pause 5s]
 Hold.
-[pause 3s]
-Breathe out.
+[pause 5s]
+Breathe out slowly.
 [pause 12s]
 
 Stay there.
