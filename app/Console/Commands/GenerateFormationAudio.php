@@ -444,6 +444,798 @@ Bienvenue dans la connaissance vivante du corps.
 SCRIPT,
 
         // ─────────────────────────────────────────────────────────
+        // MODULE 0 PROLOGUE — "La vie n'a pas d'âge" — cible : 18–21 min
+        // Ton : intime, fondateur — hommage à Chantal, l'électrochoc qui allume tout
+        // ─────────────────────────────────────────────────────────
+        '00-prologue-la-vie-na-pas-dage' => <<<'SCRIPT'
+[pause 8s]
+
+Ce parcours est dédié à quelqu'un.
+[pause 5s]
+À une femme.
+[pause 4s]
+Qui s'appelait Chantal.
+[pause 10s]
+
+Il y a des moments dans une vie qui coupent le monde en deux.
+[pause 5s]
+Avant.
+[pause 3s]
+Et après.
+[pause 8s]
+
+C'est à un de ces moments que je dois ce parcours.
+[pause 4s]
+Pas à une formation.
+[pause 3s]
+Pas à un livre.
+[pause 3s]
+À elle.
+[pause 12s]
+
+Chantal avait quarante ans.
+[pause 5s]
+Une fille de treize ans.
+[pause 3s]
+Un fils de dix.
+[pause 6s]
+Un cancer diagnostiqué.
+[pause 3s]
+Une rémission.
+[pause 3s]
+Et puis... en l'espace d'un mois...
+[pause 6s]
+c'était fini.
+[pause 12s]
+
+Pas une vieille dame au bout d'une longue vie.
+[pause 5s]
+Une femme de mon âge.
+[pause 4s]
+Avec les mêmes projets.
+[pause 3s]
+Les mêmes enfants que moi.
+[pause 3s]
+Les mêmes certitudes silencieuses sur le futur.
+[pause 10s]
+
+Je veux vous dire qui elle était.
+[pause 5s]
+Vraiment.
+[pause 8s]
+
+Elle souriait d'une façon qui rendait les pièces plus lumineuses.
+[pause 5s]
+Elle avait ce sourire — avec de belles dents blanches —
+[pause 4s]
+un sourire qui ne cherchait pas à impressionner.
+[pause 4s]
+Un sourire qui disait simplement :
+[pause 4s]
+je suis là.
+[pause 3s]
+Je suis vivante.
+[pause 3s]
+Et c'est suffisant.
+[pause 10s]
+
+Elle respirait la vie.
+[pause 4s]
+Pas la performance de la vie.
+[pause 3s]
+La vie elle-même.
+[pause 10s]
+
+Elle n'avait pas les grands diplômes.
+[pause 4s]
+Pas la carrière impressionnante.
+[pause 4s]
+Pas les signes extérieurs que notre époque confond avec la réussite.
+[pause 5s]
+Elle avait quelque chose de plus rare.
+[pause 6s]
+
+Elle savait qui elle était.
+[pause 8s]
+
+Et parce qu'elle savait qui elle était...
+[pause 4s]
+elle vivait depuis cet endroit.
+[pause 5s]
+Pas depuis la peur du regard des autres.
+[pause 4s]
+Pas depuis le besoin de prouver quelque chose.
+[pause 4s]
+Depuis elle-même.
+[pause 3s]
+Depuis ses valeurs.
+[pause 3s]
+Depuis ce qui comptait vraiment.
+[pause 10s]
+
+Elle avait fait les choix que peu de gens font.
+[pause 5s]
+Pas les choix faciles.
+[pause 4s]
+Les choix justes.
+[pause 6s]
+
+Elle avait choisi le bon père pour ses enfants.
+[pause 4s]
+Pas le plus séduisant.
+[pause 3s]
+Pas le plus impressionnant.
+[pause 3s]
+Le bon.
+[pause 4s]
+Celui qui serait là.
+[pause 4s]
+Celui en qui elle pouvait avoir confiance pour continuer ce qu'elle avait commencé.
+[pause 10s]
+
+Quand elle est partie...
+[pause 5s]
+elle n'a pas laissé un vide derrière elle.
+[pause 5s]
+Elle a laissé des bijoux.
+[pause 6s]
+
+Ses enfants.
+[pause 5s]
+Des êtres façonnés par une femme qui savait...
+[pause 4s]
+que ce qu'on sème aujourd'hui pousse longtemps après qu'on soit parti.
+[pause 12s]
+
+En quarante ans...
+[pause 4s]
+Chantal a vécu plus authentiquement que beaucoup ne le feront en quatre-vingts.
+[pause 6s]
+
+Elle avait réalisé ce que certains mettent une vie entière à effleurer.
+[pause 6s]
+
+La vie la plus précieuse...
+[pause 4s]
+n'est pas dans le paraître.
+[pause 3s]
+Pas dans les diplômes.
+[pause 3s]
+Pas dans les certifications de réussite que la société distribue.
+[pause 5s]
+Elle est dans la simplicité.
+[pause 4s]
+Dans le fait de savoir ce qu'on aime...
+[pause 3s]
+qui on aime...
+[pause 3s]
+pourquoi on vit.
+[pause 4s]
+Et d'agir depuis cet endroit.
+[pause 10s]
+
+Elle était humble.
+[pause 4s]
+Non pas parce qu'elle manquait de confiance en elle.
+[pause 4s]
+Mais parce qu'elle connaissait sa valeur.
+[pause 5s]
+Et celui qui connaît vraiment sa valeur...
+[pause 4s]
+n'a plus besoin de la prouver.
+[pause 10s]
+
+Elle était le soleil.
+[pause 5s]
+Pas le genre de soleil qui brille pour qu'on le remarque.
+[pause 5s]
+Le genre qui chauffe simplement...
+[pause 4s]
+parce que c'est sa nature.
+[pause 12s]
+
+Voilà le paradoxe douloureux que sa disparition m'a laissé.
+[pause 6s]
+
+Quand tu étais là... Chantal...
+[pause 4s]
+pris comme je l'étais dans les aléas de la vie...
+[pause 4s]
+je ne pensais pas assez à toi.
+[pause 5s]
+La vie allait.
+[pause 3s]
+Les journées se remplissaient.
+[pause 3s]
+Et toi tu étais là — souriante, lumineuse, présente —
+[pause 4s]
+et je ne mesurais pas ce que tu représentais vraiment.
+[pause 10s]
+
+Maintenant que tu n'es plus là...
+[pause 5s]
+je pense souvent à toi.
+[pause 10s]
+
+C'est une des vérités les plus amères que la perte nous enseigne.
+[pause 6s]
+On réalise la valeur de ce qu'on avait...
+[pause 5s]
+quand on ne l'a plus.
+[pause 12s]
+
+Mais tu m'as fait quelque chose de plus grand que me faire regretter.
+[pause 6s]
+
+Tu m'as mis face à moi-même.
+[pause 8s]
+
+Tu m'as montré que nous avions presque le même âge.
+[pause 5s]
+Et que si c'était moi qui partais demain...
+[pause 5s]
+les choix que tu avais su faire —
+[pause 4s]
+les choix de sagesse pour tes enfants —
+[pause 4s]
+les choix d'être vraiment présent à ta vie —
+[pause 4s]
+je ne les avais pas faits.
+[pause 8s]
+
+J'étais en train de vivre à côté de mes enfants.
+[pause 4s]
+À côté de mes rêves.
+[pause 3s]
+À côté de mes amis.
+[pause 3s]
+À côté de moi-même.
+[pause 12s]
+
+Tu m'as réveillé.
+[pause 8s]
+
+Et pour ça...
+[pause 4s]
+je ne sais pas comment te remercier autrement...
+[pause 4s]
+qu'en faisant de cette leçon quelque chose de vivant.
+[pause 4s]
+En la transmettant.
+[pause 4s]
+En en faisant ce parcours.
+[pause 12s]
+
+Ce parcours existe parce que tu as existé.
+[pause 6s]
+
+Chaque personne qui le traversera...
+[pause 3s]
+chaque vie qui changera...
+[pause 3s]
+chaque enfant qui sera plus aimé...
+[pause 3s]
+chaque rêve enfin commencé...
+[pause 5s]
+c'est ta lumière qui continue.
+[pause 15s]
+
+Merci d'avoir été simple dans un monde qui glorifie le compliqué.
+[pause 5s]
+Merci d'avoir été vraie dans un monde qui récompense le paraître.
+[pause 5s]
+Merci d'avoir été humble parce que tu connaissais ta valeur.
+[pause 5s]
+Merci d'avoir semé pour tes bijoux.
+[pause 5s]
+Merci d'avoir été la merveilleuse femme... amie... mère... compagne que tu étais.
+[pause 8s]
+
+Que nous puissions nous retrouver.
+[pause 5s]
+Je t'aime... Chantal.
+[pause 20s]
+
+Installez-vous confortablement.
+[pause 4s]
+Fermez les yeux si vous pouvez.
+[pause 4s]
+Et laissez-vous traverser par ce que vous allez entendre.
+[pause 12s]
+
+Marcus Aurèle écrivait... il y a deux mille ans :
+[pause 4s]
+« Ce n'est pas la mort que les gens craignent le plus.
+[pause 3s]
+C'est la peur d'arriver à la mort...
+[pause 3s]
+et de réaliser qu'ils n'ont jamais vraiment vécu. »
+[pause 12s]
+
+Il y a une différence entre savoir qu'on va mourir...
+[pause 5s]
+et le réaliser.
+[pause 8s]
+
+Tout le monde sait.
+[pause 4s]
+Presque personne ne réalise.
+[pause 10s]
+
+Savoir... c'est une information abstraite.
+[pause 4s]
+Réaliser... c'est ressentir la vérité de cette information dans la chair.
+[pause 5s]
+Dans les mains.
+[pause 3s]
+Dans la gorge.
+[pause 3s]
+Dans cette petite contraction au creux de l'estomac.
+[pause 10s]
+
+Heidegger appelait cela le mode authentique.
+[pause 5s]
+Vivre en pleine conscience de sa propre finitude.
+[pause 4s]
+Prendre des décisions depuis ses vraies valeurs.
+[pause 4s]
+Être présent à ce qui compte...
+[pause 3s]
+maintenant.
+[pause 10s]
+
+L'opposé... c'est le mode inauthentique.
+[pause 4s]
+Vivre par défaut.
+[pause 3s]
+Faire ce que les autres font.
+[pause 3s]
+Remettre à demain.
+[pause 3s]
+Laisser la vie se passer.
+[pause 4s]
+Sans vraiment y participer.
+[pause 12s]
+
+La grande question... c'est celle-là :
+[pause 5s]
+Dans quel mode vivez-vous en ce moment ?
+[pause 15s]
+
+Les chercheurs en psychologie ont fait une découverte troublante.
+[pause 5s]
+Bronnie Ware était infirmière en soins palliatifs.
+[pause 4s]
+Pendant dix ans... elle a écouté les gens mourir.
+[pause 5s]
+Elle a recueilli leurs dernières confidences.
+[pause 4s]
+Ce qu'ils regrettaient vraiment... au bout du chemin.
+[pause 10s]
+
+Voici ce qu'ils lui ont dit.
+[pause 6s]
+
+Le premier regret... le plus répandu :
+[pause 4s]
+« J'aurais aimé avoir le courage de vivre la vie que je voulais vraiment.
+[pause 4s]
+Pas celle que la famille attendait.
+[pause 3s]
+Pas celle que la société valorisait.
+[pause 3s]
+La mienne. »
+[pause 10s]
+
+Le deuxième :
+[pause 4s]
+« J'aurais aimé ne pas avoir autant travaillé. »
+[pause 5s]
+Presque tous les hommes.
+[pause 3s]
+La quasi-totalité des femmes actives.
+[pause 3s]
+Sans exception.
+[pause 10s]
+
+Le troisième :
+[pause 4s]
+« J'aurais aimé avoir le courage d'exprimer ce que je ressentais vraiment. »
+[pause 5s]
+Les mots non dits.
+[pause 3s]
+Les « je t'aime » retenus.
+[pause 3s]
+Les vérités gardées par peur du conflit.
+[pause 10s]
+
+Et le cinquième — celui qui m'a le plus arrêté :
+[pause 5s]
+« J'aurais aimé m'être permis d'être plus heureux. »
+[pause 6s]
+La découverte... faite trop tard...
+[pause 4s]
+que le bonheur était un choix.
+[pause 12s]
+
+Prenez un moment avec ça.
+[pause 8s]
+
+Lequel de ces regrets résonne en vous... en ce moment ?
+[pause 15s]
+
+Laura Carstensen... professeure à Stanford...
+[pause 4s]
+a passé vingt ans à étudier ce qui se passe dans le cerveau des gens...
+[pause 4s]
+quand ils perçoivent que leur temps est limité.
+[pause 8s]
+
+Ce qu'elle a découvert change tout.
+[pause 5s]
+
+Quand on réalise que le temps est compté...
+[pause 4s]
+le cerveau recentre automatiquement les priorités.
+[pause 5s]
+On investit dans les relations profondes.
+[pause 3s]
+On abandonne les activités superficielles.
+[pause 3s]
+On cherche du sens.
+[pause 3s]
+On dit les choses importantes.
+[pause 10s]
+
+Et Carstensen a montré quelque chose de fondamental :
+[pause 5s]
+Ce changement ne nécessite pas de vieillir.
+[pause 4s]
+Il nécessite de réaliser.
+[pause 12s]
+
+C'est exactement ce que ce parcours cherche à produire.
+[pause 4s]
+Non pas en vous effrayant.
+[pause 4s]
+Mais en vous réveillant.
+[pause 15s]
+
+Posons-nous maintenant une question concrète.
+[pause 5s]
+
+Pensez aux cinq personnes que vous aimez le plus.
+[pause 6s]
+Vos enfants si vous en avez.
+[pause 3s]
+Votre partenaire.
+[pause 3s]
+Un parent encore vivant.
+[pause 3s]
+Un ami proche.
+[pause 8s]
+
+Maintenant... pour chacune de ces personnes...
+[pause 4s]
+estimez combien de fois vous les verrez vraiment...
+[pause 4s]
+si vous continuez à vivre comme maintenant.
+[pause 8s]
+
+Un enfant qui a dix-huit ans... qui s'apprête à quitter la maison.
+[pause 5s]
+Peut-être dix étés ensemble... en entier.
+[pause 4s]
+Peut-être moins.
+[pause 10s]
+
+Un parent de soixante-quinze ans.
+[pause 4s]
+Si vous le voyez deux fois par an...
+[pause 4s]
+et s'il vit encore quinze ans...
+[pause 4s]
+Vous avez trente occasions de le voir.
+[pause 4s]
+Trente.
+[pause 12s]
+
+Ce n'est pas pour vous angoisser.
+[pause 4s]
+C'est pour vous réveiller à la préciosité de ce qui est là.
+[pause 5s]
+Maintenant.
+[pause 4s]
+Devant vous.
+[pause 15s]
+
+Oliver Burkeman... dans son livre Quatre mille semaines...
+[pause 4s]
+a fait un calcul simple.
+[pause 4s]
+Une vie humaine moyenne...
+[pause 3s]
+c'est environ quatre mille semaines.
+[pause 8s]
+
+Quatre mille.
+[pause 6s]
+
+À trente ans... il en reste deux mille six cents.
+[pause 4s]
+À quarante ans... deux mille.
+[pause 4s]
+À cinquante ans... mille cinq cents.
+[pause 10s]
+
+Ce n'est pas peu.
+[pause 4s]
+Mais ce n'est pas infini.
+[pause 5s]
+Et la plupart d'entre nous n'en sommes pas conscients.
+[pause 12s]
+
+Alors je vous pose la question que ce parcours entier cherche à répondre :
+[pause 6s]
+
+Avec les semaines... les étés... les samedis matins qu'il vous reste...
+[pause 5s]
+qu'est-ce que vous voulez vraiment vivre ?
+[pause 8s]
+
+Pas ce que vous êtes censé vouloir.
+[pause 4s]
+Pas ce que votre entourage attend de vous.
+[pause 4s]
+Ce que vous... vous voulez.
+[pause 5s]
+Profondément.
+[pause 5s]
+Honnêtement.
+[pause 15s]
+
+Je vais maintenant vous proposer un moment de souffle.
+[pause 4s]
+Pas pour vous calmer.
+[pause 4s]
+Pour vous ancrer dans ce moment.
+[pause 4s]
+Pour que ce que vous avez entendu descende du mental...
+[pause 3s]
+dans le corps.
+[pause 10s]
+
+Installez-vous.
+[pause 4s]
+Posez les mains sur les genoux... paumes ouvertes.
+[pause 6s]
+
+Je vais vous guider dans trois cycles de respiration.
+[pause 4s]
+À chaque inspiration... dites-vous intérieurement :
+[pause 3s]
+« Je suis vivant... maintenant. »
+[pause 5s]
+À chaque expiration :
+[pause 3s]
+« Je choisis comment je vis ça. »
+[pause 8s]
+
+Premier cycle.
+[pause 3s]
+Inspirez... lentement... en cinq temps.
+Un.
+[pause 1s]
+Deux.
+[pause 1s]
+Trois.
+[pause 1s]
+Quatre.
+[pause 1s]
+Cinq.
+[pause 4s]
+Retenez... une seconde.
+[pause 3s]
+Expirez... en cinq temps.
+Un.
+[pause 1s]
+Deux.
+[pause 1s]
+Trois.
+[pause 1s]
+Quatre.
+[pause 1s]
+Cinq.
+[pause 8s]
+
+Deuxième cycle.
+[pause 3s]
+Inspirez.
+[pause 6s]
+Retenez.
+[pause 3s]
+Expirez.
+[pause 8s]
+
+Troisième cycle.
+[pause 3s]
+Inspirez.
+[pause 6s]
+Retenez.
+[pause 3s]
+Expirez.
+[pause 12s]
+
+Restez là.
+[pause 6s]
+Dans ce souffle.
+[pause 4s]
+Dans ce corps.
+[pause 4s]
+Dans ce moment qui existe... et qui ne reviendra pas.
+[pause 15s]
+
+Viktor Frankl... psychiatre autrichien... survivant des camps...
+[pause 4s]
+a consacré sa vie à une question :
+[pause 5s]
+Qu'est-ce qui permet à un être humain de continuer à vivre...
+[pause 4s]
+face à la souffrance absolue ?
+[pause 8s]
+
+Sa réponse... après des années passées à l'observer dans les conditions les plus extrêmes :
+[pause 6s]
+Le sens.
+[pause 8s]
+
+Pas le confort.
+[pause 3s]
+Pas la sécurité.
+[pause 3s]
+Pas l'absence de douleur.
+[pause 4s]
+Le sens.
+[pause 10s]
+
+La conscience que sa vie... telle qu'elle est...
+[pause 4s]
+a une direction.
+[pause 4s]
+Une importance.
+[pause 3s]
+Un pour quoi.
+[pause 12s]
+
+Et Frankl écrivait :
+[pause 4s]
+« Entre le stimulus et la réponse...
+[pause 4s]
+il y a un espace.
+[pause 4s]
+Dans cet espace réside notre liberté...
+[pause 3s]
+et notre capacité à grandir. »
+[pause 12s]
+
+Ce parcours est cet espace.
+[pause 5s]
+Entre ce que la vie vous impose...
+[pause 4s]
+et ce que vous choisissez d'en faire.
+[pause 15s]
+
+Vous allez maintenant traverser neuf modules après celui-ci.
+[pause 5s]
+Certains vous demanderont du temps.
+[pause 3s]
+D'autres vous surprendront.
+[pause 3s]
+Certains exercises vous mettront face à des vérités que vous évitez depuis longtemps.
+[pause 8s]
+
+Je vous demande de traverser tout ça...
+[pause 4s]
+avec ce que vous avez entendu aujourd'hui comme toile de fond.
+[pause 6s]
+
+Le temps passe.
+[pause 4s]
+Les gens que vous aimez vieillissent.
+[pause 3s]
+Vous aussi.
+[pause 4s]
+Les projets que vous reportez ne vous attendent pas.
+[pause 10s]
+
+Mais... et c'est le cœur de ce parcours...
+[pause 5s]
+il n'est jamais trop tard pour choisir.
+[pause 6s]
+
+Pour rentrer chez vous ce soir différemment.
+[pause 3s]
+Pour appeler quelqu'un que vous avez laissé de côté.
+[pause 3s]
+Pour dire quelque chose que vous retenez depuis trop longtemps.
+[pause 3s]
+Pour commencer ce que vous savez que vous devez commencer.
+[pause 12s]
+
+Ce moment... maintenant... est réel.
+[pause 4s]
+Il ne reviendra pas.
+[pause 4s]
+Mais il peut être le point de départ de quelque chose.
+[pause 5s]
+De quelque chose de vrai.
+[pause 15s]
+
+Avant de terminer ce module...
+[pause 4s]
+je voudrais que vous fassiez quelque chose de concret.
+[pause 6s]
+
+Pas demain.
+[pause 3s]
+Maintenant.
+[pause 8s]
+
+Pensez à une personne.
+[pause 5s]
+Une seule.
+[pause 5s]
+Quelqu'un qui compte vraiment.
+[pause 4s]
+Quelqu'un à qui vous n'avez pas dit ce qu'il ou elle représente pour vous.
+[pause 5s]
+Peut-être depuis longtemps.
+[pause 10s]
+
+Décidez... maintenant...
+[pause 4s]
+que vous allez lui dire.
+[pause 4s]
+Pas plus tard.
+[pause 3s]
+Cette semaine.
+[pause 4s]
+Dans les sept prochains jours.
+[pause 6s]
+
+C'est l'engagement le plus simple et le plus puissant que vous puissiez prendre en entrant dans ce parcours.
+[pause 12s]
+
+Ce parcours est né d'une perte.
+[pause 5s]
+Il est fait de tout ce que cette perte m'a appris.
+[pause 5s]
+Et de tout ce que des années de recherche... de pratique... de rencontres...
+[pause 4s]
+ont permis de construire autour de cette clarté initiale.
+[pause 8s]
+
+Vous méritez une vie qui ressemble à ce que vous voulez vraiment.
+[pause 5s]
+Pas une idée de vie.
+[pause 3s]
+Une vraie vie.
+[pause 3s]
+Vécue depuis vos vraies valeurs.
+[pause 3s]
+Avec les gens qui comptent vraiment.
+[pause 3s]
+Pour les raisons qui comptent vraiment.
+[pause 12s]
+
+Bienvenue dans ce parcours.
+[pause 6s]
+
+Bienvenue... vraiment.
+[pause 15s]
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
         // MODULE 1 — "Je me rencontre" — cible : 7–8 min
         // Les cycles de respiration sont générés séparément via ffmpeg
         // [BREATHING_CYCLES] = marqueur remplacé par silence+voix ffmpeg
@@ -12911,6 +13703,798 @@ Feel what just took place.
 Welcome to the living knowledge of the body.
 [pause 5s]
 See you very soon.
+SCRIPT,
+
+        // ─────────────────────────────────────────────────────────
+        // MODULE 0 PROLOGUE EN — "Life Has No Age" — target : 18–21 min
+        // Tone : intimate, founding — tribute to Chantal, the light that ignites everything
+        // ─────────────────────────────────────────────────────────
+        '00-prologue-la-vie-na-pas-dage' => <<<'SCRIPT'
+[pause 8s]
+
+This program is dedicated to someone.
+[pause 5s]
+To a woman.
+[pause 4s]
+Her name was Chantal.
+[pause 10s]
+
+There are moments in a life that cut the world in two.
+[pause 5s]
+Before.
+[pause 3s]
+And after.
+[pause 8s]
+
+I owe this program to one of those moments.
+[pause 4s]
+Not to a course.
+[pause 3s]
+Not to a book.
+[pause 3s]
+To her.
+[pause 12s]
+
+Chantal was forty years old.
+[pause 5s]
+A daughter of thirteen.
+[pause 3s]
+A son of ten.
+[pause 6s]
+A cancer diagnosed.
+[pause 3s]
+A remission.
+[pause 3s]
+And then... within a month...
+[pause 6s]
+it was over.
+[pause 12s]
+
+Not an old woman at the end of a long life.
+[pause 5s]
+A woman my age.
+[pause 4s]
+With the same plans.
+[pause 3s]
+The same children as me.
+[pause 3s]
+The same silent certainties about the future.
+[pause 10s]
+
+I want to tell you who she was.
+[pause 5s]
+Truly.
+[pause 8s]
+
+She smiled in a way that made rooms brighter.
+[pause 5s]
+She had this smile — with beautiful white teeth —
+[pause 4s]
+a smile that wasn't trying to impress anyone.
+[pause 4s]
+A smile that simply said:
+[pause 4s]
+I am here.
+[pause 3s]
+I am alive.
+[pause 3s]
+And that is enough.
+[pause 10s]
+
+She breathed life.
+[pause 4s]
+Not the performance of life.
+[pause 3s]
+Life itself.
+[pause 10s]
+
+She didn't have the impressive degrees.
+[pause 4s]
+Not the high-profile career.
+[pause 4s]
+Not the external markers that our era confuses with success.
+[pause 5s]
+She had something rarer.
+[pause 6s]
+
+She knew who she was.
+[pause 8s]
+
+And because she knew who she was...
+[pause 4s]
+she lived from that place.
+[pause 5s]
+Not from the fear of others' judgment.
+[pause 4s]
+Not from the need to prove something.
+[pause 4s]
+From herself.
+[pause 3s]
+From her values.
+[pause 3s]
+From what truly mattered.
+[pause 10s]
+
+She had made the choices that few people make.
+[pause 5s]
+Not the easy choices.
+[pause 4s]
+The right ones.
+[pause 6s]
+
+She chose the right father for her children.
+[pause 4s]
+Not the most charming.
+[pause 3s]
+Not the most impressive.
+[pause 3s]
+The right one.
+[pause 4s]
+The one who would be there.
+[pause 4s]
+The one she could trust to carry on what she had started.
+[pause 10s]
+
+When she left...
+[pause 5s]
+she didn't leave a void behind her.
+[pause 5s]
+She left jewels.
+[pause 6s]
+
+Her children.
+[pause 5s]
+Beings shaped by a woman who knew...
+[pause 4s]
+that what you sow today grows long after you are gone.
+[pause 12s]
+
+In forty years...
+[pause 4s]
+Chantal lived more authentically than many will in eighty.
+[pause 6s]
+
+She had realized what some spend a whole lifetime barely touching.
+[pause 6s]
+
+The most precious life...
+[pause 4s]
+is not in appearances.
+[pause 3s]
+Not in degrees.
+[pause 3s]
+Not in the success certificates that society hands out.
+[pause 5s]
+It is in simplicity.
+[pause 4s]
+In knowing what you love...
+[pause 3s]
+who you love...
+[pause 3s]
+why you live.
+[pause 4s]
+And acting from that place.
+[pause 10s]
+
+She was humble.
+[pause 4s]
+Not because she lacked confidence.
+[pause 4s]
+But because she knew her worth.
+[pause 5s]
+And the one who truly knows their worth...
+[pause 4s]
+no longer needs to prove it.
+[pause 10s]
+
+She was the sun.
+[pause 5s]
+Not the kind of sun that shines to be noticed.
+[pause 5s]
+The kind that simply warms...
+[pause 4s]
+because that is its nature.
+[pause 12s]
+
+Here is the painful paradox her departure left me with.
+[pause 6s]
+
+When you were here... Chantal...
+[pause 4s]
+caught as I was in the current of daily life...
+[pause 4s]
+I didn't think of you enough.
+[pause 5s]
+Life moved forward.
+[pause 3s]
+Days filled up.
+[pause 3s]
+And you were there — smiling, luminous, present —
+[pause 4s]
+and I didn't measure what you truly meant to me.
+[pause 10s]
+
+Now that you are no longer here...
+[pause 5s]
+I think of you often.
+[pause 10s]
+
+It is one of the bitterest truths that loss teaches us.
+[pause 6s]
+We realize the value of what we had...
+[pause 5s]
+when we no longer have it.
+[pause 12s]
+
+But you did something greater for me than make me regret.
+[pause 6s]
+
+You held a mirror up to me.
+[pause 8s]
+
+You showed me that we were almost the same age.
+[pause 5s]
+And that if it were me leaving tomorrow...
+[pause 5s]
+the wise choices you had made —
+[pause 4s]
+the choices for your children —
+[pause 4s]
+the choices to be truly present to your life —
+[pause 4s]
+I had not made them.
+[pause 8s]
+
+I was living alongside my children.
+[pause 4s]
+Alongside my dreams.
+[pause 3s]
+Alongside my friends.
+[pause 3s]
+Alongside myself.
+[pause 12s]
+
+You woke me up.
+[pause 8s]
+
+And for that...
+[pause 4s]
+I know no better way to thank you...
+[pause 4s]
+than to make that lesson something living.
+[pause 4s]
+To pass it on.
+[pause 4s]
+To make it into this program.
+[pause 12s]
+
+This program exists because you existed.
+[pause 6s]
+
+Every person who moves through it...
+[pause 3s]
+every life that changes...
+[pause 3s]
+every child who is loved more...
+[pause 3s]
+every dream finally begun...
+[pause 5s]
+that is your light, still shining.
+[pause 15s]
+
+Thank you for being simple in a world that glorifies complexity.
+[pause 5s]
+Thank you for being real in a world that rewards performance.
+[pause 5s]
+Thank you for being humble because you knew your worth.
+[pause 5s]
+Thank you for sowing for your jewels.
+[pause 5s]
+Thank you for being the wonderful woman... friend... mother... companion that you were.
+[pause 8s]
+
+May we one day find each other again.
+[pause 5s]
+I love you... Chantal.
+[pause 20s]
+
+Make yourself comfortable.
+[pause 4s]
+Close your eyes if you can.
+[pause 4s]
+And let yourself be moved by what you are about to hear.
+[pause 12s]
+
+Marcus Aurelius wrote... two thousand years ago:
+[pause 4s]
+"It is not death that people fear most.
+[pause 3s]
+It is the fear of arriving at death...
+[pause 3s]
+and realizing they never truly lived."
+[pause 12s]
+
+There is a difference between knowing you are going to die...
+[pause 5s]
+and realizing it.
+[pause 8s]
+
+Everyone knows.
+[pause 4s]
+Almost no one realizes.
+[pause 10s]
+
+Knowing... is an abstract piece of information.
+[pause 4s]
+Realizing... is feeling the truth of that information in the flesh.
+[pause 5s]
+In the hands.
+[pause 3s]
+In the throat.
+[pause 3s]
+In that small tightening deep in the stomach.
+[pause 10s]
+
+Heidegger called it the authentic mode.
+[pause 5s]
+Living in full consciousness of one's own finitude.
+[pause 4s]
+Making decisions from one's real values.
+[pause 4s]
+Being present to what matters...
+[pause 3s]
+now.
+[pause 10s]
+
+The opposite... is the inauthentic mode.
+[pause 4s]
+Living by default.
+[pause 3s]
+Doing what others do.
+[pause 3s]
+Postponing.
+[pause 3s]
+Letting life happen.
+[pause 4s]
+Without truly participating in it.
+[pause 12s]
+
+The great question... is this one:
+[pause 5s]
+In which mode are you living right now?
+[pause 15s]
+
+Researchers in psychology made a troubling discovery.
+[pause 5s]
+Bronnie Ware was a palliative care nurse.
+[pause 4s]
+For ten years... she listened to people die.
+[pause 5s]
+She collected their final confidences.
+[pause 4s]
+What they truly regretted... at the end of the road.
+[pause 10s]
+
+Here is what they told her.
+[pause 6s]
+
+The first regret... the most widespread:
+[pause 4s]
+"I wish I'd had the courage to live a life true to myself.
+[pause 4s]
+Not the life my family expected.
+[pause 3s]
+Not the life society valued.
+[pause 3s]
+Mine."
+[pause 10s]
+
+The second:
+[pause 4s]
+"I wish I hadn't worked so hard."
+[pause 5s]
+Almost every man.
+[pause 3s]
+Nearly all working women.
+[pause 3s]
+Without exception.
+[pause 10s]
+
+The third:
+[pause 4s]
+"I wish I'd had the courage to express my feelings."
+[pause 5s]
+The unsaid words.
+[pause 3s]
+The held-back "I love you"s.
+[pause 3s]
+The truths kept for fear of conflict.
+[pause 10s]
+
+And the fifth — the one that stopped me the most:
+[pause 5s]
+"I wish I had let myself be happier."
+[pause 6s]
+The discovery... made too late...
+[pause 4s]
+that happiness was a choice.
+[pause 12s]
+
+Take a moment with that.
+[pause 8s]
+
+Which of these regrets resonates in you... right now?
+[pause 15s]
+
+Laura Carstensen... professor at Stanford...
+[pause 4s]
+spent twenty years studying what happens in people's brains...
+[pause 4s]
+when they perceive that their time is limited.
+[pause 8s]
+
+What she discovered changes everything.
+[pause 5s]
+
+When we realize time is running out...
+[pause 4s]
+the brain automatically recenters priorities.
+[pause 5s]
+We invest in deep relationships.
+[pause 3s]
+We let go of superficial activities.
+[pause 3s]
+We seek meaning.
+[pause 3s]
+We say the important things.
+[pause 10s]
+
+And Carstensen showed something fundamental:
+[pause 5s]
+This shift does not require growing old.
+[pause 4s]
+It requires realizing.
+[pause 12s]
+
+That is exactly what this program seeks to produce.
+[pause 4s]
+Not by frightening you.
+[pause 4s]
+But by waking you up.
+[pause 15s]
+
+Let's now ask ourselves a concrete question.
+[pause 5s]
+
+Think of the five people you love most.
+[pause 6s]
+Your children if you have them.
+[pause 3s]
+Your partner.
+[pause 3s]
+A parent still living.
+[pause 3s]
+A close friend.
+[pause 8s]
+
+Now... for each of these people...
+[pause 4s]
+estimate how many times you will truly see them...
+[pause 4s]
+if you continue living as you do now.
+[pause 8s]
+
+A child who is eighteen... about to leave home.
+[pause 5s]
+Maybe ten full summers together.
+[pause 4s]
+Maybe fewer.
+[pause 10s]
+
+A parent who is seventy-five.
+[pause 4s]
+If you see them twice a year...
+[pause 4s]
+and they live fifteen more years...
+[pause 4s]
+You have thirty occasions to see them.
+[pause 4s]
+Thirty.
+[pause 12s]
+
+This is not to cause you anxiety.
+[pause 4s]
+It is to wake you up to the preciousness of what is already here.
+[pause 5s]
+Now.
+[pause 4s]
+Right in front of you.
+[pause 15s]
+
+Oliver Burkeman... in his book Four Thousand Weeks...
+[pause 4s]
+made a simple calculation.
+[pause 4s]
+An average human life...
+[pause 3s]
+is approximately four thousand weeks.
+[pause 8s]
+
+Four thousand.
+[pause 6s]
+
+At thirty years old... about two thousand six hundred remain.
+[pause 4s]
+At forty... two thousand.
+[pause 4s]
+At fifty... fifteen hundred.
+[pause 10s]
+
+It's not nothing.
+[pause 4s]
+But it's not infinite.
+[pause 5s]
+And most of us are simply not aware of it.
+[pause 12s]
+
+So I ask you the question that this entire program seeks to answer:
+[pause 6s]
+
+With the weeks... the summers... the Saturday mornings you have left...
+[pause 5s]
+what do you truly want to live?
+[pause 8s]
+
+Not what you are supposed to want.
+[pause 4s]
+Not what your loved ones expect of you.
+[pause 4s]
+What you... truly want.
+[pause 5s]
+Deeply.
+[pause 5s]
+Honestly.
+[pause 15s]
+
+I'm now going to invite you into a moment of breath.
+[pause 4s]
+Not to calm you.
+[pause 4s]
+To anchor you in this moment.
+[pause 4s]
+So that what you've heard can descend from the mind...
+[pause 3s]
+into the body.
+[pause 10s]
+
+Make yourself comfortable.
+[pause 4s]
+Place your hands on your knees... palms open.
+[pause 6s]
+
+I'll guide you through three breathing cycles.
+[pause 4s]
+With each inhale... say inwardly:
+[pause 3s]
+"I am alive... now."
+[pause 5s]
+With each exhale:
+[pause 3s]
+"I choose how I live this."
+[pause 8s]
+
+First cycle.
+[pause 3s]
+Breathe in... slowly... in five counts.
+One.
+[pause 1s]
+Two.
+[pause 1s]
+Three.
+[pause 1s]
+Four.
+[pause 1s]
+Five.
+[pause 4s]
+Hold... one second.
+[pause 3s]
+Breathe out... in five counts.
+One.
+[pause 1s]
+Two.
+[pause 1s]
+Three.
+[pause 1s]
+Four.
+[pause 1s]
+Five.
+[pause 8s]
+
+Second cycle.
+[pause 3s]
+Breathe in.
+[pause 6s]
+Hold.
+[pause 3s]
+Breathe out.
+[pause 8s]
+
+Third cycle.
+[pause 3s]
+Breathe in.
+[pause 6s]
+Hold.
+[pause 3s]
+Breathe out.
+[pause 12s]
+
+Stay there.
+[pause 6s]
+In that breath.
+[pause 4s]
+In that body.
+[pause 4s]
+In this moment that exists... and will not return.
+[pause 15s]
+
+Viktor Frankl... Austrian psychiatrist... survivor of the camps...
+[pause 4s]
+devoted his life to one question:
+[pause 5s]
+What allows a human being to keep living...
+[pause 4s]
+in the face of absolute suffering?
+[pause 8s]
+
+His answer... after years of observing it in the most extreme conditions:
+[pause 6s]
+Meaning.
+[pause 8s]
+
+Not comfort.
+[pause 3s]
+Not security.
+[pause 3s]
+Not the absence of pain.
+[pause 4s]
+Meaning.
+[pause 10s]
+
+The awareness that one's life... as it is...
+[pause 4s]
+has a direction.
+[pause 4s]
+An importance.
+[pause 3s]
+A reason for being.
+[pause 12s]
+
+And Frankl wrote:
+[pause 4s]
+"Between stimulus and response...
+[pause 4s]
+there is a space.
+[pause 4s]
+In that space lies our freedom...
+[pause 3s]
+and our power to grow."
+[pause 12s]
+
+This program is that space.
+[pause 5s]
+Between what life imposes on you...
+[pause 4s]
+and what you choose to make of it.
+[pause 15s]
+
+You are about to move through nine more modules after this one.
+[pause 5s]
+Some will ask time of you.
+[pause 3s]
+Others will surprise you.
+[pause 3s]
+Some exercises will place you before truths you've been avoiding for a long time.
+[pause 8s]
+
+I ask you to move through all of it...
+[pause 4s]
+with what you've heard today as your background.
+[pause 6s]
+
+Time passes.
+[pause 4s]
+The people you love are aging.
+[pause 3s]
+So are you.
+[pause 4s]
+The projects you keep postponing are not waiting for you.
+[pause 10s]
+
+But... and this is the heart of this program...
+[pause 5s]
+it is never too late to choose.
+[pause 6s]
+
+To come home tonight differently.
+[pause 3s]
+To call someone you've let drift away.
+[pause 3s]
+To say something you've been holding back for too long.
+[pause 3s]
+To begin what you know you need to begin.
+[pause 12s]
+
+This moment... right now... is real.
+[pause 4s]
+It will not return.
+[pause 4s]
+But it can be the starting point for something.
+[pause 5s]
+Something true.
+[pause 15s]
+
+Before closing this module...
+[pause 4s]
+I'd like you to do something concrete.
+[pause 6s]
+
+Not tomorrow.
+[pause 3s]
+Now.
+[pause 8s]
+
+Think of one person.
+[pause 5s]
+Just one.
+[pause 5s]
+Someone who truly matters.
+[pause 4s]
+Someone you haven't told what they mean to you.
+[pause 5s]
+Perhaps for a long time.
+[pause 10s]
+
+Decide... now...
+[pause 4s]
+that you will tell them.
+[pause 4s]
+Not later.
+[pause 3s]
+This week.
+[pause 4s]
+Within the next seven days.
+[pause 6s]
+
+This is the simplest and most powerful commitment you can make entering this program.
+[pause 12s]
+
+This program was born from a loss.
+[pause 5s]
+It carries everything that loss taught me.
+[pause 5s]
+And everything that years of research... practice... and human encounters...
+[pause 4s]
+allowed to be built around that initial clarity.
+[pause 8s]
+
+You deserve a life that looks like what you truly want.
+[pause 5s]
+Not an idea of a life.
+[pause 3s]
+A real life.
+[pause 3s]
+Lived from your real values.
+[pause 3s]
+With the people who truly matter.
+[pause 3s]
+For the reasons that truly matter.
+[pause 12s]
+
+Welcome to this program.
+[pause 6s]
+
+Welcome... truly.
+[pause 15s]
 SCRIPT,
 
         // ─────────────────────────────────────────────────────────
