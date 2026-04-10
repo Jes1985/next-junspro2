@@ -474,6 +474,24 @@
   border:1px dashed rgba(255,255,255,.12); border-radius:8px; padding:.4rem .9rem;
   font-style:italic;
 }
+/* ── Navigation audio par blocs de temps ── */
+.ps-seek-bar {
+  display:flex; align-items:center; justify-content:center;
+  gap:.4rem; flex-wrap:wrap; margin:.2rem 0;
+}
+.ps-seek-btn {
+  display:inline-flex; align-items:center; gap:.25rem;
+  padding:5px 12px; border-radius:20px;
+  border:1px solid rgba(201,168,76,.35);
+  background:rgba(201,168,76,.08);
+  color:#c9a84c; font-size:12px; font-weight:700;
+  letter-spacing:.04em; cursor:pointer;
+  transition:background .16s, border-color .16s, transform .1s;
+  user-select:none;
+}
+.ps-seek-btn:hover { background:rgba(201,168,76,.22); border-color:rgba(201,168,76,.65); }
+.ps-seek-btn:active { transform:scale(.92); }
+.ps-seek-btn--big { background:rgba(201,168,76,.14); border-color:rgba(201,168,76,.5); font-size:13px; padding:6px 15px; }
 
 /* ════ MODULE COMING SOON ════ */
 .ps-module-coming {
@@ -716,6 +734,20 @@
       src="{{ asset('storage/formation/audio/mps-01-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
+    <div class="ps-seek-bar">
+      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-01',-300)" title="Reculer de 5 min">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
+      </button>
+      <button class="ps-seek-btn" onclick="psSeek('audio-player-01',-30)" title="Reculer de 30s">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
+      </button>
+      <button class="ps-seek-btn" onclick="psSeek('audio-player-01',30)" title="Avancer de 30s">
+        30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-01',300)" title="Avancer de 5 min">
+        5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+      </button>
+    </div>
     <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
 </div>
@@ -925,6 +957,20 @@
       src="{{ asset('storage/formation/audio/mps-02-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
+    <div class="ps-seek-bar">
+      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-02',-300)" title="Reculer de 5 min">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
+      </button>
+      <button class="ps-seek-btn" onclick="psSeek('audio-player-02',-30)" title="Reculer de 30s">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
+      </button>
+      <button class="ps-seek-btn" onclick="psSeek('audio-player-02',30)" title="Avancer de 30s">
+        30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-02',300)" title="Avancer de 5 min">
+        5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+      </button>
+    </div>
     <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
 </div>
@@ -1344,6 +1390,20 @@
       src="{{ asset('storage/formation/audio/mps-03-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
+    <div class="ps-seek-bar">
+      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-03',-300)" title="Reculer de 5 min">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
+      </button>
+      <button class="ps-seek-btn" onclick="psSeek('audio-player-03',-30)" title="Reculer de 30s">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
+      </button>
+      <button class="ps-seek-btn" onclick="psSeek('audio-player-03',30)" title="Avancer de 30s">
+        30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-03',300)" title="Avancer de 5 min">
+        5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+      </button>
+    </div>
     <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
 </div>
@@ -1581,6 +1641,20 @@
           src="{{ asset('storage/formation/audio/mps-04-' . $key . '-fr.mp3') }}">
           Votre navigateur ne supporte pas la lecture audio.
         </audio>
+        <div class="ps-seek-bar">
+          <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-04-{{ $key }}',-300)" title="Reculer de 5 min">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
+          </button>
+          <button class="ps-seek-btn" onclick="psSeek('audio-player-04-{{ $key }}',-30)" title="Reculer de 30s">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
+          </button>
+          <button class="ps-seek-btn" onclick="psSeek('audio-player-04-{{ $key }}',30)" title="Avancer de 30s">
+            30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-04-{{ $key }}',300)" title="Avancer de 5 min">
+            5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          </button>
+        </div>
         <div class="ps-audio-coming">🎧 Recommandé : écoutez votre famille, puis passez aux activités.</div>
       </div>
     </div>
@@ -1636,6 +1710,20 @@
           src="{{ asset('storage/formation/audio/mps-05-' . $key . '-fr.mp3') }}">
           Votre navigateur ne supporte pas la lecture audio.
         </audio>
+        <div class="ps-seek-bar">
+          <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-05-{{ $key }}',-300)" title="Reculer de 5 min">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
+          </button>
+          <button class="ps-seek-btn" onclick="psSeek('audio-player-05-{{ $key }}',-30)" title="Reculer de 30s">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
+          </button>
+          <button class="ps-seek-btn" onclick="psSeek('audio-player-05-{{ $key }}',30)" title="Avancer de 30s">
+            30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-05-{{ $key }}',300)" title="Avancer de 5 min">
+            5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          </button>
+        </div>
         <div class="ps-audio-coming">🎧 Recommandé : écoutez votre famille, puis travaillez les activités.</div>
       </div>
     </div>
@@ -1850,6 +1938,12 @@ function psSwitchLang(mod, lang) {
     player.src = base + '-' + lang + '.mp3';
     player.load();
   }
+}
+function psSeek(playerId, seconds) {
+  var p = document.getElementById(playerId);
+  if (!p) return;
+  var next = p.currentTime + seconds;
+  p.currentTime = Math.max(0, Math.min(next, p.duration || next));
 }
 </script>
 

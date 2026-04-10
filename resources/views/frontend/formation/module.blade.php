@@ -128,6 +128,41 @@ body { background: var(--dark); color: var(--text); }
 .mod-audio__hint {
   font-size:1.1rem; color: var(--muted);
 }
+/* ── Contrôles de navigation audio ── */
+.audio-seek-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin: .25rem 0;
+}
+.audio-seek-btn {
+  display: inline-flex; align-items: center; gap: .28rem;
+  padding: 6px 13px;
+  border-radius: 22px;
+  border: 1px solid rgba(201,168,76,.35);
+  background: rgba(201,168,76,.08);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: background .18s, border-color .18s, transform .1s;
+  user-select: none;
+}
+.audio-seek-btn:hover {
+  background: rgba(201,168,76,.22);
+  border-color: rgba(201,168,76,.7);
+}
+.audio-seek-btn:active { transform: scale(.93); }
+.audio-seek-btn svg { flex-shrink: 0; }
+.audio-seek-btn--big {
+  background: rgba(201,168,76,.14);
+  border-color: rgba(201,168,76,.55);
+  font-size: 13px;
+  padding: 7px 16px;
+}
 
 /* Intro narrative */
 .mod-intro {
@@ -788,6 +823,27 @@ body { background: var(--dark); color: var(--text); }
             src="{{ asset('storage/' . ($isEn && $hasAudioEn ? $module->audio_path_en : ($module->audio_path ?? $module->audio_path_en))) }}"
             type="audio/mpeg">
         </audio>
+
+        {{-- Barre de navigation par blocs de temps --}}
+        <div class="audio-seek-bar" role="group" aria-label="{{ $isEn ? 'Audio navigation' : 'Navigation audio' }}">
+          <button class="audio-seek-btn audio-seek-btn--big" onclick="audioSeek(-300)" title="{{ $isEn ? 'Back 5 minutes' : 'Reculer de 5 minutes' }}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+            5 min
+          </button>
+          <button class="audio-seek-btn" onclick="audioSeek(-30)" title="{{ $isEn ? 'Back 30 seconds' : 'Reculer de 30 secondes' }}">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            30s
+          </button>
+          <button class="audio-seek-btn" onclick="audioSeek(30)" title="{{ $isEn ? 'Forward 30 seconds' : 'Avancer de 30 secondes' }}">
+            30s
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="audio-seek-btn audio-seek-btn--big" onclick="audioSeek(300)" title="{{ $isEn ? 'Forward 5 minutes' : 'Avancer de 5 minutes' }}">
+            5 min
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          </button>
+        </div>
+
         <div class="mod-audio__hint">{{ $isEn ? '🎧 Recommended: listen to the guided module first, then work through the activities.' : '🎧 Recommandé : écoutez d\'abord le module guidé, puis travaillez les activités.' }}</div>
       @else
         {{-- Placeholder : audio en cours de préparation --}}
@@ -825,6 +881,12 @@ body { background: var(--dark); color: var(--text); }
         if (btnFr) { btnFr.style.background='rgba(201,168,76,.15)'; btnFr.style.color='#c9a84c'; btnFr.style.border='1px solid #c9a84c'; }
         player.load();
       }
+    }
+    function audioSeek(seconds) {
+      var player = document.getElementById('mod-audio-player');
+      if (!player) return;
+      var next = player.currentTime + seconds;
+      player.currentTime = Math.max(0, Math.min(next, player.duration || next));
     }
     </script>
 
