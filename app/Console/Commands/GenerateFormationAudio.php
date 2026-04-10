@@ -11956,7 +11956,8 @@ Continuez à transmettre du vivant.
 SCRIPT,
 
         // ─────────────────────────────────────────────────────────
-        // MODULE 40 FR — "Traverser la perte" — cible : 14–16 min
+        // MODULE 40 FR — "Traverser la perte — le deuil, la finitude et l'art de vraiment vivre"
+        // Arc unifié : deuil → finitude → choisir de vivre — cible : 20–22 min
         // ─────────────────────────────────────────────────────────
         '40-traverser-la-perte' => <<<'SCRIPT'
 Bienvenue.
@@ -12262,11 +12263,230 @@ C'est suffisant.
 [pause 5s]
 C'est même courageux.
 [pause 10s]
+
+[pause 8s]
+
+Maintenant... je voudrais vous inviter à faire un pas de plus.
+[pause 6s]
+Un pas que la perte rend possible.
+[pause 5s]
+Un pas que rien d'autre n'aurait rendu aussi réel.
+[pause 8s]
+
+Il y a quelque chose que les personnes qui ont perdu quelqu'un de jeune — quelqu'un de votre âge, avec des enfants, avec des projets — décrivent souvent de la même façon.
+[pause 6s]
+Elles disent : depuis ce jour, je ne vois plus la vie de la même façon.
+[pause 6s]
+Elles ne disent pas ça comme une consolation.
+[pause 5s]
+Elles le disent comme une vérité nue.
+[pause 6s]
+La mort de l'autre... a fracturé quelque chose dans leur certitude silencieuse qu'elles avaient le temps.
+[pause 8s]
+
+Le psychiatre Irvin Yalom appelle ça un awakening experience.
+[pause 5s]
+Une expérience d'éveil.
+[pause 5s]
+Pas une blessure à guérir.
+[pause 4s]
+Une clarté à recevoir.
+[pause 8s]
+
+Alors je voudrais vous poser une question.
+[pause 5s]
+Pas une question rhétorique.
+[pause 4s]
+Une vraie question. Qui mérite une vraie réponse.
+[pause 6s]
+
+Si vous saviez, ce soir, que vous avez dix ans devant vous.
+[pause 5s]
+Pas l'espoir vague d'une longue vie.
+[pause 4s]
+Dix ans. Précisément.
+[pause 6s]
+
+Avec qui les passeriez-vous ?
+[pause 8s]
+
+Avec qui n'avez-vous pas encore assez de temps ?
+[pause 8s]
+
+Quel voyage avez-vous promis à vos enfants... et remis à "quand les conditions seront meilleures" ?
+[pause 8s]
+
+Quelle phrase n'avez-vous jamais dite à quelqu'un qui compte... parce que vous pensiez avoir le temps ?
+[pause 10s]
+
+Prenez le temps que ces questions méritent.
+[pause 8s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+Il y a une chercheuse à Stanford qui s'appelle Laura Carstensen.
+[pause 5s]
+Elle a passé vingt ans à étudier ce qui change dans les priorités humaines quand les gens perçoivent que le temps est limité.
+[pause 5s]
+Sa découverte est bouleversante dans sa simplicité :
+[pause 5s]
+quand l'horizon se resserre... les supérficiels disparaissent.
+[pause 5s]
+Les gens abandonnent spontanément les activités sans profondeur.
+[pause 5s]
+Et ils investissent massivement dans ce qui compte vraiment.
+[pause 5s]
+Leurs proches. Leurs expériences. Leur sens.
+[pause 6s]
+
+Et ce qu'elle a aussi découvert... c'est que ce changement ne nécessite pas de vieillir.
+[pause 5s]
+Il nécessite de réaliser.
+[pause 8s]
+
+Vous êtes en train de réaliser.
+[pause 6s]
+Peut-être depuis la perte que vous avez traversée.
+[pause 5s]
+Peut-être depuis ce module.
+[pause 5s]
+Peut-être depuis cette respiration.
+[pause 8s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+Il y a une infirmière australienne qui s'appelle Bronnie Ware.
+[pause 5s]
+Elle a passé des années au chevet de personnes mourantes.
+[pause 5s]
+Et elle a collecté leurs regrets — sans les embellir.
+[pause 6s]
+
+Le regret le plus souvent cité, presque à l'unanimité :
+[pause 5s]
+"J'aurais aimé avoir eu le courage de vivre la vie que je voulais vraiment.
+[pause 4s]
+Pas celle que les autres attendaient de moi."
+[pause 8s]
+
+Et le deuxième :
+[pause 5s]
+"J'aurais aimé ne pas avoir autant travaillé."
+[pause 8s]
+
+Pas : j'aurais aimé avoir plus d'argent.
+[pause 4s]
+Pas : j'aurais aimé avoir une plus grande maison.
+[pause 4s]
+Pas : j'aurais aimé avoir eu plus de succès.
+[pause 6s]
+
+Avoir osé.
+[pause 5s]
+Et avoir été là.
+[pause 8s]
+
+Vous entendez les deux choses que vos proches attendent de vous ?
+[pause 8s]
+Pas votre réussite.
+[pause 5s]
+Votre présence.
+[pause 5s]
+Et votre vie vraiment vécue.
+[pause 10s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+Je vais vous laisser avec une invitation.
+[pause 5s]
+Non pas une liste de choses à faire.
+[pause 4s]
+Mais une image.
+[pause 6s]
+
+Imaginez que vous ayez 80 ans.
+[pause 5s]
+Un soir d'été. Vos enfants, devenus adultes, sont autour de vous.
+[pause 5s]
+Ils parlent de vous.
+[pause 5s]
+Ils racontent qui vous étiez.
+[pause 5s]
+Ils disent ce que vous leur avez transmis.
+[pause 5s]
+Ce qu'ils ont appris à vos côtés.
+[pause 5s]
+Les moments qu'ils n'oublieront jamais.
+[pause 8s]
+
+Qu'est-ce qu'ils disent ?
+[pause 10s]
+
+Prenez le temps d'entendre cette réponse.
+[pause 8s]
+
+Maintenant.
+[pause 5s]
+La distance entre cette image... et votre vie telle qu'elle est aujourd'hui.
+[pause 5s]
+C'est votre travail.
+[pause 5s]
+Pas une culpabilité.
+[pause 4s]
+Une direction.
+[pause 8s]
+
+Votre vie n'est pas un dû.
+[pause 5s]
+Ce n'est pas quelque chose que vous avez mérité une fois pour toutes à la naissance.
+[pause 5s]
+C'est un cadeau fragile, renouvelé chaque matin.
+[pause 5s]
+Et ce cadeau... peut s'arrêter.
+[pause 5s]
+Pour vous. Pour quelqu'un que vous aimez.
+[pause 5s]
+À n'importe quel moment. Pour des raisons que vous ne contrôlez pas.
+[pause 8s]
+
+Alors une dernière fois, respirons ensemble.
+[pause 4s]
+
+[BREATHING_CYCLES]
+
+[pause 10s]
+
+Dites-vous à l'intérieur, ou à voix haute si vous le pouvez :
+[pause 5s]
+Je porte la perte de ceux que j'ai aimés.
+[pause 4s]
+Et je choisis de vraiment vivre.
+[pause 5s]
+Ces deux choses coexistent.
+[pause 5s]
+Et aujourd'hui, maintenant, je me donne la permission de commencer.
+[pause 10s]
+
+Prenez le temps qu'il vous faut pour revenir.
+[pause 6s]
+
+À bientôt.
+[pause 5s]
+Pas pour aller mieux.
+[pause 4s]
+Pour vivre plus vrai.
+[pause 5s]
+C'est la seule réponse digne de ceux qui n'ont plus le temps.
+[pause 10s]
 SCRIPT,
 
     ];
-
-    // ── Scripts EN — "TTS-ready" calm executive tone ──────────────
     private array $scriptsEn = [
 
         // ─────────────────────────────────────────────────────────
@@ -22866,20 +23086,223 @@ It has always been there.
 Even when you no longer believed it.
 [pause 8s]
 
+[pause 8s]
+
+Now... I would like to invite you to take one more step.
+[pause 6s]
+A step that loss makes possible.
+[pause 5s]
+A step that nothing else could have made this real.
+[pause 8s]
+
+People who have lost someone young — someone their age, with children, with plans — often describe it the same way.
+[pause 6s]
+They say: since that day, I no longer see life the same way.
+[pause 6s]
+They don't say it as a consolation.
+[pause 5s]
+They say it as a bare truth.
+[pause 6s]
+The death of another... fractured something in their silent certainty that they had time.
+[pause 8s]
+
+The psychiatrist Irvin Yalom calls this an awakening experience.
+[pause 5s]
+Not a wound to heal.
+[pause 4s]
+A clarity to receive.
+[pause 8s]
+
+So I would like to ask you a question.
+[pause 5s]
+Not a rhetorical question.
+[pause 4s]
+A real question. That deserves a real answer.
+[pause 6s]
+
+If you knew, tonight, that you had ten years ahead of you.
+[pause 5s]
+Not the vague hope of a long life.
+[pause 4s]
+Ten years. Precisely.
+[pause 6s]
+
+Who would you spend them with?
+[pause 8s]
+
+Who have you not yet spent enough time with?
+[pause 8s]
+
+What journey have you promised your children... and postponed to "when conditions are better"?
+[pause 8s]
+
+What sentence have you never said to someone who matters... because you thought you had time?
+[pause 10s]
+
+Take the time these questions deserve.
+[pause 8s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+There is a researcher at Stanford named Laura Carstensen.
+[pause 5s]
+She spent twenty years studying how human priorities change when people perceive that time is limited.
+[pause 5s]
+Her finding is striking in its simplicity:
+[pause 5s]
+when the horizon narrows... the superficial disappears.
+[pause 5s]
+People spontaneously abandon activities without depth.
+[pause 5s]
+And they invest massively in what truly matters.
+[pause 5s]
+Their loved ones. Their experiences. Their meaning.
+[pause 6s]
+
+And what she also found... is that this shift does not require growing old.
+[pause 5s]
+It requires realizing.
+[pause 8s]
+
+You are in the process of realizing.
+[pause 6s]
+Perhaps since the loss you moved through.
+[pause 5s]
+Perhaps since this module.
+[pause 5s]
+Perhaps since this breath.
+[pause 8s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+There is an Australian nurse named Bronnie Ware.
+[pause 5s]
+She spent years at the bedsides of dying people.
+[pause 5s]
+And she collected their regrets — without embellishing them.
+[pause 6s]
+
+The regret most often cited, almost unanimously:
+[pause 5s]
+"I wish I had the courage to live a life true to myself.
+[pause 4s]
+Not the life others expected of me."
+[pause 8s]
+
+And the second:
+[pause 5s]
+"I wish I hadn't worked so hard."
+[pause 8s]
+
+Not: I wish I had more money.
+[pause 4s]
+Not: I wish I had a bigger house.
+[pause 4s]
+Not: I wish I had more success.
+[pause 6s]
+
+Having dared.
+[pause 5s]
+And having been there.
+[pause 8s]
+
+Do you hear the two things your loved ones are waiting for from you?
+[pause 8s]
+Not your success.
+[pause 5s]
+Your presence.
+[pause 5s]
+And your life truly lived.
+[pause 10s]
+
+[BREATHING_CYCLES]
+
+[pause 8s]
+
+I will leave you with one image.
+[pause 5s]
+Not a to-do list.
+[pause 4s]
+An image.
+[pause 6s]
+
+Imagine you are 80 years old.
+[pause 5s]
+A summer evening. Your children, now grown, are around you.
+[pause 5s]
+They are talking about you.
+[pause 5s]
+Telling who you were.
+[pause 5s]
+Saying what you transmitted to them.
+[pause 5s]
+What they learned by your side.
+[pause 5s]
+The moments they will never forget.
+[pause 8s]
+
+What do they say?
+[pause 10s]
+
+Take the time to hear that answer.
+[pause 8s]
+
+Now.
+[pause 5s]
+The distance between this image... and your life as it is today.
+[pause 5s]
+That is your work.
+[pause 5s]
+Not a guilt.
+[pause 4s]
+A direction.
+[pause 8s]
+
+Your life is not a given.
+[pause 5s]
+It is not something you earned once and for all at birth.
+[pause 5s]
+It is a fragile gift, renewed every morning.
+[pause 5s]
+And this gift... can stop.
+[pause 5s]
+For you. For someone you love.
+[pause 5s]
+At any moment. For reasons you cannot control.
+[pause 8s]
+
+So one last time, let us breathe together.
+[pause 4s]
+
+[BREATHING_CYCLES]
+
+[pause 10s]
+
+Say inwardly, or aloud if you can:
+[pause 5s]
+I carry the loss of those I have loved.
+[pause 4s]
+And I choose to truly live.
+[pause 5s]
+These two things coexist.
+[pause 5s]
+And today, now, I give myself permission to begin.
+[pause 10s]
+
 Take all the time you need to return.
 [pause 6s]
 
 Until next time.
 [pause 5s]
-Keep moving through.
-[pause 5s]
-Not feeling better.
+Not to feel better.
 [pause 4s]
-Moving through.
+To live more truly.
 [pause 5s]
-That is enough.
-[pause 5s]
-It is even courageous.
+It is the only response worthy of those who no longer have time.
 [pause 10s]
 SCRIPT,
 
