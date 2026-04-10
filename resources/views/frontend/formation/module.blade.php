@@ -195,6 +195,23 @@ body { background: var(--dark); color: var(--text); }
   color: #e8e0d0;
 }
 .mod-rich-content { padding: 1rem 0; background: none; border: none; border-radius: 0; margin: .5rem 0; }
+
+/* ── Override inline font-sizes trop petits du contenu HTML généré ── */
+/* Corps de texte : .79rem / .8rem → .97rem */
+.mod-rich-content [style*="font-size:.8rem"]  { font-size: .97rem !important; line-height: 1.9 !important; }
+.mod-rich-content [style*="font-size:.79rem"] { font-size: .97rem !important; line-height: 1.9 !important; }
+/* Titres h4 : .87rem / .88rem → 1.05rem */
+.mod-rich-content [style*="font-size:.87rem"] { font-size: 1.05rem !important; }
+.mod-rich-content [style*="font-size:.88rem"] { font-size: 1.05rem !important; }
+/* Badges petits : .68rem → .82rem */
+.mod-rich-content [style*="font-size:.68rem"] { font-size: .82rem !important; }
+/* Idem pour les blocs lecture (border-left) */
+.mod-lecture-content [style*="font-size:.8rem"]  { font-size: .97rem !important; line-height: 1.9 !important; }
+.mod-lecture-content [style*="font-size:.79rem"] { font-size: .97rem !important; line-height: 1.9 !important; }
+.mod-lecture-content [style*="font-size:.87rem"] { font-size: 1.05rem !important; }
+.mod-lecture-content [style*="font-size:.88rem"] { font-size: 1.05rem !important; }
+.mod-lecture-content [style*="font-size:.68rem"] { font-size: .82rem !important; }
+
 .mod-lecture-content h3 {
   font-size: 1.1rem;
   font-weight: 700;
