@@ -561,16 +561,44 @@ Les choix justes.
 [pause 6s]
 
 Elle avait choisi le bon père pour ses enfants.
+[pause 5s]
+Ce n'était pas le choix le plus simple.
+[pause 5s]
+Sa belle-mère n'était pas tendre avec elle.
+[pause 5s]
+Elle aurait pu laisser cette blessure guider son choix.
 [pause 4s]
-Pas le plus séduisant.
+Se protéger.
 [pause 3s]
-Pas le plus impressionnant.
+Choisir différemment.
+[pause 5s]
+Elle ne l'a pas fait.
+[pause 6s]
+Elle a regardé au-delà de ce qu'elle subissait.
+[pause 4s]
+Au-delà d'elle-même.
+[pause 4s]
+Vers ce dont ses enfants auraient besoin...
 [pause 3s]
-Le bon.
+après elle.
+[pause 10s]
+
+Et aujourd'hui...
+[pause 5s]
+cette belle-mère qui n'était pas simple avec elle...
+[pause 5s]
+est l'une des personnes qui chérit ses enfants.
 [pause 4s]
-Celui qui serait là.
+Qui veille sur eux.
 [pause 4s]
-Celui en qui elle pouvait avoir confiance pour continuer ce qu'elle avait commencé.
+Qui les porte.
+[pause 8s]
+
+Chantal avait vu juste.
+[pause 5s]
+À quarante ans.
+[pause 4s]
+Avec une sagesse que peu de gens atteignent en toute une vie.
 [pause 10s]
 
 Quand elle est partie...
@@ -637,19 +665,71 @@ parce que c'est sa nature.
 Voilà le paradoxe douloureux que sa disparition m'a laissé.
 [pause 6s]
 
-Quand tu étais là... Chantal...
+Nous nous connaissions depuis le collège.
 [pause 4s]
-pris comme je l'étais dans les aléas de la vie...
-[pause 4s]
-je ne pensais pas assez à toi.
+Chantal était la meilleure amie de ma sœur.
 [pause 5s]
-La vie allait.
-[pause 3s]
-Les journées se remplissaient.
-[pause 3s]
-Et toi tu étais là — souriante, lumineuse, présente —
+On s'est beaucoup côtoyées au lycée... dans la même ville.
+[pause 5s]
+Puis je suis partie en Belgique.
 [pause 4s]
-et je ne mesurais pas ce que tu représentais vraiment.
+On s'est vues brièvement après la naissance de mon fils.
+[pause 4s]
+Quelques nouvelles sur les réseaux.
+[pause 4s]
+Et puis... le silence ordinaire qui s'installe.
+[pause 4s]
+Celui qu'on croit toujours temporaire.
+[pause 3s]
+Celui qui dure.
+[pause 10s]
+
+La dernière fois que j'ai eu Chantal au téléphone...
+[pause 5s]
+cela faisait des années qu'on ne s'était pas vraiment parlé.
+[pause 5s]
+Elle m'avait retrouvée sur les réseaux.
+[pause 4s]
+Elle n'avait plus mon numéro.
+[pause 8s]
+
+Ce n'était pas un appel pour elle.
+[pause 5s]
+Ce n'était pas pour me dire qu'elle était malade.
+[pause 5s]
+C'était pour me prévenir que ma sœur avait fait une tentative de suicide.
+[pause 10s]
+
+Elle avait déjà son cancer.
+[pause 5s]
+Je ne le savais pas.
+[pause 4s]
+Elle ne me l'a pas dit.
+[pause 6s]
+
+Elle portait ça.
+[pause 4s]
+Et son premier réflexe... c'était les autres.
+[pause 4s]
+Ma sœur.
+[pause 3s]
+Nous.
+[pause 8s]
+
+Elle était là pour ma sœur...
+[pause 4s]
+quand moi je ne l'étais pas.
+[pause 10s]
+
+Et pendant ce temps-là...
+[pause 5s]
+j'accompagnais dans la même ville une amie qui traversait un cancer du sein.
+[pause 5s]
+Je vivais à côté de Chantal sans le savoir.
+[pause 5s]
+À côté de ce qu'elle traversait.
+[pause 5s]
+À côté de tout ce qu'elle représentait.
 [pause 10s]
 
 Maintenant que tu n'es plus là...
@@ -667,7 +747,7 @@ quand on ne l'a plus.
 Mais tu m'as fait quelque chose de plus grand que me faire regretter.
 [pause 6s]
 
-Tu m'as mis face à moi-même.
+Tu m'as mise face à moi-même.
 [pause 8s]
 
 Tu m'as montré que nous avions presque le même âge.
@@ -678,7 +758,7 @@ les choix que tu avais su faire —
 [pause 4s]
 les choix de sagesse pour tes enfants —
 [pause 4s]
-les choix d'être vraiment présent à ta vie —
+les choix d'être vraiment présente à ta vie —
 [pause 4s]
 je ne les avais pas faits.
 [pause 8s]
@@ -13823,16 +13903,44 @@ The right ones.
 [pause 6s]
 
 She chose the right father for her children.
+[pause 5s]
+It was not the easiest choice.
+[pause 5s]
+His mother was not kind to her.
+[pause 5s]
+She could have let that wound guide her decision.
 [pause 4s]
-Not the most charming.
+Could have protected herself.
 [pause 3s]
-Not the most impressive.
+Chosen differently.
+[pause 5s]
+She didn't.
+[pause 6s]
+She looked beyond what she was enduring.
+[pause 4s]
+Beyond herself.
+[pause 4s]
+Toward what her children would need...
 [pause 3s]
-The right one.
+after her.
+[pause 10s]
+
+And today...
+[pause 5s]
+that mother-in-law who was not kind to her...
+[pause 5s]
+is one of the people who cherishes her children.
 [pause 4s]
-The one who would be there.
+Who watches over them.
 [pause 4s]
-The one she could trust to carry on what she had started.
+Who holds them.
+[pause 8s]
+
+Chantal had seen clearly.
+[pause 5s]
+At forty years old.
+[pause 4s]
+With a wisdom that few people reach in a whole lifetime.
 [pause 10s]
 
 When she left...
@@ -13899,19 +14007,71 @@ because that is its nature.
 Here is the painful paradox her departure left me with.
 [pause 6s]
 
-When you were here... Chantal...
+We had known each other since middle school.
 [pause 4s]
-caught as I was in the current of daily life...
-[pause 4s]
-I didn't think of you enough.
+Chantal was my sister's best friend.
 [pause 5s]
-Life moved forward.
-[pause 3s]
-Days filled up.
-[pause 3s]
-And you were there — smiling, luminous, present —
+We spent a lot of time together in high school... in the same city.
+[pause 5s]
+Then I moved to Belgium.
 [pause 4s]
-and I didn't measure what you truly meant to me.
+We saw each other briefly after my son was born.
+[pause 4s]
+A few exchanges on social media.
+[pause 4s]
+And then... the ordinary silence that sets in.
+[pause 4s]
+The kind you always think is temporary.
+[pause 3s]
+The kind that lasts.
+[pause 10s]
+
+The last time I had Chantal on the phone...
+[pause 5s]
+it had been years since we'd truly talked.
+[pause 5s]
+She had found me on social media.
+[pause 4s]
+She no longer had my number.
+[pause 8s]
+
+It wasn't a call about her.
+[pause 5s]
+It wasn't to tell me she was sick.
+[pause 5s]
+It was to warn me that my sister had attempted suicide.
+[pause 10s]
+
+She already had her cancer.
+[pause 5s]
+I didn't know.
+[pause 4s]
+She didn't tell me.
+[pause 6s]
+
+She was carrying that.
+[pause 4s]
+And her first instinct... was still others.
+[pause 4s]
+My sister.
+[pause 3s]
+Us.
+[pause 8s]
+
+She was there for my sister...
+[pause 4s]
+when I wasn't.
+[pause 10s]
+
+And during that same time...
+[pause 5s]
+I was accompanying a friend in the same city who was fighting breast cancer.
+[pause 5s]
+I was living alongside Chantal without knowing it.
+[pause 5s]
+Alongside what she was going through.
+[pause 5s]
+Alongside everything she meant to me.
 [pause 10s]
 
 Now that you are no longer here...
