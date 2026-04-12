@@ -119,50 +119,64 @@ body { background: var(--dark); color: var(--text); }
   display: flex; align-items: center; gap: .6rem;
   font-size:1.05rem; color: var(--gold); font-weight: 600;
 }
-.mod-audio audio {
-  width: 100%;
-  height: 40px;
-  border-radius: 8px;
-  accent-color: var(--gold);
-}
+.mod-audio audio { display: none; }
 .mod-audio__hint {
   font-size:1.1rem; color: var(--muted);
 }
-/* ── Contrôles de navigation audio ── */
-.audio-seek-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  flex-wrap: wrap;
-  margin: .25rem 0;
+/* ── Lecteur audio custom — timeline libre ── */
+.cplayer {
+  background: rgba(0,0,0,.28);
+  border: 1px solid rgba(201,168,76,.22);
+  border-radius: 12px;
+  padding: .9rem 1.1rem;
+  display: flex; flex-direction: column; gap: .6rem;
 }
-.audio-seek-btn {
-  display: inline-flex; align-items: center; gap: .28rem;
-  padding: 6px 13px;
-  border-radius: 22px;
-  border: 1px solid rgba(201,168,76,.35);
-  background: rgba(201,168,76,.08);
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .04em;
-  cursor: pointer;
-  transition: background .18s, border-color .18s, transform .1s;
+.cplayer__top { display: flex; align-items: center; gap: .75rem; }
+.cplayer__btn-play {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--gold); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background .15s, transform .1s;
+}
+.cplayer__btn-play:hover { background: var(--gold-l); }
+.cplayer__btn-play:active { transform: scale(.92); }
+.cplayer__times {
+  font-size: 13px; font-variant-numeric: tabular-nums;
+  color: rgba(201,168,76,.85); white-space: nowrap; font-weight: 600;
+}
+.cplayer__track {
+  position: relative; height: 10px; border-radius: 5px;
+  background: rgba(255,255,255,.1); cursor: pointer; touch-action: none;
   user-select: none;
 }
-.audio-seek-btn:hover {
-  background: rgba(201,168,76,.22);
-  border-color: rgba(201,168,76,.7);
+.cplayer__track:hover .cplayer__thumb { transform: translate(-50%,-50%) scale(1.3); }
+.cplayer__fill {
+  height: 100%; border-radius: 5px; pointer-events: none; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-l));
 }
-.audio-seek-btn:active { transform: scale(.93); }
-.audio-seek-btn svg { flex-shrink: 0; }
-.audio-seek-btn--big {
-  background: rgba(201,168,76,.14);
-  border-color: rgba(201,168,76,.55);
-  font-size: 13px;
-  padding: 7px 16px;
+.cplayer__thumb {
+  position: absolute; top: 50%; left: 0%;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--gold-l); pointer-events: none;
+  transform: translate(-50%,-50%); transition: transform .12s;
+  box-shadow: 0 0 8px rgba(201,168,76,.5);
 }
+.cplayer__btns {
+  display: flex; align-items: center; justify-content: center;
+  gap: .4rem; flex-wrap: wrap;
+}
+.cplayer__skip {
+  display: inline-flex; align-items: center; gap: .22rem;
+  padding: 5px 11px; border-radius: 18px;
+  border: 1px solid rgba(201,168,76,.3);
+  background: rgba(201,168,76,.07);
+  color: var(--gold); font-size: 12px; font-weight: 700;
+  cursor: pointer; user-select: none;
+  transition: background .15s, border-color .15s, transform .1s;
+}
+.cplayer__skip:hover { background: rgba(201,168,76,.2); border-color: rgba(201,168,76,.6); }
+.cplayer__skip:active { transform: scale(.91); }
+.cplayer__skip--big { font-size: 13px; padding: 6px 13px; background: rgba(201,168,76,.12); border-color: rgba(201,168,76,.45); }
 
 /* Intro narrative */
 .mod-intro {
@@ -818,32 +832,39 @@ body { background: var(--dark); color: var(--text); }
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/></svg>
           <span id="audio-label-text">{{ $isEn ? 'Listen to the guided module' : 'Écouter le module guidé' }}</span>
         </div>
-        <audio id="mod-audio-player" controls preload="metadata" style="width:100%">
+        <audio id="mod-audio-player" preload="metadata" style="display:none">
           <source id="mod-audio-source"
             src="{{ asset('storage/' . ($isEn && $hasAudioEn ? $module->audio_path_en : ($module->audio_path ?? $module->audio_path_en))) }}"
             type="audio/mpeg">
         </audio>
-
-        {{-- Barre de navigation par blocs de temps --}}
-        <div class="audio-seek-bar" role="group" aria-label="{{ $isEn ? 'Audio navigation' : 'Navigation audio' }}">
-          <button class="audio-seek-btn audio-seek-btn--big" onclick="audioSeek(-300)" title="{{ $isEn ? 'Back 5 minutes' : 'Reculer de 5 minutes' }}">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
-            5 min
-          </button>
-          <button class="audio-seek-btn" onclick="audioSeek(-30)" title="{{ $isEn ? 'Back 30 seconds' : 'Reculer de 30 secondes' }}">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-            30s
-          </button>
-          <button class="audio-seek-btn" onclick="audioSeek(30)" title="{{ $isEn ? 'Forward 30 seconds' : 'Avancer de 30 secondes' }}">
-            30s
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-          <button class="audio-seek-btn audio-seek-btn--big" onclick="audioSeek(300)" title="{{ $isEn ? 'Forward 5 minutes' : 'Avancer de 5 minutes' }}">
-            5 min
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-          </button>
+        <div class="cplayer" id="mod-audio-player-cp">
+          <div class="cplayer__top">
+            <button class="cplayer__btn-play" id="cp-btn-play" aria-label="{{ $isEn ? 'Play / Pause' : 'Lecture / Pause' }}">
+              <svg class="cp-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg class="cp-icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <div style="flex:1"></div>
+            <div class="cplayer__times"><span id="cp-cur">0:00</span> / <span id="cp-dur">--:--</span></div>
+          </div>
+          <div class="cplayer__track" id="cp-track">
+            <div class="cplayer__fill" id="cp-fill"></div>
+            <div class="cplayer__thumb" id="cp-thumb"></div>
+          </div>
+          <div class="cplayer__btns">
+            <button class="cplayer__skip cplayer__skip--big" data-seek="-300" title="{{ $isEn ? 'Back 5 min' : 'Reculer 5 min' }}">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
+            </button>
+            <button class="cplayer__skip" data-seek="-30" title="{{ $isEn ? 'Back 30s' : 'Reculer 30s' }}">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
+            </button>
+            <button class="cplayer__skip" data-seek="30" title="{{ $isEn ? 'Forward 30s' : 'Avancer 30s' }}">
+              30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <button class="cplayer__skip cplayer__skip--big" data-seek="300" title="{{ $isEn ? 'Forward 5 min' : 'Avancer 5 min' }}">
+              5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+            </button>
+          </div>
         </div>
-
         <div class="mod-audio__hint">{{ $isEn ? '🎧 Recommended: listen to the guided module first, then work through the activities.' : '🎧 Recommandé : écoutez d\'abord le module guidé, puis travaillez les activités.' }}</div>
       @else
         {{-- Placeholder : audio en cours de préparation --}}
@@ -862,32 +883,88 @@ body { background: var(--dark); color: var(--text); }
     var _audioFr  = "{{ $hasAudioFr ? asset('storage/'.$module->audio_path) : '' }}";
     var _audioEn  = "{{ $hasAudioEn ? asset('storage/'.$module->audio_path_en) : '' }}";
     function switchAudioLang(lang) {
-      var player  = document.getElementById('mod-audio-player');
-      var source  = document.getElementById('mod-audio-source');
-      var label   = document.getElementById('audio-label-text');
-      var btnFr   = document.getElementById('btn-lang-fr');
-      var btnEn   = document.getElementById('btn-lang-en');
-      if (!player || !source) return;
-      if (lang === 'fr' && _audioFr) {
-        source.src = _audioFr;
-        if (label) label.textContent = '{{ $isEn ? 'Listen to the guided module' : 'Écouter le module guidé' }}';
-        if (btnFr) { btnFr.style.background='#c9a84c'; btnFr.style.color='#0f0f0f'; btnFr.style.border='none'; }
-        if (btnEn) { btnEn.style.background='rgba(201,168,76,.15)'; btnEn.style.color='#c9a84c'; btnEn.style.border='1px solid #c9a84c'; }
-        player.load();
-      } else if (lang === 'en' && _audioEn) {
-        source.src = _audioEn;
-        if (label) label.textContent = 'Listen to the guided module';
-        if (btnEn) { btnEn.style.background='#c9a84c'; btnEn.style.color='#0f0f0f'; btnEn.style.border='none'; }
-        if (btnFr) { btnFr.style.background='rgba(201,168,76,.15)'; btnFr.style.color='#c9a84c'; btnFr.style.border='1px solid #c9a84c'; }
-        player.load();
-      }
-    }
-    function audioSeek(seconds) {
       var player = document.getElementById('mod-audio-player');
-      if (!player) return;
-      var next = player.currentTime + seconds;
-      player.currentTime = Math.max(0, Math.min(next, player.duration || next));
+      var source = document.getElementById('mod-audio-source');
+      var label  = document.getElementById('audio-label-text');
+      var btnFr  = document.getElementById('btn-lang-fr');
+      var btnEn  = document.getElementById('btn-lang-en');
+      if (!player || !source) return;
+      var url = lang === 'fr' ? _audioFr : _audioEn;
+      if (!url) return;
+      source.src = url;
+      player.load();
+      if (label) label.textContent = lang === 'fr'
+        ? '{{ $isEn ? 'Listen to the guided module' : 'Écouter le module guidé' }}'
+        : 'Listen to the guided module';
+      if (btnFr) { btnFr.style.background=lang==='fr'?'#c9a84c':'rgba(201,168,76,.15)'; btnFr.style.color=lang==='fr'?'#0f0f0f':'#c9a84c'; btnFr.style.border=lang==='fr'?'none':'1px solid #c9a84c'; }
+      if (btnEn) { btnEn.style.background=lang==='en'?'#c9a84c':'rgba(201,168,76,.15)'; btnEn.style.color=lang==='en'?'#0f0f0f':'#c9a84c'; btnEn.style.border=lang==='en'?'none':'1px solid #c9a84c'; }
+      document.getElementById('cp-fill').style.width  = '0%';
+      document.getElementById('cp-thumb').style.left  = '0%';
+      document.getElementById('cp-cur').textContent   = '0:00';
+      document.getElementById('cp-dur').textContent   = '--:--';
+      var ipl = document.querySelector('#mod-audio-player-cp .cp-icon-play');
+      var ipa = document.querySelector('#mod-audio-player-cp .cp-icon-pause');
+      if (ipl) ipl.style.display = ''; if (ipa) ipa.style.display = 'none';
     }
+    (function () {
+      var audio   = document.getElementById('mod-audio-player');
+      var wrap    = document.getElementById('mod-audio-player-cp');
+      if (!audio || !wrap) return;
+      var fill    = document.getElementById('cp-fill');
+      var thumb   = document.getElementById('cp-thumb');
+      var track   = document.getElementById('cp-track');
+      var curEl   = document.getElementById('cp-cur');
+      var durEl   = document.getElementById('cp-dur');
+      var btnPlay = document.getElementById('cp-btn-play');
+      var iconPl  = wrap.querySelector('.cp-icon-play');
+      var iconPa  = wrap.querySelector('.cp-icon-pause');
+      var dragging = false;
+      var pendingSeekPct = null;
+      function fmt(s) {
+        if (!isFinite(s)) return '--:--';
+        return Math.floor(s / 60) + ':' + ('0' + Math.floor(s % 60)).slice(-2);
+      }
+      function bar(p) { fill.style.width = p + '%'; thumb.style.left = p + '%'; }
+      function pct(e) {
+        var r = track.getBoundingClientRect();
+        var x = e.touches ? e.touches[0].clientX : e.clientX;
+        return Math.max(0, Math.min(1, (x - r.left) / r.width)) * 100;
+      }
+      audio.addEventListener('loadedmetadata', function () {
+        durEl.textContent = fmt(audio.duration);
+        if (pendingSeekPct !== null) { audio.currentTime = pendingSeekPct / 100 * audio.duration; pendingSeekPct = null; }
+      });
+      audio.addEventListener('timeupdate', function () {
+        if (dragging) return;
+        curEl.textContent = fmt(audio.currentTime);
+        if (audio.duration) bar(audio.currentTime / audio.duration * 100);
+      });
+      audio.addEventListener('play',  function () { iconPl.style.display = 'none'; iconPa.style.display = ''; });
+      audio.addEventListener('pause', function () { iconPl.style.display = '';     iconPa.style.display = 'none'; });
+      audio.addEventListener('ended', function () { iconPl.style.display = '';     iconPa.style.display = 'none'; bar(100); });
+      btnPlay.addEventListener('click', function () { audio.paused ? audio.play() : audio.pause(); });
+      wrap.querySelectorAll('.cplayer__skip[data-seek]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var s = parseFloat(btn.dataset.seek);
+          audio.currentTime = Math.max(0, Math.min((audio.currentTime || 0) + s, audio.duration || 1e9));
+        });
+      });
+      function doSeek(e) {
+        var p = pct(e); bar(p);
+        if (isFinite(audio.duration) && audio.duration > 0) { audio.currentTime = p / 100 * audio.duration; }
+        else { pendingSeekPct = p; }
+      }
+      track.addEventListener('mousedown', function (e) {
+        dragging = true; doSeek(e);
+        document.addEventListener('mousemove', mv);
+        document.addEventListener('mouseup', mu);
+      });
+      function mv(e) { if (dragging) doSeek(e); }
+      function mu() { dragging = false; document.removeEventListener('mousemove', mv); document.removeEventListener('mouseup', mu); }
+      track.addEventListener('touchstart', function (e) { e.preventDefault(); dragging = true;  doSeek(e); }, { passive: false });
+      track.addEventListener('touchmove',  function (e) { e.preventDefault(); if (dragging) doSeek(e); }, { passive: false });
+      track.addEventListener('touchend',   function ()  { dragging = false; });
+    })();
     </script>
 
     {{-- Texte introductif narratif (FR par défaut, bascule EN via bouton) --}}

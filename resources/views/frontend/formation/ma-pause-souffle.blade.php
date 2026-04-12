@@ -766,7 +766,7 @@
     <div class="ps-audio-label">▶ Écouter le module guidé
       <span>Audio guidé · 5-5-5 · Introduction au principe fondateur</span>
     </div>
-    <audio id="audio-player-01" preload="none" style="display:none" class="ps-audio-element"
+    <audio id="audio-player-01" preload="metadata" style="display:none" class="ps-audio-element"
       src="{{ asset('storage/formation/audio/mps-01-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
@@ -991,7 +991,7 @@
     <div class="ps-audio-label">▶ Écouter le module guidé
       <span>Audio de 22 min — immersion dans votre famille de pratique</span>
     </div>
-    <audio id="audio-player-02" preload="none" style="display:none" class="ps-audio-element"
+    <audio id="audio-player-02" preload="metadata" style="display:none" class="ps-audio-element"
       src="{{ asset('storage/formation/audio/mps-02-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
@@ -1426,7 +1426,7 @@
     <div class="ps-audio-label">▶ Écouter le module guidé
       <span>Audio de 28 min — construction de votre protocole pas à pas</span>
     </div>
-    <audio id="audio-player-03" preload="none" style="display:none" class="ps-audio-element"
+    <audio id="audio-player-03" preload="metadata" style="display:none" class="ps-audio-element"
       src="{{ asset('storage/formation/audio/mps-03-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
@@ -1679,7 +1679,7 @@
         <div class="ps-audio-label">▶ {{ $label }} — {{ $subtitle }}
           <span>Audio guidé · 6–8 min</span>
         </div>
-        <audio id="audio-player-04-{{ $key }}" preload="none" style="display:none" class="ps-audio-element"
+        <audio id="audio-player-04-{{ $key }}" preload="metadata" style="display:none" class="ps-audio-element"
           src="{{ asset('storage/formation/audio/mps-04-' . $key . '-fr.mp3') }}">
           Votre navigateur ne supporte pas la lecture audio.
         </audio>
@@ -1750,7 +1750,7 @@
         <div class="ps-audio-label">▶ {{ $label }} — {{ $subtitle }}
           <span>Audio guidé · 6–8 min</span>
         </div>
-        <audio id="audio-player-05-{{ $key }}" preload="none" style="display:none" class="ps-audio-element"
+        <audio id="audio-player-05-{{ $key }}" preload="metadata" style="display:none" class="ps-audio-element"
           src="{{ asset('storage/formation/audio/mps-05-' . $key . '-fr.mp3') }}">
           Votre navigateur ne supporte pas la lecture audio.
         </audio>
@@ -2000,10 +2000,14 @@ function initCPlayer(audioId) {
   var iconPl = wrap.querySelector('.cp-icon-play');
   var iconPa = wrap.querySelector('.cp-icon-pause');
   var dragging = false;
+  var pendingSeekPct = null;
   function fmt(s) { if (!isFinite(s)) return '--:--'; return Math.floor(s/60)+':'+('0'+Math.floor(s%60)).slice(-2); }
   function bar(p) { fill.style.width = p+'%'; thumb.style.left = p+'%'; }
   function pct(e) { var r = track.getBoundingClientRect(); var x = e.touches ? e.touches[0].clientX : e.clientX; return Math.max(0, Math.min(1, (x - r.left) / r.width)) * 100; }
-  audio.addEventListener('loadedmetadata', function() { durEl.textContent = fmt(audio.duration); });
+  audio.addEventListener('loadedmetadata', function() {
+    durEl.textContent = fmt(audio.duration);
+    if (pendingSeekPct !== null) { audio.currentTime = pendingSeekPct / 100 * audio.duration; pendingSeekPct = null; }
+  });
   audio.addEventListener('timeupdate', function() { if (dragging) return; curEl.textContent = fmt(audio.currentTime); if (audio.duration) bar(audio.currentTime / audio.duration * 100); });
   audio.addEventListener('play',  function() { iconPl.style.display = 'none'; iconPa.style.display = ''; });
   audio.addEventListener('pause', function() { iconPl.style.display = ''; iconPa.style.display = 'none'; });
@@ -2012,7 +2016,7 @@ function initCPlayer(audioId) {
   wrap.querySelectorAll('.cplayer__skip[data-seek]').forEach(function(btn) {
     btn.addEventListener('click', function() { var s = parseFloat(btn.dataset.seek); audio.currentTime = Math.max(0, Math.min((audio.currentTime || 0) + s, audio.duration || 1e9)); });
   });
-  function doSeek(e) { var p = pct(e); bar(p); if (audio.duration) audio.currentTime = p / 100 * audio.duration; }
+  function doSeek(e) { var p = pct(e); bar(p); if (isFinite(audio.duration) && audio.duration > 0) { audio.currentTime = p / 100 * audio.duration; } else { pendingSeekPct = p; } }
   track.addEventListener('mousedown', function(e) { dragging = true; doSeek(e); document.addEventListener('mousemove', mv); document.addEventListener('mouseup', mu); });
   function mv(e) { if (dragging) doSeek(e); }
   function mu() { dragging = false; document.removeEventListener('mousemove', mv); document.removeEventListener('mouseup', mu); }
