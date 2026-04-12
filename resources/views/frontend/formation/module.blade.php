@@ -925,7 +925,7 @@ body { background: var(--dark); color: var(--text); }
       var iconPl  = wrap.querySelector('.cp-icon-play');
       var iconPa  = wrap.querySelector('.cp-icon-pause');
       var isSeeking = false;
-      var lastSeekPct = 0;
+      var seekTimer = null;
       var pendingSeekPct = null;
       var range = document.createElement('input');
       range.type = 'range'; range.className = 'cplayer__range';
@@ -936,6 +936,7 @@ body { background: var(--dark); color: var(--text); }
         return Math.floor(s / 60) + ':' + ('0' + Math.floor(s % 60)).slice(-2);
       }
       function bar(p) { fill.style.width = p + '%'; thumb.style.left = p + '%'; range.value = p; }
+      function doneSeeking() { isSeeking = false; seekTimer = null; }
       function applyPendingSeek() {
         if (pendingSeekPct !== null && isFinite(audio.duration) && audio.duration > 0) {
           audio.currentTime = pendingSeekPct / 100 * audio.duration;
@@ -950,13 +951,8 @@ body { background: var(--dark); color: var(--text); }
         durEl.textContent = fmt(audio.duration);
         applyPendingSeek();
       });
-      audio.addEventListener('seeked', function () {
-        isSeeking = false;
-        curEl.textContent = fmt(audio.currentTime);
-        if (isFinite(audio.duration) && audio.duration > 0) bar(audio.currentTime / audio.duration * 100);
-      });
       audio.addEventListener('timeupdate', function () {
-        if (isSeeking) { bar(lastSeekPct); return; }
+        if (isSeeking) return;
         curEl.textContent = fmt(audio.currentTime);
         if (isFinite(audio.duration) && audio.duration > 0) bar(audio.currentTime / audio.duration * 100);
       });
@@ -970,19 +966,21 @@ body { background: var(--dark); color: var(--text); }
           var max = isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 1e9;
           var t = Math.max(0, Math.min((audio.currentTime || 0) + s, max));
           isSeeking = true;
-          lastSeekPct = isFinite(audio.duration) && audio.duration > 0 ? t / audio.duration * 100 : 0;
-          bar(lastSeekPct);
+          clearTimeout(seekTimer);
+          if (isFinite(audio.duration) && audio.duration > 0) bar(t / audio.duration * 100);
           audio.currentTime = t;
+          seekTimer = setTimeout(doneSeeking, 800);
         });
       });
       range.addEventListener('input', function () {
         var p = parseFloat(range.value);
-        lastSeekPct = p;
         isSeeking = true;
+        clearTimeout(seekTimer);
         fill.style.width = p + '%'; thumb.style.left = p + '%';
         curEl.textContent = fmt(p / 100 * (isFinite(audio.duration) ? audio.duration : 0));
         if (isFinite(audio.duration) && audio.duration > 0) { audio.currentTime = p / 100 * audio.duration; }
         else { pendingSeekPct = p; }
+        seekTimer = setTimeout(doneSeeking, 800);
       });
     })();
     </script>
