@@ -2003,26 +2003,24 @@ function initCPlayer(audioId) {
   var pendingSeekPct = null;
   function fmt(s) { if (!isFinite(s)) return '--:--'; return Math.floor(s/60)+':'+('0'+Math.floor(s%60)).slice(-2); }
   function bar(p) { fill.style.width = p+'%'; thumb.style.left = p+'%'; }
-  function pct(e) { var r = track.getBoundingClientRect(); var x = e.touches ? e.touches[0].clientX : e.clientX; return Math.max(0, Math.min(1, (x - r.left) / r.width)) * 100; }
-  audio.addEventListener('loadedmetadata', function() {
-    durEl.textContent = fmt(audio.duration);
-    if (pendingSeekPct !== null) { audio.currentTime = pendingSeekPct / 100 * audio.duration; pendingSeekPct = null; }
-  });
-  audio.addEventListener('timeupdate', function() { if (dragging) return; curEl.textContent = fmt(audio.currentTime); if (audio.duration) bar(audio.currentTime / audio.duration * 100); });
+  function pct(e) { var r = track.getBoundingClientRect(); var x = e.clientX; if (r.width <= 0) return 0; return Math.max(0, Math.min(1, (x - r.left) / r.width)) * 100; }
+  function applyPendingSeek() { if (pendingSeekPct !== null && isFinite(audio.duration) && audio.duration > 0) { audio.currentTime = pendingSeekPct / 100 * audio.duration; pendingSeekPct = null; } }
+  audio.addEventListener('loadedmetadata', function() { durEl.textContent = fmt(audio.duration); applyPendingSeek(); });
+  audio.addEventListener('durationchange', function() { durEl.textContent = fmt(audio.duration); applyPendingSeek(); });
+  audio.addEventListener('timeupdate', function() { if (dragging) return; curEl.textContent = fmt(audio.currentTime); if (isFinite(audio.duration) && audio.duration > 0) bar(audio.currentTime / audio.duration * 100); });
+  audio.addEventListener('seeked', function() { if (!dragging && isFinite(audio.duration) && audio.duration > 0) { bar(audio.currentTime / audio.duration * 100); curEl.textContent = fmt(audio.currentTime); } });
   audio.addEventListener('play',  function() { iconPl.style.display = 'none'; iconPa.style.display = ''; });
   audio.addEventListener('pause', function() { iconPl.style.display = ''; iconPa.style.display = 'none'; });
   audio.addEventListener('ended', function() { iconPl.style.display = ''; iconPa.style.display = 'none'; bar(100); });
   wrap.querySelector('.cplayer__btn-play').addEventListener('click', function() { audio.paused ? audio.play() : audio.pause(); });
   wrap.querySelectorAll('.cplayer__skip[data-seek]').forEach(function(btn) {
-    btn.addEventListener('click', function() { var s = parseFloat(btn.dataset.seek); audio.currentTime = Math.max(0, Math.min((audio.currentTime || 0) + s, audio.duration || 1e9)); });
+    btn.addEventListener('click', function() { var s = parseFloat(btn.dataset.seek); var max = isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 1e9; audio.currentTime = Math.max(0, Math.min((audio.currentTime || 0) + s, max)); });
   });
   function doSeek(e) { var p = pct(e); bar(p); if (isFinite(audio.duration) && audio.duration > 0) { audio.currentTime = p / 100 * audio.duration; } else { pendingSeekPct = p; } }
-  track.addEventListener('mousedown', function(e) { dragging = true; doSeek(e); document.addEventListener('mousemove', mv); document.addEventListener('mouseup', mu); });
-  function mv(e) { if (dragging) doSeek(e); }
-  function mu() { dragging = false; document.removeEventListener('mousemove', mv); document.removeEventListener('mouseup', mu); }
-  track.addEventListener('touchstart', function(e) { e.preventDefault(); dragging = true; doSeek(e); }, { passive: false });
-  track.addEventListener('touchmove',  function(e) { e.preventDefault(); if (dragging) doSeek(e); }, { passive: false });
-  track.addEventListener('touchend',   function() { dragging = false; });
+  track.addEventListener('pointerdown', function(e) { e.preventDefault(); dragging = true; track.setPointerCapture(e.pointerId); doSeek(e); });
+  track.addEventListener('pointermove', function(e) { if (dragging) doSeek(e); });
+  track.addEventListener('pointerup',   function()  { dragging = false; });
+  track.addEventListener('pointercancel', function()  { dragging = false; });
 }
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('audio.ps-audio-element').forEach(function(audio) {
