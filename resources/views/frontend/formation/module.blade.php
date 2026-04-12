@@ -840,7 +840,7 @@ body { background: var(--dark); color: var(--text); }
         </div>
         <audio id="mod-audio-player" preload="metadata" style="display:none">
           <source id="mod-audio-source"
-            src="{{ asset('storage/' . ($isEn && $hasAudioEn ? $module->audio_path_en : ($module->audio_path ?? $module->audio_path_en))) }}"
+            src="{{ route('audio.stream', ($isEn && $hasAudioEn ? $module->audio_path_en : ($module->audio_path ?? $module->audio_path_en))) }}"
             type="audio/mpeg">
         </audio>
         <div class="cplayer" id="mod-audio-player-cp">
@@ -886,8 +886,8 @@ body { background: var(--dark); color: var(--text); }
     </div>
 
     <script>
-    var _audioFr  = "{{ $hasAudioFr ? asset('storage/'.$module->audio_path) : '' }}";
-    var _audioEn  = "{{ $hasAudioEn ? asset('storage/'.$module->audio_path_en) : '' }}";
+    var _audioFr  = "{{ $hasAudioFr ? route('audio.stream', $module->audio_path) : '' }}";
+    var _audioEn  = "{{ $hasAudioEn ? route('audio.stream', $module->audio_path_en) : '' }}";
     function switchAudioLang(lang) {
       var player = document.getElementById('mod-audio-player');
       var source = document.getElementById('mod-audio-source');

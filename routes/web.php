@@ -4,6 +4,48 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
+| Audio streaming avec support Range Requests (nécessaire pour le seek)
+|--------------------------------------------------------------------------
+*/
+Route::get('/audio-stream/{path}', function (string $path) {
+    $fullPath = storage_path('app/public/' . $path);
+    if (!file_exists($fullPath)) abort(404);
+    $mimeType = 'audio/mpeg';
+    $fileSize = filesize($fullPath);
+    $start    = 0;
+    $end      = $fileSize - 1;
+    $status   = 200;
+    $headers  = [
+        'Content-Type'   => $mimeType,
+        'Accept-Ranges'  => 'bytes',
+        'Content-Length' => $fileSize,
+    ];
+    if (isset($_SERVER['HTTP_RANGE'])) {
+        preg_match('/bytes=(\d*)-(\d*)/', $_SERVER['HTTP_RANGE'], $m);
+        $start  = $m[1] !== '' ? (int)$m[1] : 0;
+        $end    = $m[2] !== '' ? (int)$m[2] : $fileSize - 1;
+        $end    = min($end, $fileSize - 1);
+        $length = $end - $start + 1;
+        $status = 206;
+        $headers['Content-Range']  = "bytes $start-$end/$fileSize";
+        $headers['Content-Length'] = $length;
+    }
+    return response()->stream(function () use ($fullPath, $start, $end) {
+        $fp = fopen($fullPath, 'rb');
+        fseek($fp, $start);
+        $remaining = $end - $start + 1;
+        while (!feof($fp) && $remaining > 0) {
+            $chunk = min(8192, $remaining);
+            echo fread($fp, $chunk);
+            $remaining -= $chunk;
+            flush();
+        }
+        fclose($fp);
+    }, $status, $headers);
+})->where('path', '.*')->name('audio.stream');
+
+/*
+|--------------------------------------------------------------------------
 | User Interface Routes
 |--------------------------------------------------------------------------
 */

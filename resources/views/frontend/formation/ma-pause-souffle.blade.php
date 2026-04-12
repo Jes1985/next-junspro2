@@ -773,7 +773,7 @@
       <span>Audio guidé · 5-5-5 · Introduction au principe fondateur</span>
     </div>
     <audio id="audio-player-01" preload="metadata" style="display:none" class="ps-audio-element"
-      src="{{ asset('storage/formation/audio/mps-01-fr.mp3') }}">
+      src="{{ route('audio.stream', 'formation/audio/mps-01-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
     <div class="cplayer" id="audio-player-01-cp">
@@ -998,7 +998,7 @@
       <span>Audio de 22 min — immersion dans votre famille de pratique</span>
     </div>
     <audio id="audio-player-02" preload="metadata" style="display:none" class="ps-audio-element"
-      src="{{ asset('storage/formation/audio/mps-02-fr.mp3') }}">
+      src="{{ route('audio.stream', 'formation/audio/mps-02-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
     <div class="cplayer" id="audio-player-02-cp">
@@ -1433,7 +1433,7 @@
       <span>Audio de 28 min — construction de votre protocole pas à pas</span>
     </div>
     <audio id="audio-player-03" preload="metadata" style="display:none" class="ps-audio-element"
-      src="{{ asset('storage/formation/audio/mps-03-fr.mp3') }}">
+      src="{{ route('audio.stream', 'formation/audio/mps-03-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
     <div class="cplayer" id="audio-player-03-cp">
@@ -1686,7 +1686,7 @@
           <span>Audio guidé · 6–8 min</span>
         </div>
         <audio id="audio-player-04-{{ $key }}" preload="metadata" style="display:none" class="ps-audio-element"
-          src="{{ asset('storage/formation/audio/mps-04-' . $key . '-fr.mp3') }}">
+          src="{{ route('audio.stream', 'formation/audio/mps-04-' . $key . '-fr.mp3') }}">
           Votre navigateur ne supporte pas la lecture audio.
         </audio>
         <div class="cplayer" id="audio-player-04-{{ $key }}-cp">
@@ -1757,7 +1757,7 @@
           <span>Audio guidé · 6–8 min</span>
         </div>
         <audio id="audio-player-05-{{ $key }}" preload="metadata" style="display:none" class="ps-audio-element"
-          src="{{ asset('storage/formation/audio/mps-05-' . $key . '-fr.mp3') }}">
+          src="{{ route('audio.stream', 'formation/audio/mps-05-' . $key . '-fr.mp3') }}">
           Votre navigateur ne supporte pas la lecture audio.
         </audio>
         <div class="cplayer" id="audio-player-05-{{ $key }}-cp">
