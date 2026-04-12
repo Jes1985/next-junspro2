@@ -950,12 +950,6 @@ body { background: var(--dark); color: var(--text); }
         curEl.textContent = fmt(audio.currentTime);
         if (isFinite(audio.duration) && audio.duration > 0) bar(audio.currentTime / audio.duration * 100);
       });
-      audio.addEventListener('seeked', function () {
-        if (!dragging && isFinite(audio.duration) && audio.duration > 0) {
-          bar(audio.currentTime / audio.duration * 100);
-          curEl.textContent = fmt(audio.currentTime);
-        }
-      });
       audio.addEventListener('play',  function () { iconPl.style.display = 'none'; iconPa.style.display = ''; });
       audio.addEventListener('pause', function () { iconPl.style.display = '';     iconPa.style.display = 'none'; });
       audio.addEventListener('ended', function () { iconPl.style.display = '';     iconPa.style.display = 'none'; bar(100); });
@@ -973,7 +967,6 @@ body { background: var(--dark); color: var(--text); }
         else { pendingSeekPct = p; }
       }
       track.addEventListener('pointerdown', function (e) {
-        e.preventDefault();
         dragging = true;
         track.setPointerCapture(e.pointerId);
         doSeek(e);

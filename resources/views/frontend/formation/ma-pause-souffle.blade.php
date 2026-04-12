@@ -2008,7 +2008,6 @@ function initCPlayer(audioId) {
   audio.addEventListener('loadedmetadata', function() { durEl.textContent = fmt(audio.duration); applyPendingSeek(); });
   audio.addEventListener('durationchange', function() { durEl.textContent = fmt(audio.duration); applyPendingSeek(); });
   audio.addEventListener('timeupdate', function() { if (dragging) return; curEl.textContent = fmt(audio.currentTime); if (isFinite(audio.duration) && audio.duration > 0) bar(audio.currentTime / audio.duration * 100); });
-  audio.addEventListener('seeked', function() { if (!dragging && isFinite(audio.duration) && audio.duration > 0) { bar(audio.currentTime / audio.duration * 100); curEl.textContent = fmt(audio.currentTime); } });
   audio.addEventListener('play',  function() { iconPl.style.display = 'none'; iconPa.style.display = ''; });
   audio.addEventListener('pause', function() { iconPl.style.display = ''; iconPa.style.display = 'none'; });
   audio.addEventListener('ended', function() { iconPl.style.display = ''; iconPa.style.display = 'none'; bar(100); });
@@ -2017,7 +2016,7 @@ function initCPlayer(audioId) {
     btn.addEventListener('click', function() { var s = parseFloat(btn.dataset.seek); var max = isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 1e9; audio.currentTime = Math.max(0, Math.min((audio.currentTime || 0) + s, max)); });
   });
   function doSeek(e) { var p = pct(e); bar(p); if (isFinite(audio.duration) && audio.duration > 0) { audio.currentTime = p / 100 * audio.duration; } else { pendingSeekPct = p; } }
-  track.addEventListener('pointerdown', function(e) { e.preventDefault(); dragging = true; track.setPointerCapture(e.pointerId); doSeek(e); });
+  track.addEventListener('pointerdown', function(e) { dragging = true; track.setPointerCapture(e.pointerId); doSeek(e); });
   track.addEventListener('pointermove', function(e) { if (dragging) doSeek(e); });
   track.addEventListener('pointerup',   function()  { dragging = false; });
   track.addEventListener('pointercancel', function()  { dragging = false; });
