@@ -474,24 +474,61 @@
   border:1px dashed rgba(255,255,255,.12); border-radius:8px; padding:.4rem .9rem;
   font-style:italic;
 }
-/* ── Navigation audio par blocs de temps ── */
-.ps-seek-bar {
-  display:flex; align-items:center; justify-content:center;
-  gap:.4rem; flex-wrap:wrap; margin:.2rem 0;
+/* ── Lecteur audio custom — timeline libre ── */
+.cplayer {
+  background: rgba(0,0,0,.28);
+  border: 1px solid rgba(201,168,76,.22);
+  border-radius: 12px;
+  padding: .9rem 1.1rem;
+  display: flex; flex-direction: column; gap: .6rem;
+  width: 100%;
 }
-.ps-seek-btn {
-  display:inline-flex; align-items:center; gap:.25rem;
-  padding:5px 12px; border-radius:20px;
-  border:1px solid rgba(201,168,76,.35);
-  background:rgba(201,168,76,.08);
-  color:#c9a84c; font-size:12px; font-weight:700;
-  letter-spacing:.04em; cursor:pointer;
-  transition:background .16s, border-color .16s, transform .1s;
-  user-select:none;
+.cplayer__top { display: flex; align-items: center; gap: .75rem; }
+.cplayer__btn-play {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #c9a84c; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background .15s, transform .1s;
 }
-.ps-seek-btn:hover { background:rgba(201,168,76,.22); border-color:rgba(201,168,76,.65); }
-.ps-seek-btn:active { transform:scale(.92); }
-.ps-seek-btn--big { background:rgba(201,168,76,.14); border-color:rgba(201,168,76,.5); font-size:13px; padding:6px 15px; }
+.cplayer__btn-play:hover { background: #e8d17a; }
+.cplayer__btn-play:active { transform: scale(.92); }
+.cplayer__times {
+  font-size: 13px; font-variant-numeric: tabular-nums;
+  color: rgba(201,168,76,.85); white-space: nowrap; font-weight: 600;
+}
+.cplayer__track {
+  position: relative; height: 10px; border-radius: 5px;
+  background: rgba(255,255,255,.1); cursor: pointer; touch-action: none;
+  user-select: none;
+}
+.cplayer__track:hover .cplayer__thumb { transform: translate(-50%,-50%) scale(1.3); }
+.cplayer__fill {
+  height: 100%; border-radius: 5px; pointer-events: none; width: 0%;
+  background: linear-gradient(90deg, #c9a84c, #e8d17a);
+}
+.cplayer__thumb {
+  position: absolute; top: 50%; left: 0%;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #e8d17a; pointer-events: none;
+  transform: translate(-50%,-50%); transition: transform .12s;
+  box-shadow: 0 0 8px rgba(201,168,76,.5);
+}
+.cplayer__btns {
+  display: flex; align-items: center; justify-content: center;
+  gap: .4rem; flex-wrap: wrap;
+}
+.cplayer__skip {
+  display: inline-flex; align-items: center; gap: .22rem;
+  padding: 5px 11px; border-radius: 18px;
+  border: 1px solid rgba(201,168,76,.3);
+  background: rgba(201,168,76,.07);
+  color: #c9a84c; font-size: 12px; font-weight: 700;
+  cursor: pointer; user-select: none;
+  transition: background .15s, border-color .15s, transform .1s;
+}
+.cplayer__skip:hover { background: rgba(201,168,76,.2); border-color: rgba(201,168,76,.6); }
+.cplayer__skip:active { transform: scale(.91); }
+.cplayer__skip--big { font-size: 13px; padding: 6px 13px; background: rgba(201,168,76,.12); border-color: rgba(201,168,76,.45); }
 
 /* ════ MODULE COMING SOON ════ */
 .ps-module-coming {
@@ -729,24 +766,26 @@
     <div class="ps-audio-label">▶ Écouter le module guidé
       <span>Audio guidé · 5-5-5 · Introduction au principe fondateur</span>
     </div>
-    <audio id="audio-player-01" controls preload="none"
-      style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+    <audio id="audio-player-01" preload="none" style="display:none" class="ps-audio-element"
       src="{{ asset('storage/formation/audio/mps-01-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
-    <div class="ps-seek-bar">
-      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-01',-300)" title="Reculer de 5 min">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
-      </button>
-      <button class="ps-seek-btn" onclick="psSeek('audio-player-01',-30)" title="Reculer de 30s">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
-      </button>
-      <button class="ps-seek-btn" onclick="psSeek('audio-player-01',30)" title="Avancer de 30s">
-        30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-01',300)" title="Avancer de 5 min">
-        5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-      </button>
+    <div class="cplayer" id="audio-player-01-cp">
+      <div class="cplayer__top">
+        <button class="cplayer__btn-play" aria-label="Lecture / Pause">
+          <svg class="cp-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg class="cp-icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <div style="flex:1"></div>
+        <div class="cplayer__times"><span class="cp-cur">0:00</span> / <span class="cp-dur">--:--</span></div>
+      </div>
+      <div class="cplayer__track"><div class="cplayer__fill"></div><div class="cplayer__thumb"></div></div>
+      <div class="cplayer__btns">
+        <button class="cplayer__skip cplayer__skip--big" data-seek="-300" title="Reculer 5 min"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min</button>
+        <button class="cplayer__skip" data-seek="-30"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s</button>
+        <button class="cplayer__skip" data-seek="30">30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <button class="cplayer__skip cplayer__skip--big" data-seek="300" title="Avancer 5 min">5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg></button>
+      </div>
     </div>
     <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
@@ -952,24 +991,26 @@
     <div class="ps-audio-label">▶ Écouter le module guidé
       <span>Audio de 22 min — immersion dans votre famille de pratique</span>
     </div>
-    <audio id="audio-player-02" controls preload="none"
-      style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+    <audio id="audio-player-02" preload="none" style="display:none" class="ps-audio-element"
       src="{{ asset('storage/formation/audio/mps-02-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
-    <div class="ps-seek-bar">
-      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-02',-300)" title="Reculer de 5 min">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
-      </button>
-      <button class="ps-seek-btn" onclick="psSeek('audio-player-02',-30)" title="Reculer de 30s">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
-      </button>
-      <button class="ps-seek-btn" onclick="psSeek('audio-player-02',30)" title="Avancer de 30s">
-        30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-02',300)" title="Avancer de 5 min">
-        5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-      </button>
+    <div class="cplayer" id="audio-player-02-cp">
+      <div class="cplayer__top">
+        <button class="cplayer__btn-play" aria-label="Lecture / Pause">
+          <svg class="cp-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg class="cp-icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <div style="flex:1"></div>
+        <div class="cplayer__times"><span class="cp-cur">0:00</span> / <span class="cp-dur">--:--</span></div>
+      </div>
+      <div class="cplayer__track"><div class="cplayer__fill"></div><div class="cplayer__thumb"></div></div>
+      <div class="cplayer__btns">
+        <button class="cplayer__skip cplayer__skip--big" data-seek="-300" title="Reculer 5 min"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min</button>
+        <button class="cplayer__skip" data-seek="-30"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s</button>
+        <button class="cplayer__skip" data-seek="30">30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <button class="cplayer__skip cplayer__skip--big" data-seek="300" title="Avancer 5 min">5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg></button>
+      </div>
     </div>
     <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
@@ -1385,24 +1426,26 @@
     <div class="ps-audio-label">▶ Écouter le module guidé
       <span>Audio de 28 min — construction de votre protocole pas à pas</span>
     </div>
-    <audio id="audio-player-03" controls preload="none"
-      style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+    <audio id="audio-player-03" preload="none" style="display:none" class="ps-audio-element"
       src="{{ asset('storage/formation/audio/mps-03-fr.mp3') }}">
       Votre navigateur ne supporte pas la lecture audio.
     </audio>
-    <div class="ps-seek-bar">
-      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-03',-300)" title="Reculer de 5 min">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
-      </button>
-      <button class="ps-seek-btn" onclick="psSeek('audio-player-03',-30)" title="Reculer de 30s">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
-      </button>
-      <button class="ps-seek-btn" onclick="psSeek('audio-player-03',30)" title="Avancer de 30s">
-        30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-      <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-03',300)" title="Avancer de 5 min">
-        5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-      </button>
+    <div class="cplayer" id="audio-player-03-cp">
+      <div class="cplayer__top">
+        <button class="cplayer__btn-play" aria-label="Lecture / Pause">
+          <svg class="cp-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg class="cp-icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <div style="flex:1"></div>
+        <div class="cplayer__times"><span class="cp-cur">0:00</span> / <span class="cp-dur">--:--</span></div>
+      </div>
+      <div class="cplayer__track"><div class="cplayer__fill"></div><div class="cplayer__thumb"></div></div>
+      <div class="cplayer__btns">
+        <button class="cplayer__skip cplayer__skip--big" data-seek="-300" title="Reculer 5 min"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min</button>
+        <button class="cplayer__skip" data-seek="-30"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s</button>
+        <button class="cplayer__skip" data-seek="30">30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <button class="cplayer__skip cplayer__skip--big" data-seek="300" title="Avancer 5 min">5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg></button>
+      </div>
     </div>
     <div class="ps-audio-coming">🎧 Recommandé : écoutez d'abord le module guidé, puis travaillez les activités.</div>
   </div>
@@ -1636,24 +1679,26 @@
         <div class="ps-audio-label">▶ {{ $label }} — {{ $subtitle }}
           <span>Audio guidé · 6–8 min</span>
         </div>
-        <audio id="audio-player-04-{{ $key }}" controls preload="none"
-          style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+        <audio id="audio-player-04-{{ $key }}" preload="none" style="display:none" class="ps-audio-element"
           src="{{ asset('storage/formation/audio/mps-04-' . $key . '-fr.mp3') }}">
           Votre navigateur ne supporte pas la lecture audio.
         </audio>
-        <div class="ps-seek-bar">
-          <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-04-{{ $key }}',-300)" title="Reculer de 5 min">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
-          </button>
-          <button class="ps-seek-btn" onclick="psSeek('audio-player-04-{{ $key }}',-30)" title="Reculer de 30s">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
-          </button>
-          <button class="ps-seek-btn" onclick="psSeek('audio-player-04-{{ $key }}',30)" title="Avancer de 30s">
-            30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-          <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-04-{{ $key }}',300)" title="Avancer de 5 min">
-            5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-          </button>
+        <div class="cplayer" id="audio-player-04-{{ $key }}-cp">
+          <div class="cplayer__top">
+            <button class="cplayer__btn-play" aria-label="Lecture / Pause">
+              <svg class="cp-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg class="cp-icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <div style="flex:1"></div>
+            <div class="cplayer__times"><span class="cp-cur">0:00</span> / <span class="cp-dur">--:--</span></div>
+          </div>
+          <div class="cplayer__track"><div class="cplayer__fill"></div><div class="cplayer__thumb"></div></div>
+          <div class="cplayer__btns">
+            <button class="cplayer__skip cplayer__skip--big" data-seek="-300" title="Reculer 5 min"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min</button>
+            <button class="cplayer__skip" data-seek="-30"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s</button>
+            <button class="cplayer__skip" data-seek="30">30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="cplayer__skip cplayer__skip--big" data-seek="300" title="Avancer 5 min">5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg></button>
+          </div>
         </div>
         <div class="ps-audio-coming">🎧 Recommandé : écoutez votre famille, puis passez aux activités.</div>
       </div>
@@ -1705,24 +1750,26 @@
         <div class="ps-audio-label">▶ {{ $label }} — {{ $subtitle }}
           <span>Audio guidé · 6–8 min</span>
         </div>
-        <audio id="audio-player-05-{{ $key }}" controls preload="none"
-          style="width:100%;margin:.5rem 0;accent-color:#c9a84c;border-radius:8px;"
+        <audio id="audio-player-05-{{ $key }}" preload="none" style="display:none" class="ps-audio-element"
           src="{{ asset('storage/formation/audio/mps-05-' . $key . '-fr.mp3') }}">
           Votre navigateur ne supporte pas la lecture audio.
         </audio>
-        <div class="ps-seek-bar">
-          <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-05-{{ $key }}',-300)" title="Reculer de 5 min">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min
-          </button>
-          <button class="ps-seek-btn" onclick="psSeek('audio-player-05-{{ $key }}',-30)" title="Reculer de 30s">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s
-          </button>
-          <button class="ps-seek-btn" onclick="psSeek('audio-player-05-{{ $key }}',30)" title="Avancer de 30s">
-            30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-          <button class="ps-seek-btn ps-seek-btn--big" onclick="psSeek('audio-player-05-{{ $key }}',300)" title="Avancer de 5 min">
-            5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-          </button>
+        <div class="cplayer" id="audio-player-05-{{ $key }}-cp">
+          <div class="cplayer__top">
+            <button class="cplayer__btn-play" aria-label="Lecture / Pause">
+              <svg class="cp-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg class="cp-icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <div style="flex:1"></div>
+            <div class="cplayer__times"><span class="cp-cur">0:00</span> / <span class="cp-dur">--:--</span></div>
+          </div>
+          <div class="cplayer__track"><div class="cplayer__fill"></div><div class="cplayer__thumb"></div></div>
+          <div class="cplayer__btns">
+            <button class="cplayer__skip cplayer__skip--big" data-seek="-300" title="Reculer 5 min"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg> 5 min</button>
+            <button class="cplayer__skip" data-seek="-30"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> 30s</button>
+            <button class="cplayer__skip" data-seek="30">30s <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="cplayer__skip cplayer__skip--big" data-seek="300" title="Avancer 5 min">5 min <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg></button>
+          </div>
         </div>
         <div class="ps-audio-coming">🎧 Recommandé : écoutez votre famille, puis travaillez les activités.</div>
       </div>
@@ -1915,36 +1962,69 @@ function psSwitchLang(mod, lang) {
   var btnEn = document.getElementById('btn-lang-en-' + mod);
   if (!btnFr || !btnEn) return;
   if (lang === 'fr') {
-    btnFr.style.background = '#c9a84c';
-    btnFr.style.color = '#0f0f0f';
-    btnFr.style.border = 'none';
-    btnEn.style.background = 'rgba(201,168,76,.15)';
-    btnEn.style.color = '#c9a84c';
-    btnEn.style.border = '1px solid #c9a84c';
+    btnFr.style.background = '#c9a84c'; btnFr.style.color = '#0f0f0f'; btnFr.style.border = 'none';
+    btnEn.style.background = 'rgba(201,168,76,.15)'; btnEn.style.color = '#c9a84c'; btnEn.style.border = '1px solid #c9a84c';
   } else {
-    btnEn.style.background = '#c9a84c';
-    btnEn.style.color = '#0f0f0f';
-    btnEn.style.border = 'none';
-    btnFr.style.background = 'rgba(201,168,76,.15)';
-    btnFr.style.color = '#c9a84c';
-    btnFr.style.border = '1px solid #c9a84c';
+    btnEn.style.background = '#c9a84c'; btnEn.style.color = '#0f0f0f'; btnEn.style.border = 'none';
+    btnFr.style.background = 'rgba(201,168,76,.15)'; btnFr.style.color = '#c9a84c'; btnFr.style.border = '1px solid #c9a84c';
   }
-  // Switche la source audio si un player existe
-  var player = document.getElementById('audio-player-' + mod);
-  if (player) {
-    var base = player.getAttribute('data-base') || player.src.replace(/-fr\.mp3$/, '').replace(/-en\.mp3$/, '');
-    player.setAttribute('data-base', base);
-    player.pause();
-    player.src = base + '-' + lang + '.mp3';
-    player.load();
+  var playerId = 'audio-player-' + mod;
+  var audio = document.getElementById(playerId);
+  if (audio) {
+    var base = audio.getAttribute('data-base') || audio.src.replace(/-fr\.mp3$/, '').replace(/-en\.mp3$/, '');
+    audio.setAttribute('data-base', base);
+    audio.pause();
+    audio.src = base + '-' + lang + '.mp3';
+    audio.load();
+    var wrap = document.getElementById(playerId + '-cp');
+    if (wrap) {
+      wrap.querySelector('.cplayer__fill').style.width = '0%';
+      wrap.querySelector('.cplayer__thumb').style.left = '0%';
+      wrap.querySelector('.cp-cur').textContent = '0:00';
+      wrap.querySelector('.cp-dur').textContent = '--:--';
+      var ipl = wrap.querySelector('.cp-icon-play');
+      var ipa = wrap.querySelector('.cp-icon-pause');
+      if (ipl) ipl.style.display = ''; if (ipa) ipa.style.display = 'none';
+    }
   }
 }
-function psSeek(playerId, seconds) {
-  var p = document.getElementById(playerId);
-  if (!p) return;
-  var next = p.currentTime + seconds;
-  p.currentTime = Math.max(0, Math.min(next, p.duration || next));
+function initCPlayer(audioId) {
+  var audio = document.getElementById(audioId);
+  var wrap  = document.getElementById(audioId + '-cp');
+  if (!audio || !wrap) return;
+  var fill   = wrap.querySelector('.cplayer__fill');
+  var thumb  = wrap.querySelector('.cplayer__thumb');
+  var track  = wrap.querySelector('.cplayer__track');
+  var curEl  = wrap.querySelector('.cp-cur');
+  var durEl  = wrap.querySelector('.cp-dur');
+  var iconPl = wrap.querySelector('.cp-icon-play');
+  var iconPa = wrap.querySelector('.cp-icon-pause');
+  var dragging = false;
+  function fmt(s) { if (!isFinite(s)) return '--:--'; return Math.floor(s/60)+':'+('0'+Math.floor(s%60)).slice(-2); }
+  function bar(p) { fill.style.width = p+'%'; thumb.style.left = p+'%'; }
+  function pct(e) { var r = track.getBoundingClientRect(); var x = e.touches ? e.touches[0].clientX : e.clientX; return Math.max(0, Math.min(1, (x - r.left) / r.width)) * 100; }
+  audio.addEventListener('loadedmetadata', function() { durEl.textContent = fmt(audio.duration); });
+  audio.addEventListener('timeupdate', function() { if (dragging) return; curEl.textContent = fmt(audio.currentTime); if (audio.duration) bar(audio.currentTime / audio.duration * 100); });
+  audio.addEventListener('play',  function() { iconPl.style.display = 'none'; iconPa.style.display = ''; });
+  audio.addEventListener('pause', function() { iconPl.style.display = ''; iconPa.style.display = 'none'; });
+  audio.addEventListener('ended', function() { iconPl.style.display = ''; iconPa.style.display = 'none'; bar(100); });
+  wrap.querySelector('.cplayer__btn-play').addEventListener('click', function() { audio.paused ? audio.play() : audio.pause(); });
+  wrap.querySelectorAll('.cplayer__skip[data-seek]').forEach(function(btn) {
+    btn.addEventListener('click', function() { var s = parseFloat(btn.dataset.seek); audio.currentTime = Math.max(0, Math.min((audio.currentTime || 0) + s, audio.duration || 1e9)); });
+  });
+  function doSeek(e) { var p = pct(e); bar(p); if (audio.duration) audio.currentTime = p / 100 * audio.duration; }
+  track.addEventListener('mousedown', function(e) { dragging = true; doSeek(e); document.addEventListener('mousemove', mv); document.addEventListener('mouseup', mu); });
+  function mv(e) { if (dragging) doSeek(e); }
+  function mu() { dragging = false; document.removeEventListener('mousemove', mv); document.removeEventListener('mouseup', mu); }
+  track.addEventListener('touchstart', function(e) { e.preventDefault(); dragging = true; doSeek(e); }, { passive: false });
+  track.addEventListener('touchmove',  function(e) { e.preventDefault(); if (dragging) doSeek(e); }, { passive: false });
+  track.addEventListener('touchend',   function() { dragging = false; });
 }
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('audio.ps-audio-element').forEach(function(audio) {
+    initCPlayer(audio.id);
+  });
+});
 </script>
 
 @endsection
