@@ -287,11 +287,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'     => 'eur',
-                    'unit_amount'  => 116400,
-                    'recurring'    => ['interval' => 'month', 'interval_count' => 1],
+                    'unit_amount'  => 87250,
+                    'recurring'    => ['interval' => 'week', 'interval_count' => 4],
                     'product_data' => [
-                        'name'        => 'Formation Praticien Pause Souffle — 3× mensualités',
-                        'description' => '3 mensualités de 1 164 € · Accès complet dès le 1er paiement',
+                        'name'        => 'Formation Praticien Pause Souffle — 4 cycles de 4 semaines',
+                        'description' => '4 × 872,50 € · cycle de 4 semaines · Accès complet dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -303,14 +303,14 @@ class StripeService
             'metadata' => [
                 'type'               => 'formation_praticien_installment',
                 'user_id'            => $userId,
-                'max_installments'   => 3,
+                'max_installments'   => 4,
                 'ps_ambassador_code' => $psAmbassadorCode ?? '',
             ],
             'subscription_data' => [
                 'metadata' => [
                     'type'               => 'formation_praticien_installment',
                     'user_id'            => $userId,
-                    'max_installments'   => 3,
+                    'max_installments'   => 4,
                     'ps_ambassador_code' => $psAmbassadorCode ?? '',
                 ],
             ],
@@ -397,11 +397,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 73000,
-                    'recurring'   => ['interval' => 'month', 'interval_count' => 1],
+                    'unit_amount' => 54750,
+                    'recurring'   => ['interval' => 'week', 'interval_count' => 4],
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Étape 1 — 3× mensualités',
-                        'description' => '3 mensualités de 730 € · Accès complet dès le 1er paiement',
+                        'name'        => 'Pause Souffle · Étape 1 — 4 cycles de 4 semaines',
+                        'description' => '4 × 547,50 € · cycle de 4 semaines · Accès complet dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -413,14 +413,14 @@ class StripeService
             'metadata' => [
                 'type'               => 'formation_parcours_1_installment',
                 'user_id'            => $userId,
-                'max_installments'   => 3,
+                'max_installments'   => 4,
                 'ps_ambassador_code' => $psAmbassadorCode ?? '',
             ],
             'subscription_data' => [
                 'metadata' => [
                     'type'               => 'formation_parcours_1_installment',
                     'user_id'            => $userId,
-                    'max_installments'   => 3,
+                    'max_installments'   => 4,
                     'ps_ambassador_code' => $psAmbassadorCode ?? '',
                 ],
             ],
@@ -496,11 +496,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 83000,
-                    'recurring'   => ['interval' => 'month', 'interval_count' => 1],
+                    'unit_amount' => 62250,
+                    'recurring'   => ['interval' => 'week', 'interval_count' => 4],
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Étape 2 — 3× mensualités',
-                        'description' => '3 mensualités de 830 € · Accès complet dès le 1er paiement',
+                        'name'        => 'Pause Souffle · Étape 2 — 4 cycles de 4 semaines',
+                        'description' => '4 × 622,50 € · cycle de 4 semaines · Accès complet dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -512,14 +512,14 @@ class StripeService
             'metadata' => [
                 'type'               => 'formation_parcours_2_installment',
                 'user_id'            => $userId,
-                'max_installments'   => 3,
+                'max_installments'   => 4,
                 'ps_ambassador_code' => $psAmbassadorCode ?? '',
             ],
             'subscription_data' => [
                 'metadata' => [
                     'type'               => 'formation_parcours_2_installment',
                     'user_id'            => $userId,
-                    'max_installments'   => 3,
+                    'max_installments'   => 4,
                     'ps_ambassador_code' => $psAmbassadorCode ?? '',
                 ],
             ],
@@ -595,11 +595,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 99700,
-                    'recurring'   => ['interval' => 'month', 'interval_count' => 1],
+                    'unit_amount' => 74750,
+                    'recurring'   => ['interval' => 'week', 'interval_count' => 4],
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Étape 3 — 3× mensualités',
-                        'description' => '3 mensualités de 997 € · Accès complet dès le 1er paiement',
+                        'name'        => 'Pause Souffle · Étape 3 — 4 cycles de 4 semaines',
+                        'description' => '4 × 747,50 € · cycle de 4 semaines · Accès complet dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -611,14 +611,14 @@ class StripeService
             'metadata' => [
                 'type'               => 'formation_parcours_3_installment',
                 'user_id'            => $userId,
-                'max_installments'   => 3,
+                'max_installments'   => 4,
                 'ps_ambassador_code' => $psAmbassadorCode ?? '',
             ],
             'subscription_data' => [
                 'metadata' => [
                     'type'               => 'formation_parcours_3_installment',
                     'user_id'            => $userId,
-                    'max_installments'   => 3,
+                    'max_installments'   => 4,
                     'ps_ambassador_code' => $psAmbassadorCode ?? '',
                 ],
             ],
@@ -694,11 +694,11 @@ class StripeService
             'line_items' => [[
                 'price_data' => [
                     'currency'    => 'eur',
-                    'unit_amount' => 106500,
-                    'recurring'   => ['interval' => 'month', 'interval_count' => 1],
+                    'unit_amount' => 159750,
+                    'recurring'   => ['interval' => 'week', 'interval_count' => 4],
                     'product_data' => [
-                        'name'        => 'Pause Souffle · Pack Intégral — 6× mensualités',
-                        'description' => '6 mensualités de 1 065 € · Accès aux 39 modules dès le 1er paiement',
+                        'name'        => 'Pause Souffle · Pack Intégral — 4 cycles de 4 semaines',
+                        'description' => '4 × 1 597,50 € · cycle de 4 semaines · Accès aux 39 modules dès le 1er paiement',
                     ],
                 ],
                 'quantity' => 1,
@@ -710,14 +710,14 @@ class StripeService
             'metadata' => [
                 'type'               => 'formation_pack_integral_installment',
                 'user_id'            => $userId,
-                'max_installments'   => 6,
+                'max_installments'   => 4,
                 'ps_ambassador_code' => $psAmbassadorCode ?? '',
             ],
             'subscription_data' => [
                 'metadata' => [
                     'type'               => 'formation_pack_integral_installment',
                     'user_id'            => $userId,
-                    'max_installments'   => 6,
+                    'max_installments'   => 4,
                     'ps_ambassador_code' => $psAmbassadorCode ?? '',
                 ],
             ],
@@ -725,6 +725,333 @@ class StripeService
 
         Log::info('[StripeService] Session Pack Intégral mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
 
+        return $session;
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // FORMATION DES MENTORS — 3 500 €
+    // ─────────────────────────────────────────────────────────
+
+    /**
+     * Formation des Mentors — 3 500 € (paiement unique)
+     */
+    public function createFormationMentorsCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 350000,
+                    'product_data' => [
+                        'name'        => 'Formation des Mentors Pause Souffle',
+                        'description' => 'Former et accompagner d\'autres praticiens · Animer des groupes · Habilitation Formateur',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_mentors',
+                'user_id'            => $userId,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Formation Mentors créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Formation des Mentors — 4 cycles × 4 semaines de 875 €
+     */
+    public function createFormationMentorsInstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 87500,
+                    'recurring'   => ['interval' => 'week', 'interval_count' => 4],
+                    'product_data' => [
+                        'name'        => 'Formation des Mentors — 4 cycles de 4 semaines',
+                        'description' => '4 × 875 € · cycle de 4 semaines · Accès complet dès le 1er paiement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'formation_mentors_installment',
+                'user_id'            => $userId,
+                'max_installments'   => 4,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+            'subscription_data' => [
+                'metadata' => [
+                    'type'               => 'formation_mentors_installment',
+                    'user_id'            => $userId,
+                    'max_installments'   => 4,
+                    'ps_ambassador_code' => $psAmbassadorCode ?? '',
+                ],
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Formation Mentors mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // MA PAUSE SOUFFLE DANS VOTRE UNIVERS — 999 €
+    // ─────────────────────────────────────────────────────────
+
+    /**
+     * Ma Pause Souffle dans votre univers — 999 € (paiement unique)
+     */
+    public function createMaPauseSouffleCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 99900,
+                    'product_data' => [
+                        'name'        => 'Ma Pause Souffle dans votre univers',
+                        'description' => '5 modules en ligne · Intégrer le 5-5-5 dans votre métier · Accès illimité',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'ma_pause_souffle',
+                'user_id'            => $userId,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Ma Pause Souffle créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+
+    /**
+     * Ma Pause Souffle dans votre univers — 4 cycles × 4 semaines de 249,75 €
+     */
+    public function createMaPauseSouffleInstallmentCheckoutSession(int $userId, string $userEmail, ?string $psAmbassadorCode = null): Session
+    {
+        $stripeSecret = config('services.stripe.secret');
+        if (!$stripeSecret) {
+            throw new \Exception('Configuration Stripe invalide: clé API secrète manquante.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
+
+        $successUrl = route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl  = route('presence.formation.cancel');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 24975,
+                    'recurring'   => ['interval' => 'week', 'interval_count' => 4],
+                    'product_data' => [
+                        'name'        => 'Ma Pause Souffle — 4 cycles de 4 semaines',
+                        'description' => '4 × 249,75 € · cycle de 4 semaines · Accès complet dès le 1er paiement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => $successUrl,
+            'cancel_url'     => $cancelUrl,
+            'customer_email' => $userEmail,
+            'metadata' => [
+                'type'               => 'ma_pause_souffle_installment',
+                'user_id'            => $userId,
+                'max_installments'   => 4,
+                'ps_ambassador_code' => $psAmbassadorCode ?? '',
+            ],
+            'subscription_data' => [
+                'metadata' => [
+                    'type'               => 'ma_pause_souffle_installment',
+                    'user_id'            => $userId,
+                    'max_installments'   => 4,
+                    'ps_ambassador_code' => $psAmbassadorCode ?? '',
+                ],
+            ],
+        ]);
+
+        Log::info('[StripeService] Session Ma Pause Souffle mensualités créée', ['session_id' => $session->id, 'user_id' => $userId]);
+
+        return $session;
+    }
+    /**
+     * Retraite Pause Souffle — Méditerranée · Paiement intégral (4 800 €)
+     */
+    public function createRetraiteMerCheckoutSession(int $userId, string $userEmail): \Stripe\Checkout\Session
+    {
+        Stripe::setApiKey(config('services.stripe.secret'));
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 480000,
+                    'product_data' => [
+                        'name'        => 'Retraite Pause Souffle — Méditerranée',
+                        'description' => '7 jours en villa privée · Rivages Méditerranée · Chef, spa, vol inclus · 12 places seulement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url'     => route('presence.retraite'),
+            'customer_email' => $userEmail,
+            'metadata'       => ['type' => 'retraite_mer', 'user_id' => $userId],
+        ]);
+        Log::info('[Stripe] Session Retraite Mer créée', ['session_id' => $session->id]);
+        return $session;
+    }
+
+    /**
+     * Retraite Pause Souffle — Méditerranée · 4 cycles × 4 semaines (1 200 €/cycle)
+     */
+    public function createRetraiteMerInstallmentCheckoutSession(int $userId, string $userEmail): \Stripe\Checkout\Session
+    {
+        Stripe::setApiKey(config('services.stripe.secret'));
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 120000,
+                    'recurring'   => ['interval' => 'week', 'interval_count' => 4],
+                    'product_data' => [
+                        'name'        => 'Retraite Méditerranée — 4 cycles de 4 semaines',
+                        'description' => '4 × 1 200 € · cycle de 4 semaines · Place confirmée dès le 1er versement · Total : 4 800 €',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url'     => route('presence.retraite'),
+            'customer_email' => $userEmail,
+            'metadata'       => ['type' => 'retraite_mer_installment', 'user_id' => $userId, 'max_installments' => 4],
+            'subscription_data' => [
+                'metadata' => ['type' => 'retraite_mer_installment', 'user_id' => $userId, 'max_installments' => 4],
+            ],
+        ]);
+        Log::info('[Stripe] Session Retraite Mer cycles créée', ['session_id' => $session->id]);
+        return $session;
+    }
+
+    /**
+     * Retraite Pause Souffle — Montagne · Paiement intégral (5 500 €)
+     */
+    public function createRetraiteMontagneCheckoutSession(int $userId, string $userEmail): \Stripe\Checkout\Session
+    {
+        Stripe::setApiKey(config('services.stripe.secret'));
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 550000,
+                    'product_data' => [
+                        'name'        => 'Retraite Pause Souffle — Montagne',
+                        'description' => '7 jours en chalet de luxe · Altitude · Ski inclus, chef, spa, vol · 12 places seulement',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'payment',
+            'success_url'    => route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url'     => route('presence.retraite'),
+            'customer_email' => $userEmail,
+            'metadata'       => ['type' => 'retraite_montagne', 'user_id' => $userId],
+        ]);
+        Log::info('[Stripe] Session Retraite Montagne créée', ['session_id' => $session->id]);
+        return $session;
+    }
+
+    /**
+     * Retraite Pause Souffle — Montagne · 4 cycles × 4 semaines (1 375 €/cycle)
+     */
+    public function createRetraiteMontagneInstallmentCheckoutSession(int $userId, string $userEmail): \Stripe\Checkout\Session
+    {
+        Stripe::setApiKey(config('services.stripe.secret'));
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency'    => 'eur',
+                    'unit_amount' => 137500,
+                    'recurring'   => ['interval' => 'week', 'interval_count' => 4],
+                    'product_data' => [
+                        'name'        => 'Retraite Montagne — 4 cycles de 4 semaines',
+                        'description' => '4 × 1 375 € · cycle de 4 semaines · Place confirmée dès le 1er versement · Total : 5 500 €',
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode'           => 'subscription',
+            'success_url'    => route('presence.formation.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url'     => route('presence.retraite'),
+            'customer_email' => $userEmail,
+            'metadata'       => ['type' => 'retraite_montagne_installment', 'user_id' => $userId, 'max_installments' => 4],
+            'subscription_data' => [
+                'metadata' => ['type' => 'retraite_montagne_installment', 'user_id' => $userId, 'max_installments' => 4],
+            ],
+        ]);
+        Log::info('[Stripe] Session Retraite Montagne cycles créée', ['session_id' => $session->id]);
         return $session;
     }
 }

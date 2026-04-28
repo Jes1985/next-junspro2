@@ -184,6 +184,89 @@ body { background: var(--dark); color: var(--text); }
   -webkit-appearance: none; appearance: none;
 }
 
+/* ── Parole fondatrice ── */
+.pf-block {
+  margin: 2rem 0 2.5rem;
+  padding: 1.8rem 2rem 1.6rem;
+  background: linear-gradient(135deg, rgba(201,168,76,.07) 0%, rgba(201,168,76,.03) 100%);
+  border: 1px solid rgba(201,168,76,.25);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 14px 14px 0;
+}
+.pf-block__header {
+  display: flex; align-items: center; gap: .5rem;
+  margin-bottom: 1rem;
+}
+.pf-block__icon { color: var(--gold); font-size: .95rem; }
+.pf-block__label {
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold);
+}
+/* Verset français */
+.pf-block__verse {
+  font-size: 1.05rem; font-style: italic;
+  line-height: 1.75; color: var(--text);
+  margin: 0 0 .3rem; padding: 0;
+  border: none; quotes: none;
+}
+/* Verset anglais — légèrement atténué */
+.pf-block__verse-en {
+  font-size: .93rem; font-style: italic;
+  line-height: 1.7; color: var(--muted);
+  margin: 0 0 .6rem; padding: 0;
+  border: none; quotes: none;
+}
+.pf-block__ref {
+  font-size: .82rem; font-weight: 600;
+  letter-spacing: .06em; color: var(--gold);
+  margin: 0 0 1rem;
+}
+/* Explication français */
+.pf-block__insight {
+  font-size: .9rem; line-height: 1.7;
+  color: var(--muted); margin: 0 0 .5rem;
+  border-top: 1px solid rgba(201,168,76,.12);
+  padding-top: .9rem;
+}
+/* Explication anglaise */
+.pf-block__insight-en {
+  font-size: .84rem; line-height: 1.65;
+  color: rgba(232,224,208,.38);
+  margin: 0; font-style: italic;
+}
+/* Bloc de clôture — écho final */
+.pf-closing {
+  margin: 2.5rem 0 1rem;
+  padding: 1.6rem 2rem;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,.15);
+  border-radius: 14px;
+  text-align: center;
+}
+.pf-closing__symbol {
+  display: block; color: var(--gold); font-size: 1rem;
+  letter-spacing: .3em; margin-bottom: 1rem;
+  opacity: .6;
+}
+.pf-closing__verse {
+  font-size: 1rem; font-style: italic;
+  line-height: 1.75; color: rgba(232,224,208,.75);
+  margin: 0 0 .3rem; padding: 0;
+  border: none; quotes: none;
+}
+.pf-closing__verse-en {
+  font-size: .9rem; font-style: italic;
+  line-height: 1.7; color: rgba(232,224,208,.4);
+  margin: 0 0 .7rem; padding: 0;
+  border: none; quotes: none;
+}
+.pf-closing__ref {
+  font-size: .78rem; font-weight: 600;
+  letter-spacing: .1em; color: rgba(201,168,76,.6);
+  margin: 0;
+}
+
 /* Intro narrative */
 .mod-intro {
   margin: 2.5rem 0;
@@ -811,6 +894,9 @@ body { background: var(--dark); color: var(--text); }
   {{-- Corps du module --}}
   <div class="mod-body">
 
+    {{-- Parole fondatrice --}}
+    @include('frontend.formation._parole-fondatrice')
+
     {{-- Lecteur audio guidé FR / EN — affiché toujours, lecteur actif quand fichier disponible --}}
     @php
       $hasAudioFr = !empty($module->audio_path);
@@ -1182,6 +1268,9 @@ body { background: var(--dark); color: var(--text); }
         </a>
       </div>
     </div>
+
+    {{-- Parole fondatrice — écho de clôture --}}
+    @include('frontend.formation._parole-fondatrice-closing')
 
     {{-- Bloc terminer le module --}}
     @if($moduleStatus !== 'completed')

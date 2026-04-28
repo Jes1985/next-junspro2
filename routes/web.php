@@ -403,6 +403,12 @@ Route::prefix('/user')->middleware(['guest:web', 'change.lang'])->group(function
     return redirect()->route('user.login');
   })->name('user.login_submit.get');
 
+  // ── OTP verification routes ───────────────────────────────
+  Route::get('/otp-verify',   'FrontEnd\OtpController@showForm')->name('otp.show')->withoutMiddleware('change.lang');
+  Route::post('/otp-verify',  'FrontEnd\OtpController@verify')->name('otp.verify')->withoutMiddleware('change.lang');
+  Route::post('/otp-resend',  'FrontEnd\OtpController@resend')->name('otp.resend')->withoutMiddleware('change.lang');
+  // ─────────────────────────────────────────────────────────
+
   // resend verification email route
   Route::post('/resend-verification', 'FrontEnd\UserController@resendVerificationEmail')->name('user.resend_verification')->withoutMiddleware('change.lang');
 
@@ -480,6 +486,10 @@ Route::prefix('/presence')->middleware(['change.lang'])->group(function () {
   Route::get('/la-retraite', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraite'])->name('presence.retraite');
   Route::get('/la-retraite/livret', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'livretRetraite'])->name('presence.retraite.livret');
   Route::post('/la-retraite/waitlist', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraiteWaitlist'])->name('presence.retraite.waitlist');
+  Route::post('/la-retraite/checkout/mer', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraiteCheckoutMer'])->name('presence.retraite.checkout.mer')->middleware('auth:web');
+  Route::post('/la-retraite/checkout/mer/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraiteCheckoutMerInstallment'])->name('presence.retraite.checkout.mer.installment')->middleware('auth:web');
+  Route::post('/la-retraite/checkout/montagne', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraiteCheckoutMontagne'])->name('presence.retraite.checkout.montagne')->middleware('auth:web');
+  Route::post('/la-retraite/checkout/montagne/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'retraiteCheckoutMontagneInstallment'])->name('presence.retraite.checkout.montagne.installment')->middleware('auth:web');
   Route::post('/pause-souffle/submit', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'submit'])->name('presence.pause-souffle.submit');
   Route::get('/pause-souffle/stripe/success', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'stripeSuccess'])->name('pause-souffle.stripe.success');
   Route::get('/pause-souffle/stripe/cancel', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'stripeCancel'])->name('pause-souffle.stripe.cancel');
@@ -491,13 +501,23 @@ Route::prefix('/presence')->middleware(['change.lang'])->group(function () {
   Route::post('/formation/checkout-installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationCheckoutInstallment'])->name('presence.formation.checkout.installment')->middleware('auth:web');
   Route::get('/formation/success', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationSuccess'])->name('presence.formation.success');
   Route::get('/formation/cancel', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'formationCancel'])->name('presence.formation.cancel');
-  // Parcours Pause Souffle — 3 produits (Niveau 1 / Niveau 2 / Pack Intégral)
+  // Parcours Pause Souffle — 3 niveaux + Pack Intégral
   Route::post('/parcours/checkout/niveau-1', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau1'])->name('parcours.checkout.niveau1')->middleware('auth:web');
   Route::post('/parcours/checkout/niveau-1/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau1Installment'])->name('parcours.checkout.niveau1.installment')->middleware('auth:web');
   Route::post('/parcours/checkout/niveau-2', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau2'])->name('parcours.checkout.niveau2')->middleware('auth:web');
   Route::post('/parcours/checkout/niveau-2/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau2Installment'])->name('parcours.checkout.niveau2.installment')->middleware('auth:web');
+  Route::post('/parcours/checkout/niveau-3', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau3'])->name('parcours.checkout.niveau3')->middleware('auth:web');
+  Route::post('/parcours/checkout/niveau-3/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutNiveau3Installment'])->name('parcours.checkout.niveau3.installment')->middleware('auth:web');
   Route::post('/parcours/checkout/pack-integral', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutPackIntegral'])->name('parcours.checkout.pack-integral')->middleware('auth:web');
   Route::post('/parcours/checkout/pack-integral/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'parcoursCheckoutPackIntegralInstallment'])->name('parcours.checkout.pack-integral.installment')->middleware('auth:web');
+  // Page nos programmes
+  Route::get('/nos-programmes', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'nosProgrammes'])->name('presence.nos-programmes');
+  // Checkout Formation des Mentors
+  Route::post('/mentors/checkout', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'mentorsCheckout'])->name('presence.mentors.checkout')->middleware('auth:web');
+  Route::post('/mentors/checkout/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'mentorsCheckoutInstallment'])->name('presence.mentors.checkout.installment')->middleware('auth:web');
+  // Checkout Ma Pause Souffle dans votre univers
+  Route::post('/ma-pause-souffle/checkout', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'maPauseSouffleCheckout'])->name('presence.ma-pause-souffle.checkout')->middleware('auth:web');
+  Route::post('/ma-pause-souffle/checkout/installment', [\App\Http\Controllers\FrontEnd\PauseSouffleController::class, 'maPauseSouffleCheckoutInstallment'])->name('presence.ma-pause-souffle.checkout.installment')->middleware('auth:web');
 
 });
 

@@ -18,7 +18,7 @@ class FlutterwaveController extends Controller
   public function __construct()
   {
     $data = OnlineGateway::whereKeyword('flutterwave')->first();
-    $flutterwaveData = json_decode($data->information, true);
+    $flutterwaveData = is_array($data->information) ? $data->information : json_decode($data->information, true);
 
     $this->public_key = $flutterwaveData['public_key'];
     $this->secret_key = $flutterwaveData['secret_key'];

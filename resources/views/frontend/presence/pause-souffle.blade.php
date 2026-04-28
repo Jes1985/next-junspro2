@@ -550,56 +550,84 @@
   <!-- SECTION 1 — HERO VISUEL -->
   <section class="pause-souffle-hero">
     <div class="pause-souffle-hero-content">
-      <h1>Pause Souffle</h1>
-      <p class="subtitle">Un temps de recul pour poser des choix éclairés avant l'action.</p>
+      <h1>Ma Pause Souffle</h1>
+      <p class="subtitle">Cinq secondes d'inspiration. Cinq secondes de rétention. Cinq secondes d'expiration.<br>Un interrupteur neurologique. Un geste disponible. À votre poste.</p>
     </div>
   </section>
 
   <!-- SECTION 2 — INTRODUCTION -->
   <section class="pause-souffle-intro">
     <p>
-      Faire le point. Clarifier qui l'on est. Poser ses priorités. Avant toute mise en mouvement.
+      Le 5-5-5 ne change pas selon votre métier.<br>
+      Mais l'endroit où vous l'activez — lui — vous appartient entièrement.
     </p>
   </section>
 
-  <!-- SECTION 3 — À QUI S'ADRESSE -->
+  <!-- SECTION 3 — LES 7 FAMILLES -->
   <section class="pause-souffle-audience">
     <div class="pause-souffle-container">
-      <h2 class="pause-souffle-section-title">À qui s'adresse cet accompagnement</h2>
-      <div class="pause-souffle-audience-grid">
-        <div class="pause-souffle-audience-item">
-          <span>Dirigeant</span>
+      <h2 class="pause-souffle-section-title">Votre territoire de pratique</h2>
+      <p style="text-align:center; color:rgba(255,255,255,.45); font-size:1rem; margin:-1rem 0 2.5rem; line-height:1.7;">Sept familles. Pas des catégories rigides — des paysages.<br>Dans lequel vous reconnaissez-vous ?</p>
+      <div class="pause-souffle-audience-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+        <div class="pause-souffle-audience-item" style="flex-direction:column;gap:.4rem;padding:1.4rem 1rem;">
+          <span style="font-size:1.6rem;">🎨</span>
+          <span style="font-weight:600;">Créateurs</span>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.5;">Potier, musicien, artisan, designer — ceux qui transmettent par la matière</span>
         </div>
-        <div class="pause-souffle-audience-item">
-          <span>Salarié</span>
+        <div class="pause-souffle-audience-item" style="flex-direction:column;gap:.4rem;padding:1.4rem 1rem;">
+          <span style="font-size:1.6rem;">🫁</span>
+          <span style="font-weight:600;">Soignants</span>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.5;">Massothérapeute, médecin, kiné, psychologue — ceux dont le travail est l'humain</span>
         </div>
-        <div class="pause-souffle-audience-item">
-          <span>Parent</span>
+        <div class="pause-souffle-audience-item" style="flex-direction:column;gap:.4rem;padding:1.4rem 1rem;">
+          <span style="font-size:1.6rem;">📚</span>
+          <span style="font-weight:600;">Enseignants</span>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.5;">Maternelle à université — ceux dont la présence définit la qualité de l'apprentissage</span>
         </div>
-        <div class="pause-souffle-audience-item">
-          <span>Freelance</span>
+        <div class="pause-souffle-audience-item" style="flex-direction:column;gap:.4rem;padding:1.4rem 1rem;">
+          <span style="font-size:1.6rem;">🧭</span>
+          <span style="font-weight:600;">Leaders</span>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.5;">Manager, entrepreneur, coach, consultant — ceux dont l'état intérieur influence des équipes</span>
         </div>
-        <div class="pause-souffle-audience-item">
-          <span>Étudiant</span>
+        <div class="pause-souffle-audience-item" style="flex-direction:column;gap:.4rem;padding:1.4rem 1rem;">
+          <span style="font-size:1.6rem;">🌱</span>
+          <span style="font-weight:600;">Éducateurs</span>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.5;">Formateur, accompagnateur, animateur — ceux qui tiennent un espace de transformation</span>
         </div>
-        <div class="pause-souffle-audience-item">
-          <span>Personne en transition</span>
+        <div class="pause-souffle-audience-item" style="flex-direction:column;gap:.4rem;padding:1.4rem 1rem;">
+          <span style="font-size:1.6rem;">🍼</span>
+          <span style="font-weight:600;">Gardiens du tout-petit</span>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.5;">Nounou, sage-femme, puéricultrice — ceux dont la présence est le premier ancrage d'un être</span>
+        </div>
+        <div class="pause-souffle-audience-item" style="flex-direction:column;gap:.4rem;padding:1.4rem 1rem;">
+          <span style="font-size:1.6rem;">🏠</span>
+          <span style="font-weight:600;">Proches</span>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.5;">Parents, conjoints, aidants — ceux dont le lieu de pratique c'est la maison, au quotidien</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 4 — OBJECTIFS -->
+  <!-- SECTION 4 — LES 3 PILIERS -->
   <section class="pause-souffle-objectives">
     <div class="pause-souffle-container">
-      <h2 class="pause-souffle-section-title">Objectifs de l'accompagnement</h2>
-      <div class="pause-souffle-objectives-grid">
-        <div class="pause-souffle-objective">Clarté</div>
-        <div class="pause-souffle-objective">Priorités</div>
-        <div class="pause-souffle-objective">Décision</div>
-        <div class="pause-souffle-objective">Énergie</div>
-        <div class="pause-souffle-objective">Confiance</div>
-        <div class="pause-souffle-objective">Équilibre</div>
+      <h2 class="pause-souffle-section-title">Ce que vous construisez en 4 semaines</h2>
+      <div class="pause-souffle-objectives-grid" style="grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+        <div class="pause-souffle-objective" style="flex-direction:column;gap:.6rem;padding:2rem 1.4rem;text-align:center;">
+          <span style="font-size:1.8rem;">🧠</span>
+          <strong style="font-size:1rem;">Le mécanisme</strong>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.6;">Comprendre ce qui se passe dans le corps pendant le 5-5-5. Parasympathique, cortisol, nerf vague — en pratique, pas en théorie.</span>
+        </div>
+        <div class="pause-souffle-objective" style="flex-direction:column;gap:.6rem;padding:2rem 1.4rem;text-align:center;">
+          <span style="font-size:1.8rem;">🗺️</span>
+          <strong style="font-size:1rem;">Votre territoire</strong>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.6;">Identifier votre famille de pratique. Trouver le moment exact dans votre journée où le 5-5-5 change tout.</span>
+        </div>
+        <div class="pause-souffle-objective" style="flex-direction:column;gap:.6rem;padding:2rem 1.4rem;text-align:center;">
+          <span style="font-size:1.8rem;">⚓</span>
+          <strong style="font-size:1rem;">Votre protocole</strong>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.6;">Une architecture personnelle — pas une liste à faire. Des ancrages précis, greffés dans votre réalité. Sans effort ni négociation.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -665,35 +693,40 @@
             </div>
           </div>
 
-          <!-- ÉTAPE 2 — Situation actuelle -->
+          <!-- ÉTAPE 2 — Votre famille de pratique -->
           <div class="pause-souffle-step" data-step="2">
-            <h3 class="pause-souffle-step-title">Situation actuelle</h3>
+            <h3 class="pause-souffle-step-title">Votre famille de pratique</h3>
+            <p style="color:rgba(255,255,255,.45);font-size:.9rem;margin-bottom:1.5rem;">Dans quel univers activez-vous le 5-5-5 ?</p>
             <div class="pause-souffle-progress">Étape 2 sur 7</div>
 
             <div class="pause-souffle-radio-group">
               <div class="pause-souffle-radio-item">
-                <input type="radio" name="situation" id="situation-dirigeant" value="dirigeant" required>
-                <label for="situation-dirigeant">Dirigeant</label>
+                <input type="radio" name="situation" id="situation-createur" value="createur" required>
+                <label for="situation-createur">🎨 Créateur · Artisan · Artiste</label>
               </div>
               <div class="pause-souffle-radio-item">
-                <input type="radio" name="situation" id="situation-salarie" value="salarie" required>
-                <label for="situation-salarie">Salarié</label>
+                <input type="radio" name="situation" id="situation-soignant" value="soignant" required>
+                <label for="situation-soignant">🫁 Soignant · Thérapeute · Médical</label>
               </div>
               <div class="pause-souffle-radio-item">
-                <input type="radio" name="situation" id="situation-parent" value="parent" required>
-                <label for="situation-parent">Parent</label>
+                <input type="radio" name="situation" id="situation-enseignant" value="enseignant" required>
+                <label for="situation-enseignant">📚 Enseignant · Formateur en école</label>
               </div>
               <div class="pause-souffle-radio-item">
-                <input type="radio" name="situation" id="situation-freelance" value="freelance" required>
-                <label for="situation-freelance">Freelance</label>
+                <input type="radio" name="situation" id="situation-leader" value="leader" required>
+                <label for="situation-leader">🧭 Leader · Manager · Entrepreneur</label>
               </div>
               <div class="pause-souffle-radio-item">
-                <input type="radio" name="situation" id="situation-etudiant" value="etudiant" required>
-                <label for="situation-etudiant">Étudiant</label>
+                <input type="radio" name="situation" id="situation-educateur" value="educateur" required>
+                <label for="situation-educateur">🌱 Éducateur · Accompagnateur · Coach</label>
               </div>
               <div class="pause-souffle-radio-item">
-                <input type="radio" name="situation" id="situation-transition" value="transition" required>
-                <label for="situation-transition">Transition de vie</label>
+                <input type="radio" name="situation" id="situation-tout-petit" value="tout-petit" required>
+                <label for="situation-tout-petit">🍼 Gardien du tout-petit · Petite enfance</label>
+              </div>
+              <div class="pause-souffle-radio-item">
+                <input type="radio" name="situation" id="situation-proche" value="proche" required>
+                <label for="situation-proche">🏠 Proche · Parent · Aidant · Famille</label>
               </div>
             </div>
 
@@ -703,23 +736,23 @@
             </div>
           </div>
 
-          <!-- ÉTAPE 3 — Rythme souhaité -->
+          <!-- ÉTAPE 3 — Format souhaité -->
           <div class="pause-souffle-step" data-step="3">
-            <h3 class="pause-souffle-step-title">Rythme souhaité</h3>
+            <h3 class="pause-souffle-step-title">Quel format vous correspond ?</h3>
             <div class="pause-souffle-progress">Étape 3 sur 7</div>
 
             <div class="pause-souffle-radio-group">
               <div class="pause-souffle-radio-item">
-                <input type="radio" name="rythme" id="rythme-1-session" value="1-session" required>
-                <label for="rythme-1-session">1 Rituel</label>
+                <input type="radio" name="rythme" id="rythme-decouverte" value="decouverte" required>
+                <label for="rythme-decouverte">🌬 Séance découverte — tester le 5-5-5 dans mon univers (1h)</label>
               </div>
               <div class="pause-souffle-radio-item">
                 <input type="radio" name="rythme" id="rythme-4-semaines" value="4-semaines" required>
-                <label for="rythme-4-semaines">4 semaines</label>
+                <label for="rythme-4-semaines">⚓ 4 semaines — construire mon protocole personnel, ancrage par ancrage</label>
               </div>
               <div class="pause-souffle-radio-item">
-                <input type="radio" name="rythme" id="rythme-3-mois" value="3-mois" required>
-                <label for="rythme-3-mois">3 mois</label>
+                <input type="radio" name="rythme" id="rythme-pack-integral" value="pack-integral" required>
+                <label for="rythme-pack-integral">🚀 Pack intégral — 4 cycles · ancrage complet + suivi · tarif unique</label>
               </div>
             </div>
 
@@ -729,35 +762,36 @@
             </div>
           </div>
 
-          <!-- ÉTAPE 4 — Ce que vous souhaitez protéger -->
+          <!-- ÉTAPE 4 — Votre moment d'activation -->
           <div class="pause-souffle-step" data-step="4">
-            <h3 class="pause-souffle-step-title">Ce que vous souhaitez protéger</h3>
+            <h3 class="pause-souffle-step-title">Où voulez-vous l'ancrer ?</h3>
+            <p style="color:rgba(255,255,255,.45);font-size:.9rem;margin-bottom:1.5rem;">Choisissez les moments de votre journée où le 5-5-5 pourrait tout changer. (plusieurs choix possibles)</p>
             <div class="pause-souffle-progress">Étape 4 sur 7</div>
 
             <div class="pause-souffle-checkbox-group">
               <div class="pause-souffle-checkbox-item">
-                <input type="checkbox" name="protect[]" id="protect-temps" value="temps">
-                <label for="protect-temps">Temps</label>
+                <input type="checkbox" name="protect[]" id="protect-reveil" value="reveil">
+                <label for="protect-reveil">🌅 Au réveil — avant le téléphone</label>
               </div>
               <div class="pause-souffle-checkbox-item">
-                <input type="checkbox" name="protect[]" id="protect-famille" value="famille">
-                <label for="protect-famille">Famille</label>
+                <input type="checkbox" name="protect[]" id="protect-seuil" value="seuil">
+                <label for="protect-seuil">🚪 Au seuil — avant d'entrer dans un espace de travail</label>
               </div>
               <div class="pause-souffle-checkbox-item">
-                <input type="checkbox" name="protect[]" id="protect-projet" value="projet">
-                <label for="protect-projet">Rituel</label>
+                <input type="checkbox" name="protect[]" id="protect-avant-toucher" value="avant-toucher">
+                <label for="protect-avant-toucher">🤲 Avant de toucher — avant la matière, le patient, l'élève</label>
               </div>
               <div class="pause-souffle-checkbox-item">
-                <input type="checkbox" name="protect[]" id="protect-sante" value="sante">
-                <label for="protect-sante">Santé</label>
+                <input type="checkbox" name="protect[]" id="protect-entre-deux" value="entre-deux">
+                <label for="protect-entre-deux">⏸ Entre deux — entre deux réunions, deux séances, deux moments</label>
               </div>
               <div class="pause-souffle-checkbox-item">
-                <input type="checkbox" name="protect[]" id="protect-foi" value="foi">
-                <label for="protect-foi">Foi</label>
+                <input type="checkbox" name="protect[]" id="protect-avant-reagir" value="avant-reagir">
+                <label for="protect-avant-reagir">🌊 Avant de réagir — quand l'éclat de voix est sur le point d'arriver</label>
               </div>
               <div class="pause-souffle-checkbox-item">
-                <input type="checkbox" name="protect[]" id="protect-equilibre" value="equilibre">
-                <label for="protect-equilibre">Équilibre personnel</label>
+                <input type="checkbox" name="protect[]" id="protect-soir" value="soir">
+                <label for="protect-soir">🌙 Le soir — quand tout le monde est couché et la tension reste</label>
               </div>
             </div>
 
@@ -767,14 +801,14 @@
             </div>
           </div>
 
-          <!-- ÉTAPE 5 — Ce que vous souhaitez construire -->
+          <!-- ÉTAPE 5 — Votre univers en quelques mots -->
           <div class="pause-souffle-step" data-step="5">
-            <h3 class="pause-souffle-step-title">Ce que vous souhaitez construire</h3>
+            <h3 class="pause-souffle-step-title">Décrivez votre univers</h3>
             <div class="pause-souffle-progress">Étape 5 sur 7</div>
 
-            <textarea name="construire" id="construire" class="pause-souffle-textarea" placeholder="Partagez librement votre vision..."></textarea>
+            <textarea name="construire" id="construire" class="pause-souffle-textarea" placeholder="Décrivez en quelques lignes votre métier, votre quotidien, le type de personnes que vous accompagnez ou côtoyez..."></textarea>
             <div class="pause-souffle-textarea-hints">
-              Repères optionnels : Vision à 2 ans • Vision à 5 ans • Vision à 10 ans
+              Repères optionnels : Ce que vous faites · Avec qui · Le moment de votre journée le plus intense
             </div>
 
             <div class="pause-souffle-nav">
@@ -827,10 +861,10 @@
 
             <div class="pause-souffle-nav">
               <button type="button" class="pause-souffle-btn pause-souffle-btn-secondary" onclick="prevStep()">Précédent</button>
-              <button type="submit" class="pause-souffle-btn pause-souffle-btn-primary" id="submitBtn" disabled>Réserver un Rituel d'essai</button>
+              <button type="submit" class="pause-souffle-btn pause-souffle-btn-primary" id="submitBtn" disabled>Réserver ma séance découverte</button>
             </div>
             <p style="text-align: center; margin-top: 1rem; font-size:1.05rem; color: #6B7280; line-height: 1.6;">
-              Clarifier ce qui compte vraiment • Poser des priorités réalistes • Choisir une direction cohérente
+              Le 5-5-5 dans votre univers réel · Un geste. Trente secondes. Un état différent.
             </p>
           </div>
         </form>
@@ -848,9 +882,10 @@
         Vous souhaitez <em style="font-style:italic; color:#D4A853;">animer</em> ce Rituel ?
       </h2>
       <p style="font-size: 1rem; color: rgba(255,255,255,0.55); line-height:1.8; margin-bottom:2rem;">
-        Devenez Freelance Pause Souffle certifié Junspro.<br>
-        Commencez par <a href="{{ route('presence.parcours') }}" style="color:#D4A853; text-decoration:underline;">Le Parcours</a> — une transformation personnelle de 8 semaines —<br>
-        puis accédez à la Formation Freelance pour accompagner les autres avec authenticité.
+        Vous avez vécu le 5-5-5 de l'intérieur. Vous avez construit votre protocole.<br>
+        Vous savez maintenant ce que ça change — dans votre corps, dans votre présence, dans votre métier.<br>
+        La prochaine étape : <strong style="color:#fff;">accompagner les autres</strong> avec cette méthode.<br>
+        Accédez à <a href="{{ route('presence.formation-praticien') }}" style="color:#D4A853; text-decoration:underline;">La Formation Praticien</a> — et devenez Freelance Pause Souffle certifié Junspro.
       </p>
       <a href="{{ route('presence.parcours') }}"
          style="display:inline-flex; align-items:center; gap:8px; padding:1rem 2.5rem; background:linear-gradient(135deg,#D4A853,#B8893A); color:#fff; border-radius:50px; font-size:1rem; font-weight:500; text-decoration:none; transition:all .3s; box-shadow:0 8px 24px rgba(212,168,83,.3);"
@@ -880,11 +915,12 @@
   <section class="pause-souffle-conclusion">
     <div class="pause-souffle-conclusion-content">
       <p>
-        Vous n'avez rien à prouver ici.<br>
-        Simplement un espace pour faire le point, à votre rythme.
+        Le souffle vous appartient déjà.<br>
+        Le 5-5-5 est juste une façon de lui donner une forme.<br>
+        Et cette forme — elle s'adapte à vous. Pas l'inverse.
       </p>
       <a href="#pauseSouffleForm" class="pause-souffle-cta" onclick="document.getElementById('pauseSouffleForm').scrollIntoView({ behavior: 'smooth' }); return false;">
-        Demander un premier échange
+        Réserver ma séance découverte
       </a>
     </div>
   </section>

@@ -19,7 +19,7 @@ class InstamojoController extends Controller
   public function __construct()
   {
     $data = OnlineGateway::query()->whereKeyword('instamojo')->first();
-    $instamojoData = json_decode($data->information, true);
+    $instamojoData = is_array($data->information) ? $data->information : json_decode($data->information, true);
 
     if ($instamojoData['sandbox_status'] == 1) {
       $this->api = new Instamojo($instamojoData['key'], $instamojoData['token'], 'https://test.instamojo.com/api/1.1/');

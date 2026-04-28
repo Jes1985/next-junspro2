@@ -56,7 +56,7 @@
   display: flex; align-items: center; justify-content: center;
   text-align: center;
   overflow: hidden;
-  padding: 120px 24px 100px;
+  padding: 120px 24px 180px;
 }
 
 .rt-hero__backdrop {
@@ -223,6 +223,7 @@
 /* ── SECTION GÉNÉRIQUE ────────────────────────────────────────── */
 .rt-section {
   padding: clamp(4rem, 8vw, 7rem) 24px;
+  background: var(--rt-dark);
 }
 .rt-section--alt { background: var(--rt-dark2); }
 .rt-section--teal-glow {
@@ -723,6 +724,31 @@
   background: rgba(212,168,83,.22);
   flex-shrink: 0;
 }
+
+  /* ── SECTION RÉSERVATION ──────────────────────────────────── */
+  .rt-pay-btn { padding: 10px 28px; border-radius: 40px; font-size: .9375rem; cursor: pointer; transition: all .3s; border: none; background: transparent; color: rgba(255,255,255,.5); letter-spacing: .02em; }
+  .rt-pay-btn.rt-pay-btn--active { background: var(--rt-gold); color: #fff; font-weight: 500; box-shadow: 0 4px 16px rgba(212,168,83,.4); }
+  .rt-resa-card { background: rgba(255,255,255,.035); border: 1px solid rgba(212,168,83,.25); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: all .3s; }
+  .rt-resa-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.4); border-color: rgba(212,168,83,.45); }
+  .rt-resa-card__top { padding: 32px 28px 0; flex: 1; }
+  .rt-resa-card__tag { display: inline-block; font-size: .6875rem; padding: 3px 12px; border-radius: 20px; background: rgba(212,168,83,.12); color: var(--rt-gold); border: 1px solid rgba(212,168,83,.25); margin-bottom: 1rem; letter-spacing: .1em; text-transform: uppercase; }
+  .rt-resa-card__title { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: .5rem; }
+  .rt-resa-card__sub { font-size: .875rem; color: var(--rt-muted); line-height: 1.5; margin-bottom: 1.25rem; }
+  .rt-resa-card__features { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 8px; }
+  .rt-resa-card__features li { font-size: .875rem; color: rgba(255,255,255,.6); display: flex; gap: 8px; align-items: flex-start; }
+  .rt-resa-card__features li::before { content: ''; display: block; width: 16px; height: 16px; border-radius: 50%; background: rgba(212,168,83,.15); border: 1px solid rgba(212,168,83,.3); flex-shrink: 0; margin-top: 2px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 8.5l2.5 2.5 5.5-5.5' stroke='%23D4A853' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 100%; }
+  .rt-resa-card__footer { padding: 1.25rem 28px 28px; border-top: 1px solid rgba(255,255,255,.07); margin-top: 1rem; }
+  .rt-resa-price-label { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 4px; }
+  .rt-resa-amount { display: flex; align-items: baseline; gap: 4px; }
+  .rt-resa-amount > span:first-child { font-size: 2.125rem; font-weight: 300; color: #fff; letter-spacing: -.03em; }
+  .rt-resa-curr { font-size: 1.125rem; color: rgba(255,255,255,.5); }
+  .rt-resa-sub { font-size: .8125rem; color: rgba(255,255,255,.4); margin-top: 4px; }
+  .rt-resa-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; max-width: 760px; margin: 0 auto; }
+  @media (max-width: 680px) { .rt-resa-grid { grid-template-columns: 1fr; } }
+  /* Accordion programme */
+  .rt-prog-accordion summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: center; gap: .75rem; padding: 1rem 2rem; background: rgba(212,168,83,.08); border: 1px solid rgba(212,168,83,.25); border-radius: 10px; color: var(--rt-gold); font-size: .9375rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; transition: background .25s; }
+  .rt-prog-accordion summary:hover { background: rgba(212,168,83,.14); }
+  .rt-prog-accordion[open] summary { border-radius: 10px 10px 0 0; }
 </style>
 @endsection
 
@@ -793,7 +819,7 @@
       </div>
 
       <div class="rt-hero__cta-wrap">
-        <a href="{{ route('presence.formation-praticien') }}" class="rt-btn-primary">
+        <a href="#reservation" class="rt-btn-primary">
           {{ $en ? 'Reserve my place →' : 'Réserver ma place →' }}
         </a>
         <a href="#programme" class="rt-btn-ghost">
@@ -808,6 +834,127 @@
     </div>
   </section>
 
+
+  {{-- ═══════════════════════════════════════════════════════ --}}
+  {{-- RÉSERVATION — 2 formules × toggle paiement unique / cycles --}}
+  {{-- ═══════════════════════════════════════════════════════ --}}
+  <section id="reservation" class="rt-section rt-section--alt">
+    <div class="rt-section__inner">
+      <p class="rt-section__eyebrow">{{ $en ? 'Reservation' : 'Réservation' }}</p>
+      <h2 class="rt-section__title">
+        @if($en)
+          Choose your <em>formula</em>
+        @else
+          Choisissez votre <em>formule</em>
+        @endif
+      </h2>
+      <p class="rt-section__lead">
+        @if($en)
+          Two worlds, two experiences. The Mediterranean for sun and turquoise water — the Mountains for altitude and snow. The same programme of excellence, two radically different atmospheres.
+        @else
+          Deux univers, deux expériences. La Méditerranée pour le soleil et l'eau turquoise — la Montagne pour l'altitude et la neige. Le même programme d'excellence, deux atmosphères radicalement différentes.
+        @endif
+      </p>
+
+      {{-- Toggle paiement unique / 4 cycles --}}
+      <div style="display:flex;justify-content:center;margin-bottom:2.5rem;">
+        <div data-rt-toggle style="display:inline-flex;background:rgba(255,255,255,.06);border:1px solid rgba(212,168,83,.2);border-radius:50px;padding:5px;gap:4px;">
+          <button class="rt-pay-btn rt-pay-btn--active" data-mode="once" type="button">{{ $en ? 'Single payment' : 'Paiement unique' }}</button>
+          <button class="rt-pay-btn" data-mode="installment" type="button">{{ $en ? '4 cycles · 4 weeks' : '4 cycles · 4 semaines' }}</button>
+        </div>
+      </div>
+
+      <div class="rt-resa-grid">
+
+        {{-- MÉDITERRANÉE --}}
+        <div class="rt-resa-card">
+          <div class="rt-resa-card__top">
+            <div style="font-size:2.2rem;margin-bottom:.75rem;">🌊</div>
+            <div class="rt-resa-card__tag">{{ $en ? 'Sea Formula' : 'Formule Mer' }}</div>
+            <h3 class="rt-resa-card__title">{{ $en ? 'Retreat<br>Mediterranean' : 'Retraite<br>Méditerranée' }}</h3>
+            <p class="rt-resa-card__sub">{{ $en ? 'Private villa · Turquoise water · Gozo (Malta), Crete, Puglia…' : 'Villa privée · Eau turquoise · Gozo (Malte), Crète, Pouilles…' }}</p>
+            <ul class="rt-resa-card__features">
+              <li>{{ $en ? '7 days in an exclusive private villa on the shores' : '7 jours en villa privée exclusive sur les rivages' }}</li>
+              <li>{{ $en ? 'Infinity pool + integrated spa' : 'Piscine à débordement + spa intégré' }}</li>
+              <li>{{ $en ? 'Private boat trip at sunrise' : 'Sortie bateau privatisé au lever du soleil' }}</li>
+              <li>{{ $en ? 'Private chef on site · All meals included' : 'Chef privé sur place · Tous repas inclus' }}</li>
+            </ul>
+          </div>
+          <div class="rt-resa-card__footer">
+            <div class="rt-resa-price-once">
+              <p class="rt-resa-price-label">{{ $en ? 'Full payment' : 'Paiement intégral' }}</p>
+              <div class="rt-resa-amount"><span>4&nbsp;800</span><span class="rt-resa-curr">€</span></div>
+              <p class="rt-resa-sub">{{ $en ? 'accommodation + all activities included' : 'hébergement + toutes activités inclus' }}</p>
+            </div>
+            <div class="rt-resa-price-installment" style="display:none">
+              <p class="rt-resa-price-label">{{ $en ? '4 cycles · 4 weeks' : '4 cycles · 4 semaines' }}</p>
+              <div class="rt-resa-amount"><span>1&nbsp;200</span><span class="rt-resa-curr">€</span></div>
+              <p class="rt-resa-sub">{{ $en ? 'per cycle · Total : 4 800 € · place confirmed from 1st payment' : 'par cycle · Total : 4 800 € · place confirmée dès le 1er versement' }}</p>
+            </div>
+            @auth
+              <form method="POST" action="{{ route('presence.retraite.checkout.mer') }}" class="rt-resa-form-once">
+                @csrf
+                <button type="submit" class="rt-btn-primary" style="width:100%;justify-content:center;margin-top:1rem;">{{ $en ? 'Reserve · Mediterranean →' : 'Réserver · Méditerranée →' }}</button>
+              </form>
+              <form method="POST" action="{{ route('presence.retraite.checkout.mer.installment') }}" class="rt-resa-form-cycle" style="display:none">
+                @csrf
+                <button type="submit" class="rt-btn-primary" style="width:100%;justify-content:center;margin-top:1rem;">{{ $en ? '4 × 1 200 € · Mediterranean →' : '4 × 1 200 € · Méditerranée →' }}</button>
+              </form>
+            @else
+              <a href="{{ route('login') }}?redirect={{ urlencode(url()->current()) }}" class="rt-btn-primary rt-resa-form-once" style="display:block;text-align:center;margin-top:1rem;">{{ $en ? 'Reserve · Mediterranean →' : 'Réserver · Méditerranée →' }}</a>
+              <a href="{{ route('login') }}?redirect={{ urlencode(url()->current()) }}" class="rt-btn-primary rt-resa-form-cycle" style="display:none;text-align:center;margin-top:1rem;">{{ $en ? '4 × 1 200 € · Mediterranean →' : '4 × 1 200 € · Méditerranée →' }}</a>
+            @endauth
+          </div>
+        </div>
+
+        {{-- MONTAGNE --}}
+        <div class="rt-resa-card" style="border-color:rgba(132,204,22,.3);">
+          <div class="rt-resa-card__top">
+            <div style="font-size:2.2rem;margin-bottom:.75rem;">⛷️</div>
+            <div class="rt-resa-card__tag" style="color:#84CC16;border-color:rgba(132,204,22,.35);background:rgba(132,204,22,.1);">{{ $en ? 'Mountain Formula' : 'Formule Montagne' }}</div>
+            <h3 class="rt-resa-card__title">{!! $en ? 'Retreat<br>Mountain' : 'Retraite<br>Montagne' !!}</h3>
+            <p class="rt-resa-card__sub">{{ $en ? 'Luxury chalet · Altitude · Méribel-Village, Megève, Verbier…' : 'Chalet luxe · Altitude · Méribel-Village, Megève, Verbier…' }}</p>
+            <ul class="rt-resa-card__features">
+              <li>{{ $en ? '7 days in a luxury chalet at altitude' : '7 jours en chalet de luxe en altitude' }}</li>
+              <li>{{ $en ? 'Outdoor Nordic jacuzzi + Finnish sauna' : 'Jacuzzi nordique extérieur + sauna finlandais' }}</li>
+              <li>{{ $en ? 'Full ski day on a premium resort included' : 'Journée ski sur domaine premium incluse' }}</li>
+              <li>{{ $en ? 'Private chef on site · All meals included' : 'Chef privé sur place · Tous repas inclus' }}</li>
+            </ul>
+          </div>
+          <div class="rt-resa-card__footer">
+            <div class="rt-resa-price-once">
+              <p class="rt-resa-price-label">{{ $en ? 'Full payment' : 'Paiement intégral' }}</p>
+              <div class="rt-resa-amount"><span>5&nbsp;500</span><span class="rt-resa-curr">€</span></div>
+              <p class="rt-resa-sub">{{ $en ? 'accommodation + ski + all activities included' : 'hébergement + ski + toutes activités inclus' }}</p>
+            </div>
+            <div class="rt-resa-price-installment" style="display:none">
+              <p class="rt-resa-price-label">{{ $en ? '4 cycles · 4 weeks' : '4 cycles · 4 semaines' }}</p>
+              <div class="rt-resa-amount"><span>1&nbsp;375</span><span class="rt-resa-curr">€</span></div>
+              <p class="rt-resa-sub">{{ $en ? 'per cycle · Total : 5 500 € · place confirmed from 1st payment' : 'par cycle · Total : 5 500 € · place confirmée dès le 1er versement' }}</p>
+            </div>
+            @auth
+              <form method="POST" action="{{ route('presence.retraite.checkout.montagne') }}" class="rt-resa-form-once">
+                @csrf
+                <button type="submit" class="rt-btn-primary" style="width:100%;justify-content:center;margin-top:1rem;background:linear-gradient(135deg,#84CC16,#65a30d);box-shadow:0 6px 20px rgba(132,204,22,.25);">{{ $en ? 'Reserve · Mountain →' : 'Réserver · Montagne →' }}</button>
+              </form>
+              <form method="POST" action="{{ route('presence.retraite.checkout.montagne.installment') }}" class="rt-resa-form-cycle" style="display:none">
+                @csrf
+                <button type="submit" class="rt-btn-primary" style="width:100%;justify-content:center;margin-top:1rem;background:linear-gradient(135deg,#84CC16,#65a30d);box-shadow:0 6px 20px rgba(132,204,22,.25);">{{ $en ? '4 × 1 375 € · Mountain →' : '4 × 1 375 € · Montagne →' }}</button>
+              </form>
+            @else
+              <a href="{{ route('login') }}?redirect={{ urlencode(url()->current()) }}" class="rt-btn-primary rt-resa-form-once" style="display:block;text-align:center;margin-top:1rem;background:linear-gradient(135deg,#84CC16,#65a30d);">{{ $en ? 'Reserve · Mountain →' : 'Réserver · Montagne →' }}</a>
+              <a href="{{ route('login') }}?redirect={{ urlencode(url()->current()) }}" class="rt-btn-primary rt-resa-form-cycle" style="display:none;text-align:center;margin-top:1rem;background:linear-gradient(135deg,#84CC16,#65a30d);">{{ $en ? '4 × 1 375 € · Mountain →' : '4 × 1 375 € · Montagne →' }}</a>
+            @endauth
+          </div>
+        </div>
+
+      </div>
+
+      <p style="text-align:center;margin-top:1.5rem;font-size:.875rem;color:var(--rt-muted);">
+        {{ $en ? '🔒 100% secure payment via Stripe · Place confirmed from 1st payment · 12 places per edition' : '🔒 Paiement 100 % sécurisé via Stripe · Place confirmée dès le 1er versement · 12 places par édition' }}
+      </p>
+    </div>
+  </section>
   {{-- ═══════════════════════════════════════════════════════ --}}
   {{-- CITATION CENTRALE                                       --}}
   {{-- ═══════════════════════════════════════════════════════ --}}
@@ -1010,9 +1157,38 @@
         .rt-prog-tab.rt-prog-tab--mountain.rt-prog-tab--active { background:rgba(132,204,22,.1); border-color:#84CC16; color:#84CC16; }
         .rt-prog-panel { display:none; }
         .rt-prog-panel.rt-prog-panel--visible { display:block; }
-      </style>
+      
+  /* ── SECTION RÉSERVATION ──────────────────────────────────── */
+  .rt-pay-btn { padding: 10px 28px; border-radius: 40px; font-size: .9375rem; cursor: pointer; transition: all .3s; border: none; background: transparent; color: rgba(255,255,255,.5); letter-spacing: .02em; }
+  .rt-pay-btn.rt-pay-btn--active { background: var(--rt-gold); color: #fff; font-weight: 500; box-shadow: 0 4px 16px rgba(212,168,83,.4); }
+  .rt-resa-card { background: rgba(255,255,255,.035); border: 1px solid rgba(212,168,83,.25); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: all .3s; }
+  .rt-resa-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.4); border-color: rgba(212,168,83,.45); }
+  .rt-resa-card__top { padding: 32px 28px 0; flex: 1; }
+  .rt-resa-card__tag { display: inline-block; font-size: .6875rem; padding: 3px 12px; border-radius: 20px; background: rgba(212,168,83,.12); color: var(--rt-gold); border: 1px solid rgba(212,168,83,.25); margin-bottom: 1rem; letter-spacing: .1em; text-transform: uppercase; }
+  .rt-resa-card__title { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: .5rem; }
+  .rt-resa-card__sub { font-size: .875rem; color: var(--rt-muted); line-height: 1.5; margin-bottom: 1.25rem; }
+  .rt-resa-card__features { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 8px; }
+  .rt-resa-card__features li { font-size: .875rem; color: rgba(255,255,255,.6); display: flex; gap: 8px; align-items: flex-start; }
+  .rt-resa-card__features li::before { content: ''; display: block; width: 16px; height: 16px; border-radius: 50%; background: rgba(212,168,83,.15); border: 1px solid rgba(212,168,83,.3); flex-shrink: 0; margin-top: 2px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 8.5l2.5 2.5 5.5-5.5' stroke='%23D4A853' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 100%; }
+  .rt-resa-card__footer { padding: 1.25rem 28px 28px; border-top: 1px solid rgba(255,255,255,.07); margin-top: 1rem; }
+  .rt-resa-price-label { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 4px; }
+  .rt-resa-amount { display: flex; align-items: baseline; gap: 4px; }
+  .rt-resa-amount > span:first-child { font-size: 2.125rem; font-weight: 300; color: #fff; letter-spacing: -.03em; }
+  .rt-resa-curr { font-size: 1.125rem; color: rgba(255,255,255,.5); }
+  .rt-resa-sub { font-size: .8125rem; color: rgba(255,255,255,.4); margin-top: 4px; }
+  .rt-resa-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; max-width: 760px; margin: 0 auto; }
+  @media (max-width: 680px) { .rt-resa-grid { grid-template-columns: 1fr; } }
+  /* Accordion programme */
+  .rt-prog-accordion summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: center; gap: .75rem; padding: 1rem 2rem; background: rgba(212,168,83,.08); border: 1px solid rgba(212,168,83,.25); border-radius: 10px; color: var(--rt-gold); font-size: .9375rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; transition: background .25s; }
+  .rt-prog-accordion summary:hover { background: rgba(212,168,83,.14); }
+  .rt-prog-accordion[open] summary { border-radius: 10px 10px 0 0; }
+</style>
 
-      <div class="rt-prog-toggle">
+      
+      <details class="rt-prog-accordion">
+        <summary>{{ $en ? '🗓  See the full 7-day programme' : '🗓  Voir le programme complet 7 jours' }} &nbsp;▾</summary>
+        <div style="padding-top:1.5rem">
+<div class="rt-prog-toggle">
         <button class="rt-prog-tab rt-prog-tab--active" data-target="prog-mer">🌊 {{ $en ? 'Sea &amp; Shores' : 'Mer &amp; Rivages' }}</button>
         <button class="rt-prog-tab rt-prog-tab--mountain" data-target="prog-montagne">⛷️ {{ $en ? 'Mountain &amp; Summits' : 'Montagne &amp; Sommets' }}</button>
       </div>
@@ -1408,9 +1584,10 @@
 
     </div>
   </section>
+        </div>
+      </details>
+</section>
 
-  {{-- ═══════════════════════════════════════════════════════ --}}
-  {{-- LES 6 ACTIVITÉS SIGNATURE                              --}}
   {{-- ═══════════════════════════════════════════════════════ --}}
   <section class="rt-section">
     <div class="rt-section__inner">
@@ -1447,7 +1624,7 @@
               Pratiquée en plein air, face au jardin. Le praticien travaille les pieds en douceur, 75 minutes. Parfois des larmes arrivent sans prévenir. Le corps lâche ce que l'esprit gardait derrière une vitre.
             @endif
           </p>
-          <span class="rt-act-card__tag">{{ $en ? 'Day 1 · Afternoon' : 'Jour 1 · Après-midi' }}</span>
+          <span class="rt-act-card__tag">{{ $en ? 'Day 2 · Morning' : 'Jour 2 · Matin' }}</span>
         </div>
 
         <div class="rt-act-card">
@@ -1465,7 +1642,7 @@
               5h30. Bateau privatisé. Eau turquoise. Silence absolu. Quarante minutes où personne ne parle et où tout est déjà dit. Le module 3 en vrai — « ce qui vous nourrit vraiment ».
             @endif
           </p>
-          <span class="rt-act-card__tag">{{ $en ? 'Day 2 · Dawn' : 'Jour 2 · Aube' }}</span>
+          <span class="rt-act-card__tag">{{ $en ? 'Day 4 · Dawn · 5:30am' : 'Jour 4 · Aube · 5h30' }}</span>
         </div>
 
         <div class="rt-act-card">
@@ -1483,7 +1660,7 @@
               Pilates puis directement Shiatsu — les deux combinés activent le nerf vague de la façon que le module 4 a expliquée en mots. Ici, le corps le vérifie. Plus de métaphore.
             @endif
           </p>
-          <span class="rt-act-card__tag">{{ $en ? 'Day 2 · Afternoon' : 'Jour 2 · Après-midi' }}</span>
+          <span class="rt-act-card__tag">{{ $en ? 'Day 3 · Afternoon' : 'Jour 3 · Après-midi' }}</span>
         </div>
 
         <div class="rt-act-card">
@@ -1501,7 +1678,7 @@
               Sous l'eau, immobile, en silence total — seul le souffle comme outil. Ce que la formation a dit en théorie devient une vérité vécue, indiscutable. 45 minutes qui changent le rapport au souffle pour toujours.
             @endif
           </p>
-          <span class="rt-act-card__tag">{{ $en ? 'Day 2 · Evening' : 'Jour 2 · Soirée' }}</span>
+          <span class="rt-act-card__tag">{{ $en ? 'Day 5 · Evening' : 'Jour 5 · Soirée' }}</span>
         </div>
 
         <div class="rt-act-card">
@@ -1519,7 +1696,7 @@
               Un cheval, un instructeur, pas de monte à cheval. Le cheval lit votre état intérieur et y répond — calme ou agitation, présence ou absence. Personne ne triche avec un cheval. Il montre qui vous êtes, maintenant, instantanément.
             @endif
           </p>
-          <span class="rt-act-card__tag">{{ $en ? 'Day 5 · Morning' : 'Jour 5 · Matin' }}</span>
+          <span class="rt-act-card__tag">{{ $en ? 'Day 6 · Morning' : 'Jour 6 · Matin' }}</span>
         </div>
 
         <div class="rt-act-card">
@@ -1622,11 +1799,13 @@
             <p class="rt-inclus-item__body">{{ $en ? 'Membership in the community of Pause Souffle Practitioners. Private circle, ongoing support, shared resources.' : 'Intégration dans la communauté des Praticiens Pause Souffle. Cercle privé, soutien continu, ressources partagées.' }}</p>
           </div>
         </div>
+        
+      
         <div class="rt-inclus-item">
-          <span class="rt-inclus-item__icon">✈️</span>
+          <span class="rt-inclus-item__icon">🚐</span>
           <div>
-            <p class="rt-inclus-item__title">{{ $en ? 'Return flight included' : 'Vol aller-retour inclus' }}</p>
-            <p class="rt-inclus-item__body">{{ $en ? 'Organised by our Junspro team. Your ticket is delivered to you. Nothing left to manage.' : 'Organisé par notre équipe Junspro. Votre billet vous est livré. Plus rien à gérer.' }}</p>
+            <p class="rt-inclus-item__title">{{ $en ? 'VIP airport transfer' : 'Transfert aéroport VIP' }}</p>
+            <p class="rt-inclus-item__body">{{ $en ? 'Private shuttle organised from the nearest airport. You arrive, you are taken care of. No logistics.' : 'Navette privée organisée depuis l\'aéroport le plus proche. Vous arrivez, vous êtes pris en charge. Zéro logistique.' }}</p>
           </div>
         </div>
       </div>
@@ -1707,24 +1886,24 @@
       {{-- Grille des prochaines éditions --}}
       <div class="rt-editions-grid">
         <div class="rt-edition-card rt-edition-card--open">
-          <p class="rt-edition-card__season">{{ $en ? 'Spring 2026' : 'Printemps 2026' }}</p>
-          <p class="rt-edition-card__date">{{ $en ? 'May · June' : 'Mai · Juin' }}</p>
+          <p class="rt-edition-card__season">{{ $en ? 'Autumn 2026' : 'Automne 2026' }}</p>
+          <p class="rt-edition-card__date">{{ $en ? 'October · November' : 'Octobre · Novembre' }}</p>
           <p class="rt-edition-card__dest">{{ $en ? 'Mediterranean — destination TBA' : 'Méditerranée — destination à confirmer' }}</p>
           <span class="rt-edition-card__status rt-edition-card__status--waiting">
             {{ $en ? '⏳ Waitlist open' : '⏳ Liste d\'attente ouverte' }}
           </span>
         </div>
         <div class="rt-edition-card">
-          <p class="rt-edition-card__season">{{ $en ? 'Summer 2026' : 'Été 2026' }}</p>
-          <p class="rt-edition-card__date">{{ $en ? 'September · October' : 'Septembre · Octobre' }}</p>
+          <p class="rt-edition-card__season">{{ $en ? 'Winter 2026/2027' : 'Hiver 2026/2027' }}</p>
+          <p class="rt-edition-card__date">{{ $en ? 'December · January' : 'Décembre · Janvier' }}</p>
           <p class="rt-edition-card__dest">{{ $en ? 'Mediterranean — destination TBA' : 'Méditerranée — destination à confirmer' }}</p>
           <span class="rt-edition-card__status rt-edition-card__status--waiting">
             {{ $en ? '⏳ Waitlist open' : '⏳ Liste d\'attente ouverte' }}
           </span>
         </div>
         <div class="rt-edition-card">
-          <p class="rt-edition-card__season">{{ $en ? 'Winter 2026' : 'Hiver 2026' }}</p>
-          <p class="rt-edition-card__date">{{ $en ? 'November · December' : 'Novembre · Décembre' }}</p>
+          <p class="rt-edition-card__season">{{ $en ? 'Winter 2027' : 'Hiver 2027' }}</p>
+          <p class="rt-edition-card__date">{{ $en ? 'February · March' : 'Février · Mars' }}</p>
           <p class="rt-edition-card__dest">{{ $en ? 'Mediterranean — destination TBA' : 'Méditerranée — destination à confirmer' }}</p>
           <span class="rt-edition-card__status rt-edition-card__status--waiting">
             {{ $en ? '⏳ Waitlist open' : '⏳ Liste d\'attente ouverte' }}
@@ -1740,7 +1919,7 @@
           <span class="rt-waitlist__num" id="waitlist-count">17</span>
           <div class="rt-waitlist__counter-text">
             <strong>{{ $en ? 'participants on the waitlist' : 'participants sur la liste d\'attente' }}</strong>
-            <span>{{ $en ? 'Only 13 more to confirm the Spring edition' : 'Plus que 13 pour confirmer l\'édition Printemps' }}</span>
+            <span>{{ $en ? 'Only 13 more to confirm the Autumn edition' : 'Plus que 13 pour confirmer l\'édition Automne 2026' }}</span>
           </div>
         </div>
 
@@ -1775,9 +1954,9 @@
             </div>
             <select name="edition" class="rt-waitlist__select" required>
               <option value="">{{ $en ? 'Preferred edition' : 'Édition souhaitée' }}</option>
-              <option value="printemps-2026">{{ $en ? 'Spring 2026 — May / June' : 'Printemps 2026 — Mai / Juin' }}</option>
-              <option value="ete-2026">{{ $en ? 'Summer 2026 — Sep / Oct' : 'Été 2026 — Sep / Oct' }}</option>
-              <option value="hiver-2026">{{ $en ? 'Winter 2026 — Nov / Dec' : 'Hiver 2026 — Nov / Déc' }}</option>
+              <option value="printemps-2026">{{ $en ? 'Automne 2026 — Oct / Nov' : 'Automne 2026 — Oct / Nov' }}</option>
+              <option value="ete-2026">{{ $en ? 'Hiver 2026 — Déc / Jan' : 'Hiver 2026 — Déc / Jan' }}</option>
+              <option value="hiver-2026">{{ $en ? 'Hiver 2027 — Fév / Mar' : 'Hiver 2027 — Fév / Mar' }}</option>
               <option value="any">{{ $en ? 'Any — first available' : 'Peu importe — première disponible' }}</option>
             </select>
             <button type="submit" class="rt-waitlist__btn" id="waitlist-submit">
@@ -1844,7 +2023,7 @@
       </p>
 
       <div class="rt-hero__cta-wrap">
-        <a href="{{ route('presence.formation-praticien') }}" class="rt-btn-primary" style="font-size:1.15rem; padding: 1.1rem 2.6rem;">
+        <a href="#reservation" class="rt-btn-primary" style="font-size:1.15rem; padding: 1.1rem 2.6rem;">
           {{ $en ? 'Reserve my place for the retreat →' : 'Réserver ma place pour la retraite →' }}
         </a>
         <a href="{{ route('presence.retraite.livret') }}" class="rt-btn-ghost" style="font-size:1.05rem; padding: .9rem 2rem; margin-top:.75rem; display:inline-flex; align-items:center; gap:.5rem;">
@@ -1868,6 +2047,34 @@
 
 @push('scripts')
 <script>
+// Toggle paiement retraite (Mer/Montagne × once/cycle)
+(function() {
+  var toggle = document.querySelector('[data-rt-toggle]');
+  if (!toggle) return;
+  function applyMode(mode) {
+    var isInstall = mode === 'installment';
+    toggle.querySelectorAll('.rt-pay-btn').forEach(function(b) {
+      b.classList.toggle('rt-pay-btn--active', b.dataset.mode === mode);
+    });
+    document.querySelectorAll('.rt-resa-price-once').forEach(function(el) { el.style.display = isInstall ? 'none' : 'block'; });
+    document.querySelectorAll('.rt-resa-price-installment').forEach(function(el) { el.style.display = isInstall ? 'block' : 'none'; });
+    document.querySelectorAll('.rt-resa-form-once').forEach(function(el) { el.style.display = isInstall ? 'none' : 'block'; });
+    document.querySelectorAll('.rt-resa-form-cycle').forEach(function(el) { el.style.display = isInstall ? 'block' : 'none'; });
+  }
+  applyMode('once');
+  toggle.querySelectorAll('.rt-pay-btn').forEach(function(b) {
+    b.addEventListener('click', function() { applyMode(b.dataset.mode); });
+  });
+  // Smooth scroll depuis les CTAs du hero et CTA final
+  document.querySelectorAll('a[href="#reservation"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var el = document.getElementById('reservation');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+
 async function submitWaitlist(e) {
   e.preventDefault();
   const btn    = document.getElementById('waitlist-submit');

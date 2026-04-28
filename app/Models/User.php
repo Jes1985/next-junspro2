@@ -79,7 +79,8 @@ class User extends Authenticatable
    * @var array
    */
   protected $casts = [
-    'email_verified_at' => 'datetime',
+    'email_verified_at'    => 'datetime',
+    'login_otp_expires_at' => 'datetime',
     'is_freelancer' => 'boolean',
     'is_client' => 'boolean',
     'is_verified_freelancer' => 'boolean',

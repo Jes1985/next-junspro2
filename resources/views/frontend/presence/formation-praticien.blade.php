@@ -214,7 +214,7 @@
         <p>
           La Formation Freelance est réservée aux personnes ayant <strong>complété Le Parcours Pause Souffle</strong> et obtenu leur Attestation Retour à Soi. On ne transmet que ce qu'on a d'abord traversé.
           <br><br>
-          Pas encore fait le Parcours ? <a href="{{ route('presence.parcours') }}">Commencez par Le Parcours — 3 490 €</a>.
+          Pas encore fait le Parcours ? <a href="{{ route('presence.parcours') }}">Commencez par Le Parcours — à partir de 2 190 €</a>.
         </p>
       </div>
     </div>

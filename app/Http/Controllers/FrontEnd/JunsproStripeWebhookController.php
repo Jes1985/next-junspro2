@@ -99,9 +99,20 @@ class JunsproStripeWebhookController extends Controller
             return;
         }
 
-        // ── Mensualités formation praticien (3× 1 164 €) ─────────────────
+        // ── Mensualités formation (tous types, 4 cycles × 4 semaines) ──────
         $subMeta = $invoice->subscription_details->metadata ?? [];
-        if (($subMeta['type'] ?? null) === 'formation_praticien_installment') {
+        $formationInstallmentTypes = [
+            'formation_praticien_installment',
+            'formation_parcours_1_installment',
+            'formation_parcours_2_installment',
+            'formation_parcours_3_installment',
+            'formation_pack_integral_installment',
+            'formation_mentors_installment',
+            'ma_pause_souffle_installment',
+            'retraite_mer_installment',
+            'retraite_montagne_installment',
+        ];
+        if (in_array($subMeta['type'] ?? null, $formationInstallmentTypes)) {
             $this->handleFormationInstallmentPayment($invoice, $stripeSubscriptionId, $subMeta);
             return;
         }
@@ -285,6 +296,15 @@ class JunsproStripeWebhookController extends Controller
         if ($type === 'formation_praticien') {
             $this->handleFormationPraticienPayment($session);
         }
+
+        // Gérer paiement unique pour tous les autres types de formation
+        $formationTypes = [
+            'formation_parcours_1', 'formation_parcours_2', 'formation_parcours_3',
+            'formation_pack_integral', 'formation_mentors', 'ma_pause_souffle', 'retraite_mer', 'retraite_montagne',
+        ];
+        if (in_array($type, $formationTypes)) {
+            $this->handleFormationPayment($session);
+        }
     }
 
     /**
@@ -354,13 +374,13 @@ class JunsproStripeWebhookController extends Controller
     }
 
     /**
-     * Gérer chaque mensualité de la formation (3× 1 164 €)
-     * → enrolle l'utilisateur dès la 1ère mensualité, annule l'abonnement après la 3ème
+     * Gérer chaque versement formation (4 cycles × 4 semaines — tous types)
+     * → enrolle l'utilisateur dès le 1er versement, annule l'abonnement après le dernier
      */
     protected function handleFormationInstallmentPayment($invoice, string $stripeSubscriptionId, array $subMeta): void
     {
         $userId = $subMeta['user_id'] ?? null;
-        $maxInstallments = (int) ($subMeta['max_installments'] ?? 3);
+        $maxInstallments = (int) ($subMeta['max_installments'] ?? 4);
 
         if (!$userId) {
             Log::warning('[Formation Installment] user_id manquant', ['sub_id' => $stripeSubscriptionId]);
@@ -400,8 +420,9 @@ class JunsproStripeWebhookController extends Controller
                 ->count();
 
             // Annuler l'abonnement Stripe après le dernier paiement
+            $installmentAmount = $invoice->amount_paid ?? 0;
             $totalPaid = \App\Models\FormationEnrollment::where('user_id', $user->id)->value('amount_paid') + $amountPaid;
-            if ($totalPaid >= ($maxInstallments * 116400 / 100) * 0.95) {
+            if ($installmentAmount > 0 && $totalPaid >= ($maxInstallments * $installmentAmount / 100) * 0.95) {
                 \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
                 \Stripe\Subscription::update($stripeSubscriptionId, ['cancel_at_period_end' => true]);
                 Log::info('[Formation Installment] Abonnement marqué cancel_at_period_end', ['sub_id' => $stripeSubscriptionId]);
@@ -435,6 +456,71 @@ class JunsproStripeWebhookController extends Controller
         } catch (\Exception $e) {
             Log::error('[Formation Installment] Erreur traitement', [
                 'user_id' => $userId,
+                'error'   => $e->getMessage(),
+            ]);
+        }
+    }
+
+    /**
+     * Gérer le paiement unique de tout type de formation (Parcours 1-3, Pack, Mentors, Ma Pause Souffle)
+     */
+    protected function handleFormationPayment($session): void
+    {
+        $userId      = $session->metadata['user_id'] ?? null;
+        $productType = $session->metadata['type'] ?? 'unknown';
+
+        if (!$userId) {
+            Log::warning('[Formation] user_id manquant dans metadata', ['session_id' => $session->id, 'type' => $productType]);
+            return;
+        }
+
+        $user = \App\Models\User::find($userId);
+        if (!$user) {
+            Log::warning('[Formation] Utilisateur non trouvé', ['user_id' => $userId]);
+            return;
+        }
+
+        try {
+            $formationService = app(\App\Services\Junspro\FormationService::class);
+            $enrollment = $formationService->enroll(
+                $user,
+                ($session->amount_total ?? 0) / 100,
+                $session->payment_intent ?? null
+            );
+
+            Log::info('[Formation] Enrollment créé après paiement', [
+                'user_id'       => $user->id,
+                'enrollment_id' => $enrollment->id,
+                'amount'        => ($session->amount_total ?? 0) / 100,
+                'type'          => $productType,
+            ]);
+
+            try {
+                \Illuminate\Support\Facades\Mail::to($user->email_address ?? $user->email)
+                    ->send(new \App\Mail\FormationEnrollmentConfirmed(
+                        $enrollment,
+                        ($session->amount_total ?? 0) / 100,
+                        'full'
+                    ));
+            } catch (\Exception $mailEx) {
+                Log::error('[Formation] Erreur envoi email confirmation', ['error' => $mailEx->getMessage()]);
+            }
+
+            $psCode        = $session->metadata['ps_ambassador_code'] ?? null;
+            $psProductType = $session->metadata['product_type'] ?? 'pause_freelance';
+            if ($psCode) {
+                $psService   = app(\App\Services\PsAmbassadeurService::class);
+                $ambassadeur = $psService->resolveCode($psCode);
+                if ($ambassadeur) {
+                    $psService->recordConversion($ambassadeur, $user, ($session->amount_total ?? 0) / 100, $psProductType, $session->payment_intent ?? null);
+                }
+            } else {
+                $this->recordAffiliateCommission($user, $session->payment_intent ?? null, ($session->amount_total ?? 0) / 100, 'other', null);
+            }
+        } catch (\Exception $e) {
+            Log::error('[Formation] Erreur traitement paiement', [
+                'user_id' => $userId,
+                'type'    => $productType,
                 'error'   => $e->getMessage(),
             ]);
         }

@@ -17,7 +17,7 @@ class PaystackController extends Controller
   public function __construct()
   {
     $data = OnlineGateway::query()->whereKeyword('paystack')->first();
-    $paystackData = json_decode($data->information, true);
+    $paystackData = is_array($data->information) ? $data->information : json_decode($data->information, true);
 
     $this->api_key = $paystackData['key'];
   }

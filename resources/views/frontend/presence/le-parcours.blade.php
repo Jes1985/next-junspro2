@@ -5,7 +5,7 @@
 @endsection
 
 @section('metaDescription')
-  Le Parcours Pause Souffle — 6 modules en ligne pour votre propre transformation. Pas une formation professionnelle : un chemin intérieur, pour vous. Attestation Retour à Soi incluse.
+  Le Parcours Pause Souffle — 3 étapes progressives, 39 modules au total, du retour à soi à la maîtrise. Choisissez votre niveau ou le Pack Intégral selon votre réalité.
 @endsection
 
 @section('style')
@@ -171,29 +171,18 @@
         appelée à faire des choses <em>extraordinaires</em>
       </h1>
       <p class="fp-hero-verse">
-        « L'Éternel lui dit : Va avec la force que tu as… C'est moi qui t'envoie. »<br>
-        — Juges 6:14
+        « Il y a un temps pour tout, un temps pour chaque chose sous les cieux. »<br>
+        — Ecclésiaste 3:1
       </p>
       <p class="fp-hero-subtitle">
         Avant d'accompagner les autres à trouver leur souffle,<br>
         commencez par trouver le vôtre.
       </p>
       <div class="fp-hero-ctas">
-        @auth
-          <form method="POST" action="{{ route('presence.formation.checkout') }}" style="display:inline">
-            @csrf
-            <input type="hidden" name="product_type" value="pause_parcours">
-            <button type="submit" class="fp-btn-gold">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
-              Démarrer mon parcours
-            </button>
-          </form>
-        @else
-          <a href="{{ route('user.login') }}?redirect={{ urlencode(route('presence.parcours')) }}" class="fp-btn-gold">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
-            Démarrer mon parcours
-          </a>
-        @endauth
+        <a href="{{ route('presence.nos-programmes') }}#parcours" class="fp-btn-gold">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+          Voir les 3 étapes et leurs tarifs
+        </a>
         <a href="{{ route('presence.pause-souffle') }}" class="fp-btn-outline">
           Découvrir le Rituel Pause Souffle
         </a>
@@ -233,24 +222,24 @@
   <section class="fp-keydata">
     <div class="fp-keydata-grid">
       <div class="fp-keydata-item">
-        <div class="fp-keydata-number">8</div>
-        <div class="fp-keydata-label">Semaines<br>en ligne</div>
+        <div class="fp-keydata-number">3</div>
+        <div class="fp-keydata-label">Étapes<br>progressives</div>
       </div>
       <div class="fp-keydata-item">
-        <div class="fp-keydata-number">6</div>
-        <div class="fp-keydata-label">Modules<br>de transformation</div>
+        <div class="fp-keydata-number">39</div>
+        <div class="fp-keydata-label">Modules<br>au total</div>
       </div>
       <div class="fp-keydata-item">
-        <div class="fp-keydata-number">80%</div>
-        <div class="fp-keydata-label">En ligne<br>à votre rythme</div>
+        <div class="fp-keydata-number">10 · 13 · 16</div>
+        <div class="fp-keydata-label">Modules par<br>niveau</div>
       </div>
       <div class="fp-keydata-item">
-        <div class="fp-keydata-number">20%</div>
-        <div class="fp-keydata-label">En visio<br>2h groupe + 1h Q/R</div>
+        <div class="fp-keydata-number">2 190</div>
+        <div class="fp-keydata-label">Euros<br>à partir de</div>
       </div>
       <div class="fp-keydata-item">
-        <div class="fp-keydata-number">3 490</div>
-        <div class="fp-keydata-label">Euros<br>paiement unique</div>
+        <div class="fp-keydata-number">6 390</div>
+        <div class="fp-keydata-label">Euros<br>Pack Intégral</div>
       </div>
     </div>
   </section>
@@ -272,8 +261,8 @@
         </div>
         <div class="fp-forqui-card">
           <span class="fp-forqui-icon">🕊️</span>
-          <h4>Accompagnateur spirituel ou pastoral</h4>
-          <p>Le cadre laïco-spirituel du Rituel ouvre un espace de discernement rare, entre foi et développement personnel.</p>
+          <h4>Professionnel du bien-être holistique</h4>
+          <p>Le Rituel ouvre un espace de discernement rare, ouvert à toutes les sensibilités spirituelles, culturelles ou philosophiques.</p>
         </div>
         <div class="fp-forqui-card">
           <span class="fp-forqui-icon">💼</span>
@@ -305,95 +294,85 @@
   <section class="fp-modules" id="programme">
     <div style="max-width:860px; margin:0 auto;">
       <div class="fp-modules-header">
-        <h2 class="fp-section-title dark">Le parcours en ligne</h2>
-        <p class="fp-section-sub dark">6 modules × 1 semaine — à votre rythme, profond et sans se presser.</p>
+        <h2 class="fp-section-title dark">3 parcours progressifs · 39 modules</h2>
+        <p class="fp-section-sub dark">Chaque étape a son identité, son tarif, sa certification et sa progression propre.</p>
       </div>
-      <div class="fp-module-list">
 
-        <div class="fp-module-item">
-          <div class="fp-module-num">01</div>
-          <div class="fp-module-body">
-            <div class="fp-module-week">Semaine 1</div>
-            <h3>Je me rencontre</h3>
-            <p>Qui êtes-vous vraiment, au-delà des rôles que vous jouez ? Déposer les masques, toucher le vrai.</p>
-            <div class="fp-module-activities">
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> Tableau de visualisation (Vision Board)</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Lettre à moi-même dans 5 ans</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> Cartographie de mes valeurs</span>
-            </div>
-          </div>
+      <style>
+        .fp-part-block { margin-bottom: 3.5rem; }
+        .fp-part-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--fp-border); }
+        .fp-part-num { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--fp-gold-dark), var(--fp-gold)); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600; color: #fff; flex-shrink: 0; }
+        .fp-part-header h3 { font-size: 1.25rem; font-weight: 500; color: var(--fp-text); margin: 0; }
+        .fp-part-header span { font-size: 0.875rem; color: var(--fp-text-soft); margin-left: auto; white-space: nowrap; }
+        .fp-part-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .fp-part-tag { display: inline-block; padding: 5px 14px; background: #fff; border: 1px solid var(--fp-border); border-radius: 20px; font-size: 0.9rem; color: var(--fp-text); line-height: 1.4; }
+      </style>
+
+      <div style="margin-bottom:2.5rem; padding:1.5rem 2rem; background:#fff; border:2px solid var(--fp-gold); border-radius:16px;">
+        <div style="font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--fp-gold-dark); margin-bottom:0.5rem;">Logique du parcours</div>
+        <div style="font-size:1.1rem; font-weight:500; color:var(--fp-text);">Vous pouvez commencer par l'étape 1 — ou rejoindre directement votre niveau</div>
+        <div style="font-size:0.9rem; color:var(--fp-text-soft); margin-top:0.35rem; line-height:1.5;">Les 3 niveaux achetés séparément représentent 7 670 €. Le Pack Intégral les réunit à 6 390 €.</div>
+      </div>
+
+      <div class="fp-part-block">
+        <div class="fp-part-header">
+          <div class="fp-part-num">1</div>
+          <h3>Se Retrouver — Présence & Souffle</h3>
+          <span>10 modules · 2 190 €</span>
         </div>
-
-        <div class="fp-module-item">
-          <div class="fp-module-num">02</div>
-          <div class="fp-module-body">
-            <div class="fp-module-week">Semaine 2</div>
-            <h3>Je reconnais mes blessures</h3>
-            <p>Ne pas les fuir, mais les regarder en face. Ce que vous avez traversé est votre ressource la plus précieuse.</p>
-            <div class="fp-module-activities">
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg> Mon histoire à la 3ème personne</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Lettres de pardon (non envoyées)</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> Méditation guidée : Déposer les fardeaux</span>
-            </div>
-          </div>
+        <div class="fp-part-tags">
+          <span class="fp-part-tag">Respiration & présence</span>
+          <span class="fp-part-tag">Retour à soi</span>
+          <span class="fp-part-tag">Priorités</span>
+          <span class="fp-part-tag">Blessures</span>
+          <span class="fp-part-tag">Mission personnelle</span>
+          <span class="fp-part-tag">Rituel quotidien</span>
+          <span class="fp-part-tag">Vision</span>
+          <span class="fp-part-tag">Gratitude</span>
+          <span class="fp-part-tag">Apaisement</span>
+          <span class="fp-part-tag">Certification Niveau 1 · Éveil</span>
         </div>
+      </div>
 
-        <div class="fp-module-item">
-          <div class="fp-module-num">03</div>
-          <div class="fp-module-body">
-            <div class="fp-module-week">Semaine 3</div>
-            <h3>Je décris mon bonheur</h3>
-            <p>Le vrai bonheur — pas celui des autres, pas celui des réseaux sociaux. Le vôtre, celui qui vous ressemble.</p>
-            <div class="fp-module-activities">
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/></svg> 100 choses qui me font du bien</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> Ma journée idéale minute par minute</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 00-7.07 17.07M12 12l4-4"/></svg> La carte du bonheur (mind map)</span>
-            </div>
-          </div>
+      <div class="fp-part-block">
+        <div class="fp-part-header">
+          <div class="fp-part-num">2</div>
+          <h3>Se Construire — Corps, Énergie & Discipline</h3>
+          <span>13 modules · 2 490 €</span>
         </div>
-
-        <div class="fp-module-item">
-          <div class="fp-module-num">04</div>
-          <div class="fp-module-body">
-            <div class="fp-module-week">Semaine 4–5</div>
-            <h3>J'écoute mon souffle intérieur</h3>
-            <p>La respiration comme porte d'entrée vers soi. Apprendre à s'arrêter pour vraiment entendre.</p>
-            <div class="fp-module-activities">
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> Bain sonore guidé (Sound Bath) en ligne</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Défi méditation du silence : 21 jours</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Journal de bord hebdomadaire</span>
-            </div>
-          </div>
+        <div class="fp-part-tags">
+          <span class="fp-part-tag">Corps</span>
+          <span class="fp-part-tag">Énergie</span>
+          <span class="fp-part-tag">Discipline</span>
+          <span class="fp-part-tag">Sommeil</span>
+          <span class="fp-part-tag">Nutrition</span>
+          <span class="fp-part-tag">Émotions</span>
+          <span class="fp-part-tag">Temps</span>
+          <span class="fp-part-tag">Priorités</span>
+          <span class="fp-part-tag">Finances</span>
+          <span class="fp-part-tag">Ancrage</span>
+          <span class="fp-part-tag">Certification Niveau 2 · Ancrage</span>
         </div>
+      </div>
 
-        <div class="fp-module-item">
-          <div class="fp-module-num">05</div>
-          <div class="fp-module-body">
-            <div class="fp-module-week">Semaine 6</div>
-            <h3>Je découvre ma mission unique</h3>
-            <p>À la croisée de votre histoire, de vos dons et du besoin du monde. Votre signature dans le monde.</p>
-            <div class="fp-module-activities">
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> "Tu es fait·e pour cela" — lecture guidée</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg> Mon manifeste personnel (1 page)</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> Ma vision board définitive</span>
-            </div>
-          </div>
+      <div class="fp-part-block">
+        <div class="fp-part-header">
+          <div class="fp-part-num">3</div>
+          <h3>S'Ouvrir — Relations, Sens & Rayonnement</h3>
+          <span>16 modules · 2 990 €</span>
         </div>
-
-        <div class="fp-module-item">
-          <div class="fp-module-num">06</div>
-          <div class="fp-module-body">
-            <div class="fp-module-week">Semaine 7–8</div>
-            <h3>Je vis mon premier Rituel Pause Souffle</h3>
-            <p>Expérimenter de l'intérieur. Ressentir avant de transmettre. Comprendre le Rituel en le vivant pleinement.</p>
-            <div class="fp-module-activities">
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> Session Pause Souffle vécue en groupe</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> Bénéficier d'une méditation guidée complète</span>
-              <span class="fp-activity-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg> Lettre de clôture à soi-même</span>
-            </div>
-          </div>
+        <div class="fp-part-tags">
+          <span class="fp-part-tag">Relations</span>
+          <span class="fp-part-tag">Confiance</span>
+          <span class="fp-part-tag">Image de soi</span>
+          <span class="fp-part-tag">Présence sociale</span>
+          <span class="fp-part-tag">Intimité</span>
+          <span class="fp-part-tag">Sens</span>
+          <span class="fp-part-tag">Transmission</span>
+          <span class="fp-part-tag">Solitude choisie</span>
+          <span class="fp-part-tag">Rayonnement</span>
+          <span class="fp-part-tag">Certification Niveau 3 · Maîtrise</span>
         </div>
-
       </div>
     </div>
   </section>
@@ -404,24 +383,28 @@
   <section class="fp-pedagogy">
     <div class="fp-pedagogy-inner">
       <div class="fp-pedagogy-header">
-        <h2 class="fp-section-title dark">Un parcours pensé pour votre transformation</h2>
-        <p class="fp-section-sub dark">Pas de cours magistraux. De l'expérience vécue, du vivant, du concret.</p>
+        <h2 class="fp-section-title dark">Une progression pensée pour durer</h2>
+        <p class="fp-section-sub dark">Pas de chiffres flous : un niveau, un tarif, une certification, une vraie montée en puissance.</p>
       </div>
       <div class="fp-pedagogy-split">
         <div class="fp-pedagogy-visual">
-          <div style="font-size:1.15rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--fp-text-soft); margin-bottom:1.75rem;">Répartition du temps</div>
+          <div style="font-size:1.15rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--fp-text-soft); margin-bottom:1.75rem;">Architecture du programme</div>
           <div class="fp-pace-bar">
-            <div class="fp-pace-bar-label"><span>En ligne — à votre rythme</span><span style="color:var(--fp-gold-dark)">80%</span></div>
-            <div class="fp-pace-track"><div class="fp-pace-fill" style="width:80%"></div></div>
+            <div class="fp-pace-bar-label"><span>Étape 1 — Se Retrouver</span><span style="color:var(--fp-gold-dark)">10 modules</span></div>
+            <div class="fp-pace-track"><div class="fp-pace-fill" style="width:26%"></div></div>
           </div>
           <div class="fp-pace-bar">
-            <div class="fp-pace-bar-label"><span>En visio — 2h groupe + 1h clinique Q/R</span><span style="color:var(--fp-gold-dark)">20%</span></div>
-            <div class="fp-pace-track"><div class="fp-pace-fill" style="width:20%"></div></div>
+            <div class="fp-pace-bar-label"><span>Étape 2 — Se Construire</span><span style="color:var(--fp-gold-dark)">13 modules</span></div>
+            <div class="fp-pace-track"><div class="fp-pace-fill" style="width:33%"></div></div>
+          </div>
+          <div class="fp-pace-bar">
+            <div class="fp-pace-bar-label"><span>Étape 3 — S'Ouvrir</span><span style="color:var(--fp-gold-dark)">16 modules</span></div>
+            <div class="fp-pace-track"><div class="fp-pace-fill" style="width:41%"></div></div>
           </div>
           <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid var(--fp-border);">
             <div style="font-size:1.05rem; color:var(--fp-text-soft); line-height:1.6;">
-              Durée totale estimée :<br>
-              <strong style="color:var(--fp-text);">8 semaines en ligne + 3h visio (2h groupe + 1h clinique Q/R)</strong>
+              Vision d'ensemble :<br>
+              <strong style="color:var(--fp-text);">3 parcours · 39 modules au total · accès à vie · paiement unique ou par cycles</strong>
             </div>
           </div>
         </div>
@@ -431,7 +414,7 @@
           <li><div class="fp-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Journaling hebdomadaire avec prompts profonds et bienveillants</span></li>
           <li><div class="fp-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Accès à la communauté Pause Souffle — un espace d'échange et de soutien partagé</span></li>
           <li><div class="fp-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Dimension spirituelle proposée, jamais imposée — chaque parcours est unique</span></li>
-          <li><div class="fp-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Langue : français — sous-titrage possible selon les groupes</span></li>
+          <li><div class="fp-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Langue : français et anglais — parcours accessible à une clientèle internationale</span></li>
         </ul>
       </div>
     </div>
@@ -448,13 +431,12 @@
           <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
         </svg>
       </div>
-      <h2 class="fp-cert-title">L'Attestation Retour à Soi</h2>
+      <h2 class="fp-cert-title">Des attestations à chaque niveau</h2>
       <p class="fp-cert-text">
-        À l'issue des 6 modules, vous recevez votre <strong>Attestation Retour à Soi</strong> — délivrée par Junspro.<br><br>
-        Elle atteste que vous avez traversé le parcours dans sa profondeur :<br>
-        présence aux sessions live, pratiques hebdomadaires, journaling complété.<br><br>
-        Ce n'est pas un diplôme. C'est une reconnaissance de votre engagement envers vous-même.<br>
-        Le début visible d'une transformation intérieure réelle.
+        Chaque étape validée donne lieu à une <strong>attestation de fin de parcours</strong> — délivrée par Junspro.<br><br>
+        Niveau 1 · Éveil, Niveau 2 · Ancrage, Niveau 3 · Maîtrise.<br>
+        Vous progressez à votre rythme, avec une reconnaissance claire à chaque palier.<br><br>
+        Ce n'est pas un diplôme. C'est la trace concrète d'un chemin réellement traversé.
       </p>
       <div class="fp-cert-warning" style="background:rgba(212,168,83,.08); border:1px solid rgba(212,168,83,.3); color:rgba(212,168,83,.9);">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -470,44 +452,47 @@
   {{-- ══════════════════════════════════════════════════════ --}}
   <section class="fp-pricing">
     <div class="fp-pricing-inner">
-      <h2 class="fp-section-title dark" style="text-align:center;">Investissement</h2>
-      <p class="fp-section-sub dark" style="text-align:center;">6 modules en ligne · Sessions live en groupe · Attestation Retour à Soi incluse.</p>
+      <h2 class="fp-section-title dark" style="text-align:center;">Tarifs par parcours</h2>
+      <p class="fp-section-sub dark" style="text-align:center;">Chaque niveau a son tarif propre. Les 3 étapes séparées représentent 7 670 € ; le Pack Intégral revient à 6 390 €.</p>
       <div style="text-align:center;">
-        <div class="fp-pricing-card">
-          <div class="fp-price-label">Le Parcours · Retour à Soi</div>
-          <div class="fp-price-main"><span>€</span>3 490</div>
-          <div class="fp-price-period">paiement unique · ou 3× 1 164 €/mois</div>
-          <ul class="fp-price-includes">
-            <li>6 modules en ligne — accès à vie, à votre rythme</li>
-            <li>20% en visio : 2h en groupe + 1h clinique Q/R</li>
-            <li>Méditations audio guidées, journaling, vision board</li>
-            <li>Attestation Retour à Soi délivrée par Junspro</li>
-            <li>Accès à la communauté Pause Souffle</li>
-            <li>Passeport vers la Retraite 7 jours et la Formation Freelance</li>
-          </ul>
-          @auth
-            <form method="POST" action="{{ route('presence.formation.checkout') }}" style="display:inline; width:100%">
-              @csrf
-              <input type="hidden" name="product_type" value="pause_parcours">
-              <button type="submit" class="fp-btn-gold" style="width:100%; justify-content:center;">Payer en une fois — 3 490 €</button>
-            </form>
-          @else
-            <a href="{{ route('user.login') }}?redirect={{ urlencode(route('presence.parcours')) }}" class="fp-btn-gold" style="width:100%; justify-content:center;">Payer en une fois — 3 490 €</a>
-          @endauth
-          @auth
-            <form method="POST" action="{{ route('presence.formation.checkout.installment') }}" style="display:inline; width:100%; margin-top:.6rem;">
-              @csrf
-              <button type="submit" class="fp-btn-outline" style="width:100%; justify-content:center; margin-top:.6rem; color:rgba(232,224,208,.7); border-color:rgba(201,168,76,.4);">Payer en 3× 1 164 € / mois</button>
-            </form>
-          @else
-            <a href="{{ route('user.login') }}?redirect={{ urlencode(route('presence.parcours')) }}" class="fp-btn-outline" style="width:100%; justify-content:center; margin-top:.6rem; color:rgba(232,224,208,.7); border-color:rgba(201,168,76,.4); text-align:center; display:block;">Payer en 3× 1 164 € / mois</a>
-          @endauth
-          <div style="margin-top:2rem; padding:1.25rem 1.5rem; background:rgba(212,168,83,.07); border:1px solid rgba(212,168,83,.2); border-radius:12px; text-align:left;">
-            <div style="font-size:1.1rem; letter-spacing:.15em; text-transform:uppercase; color:#D4A853; margin-bottom:.5rem;">Étape suivante · Après le Parcours</div>
-            <div style="font-size:1.1rem; color:rgba(255,255,255,.7);">Formation Freelance Pause Souffle — <strong style="color:#fff;">3 490 €</strong> · 3× 1 164 €/mois</div>
-            <div style="font-size:1rem; color:rgba(255,255,255,.35); margin-top:.35rem;">Certification pour animer les Rituels · Accessible après obtention de l'Attestation</div>
-            <a href="{{ route('presence.formation-praticien') }}" style="display:inline-block; margin-top:.75rem; font-size:1rem; color:#D4A853; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Découvrir la Formation Freelance →</a>
+        <div class="fp-pricing-card" style="max-width:980px; width:100%;">
+          <div class="fp-price-label">Choisissez votre niveau d'entrée</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; text-align:left;">
+            <div style="padding:1.25rem; border:1px solid rgba(212,168,83,.18); border-radius:16px; background:rgba(255,255,255,.03);">
+              <div style="font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:#D4A853; margin-bottom:.45rem;">Étape 1</div>
+              <div style="font-size:1.3rem; font-weight:600; color:#fff; margin-bottom:.35rem;">Se Retrouver</div>
+              <div style="font-size:1rem; color:rgba(255,255,255,.6); margin-bottom:.85rem;">10 modules · Niveau 1</div>
+              <div style="font-size:1.6rem; color:#fff; font-weight:300;">2 190 €</div>
+              <div style="font-size:.95rem; color:rgba(255,255,255,.45);">ou 4 × 547,50 €</div>
+            </div>
+            <div style="padding:1.25rem; border:1px solid rgba(212,168,83,.18); border-radius:16px; background:rgba(255,255,255,.03);">
+              <div style="font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:#D4A853; margin-bottom:.45rem;">Étape 2</div>
+              <div style="font-size:1.3rem; font-weight:600; color:#fff; margin-bottom:.35rem;">Se Construire</div>
+              <div style="font-size:1rem; color:rgba(255,255,255,.6); margin-bottom:.85rem;">13 modules · Niveau 2</div>
+              <div style="font-size:1.6rem; color:#fff; font-weight:300;">2 490 €</div>
+              <div style="font-size:.95rem; color:rgba(255,255,255,.45);">ou 4 × 622,50 €</div>
+            </div>
+            <div style="padding:1.25rem; border:1px solid rgba(212,168,83,.18); border-radius:16px; background:rgba(255,255,255,.03);">
+              <div style="font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:#D4A853; margin-bottom:.45rem;">Étape 3</div>
+              <div style="font-size:1.3rem; font-weight:600; color:#fff; margin-bottom:.35rem;">S'Ouvrir</div>
+              <div style="font-size:1rem; color:rgba(255,255,255,.6); margin-bottom:.85rem;">16 modules · Niveau 3</div>
+              <div style="font-size:1.6rem; color:#fff; font-weight:300;">2 990 €</div>
+              <div style="font-size:.95rem; color:rgba(255,255,255,.45);">ou 4 × 747,50 €</div>
+            </div>
+            <div style="padding:1.25rem; border:1px solid rgba(132,204,22,.28); border-radius:16px; background:rgba(132,204,22,.06);">
+              <div style="font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:#84CC16; margin-bottom:.45rem;">Pack Intégral</div>
+              <div style="font-size:1.3rem; font-weight:600; color:#fff; margin-bottom:.35rem;">Les 3 étapes</div>
+              <div style="font-size:1rem; color:rgba(255,255,255,.6); margin-bottom:.85rem;">39 modules · Niveaux 1, 2 & 3</div>
+              <div style="font-size:.95rem; color:rgba(255,255,255,.35); text-decoration:line-through;">7 670 €</div>
+              <div style="font-size:1.8rem; color:#fff; font-weight:300;">6 390 €</div>
+              <div style="font-size:.95rem; color:rgba(255,255,255,.45);">ou 4 × 1 597,50 €</div>
+            </div>
           </div>
+          <div style="margin-top:1.5rem; padding:1rem 1.2rem; background:rgba(212,168,83,.07); border:1px solid rgba(212,168,83,.2); border-radius:12px; color:rgba(255,255,255,.72); line-height:1.6; text-align:left;">
+            La suite professionnelle reste accessible après validation du parcours adéquat : la page ci-dessous vous permet de choisir le bon niveau et le bon mode de paiement.
+          </div>
+          <a href="{{ route('presence.nos-programmes') }}#parcours" class="fp-btn-gold" style="width:100%; justify-content:center; margin-top:1rem;">Voir les 3 parcours et choisir mon niveau</a>
+          <a href="{{ route('presence.formation-praticien') }}" class="fp-btn-outline" style="width:100%; justify-content:center; margin-top:.6rem; color:rgba(232,224,208,.7); border-color:rgba(201,168,76,.4); text-align:center; display:flex;">Découvrir la suite professionnelle</a>
         </div>
       </div>
     </div>
@@ -536,23 +521,12 @@
   <section class="fp-cta-section">
     <div class="fp-cta-inner">
       <h2>Prêt·e à commencer votre propre transformation ?</h2>
-      <p>8 semaines. 6 modules. Une attestation qui ouvre toutes les portes.<br>Commencez par vous. Le reste vient après.</p>
+      <p>3 étapes progressives. 39 modules au total. Des attestations à chaque niveau.<br>Choisissez l'étape qui correspond à votre réalité — ou le Pack Intégral.</p>
       <div class="fp-cta-pair">
-        @auth
-          <form method="POST" action="{{ route('presence.formation.checkout') }}" style="display:inline">
-            @csrf
-            <input type="hidden" name="product_type" value="pause_parcours">
-            <button type="submit" class="fp-btn-white">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
-              Démarrer mon parcours
-            </button>
-          </form>
-        @else
-          <a href="{{ route('user.login') }}?redirect={{ urlencode(route('presence.parcours')) }}" class="fp-btn-white">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
-            Démarrer mon parcours
-          </a>
-        @endauth
+        <a href="{{ route('presence.nos-programmes') }}#parcours" class="fp-btn-white">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+          Choisir mon parcours
+        </a>
         <a href="{{ route('presence.pause-souffle') }}" class="fp-btn-outline-white">
           Découvrir le Rituel d'abord
         </a>

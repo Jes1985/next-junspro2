@@ -340,14 +340,24 @@ class UserController extends Controller
         return redirect()->back();
       }
 
-      // before, redirect to next url forget the session value
-      if ($request->session()->has('redirectTo')) {
-        $request->session()->forget('redirectTo');
+      // ── OTP : déconnecter immédiatement, stocker les infos en session ──
+      // Le mot de passe est correct → on déconnecte et on envoie un OTP
+      Auth::guard('web')->logout();
+
+      // Stocker en session les infos nécessaires après validation OTP
+      $request->session()->put('otp_user_id', $authUser->id);
+      $request->session()->put('otp_redirect_url', $redirectURL);
+      if ($selectedRole) {
+        $request->session()->put('otp_active_role', $selectedRole);
       }
+      $request->session()->forget('redirectTo');
 
+      // Envoyer le code OTP par email
+      \App\Http\Controllers\FrontEnd\OtpController::sendOtp($authUser);
 
-      // otherwise, redirect auth user to next url
-      return redirect($redirectURL);
+      return redirect()->route('otp.show');
+      // ── fin OTP ────────────────────────────────────────────
+
     } else {
       $request->session()->flash('error', 'Adresse e-mail ou mot de passe incorrect.');
 

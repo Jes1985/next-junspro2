@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Storage;
 class GenerateMpseAudio extends Command
 {
     protected $signature   = 'formation:generate-mps-audio
-                                {--module=01 : Module à générer : 01, 02, 03 ou all}
+                                {--module=01 : Module à générer : 01, 02, 03, 06-proches... ou all}
                                 {--lang=all  : Langue : fr, en ou all}
-                                {--force     : Forcer la régénération}';
+                                {--force     : Forcer la régénération}
+                                {--mode=full : full = module complet | addendum = complément seul | merge = fusionne le complément au mp3 existant}';
 
     protected $description = 'Génère les audios guidés FR + EN pour Ma Pause Souffle (ElevenLabs + ffmpeg)';
 
@@ -3176,6 +3177,1944 @@ C'est leur futur répertoire à eux.
 [pause 10s]
 
 Rouvrez les yeux... doucement. La situation est toujours là. Et vous aussi. Autrement.
+[pause 6s]
+SCRIPT,
+
+        // ── MODULE 06 : LE CHEF D'ORCHESTRE (PROCHES) ─────────────
+        '06-proches' => <<<'SCRIPT'
+Bienvenue dans ce sixième module.
+[pause 5s]
+
+Celui-ci... il est pour vous.
+[pause 5s]
+Pas pour la professionnelle. Pas pour la salariée.
+[pause 4s]
+Pour vous dans ce rôle que personne ne nomme vraiment.
+[pause 5s]
+Celle qui tient tout. Qui organise tout. Qui pense à tout.
+[pause 8s]
+
+Il y a une histoire qu'on raconte aux femmes depuis longtemps.
+[pause 6s]
+L'histoire de la bonne mère. De la bonne femme. De la femme forte.
+[pause 5s]
+Celle qui fait tout. Pour tous. Toujours.
+[pause 5s]
+Qui anticipe. Qui nettoie. Qui cuisine. Qui veille.
+[pause 4s]
+Qui gère les rendez-vous, les devoirs, les anniversaires, les inquiétudes.
+[pause 5s]
+Qui travaille. Qui sourit. Qui tient.
+[pause 8s]
+
+Et quand elle s'effondre... on dit qu'elle est fatiguée.
+[pause 5s]
+Comme si la fatigue était une fatalité.
+[pause 5s]
+Comme si tout porter seule... était un compliment.
+[pause 10s]
+
+Je vais vous dire quelque chose de précis.
+[pause 6s]
+Ce n'est pas ça... être une bonne mère.
+[pause 5s]
+Ce n'est pas ça... être une bonne femme.
+[pause 8s]
+
+Et du côté des pères... une autre confusion fait des ravages.
+[pause 5s]
+On leur a appris qu'être un homme... c'est imposer. Se faire obéir. Ne jamais plier.
+[pause 8s]
+
+Non.
+[pause 8s]
+
+Un père repère ne gouverne pas par la peur.
+[pause 5s]
+Il sécurise. Il écoute. Il tient parole.
+[pause 5s]
+Et quand il blesse... il répare.
+[pause 10s]
+
+Être une bonne mère... une bonne femme...
+[pause 4s]
+ça commence par vous.
+[pause 6s]
+Pas au bout de la liste. Pas quand tout sera fait.
+[pause 5s]
+Avant. En premier.
+[pause 5s]
+Pas par égoïsme.
+[pause 4s]
+Par intelligence profonde de ce que ça coûte... de donner sans se remplir.
+[pause 10s]
+
+Une vie sociable qui vous nourrit.
+[pause 4s]
+Un espace à vous. Une heure qui vous appartient.
+[pause 4s]
+Un moment où vous n'êtes ni mère, ni femme, ni cheffe de projet domestique.
+[pause 5s]
+Juste vous.
+[pause 5s]
+Ce n'est pas un luxe.
+[pause 4s]
+C'est le fondement.
+[pause 5s]
+La première note de l'orchestre.
+[pause 10s]
+
+Parlons de l'orchestre.
+[pause 6s]
+
+Vous avez peut-être cru depuis longtemps que votre rôle...
+[pause 4s]
+était de faire.
+[pause 5s]
+Tout. Toujours. Mieux que les autres.
+[pause 8s]
+
+Non.
+[pause 8s]
+
+Votre rôle... c'est de conduire.
+[pause 8s]
+
+Un chef d'orchestre ne joue pas tous les instruments.
+[pause 5s]
+Il coordonne. Il guide. Il donne le tempo.
+[pause 5s]
+Il sait qui fait quoi. Il sait comment faire sonner l'ensemble.
+[pause 5s]
+Mais il n'est pas à la fois aux violons, aux percussions, et aux cuivres.
+[pause 5s]
+Parce que ce serait du chaos.
+[pause 5s]
+Et parce que ce faisant... il priverait chaque musicien de sa place.
+[pause 10s]
+
+Un foyer où une seule personne fait tout...
+[pause 5s]
+n'est pas un foyer pleinement habité.
+[pause 5s]
+C'est un foyer privé des contributions des autres.
+[pause 5s]
+Privé de la fierté de celui qui a cuisiné ce soir.
+[pause 4s]
+De l'enfant qui a mis la table et qui attend qu'on le remarque.
+[pause 4s]
+Du conjoint qui a fait quelque chose... et ne sait pas si c'était bien.
+[pause 8s]
+
+Pour conduire un orchestre...
+[pause 4s]
+il faut d'abord être ancré.
+[pause 5s]
+Stable. Présent. Nourri.
+[pause 5s]
+Pas en train de tenir vingt instruments seul dans un coin.
+[pause 10s]
+
+Maintenant... parlons des autres musiciens.
+[pause 6s]
+
+Votre mari. Vos enfants.
+[pause 5s]
+Ils sont différents de vous.
+[pause 5s]
+Pas moins capables.
+[pause 4s]
+Différents.
+[pause 8s]
+
+Vous voyez dix choses à faire simultanément.
+[pause 4s]
+Eux voient ce qui est devant eux.
+[pause 5s]
+Ce n'est pas de la mauvaise volonté.
+[pause 4s]
+C'est une façon différente de traiter le monde.
+[pause 8s]
+
+Quand votre mari ne prend pas l'initiative...
+[pause 5s]
+ce n'est pas forcément qu'il s'en fiche.
+[pause 5s]
+Parfois... il ne sait pas comment vous le voulez.
+[pause 4s]
+Et il préfère attendre plutôt que de mal faire.
+[pause 5s]
+Parce que mal faire devant vous lui coûte quelque chose.
+[pause 8s]
+
+Quand vos enfants ne font pas les choses comme vous...
+[pause 5s]
+c'est parce qu'ils ne sont pas vous.
+[pause 5s]
+Et c'est très bien.
+[pause 5s]
+Leur façon de contribuer mérite d'être reconnue.
+[pause 4s]
+Même imparfaite.
+[pause 4s]
+Même différente de la vôtre.
+[pause 8s]
+
+Accepter ça...
+[pause 5s]
+c'est créer un espace où ils peuvent essayer sans craindre le reproche.
+[pause 5s]
+Un espace où chacun trouve sa place...
+[pause 4s]
+parce que vous avez trouvé la vôtre.
+[pause 10s]
+
+Ce qui change tout dans la relation... c'est le ton.
+[pause 8s]
+
+Un reproche ferme la porte.
+[pause 6s]
+
+"Tu n'as encore rien fait." Porte fermée.
+[pause 6s]
+
+"Je suis fatiguée et j'aurais besoin de toi pour ceci ce soir." Porte ouverte.
+[pause 8s]
+
+"Comme d'habitude, je dois tout faire seule." Porte fermée.
+[pause 6s]
+
+"J'ai besoin d'aide. Voilà ce qui m'aiderait vraiment." Porte ouverte.
+[pause 8s]
+
+Ce n'est pas de la faiblesse de dire ce dont vous avez besoin.
+[pause 5s]
+C'est de la précision.
+[pause 5s]
+Vous parlez de vous. De ce que vous ressentez.
+[pause 4s]
+Pas de ce qu'ils auraient dû voir et n'ont pas vu.
+[pause 8s]
+
+Et quand quelque chose est fait...
+[pause 4s]
+même imparfaitement...
+[pause 4s]
+un seul mot change tout.
+[pause 5s]
+Merci.
+[pause 5s]
+Pas "mais la prochaine fois tu pourrais faire comme ça".
+[pause 5s]
+Merci.
+[pause 8s]
+
+L'encouragement fait plus que la correction.
+[pause 5s]
+Toujours.
+[pause 5s]
+Chez les enfants. Chez les adultes. Chez tous les êtres humains.
+[pause 10s]
+
+Il y a trois exercices dans ce module.
+[pause 5s]
+Pas des conseils. Pas des idées.
+[pause 4s]
+Trois expériences. À vivre this semaine. Dans votre réalité.
+[pause 10s]
+
+Premier exercice. Le souffle avant la demande.
+[pause 6s]
+
+Choisissez un moment dans les prochaines 24 heures.
+[pause 5s]
+Un moment où vous avez besoin de quelque chose de quelqu'un dans votre foyer.
+[pause 5s]
+Pas dans deux jours. Aujourd'hui ou demain.
+[pause 8s]
+
+Avant d'ouvrir la bouche...
+[pause 4s]
+faites un cycle complet du cinq-cinq-cinq.
+[pause 5s]
+En silence. Intérieurement. Sans que personne ne le voie.
+[pause 8s]
+
+Cinq secondes d'inspiration.
+[pause 7s]
+Cinq secondes de rétention.
+[pause 7s]
+Cinq secondes d'expiration.
+[pause 8s]
+
+Puis parlez.
+[pause 5s]
+Pas de "tu n'as pas...". Pas de "comme d'habitude...".
+[pause 5s]
+Juste : "j'ai besoin de toi pour... ce soir."
+[pause 8s]
+
+Restez dans la pièce après.
+[pause 5s]
+Observez le visage en face de vous.
+[pause 4s]
+Observez la réponse.
+[pause 5s]
+Observez ce que vous ressentez... vous.
+[pause 4s]
+Dans le corps. Pas dans la tête.
+[pause 8s]
+
+Notez une seule chose avant de dormir ce soir.
+[pause 5s]
+Pas un journal. Une phrase.
+[pause 5s]
+Ce que vous avez observé.
+[pause 10s]
+
+Deuxième exercice. La partition invisible.
+[pause 6s]
+
+Prenez une feuille. Maintenant ou ce soir.
+[pause 5s]
+Tracez deux colonnes.
+[pause 6s]
+
+À gauche... tout ce que vous faites dans le foyer.
+[pause 5s]
+Pas ce que vous faites parfois. Ce que vous faites systématiquement.
+[pause 4s]
+Ce qui ne se voit que quand ce n'est pas fait.
+[pause 5s]
+Les courses. Le linge. Les devoirs. Les rendez-vous médicaux. Le repas du soir.
+[pause 4s]
+Mais aussi... penser à l'anniversaire de la maîtresse.
+[pause 4s]
+Savoir que les cartables sont trop lourds. Que le pull est troué. Que le frigo est vide.
+[pause 5s]
+Écrire tout ça. Sans filtre. Sans minimiser.
+[pause 8s]
+
+À droite... le nom de quelqu'un qui pourrait le faire.
+[pause 5s]
+Pas mieux que vous.
+[pause 4s]
+Faire.
+[pause 5s]
+Votre mari. Votre enfant de dix ans. Votre enfant de sept ans.
+[pause 4s]
+Une aide extérieure. Une livraison.
+[pause 5s]
+Quelqu'un.
+[pause 8s]
+
+Et vous regardez cette feuille.
+[pause 5s]
+Pas avec honte. Pas avec colère.
+[pause 5s]
+Avec curiosité.
+[pause 6s]
+
+Combien de lignes à gauche... ont une case vide à droite ?
+[pause 5s]
+Ces cases vides... ce ne sont pas des faiblesses.
+[pause 5s]
+Ce sont des places disponibles.
+[pause 5s]
+Des instruments que vous n'avez jamais confiés à quelqu'un d'autre.
+[pause 8s]
+
+Choisissez une seule ligne cette semaine.
+[pause 5s]
+Une. Pas cinq. Pas tout.
+[pause 5s]
+Une ligne que vous allez confier.
+[pause 5s]
+Et tenir cette confiance.
+[pause 5s]
+Même si ce n'est pas fait comme vous.
+[pause 10s]
+
+Troisième exercice. Le miroir du lien.
+[pause 6s]
+
+Ce soir... ou demain matin...
+[pause 4s]
+observez quelqu'un de votre foyer faire quelque chose.
+[pause 5s]
+N'importe quoi.
+[pause 5s]
+Mettre la table. Ranger ses chaussures. Faire son lit.
+[pause 4s]
+Préparer quelque chose.
+[pause 8s]
+
+Attendez qu'il ou elle ait terminé.
+[pause 6s]
+
+Et dites une seule phrase.
+[pause 6s]
+Pas "c'est bien mais...". Pas "enfin...". Pas "comme j'aurais voulu que tu le fasses avant".
+[pause 6s]
+Une seule phrase qui dit : je t'ai vu faire.
+[pause 8s]
+
+"J'ai vu que tu avais rangé ta chambre. Merci."
+[pause 6s]
+"Tu as préparé le café ce matin. Ça m'a fait du bien de le voir."
+[pause 6s]
+"Tu t'es levé sans que je te le demande. J'apprécie."
+[pause 8s]
+
+Et ensuite... ne rajoutez rien.
+[pause 5s]
+Laissez la phrase exister.
+[pause 5s]
+Seule.
+[pause 5s]
+Sans correction. Sans nuance.
+[pause 8s]
+
+Observez ce que ça fait à l'autre.
+[pause 5s]
+Puis observez ce que ça fait en vous.
+[pause 8s]
+
+Quatrième exercice. La permission à voix haute.
+[pause 6s]
+
+Ce soir... trouvez un moment seule.
+[pause 5s]
+Cinq minutes. Dans la salle de bain. Dans la voiture avant d'entrer.
+[pause 4s]
+N'importe où vous êtes hors de vue.
+[pause 8s]
+
+Posez une main sur votre cœur.
+[pause 5s]
+Et dites ces mots à voix haute.
+[pause 6s]
+
+"J'ai le droit d'avoir besoin."
+[pause 8s]
+
+Pas dans votre tête. À voix haute.
+[pause 5s]
+Même si ça vous semble bizarre. Même si ça vous met mal à l'aise.
+[pause 5s]
+Surtout si ça vous met mal à l'aise.
+[pause 8s]
+
+"J'ai le droit d'avoir besoin."
+[pause 8s]
+
+Observez ce qui monte dans le corps à ce moment-là.
+[pause 5s]
+Une résistance. Un soulagement. Une émotion.
+[pause 5s]
+Rien n'est faux. Tout est information.
+[pause 8s]
+
+Puis ajoutez une deuxième phrase.
+[pause 6s]
+
+"Je mérite d'être soutenue."
+[pause 8s]
+
+Toujours à voix haute.
+[pause 5s]
+Toujours la main sur le cœur.
+[pause 8s]
+
+Ce n'est pas de l'affirmation positive.
+[pause 5s]
+C'est une recalibration.
+[pause 5s]
+Vous dites à votre système nerveux quelque chose qu'il n'entend presque jamais.
+[pause 5s]
+Quelque chose de vrai.
+[pause 5s]
+Et le corps a besoin de l'entendre de vous.
+[pause 5s]
+Pas d'un livre. Pas d'un podcast.
+[pause 4s]
+De vous.
+[pause 10s]
+
+Cinquième exercice. L'heure qui vous appartient.
+[pause 6s]
+
+Cette semaine... choisissez une heure.
+[pause 5s]
+Une seule. Pas une journée. Une heure.
+[pause 8s]
+
+Une heure où vous ne faites rien pour personne d'autre.
+[pause 5s]
+Pas les courses. Pas les devoirs surveillés. Pas la cuisine.
+[pause 4s]
+Pas "du temps pour soi" pour mieux revenir après.
+[pause 5s]
+Du temps pour soi. Point.
+[pause 8s]
+
+Une activité que vous aimez.
+[pause 5s]
+Marcher seule. Lire un livre sans l'interrompre. Prendre un bain chaud en silence.
+[pause 4s]
+Appeler une amie sans regarder l'heure.
+[pause 4s]
+Écrire. Dessiner. Ne rien faire du tout.
+[pause 8s]
+
+Et avant de commencer cette heure...
+[pause 4s]
+faites un cycle du cinq-cinq-cinq.
+[pause 5s]
+Pour poser le reste.
+[pause 4s]
+Pour entrer dans cette heure comme on entre dans un espace sacré.
+[pause 8s]
+
+Cinq secondes d'inspiration.
+[pause 7s]
+Cinq secondes de rétention.
+[pause 7s]
+Cinq secondes d'expiration.
+[pause 8s]
+
+Et commencez.
+[pause 5s]
+Sans culpabilité.
+[pause 5s]
+Sans vérifier les messages.
+[pause 5s]
+Sans vous justifier.
+[pause 8s]
+
+Parce que cette heure... elle ne nourrit pas seulement vous.
+[pause 5s]
+Elle nourrit tout le monde.
+[pause 5s]
+Un parent nourri... nourrit différemment.
+[pause 5s]
+Un parent vide... donne ce qu'il reste.
+[pause 5s]
+Ce n'est pas pareil.
+[pause 5s]
+Vos proches méritent le premier.
+[pause 5s]
+Et vous aussi.
+[pause 10s]
+
+Ces cinq exercices ne demandent pas une heure.
+[pause 5s]
+Ils demandent une décision.
+[pause 5s]
+Et quelques secondes à chaque fois.
+[pause 5s]
+Mais ce qu'ils transforment... se mesure en années.
+[pause 10s]
+
+Il y a un proverbe qui dit :
+[pause 5s]
+"Seul on va plus vite. Ensemble on va plus loin."
+[pause 8s]
+
+Les femmes qui portent tout l'appliquent souvent à l'envers.
+[pause 5s]
+Elles vont vite. Seules. Mieux. Plus efficacement.
+[pause 4s]
+Parce que déléguer prend du temps.
+[pause 4s]
+Parce qu'expliquer est fatigant.
+[pause 4s]
+Parce que ce sera mieux fait si elles le font elles-mêmes.
+[pause 8s]
+
+Et elles ont raison.
+[pause 5s]
+À court terme.
+[pause 8s]
+
+Mais à long terme...
+[pause 5s]
+aller vite seule épuise la source.
+[pause 5s]
+Ça prive les autres de contribuer.
+[pause 4s]
+Ça prive un enfant de voir son père prendre sa place.
+[pause 4s]
+Ça prive un conjoint d'être utile. D'être vu faire.
+[pause 5s]
+Et ça vous prive... vous...
+[pause 4s]
+d'arriver loin ensemble.
+[pause 10s]
+
+Vous n'êtes pas là pour tout porter.
+[pause 5s]
+Vous êtes là pour conduire.
+[pause 5s]
+Pour guider.
+[pause 5s]
+Pour créer l'espace où chacun trouve sa place...
+[pause 5s]
+parce que vous avez trouvé la vôtre.
+[pause 10s]
+
+Installez-vous maintenant.
+[pause 4s]
+Dos allongé. Épaules qui descendent. Mains ouvertes.
+[pause 4s]
+Fermez les yeux.
+[pause 5s]
+Et pendant cette pratique...
+[pause 4s]
+visualisez votre foyer. Pas comme il est. Comme vous voulez qu'il soit.
+[pause 5s]
+Un espace où chacun a sa place.
+[pause 4s]
+Où le ton est doux.
+[pause 4s]
+Où l'amour circule librement.
+[pause 5s]
+Un espace que vous conduisez... sans vous épuiser.
+[pause 5s]
+Et au centre de cet espace... vous.
+[pause 5s]
+Bien dans votre peau. Bien dans votre vie.
+[pause 5s]
+Nourrie. Présente. Choisie.
+[pause 8s]
+
+Commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 8s]
+
+Demeurez dans cette image un instant.
+[pause 5s]
+Ce foyer. Cette atmosphère. Cette qualité de lien.
+[pause 5s]
+Elle est possible.
+[pause 5s]
+Pas parfaite.
+[pause 4s]
+Possible.
+[pause 8s]
+
+Et elle commence ici.
+[pause 5s]
+Dans ce souffle.
+[pause 5s]
+Dans cette décision silencieuse de prendre soin de vous...
+[pause 4s]
+pour mieux aimer ceux que vous aimez.
+[pause 8s]
+
+Rouvrez les yeux... doucement.
+[pause 5s]
+Vous êtes le chef d'orchestre.
+[pause 5s]
+Et un chef d'orchestre bien ancré...
+[pause 4s]
+fait sonner les autres plus justement.
+[pause 8s]
+
+À très bientôt.
+[pause 6s]
+SCRIPT,
+
+        // ── MODULE 07 : L'ÉQUATION CO-PARENTALE (PROCHES) ─────────
+        '07-proches' => <<<'SCRIPT'
+Bienvenue dans ce septième module.
+[pause 5s]
+
+Celui-ci... il touche quelque chose de rare.
+[pause 5s]
+Quelque chose que peu de gens ont le courage d'aborder vraiment.
+[pause 8s]
+
+L'autre parent.
+[pause 8s]
+
+Qu'il soit présent ou absent.
+[pause 4s]
+Qu'il soit proche ou loin.
+[pause 4s]
+Qu'il soit facile ou difficile.
+[pause 5s]
+Qu'il y ait de la blessure entre vous... ou juste de la distance.
+[pause 8s]
+
+Il fait partie de l'équation.
+[pause 5s]
+Et vos enfants... le savent.
+[pause 5s]
+Pas parce que vous le leur avez dit.
+[pause 4s]
+Parce que la moitié de ce qu'ils sont... vient de lui.
+[pause 8s]
+
+On peut être séparés.
+[pause 5s]
+On peut avoir des éducations différentes.
+[pause 4s]
+On peut avoir traversé des choses que les mots peinent à nommer.
+[pause 5s]
+Et pourtant.
+[pause 6s]
+Vos enfants ont besoin de leurs deux parents.
+[pause 5s]
+Pas d'un parent parfait.
+[pause 4s]
+De leurs deux parents.
+[pause 5s]
+Imparfaits. Blessés parfois. Mais présents.
+[pause 10s]
+
+Il y a quelque chose que les psychologues de l'enfant confirment sans équivoque.
+[pause 6s]
+Un enfant qui voit ses parents se déchirer...
+[pause 5s]
+ne prend pas parti.
+[pause 5s]
+Il se divise.
+[pause 6s]
+Une partie de lui part avec chaque parent.
+[pause 5s]
+Et il passe des années à essayer de recoller ce qui n'aurait jamais dû être séparé.
+[pause 8s]
+
+Et un enfant qui voit ses parents...
+[pause 5s]
+choisir le bien de leurs enfants malgré tout...
+[pause 4s]
+apprend quelque chose d'infiniment plus précieux que n'importe quelle note d'école.
+[pause 5s]
+Il apprend que l'amour peut dépasser la blessure.
+[pause 5s]
+Que deux personnes peuvent ne plus s'aimer... et aimer encore leurs enfants ensemble.
+[pause 5s]
+Que la paix se choisit. Même quand ce n'est pas mérité.
+[pause 10s]
+
+Je veux parler de quelque chose de difficile.
+[pause 6s]
+
+Vous portez peut-être une fatigue que peu de gens voient vraiment.
+[pause 5s]
+Celle de faire pour deux.
+[pause 4s]
+De compenser ce qui manque.
+[pause 4s]
+D'être à la fois la tendresse et la structure.
+[pause 4s]
+La douceur et la limite.
+[pause 4s]
+La mère et le père.
+[pause 8s]
+
+Et certains soirs... vous regardez vos enfants...
+[pause 5s]
+et vous vous demandez si vous faites assez.
+[pause 5s]
+Si vous êtes assez.
+[pause 5s]
+Si vous compensez vraiment ce qui leur manque.
+[pause 8s]
+
+Je vais vous dire quelque chose.
+[pause 5s]
+Ce n'est pas votre rôle de tout compenser.
+[pause 5s]
+Ce n'est le rôle de personne.
+[pause 8s]
+
+Votre rôle... c'est d'être leur mère.
+[pause 5s]
+Pleinement. Avec tout ce que vous êtes.
+[pause 5s]
+Et de créer les conditions pour que leur père...
+[pause 4s]
+puisse aussi être leur père.
+[pause 5s]
+Même imparfaitement. Même différemment de vous.
+[pause 10s]
+
+Parlons du terrain d'entente.
+[pause 6s]
+
+Quand deux parents ont des éducations différentes...
+[pause 4s]
+la tentation est de convaincre l'autre.
+[pause 5s]
+De lui montrer qu'il a tort.
+[pause 4s]
+De protéger les enfants de ses façons de faire.
+[pause 8s]
+
+Mais vos enfants ne vivent pas dans votre façon de faire.
+[pause 5s]
+Ils vivent dans les deux.
+[pause 5s]
+Et ce qu'ils tirent de chacune... vous ne pouvez pas toujours le prévoir.
+[pause 8s]
+
+Le terrain d'entente... ce n'est pas un accord sur tout.
+[pause 5s]
+C'est un accord sur une seule chose.
+[pause 6s]
+Le bien-être de ces enfants-là.
+[pause 5s]
+Pas en théorie. Dans les décisions concrètes.
+[pause 5s]
+Cela s'est-il décidé seul. Ou à deux.
+[pause 5s]
+Les règles essentielles. Le respect mutuel devant eux. Les grandes orientations.
+[pause 5s]
+Pas tout. L'essentiel.
+[pause 10s]
+
+Et cela... ça se discute.
+[pause 5s]
+Même si ce n'est pas naturel.
+[pause 4s]
+Même si c'est douloureux.
+[pause 4s]
+Même si des choses n'ont pas été réparées entre vous.
+[pause 6s]
+
+Parce que la conversation qui compte...
+[pause 4s]
+n'est pas celle entre ex-partenaires.
+[pause 5s]
+C'est celle entre deux personnes qui ont décidé d'être les parents de ces enfants-là.
+[pause 5s]
+Et ces deux personnes-là...
+[pause 4s]
+elles peuvent parler.
+[pause 8s]
+
+Maintenant... parlons d'héritage.
+[pause 6s]
+
+Chaque parent a quelque chose d'irremplaçable à transmettre.
+[pause 5s]
+Pas dans les mots.
+[pause 4s]
+Dans la manière d'être.
+[pause 8s]
+
+Il y a des choses que vous transmettez à vos enfants que leur père ne pourra jamais transmettre.
+[pause 5s]
+Des choses qui vous appartiennent uniquement.
+[pause 5s]
+La façon dont vous tenez. La façon dont vous aimez. La façon dont vous traversez.
+[pause 8s]
+
+Et il y a des choses qu'il peut transmettre...
+[pause 4s]
+que vous ne pouvez pas.
+[pause 5s]
+Même en essayant de tout faire.
+[pause 5s]
+Même en étant extraordinaire.
+[pause 8s]
+
+Un enfant qui reçoit les deux...
+[pause 4s]
+hérite de deux façons d'habiter le monde.
+[pause 5s]
+Il devient plus riche. Pas plus divisé.
+[pause 5s]
+Plus riche.
+[pause 8s]
+
+Et même quand l'autre parent a blessé...
+[pause 5s]
+a manqué...
+[pause 4s]
+a été absent là où il aurait dû être présent...
+[pause 6s]
+il reste possible de prier.
+[pause 5s]
+De prier pour sa transformation.
+[pause 5s]
+Pas pour lui. Pour eux.
+[pause 5s]
+Pour que ces enfants reçoivent un jour un père différent.
+[pause 5s]
+Non pas parce qu'il le mérite.
+[pause 5s]
+Mais parce qu'eux... le méritent.
+[pause 10s]
+
+Parlons des parents comme leaders.
+[pause 6s]
+
+Un leader... au sens profond du terme...
+[pause 4s]
+n'est pas quelqu'un qui commande.
+[pause 5s]
+C'est quelqu'un qui sert.
+[pause 8s]
+
+Un parent leader ne dit pas :
+[pause 4s]
+"Fais ce que je dis parce que je suis ton parent."
+[pause 6s]
+
+Il dit :
+[pause 4s]
+"Je suis là pour t'aider à devenir toi.
+[pause 4s]
+Pas moi. Toi."
+[pause 8s]
+
+Un parent serviteur... accepte que ses enfants lui apprennent quelque chose.
+[pause 5s]
+Chaque jour. Sans le dire.
+[pause 5s]
+Dans leur façon de voir le monde... dans leur franchise...
+[pause 4s]
+dans leurs questions qui gênent.
+[pause 4s]
+Dans leur capacité à pardonner plus vite que nous.
+[pause 8s]
+
+Nous ne sommes pas seulement leurs professeurs.
+[pause 5s]
+Ils sont aussi les nôtres.
+[pause 5s]
+Et accepter ça... c'est sortir du rôle du parent tyran.
+[pause 5s]
+Celui qui pense tout savoir.
+[pause 4s]
+Qui n'admet jamais avoir tort.
+[pause 4s]
+Qui confond autorité et rigidité.
+[pause 8s]
+
+Un parent imparfait qui reconnaît ses erreurs devant ses enfants...
+[pause 5s]
+leur enseigne une chose inestimable.
+[pause 5s]
+Que se tromper n'est pas une catastrophe.
+[pause 4s]
+Que l'on peut réparer.
+[pause 4s]
+Que la dignité ne repose pas sur l'infaillibilité.
+[pause 5s]
+Mais sur la façon dont on traverse l'erreur.
+[pause 10s]
+
+Concrètement...
+[pause 5s]
+qu'est-ce qu'un père doit réparer pour redevenir un repère ?
+[pause 8s]
+
+Pas son image.
+[pause 5s]
+Pas son autorité.
+[pause 5s]
+La sécurité de ses enfants.
+[pause 8s]
+
+Il doit reconnaître les faits sans les discuter.
+[pause 5s]
+Demander pardon sans ajouter un seul "mais".
+[pause 5s]
+Accepter que la confiance revienne au rythme de l'enfant, pas au sien.
+[pause 5s]
+Et chercher de l'aide pour que ses actes changent réellement.
+[pause 10s]
+
+Et du côté de la mère...
+[pause 5s]
+réparer ne veut pas dire porter tout le monde seule.
+[pause 5s]
+Cela veut dire protéger sans recruter l'enfant dans sa douleur.
+[pause 5s]
+Nommer les faits sans salir l'identité de l'autre parent dans le cœur de l'enfant.
+[pause 5s]
+Garder un cadre sûr... tout en laissant une porte exister pour la réparation, si les actes la rendent possible.
+[pause 10s]
+
+Voici les exercices.
+[pause 6s]
+
+Premier exercice. La lettre sans envoi.
+[pause 6s]
+
+Prenez une feuille. Ce soir ou demain.
+[pause 5s]
+Écrivez une lettre à l'autre parent.
+[pause 5s]
+Pas pour l'envoyer.
+[pause 5s]
+Jamais.
+[pause 8s]
+
+Dans cette lettre... dites ce que vous n'avez jamais pu dire vraiment.
+[pause 5s]
+La douleur. La fatigue. La déception.
+[pause 4s]
+Et aussi... ce que vous voulez pour vos enfants.
+[pause 4s]
+Ce que vous voulez qu'ils héritent de lui.
+[pause 4s]
+Ce que vous espérez qu'il devienne pour eux.
+[pause 8s]
+
+Finissez par une phrase.
+[pause 5s]
+Une seule.
+[pause 5s]
+"Je choisis de vouloir leur bien... à travers toi aussi."
+[pause 8s]
+
+Posez la lettre.
+[pause 5s]
+Respirez.
+[pause 5s]
+Cinq secondes. Cinq secondes. Cinq secondes.
+[pause 10s]
+
+Vous n'avez pas pardonné. Vous n'avez pas oublié.
+[pause 5s]
+Vous avez choisi une direction.
+[pause 5s]
+Et cette direction... libère quelque chose dans le corps.
+[pause 5s]
+Quelque chose que la colère gardait prisonnier.
+[pause 10s]
+
+Deuxième exercice. La question de l'héritage.
+[pause 6s]
+
+Ce soir... regardez vos enfants.
+[pause 5s]
+Vraiment. Sans rien faire d'autre.
+[pause 5s]
+Observez une qualité chez l'un d'eux.
+[pause 8s]
+
+Pas une note. Pas un comportement.
+[pause 4s]
+Une qualité de caractère.
+[pause 5s]
+La façon dont il rit. Sa manière de défendre les autres.
+[pause 4s]
+Sa persévérance. Sa curiosité. Son sens de l'humour.
+[pause 5s]
+Sa douceur avec le plus petit. Sa fierté tranquille.
+[pause 8s]
+
+Et demandez-vous doucement :
+[pause 5s]
+d'où vient ça ?
+[pause 8s]
+
+Parfois vous reconnaîtrez quelque chose de vous.
+[pause 5s]
+Parfois vous reconnaîtrez quelque chose de lui.
+[pause 5s]
+Parfois ce sera un mélange des deux.
+[pause 5s]
+Et parfois ce sera quelque chose qui n'appartient qu'à cet enfant-là.
+[pause 8s]
+
+Laissez monter ce que vous observez.
+[pause 5s]
+Sans analyser. Sans comparer.
+[pause 5s]
+Juste voir.
+[pause 5s]
+Et sourire, si possible.
+[pause 5s]
+Parce que ce que vous voyez...
+[pause 4s]
+c'est le résultat de tout.
+[pause 5s]
+De tout ce que vous avez donné.
+[pause 4s]
+De tout ce que vous traversez.
+[pause 5s]
+Vivant. Debout. Dans cet enfant.
+[pause 10s]
+
+Troisième exercice. La conversation essentielle.
+[pause 6s]
+
+Identifiez une décision concernant l'un de vos enfants...
+[pause 5s]
+qui n'a pas encore été prise ensemble.
+[pause 5s]
+Pas un detril. Quelque chose qui compte pour lui.
+[pause 5s]
+Une orientation. Une règle. Un cap.
+[pause 8s]
+
+Avant de contacter l'autre parent...
+[pause 4s]
+faites un cycle du cinq-cinq-cinq.
+[pause 6s]
+
+Cinq secondes d'inspiration.
+[pause 7s]
+Cinq secondes de rétention.
+[pause 7s]
+Cinq secondes d'expiration.
+[pause 8s]
+
+Puis commencez le message ou la conversation par une seule formule.
+[pause 6s]
+
+"Je t'écris pour nos enfants."
+[pause 8s]
+
+Pas pour vous. Pas pour avoir raison.
+[pause 5s]
+Pour eux.
+[pause 6s]
+
+Et maintenez cette intention tout au long de la conversation.
+[pause 5s]
+Dès que vous sentez que vous dérivez vers le passé...
+[pause 4s]
+vers la blessure...
+[pause 4s]
+vers le reproche...
+[pause 5s]
+respirez.
+[pause 5s]
+Revenez à cette phrase.
+[pause 5s]
+"Je t'écris pour nos enfants."
+[pause 10s]
+
+Vous ne changerez peut-être pas cet homme.
+[pause 5s]
+Vous ne pouvez pas.
+[pause 5s]
+Ce n'est pas votre rôle.
+[pause 5s]
+Mais vous pouvez choisir la qualité de la relation...
+[pause 4s]
+dans laquelle vos enfants vivent.
+[pause 8s]
+
+Et ça... c'est un acte de leadership.
+[pause 5s]
+Pas de faiblesse.
+[pause 5s]
+Pas de résignation.
+[pause 5s]
+De grandeur.
+[pause 10s]
+
+Installez-vous maintenant.
+[pause 4s]
+Dos allongé. Mains ouvertes. Épaules qui descendent.
+[pause 4s]
+Fermez les yeux si vous le souhaitez.
+[pause 6s]
+
+Pendant cette pratique...
+[pause 4s]
+visualisez vos enfants.
+[pause 5s]
+Dans dix ans. Dans vingt ans.
+[pause 5s]
+Adultes. Debout. Capables.
+[pause 5s]
+Portant le meilleur de vous deux.
+[pause 5s]
+Pas la blessure. Le meilleur.
+[pause 8s]
+
+Et laissez cette image vous soutenir...
+[pause 4s]
+pendant chaque souffle qui suit.
+[pause 8s]
+
+Nous commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 8s]
+
+Restez dans cette image un instant.
+[pause 5s]
+Ces enfants adultes. Portant le meilleur de vous deux.
+[pause 5s]
+Ce n'est pas un rêve.
+[pause 5s]
+C'est une direction.
+[pause 5s]
+Et vous la tracez... maintenant.
+[pause 5s]
+Par chaque choix. Par chaque souffle.
+[pause 5s]
+Par chaque fois que vous choisissez leur bien-être plutôt que votre douleur.
+[pause 10s]
+
+Rouvrez les yeux... doucement.
+[pause 5s]
+
+Il y a un proverbe africain qui dit :
+[pause 5s]
+"Il faut tout un village pour élever un enfant."
+[pause 8s]
+
+Vous n'êtes pas seule à élever ces enfants.
+[pause 5s]
+Même si certains soirs... ça ressemble à ça.
+[pause 8s]
+
+Vous avez autour de vous...
+[pause 4s]
+plus de ressources que vous ne le pensez.
+[pause 5s]
+Et vos enfants...
+[pause 4s]
+ont autour d'eux...
+[pause 4s]
+plus de forces que vous ne le voyez ce soir.
+[pause 8s]
+
+La preuve... c'est vous.
+[pause 5s]
+Ce que vous faites pour eux.
+[pause 5s]
+Ce que vous portez pour eux.
+[pause 5s]
+Ce que vous traversez pour eux.
+[pause 5s]
+Chaque jour.
+[pause 5s]
+Sans que personne ne le voie vraiment.
+[pause 5s]
+Mais eux... ils le sentent.
+[pause 8s]
+
+À très bientôt.
+[pause 6s]
+SCRIPT,
+
+        // ── MODULE 08 : AU-DELÀ DE CE QU'ON TRAVERSE (PROCHES) ────
+        '08-proches' => <<<'SCRIPT'
+Bienvenue dans ce huitième module.
+[pause 5s]
+
+Celui-ci... il est différent des autres.
+[pause 5s]
+Pas parce qu'il est plus difficile.
+[pause 4s]
+Parce qu'il demande quelque chose de rare.
+[pause 8s]
+
+Il demande de voir... au-delà de ce qu'on traverse.
+[pause 10s]
+
+Certaines familles portent des blessures profondes.
+[pause 5s]
+Pas des désaccords. Pas des tensions.
+[pause 5s]
+Des ruptures.
+[pause 5s]
+Des actes qui ont laissé des traces dans les corps.
+[pause 4s]
+Dans les regards d'enfants.
+[pause 4s]
+Dans la façon dont un adolescent ne parle plus à son père.
+[pause 4s]
+Dans le silence d'un enfant qui était si fier de lui.
+[pause 8s]
+
+Ces situations existent.
+[pause 5s]
+Elles sont réelles.
+[pause 4s]
+Et elles ne se guérissent pas d'un exercice de respiration.
+[pause 8s]
+
+Mais il y a une chose que j'ai observée.
+[pause 6s]
+Dans les familles qui s'en sortent...
+[pause 5s]
+dans celles qui reconstruisent quelque chose d'authentique après la brisure...
+[pause 6s]
+il y a toujours eu un premier choix.
+[pause 6s]
+Un seul.
+[pause 8s]
+
+Quelqu'un a décidé de voir au-delà.
+[pause 8s]
+
+Pas d'excuser. Pas d'oublier. Pas de minimiser.
+[pause 5s]
+Voir plus loin que la douleur du moment.
+[pause 5s]
+Et choisir une direction.
+[pause 10s]
+
+Ce module s'adresse à toutes celles et ceux qui portent une rupture familiale.
+[pause 5s]
+Quelle qu'en soit la forme.
+[pause 5s]
+Quelle qu'en soit l'origine.
+[pause 5s]
+Quelle que soit la classe sociale, la culture, la religion, l'histoire.
+[pause 5s]
+Parce que la question est universelle.
+[pause 5s]
+Et la réponse aussi.
+[pause 10s]
+
+Parce qu'entre un père et ses enfants...
+[pause 4s]
+filles comme garçons...
+[pause 4s]
+se joue quelque chose que beaucoup de générations ont laissé se casser.
+[pause 8s]
+
+Un garçon regarde son père pour comprendre une chose essentielle.
+[pause 5s]
+Comment être fort... sans écraser.
+[pause 8s]
+
+Une fille regarde son père pour comprendre une autre chose essentielle.
+[pause 5s]
+Comment un homme respecte... protège... écoute... sans faire peur.
+[pause 8s]
+
+Et du côté de la mère... il se joue quelque chose d'aussi décisif.
+[pause 5s]
+Un fils regarde sa mère pour apprendre si sa sensibilité sera accueillie... ou humiliée.
+[pause 8s]
+
+Une fille regarde sa mère pour apprendre si une femme peut exister entière...
+[pause 4s]
+sans se trahir pour être aimée.
+[pause 8s]
+
+Quand ce lien se déforme...
+[pause 4s]
+ce n'est pas seulement une relation qui souffre.
+[pause 5s]
+C'est une définition entière de l'homme, de l'autorité, de l'amour et du respect qui se brouille pour la génération suivante.
+[pause 10s]
+
+Parlons d'abord de ce que vivent les enfants.
+[pause 6s]
+
+Quand un enfant perd le respect et l'amour pour un parent...
+[pause 5s]
+ce n'est pas seulement la relation à ce parent qui est blessée.
+[pause 5s]
+C'est une partie de son identité.
+[pause 5s]
+Parce que ce parent... est une partie de qui il est.
+[pause 8s]
+
+Chez un fils...
+[pause 4s]
+la blessure se traduit souvent par une question silencieuse.
+[pause 5s]
+Est-ce que devenir un homme veut dire devenir dur, humiliant, imprévisible ?
+[pause 8s]
+
+Chez une fille...
+[pause 4s]
+la blessure prend parfois une autre forme.
+[pause 5s]
+Est-ce que l'amour d'un homme doit inquiéter ? Est-ce qu'on doit mériter sa douceur ?
+[pause 10s]
+
+La colère d'un enfant envers son père...
+[pause 4s]
+n'est jamais seulement contre cet homme-là.
+[pause 5s]
+C'est aussi une question plus profonde.
+[pause 6s]
+"Qu'est-ce que je fais de ce que cet homme représente en moi... et dans ma vie ?"
+[pause 10s]
+
+Ce n'est pas une question à répondre.
+[pause 5s]
+C'est une question à accompagner.
+[pause 5s]
+Doucement. Sur le temps long. Par votre présence.
+[pause 10s]
+
+Parlons du pardon.
+[pause 6s]
+
+Le pardon est peut-être le mot le plus mal compris de la langue française.
+[pause 5s]
+On croit qu'il signifie : c'est acceptable.
+[pause 5s]
+On croit qu'il signifie : je l'excuse.
+[pause 5s]
+On croit qu'il signifie : c'est comme si rien ne s'était passé.
+[pause 8s]
+
+Ce n'est rien de tout ça.
+[pause 8s]
+
+Le pardon... c'est poser le poids.
+[pause 6s]
+
+C'est décider que la blessure ne définira pas l'avenir.
+[pause 5s]
+Que la douleur restera dans le passé... là où elle a eu lieu.
+[pause 5s]
+Et que la vie... continuera. En avant.
+[pause 8s]
+
+Un enfant qui pardonne à un parent qui l'a blessé...
+[pause 5s]
+ne dit pas "c'était bien".
+[pause 5s]
+Il dit : "je choisis de ne pas porter ça pour toujours."
+[pause 5s]
+"Je mérite de vivre sans ce poids."
+[pause 8s]
+
+Et cette décision... elle ne se force pas.
+[pause 5s]
+Elle ne s'enseigne pas non plus.
+[pause 5s]
+Elle se prépare. Elle se nourrit. Elle mûrit.
+[pause 5s]
+Avec le temps. Avec l'espace. Avec l'exemple.
+[pause 10s]
+
+Et l'exemple... c'est vous.
+[pause 8s]
+
+Quand un enfant voit sa mère...
+[pause 4s]
+qui a elle-même été blessée...
+[pause 4s]
+choisir de ne pas nourrir la haine...
+[pause 5s]
+choisir de vouloir que leur père grandisse...
+[pause 5s]
+choisir l'avenir de ses enfants au-dessus de sa propre douleur...
+[pause 6s]
+il apprend quelque chose qu'aucune école ne peut enseigner.
+[pause 5s]
+Que l'amour est plus fort que l'humiliation.
+[pause 5s]
+Que la dignité survit à la trahison.
+[pause 5s]
+Que choisir la paix n'est pas une faiblesse.
+[pause 5s]
+C'est la forme de courage la plus rare qui soit.
+[pause 10s]
+
+Il y a une vérité que certaines expériences de vie nous enseignent brutalement.
+[pause 5s]
+On n'est pas éternel.
+[pause 8s]
+
+Pas une menace. Une réalité.
+[pause 5s]
+Et cette réalité... change ce qui compte vraiment.
+[pause 8s]
+
+Si demain vous n'étiez plus là...
+[pause 5s]
+qui resterait à vos enfants ?
+[pause 8s]
+
+Ce n'est pas une question pour faire peur.
+[pause 5s]
+C'est la question qui libère.
+[pause 5s]
+Celle qui dit : la relation entre mes enfants et leur père...
+[pause 5s]
+est plus grande que ce que j'ai traversé avec lui.
+[pause 5s]
+Elle leur appartient. Elle appartient à leur futur.
+[pause 5s]
+Et je peux contribuer à ce qu'elle existe.
+[pause 10s]
+
+Pas en effaçant ce qui s'est passé.
+[pause 5s]
+En créant les conditions pour que quelque chose de nouveau soit possible.
+[pause 5s]
+Un pont. Fragile au début. Mais réel.
+[pause 10s]
+
+Maintenant... parlons de l'autre parent.
+[pause 6s]
+
+Un adulte qui blesse ses enfants...
+[pause 5s]
+n'est pas un monstre.
+[pause 5s]
+Il est quelqu'un qui n'a pas encore appris à traverser sa propre douleur autrement.
+[pause 5s]
+Quelqu'un qui a été blessé lui-même et n'a jamais eu les outils pour ne pas transmettre.
+[pause 8s]
+
+Cela ne justifie rien.
+[pause 5s]
+Absolument rien.
+[pause 5s]
+Il y a des actes inacceptables. Et ils le restent.
+[pause 8s]
+
+Et reconstruire un lien...
+[pause 4s]
+ne veut jamais dire enlever les protections trop tôt.
+[pause 5s]
+La sécurité d'abord.
+[pause 5s]
+Toujours.
+[pause 5s]
+L'amour sans cadre ne répare pas.
+[pause 4s]
+Il confond.
+[pause 8s]
+
+Mais comprendre le mécanisme...
+[pause 5s]
+c'est sortir du rôle de la victime.
+[pause 5s]
+Ce n'est pas lui accorder l'absolution.
+[pause 5s]
+C'est reprendre le pouvoir sur sa propre lecture de l'histoire.
+[pause 8s]
+
+Un parent qui a blessé...
+[pause 4s]
+peut changer.
+[pause 5s]
+Pas automatiquement. Pas facilement.
+[pause 4s]
+Mais la transformation est possible.
+[pause 5s]
+Elle arrive quand quelqu'un lui tend un miroir.
+[pause 5s]
+Quand quelqu'un lui dit : tu peux être différent pour eux.
+[pause 5s]
+Pas pour toi. Pour eux.
+[pause 8s]
+
+Prier pour cette transformation...
+[pause 5s]
+ce n'est pas de la faiblesse.
+[pause 5s]
+C'est un acte d'amour radical.
+[pause 5s]
+Pour vos enfants. Pour leur père. Et pour vous-même.
+[pause 5s]
+Parce que porter la haine coûte plus cher à celui qui la porte.
+[pause 5s]
+Toujours.
+[pause 10s]
+
+Voici les cinq exercices.
+[pause 6s]
+Ils ne servent pas à vous détendre.
+[pause 5s]
+Ils servent à réparer ce qui peut l'être.
+[pause 5s]
+Concrètement. Dans la vraie vie. Avec des gestes vérifiables.
+[pause 10s]
+
+Premier exercice. Le récit exact.
+[pause 6s]
+
+Pas votre version.
+[pause 5s]
+Pas celle du père.
+[pause 5s]
+Pas celle de la famille.
+[pause 5s]
+Le récit exact de l'enfant.
+[pause 8s]
+
+Choisissez un moment calme.
+[pause 5s]
+Pas dans la voiture. Pas entre deux choses.
+[pause 5s]
+Asseyez-vous face à votre enfant blessé.
+[pause 5s]
+Une feuille. Un stylo. Rien d'autre.
+[pause 8s]
+
+Et dites cette phrase.
+[pause 5s]
+"Je ne vais pas corriger. Je ne vais pas défendre. Je ne vais pas expliquer. Je veux juste comprendre ce que toi tu as vécu."
+[pause 10s]
+
+Ensuite... vous posez trois questions.
+[pause 6s]
+
+Qu'est-ce qui s'est passé... exactement ?
+[pause 6s]
+
+Qu'est-ce que ton corps a compris ce jour-là ?
+[pause 8s]
+
+Et de quoi as-tu besoin maintenant... pour te sentir respecté ?
+[pause 10s]
+
+Vous écrivez ses mots.
+[pause 5s]
+Pas les vôtres.
+[pause 5s]
+S'il dit : "J'ai cru que je ne valais rien."
+[pause 5s]
+Vous écrivez exactement ça.
+[pause 8s]
+
+À la fin... vous relisez lentement.
+[pause 5s]
+Et vous demandez :
+[pause 5s]
+"Est-ce que j'ai bien compris ?"
+[pause 8s]
+
+Cet exercice transforme parce qu'il rend à l'enfant quelque chose qu'il a perdu ce jour-là.
+[pause 5s]
+Sa version des faits.
+[pause 5s]
+Sa dignité.
+[pause 5s]
+Sa place dans l'histoire.
+[pause 10s]
+
+Deuxième exercice. La carte des feux.
+[pause 6s]
+
+On ne force pas un lien.
+[pause 5s]
+On le sécurise.
+[pause 8s]
+
+Prenez une feuille.
+[pause 4s]
+Tracez trois colonnes.
+[pause 5s]
+Vert. Orange. Rouge.
+[pause 8s]
+
+Dans la colonne verte...
+[pause 4s]
+votre enfant écrit ce qui est possible pour lui maintenant.
+[pause 5s]
+Un message. Un appel court. Un bonjour. Rien d'autre.
+[pause 8s]
+
+Dans la colonne orange...
+[pause 4s]
+il écrit ce qui ne serait possible qu'avec conditions.
+[pause 5s]
+En présence d'un adulte. Dans un lieu public. Pour dix minutes seulement.
+[pause 8s]
+
+Dans la colonne rouge...
+[pause 4s]
+il écrit ce qui est impossible pour l'instant.
+[pause 5s]
+Être seul avec lui. Dormir chez lui. Parler d'un certain sujet.
+[pause 8s]
+
+Et vous respectez cette carte.
+[pause 5s]
+Entièrement.
+[pause 5s]
+Parce que la réparation commence toujours par là.
+[pause 5s]
+Rendre à l'enfant le pouvoir de dire oui. Non. Pas maintenant.
+[pause 10s]
+
+Troisième exercice. Les actes qui réparent.
+[pause 6s]
+
+Prenez une autre feuille.
+[pause 4s]
+Deux colonnes cette fois.
+[pause 5s]
+À gauche : ce qui casse la confiance.
+[pause 5s]
+À droite : ce qui la reconstruit.
+[pause 8s]
+
+À gauche vous notez les faits.
+[pause 5s]
+Crier. Menacer. Minimiser. Justifier. Inverser la faute. Disparaître.
+[pause 8s]
+
+À droite... uniquement des actes visibles.
+[pause 5s]
+Pas des promesses. Pas "je vais changer".
+[pause 5s]
+Des actes.
+[pause 6s]
+
+Du côté du père par exemple.
+[pause 5s]
+Demander pardon sans se justifier.
+[pause 5s]
+Reconnaître les faits sans les discuter.
+[pause 5s]
+Chercher de l'aide sérieusement.
+[pause 5s]
+Respecter les limites posées par l'enfant.
+[pause 5s]
+Revenir avec constance. Pas avec intensité.
+[pause 8s]
+
+Du côté de la mère par exemple.
+[pause 5s]
+Ne pas faire de l'enfant un messager.
+[pause 5s]
+Ne pas lui demander de choisir son camp.
+[pause 5s]
+Dire la vérité sans empoisonner son image intérieure du père.
+[pause 5s]
+Protéger sans confisquer sa liberté d'aimer.
+[pause 5s]
+Tenir le cadre... sans nourrir la haine.
+[pause 8s]
+
+Ce tableau devient votre boussole.
+[pause 5s]
+Parce qu'un lien ne se reconstruit pas avec l'émotion du jour.
+[pause 5s]
+Il se reconstruit avec une répétition d'actes sûrs.
+[pause 10s]
+
+Quatrième exercice. Les sept soirs de restitution.
+[pause 6s]
+
+Pendant sept soirs de suite...
+[pause 5s]
+à la même heure si possible...
+[pause 4s]
+vous dites à chacun de vos enfants une phrase qui lui rend ce que le conflit lui a volé.
+[pause 10s]
+
+Pas un grand discours.
+[pause 5s]
+Une phrase.
+[pause 6s]
+
+À un garçon peut-être :
+[pause 5s]
+"Tu as le droit d'avoir un point de vue. Ta voix n'est pas une provocation."
+[pause 8s]
+
+Ou :
+[pause 5s]
+"Ta force n'a pas besoin de violence pour exister."
+[pause 8s]
+
+À une fille peut-être :
+[pause 5s]
+"Tu n'as pas à mériter le respect. Il te revient déjà."
+[pause 8s]
+
+Ou :
+[pause 5s]
+"Un homme qui t'aime n'a pas à te faire peur pour exister."
+[pause 10s]
+
+À un plus jeune enfant peut-être :
+[pause 5s]
+"Tu as le droit d'aimer ton père et d'être troublé en même temps."
+[pause 8s]
+
+Ou :
+[pause 5s]
+"Tu n'as pas à choisir entre aimer et te protéger."
+[pause 10s]
+
+Sept soirs.
+[pause 5s]
+Sept phrases.
+[pause 5s]
+Toujours courtes. Toujours vraies.
+[pause 5s]
+Parce que ce qui a été cassé par répétition...
+[pause 4s]
+se répare aussi par répétition.
+[pause 10s]
+
+Cinquième exercice. La conversation adulte.
+[pause 6s]
+
+Seulement si le cadre légal est posé.
+[pause 5s]
+Seulement si la sécurité est maintenue.
+[pause 5s]
+Sinon... on ne le fait pas.
+[pause 8s]
+
+Vous préparez une conversation ou un message à l'autre parent.
+[pause 5s]
+Pas pour vider votre cœur.
+[pause 5s]
+Pas pour régler le passé.
+[pause 5s]
+Pour une seule chose.
+[pause 5s]
+Le bien-être concret des enfants.
+[pause 8s]
+
+La règle est simple.
+[pause 5s]
+Un sujet. Un besoin. Une limite. Une ouverture.
+[pause 10s]
+
+Par exemple.
+[pause 5s]
+Sujet : la relation avec l'aîné.
+[pause 5s]
+Besoin : il a besoin de respect et de sécurité.
+[pause 5s]
+Limite : aucun échange sans calme et sans pression.
+[pause 5s]
+Ouverture : s'il y a reconnaissance réelle et aide engagée, un chemin pourra exister.
+[pause 10s]
+
+Puis vous vous arrêtez là.
+[pause 5s]
+Vous n'expliquez pas tout.
+[pause 5s]
+Vous ne plaidez pas votre dossier.
+[pause 5s]
+Vous ne mendiez pas le changement.
+[pause 8s]
+
+Parce qu'aller en profondeur...
+[pause 4s]
+ce n'est pas parler plus longtemps.
+[pause 5s]
+C'est dire vrai.
+[pause 5s]
+Clairement.
+[pause 5s]
+Et laisser ensuite chacun répondre par ses actes.
+[pause 10s]
+
+
+
+Je veux vous dire quelque chose avant de terminer.
+[pause 6s]
+
+Vous n'êtes pas seule dans cette situation.
+[pause 5s]
+Elles sont des milliers. Des millions, peut-être.
+[pause 5s]
+Des mères qui font leur mieux.
+[pause 4s]
+Des pères qui luttent ou se sont perdus.
+[pause 4s]
+Des filles qui grandissent avec une image troublée du masculin.
+[pause 4s]
+Des garçons qui essaient de devenir des hommes sans modèle sûr.
+[pause 4s]
+Des enfants qui portent ce qu'ils n'auraient pas dû porter.
+[pause 8s]
+
+Et dans chacune de ces familles...
+[pause 4s]
+il y a un moment possible.
+[pause 5s]
+Un choix possible.
+[pause 5s]
+Une direction possible.
+[pause 8s]
+
+Ce moment... c'est maintenant.
+[pause 5s]
+Ce choix... c'est le vôtre.
+[pause 5s]
+Cette direction... vous la connaissez déjà.
+[pause 8s]
+
+Installons-nous.
+[pause 4s]
+Dos allongé. Mains ouvertes sur les genoux.
+[pause 4s]
+Fermez les yeux.
+[pause 5s]
+
+Pendant cette pratique...
+[pause 4s]
+visualisez votre famille.
+[pause 5s]
+Pas comme elle est. Pas comme elle était.
+[pause 4s]
+Comme vous voulez qu'elle soit.
+[pause 6s]
+
+Vos enfants libres.
+[pause 4s]
+Vos enfants entiers.
+[pause 4s]
+Vos enfants portant le meilleur de vous deux.
+[pause 5s]
+Et vous... au centre de tout ça.
+[pause 4s]
+Debout. Nourrie. Choisie.
+[pause 5s]
+Ayant traversé sans vous perdre.
+[pause 8s]
+
+Commençons.
+
+[BREATHING_CYCLES]
+
+Bien.
+[pause 8s]
+
+Demeurez dans cette image.
+[pause 5s]
+Elle est vraie.
+[pause 5s]
+Pas encore visible peut-être.
+[pause 4s]
+Mais vraie.
+[pause 8s]
+
+Il y a un proverbe qui dit :
+[pause 5s]
+"Le bois qui résiste au feu... devient le charbon qui réchauffe."
+[pause 8s]
+
+Ce que vous traversez ne vous consume pas.
+[pause 5s]
+Ça vous forge.
+[pause 5s]
+Et ce que vous transmettez à vos enfants à travers ça...
+[pause 5s]
+c'est la preuve vivante que l'amour peut survivre à tout.
+[pause 8s]
+
+Rouvrez les yeux... doucement.
+[pause 5s]
+Vous portez quelque chose de rare.
+[pause 5s]
+Et vos enfants verront un jour... ce que vous avez choisi pour eux.
+[pause 6s]
+
+À très bientôt.
 [pause 6s]
 SCRIPT,
     ];
@@ -6343,6 +8282,128 @@ SCRIPT,
     ];
 
     // ══════════════════════════════════════════════════════════
+    //  COMPLÉMENTS CIBLÉS — pour éviter de régénérer un module entier
+    // ══════════════════════════════════════════════════════════
+
+    private array $addendumsFr = [
+        '06-proches' => <<<'SCRIPT'
+Complément du module.
+[pause 5s]
+
+Dans une maison, une mère ne devrait pas avoir à tout porter pour que la paix tienne.
+[pause 5s]
+Et un père ne devrait pas avoir à inspirer la peur pour être respecté.
+[pause 8s]
+
+Un père repère n'écrase pas.
+[pause 5s]
+Il sécurise.
+[pause 5s]
+Il écoute.
+[pause 5s]
+Il tient parole.
+[pause 5s]
+Et quand il blesse... il répare.
+[pause 8s]
+
+Une mère ancrée ne se dissout pas pour maintenir l'équilibre.
+[pause 5s]
+Elle protège sans s'effacer.
+[pause 5s]
+Elle demande du relais.
+[pause 5s]
+Elle refuse de faire de l'enfant son partenaire émotionnel.
+[pause 8s]
+
+Quand chacun retrouve sa juste place...
+[pause 5s]
+l'enfant respire autrement.
+[pause 5s]
+Il n'a plus besoin de devenir adulte trop tôt.
+[pause 8s]
+SCRIPT,
+
+        '07-proches' => <<<'SCRIPT'
+Complément du module.
+[pause 5s]
+
+Même séparés, deux parents peuvent encore offrir une chose immense à leurs enfants.
+[pause 5s]
+Un terrain qui ne les déchire pas intérieurement.
+[pause 8s]
+
+Ce qu'un père doit réparer pour redevenir un repère...
+[pause 5s]
+ce n'est pas son image.
+[pause 5s]
+C'est la sécurité.
+[pause 5s]
+La confiance.
+[pause 5s]
+La parole donnée.
+[pause 8s]
+
+Ce qu'une mère doit tenir...
+[pause 5s]
+ce n'est pas la perfection.
+[pause 5s]
+C'est le cadre.
+[pause 5s]
+Une vérité claire.
+[pause 5s]
+Et un cœur qui ne recrute pas l'enfant dans la guerre des adultes.
+[pause 8s]
+
+Le vrai terrain d'entente commence là.
+[pause 5s]
+Quand les parents cessent de vouloir gagner l'un contre l'autre...
+[pause 5s]
+et recommencent à servir l'avenir de leurs enfants.
+[pause 8s]
+SCRIPT,
+
+        '08-proches' => <<<'SCRIPT'
+Complément du module.
+[pause 5s]
+
+Un garçon regarde son père pour comprendre comment être fort sans devenir dangereux.
+[pause 8s]
+
+Une fille regarde son père pour comprendre comment un homme respecte sans dominer.
+[pause 8s]
+
+Un garçon regarde sa mère pour sentir si sa sensibilité a une place dans ce monde.
+[pause 8s]
+
+Une fille regarde sa mère pour comprendre si une femme peut rester entière sans se trahir pour être aimée.
+[pause 10s]
+
+Quand ces liens sont blessés...
+[pause 5s]
+ce n'est pas seulement une histoire familiale.
+[pause 5s]
+C'est une génération entière qui peut apprendre de travers l'amour, l'autorité et la tendresse.
+[pause 10s]
+
+Mais quand un père répare...
+[pause 5s]
+quand une mère protège sans empoisonner...
+[pause 5s]
+quand les enfants retrouvent un espace sûr pour aimer sans se perdre...
+[pause 5s]
+alors la génération suivante reçoit autre chose.
+[pause 8s]
+
+Pas la répétition de la blessure.
+[pause 5s]
+La possibilité d'un lien juste.
+[pause 8s]
+SCRIPT,
+    ];
+
+    private array $addendumsEn = [];
+
+    // ══════════════════════════════════════════════════════════
     //  HANDLE
     // ══════════════════════════════════════════════════════════
 
@@ -6357,9 +8418,16 @@ SCRIPT,
         $moduleFilter = $this->option('module') ?? 'all';
         $langFilter   = $this->option('lang')   ?? 'all';
         $force        = (bool) $this->option('force');
+        $mode         = strtolower((string) ($this->option('mode') ?? 'full'));
 
+        if (!in_array($mode, ['full', 'addendum', 'merge'], true)) {
+            $this->error("Mode invalide : {$mode}. Utilisez full, addendum ou merge.");
+            return self::FAILURE;
+        }
+
+        $allKnownModules = array_keys(array_merge($this->scriptsFr, $this->scriptsEn, $this->addendumsFr, $this->addendumsEn));
         $modules = ($moduleFilter === 'all')
-            ? array_keys(array_merge($this->scriptsFr, $this->scriptsEn))
+            ? $allKnownModules
             : [$moduleFilter];
         $modules = array_unique($modules);
 
@@ -6371,31 +8439,71 @@ SCRIPT,
 
         foreach ($modules as $mod) {
             foreach ($langs as $lang) {
-                $script = ($lang === 'fr')
-                    ? ($this->scriptsFr[$mod] ?? null)
-                    : ($this->scriptsEn[$mod] ?? null);
+                $script = $this->getScriptForMode($mod, $lang, $mode);
 
                 if (!$script) {
-                    $this->warn("  ⚠  Pas de script [{$lang}] module {$mod} — ignoré.");
+                    $this->warn("  ⚠  Pas de script [{$lang}] module {$mod} pour le mode {$mode} — ignoré.");
                     continue;
                 }
 
-                $audioPath = "formation/audio/mps-{$mod}-{$lang}.mp3";
+                $audioPath     = "formation/audio/mps-{$mod}-{$lang}.mp3";
+                $addendumPath  = "formation/audio/mps-{$mod}-{$lang}-addendum.mp3";
+                $mergeStamp    = "formation/audio/.merge-stamps/mps-{$mod}-{$lang}.txt";
 
-                if (!$force && Storage::disk('public')->exists($audioPath)) {
-                    $this->line("  ⏭  [{$lang}] mps-{$mod} — déjà présent, utilisez --force pour régénérer.");
+                if ($mode === 'full') {
+                    if (!$force && Storage::disk('public')->exists($audioPath)) {
+                        $this->line("  ⏭  [{$lang}] mps-{$mod} — déjà présent, utilisez --force pour régénérer.");
+                        continue;
+                    }
+
+                    $this->line("  🔄  [{$lang}] mps-{$mod} — génération complète...");
+
+                    try {
+                        $mp3 = $this->buildFromScript($script, $elevenLabs, $lang);
+                        Storage::disk('public')->put($audioPath, $mp3);
+                        $this->info("  ✅  [{$lang}] mps-{$mod} → {$audioPath}");
+                    } catch (\Exception $e) {
+                        $this->error("  ❌  [{$lang}] mps-{$mod} : " . $e->getMessage());
+                        return self::FAILURE;
+                    }
+
                     continue;
                 }
 
-                $this->line("  🔄  [{$lang}] mps-{$mod} — génération en cours...");
+                if ($mode === 'merge' && !$force && Storage::disk('public')->exists($mergeStamp)) {
+                    $this->line("  ⏭  [{$lang}] mps-{$mod} — complément déjà fusionné.");
+                    continue;
+                }
 
-                try {
-                    $mp3 = $this->buildFromScript($script, $elevenLabs, $lang);
-                    Storage::disk('public')->put($audioPath, $mp3);
-                    $this->info("  ✅  [{$lang}] mps-{$mod} → {$audioPath}");
-                } catch (\Exception $e) {
-                    $this->error("  ❌  [{$lang}] mps-{$mod} : " . $e->getMessage());
-                    return self::FAILURE;
+                if ($force || !Storage::disk('public')->exists($addendumPath)) {
+                    $this->line("  🔄  [{$lang}] mps-{$mod} — génération du complément...");
+
+                    try {
+                        $mp3 = $this->buildFromScript($script, $elevenLabs, $lang);
+                        Storage::disk('public')->put($addendumPath, $mp3);
+                        $this->info("  ✅  [{$lang}] complément mps-{$mod} → {$addendumPath}");
+                    } catch (\Exception $e) {
+                        $this->error("  ❌  [{$lang}] complément mps-{$mod} : " . $e->getMessage());
+                        return self::FAILURE;
+                    }
+                } else {
+                    $this->line("  ⏭  [{$lang}] complément mps-{$mod} — déjà présent.");
+                }
+
+                if ($mode === 'merge') {
+                    if (!Storage::disk('public')->exists($audioPath)) {
+                        $this->warn("  ⚠  Impossible de fusionner : audio de base absent pour mps-{$mod}-{$lang}.");
+                        continue;
+                    }
+
+                    try {
+                        $this->concatStorageAudio([$audioPath, $addendumPath], $audioPath);
+                        Storage::disk('public')->put($mergeStamp, now()->toDateTimeString());
+                        $this->info("  ✅  [{$lang}] complément fusionné dans {$audioPath}");
+                    } catch (\Exception $e) {
+                        $this->error("  ❌  [{$lang}] fusion mps-{$mod} : " . $e->getMessage());
+                        return self::FAILURE;
+                    }
                 }
             }
         }
@@ -6409,6 +8517,19 @@ SCRIPT,
     // ══════════════════════════════════════════════════════════
     //  Méthodes internes (même logique que GenerateFormationAudio)
     // ══════════════════════════════════════════════════════════
+
+    private function getScriptForMode(string $mod, string $lang, string $mode): ?string
+    {
+        if ($mode === 'addendum' || $mode === 'merge') {
+            return $lang === 'fr'
+                ? ($this->addendumsFr[$mod] ?? null)
+                : ($this->addendumsEn[$mod] ?? null);
+        }
+
+        return $lang === 'fr'
+            ? ($this->scriptsFr[$mod] ?? null)
+            : ($this->scriptsEn[$mod] ?? null);
+    }
 
     private function buildFromScript(string $script, ElevenLabsService $elevenLabs, string $lang): string
     {
@@ -6564,6 +8685,40 @@ SCRIPT,
         }
 
         return $parts;
+    }
+
+    private function concatStorageAudio(array $storagePaths, string $destinationPath): void
+    {
+        $tmp = sys_get_temp_dir();
+        $id  = uniqid('mps_merge_');
+        $tmpFiles = [];
+
+        foreach ($storagePaths as $index => $path) {
+            if (!Storage::disk('public')->exists($path)) {
+                throw new \Exception("Fichier audio introuvable pour concaténation : {$path}");
+            }
+
+            $tmpFile = "{$tmp}/{$id}_{$index}.mp3";
+            file_put_contents($tmpFile, Storage::disk('public')->get($path));
+            $tmpFiles[] = $tmpFile;
+        }
+
+        $finalTmp = "{$tmp}/{$id}_final.mp3";
+
+        try {
+            $this->ffmpegConcat($tmpFiles, $finalTmp, $tmp, $id);
+
+            if (!file_exists($finalTmp) || filesize($finalTmp) < 1000) {
+                throw new \Exception('Fusion ffmpeg invalide ou fichier vide.');
+            }
+
+            Storage::disk('public')->put($destinationPath, file_get_contents($finalTmp));
+        } finally {
+            foreach ($tmpFiles as $file) {
+                if (file_exists($file)) @unlink($file);
+            }
+            if (file_exists($finalTmp)) @unlink($finalTmp);
+        }
     }
 
     private function ffmpegConcat(array $files, string $outFile, string $tmp, string $id): void

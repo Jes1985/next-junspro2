@@ -79,4 +79,33 @@ class FormationEnrollment extends Resource
     {
         return [];
     }
+
+    /**
+     * Interdire la création manuelle d'inscriptions depuis Nova.
+     * Les enrollments ne doivent être créés QUE par le webhook Stripe après paiement réel.
+     */
+    public static function authorizedToCreate(NovaRequest $request): bool
+    {
+        return false;
+    }
+
+    /**
+     * Empêcher la suppression d'une inscription depuis Nova
+     * (risque de désynchro avec Stripe).
+     */
+    public function authorizedToDelete(NovaRequest $request): bool
+    {
+        return false;
+    }
+
+    /**
+     * Rendre le statut et le montant payé non modifiables depuis Nova
+     * pour éviter qu'un admin active manuellement une inscription à 0 €.
+     */
+    public function authorizedToUpdate(NovaRequest $request): bool
+    {
+        // Permettre uniquement la modification du code attestation (support)
+        // mais PAS du statut ni du montant → edit est désactivé globalement
+        return false;
+    }
 }

@@ -29,7 +29,7 @@ class PayPalController extends Controller
   public function __construct()
   {
     $data = OnlineGateway::query()->whereKeyword('paypal')->first();
-    $paypalData = json_decode($data->information, true);
+    $paypalData = is_array($data->information) ? $data->information : json_decode($data->information, true);
 
     $paypal_conf = Config::get('paypal');
     $paypal_conf['client_id'] = $paypalData['client_id'];

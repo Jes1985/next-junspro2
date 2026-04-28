@@ -21,9 +21,7 @@ class AuthorizeController extends Controller
     public function __construct()
     {
         $data = OnlineGateway::query()->whereKeyword('authorize.net')->first();
-        $authorizeNetData = is_array($data->information)
-            ? $data->information
-            : json_decode($data->information, true);
+        $authorizeNetData = is_array($data->information) ? $data->information : json_decode($data->information, true);
         $this->gateway = Omnipay::create('AuthorizeNetApi_Api');
         $this->gateway->setAuthName($authorizeNetData['api_login_id']);
         $this->gateway->setTransactionKey($authorizeNetData['transaction_key']);

@@ -684,6 +684,28 @@
   font-size:.9rem; font-weight:600; cursor:pointer; transition:all .2s; font-family:inherit;
 }
 .ps-act__validate:hover { border-color:rgba(34,197,94,.7); background:rgba(34,197,94,.15); }
+
+/* ── Parole fondatrice ── */
+.pf-block {
+  max-width:760px; margin:1.5rem auto 2.2rem; padding:1.6rem 2rem 1.4rem;
+  background:linear-gradient(135deg,rgba(201,168,76,.07) 0%,rgba(201,168,76,.03) 100%);
+  border:1px solid rgba(201,168,76,.25); border-left:3px solid #c9a84c;
+  border-radius:0 14px 14px 0;
+}
+.pf-block__header { display:flex; align-items:center; gap:.5rem; margin-bottom:.9rem; }
+.pf-block__icon { color:#c9a84c; font-size:.95rem; }
+.pf-block__label { font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#c9a84c; }
+.pf-block__verse { font-size:1rem; font-style:italic; line-height:1.75; color:#e8e0d0; margin:0 0 .5rem; padding:0; border:none; quotes:none; }
+.pf-block__ref { font-size:.82rem; font-weight:600; letter-spacing:.06em; color:#c9a84c; margin:0 0 .9rem; }
+.pf-block__insight { font-size:.88rem; line-height:1.7; color:rgba(232,224,208,.6); margin:0 0 .45rem; border-top:1px solid rgba(201,168,76,.12); padding-top:.85rem; }
+.pf-block__insight-en { font-size:.82rem; line-height:1.65; color:rgba(232,224,208,.35); margin:0; font-style:italic; }
+.pf-block__verse-en { font-size:.93rem; font-style:italic; line-height:1.7; color:rgba(232,224,208,.45); margin:0 0 .55rem; padding:0; border:none; quotes:none; }
+/* Bloc de clôture */
+.pf-closing { margin:2.5rem auto 1rem; max-width:760px; padding:1.6rem 2rem; border:1px solid rgba(201,168,76,.15); border-radius:14px; text-align:center; }
+.pf-closing__symbol { display:block; color:#c9a84c; font-size:1rem; letter-spacing:.3em; margin-bottom:1rem; opacity:.6; }
+.pf-closing__verse { font-size:1rem; font-style:italic; line-height:1.75; color:rgba(232,224,208,.75); margin:0 0 .3rem; padding:0; border:none; quotes:none; }
+.pf-closing__verse-en { font-size:.9rem; font-style:italic; line-height:1.7; color:rgba(232,224,208,.4); margin:0 0 .7rem; padding:0; border:none; quotes:none; }
+.pf-closing__ref { font-size:.78rem; font-weight:600; letter-spacing:.1em; color:rgba(201,168,76,.6); margin:0; }
 </style>
 @endsection
 
@@ -763,6 +785,17 @@
     <div class="ps-module-heading__title">Le Principe Fondateur — Ce qui ne change jamais</div>
   </div>
 </div>
+
+{{-- Parole fondatrice — Module 01 --}}
+<div class="pf-block" id="pf-mps-01">
+  <div class="pf-block__header"><span class="pf-block__icon">✦</span><span class="pf-block__label">Parole fondatrice</span></div>
+  <blockquote class="pf-block__verse">« L'Éternel Dieu forma l'homme de la poussière de la terre, il souffla dans ses narines un souffle de vie et l'homme devint un être vivant. »</blockquote>
+  <blockquote class="pf-block__verse-en">“The Lord God formed a man from the dust of the ground and breathed into his nostrils the breath of life, and the man became a living being.”</blockquote>
+  <p class="pf-block__ref">— Genèse 2:7 · Genesis 2:7</p>
+  <p class="pf-block__insight">Ton souffle n'est pas un simple mécanisme vital — il est la trace originelle du divin en toi. Le 5-5-5 n'est pas une technique ; c'est un retour à la source.</p>
+  <p class="pf-block__insight-en">Your breath is not merely a vital mechanism — it is the original trace of the divine in you. The 5-5-5 is not a technique; it is a return to the source.</p>
+</div>
+
 <div class="ps-audio-block">
   <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
     <div style="display:flex;gap:8px;margin-bottom:10px;">
@@ -981,6 +1014,15 @@
 </div>
 
 {{-- ══════ MODULE 02 ══════ --}}
+
+{{-- Parole fondatrice — Closing Module 01 --}}
+<div class="pf-closing">
+  <span class="pf-closing__symbol">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <blockquote class="pf-closing__verse">« L'Éternel Dieu forma l'homme de la poussière de la terre, il souffla dans ses narines un souffle de vie et l'homme devint un être vivant. »</blockquote>
+  <blockquote class="pf-closing__verse-en">“The Lord God formed a man from the dust of the ground and breathed into his nostrils the breath of life, and the man became a living being.”</blockquote>
+  <p class="pf-closing__ref">— Genèse 2:7 · Genesis 2:7</p>
+</div>
+
 <div class="ps-module-heading" style="margin-top:5rem;">
   <div class="ps-module-heading__num">02</div>
   <div class="ps-module-heading__body">
@@ -988,6 +1030,17 @@
     <div class="ps-module-heading__title">Les 7 Familles — Trouvez votre famille, reconnaissez-vous</div>
   </div>
 </div>
+
+{{-- Parole fondatrice — Module 02 --}}
+<div class="pf-block" id="pf-mps-02">
+  <div class="pf-block__header"><span class="pf-block__icon">✦</span><span class="pf-block__label">Parole fondatrice</span></div>
+  <blockquote class="pf-block__verse">« Le corps est un, et il a plusieurs membres... tous les membres du corps, malgré leur nombre, ne forment qu'un seul corps. »</blockquote>
+  <blockquote class="pf-block__verse-en">“The body is a unit, though it is made up of many parts; and though all its parts are many, they form one body.”</blockquote>
+  <p class="pf-block__ref">— 1 Corinthiens 12:12 · 1 Corinthians 12:12</p>
+  <p class="pf-block__insight">Il existe 7 façons d'habiter le souffle — 7 familles, pas 7 hiérarchies. Trouver la sienne, c'est cesser de se comparer pour commencer à s'incarner.</p>
+  <p class="pf-block__insight-en">There are 7 ways to inhabit breath — 7 families, not 7 hierarchies. Finding yours means stopping comparison to start embodying.</p>
+</div>
+
 <div class="ps-audio-block">
   <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
     <div style="display:flex;gap:8px;margin-bottom:10px;">
@@ -1416,6 +1469,15 @@
 </div>
 
 {{-- ══════ MODULE 03 ══════ --}}
+
+{{-- Parole fondatrice — Closing Module 02 --}}
+<div class="pf-closing">
+  <span class="pf-closing__symbol">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <blockquote class="pf-closing__verse">« Le corps est un, et il a plusieurs membres... tous les membres du corps, malgré leur nombre, ne forment qu'un seul corps. »</blockquote>
+  <blockquote class="pf-closing__verse-en">“The body is a unit, though it is made up of many parts; and though all its parts are many, they form one body.”</blockquote>
+  <p class="pf-closing__ref">— 1 Corinthiens 12:12 · 1 Corinthians 12:12</p>
+</div>
+
 <div class="ps-module-heading" style="margin-top:5rem;">
   <div class="ps-module-heading__num">03</div>
   <div class="ps-module-heading__body">
@@ -1423,6 +1485,17 @@
     <div class="ps-module-heading__title">Votre Protocole Personnel — Votre signature unique</div>
   </div>
 </div>
+
+{{-- Parole fondatrice — Module 03 --}}
+<div class="pf-block" id="pf-mps-03">
+  <div class="pf-block__header"><span class="pf-block__icon">✦</span><span class="pf-block__label">Parole fondatrice</span></div>
+  <blockquote class="pf-block__verse">« Car nous sommes son ouvrage, ayant été créés en Jésus-Christ pour de bonnes œuvres, lesquelles Dieu a préparées d'avance. »</blockquote>
+  <blockquote class="pf-block__verse-en">“For we are God’s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.”</blockquote>
+  <p class="pf-block__ref">— Éphésiens 2:10 · Ephesians 2:10</p>
+  <p class="pf-block__insight">Ton protocole n'est pas un exercice parmi d'autres — c'est ta signature. La façon dont tu respires, tu guides, tu poses le cadre. Elle ne ressemble à personne d'autre.</p>
+  <p class="pf-block__insight-en">Your protocol is not just another exercise — it is your signature. The way you breathe, guide, and set the frame. It resembles no one else.</p>
+</div>
+
 <div class="ps-audio-block">
   <div class="ps-audio-inner" style="flex-direction:column;align-items:flex-start;">
     <div style="display:flex;gap:8px;margin-bottom:10px;">
@@ -1642,12 +1715,31 @@
 </div>
 
 {{-- ══════ MODULE 04 ══════ --}}
+
+{{-- Parole fondatrice — Closing Module 03 --}}
+<div class="pf-closing">
+  <span class="pf-closing__symbol">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <blockquote class="pf-closing__verse">« Car nous sommes son ouvrage, ayant été créés en Jésus-Christ pour de bonnes œuvres, lesquelles Dieu a préparées d'avance. »</blockquote>
+  <blockquote class="pf-closing__verse-en">“For we are God’s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.”</blockquote>
+  <p class="pf-closing__ref">— Éphésiens 2:10 · Ephesians 2:10</p>
+</div>
+
 <div class="ps-module-heading" style="margin-top:5rem;" id="mod-04">
   <div class="ps-module-heading__num">04</div>
   <div class="ps-module-heading__body">
     <div class="ps-module-heading__eyebrow">Module 04 · Audios guidés</div>
     <div class="ps-module-heading__title">L'Avant — Votre Pratique en Son</div>
   </div>
+</div>
+
+{{-- Parole fondatrice — Module 04 --}}
+<div class="pf-block" id="pf-mps-04">
+  <div class="pf-block__header"><span class="pf-block__icon">✦</span><span class="pf-block__label">Parole fondatrice</span></div>
+  <blockquote class="pf-block__verse">« Arrêtez, et sachez que je suis Dieu. »</blockquote>
+  <blockquote class="pf-block__verse-en">“Be still, and know that I am God.”</blockquote>
+  <p class="pf-block__ref">— Psaume 46:10 · Psalm 46:10</p>
+  <p class="pf-block__insight">Avant de guider les autres, tu guides toi-même. Ce module est une invitation à t'arrêter — vraiment — et à laisser la présence précéder la technique.</p>
+  <p class="pf-block__insight-en">Before guiding others, you guide yourself. This module is an invitation to truly stop — and let presence precede technique.</p>
 </div>
 
 <p style="max-width:620px;margin:0 auto 2rem;text-align:center;color:var(--ps-muted);font-size:.95rem;line-height:1.8;padding:0 1.5rem;">
@@ -1714,12 +1806,31 @@
 </div>
 
 {{-- ══════ MODULE 05 ══════ --}}
+
+{{-- Parole fondatrice — Closing Module 04 --}}
+<div class="pf-closing">
+  <span class="pf-closing__symbol">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <blockquote class="pf-closing__verse">« Arrêtez, et sachez que je suis Dieu. »</blockquote>
+  <blockquote class="pf-closing__verse-en">“Be still, and know that I am God.”</blockquote>
+  <p class="pf-closing__ref">— Psaume 46:10 · Psalm 46:10</p>
+</div>
+
 <div class="ps-module-heading" style="margin-top:5rem;" id="mod-05">
   <div class="ps-module-heading__num">05</div>
   <div class="ps-module-heading__body">
     <div class="ps-module-heading__eyebrow">Module 05 · Audios guidés</div>
     <div class="ps-module-heading__title">L'Ancrage en Pleine Turbulence</div>
   </div>
+</div>
+
+{{-- Parole fondatrice — Module 05 --}}
+<div class="pf-block" id="pf-mps-05">
+  <div class="pf-block__header"><span class="pf-block__icon">✦</span><span class="pf-block__label">Parole fondatrice</span></div>
+  <blockquote class="pf-block__verse">« Même si je marche dans la vallée de l'ombre de la mort, je ne crains aucun mal, car tu es avec moi. »</blockquote>
+  <blockquote class="pf-block__verse-en">“Even though I walk through the darkest valley, I will fear no evil, for you are with me.”</blockquote>
+  <p class="pf-block__ref">— Psaume 23:4 · Psalm 23:4</p>
+  <p class="pf-block__insight">La turbulence n'est pas un signe que tu as tort de continuer — c'est souvent le signe que tu approches de quelque chose de réel. Le souffle est ton ancre, même dans la tempête.</p>
+  <p class="pf-block__insight-en">Turbulence is not a sign that you are wrong to continue — it is often the sign that you are approaching something real. Breath is your anchor, even in the storm.</p>
 </div>
 
 <p style="max-width:620px;margin:0 auto 2rem;text-align:center;color:var(--ps-muted);font-size:.95rem;line-height:1.8;padding:0 1.5rem;">
@@ -1868,6 +1979,15 @@
 </div>
 
 {{-- ══════ FINALE ══════ --}}
+
+{{-- Parole fondatrice — Closing Module 05 --}}
+<div class="pf-closing">
+  <span class="pf-closing__symbol">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <blockquote class="pf-closing__verse">« Même si je marche dans la vallée de l'ombre de la mort, je ne crains aucun mal, car tu es avec moi. »</blockquote>
+  <blockquote class="pf-closing__verse-en">“Even though I walk through the darkest valley, I will fear no evil, for you are with me.”</blockquote>
+  <p class="pf-closing__ref">— Psaume 23:4 · Psalm 23:4</p>
+</div>
+
 <div class="ps-finale">
   <div class="ps-finale__inner">
     <div class="ps-finale__sym">✦ ∞ ✦</div>

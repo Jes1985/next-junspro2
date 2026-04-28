@@ -739,11 +739,11 @@
       </div>
       <div class="programme-item">
         <span class="programme-time">10:00</span>
-        <span class="programme-desc">{{ $en ? 'Pilates by the sea (60 min) · Shiatsu (60 min) — vagus nerve activation' : 'Pilates bord de mer (60 min) · Shiatsu (60 min) — activation nerf vague' }}</span>
+        <span class="programme-desc">{{ $en ? 'Pilates by the sea (60 min) · Vagus nerve activation sequence' : 'Pilates bord de mer (60 min) · Séquence activation nerf vague' }}</span>
       </div>
       <div class="programme-item">
-        <span class="programme-time">18:30</span>
-        <span class="programme-desc"><strong>{{ $en ? 'Guided freediving (45 min) — the 5-5-5 underwater' : 'Apnée guidée (45 min) — le 5-5-5 sous l\'eau' }}</strong></span>
+        <span class="programme-time">15:00</span>
+        <span class="programme-desc">{{ $en ? 'Free afternoon · Pool · Journal · Silence' : 'Après-midi libre · Piscine · Carnet · Silence' }}</span>
       </div>
     </div>
 
@@ -756,12 +756,12 @@
         <span class="programme-desc">{{ $en ? 'Module 5 replay at dawn (collective) · The sentence heard differently' : 'Réécoute module 5 à l\'aube (collectif) · La phrase entendue différemment' }}</span>
       </div>
       <div class="programme-item">
-        <span class="programme-time">09:30</span>
-        <span class="programme-desc"><strong>{{ $en ? 'Horse whispering (90 min) — the soul\'s mirror' : 'Horse whispering (90 min) — le miroir de l\'âme' }}</strong></span>
+        <span class="programme-time">10:00</span>
+        <span class="programme-desc">{{ $en ? 'Mission sentence writing workshop · Alone, in silence, until it is true' : 'Atelier d\'écriture phrase de mission · Seul, en silence, jusqu\'à ce qu\'elle soit vraie' }}</span>
       </div>
       <div class="programme-item">
-        <span class="programme-time">14:30</span>
-        <span class="programme-desc">{{ $en ? 'Mission sentence writing workshop · Alone, in silence, until it is true' : 'Atelier d\'écriture phrase de mission · Seul, en silence, jusqu\'à ce qu\'elle soit vraie' }}</span>
+        <span class="programme-time">18:30</span>
+        <span class="programme-desc"><strong>{{ $en ? 'Guided freediving (45 min) — the 5-5-5 underwater · Pool' : 'Apnée guidée (45 min) — le 5-5-5 sous l\'eau · Piscine' }}</strong></span>
       </div>
     </div>
 
@@ -770,11 +770,15 @@
       <div class="programme-day-label">{{ $en ? 'Day 6' : 'Jour 6' }}</div>
       <div class="programme-day-title">{{ $en ? 'Integration · Closing ceremony' : 'Intégration · Cérémonie de clôture' }}</div>
       <div class="programme-item">
-        <span class="programme-time">10:00</span>
-        <span class="programme-desc">{{ $en ? 'Free spa · Free morning — pool · journal · silence · music' : 'Spa libre · Matinée libre — piscine · carnet · silence · musique' }}</span>
+        <span class="programme-time">09:30</span>
+        <span class="programme-desc"><strong>{{ $en ? 'Horse whispering (90 min) — the soul\'s mirror' : 'Horse whispering (90 min) — le miroir de l\'âme' }}</strong></span>
       </div>
       <div class="programme-item">
-        <span class="programme-time">15:00</span>
+        <span class="programme-time">13:00</span>
+        <span class="programme-desc">{{ $en ? 'Free spa · Pool · Journal · Silence · Music' : 'Spa libre · Piscine · Carnet · Silence · Musique' }}</span>
+      </div>
+      <div class="programme-item">
+        <span class="programme-time">17:00</span>
         <span class="programme-desc"><strong>{{ $en ? 'Closing ceremony · Mission sentences spoken aloud, facing the horizon' : 'Cérémonie de clôture · Phrases de mission dites à voix haute, face à l\'horizon' }}</strong></span>
       </div>
       <div class="programme-item">

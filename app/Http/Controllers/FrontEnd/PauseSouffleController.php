@@ -328,6 +328,100 @@ class PauseSouffleController extends Controller
         }
     }
 
+    public function parcoursCheckoutNiveau3(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationNiveau3CheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Niveau 3', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function parcoursCheckoutNiveau3Installment(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationNiveau3InstallmentCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Niveau 3 mensualités', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    /**
+     * Page tous les programmes et tarifs
+     * Route : GET /presence/nos-programmes
+     */
+    public function nosProgrammes()
+    {
+        $misc = $this->miscController;
+        $language = $misc->getLanguage();
+        $queryResult = [
+            'breadcrumb' => $misc->getBreadcrumb(),
+            'language'   => $language,
+        ];
+
+        return view('frontend.presence.nos-programmes', $queryResult);
+    }
+
+    public function mentorsCheckout(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationMentorsCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Formation Mentors', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function mentorsCheckoutInstallment(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createFormationMentorsInstallmentCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Formation Mentors cycles', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function maPauseSouffleCheckout(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createMaPauseSouffleCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Ma Pause Souffle', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function maPauseSouffleCheckoutInstallment(Request $request)
+    {
+        $user = Auth::user();
+        $psCode = $request->cookie('ps_ambassador_code') ?? session('ps_ambassador_code', '');
+        try {
+            $session = $this->stripeService->createMaPauseSouffleInstallmentCheckoutSession($user->id, $user->email_address ?? $user->email ?? '', $psCode ?: null);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Ma Pause Souffle cycles', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
     public function parcoursCheckoutPackIntegral(Request $request)
     {
         $user = Auth::user();
@@ -955,5 +1049,52 @@ class PauseSouffleController extends Controller
         }
 
         return $packs;
+    }
+    public function retraiteCheckoutMer(Request $request)
+    {
+        $user = Auth::user();
+        try {
+            $session = $this->stripeService->createRetraiteMerCheckoutSession($user->id, $user->email_address ?? $user->email ?? '');
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Retraite Mer', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function retraiteCheckoutMerInstallment(Request $request)
+    {
+        $user = Auth::user();
+        try {
+            $session = $this->stripeService->createRetraiteMerInstallmentCheckoutSession($user->id, $user->email_address ?? $user->email ?? '');
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Retraite Mer cycles', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function retraiteCheckoutMontagne(Request $request)
+    {
+        $user = Auth::user();
+        try {
+            $session = $this->stripeService->createRetraiteMontagneCheckoutSession($user->id, $user->email_address ?? $user->email ?? '');
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Retraite Montagne', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
+    }
+
+    public function retraiteCheckoutMontagneInstallment(Request $request)
+    {
+        $user = Auth::user();
+        try {
+            $session = $this->stripeService->createRetraiteMontagneInstallmentCheckoutSession($user->id, $user->email_address ?? $user->email ?? '');
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            Log::error('Erreur checkout Retraite Montagne cycles', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+            return back()->with('error', 'Une erreur est survenue lors de la création du paiement.');
+        }
     }
 }

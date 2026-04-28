@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class GenerateFormationAudio extends Command
 {
-    protected $signature   = 'formation:generate-audio {--module= : Slug du module spécifique (optionnel)} {--lang= : Langue à générer : fr, en ou all (défaut: all)} {--force : Régénérer même si l\'audio existe déjà}';
-    protected $description = 'Génère les fichiers audio MP3 FR et EN pour chaque module de la formation via OpenAI TTS';
+    protected $signature   = 'formation:generate-audio
+                                {--module= : Slug du module spécifique (optionnel)}
+                                {--lang=all : Langue : fr, en ou all}
+                                {--force : Régénérer même si l\'audio existe déjà}
+                                {--mode=full : full = module complet | addendum = complément seul | merge = fusionne le complément au mp3 existant}';
+    protected $description = 'Génère les fichiers audio MP3 FR et EN pour chaque module de la formation via ElevenLabs TTS';
 
     // ── Scripts audio par module — FR "TTS-ready" ultra luxe ─────
     // [pause Xs] = marqueurs convertis en ellipses dans handle()
@@ -8237,7 +8241,7 @@ choisir la profondeur est un acte courageux.
 SCRIPT,
 
         // ─────────────────────────────────────────────────────────
-        // PARCOURS 3 — Éducation sacrifiée
+        // MODULE 34 — L'Enfant abandonné — éducation, famille & transmission retrouvée
         // ─────────────────────────────────────────────────────────
         '33-education-sacrifiee' => <<<'SCRIPT'
 Installez-vous.
@@ -8297,6 +8301,39 @@ Peu importe ce qu'ils ont vécu.
 C'est l'intégration qui importe.
 [pause 5s]
 Pas le passé.
+[pause 10s]
+
+Un garçon regarde son père pour comprendre comment être fort sans devenir dangereux.
+[pause 8s]
+
+Une fille regarde son père pour comprendre comment un homme respecte sans dominer.
+[pause 8s]
+
+Un garçon regarde sa mère pour sentir si sa sensibilité a une place dans ce monde.
+[pause 8s]
+
+Une fille regarde sa mère pour comprendre si une femme peut rester entière sans se trahir pour être aimée.
+[pause 10s]
+
+Quand ces liens sont blessés...
+[pause 5s]
+ce n'est pas seulement une histoire familiale.
+[pause 5s]
+C'est une génération entière qui peut apprendre de travers l'amour, l'autorité et la tendresse.
+[pause 10s]
+
+Mais quand un père répare...
+[pause 5s]
+quand une mère protège sans empoisonner...
+[pause 5s]
+quand les enfants retrouvent un espace sûr pour aimer sans se perdre...
+[pause 5s]
+alors la génération suivante reçoit autre chose.
+[pause 8s]
+
+Pas la répétition de la blessure.
+[pause 5s]
+La possibilité d'un lien juste.
 [pause 10s]
 
 Ce module vous invite à regarder votre propre histoire.
@@ -27615,6 +27652,51 @@ And what they do not do.
 SCRIPT,
     ]; // fin _legacyEn
 
+    // ══════════════════════════════════════════════════════════
+    //  COMPLÉMENTS CIBLÉS — génération partielle sans refaire le module entier
+    // ══════════════════════════════════════════════════════════
+
+    private array $addendumsFr = [
+
+        // MODULE 34 — complément père/mère — à fusionner avec 33-education-sacrifiee-fr.mp3
+        '33-education-sacrifiee' => <<<'SCRIPT'
+Un garçon regarde son père pour comprendre comment être fort sans devenir dangereux.
+[pause 8s]
+
+Une fille regarde son père pour comprendre comment un homme respecte sans dominer.
+[pause 8s]
+
+Un garçon regarde sa mère pour sentir si sa sensibilité a une place dans ce monde.
+[pause 8s]
+
+Une fille regarde sa mère pour comprendre si une femme peut rester entière sans se trahir pour être aimée.
+[pause 10s]
+
+Quand ces liens sont blessés...
+[pause 5s]
+ce n'est pas seulement une histoire familiale.
+[pause 5s]
+C'est une génération entière qui peut apprendre de travers l'amour, l'autorité et la tendresse.
+[pause 10s]
+
+Mais quand un père répare...
+[pause 5s]
+quand une mère protège sans empoisonner...
+[pause 5s]
+quand les enfants retrouvent un espace sûr pour aimer sans se perdre...
+[pause 5s]
+alors la génération suivante reçoit autre chose.
+[pause 8s]
+
+Pas la répétition de la blessure.
+[pause 5s]
+La possibilité d'un lien juste.
+SCRIPT,
+
+    ];
+
+    private array $addendumsEn = [];
+
     public function handle(OpenAIService $openAI): int
     {
         $this->info('🎙  Génération audio bilingue FR + EN — Formation Pause Souffle via ElevenLabs TTS (Charlotte)...');
@@ -27626,7 +27708,13 @@ SCRIPT,
 
         $slugFilter = $this->option('module');
         $force      = $this->option('force');
-        $langFilter = $this->option('lang') ?? 'all'; // fr | en | all
+        $langFilter = $this->option('lang') ?? 'all';
+        $mode       = $this->option('mode') ?? 'full'; // full | addendum | merge
+
+        // ── Mode addendum : génère seulement le complément
+        if ($mode === 'addendum' || $mode === 'merge') {
+            return $this->handleAddendum($elevenLabs, $slugFilter, $langFilter, $mode, $force);
+        }
 
         $modules = FormationModule::orderBy('order')->get();
 
@@ -27710,6 +27798,117 @@ SCRIPT,
     // Génération audio haute qualité via ffmpeg + OpenAI TTS
     // Toutes les pauses ≥ 4s = silence ffmpeg pur → zéro artefact TTS
     // ──────────────────────────────────────────────────────────────────
+
+    /**
+     * Gère les modes addendum et merge.
+     * addendum : génère uniquement le complément → {slug}-{lang}-addendum.mp3
+     * merge    : génère le complément ET le fusionne avec le MP3 existant
+     */
+    private function handleAddendum(
+        \App\Services\ElevenLabsService $elevenLabs,
+        ?string $slugFilter,
+        string $langFilter,
+        string $mode,
+        bool $force
+    ): int {
+        $langs = match($langFilter) {
+            'fr'    => ['fr'],
+            'en'    => ['en'],
+            default => ['fr', 'en'],
+        };
+
+        foreach ($langs as $lang) {
+            $addendums = $lang === 'fr' ? $this->addendumsFr : $this->addendumsEn;
+
+            foreach ($addendums as $slug => $script) {
+                if ($slugFilter && $slugFilter !== $slug) {
+                    continue;
+                }
+
+                $addendumPath = "formation/audio/{$slug}-{$lang}-addendum.mp3";
+                $mainPath     = "formation/audio/{$slug}-{$lang}.mp3";
+
+                // Générer l'addendum si pas déjà fait (ou --force)
+                if ($force || !Storage::disk('public')->exists($addendumPath)) {
+                    $this->info("  🎙  [{$lang}] Génération addendum : {$slug}");
+                    try {
+                        $mp3 = $this->buildFromScript($script, $elevenLabs, $lang);
+                        Storage::disk('public')->put($addendumPath, $mp3);
+                        $this->info("  ✅  Addendum généré : {$addendumPath}");
+                    } catch (\Exception $e) {
+                        $this->error("  ❌  {$slug} [{$lang}] : " . $e->getMessage());
+                        continue;
+                    }
+                } else {
+                    $this->line("  ⏭  Addendum déjà présent : {$addendumPath}");
+                }
+
+                // Mode merge : fusionner avec le MP3 existant
+                if ($mode === 'merge') {
+                    if (!Storage::disk('public')->exists($mainPath)) {
+                        $this->warn("  ⚠️  MP3 principal introuvable pour la fusion : {$mainPath}");
+                        continue;
+                    }
+
+                    $stampDir  = Storage::disk('public')->path('.merge-stamps');
+                    $stampFile = $stampDir . DIRECTORY_SEPARATOR . "{$slug}-{$lang}.merged";
+                    if (!$force && file_exists($stampFile)) {
+                        $this->line("  ⏭  Fusion déjà effectuée : {$slug} [{$lang}]");
+                        continue;
+                    }
+
+                    $this->info("  🔗  [{$lang}] Fusion en cours : {$slug}");
+                    try {
+                        $this->concatStorageAudio(
+                            [$mainPath, $addendumPath],
+                            $mainPath
+                        );
+                        // Stamp pour éviter double-fusion
+                        if (!is_dir($stampDir)) mkdir($stampDir, 0755, true);
+                        file_put_contents($stampFile, date('Y-m-d H:i:s'));
+                        $this->info("  ✅  Fusion terminée : {$mainPath}");
+                    } catch (\Exception $e) {
+                        $this->error("  ❌  Fusion {$slug} [{$lang}] : " . $e->getMessage());
+                    }
+                }
+            }
+        }
+
+        return self::SUCCESS;
+    }
+
+    /**
+     * Fusionne plusieurs MP3 (chemins storage/public) en un seul fichier de destination.
+     */
+    private function concatStorageAudio(array $storagePaths, string $destinationPath): void
+    {
+        $tmp     = sys_get_temp_dir();
+        $listFile = $tmp . DIRECTORY_SEPARATOR . 'concat_' . uniqid() . '.txt';
+        $outFile  = $tmp . DIRECTORY_SEPARATOR . 'merged_' . uniqid() . '.mp3';
+
+        $lines = [];
+        foreach ($storagePaths as $sp) {
+            $abs = Storage::disk('public')->path($sp);
+            $lines[] = "file '" . str_replace("'", "'\\''", $abs) . "'";
+        }
+        file_put_contents($listFile, implode(PHP_EOL, $lines));
+
+        $cmd = sprintf(
+            'ffmpeg -y -f concat -safe 0 -i %s -c copy %s 2>&1',
+            escapeshellarg($listFile),
+            escapeshellarg($outFile)
+        );
+        exec($cmd, $output, $code);
+        @unlink($listFile);
+
+        if ($code !== 0 || !file_exists($outFile)) {
+            throw new \RuntimeException('ffmpeg concat failed: ' . implode("\n", $output));
+        }
+
+        $merged = file_get_contents($outFile);
+        @unlink($outFile);
+        Storage::disk('public')->put($destinationPath, $merged);
+    }
 
     /**
      * Point d'entrée principal. Assemble le MP3 à partir d'un script.
