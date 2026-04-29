@@ -316,19 +316,7 @@ class UserController extends Controller
         }
       }
 
-      // first, check whether the user's email address verified or not
-      if (is_null($authUser->email_verified_at)) {
-        // Sauvegarder l'email dans la session pour permettre le renvoi
-        $request->session()->put('unverified_email', $authUser->email_address);
-        $request->session()->put('unverified_user_id', $authUser->id);
-        
-        $request->session()->flash('error', 'Veuillez vérifier votre adresse e-mail. Si vous n\'avez pas reçu l\'email de vérification, vous pouvez le renvoyer depuis la page de connexion.');
-
-        // logout auth user as condition not satisfied
-        Auth::guard('web')->logout();
-
-        return redirect()->back();
-      }
+      // Email verification disabled
 
       // second, check whether the user's account is active or not
       if ($authUser->status == 0) {
