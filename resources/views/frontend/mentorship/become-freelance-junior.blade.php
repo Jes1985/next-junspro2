@@ -506,7 +506,7 @@
           <i class="fa fa-rocket"></i> Démarrer ma carrière — dès 49 €
         </a>
         @guest
-          <a href="{{ route('register') }}" class="fj-btn-ghost">
+          <a href="{{ route('user.signup') }}" class="fj-btn-ghost">
             <i class="fa fa-user-plus"></i> Créer mon compte
           </a>
         @endguest

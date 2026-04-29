@@ -473,7 +473,7 @@
           <i class="fa fa-graduation-cap"></i> Démarrer mon stage — dès 49 €
         </a>
         @guest
-          <a href="{{ route('register') }}" class="si-btn-ghost">
+          <a href="{{ route('user.signup') }}" class="si-btn-ghost">
             <i class="fa fa-user-plus"></i> Créer mon compte
           </a>
         @endguest

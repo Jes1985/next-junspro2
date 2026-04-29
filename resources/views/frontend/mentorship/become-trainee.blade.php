@@ -541,7 +541,7 @@
           <i class="fa fa-rocket"></i> Choisir mon plan — dès 49 €
         </a>
         @guest
-          <a href="{{ route('register') }}" class="tj-btn-ghost">
+          <a href="{{ route('user.signup') }}" class="tj-btn-ghost">
             <i class="fa fa-user-plus"></i> Créer mon compte gratuitement
           </a>
         @endguest
