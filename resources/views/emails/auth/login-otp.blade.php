@@ -17,6 +17,3 @@ Si vous n'avez pas tenté de vous connecter, ignorez cet email. Votre compte res
 
 {{ config('app.name') }}
 </x-mail::message>
-
-{{ config('app.name') }}
-</x-mail::message>
