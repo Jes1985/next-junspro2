@@ -80,7 +80,8 @@
     .hero-modern .container {
       position: relative;
       z-index: 2;
-      padding: 120px 0;
+      padding-top: 120px;
+      padding-bottom: 120px;
     }
 
     .hero-content-left {
@@ -547,6 +548,7 @@
       
       .hero-proof-container {
         flex-direction: column !important;
+        flex-wrap: wrap !important;
         gap: 1.5rem !important;
         align-items: flex-start !important;
       }
@@ -1621,8 +1623,9 @@
 
     .blog-slider-wrapper {
       position: relative;
-      margin: 0 -16px;
-      padding: 0 16px;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
 
     .blog-slider-container {
@@ -2103,16 +2106,21 @@
       }
 
       .hero-modern .container {
-        padding: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       .hero-content-left {
         padding-right: 0;
         margin-bottom: 3rem;
+        max-width: 100%;
+        width: 100%;
       }
 
       .hero-title {
-        font-size: 2.5rem; /* Légèrement plus grand sur mobile */
+        font-size: 2rem;
         line-height: 1.2;
         margin-bottom: 1.5rem;
         max-width: 100%;
@@ -2121,7 +2129,8 @@
 
       .hero-title-line-1,
       .hero-title-line-2 {
-        white-space: normal; /* Permettre le retour à la ligne sur mobile */
+        white-space: normal !important;
+        word-break: break-word;
       }
 
       .search-box-modern {
@@ -2375,6 +2384,15 @@
         margin-top: 140px !important;
         padding: 40px 0 60px;
         min-height: auto;
+      }
+
+      .hero-content-left {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .hero-photo-column {
+        padding-left: 0 !important;
       }
 
       .hero-freelancers-slider-large {
@@ -2822,7 +2840,7 @@
           <h2 class="section-title-modern mb-3" data-aos="fade-up">Comment ça marche</h2>
         </div>
       </div>
-      <div class="row g-4 align-items-center" style="flex-wrap: nowrap;">
+      <div class="row g-4 align-items-center">
         <!-- Étape 1 -->
         <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="0">
           <div class="text-center">
