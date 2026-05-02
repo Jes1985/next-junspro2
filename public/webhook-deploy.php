@@ -5,7 +5,7 @@
  */
 
 define('DEPLOY_SECRET', 'junspro-deploy-2026-secure');
-define('DEPLOY_SCRIPT', '/var/www/junspro/deploy.sh');
+define('DEPLOY_SCRIPT', '/usr/local/bin/junspro-deploy.sh');
 define('LOG_FILE', '/var/log/junspro-deploy.log');
 
 // Vérification du secret
