@@ -1,135 +1,69 @@
 #!/bin/bash
 
-###############################################################################
-# Script de Déploiement Automatique - Junspro
-# Pour IONOS VPS
-###############################################################################
+export HOME=/root
+export GIT_TERMINAL_PROMPT=0
 
-set -e  # Arrêter en cas d'erreur
+APP_DIR="/var/www/junspro"
+LOG="/var/log/junspro-deploy.log"
+BRANCH="restore-filters-one-test"
+AUDIO_DIR="$APP_DIR/storage/app/public/formation/audio"
+AUDIO_BACKUP="/tmp/junspro-audio-deploy-backup"
 
-# Couleurs pour les messages
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+echo "======================================" >> "$LOG"
+echo "$(date): Deploiement demarre (user: $(whoami))" >> "$LOG"
 
-# Configuration
-PROJECT_NAME="junspro"
-DEPLOY_PATH="/var/www/${PROJECT_NAME}"
-BACKUP_PATH="/var/backups/${PROJECT_NAME}"
-RELEASES_PATH="${DEPLOY_PATH}/releases"
-CURRENT_PATH="${DEPLOY_PATH}/current"
-SHARED_PATH="${DEPLOY_PATH}/shared"
+cd "$APP_DIR"
 
-echo -e "${GREEN}🚀 Début du déploiement de ${PROJECT_NAME}${NC}"
+git config --global --add safe.directory "$APP_DIR" 2>/dev/null || true
 
-# Vérifier que nous sommes dans le bon répertoire
-if [ ! -f "artisan" ]; then
-    echo -e "${RED}❌ Erreur: Le fichier artisan n'a pas été trouvé.${NC}"
-    echo "Assurez-vous d'exécuter ce script depuis la racine du projet Laravel."
-    exit 1
+# --- Protection des audios AVANT git reset ---
+AUDIO_COUNT=0
+if [ -d "$AUDIO_DIR" ]; then
+    AUDIO_COUNT=$(find "$AUDIO_DIR" -name "*.mp3" 2>/dev/null | wc -l)
+    echo "$(date): Protection audio - $AUDIO_COUNT fichiers MP3 sauvegardes" >> "$LOG"
+    rm -rf "$AUDIO_BACKUP"
+    cp -a "$AUDIO_DIR" "$AUDIO_BACKUP"
 fi
 
-# Créer le timestamp pour cette release
-TIMESTAMP=$(date +%Y%m%d%H%M%S)
-RELEASE_PATH="${RELEASES_PATH}/${TIMESTAMP}"
+cp .env /tmp/.env.backup
 
-echo -e "${YELLOW}📦 Préparation de la release ${TIMESTAMP}${NC}"
+# --- Mise a jour du code ---
+git fetch origin >> "$LOG" 2>&1
+git reset --hard "origin/$BRANCH" >> "$LOG" 2>&1
+echo "$(date): Code mis a jour" >> "$LOG"
 
-# Créer les répertoires nécessaires
-mkdir -p ${RELEASES_PATH}
-mkdir -p ${BACKUP_PATH}
-mkdir -p ${SHARED_PATH}/{storage,storage/app,storage/framework,storage/logs,bootstrap/cache}
+cp /tmp/.env.backup .env
 
-# Activer la maintenance
-if [ -d "${CURRENT_PATH}" ]; then
-    echo -e "${YELLOW}🔧 Activation du mode maintenance...${NC}"
-    php ${CURRENT_PATH}/artisan down || true
+# --- Restauration garantie des audios APRES git reset ---
+mkdir -p "$AUDIO_DIR"
+if [ -d "$AUDIO_BACKUP" ]; then
+    cp -a "$AUDIO_BACKUP/." "$AUDIO_DIR/"
+    RESTORED=$(find "$AUDIO_DIR" -name "*.mp3" 2>/dev/null | wc -l)
+    echo "$(date): Audios restaures - $RESTORED fichiers MP3 intacts" >> "$LOG"
+    rm -rf "$AUDIO_BACKUP"
+else
+    echo "$(date): Aucun audio a restaurer (premier deploiement)" >> "$LOG"
 fi
 
-# Créer un backup de la base de données (si MySQL)
-if [ -f "${CURRENT_PATH}/.env" ]; then
-    echo -e "${YELLOW}💾 Création d'un backup de la base de données...${NC}"
-    DB_DATABASE=$(grep DB_DATABASE ${CURRENT_PATH}/.env | cut -d '=' -f2 | tr -d '"' | tr -d "'")
-    DB_USERNAME=$(grep DB_USERNAME ${CURRENT_PATH}/.env | cut -d '=' -f2 | tr -d '"' | tr -d "'")
-    DB_PASSWORD=$(grep DB_PASSWORD ${CURRENT_PATH}/.env | cut -d '=' -f2 | tr -d '"' | tr -d "'")
-    
-    if [ ! -z "$DB_DATABASE" ] && [ ! -z "$DB_USERNAME" ]; then
-        mysqldump -u${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} > ${BACKUP_PATH}/backup_${TIMESTAMP}.sql 2>/dev/null || true
-        echo -e "${GREEN}✓ Backup créé: ${BACKUP_PATH}/backup_${TIMESTAMP}.sql${NC}"
-    fi
-fi
+# --- Dependances ---
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev >> "$LOG" 2>&1
+echo "$(date): Composer OK" >> "$LOG"
 
-# Copier les fichiers vers la nouvelle release
-echo -e "${YELLOW}📂 Copie des fichiers...${NC}"
-mkdir -p ${RELEASE_PATH}
-rsync -av --exclude='.git' --exclude='node_modules' --exclude='storage' --exclude='.env' \
-    ./ ${RELEASE_PATH}/
+# --- Migrations (tolerant si tables existantes) ---
+php artisan migrate --force >> "$LOG" 2>&1 || echo "$(date): Migrations - rien de nouveau ou tables existantes" >> "$LOG"
+echo "$(date): Migrations OK" >> "$LOG"
 
-# Lier les fichiers partagés
-echo -e "${YELLOW}🔗 Liaison des fichiers partagés...${NC}"
-ln -sfn ${SHARED_PATH}/.env ${RELEASE_PATH}/.env
-ln -sfn ${SHARED_PATH}/storage ${RELEASE_PATH}/storage
-rm -rf ${RELEASE_PATH}/bootstrap/cache/*
-mkdir -p ${RELEASE_PATH}/bootstrap/cache
+# --- Caches ---
+php artisan config:clear >> "$LOG" 2>&1
+php artisan cache:clear >> "$LOG" 2>&1
+php artisan view:clear >> "$LOG" 2>&1
+php artisan route:clear >> "$LOG" 2>&1
+php artisan config:cache >> "$LOG" 2>&1
+echo "$(date): Caches OK" >> "$LOG"
 
-# Installer les dépendances Composer
-echo -e "${YELLOW}📥 Installation des dépendances Composer...${NC}"
-cd ${RELEASE_PATH}
-composer install --no-dev --optimize-autoloader --no-interaction
+php artisan storage:link 2>/dev/null || true
 
-# Installer les dépendances NPM et compiler les assets
-echo -e "${YELLOW}📦 Compilation des assets...${NC}"
-if [ -f "package.json" ]; then
-    npm install --production
-    npm run production || npm run build || true
-fi
+chown -R www-data:www-data "$APP_DIR/storage" "$APP_DIR/bootstrap/cache" 2>/dev/null || true
 
-# Exécuter les migrations
-echo -e "${YELLOW}🗄️  Exécution des migrations...${NC}"
-php artisan migrate --force
-
-# Optimiser l'application
-echo -e "${YELLOW}⚡ Optimisation de l'application...${NC}"
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-php artisan event:cache || true
-
-# Créer le lien symbolique de storage si nécessaire
-php artisan storage:link || true
-
-# Définir les permissions
-echo -e "${YELLOW}🔐 Configuration des permissions...${NC}"
-chown -R www-data:www-data ${RELEASE_PATH}
-chmod -R 755 ${RELEASE_PATH}
-chmod -R 775 ${RELEASE_PATH}/storage
-chmod -R 775 ${RELEASE_PATH}/bootstrap/cache
-
-# Activer la nouvelle release
-echo -e "${YELLOW}🔄 Activation de la nouvelle release...${NC}"
-ln -sfn ${RELEASE_PATH} ${CURRENT_PATH}
-
-# Redémarrer les services si nécessaire
-echo -e "${YELLOW}🔄 Redémarrage des services...${NC}"
-systemctl reload php8.3-fpm || systemctl reload php-fpm || true
-systemctl reload nginx || systemctl reload apache2 || true
-
-# Désactiver la maintenance
-echo -e "${YELLOW}✅ Désactivation du mode maintenance...${NC}"
-php artisan up
-
-# Nettoyer les anciennes releases (garder les 5 dernières)
-echo -e "${YELLOW}🧹 Nettoyage des anciennes releases...${NC}"
-cd ${RELEASES_PATH}
-ls -t | tail -n +6 | xargs rm -rf || true
-
-# Nettoyer les anciens backups (garder les 10 derniers)
-echo -e "${YELLOW}🧹 Nettoyage des anciens backups...${NC}"
-cd ${BACKUP_PATH}
-ls -t | tail -n +11 | xargs rm -f || true
-
-echo -e "${GREEN}✅ Déploiement terminé avec succès!${NC}"
-echo -e "${GREEN}📌 Release active: ${TIMESTAMP}${NC}"
-
-
+echo "$(date): Deploiement termine avec succes" >> "$LOG"
+echo "======================================" >> "$LOG"

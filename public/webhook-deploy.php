@@ -37,7 +37,7 @@ if (isset($_SERVER['HTTP_X_HUB_SIGNATURE_256'])) {
 $logEntry = date('Y-m-d H:i:s') . ": Webhook reçu - déploiement lancé\n";
 file_put_contents(LOG_FILE, $logEntry, FILE_APPEND);
 
-exec("nohup sudo bash " . DEPLOY_SCRIPT . " > /dev/null 2>&1 &");
+exec("nohup sudo -n /bin/bash " . DEPLOY_SCRIPT . " >> " . LOG_FILE . " 2>&1 &");
 
 http_response_code(200);
 echo json_encode([
