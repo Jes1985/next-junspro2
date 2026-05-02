@@ -80,7 +80,8 @@
     .hero-modern .container {
       position: relative;
       z-index: 2;
-      padding: 120px 0;
+      padding-top: 120px;
+      padding-bottom: 120px;
     }
 
     .hero-content-left {
@@ -547,6 +548,7 @@
       
       .hero-proof-container {
         flex-direction: column !important;
+        flex-wrap: wrap !important;
         gap: 1.5rem !important;
         align-items: flex-start !important;
       }
@@ -1621,8 +1623,9 @@
 
     .blog-slider-wrapper {
       position: relative;
-      margin: 0 -16px;
-      padding: 0 16px;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
 
     .blog-slider-container {
@@ -2103,16 +2106,21 @@
       }
 
       .hero-modern .container {
-        padding: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       .hero-content-left {
         padding-right: 0;
         margin-bottom: 3rem;
+        max-width: 100%;
+        width: 100%;
       }
 
       .hero-title {
-        font-size: 2.5rem; /* Légèrement plus grand sur mobile */
+        font-size: 2rem;
         line-height: 1.2;
         margin-bottom: 1.5rem;
         max-width: 100%;
@@ -2121,7 +2129,8 @@
 
       .hero-title-line-1,
       .hero-title-line-2 {
-        white-space: normal; /* Permettre le retour à la ligne sur mobile */
+        white-space: normal !important;
+        word-break: break-word;
       }
 
       .search-box-modern {
@@ -2377,6 +2386,15 @@
         min-height: auto;
       }
 
+      .hero-content-left {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .hero-photo-column {
+        padding-left: 0 !important;
+      }
+
       .hero-freelancers-slider-large {
         height: 400px;
         margin-top: 3rem;
@@ -2412,11 +2430,108 @@
       }
 
       .hero-title {
-        font-size: 2.25rem;
+        font-size: clamp(1.65rem, 5.5vw, 2.25rem);
+        line-height: 1.18;
+      }
+
+      /* Mobile haut de gamme : lisibilité sans débordement (annule nowrap desktop) */
+      .hero-title-line-1,
+      .hero-title-line-2 {
+        white-space: normal !important;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
 
       .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        max-width: 100% !important;
+        padding-right: 0;
+      }
+
+      .hero-content-left {
+        padding-right: 0 !important;
+      }
+
+      .hero-modern .container {
+        padding-left: max(1rem, env(safe-area-inset-left)) !important;
+        padding-right: max(1rem, env(safe-area-inset-right)) !important;
+        padding-top: 72px !important;
+        padding-bottom: 56px !important;
+      }
+
+      .hero-segmentation {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.875rem !important;
+      }
+
+      .segmentation-switch {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 6px !important;
+        padding: 6px !important;
+      }
+
+      .segmentation-btn {
+        white-space: normal !important;
+        text-align: center !important;
+        width: 100% !important;
+        padding: 0.65rem 1rem !important;
+        font-size: 0.92rem !important;
+      }
+
+      .segmentation-link-freelance {
+        white-space: normal !important;
+        text-align: center !important;
+        display: block !important;
+      }
+
+      .hero-ctas .cta-group,
+      #cta-entreprise,
+      #cta-particulier {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .btn-cta-primary,
+      .btn-cta-secondary {
+        white-space: normal !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        padding: 0.8rem 1.25rem !important;
+        font-size: 0.98rem !important;
+      }
+
+      .btn-cta-link {
+        white-space: normal !important;
+        text-align: center !important;
+        display: block !important;
+      }
+
+      .search-box-modern {
+        max-width: 100% !important;
+      }
+
+      /* Barre de preuve : colonne comme sur petit mobile, évite dépassement tablette */
+      .hero-proof-container {
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+        gap: 1.25rem !important;
+        align-items: flex-start !important;
+      }
+
+      .hero-proof-item {
+        width: 100% !important;
+      }
+
+      .hero-proof-text span {
+        white-space: normal !important;
       }
     }
   </style>
@@ -2468,9 +2583,9 @@
             <span class="hero-title-line-2">{{ __('Des rituels pour vos résultats.') }}</span>
           </h1>
           <p class="hero-subtitle mb-5">
-            {{ __("Déposez une mission. Nous vous orientons vers le bon univers et les bons profils.") }}<br>
+            Déposez une mission. Nous vous orientons vers le bon univers et les bons profils.<br>
             <a href="#nos-univers" class="hero-subtitle-link" style="color: #7c3aed; text-decoration: none; font-weight: 600; transition: color 0.3s ease;">
-              {{ __("Explorer nos univers →") }}
+              Explorer nos univers →
             </a>
           </p>
           
@@ -2484,18 +2599,18 @@
                   class="segmentation-btn active" 
                   data-user-type="entreprise"
                 >
-                  {{ __("Je suis Entreprise") }}
+                  Je suis Entreprise
               </button>
                 <button 
                   type="button" 
                   class="segmentation-btn" 
                   data-user-type="particulier"
                 >
-                  {{ __("Particulier") }}
+                  Particulier
                 </button>
               </div>
               <a href="{{ route('freelance.onboarding.start') }}" class="segmentation-link-freelance">
-                {{ __("Freelance") }}
+                Freelance
               </a>
               </div>
             
@@ -2504,20 +2619,20 @@
               <!-- Entreprise -->
               <div id="cta-entreprise" class="cta-group">
                 <a href="{{ route('mission.form') }}" class="btn-cta-primary">
-                  {{ __("Déposer une mission") }}
+                  Déposer une mission
                 </a>
                 <a href="{{ route('services') }}" class="btn-cta-secondary">
-                  {{ __("Trouver un freelance") }}
+                  Trouver un freelance
                 </a>
                 <a href="{{ route('freelance.onboarding.start') }}" class="btn-cta-link">
-                  {{ __("Créer mon profil freelance") }}
+                  Créer mon profil freelance
                 </a>
               </div>
               
               <!-- Particulier -->
               <div id="cta-particulier" class="cta-group" style="display: none;">
                 <a href="{{ route('services') }}" class="btn-cta-primary">
-                  {{ __("Réserver un rituel") }}
+                  Réserver un rituel
                 </a>
               </div>
             </div>
@@ -2610,7 +2725,7 @@
                   <i class="fas fa-video"></i>
                 </div>
                 <div class="hero-proof-text">
-                  <span style="display: block; white-space: nowrap;">{{ __('Rituel d\'essai') }}</span>
+                  <span style="display: block; white-space: nowrap;">{{ __('Séance d\'essai') }}</span>
                   <span style="display: block; white-space: nowrap;">{{ __('de 1h') }}</span>
                 </div>
               </div>
@@ -2628,7 +2743,7 @@
           </div>
 
             <div class="hero-search-tags" data-aos="fade-up" data-aos-delay="300">
-            {{ __("Bêta privée — qualité > quantité. Vos premières missions sont traitées en priorité.") }}
+            Bêta privée —qualité > quantité. Vos premières missions sont traitées en priorité.
                   </div>
             </div>
 
@@ -2707,7 +2822,7 @@
                     <h3 class="rituel-universe-title">{{ $universe['title'] }}</h3>
                 </div>
                   <a href="{{ $universe['url'] }}" class="rituel-universe-cta">
-                    {{ __("Réserver un Rituel d'essai") }}
+                    Réserver un Rituel d'essai
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -2731,7 +2846,7 @@
             
             <div style="text-align: left; font-size: 1.1rem; line-height: 1.9; color: #1a202c; margin-bottom: 2rem;">
               <p style="margin-bottom: 1.5rem;">
-                <strong>FreelancesX by Junspro</strong> est né d'une conviction : ce qui fait avancer un Rituel, ce n'est pas la pression — c'est la discipline.<br>
+                <strong>FreelancesX by Junspro</strong> est né d'une conviction : ce qui fait avancer un projet, ce n'est pas la pression — c'est la discipline.<br>
                 Une discipline douce, progressive, qui respecte l'humain… mais qui ne laisse pas la procrastination s'installer.
               </p>
               
@@ -2742,7 +2857,7 @@
               <p style="margin-bottom: 1.5rem; padding-left: 1.5rem; border-left: 3px solid #7c3aed;">
                 <strong>Un Rituel, c'est 1h = 50 minutes de focus + 10 minutes de feedback / rapport.</strong><br>
                 Ce n'est pas "du temps vendu". C'est une méthode : un cadre qui transforme l'élan en résultats.
-                <button id="visionToggleBtn" onclick="toggleVisionContent()" data-more="{{ __('Voir plus') }}" data-less="{{ __('Voir moins') }}" style="background: none; border: none; color: #7c3aed; font-weight: 600; cursor: pointer; text-decoration: underline; margin-left: 0.5rem; font-size: 1.1rem;">{{ __('Voir plus') }}</button>
+                <button id="visionToggleBtn" onclick="toggleVisionContent()" style="background: none; border: none; color: #7c3aed; font-weight: 600; cursor: pointer; text-decoration: underline; margin-left: 0.5rem; font-size: 1.1rem;">Voir plus</button>
               </p>
               
               <div id="visionMoreContent" style="display: none; margin-bottom: 1.5rem; animation: fadeIn 0.3s ease-in;">
@@ -2767,12 +2882,12 @@
                 
                 <p style="margin-bottom: 2.5rem; font-size: 1.15rem; font-weight: 500;">
                   <strong>FreelancesX by Junspro</strong>, c'est ça : un espace où l'on avance avec calme, mais avec rigueur.<br>
-                  Un endroit où la discipline devient un cadeau — pour vos Rituels, et pour votre vie.
+                  Un endroit où la discipline devient un cadeau — pour vos projets, et pour votre vie.
                 </p>
                 
                 <div style="text-align: center; margin-top: 3rem;">
                   <p style="font-size: 1.2rem; font-weight: 500; color: #1a202c; margin-bottom: 1.5rem;">
-                    {{ __("Êtes-vous prêt à entrer dans l'expérience ?") }}
+                    Êtes-vous prêt à entrer dans l'expérience ?
                   </p>
                   <a href="{{ route('explore') }}" class="btn-vision-rituel">
                     {{ __('Réserver un Rituel d\'essai') }}
@@ -2788,10 +2903,10 @@
                 
                 if (content.style.display === 'none') {
                   content.style.display = 'block';
-                  button.textContent = button.dataset.less;
+                  button.textContent = 'Voir moins';
                 } else {
                   content.style.display = 'none';
-                  button.textContent = button.dataset.more;
+                  button.textContent = 'Voir plus';
                 }
               }
             </script>
@@ -2819,18 +2934,18 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-12 text-center">
-          <h2 class="section-title-modern mb-3" data-aos="fade-up">{{ __("Comment ça marche") }}</h2>
+          <h2 class="section-title-modern mb-3" data-aos="fade-up">Comment ça marche</h2>
         </div>
       </div>
-      <div class="row g-4 align-items-center" style="flex-wrap: nowrap;">
+      <div class="row g-4 align-items-center">
         <!-- Étape 1 -->
         <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="0">
           <div class="text-center">
             <div class="mb-3" style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
               1
             </div>
-            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">{{ __("Choisissez votre univers") }}</h5>
-            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">{{ __("Explorez nos 6 univers et trouvez celui qui correspond à vos besoins") }}</p>
+            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">Choisissez votre univers</h5>
+            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Explorez nos 6 univers et trouvez celui qui correspond à vos besoins</p>
           </div>
         </div>
         <!-- Flèche 1 -->
@@ -2843,8 +2958,8 @@
             <div class="mb-3" style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
               2
             </div>
-            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">{{ __("Réservez en quelques clics") }}</h5>
-            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">{{ __("Sélectionnez votre service, choisissez un créneau et validez") }}</p>
+            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">Réservez en quelques clics</h5>
+            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Sélectionnez votre service, choisissez un créneau et validez</p>
           </div>
         </div>
         <!-- Flèche 2 -->
@@ -2857,8 +2972,8 @@
             <div class="mb-3" style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
               3
             </div>
-            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">{{ __("Profitez de l'expérience") }}</h5>
-            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">{{ __("Suivez votre progression et bénéficiez d'un accompagnement personnalisé") }}</p>
+            <h5 class="fw-bold mb-2" style="color: #1a202c; font-size: 1.25rem;">Profitez de l'expérience</h5>
+            <p class="small mb-0" style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">Suivez votre progression et bénéficiez d'un accompagnement personnalisé</p>
           </div>
         </div>
       </div>
@@ -3008,7 +3123,7 @@
                             @endif
                           </div>
                           @if($user->is_verified_freelancer ?? $freelancer->is_verified ?? false)
-                            <span class="freelancer-card-badge-verified"><i class="fas fa-check-circle"></i> {{ __("Vérifié") }}</span>
+                            <span class="freelancer-card-badge-verified"><i class="fas fa-check-circle"></i> Vérifié</span>
                           @endif
                           <div class="freelancer-card-cta">{{ __('Voir le profil') }}</div>
                         </div>
@@ -3019,13 +3134,12 @@
                 </div>
               @endforeach
             </div>
-            <!-- Navigation -->
-            <div class="swiper-button-prev"></div>
+            <!-- Navigation (suivant uniquement, défilement continu) -->
             <div class="swiper-button-next"></div>
             <!-- Pagination -->
             <div class="swiper-pagination"></div>
+            </div>
           </div>
-        </div>
         <div class="row mt-5">
           <div class="col-12">
             <div class="freelances-actions">
@@ -3044,90 +3158,6 @@
     </section>
   @endif
 
-  {{-- ─── Parcours Pause Souffle – 4 Niveaux ────────────────────────── --}}
-  <section style="background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #1a0533 100%); padding: 80px 0; margin: 0;">
-    <div class="container">
-
-      {{-- Header --}}
-      <div class="text-center mb-5" data-aos="fade-up">
-        <div style="display: inline-block; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); color: #d4af37; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.25rem;">{{ __("Un parcours en quatre temps") }}</div>
-        <h2 style="color: #fff; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; line-height: 1.25; margin-bottom: 0.75rem;">
-          {{ __("Votre parcours") }} <span style="color: #d4af37;">Pause Souffle</span>
-        </h2>
-        <p style="color: rgba(255,255,255,0.6); font-size: 1rem; max-width: 560px; margin: 0 auto;">
-          {{ __("Chaque niveau a sa propre destination.") }} <em style="color: rgba(255,255,255,0.8);">{{ __("Vous choisissez jusqu'où vous allez.") }}</em>
-        </p>
-      </div>
-
-      {{-- Étapes du parcours --}}
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
-
-        {{-- Niveau 1 — Le Parcours (pour soi, déjà en ligne) --}}
-        <div data-aos="fade-up" data-aos-delay="0" style="border: 1px solid rgba(212,175,55,0.3); border-radius: 18px; padding: 1.75rem 1.5rem; background: rgba(255,255,255,0.03); position: relative; overflow: hidden;">
-          <div style="position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, #d4af37, #f0c040);"></div>
-          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d4af37; margin-bottom: 0.6rem;">{{ __("Étape 1 · Pour soi · Ouvert à tous") }}</div>
-          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ __("Le Parcours") }}</h3>
-          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem;">{{ __("6 modules en ligne — 8 semaines à votre rythme. Un chemin de retour à soi, profond et personnel. Pas une formation professionnelle — une transformation pour vous.") }}</p>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-            <span style="display: inline-block; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: #d4af37; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;">✦ {{ __("Attestation Retour à Soi") }}</span>
-            <a href="{{ route('presence.parcours') }}" style="display: inline-block; color: rgba(255,255,255,0.45); font-size: 0.75rem; text-decoration: none; padding: 4px 0; transition: color 0.2s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">{{ __("Découvrir le Parcours →") }}</a>
-          </div>
-        </div>
-
-        {{-- Retraite 7 jours (option après Niveau 1) --}}
-        <div data-aos="fade-up" data-aos-delay="100" style="border: 1px solid rgba(132,204,22,0.2); border-radius: 18px; padding: 1.75rem 1.5rem; background: rgba(255,255,255,0.02); position: relative; overflow: hidden;">
-          <div style="position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, #84cc16, #d4af37);"></div>
-          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #84cc16; margin-bottom: 0.6rem;">{{ __("Après le Parcours · En option") }}</div>
-          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ __("La Retraite 7 jours") }}</h3>
-          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem;">{{ __("Immersion en Méditerranée. Ouverte à tous ceux qui ont complété le Parcours — avec ou sans suite vers la Formation Freelance.") }}</p>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-            <span style="display: inline-block; background: rgba(132,204,22,0.08); border: 1px solid rgba(132,204,22,0.25); color: #84cc16; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;">✦ {{ __("Édition Fondatrice · Méditerranée") }}</span>
-            <a href="{{ route('presence.retraite') }}" style="display: inline-block; color: rgba(255,255,255,0.4); font-size: 0.75rem; text-decoration: none; padding: 4px 0; transition: color 0.2s;" onmouseover="this.style.color='#84cc16'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">{{ __("Découvrir la Retraite →") }}</a>
-          </div>
-        </div>
-
-        {{-- Niveau 2 — Formation Freelance Pause Souffle --}}
-        <div data-aos="fade-up" data-aos-delay="200" style="border: 1px solid rgba(124,58,237,0.4); border-radius: 18px; padding: 1.75rem 1.5rem; background: rgba(124,58,237,0.06); position: relative; overflow: hidden;">
-          <div style="position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, #7c3aed, #d4af37);"></div>
-          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #a78bfa; margin-bottom: 0.6rem;">{{ __("Niveau 2 · Après le Parcours") }}</div>
-          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ __("La Formation Freelance") }}</h3>
-          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem;">{{ __("Maîtriser et animer les Rituels. Travailler en cabinet, à domicile, en entreprise. Contenu du programme en cours de réalisation.") }}</p>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-            <span style="display: inline-block; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: #d4af37; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;">✦ {{ __("Certification Freelance Pause Souffle · 3 490 €") }}</span>
-            <a href="{{ route('presence.formation-praticien') }}" style="display: inline-block; color: rgba(255,255,255,0.4); font-size: 0.75rem; text-decoration: none; padding: 4px 0; transition: color 0.2s;" onmouseover="this.style.color='#a78bfa'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">{{ __("Découvrir la formation →") }}</a>
-          </div>
-        </div>
-
-        {{-- Niveau 3 — Formation Formateur / Tuteur --}}
-        <div data-aos="fade-up" data-aos-delay="300" style="border: 1px solid rgba(37,99,235,0.3); border-radius: 18px; padding: 1.75rem 1.5rem; background: rgba(255,255,255,0.02); position: relative; overflow: hidden;">
-          <div style="position: absolute; top:0; left:0; right:0; height: 3px; background: linear-gradient(90deg, #2563eb, #84cc16);"></div>
-          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #60a5fa; margin-bottom: 0.6rem;">{{ __("Niveau 3 · Sur sélection") }}</div>
-          <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ __("La Formation Formateur") }}</h3>
-          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem;">{{ __("Former et accompagner d'autres freelances Pause Souffle. Construire un réseau local. Sur candidature après 6 mois d'activité certifiée.") }}</p>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-            <span style="display: inline-block; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.3); color: #60a5fa; font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;">✦ {{ __("Habilitation Formateur / Tuteur · 3 500 €") }}</span>
-            <span style="display: inline-block; color: rgba(255,255,255,0.3); font-size: 0.75rem; font-style: italic; padding: 4px 0;">{{ __("Accessible après 6 mois certifié Freelance") }}</span>
-          </div>
-        </div>
-
-      </div>
-
-      {{-- CTA central --}}
-      <div class="text-center" data-aos="fade-up">
-        <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1.25rem;">
-          {{ __("Commencez où vous êtes. Avancez à votre rythme.") }}
-        </p>
-        <a href="{{ route('presence.parcours') }}" style="display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #f0c040 100%); color: #1a0533; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 12px; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
-          {{ __("Commencer par Le Parcours") }} <i class="fas fa-arrow-right ms-1"></i>
-        </a>
-        <a href="{{ route('presence.formation-praticien') }}" style="display: inline-block; margin-left: 1rem; color: rgba(255,255,255,0.5); font-size: 0.875rem; text-decoration: none; padding: 4px 0; transition: color 0.2s;" onmouseover="this.style.color='#a78bfa'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-          {{ __("Voir la Formation Freelance →") }}
-        </a>
-      </div>
-
-    </div>
-  </section>
-
   <!-- Blog Section Premium avec Slider Horizontal -->
   @if ($secInfo->blog_section_status == 1)
     <section class="blog-section-premium">
@@ -3135,14 +3165,14 @@
         <!-- Header de section -->
         <div class="blog-header-premium">
           <div class="blog-header-content">
-            <h2 class="blog-title-premium">{{ __("Votre source d'inspiration") }}</h2>
+            <h2 class="blog-title-premium">Votre source d'inspiration</h2>
             <p class="blog-subtitle-premium">
-              {{ __("Guides, conseils et retours d'expérience pour échanger en confiance et choisir votre univers.") }}
+              Guides, conseils et retours d'expérience pour échanger en confiance et choisir votre univers.
             </p>
           </div>
           <div class="blog-header-actions">
             <a href="{{ route('blog') }}" class="btn-blog-primary">
-              {{ __("Voir plus d'articles") }}
+              Voir plus d'articles
             </a>
             @php
               try {
@@ -3153,7 +3183,7 @@
             @endphp
             @if($servicesRoute)
               <a href="{{ $servicesRoute }}" class="btn-blog-secondary">
-                {{ __("Explorer les services") }}
+                Explorer les services
               </a>
             @endif
           </div>
@@ -3200,7 +3230,7 @@
                               $wordCount = str_word_count(strip_tags($post->content));
                               $readingTime = max(1, round($wordCount / 200));
                             @endphp
-                            {{ $readingTime }}{{ __("mn à lire") }}
+                            {{ $readingTime }}mn à lire
                           </span>
                         </div>
                       </div>
@@ -3216,9 +3246,9 @@
         @else
           <!-- Fallback si aucun article -->
           <div class="blog-empty-state">
-            <p class="blog-empty-text">{{ __("Aucun article disponible pour le moment.") }}</p>
+            <p class="blog-empty-text">Aucun article disponible pour le moment.</p>
             <a href="{{ route('blog') }}" class="btn-blog-primary">
-              {{ __("Voir plus d'articles") }}
+              Voir plus d'articles
             </a>
           </div>
         @endif
@@ -3264,7 +3294,6 @@
           },
           navigation: {
             nextEl: '.freelancers-recommended-slider .swiper-button-next',
-            prevEl: '.freelancers-recommended-slider .swiper-button-prev',
           },
           breakpoints: {
             640: { slidesPerView: 2, spaceBetween: 24 },

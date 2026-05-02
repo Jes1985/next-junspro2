@@ -52,4 +52,4 @@
 <link rel="stylesheet" href="{{ asset('assets/front/css/remove-categories-menu.css') }}?v={{ time() }}">
 <!-- CSS Fix Transparence Globale - Chargé en dernier pour forcer background opaque -->
 <link rel="stylesheet" href="{{ asset('assets/front/css/fix-opacity-global.css') }}?v={{ time() }}">
-<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-tablet-enhancements.css') }}?v=1">
+<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-tablet-enhancements.css') }}?v=2">

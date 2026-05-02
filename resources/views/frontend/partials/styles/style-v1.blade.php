@@ -43,7 +43,7 @@
 @endif
 <!-- Responsive CSS -->
 <link rel="stylesheet" href="{{ asset('assets/front/css/responsive.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-tablet-enhancements.css') }}?v=1">
+<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-tablet-enhancements.css') }}?v=2">
 <link rel="stylesheet" href="{{ asset('assets/css/summernote-content.css') }}">
 <!-- RTL CSS -->
 @if ($currentLanguageInfo->direction == 1)
