@@ -141,19 +141,14 @@
   .profile-page-wrapper-light .dashboard-header,
   .settings-page-wrapper-light .dashboard-header,
   .rituals-page-wrapper-light .dashboard-header {
-    margin-top: 2rem;
-    margin-left: 0;
-    margin-right: 0;
+    margin-top: 2cm;
+    margin-left: 2cm;
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 100vw !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
   }
 
   .dashboard-page-wrapper-light .dashboard-header h1,
@@ -242,10 +237,9 @@
   .profile-page-wrapper-light .btn-premium-primary,
   .settings-page-wrapper-light .btn-premium-primary,
   .rituals-page-wrapper-light .btn-premium-primary {
-    background: #ede9fe;
-    color: #7c3aed;
-    border: 1px solid #ddd6fe;
-    box-shadow: 0 2px 8px rgba(167, 139, 250, 0.2);
+    background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
   }
 
   .dashboard-page-wrapper-light .btn-premium-primary:hover,
@@ -259,10 +253,9 @@
   .profile-page-wrapper-light .btn-premium-primary:hover,
   .settings-page-wrapper-light .btn-premium-primary:hover,
   .rituals-page-wrapper-light .btn-premium-primary:hover {
-    background: #ddd6fe;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(167, 139, 250, 0.35);
-    color: #7c3aed;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+    color: white;
     text-decoration: none;
   }
 
@@ -854,6 +847,22 @@
       padding: 16px 8px !important;
     }
 
+    .dashboard-page-wrapper-light .dashboard-header,
+    .overview-page-wrapper-light .dashboard-header,
+    .requests-page-wrapper-light .dashboard-header,
+    .jobs-page-wrapper-light .dashboard-header,
+    .calendar-page-wrapper-light .dashboard-header,
+    .services-page-wrapper-light .dashboard-header,
+    .messages-page-wrapper-light .dashboard-header,
+    .earnings-page-wrapper-light .dashboard-header,
+    .profile-page-wrapper-light .dashboard-header,
+    .settings-page-wrapper-light .dashboard-header,
+    .rituals-page-wrapper-light .dashboard-header {
+      margin-top: 1rem !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
     .dashboard-page-wrapper-light .dashboard-container,
     .overview-page-wrapper-light .dashboard-container,
     .requests-page-wrapper-light .dashboard-container,
@@ -868,19 +877,19 @@
       grid-template-columns: 1fr !important;
       gap: 8px 0 !important;
     }
-      display: flex !important;
-      flex-direction: column;
-      min-height: 100vh;
-      max-width: 100vw !important;
-      width: 100vw !important;
-      margin: 0 auto !important;
-      padding: 0 !important;
-      background: transparent;
-      box-shadow: none;
-      box-sizing: border-box;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      overflow-x: visible !important;
+
+    .dashboard-page-wrapper-light .main-content,
+    .overview-page-wrapper-light .main-content,
+    .requests-page-wrapper-light .main-content,
+    .jobs-page-wrapper-light .main-content,
+    .calendar-page-wrapper-light .main-content,
+    .services-page-wrapper-light .main-content,
+    .messages-page-wrapper-light .main-content,
+    .earnings-page-wrapper-light .main-content,
+    .profile-page-wrapper-light .main-content,
+    .settings-page-wrapper-light .main-content,
+    .rituals-page-wrapper-light .main-content {
+      padding: 1.5rem 8px !important;
     }
 
     .dashboard-page-wrapper-light .sidebar,
@@ -906,8 +915,8 @@
     }
   }
 
-  /* Tablettes grandes (769px à 1024px) - Layout adaptatif */
-  @media (max-width: 1024px) {
+  /* Tablettes (769px à 1024px) — sans écraser les règles mobile ci-dessous */
+  @media (max-width: 1024px) and (min-width: 769px) {
     .dashboard-page-wrapper-light,
     .overview-page-wrapper-light,
     .requests-page-wrapper-light,
@@ -920,6 +929,22 @@
     .settings-page-wrapper-light,
     .rituals-page-wrapper-light {
       padding: 20px 10px !important;
+    }
+
+    .dashboard-page-wrapper-light .dashboard-header,
+    .overview-page-wrapper-light .dashboard-header,
+    .requests-page-wrapper-light .dashboard-header,
+    .jobs-page-wrapper-light .dashboard-header,
+    .calendar-page-wrapper-light .dashboard-header,
+    .services-page-wrapper-light .dashboard-header,
+    .messages-page-wrapper-light .dashboard-header,
+    .earnings-page-wrapper-light .dashboard-header,
+    .profile-page-wrapper-light .dashboard-header,
+    .settings-page-wrapper-light .dashboard-header,
+    .rituals-page-wrapper-light .dashboard-header {
+      margin-top: 1.25rem !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
 
     .dashboard-page-wrapper-light .dashboard-container,
@@ -1017,259 +1042,6 @@
     .rituals-page-wrapper-light .sidebar {
       padding: 1.5rem 4px !important;
     }
-</style>
-
-<style>
-/* ===== TUILES PARAMÈTRES PREMIUM ===== */
-  .settings-tiles-pro {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    width: 100%;
-    max-width: none;
-    margin: 2.5rem 0 0 0;
-    padding: 0;
   }
-  @media (min-width: 600px) {
-    .settings-tiles-pro {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-    }
-  }
-  @media (min-width: 1024px) {
-    .settings-tiles-pro {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-    }
-  }
-@media (min-width: 600px) {
-  .settings-tiles-pro {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-  }
-}
-@media (min-width: 1024px) {
-  .settings-tiles-pro {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-  }
-}
-.settings-tile-pro {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
-  border-radius: 28px;
-  box-shadow: 0 24px 64px rgba(80, 36, 180, 0.18), 0 8px 24px rgba(80, 36, 180, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  padding: 3rem 2.5rem 2.5rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  min-height: 280px;
-  border: 2px solid rgba(124, 58, 237, 0.15);
-  overflow: hidden;
-}
-
-.settings-tile-pro::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(40px);
-}
-
-.settings-tile-pro::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-  pointer-events: none;
-}
-
-.settings-tile-pro:hover {
-  box-shadow: 0 32px 80px rgba(80, 36, 180, 0.25), 0 12px 32px rgba(80, 36, 180, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  transform: translateY(-12px) scale(1.03);
-  border-color: rgba(124, 58, 237, 0.4);
-  background: linear-gradient(135deg, #fafbfc 0%, #f3f4f9 100%);
-}
-
-.tile-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 40%, #c7d2fe 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.2rem;
-  color: #7c3aed;
-  margin-bottom: 2rem;
-  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.2), 0 4px 12px rgba(124, 58, 237, 0.12), inset 0 2px 8px rgba(255, 255, 255, 0.6);
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  z-index: 1;
-}
-
-.tile-icon::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), transparent);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-}
-
-.settings-tile-pro:hover .tile-icon {
-  background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 40%, #6366f1 100%);
-  color: #fff;
-  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.35), 0 8px 20px rgba(124, 58, 237, 0.2), inset 0 2px 8px rgba(255, 255, 255, 0.3);
-  transform: scale(1.15) rotate(-5deg);
-}
-
-.settings-tile-pro:hover .tile-icon::before {
-  opacity: 1;
-}
-
-.tile-title {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: #0f172a;
-  margin-bottom: 1rem;
-  letter-spacing: -0.03em;
-  position: relative;
-  z-index: 1;
-  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.tile-desc {
-  color: #64748b;
-  font-size: 1rem;
-  margin-bottom: 1.75rem;
-  line-height: 1.7;
-  position: relative;
-  z-index: 1;
-  font-weight: 500;
-}
-
-.tile-btn {
-  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #4f46e5 100%);
-  color: #fff;
-  border: none;
-  border-radius: 16px;
-  padding: 0.9rem 1.8rem;
-  font-weight: 800;
-  font-size: 0.95rem;
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.32), 0 2px 8px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  z-index: 1;
-  letter-spacing: 0.03em;
-  font-family: inherit;
-  border: 2px solid transparent;
-}
-
-.tile-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.tile-btn:hover {
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%);
-  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.42), 0 4px 16px rgba(0, 0, 0, 0.12);
-  transform: scale(1.08) translateY(-3px);
-}
-
-.tile-btn:hover::before {
-  opacity: 1;
-}
-
-.tile-btn:active {
-  transform: scale(0.96) translateY(0px);
-}
-
-.tile-badge {
-  position: absolute;
-  top: 1.8rem;
-  right: 1.8rem;
-  background: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ea580c 100%);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 900;
-  border-radius: 12px;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35), 0 2px 8px rgba(0, 0, 0, 0.1);
-  letter-spacing: 0.06em;
-  position: relative;
-  z-index: 2;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  text-transform: uppercase;
-}
-
-.settings-tile-pro.danger {
-  border-color: rgba(239, 68, 68, 0.2);
-  background: linear-gradient(135deg, #fff5f5 0%, #fff2f2 100%);
-}
-
-.settings-tile-pro.danger::before {
-  background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
-}
-
-.settings-tile-pro.danger:hover {
-  box-shadow: 0 32px 80px rgba(239, 68, 68, 0.22), 0 12px 32px rgba(239, 68, 68, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border-color: rgba(239, 68, 68, 0.4);
-  background: linear-gradient(135deg, #fffdfd 0%, #fff8f8 100%);
-}
-
-.settings-tile-pro.danger .tile-title {
-  background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.settings-tile-pro.danger .tile-icon {
-  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 40%, #fca5a5 100%);
-  color: #dc2626;
-  box-shadow: 0 12px 32px rgba(220, 38, 38, 0.2), 0 4px 12px rgba(220, 38, 38, 0.12), inset 0 2px 8px rgba(255, 255, 255, 0.6);
-}
-
-.settings-tile-pro.danger:hover .tile-icon {
-  background: linear-gradient(135deg, #fca5a5 0%, #f87171 40%, #ef4444 100%);
-  color: #fff;
-  box-shadow: 0 16px 48px rgba(239, 68, 68, 0.35), 0 8px 20px rgba(239, 68, 68, 0.2), inset 0 2px 8px rgba(255, 255, 255, 0.3);
-  transform: scale(1.15) rotate(5deg);
-}
-
-.settings-tile-pro.danger .tile-btn {
-  background: linear-gradient(135deg, #fff 0%, #faf5f5 100%);
-  color: #dc2626;
-  border: 2.5px solid #ef4444;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
-}
-
-.settings-tile-pro.danger .tile-btn:hover {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
-  color: #fff;
-  box-shadow: 0 12px 36px rgba(239, 68, 68, 0.42), 0 4px 16px rgba(0, 0, 0, 0.12);
-}
 </style>
 

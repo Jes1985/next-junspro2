@@ -1,10 +1,9 @@
-<!-- Google font — chargement async non-bloquant -->
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<!-- Google font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;600&display=swap"
-  rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  rel="stylesheet">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="{{ asset('assets/front/css/vendors/bootstrap.min.css') }}">
 <!-- Fontawesome Icon CSS -->
@@ -53,3 +52,4 @@
 <link rel="stylesheet" href="{{ asset('assets/front/css/remove-categories-menu.css') }}?v={{ time() }}">
 <!-- CSS Fix Transparence Globale - Chargé en dernier pour forcer background opaque -->
 <link rel="stylesheet" href="{{ asset('assets/front/css/fix-opacity-global.css') }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-tablet-enhancements.css') }}?v=1">

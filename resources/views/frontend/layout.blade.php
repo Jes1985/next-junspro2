@@ -6,7 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
   <meta name="keywords" content="@yield('metaKeywords')">
   <meta name="description" content="@yield('metaDescription')">
 
@@ -33,11 +33,8 @@
   <link rel="stylesheet" href="{{ asset('assets/front/css/user-menu-premium.css') }}">
   {{-- CSS Sélecteur de Langue Premium --}}
   <link rel="stylesheet" href="{{ asset('assets/front/css/language-selector-premium.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/front/css/junspro-logo-premium.css') }}">
   {{-- CSS Chatbot Junspro Premium --}}
   <link rel="stylesheet" href="{{ asset('assets/front/css/junspro-chatbot-premium.css') }}?v=6.3">
-  {{-- CSS Options Express (composant unique) --}}
-  <link rel="stylesheet" href="{{ asset('assets/front/css/express-options.css') }}">
   @php
     $primaryColor = $basicInfo->primary_color;
   @endphp
@@ -227,51 +224,6 @@
 
     /* Bouton de recherche - Dégradé violet (visible sur fond blanc) */
     /* Style pour la capsule Pause Souffle dans le header */
-
-    /* ============================================
-       FOCUS RING PREMIUM — REMPLACEMENT DU CADRE BLEU NATIF DU NAVIGATEUR
-       Appliqué globalement à tous les éléments focusables du site.
-       ============================================ */
-    *:focus { outline: none; }
-    *:focus-visible {
-      outline: 2px solid rgba(139, 92, 246, 0.55) !important;
-      outline-offset: 2px !important;
-      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.08) !important;
-      border-radius: 6px !important;
-    }
-    input:focus,
-    select:focus,
-    textarea:focus,
-    button:focus {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-    input:focus-visible,
-    select:focus-visible,
-    textarea:focus-visible,
-    button:focus-visible {
-      outline: 2px solid rgba(139, 92, 246, 0.55) !important;
-      outline-offset: 2px !important;
-      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.08) !important;
-      border-radius: 10px !important;
-    }
-    /* Couleur d'accentuation OS pour les selects (Chrome 101+, Edge 101+) */
-    @supports (accent-color: auto) {
-      input[type="checkbox"],
-      input[type="radio"],
-      input[type="range"],
-      select {
-        accent-color: #8B5CF6;
-      }
-    }
-    /* Placeholder option (en-tête select) - fond sombre premium pour Firefox/Safari */
-    select option[value=""],
-    select option:first-child {
-      background-color: #1e293b !important;
-      color: #f1f5f9 !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.02em;
-    }
     .pause-souffle-header-capsule-item {
       display: flex;
       align-items: center;
@@ -757,17 +709,20 @@
   {{-- Fix transparence globale - Force background opaque sur html/body et masque preloader --}}
   <style>
     html {
-      background: transparent !important;
+      background: #ffffff !important;
       min-height: 100% !important;
+      background-color: #ffffff !important;
     }
     body {
-      background: transparent !important;
+      background: #ffffff !important;
+      background-color: #ffffff !important;
       opacity: 1 !important;
       min-height: 100vh !important;
       position: relative !important;
     }
     .main-wrapper {
-      background: transparent !important;
+      background: #ffffff !important;
+      background-color: #ffffff !important;
       opacity: 1 !important;
       position: relative !important;
       min-height: 100vh !important;
@@ -775,16 +730,6 @@
     /* S'assurer que request-loader est masqué par défaut */
     .request-loader:not(.show) {
       display: none !important;
-    }
-    /* Forcer la disparition totale des loaders */
-    #preLoader,
-    .request-loader {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      width: 0 !important;
-      height: 0 !important;
-      pointer-events: none !important;
     }
   </style>
   {{-- Additional styles from pages --}}
@@ -1031,440 +976,17 @@
     })();
   </script>
   
-  {{-- ═══════════════════════════════════════════════════════════════
-       CUSTOM SELECT PREMIUM — Composant global, remplace tous les <select>
-       natifs par un dropdown stylé. Synchronise la valeur native pour ne
-       rien casser (formulaires, AJAX, JS existant).
-       Exclure un select : ajouter data-no-cs="1"
-  ═══════════════════════════════════════════════════════════════ --}}
-  <style>
-    /* ── Wrapper ─────────────────────────────────────── */
-    .cs-wrapper {
-      position: relative;
-      display: block;
-      width: 100%;
-    }
-    /* Cacher le select natif tout en le gardant fonctionnel */
-    .cs-native {
-      position: absolute !important;
-      inset: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-      z-index: -1 !important;
-      border: none !important;
-    }
-    /* ── Trigger (bouton visible) ─────────────────────── */
-    .cs-trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      width: 100%;
-      cursor: pointer;
-      user-select: none;
-      background: #ffffff;
-      border: 1.5px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 0.75rem 1rem 0.75rem 1rem;
-      font-size: 0.9375rem;
-      color: #374151;
-      font-family: inherit;
-      font-weight: 400;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      min-height: 2.75rem;
-      box-sizing: border-box;
-    }
-    .cs-trigger:hover {
-      border-color: #c4b5fd;
-      background: #fafafa;
-    }
-    .cs-wrapper.is-open .cs-trigger {
-      border-color: #8B5CF6;
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
-      background: #ffffff;
-    }
-    .cs-trigger.cs-placeholder { color: #9ca3af; }
-    .cs-trigger-icon {
-      flex-shrink: 0;
-      width: 1rem;
-      height: 1rem;
-      color: #EC4899;
-      margin-right: 0.35rem;
-    }
-    .cs-trigger-text {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      text-align: left;
-    }
-    .cs-arrow {
-      flex-shrink: 0;
-      color: #9ca3af;
-      transition: transform 0.2s ease;
-      line-height: 0;
-    }
-    .cs-wrapper.is-open .cs-arrow { transform: rotate(180deg); }
-    /* ── Dropdown ────────────────────────────────────── */
-    .cs-dropdown {
-      position: absolute;
-      z-index: 99999;
-      left: 0;
-      right: 0;
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 14px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.13), 0 3px 10px rgba(0, 0, 0, 0.07);
-      overflow: hidden;
-      max-height: 260px;
-      overflow-y: auto;
-      opacity: 0;
-      transform: translateY(-6px) scale(0.98);
-      pointer-events: none;
-      transition: opacity 0.16s ease, transform 0.16s ease;
-      scrollbar-width: thin;
-      scrollbar-color: #e5e7eb transparent;
-    }
-    .cs-dropdown::-webkit-scrollbar { width: 4px; }
-    .cs-dropdown::-webkit-scrollbar-track { background: transparent; }
-    .cs-dropdown::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 99px; }
-    .cs-wrapper.is-open .cs-dropdown {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-    }
-    /* ── Options ─────────────────────────────────────── */
-    .cs-option {
-      padding: 0.65rem 1.1rem;
-      cursor: pointer;
-      font-size: 0.9375rem;
-      color: #374151;
-      font-family: inherit;
-      transition: background 0.1s ease, color 0.1s ease;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .cs-option:first-child {
-      font-size: 0.825rem;
-      color: #6b7280;
-      font-style: italic;
-      border-bottom: 1px solid #f3f4f6;
-      padding-bottom: 0.6rem;
-      margin-bottom: 0.2rem;
-      background: #fafafa;
-      cursor: default;
-    }
-    .cs-option:hover:not(:first-child) {
-      background: #fdf4ff;
-      color: #7c3aed;
-    }
-    .cs-option.is-selected:not(:first-child) {
-      background: rgba(139, 92, 246, 0.08);
-      color: #7c3aed;
-      font-weight: 500;
-    }
-    .cs-option[aria-disabled="true"] {
-      color: #d1d5db;
-      cursor: default;
-      font-style: italic;
-    }
-    /* ── Héritage contexte filtre (icône position) ───── */
-    .filter-input-group .cs-wrapper { flex: 1; min-width: 0; }
-    .filter-input-group .cs-trigger {
-      padding-left: 3.25rem; /* espace pour l'icône absolue parente */
-    }
-    /* ── Contexte homeswap filter-row-main ────────────── */
-    .homeswap-search-filter-section .cs-trigger,
-    .homeswap-filters-form .filter-input-group .cs-trigger {
-      border: 2px solid rgba(244, 114, 182, 0.3);
-      border-radius: 16px;
-      padding: 1rem 1rem 1rem 3.5rem;
-      font-size: 1rem;
-      color: #1a202c;
-      min-height: unset;
-    }
-    .homeswap-search-filter-section .cs-wrapper.is-open .cs-trigger,
-    .homeswap-filters-form .filter-input-group .cs-wrapper.is-open .cs-trigger {
-      border-color: #EC4899;
-      box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
-    }
-    /* ── Contexte filtre avancé (filter-select) ──────── */
-    .homeswap-filters-form .besoin-mother-tongue-wrap .cs-trigger {
-      padding: 10px 14px;
-      border-radius: 10px;
-    }
-    /* ── Disabled state ──────────────────────────────── */
-    .cs-wrapper.cs-disabled .cs-trigger {
-      opacity: 0.5;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-    /* ── Responsive ──────────────────────────────────── */
-    @media (max-width: 768px) {
-      .cs-trigger { font-size: 0.875rem; }
-    }
-  </style>
-  <script>
-  (function() {
-    'use strict';
-
-    var INIT_ATTR = 'data-cs-init';
-    var SKIP_ATTR = 'data-no-cs';
-
-    function buildCustomSelect(select) {
-      if (!select || select.hasAttribute(INIT_ATTR)) return;
-      if (select.hasAttribute(SKIP_ATTR)) return;
-      if (select.multiple) return;
-      if (select.closest('.cs-wrapper')) return;
-      if (select.closest('.cecrl-popover')) return; // skip CECRL popovers
-      select.setAttribute(INIT_ATTR, '1');
-
-      var parent = select.parentNode;
-
-      /* ── Wrapper ── */
-      var wrapper = document.createElement('div');
-      wrapper.className = 'cs-wrapper';
-      if (select.disabled) wrapper.classList.add('cs-disabled');
-
-      /* ── Trigger ── */
-      var trigger = document.createElement('div');
-      trigger.className = 'cs-trigger';
-      trigger.setAttribute('role', 'combobox');
-      trigger.setAttribute('aria-haspopup', 'listbox');
-      trigger.setAttribute('aria-expanded', 'false');
-      trigger.setAttribute('tabindex', select.disabled ? '-1' : '0');
-
-      /* Récupère l'icône du parent (.filter-input-icon) si présente */
-      var icon = parent.querySelector('.filter-input-icon');
-
-      var triggerText = document.createElement('span');
-      triggerText.className = 'cs-trigger-text';
-      var arrowEl = document.createElement('span');
-      arrowEl.className = 'cs-arrow';
-      arrowEl.innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 3.5L5 7L8.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-      trigger.appendChild(triggerText);
-      trigger.appendChild(arrowEl);
-
-      /* ── Dropdown ── */
-      var dropdown = document.createElement('div');
-      dropdown.className = 'cs-dropdown';
-      dropdown.setAttribute('role', 'listbox');
-
-      /* ── Assemble & insert ── */
-      parent.insertBefore(wrapper, select);
-      wrapper.appendChild(trigger);
-      wrapper.appendChild(dropdown);
-      wrapper.appendChild(select);
-      select.classList.add('cs-native');
-
-      /* ── Build option list ── */
-      function buildOptions() {
-        dropdown.innerHTML = '';
-        Array.from(select.options).forEach(function(opt) {
-          var item = document.createElement('div');
-          item.className = 'cs-option';
-          item.setAttribute('role', 'option');
-          item.setAttribute('data-value', opt.value);
-          if (opt.disabled) item.setAttribute('aria-disabled', 'true');
-          item.textContent = opt.textContent;
-          dropdown.appendChild(item);
-        });
-      }
-
-      /* ── Sync trigger with native select ── */
-      function syncTrigger() {
-        var sel = select.options[select.selectedIndex];
-        if (sel) {
-          triggerText.textContent = sel.textContent;
-          trigger.classList.toggle('cs-placeholder', sel.value === '');
-          dropdown.querySelectorAll('.cs-option').forEach(function(item) {
-            item.classList.toggle('is-selected', item.getAttribute('data-value') === sel.value);
-          });
-        }
-      }
-
-      /* ── Open / Close ── */
-      function open() {
-        if (select.disabled || wrapper.classList.contains('cs-disabled')) return;
-        // Fermer les autres
-        document.querySelectorAll('.cs-wrapper.is-open').forEach(function(w) {
-          if (w !== wrapper) {
-            w.classList.remove('is-open');
-            w.querySelector('.cs-trigger') && w.querySelector('.cs-trigger').setAttribute('aria-expanded', 'false');
-          }
-        });
-        // Position: au-dessus ou en-dessous
-        var rect = wrapper.getBoundingClientRect();
-        var spaceBelow = window.innerHeight - rect.bottom;
-        if (spaceBelow < 240 && rect.top > 240) {
-          dropdown.style.top = 'auto';
-          dropdown.style.bottom = 'calc(100% + 4px)';
-        } else {
-          dropdown.style.top = 'calc(100% + 4px)';
-          dropdown.style.bottom = 'auto';
-        }
-        wrapper.classList.add('is-open');
-        trigger.setAttribute('aria-expanded', 'true');
-      }
-
-      function close() {
-        wrapper.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }
-
-      /* ── Toggle on trigger click ── */
-      trigger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        wrapper.classList.contains('is-open') ? close() : open();
-      });
-
-      /* ── Keyboard ── */
-      trigger.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          wrapper.classList.contains('is-open') ? close() : open();
-        } else if (e.key === 'Escape') {
-          close();
-        } else if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          var cur = select.selectedIndex;
-          if (cur < select.options.length - 1) {
-            select.selectedIndex = cur + 1;
-            syncTrigger();
-            select.dispatchEvent(new Event('change', { bubbles: true }));
-          }
-        } else if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          var cur2 = select.selectedIndex;
-          if (cur2 > 0) {
-            select.selectedIndex = cur2 - 1;
-            syncTrigger();
-            select.dispatchEvent(new Event('change', { bubbles: true }));
-          }
-        }
-      });
-
-      /* ── Option click ── */
-      dropdown.addEventListener('click', function(e) {
-        var item = e.target.closest('.cs-option');
-        if (!item || item.getAttribute('aria-disabled') === 'true') return;
-        e.stopPropagation();
-        var val = item.getAttribute('data-value');
-        select.value = val;
-        syncTrigger();
-        close();
-        select.dispatchEvent(new Event('change', { bubbles: true }));
-        select.dispatchEvent(new Event('input', { bubbles: true }));
-      });
-
-      /* ── Listen for programmatic changes on native select ── */
-      select.addEventListener('change', syncTrigger);
-
-      /* ── Watch for dynamic options (AJAX city select, etc.) ── */
-      var mo = new MutationObserver(function(records) {
-        records.forEach(function(r) {
-          if (r.attributeName === 'style') {
-            /* Synchronise la visibilité du wrapper avec le display du select natif */
-            wrapper.style.display = select.style.display || '';
-            wrapper.style.visibility = select.style.visibility || '';
-          }
-          if (r.attributeName === 'disabled') {
-            wrapper.classList.toggle('cs-disabled', select.disabled);
-            trigger.setAttribute('tabindex', select.disabled ? '-1' : '0');
-          }
-        });
-        buildOptions();
-        syncTrigger();
-      });
-      mo.observe(select, { childList: true, subtree: true, attributes: true, attributeFilter: ['selected', 'disabled', 'style'] });
-
-      /* ── Init ── */
-      buildOptions();
-      syncTrigger();
-      /* Appliquer le display initial du select natif au wrapper */
-      if (select.style.display) wrapper.style.display = select.style.display;
-    }
-
-    /* ── Global click to close ── */
-    document.addEventListener('click', function() {
-      document.querySelectorAll('.cs-wrapper.is-open').forEach(function(w) {
-        w.classList.remove('is-open');
-        var t = w.querySelector('.cs-trigger');
-        if (t) t.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    /* ── Init all selects on DOM ready ── */
-    function initAll() {
-      document.querySelectorAll('select:not([' + INIT_ATTR + ']):not([multiple]):not([' + SKIP_ATTR + '])').forEach(buildCustomSelect);
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initAll);
-    } else {
-      initAll();
-    }
-
-    /* ── Watch for dynamically added selects (modals, AJAX, etc.) ── */
-    var bodyObserver = new MutationObserver(function(mutations) {
-      mutations.forEach(function(m) {
-        m.addedNodes.forEach(function(node) {
-          if (node.nodeType !== 1) return;
-          if (node.tagName === 'SELECT') {
-            buildCustomSelect(node);
-          } else if (node.querySelectorAll) {
-            node.querySelectorAll('select:not([' + INIT_ATTR + ']):not([multiple]):not([' + SKIP_ATTR + '])').forEach(buildCustomSelect);
-          }
-        });
-      });
-    });
-    bodyObserver.observe(document.body, { childList: true, subtree: true });
-
-  })();
-  </script>
-
   {{-- Chatbot Junspro Premium --}}
   <script>
     // Passer l'email de l'utilisateur connecté au chatbot
     window.junsproUserEmail = @json(Auth::guard('web')->check() ? Auth::guard('web')->user()->email : '');
   </script>
-  <script defer src="{{ asset('assets/front/js/junspro-chatbot-premium.js') }}?v=6.3"></script>
-  <script>
-    // Luxury Language Switcher — dropdown toggle
-    (function () {
-      function init() {
-        document.querySelectorAll('.lang-trigger').forEach(function (btn) {
-          btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            var sw = this.closest('.lang-switcher-luxury');
-            var opening = !sw.classList.contains('open');
-            document.querySelectorAll('.lang-switcher-luxury.open').forEach(function (el) {
-              el.classList.remove('open');
-              el.querySelector('.lang-trigger').setAttribute('aria-expanded', 'false');
-            });
-            if (opening) {
-              sw.classList.add('open');
-              this.setAttribute('aria-expanded', 'true');
-            }
-          });
-        });
-        document.addEventListener('click', function (e) {
-          if (!e.target.closest('.lang-switcher-luxury')) {
-            document.querySelectorAll('.lang-switcher-luxury.open').forEach(function (el) {
-              el.classList.remove('open');
-              el.querySelector('.lang-trigger').setAttribute('aria-expanded', 'false');
-            });
-          }
-        });
-      }
-      document.readyState === 'loading'
-        ? document.addEventListener('DOMContentLoaded', init)
-        : init();
-    })();
-  </script>
+  <script type="text/javascript" src="{{ asset('assets/front/js/junspro-chatbot-premium.js') }}?v=6.3"></script>
+</body>
+
+</html>
+
+
 </body>
 
 </html>

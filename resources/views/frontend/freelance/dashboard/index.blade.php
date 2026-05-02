@@ -9,40 +9,44 @@
       --junspro-gradient: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
     }
 
-    /* Layout principal - Fond blanc solide (empêche toute zone sombre résiduelle) */
+    /* Layout principal - Fond dégradé très subtil avec halos */
     body {
-      background: #ffffff !important;
-      background-color: #ffffff !important;
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.04) 0%, rgba(76, 29, 149, 0.05) 50%, rgba(124, 58, 237, 0.06) 100%);
       position: relative;
     }
 
-    /* Pseudo-élément body::before désactivé pour éviter tout halo sombre */
     body::before {
-      display: none !important;
-      content: none !important;
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 20% 30%, rgba(30, 64, 175, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .freelance-dashboard-wrapper {
       position: relative;
       z-index: 1;
-      padding: 1.5rem 2rem;
+      padding: 2rem 1rem;
       min-height: calc(100vh - 200px);
-      background: #ffffff;
-      overflow: hidden;
     }
 
     /* Container glass premium */
     .freelance-dashboard-container {
-      max-width: 100%;
-      width: 100%;
+      max-width: 1400px;
       margin: 0 auto;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.8);
       border-radius: 24px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
       padding: 2.5rem;
       color: #1f2937;
-      overflow: hidden;
     }
     
     /* CORRECTION CAUSE RACINE : Supprimer max-width et padding pour jobs-page-wrapper-light */
@@ -157,7 +161,7 @@
       gap: 8px !important;
     }
 
-    .freelance-dashboard-wrapper .nav-item, 
+    .nav-item, 
     .vertical-nav a {
       display: flex !important;
       align-items: center !important;
@@ -204,6 +208,23 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
+    @media (max-width: 1024px) {
+      .dashboard-header {
+        margin-top: 1rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-header {
+        margin-top: 0.75rem !important;
+        margin-left: 0 !important;
+      }
+    }
+
     .dashboard-header h1 {
       font-size: 1.75rem;
       font-weight: 700;
@@ -240,16 +261,14 @@
     }
 
     .btn-premium-primary {
-      background: #ede9fe;
-      color: #7c3aed;
-      box-shadow: 0 2px 8px rgba(167, 139, 250, 0.2);
-      border: 1px solid #ddd6fe;
+      background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
     }
 
     .btn-premium-primary:hover {
-      background: #ddd6fe;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(167, 139, 250, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
     }
 
     .btn-premium-secondary {
@@ -895,7 +914,7 @@
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     }
 
-    .vertical-nav .nav-item {
+    .nav-item {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -908,12 +927,12 @@
       cursor: pointer;
     }
 
-    .vertical-nav .nav-item:hover {
+    .nav-item:hover {
       background: rgba(124, 58, 237, 0.1);
       transform: scale(1.1);
     }
 
-    .vertical-nav .nav-item.active {
+    .nav-item.active {
       background: linear-gradient(135deg, #1e40af 0%, #4c1d95 50%, #7c3aed 100%);
       box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
     }
@@ -1044,7 +1063,7 @@
     }
 
     /* ===== RESPONSIVE - DISPOSITION ADAPTATIVE SANS SUPERPOSITION ===== */
-    @media (max-width: 1200px) {
+    @media (max-width: 1024px) {
       /* Navigation devient statique - évite superposition */
       .dashboard-luxury .overview-panel-nav {
         position: relative;
@@ -1156,17 +1175,42 @@
 @section('content')
   <div class="freelance-dashboard-wrapper">
     <div class="freelance-dashboard-container">
-      {{-- Navigation onglets (carte blanche au-dessus du hero) --}}
-      @include('frontend.freelance.partials.navbar')
+      @if($activeTab !== 'overview' && $activeTab !== 'requests' && $activeTab !== 'jobs' && $activeTab !== 'calendar')
+        <!-- Header de page (masqué sur l'onglet Aperçu, Demandes, Prestations et Agenda) -->
+        <div class="dashboard-header">
+          <h1>Tableau de bord Freelance</h1>
+          <p class="dashboard-header-subtitle">
+            Un espace clair pour avancer sans relances : vos clients voient l'avancement, vous gardez le rythme.
+          </p>
+          <div class="dashboard-header-ctas">
+            <a href="{{ route('freelance.services.create') }}" class="btn-premium btn-premium-primary">
+              Créer un service
+            </a>
+            @if(isset($freelancerProfile) && $freelancerProfile && $freelancerProfile->id)
+              <a href="{{ route('freelance.show', ['id' => $freelancerProfile->id]) }}" target="_blank" class="btn-premium btn-premium-secondary">
+                Voir mon profil public
+              </a>
+            @else
+              <a href="#" class="btn-premium btn-premium-secondary" onclick="alert('Vous devez compléter votre profil freelance pour voir votre profil public.'); return false;">
+                Voir mon profil public
+              </a>
+            @endif
+          </div>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #6b7280;">💡 Plus vos informations sont complètes, plus vous remontez dans les résultats.</p>
+        </div>
+      @endif
 
-      <!-- Contenu de l'onglet actif (hero inclus en tête de chaque onglet) -->
+      {{-- Module Pause Souffle Inline (en haut du contenu principal, avant sections secondaires) --}}
+      <div style="margin: 1.5rem 0;">
+        @include('frontend.components.pause-souffle.inline-premium')
+      </div>
+
+      <!-- Contenu de l'onglet actif -->
       <div class="dashboard-tab-content" data-active-tab="{{ $activeTab }}">
         @include('frontend.freelance.dashboard.tabs.' . $activeTab, [
           'activeTab' => $activeTab,
           'freelancerProfile' => $freelancerProfile,
-          'user' => $user,
-          'nextSession' => $nextSession ?? null,
-          'nextSessionType' => $nextSessionType ?? null,
+          'user' => $user
         ])
       </div>
     </div>
@@ -1210,7 +1254,7 @@
     function recalculateLayout() {
       const windowWidth = window.innerWidth;
       const sidebarWidth = 280;
-      const breakpoint = 1200;
+      const breakpoint = 1024;
 
       // Sélectionner uniquement les éléments de l'overview (les autres pages gèrent leur propre layout)
       const sidebars = document.querySelectorAll(
@@ -1290,13 +1334,6 @@
   </script>
 
   <style>
-    /* ===== FIX GLOBAL : Empêcher les min-height: 100vh empilés de créer un débordement sous le footer ===== */
-    .dashboard-tab-content [class$="-page-wrapper-light"],
-    .dashboard-tab-content [class$="-page-wrapper-light"] .dashboard-container,
-    .dashboard-tab-content [class$="-page-wrapper-light"] .main-content {
-      min-height: auto !important;
-    }
-
     /* ===== GARANTIE VISIBILITÉ DU FOOTER ===== */
     /* S'assurer que le footer Junspro est toujours visible */
     .junspro-footer {
